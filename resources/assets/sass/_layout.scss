@@ -1,0 +1,343 @@
+html,body {
+  background: #f9f9f9;
+  font-family: $font-secondary;
+}
+.cover-homepage {
+  .cover-overlay-homepage {
+    padding: 0 !important;
+    background: linear-gradient(108deg,
+    rgba(246,161,146,0.1),
+    rgba(246,207,146,0.5),
+    rgba(246,176,146,0.3)) !important;
+  }
+  .navbar-homepage {
+    .logo-homepage-white {
+      img {
+        width: 160px;
+      }
+    }
+    .nav-hmpg li {
+      a {
+        color: #ffffff;
+        font-family: $font-primary;
+        font-size: 13px;
+        @include fontstyle(600, normal, normal, 0.4px);
+      }
+    }
+    .nav-hmpg {
+      .navbarhmpgdropdowncustomer {
+        padding: 0;
+        box-shadow: none;
+        margin: 0;
+        ul {
+          li {
+            a {
+              color: #777777;
+              font-size: 12px;
+              font-family: $font-primary;
+              padding-left: 15px;
+              padding-top: 10px;
+              padding-bottom: 10px;
+              text-transform: capitalize !important;
+              @include fontstyle(400, normal, normal, 0.4px);
+              &:hover {
+                background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+                color: #ffffff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .findvendor-hmpg-content {
+    margin-top: 9em;
+    .temukan-vendor-hmpg {
+      color: #ffffff;
+      font-family: $font-secondary;
+      font-size: 28px;
+      @include fontstyle(400, normal, normal, 0.4px);
+      .tanamanhias {
+        font-size: 36px;
+        @include fontstyle(700, normal, normal, 0.4px);
+      }
+    }
+    .dropdown-findcity {
+      height: 220px;
+      border-radius: 3px;
+      overflow-y: scroll;
+      padding: 0;
+      ul {
+        li {
+          a {
+            padding: 10px 16px;
+            color: #666666;
+            font-family: $font-primary;
+            @include fontstyle(300, normal, normal, 0.4px);
+            &:hover, &:focus {
+              background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// customers
+.customers-loginlogo { width: 150px; }
+.customers-logincontainer {
+  border-radius: 4px;
+  font-family: $font-primary;
+  @include fontstyle(300, normal, normal, 0.4px);
+  .customers-formlogin {
+    border: 0;
+    border-bottom: 1px solid #e9e9e9;
+    color: #333333;
+    font-family: $font-primary;
+    font-size: 13px;
+    height: 50px;
+    @include fontstyle(400, normal, normal, 0.4px);
+    &::placeholder { font-size: 13px; }
+    &:hover, &:focus {
+      border-bottom: 1px solid $f6b092;
+    }
+  }
+  .customers-btnlogin {
+    border: 0;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: $font-primary;
+    font-size: 14px;
+    background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    @include fontstyle(400, normal, normal, 0.6px);
+  }
+  .customers-loginheading {
+    color: #666666;
+    font-family: $font-primary;
+    @include fontstyle(400, normal, normal, 0.6px);
+  }
+  .customers-loginlead {
+    color: #666666;
+    font-size: 12px;
+    font-family: $font-primary;
+    @include fontstyle(400, normal, normal, 0.6px);
+    margin-bottom: 15px;
+    a { color: $logo-color-primary; &:hover { color: $logo-color-primary; } }
+  }
+
+  .ingatkansaya {
+    font-size: 12px;
+    font-family: $font-primary;
+    margin-right: 5px;
+    @include fontstyle(400, normal, normal, 0.6px);
+  }
+  .lupapassword {
+    font-size: 12px;
+    font-family: $font-primary;
+    color: $f6b092;
+    @include fontstyle(400, normal, normal, 0.6px);
+  }
+}
+.navbarcustomer {
+  background: #ffffff;
+  border-bottom: 1px solid #e9e9e9;
+  .navtopcustomer li {
+    .logo { width: 150px; }
+    .navcusticon { font-size: 16px !important; }
+    a {
+      color: #777777;
+      font-size: 14px;
+      font-family: $font-primary;
+      text-transform: capitalize !important;
+      @include fontstyle(600, normal, normal, 0.4px);
+      &:hover { color: $f6b092; }
+    }
+  }
+  .navtopcustomer {
+    .navbardropdowncustomer {
+      padding: 0;
+      box-shadow: none;
+      border: 1px solid #e9e9e9;
+      margin: 0;
+      ul li {
+        a {
+          color: #777777;
+          font-size: 12px;
+          font-family: $font-primary;
+          padding-left: 15px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          text-transform: capitalize !important;
+          @include fontstyle(400, normal, normal, 0.4px);
+          &:hover {
+            background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dashb_customer {
+  padding-top: 35px;
+  .dash_customername {
+    color: #777777;
+    font-size: 28px;
+    font-family: $font-primary;
+    text-transform: capitalize !important;
+    @include fontstyle(600, normal, normal, 0.4px);
+  }
+  .dash_customerhistory {
+    .dash_historytransaction {
+      color: #aaaaaa;
+      font-size: 13px;
+      font-family: $font-primary;
+      text-transform: capitalize !important;
+      @include fontstyle(400, normal, normal, 0.4px);
+      margin-right: 5px;
+    }
+    .dash_vendorpilihan {
+      color: $f6b092;
+      font-size: 13px;
+      font-family: $font-primary;
+      text-transform: capitalize !important;
+      @include fontstyle(400, normal, normal, 0.4px);
+    }
+  }
+  .dash_customercredit {
+    text-align: right;
+    .dash_customercredit_text {
+      color: #aaaaaa;
+      font-size: 15px;
+      font-family: $font-primary;
+      text-transform: capitalize !important;
+      @include fontstyle(400, normal, normal, 0.4px);
+    }
+    .dash_customercredit_balance {
+      color: #777777;
+      font-size: 28px;
+      font-family: $font-primary;
+      text-transform: capitalize !important;
+      @include fontstyle(600, normal, normal, 0.4px);
+    }
+  }
+
+  .board_bookingvendor {
+    margin-top: 40px;
+    .board_listbookingvendor {
+      box-shadow: none;
+      border-top: 1px solid #e9e9e9;
+      border-bottom: 1px solid #e9e9e9;
+      .board_neverbooking_icon {
+        font-size: 72px;
+        text-align: center;
+        span {
+          color: $f6b092;
+          /*padding: 45px 45px;
+          border-radius: 100%;*/
+        }
+      }
+      .board_neverbooking_text {
+        font-size: 16px;
+        text-align: center;
+        color: #999999;
+        margin-top: 20px;
+        font-family: $font-primary;
+        @include fontstyle(400, normal, normal, 0.4px);
+      }
+      .board_bookbutton {
+        margin-top: 20px;
+        border: 1px solid $f6b092;
+        background: none;
+        color: $f6b092;
+        height: 50px;
+        font-size: 16px;
+        font-family: $font-primary;
+        @include fontstyle(600, normal, normal, 0.4px);
+        border-radius: 4px;
+        &:hover, &:focus {
+          background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.navcustsetting {
+  box-shadow: none;
+  border: 1px solid #e9e9e9;
+  border-radius: 3px;
+  ul {
+    .membersince {
+      color: #555555;
+      font-size: 14px;
+      font-family: $font-primary;
+      text-transform: capitalize !important;
+      @include fontstyle(600, normal, normal, 0.4px);
+      margin-bottom: 15px;
+      margin-top: 15px;
+      text-align: center;
+    }
+    li {
+      a {
+        color: #777777;
+        font-size: 12px;
+        font-family: $font-primary;
+        padding-left: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-transform: capitalize !important;
+        @include fontstyle(400, normal, normal, 0.4px);
+        &:hover {
+          background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.container-settingaccount {
+  box-shadow: none;
+  border: 1px solid #e9e9e9;
+  border-radius: 3px;
+  .content_headingsettingprofile {
+    color: #777777;
+    font-family: $font-primary;
+    @include fontstyle(600, normal, normal, 0.4px);
+  }
+  .form-settingaction {
+    border-radius: 4px;
+    color: #777777;
+    font-family: $font-primary;
+    font-size: 12px;
+    @include fontstyle(400, normal, normal, 0.6px);
+    &::placeholder { color: #777777; }
+    &:hover, &:focus {
+      &::placeholder { color: #444444; }
+      color: #444444;
+      border: 1px solid $f6b092;
+    }
+  }
+  .btn_settingaction {
+    border: 0;
+    border-radius: 4px;
+    font-family: $font-primary;
+    font-size: 16px;
+    color: #ffffff;
+    background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    text-transform: capitalize;
+    height: 45px;
+    @include fontstyle(600, normal, normal, 0.6px);
+    &:hover, &:focus {
+      border: 0;
+      color: #ffffff;
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    }
+  }
+}
+// customers

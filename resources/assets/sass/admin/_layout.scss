@@ -1,0 +1,133 @@
+html, body {
+  background: $body-bg;
+  font-family: $font-family-sans-serif;
+}
+
+@import 'forms';
+
+.logo-container {
+  background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+  border-radius: 8px 0 0 8px;
+  .logo-login {
+    width: 250px;
+  }
+}
+.login-section {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.login-container {
+  background: #ffffff;
+  color: #333333;
+  border-radius: 0 8px 8px 0;
+  h1,h2,h3,h4,h5 {
+    color: #555555 !important;
+    font-family: $font-family-sans-serif;
+    @include fontstyle(400, normal, normal, 0.4);
+  }
+}
+@media screen and(max-width: 768px)  {
+  .login-container {
+    border-radius: 8px;
+  }
+}
+////////// end of login container
+
+//// layout
+.header {
+  //background: #222222;
+  background: linear-gradient(97deg, $f6c492, $f6a192);
+  .header-logo {
+    img { width: 120px;}
+  }
+  .header-nav li {
+    a {
+      color: #ffffff;
+      font-size: 14px;
+      font-family: $font-family-sans-serif;
+      @include fontstyle(600, normal, normal, 0.4);
+      &:hover, &:active, &:focus {
+        background: $f6a192;
+        color: #ffffff;
+      }
+    }
+  }
+  .header-dropdown-container {
+    background: #ffffff;
+    .header-dropdown-nav li {
+      a {
+        color: #333333;
+        font-size: 13px;
+        font-family: $font-family-sans-serif;
+        @include fontstyle(600, normal, normal, 0.4);
+        &:hover, &:active, &:focus {
+          background: none;
+          color: $f6a192;
+        }
+      }
+    }
+  }
+}
+
+.main-navbar-container {
+  background: #ffffff;
+  .main-nav {
+    .uk-nav-header {
+      color: #888888 !important;
+      font-size: 16px;
+      font-family: $font-family-sans-serif;
+      @include fontstyle(700, normal, normal, 0.4);
+    }
+    li {
+      a {
+        padding: 8px 20px;
+        font-size: 14px;
+        font-family: $font-family-sans-serif;
+        @include fontstyle(600, normal, normal, 0.4);
+        color: #777777 !important;
+        &:hover, &:active, &:focus {
+          background: none;
+          color: $f6a192 !important;
+        }
+      }
+    }
+  }
+}
+
+.table-rows {
+  background: #ffffff;
+  color: #666666;
+  tr {
+    border-bottom: 1px solid $f6a192 !important;
+    &:last-child {
+      border-bottom: 0 !important;
+    }
+  }
+  th {
+    font-size: 14px;
+    font-family: $font-family-sans-serif;
+    @include fontstyle(600, normal, normal, 0.4);
+    color: #666666 !important;
+    border-bottom: 1px solid $f6a192 !important;
+  }
+}
+.modal-dialog {
+  border-radius: 4px;
+  .modal-body {
+    font-size: 14px;
+    font-family: $font-family-sans-serif;
+    color: #333333;
+    @include fontstyle(600, normal, normal, 0.4);
+    .modal-heading {
+      font-size: 24px;
+      font-family: $font-family-sans-serif;
+      @include fontstyle(600, normal, normal, 0.4);
+      color: #333333;
+    }
+  }
+}
+//// layout
+
+///////// dashboard
+
+///////// dashboard

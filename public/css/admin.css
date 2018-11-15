@@ -1,0 +1,387 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700,900);@import url(https://fonts.googleapis.com/icon?family=Material+Icons);.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  -webkit-font-feature-settings: 'liga';
+          font-feature-settings: 'liga';
+}
+
+/* Rules for sizing the icon. */
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+
+.material-icons.md-light {
+  color: white;
+}
+
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+html,
+body {
+  background: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.label-login {
+  color: #555555;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.form-label-modal {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.input-login {
+  border: 0;
+  border-bottom: 2px solid #dddddd;
+  color: #666666 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  background: none;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.input-login:hover,
+.input-login:focus {
+  border-bottom: 2px solid #f6a192;
+  background: none;
+  color: #ffffff;
+}
+
+.form-search {
+  border: 1px solid #dddddd;
+  border-radius: 30px;
+  color: #333333 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.form-search:hover,
+.form-search:focus {
+  border: 1px solid #f6a192;
+}
+
+.form-select {
+  border: 1px solid #dddddd;
+  color: #666666 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  border-radius: 30px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.form-select:hover,
+.form-select:focus,
+.form-select:active {
+  color: #333333 !important;
+  border: 1px solid #f6a192;
+}
+
+.form-action-custom-modal,
+.form-action-select-modal {
+  border-radius: 4px;
+  color: #333333 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.form-action-custom-modal:hover,
+.form-action-custom-modal:focus,
+.form-action-select-modal:hover,
+.form-action-select-modal:focus {
+  border: 1px solid #f6a192;
+}
+
+.button-login {
+  border-radius: 30px;
+  border: 1px solid #f6a192;
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.button-login:hover,
+.button-login:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  border: 1px solid #f6a192;
+}
+
+.button-custom-action {
+  border-radius: 30px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  border: 0;
+  text-transform: capitalize !important;
+}
+
+.button-custom-action:hover,
+.button-custom-action:focus {
+  color: #ffffff;
+  background: #f6b092;
+}
+
+.button-action-modal {
+  border-radius: 4px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  border: 0;
+  text-transform: capitalize !important;
+}
+
+.button-action-modal:hover,
+.button-action-modal:focus {
+  color: #ffffff;
+  background: #f6b092;
+}
+
+.logo-container {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  border-radius: 8px 0 0 8px;
+}
+
+.logo-container .logo-login {
+  width: 250px;
+}
+
+.login-section {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.login-container {
+  background: #ffffff;
+  color: #333333;
+  border-radius: 0 8px 8px 0;
+}
+
+.login-container h1,
+.login-container h2,
+.login-container h3,
+.login-container h4,
+.login-container h5 {
+  color: #555555 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    border-radius: 8px;
+  }
+}
+
+.header {
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.header .header-logo img {
+  width: 120px;
+}
+
+.header .header-nav li a {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.header .header-nav li a:hover,
+.header .header-nav li a:active,
+.header .header-nav li a:focus {
+  background: #f6a192;
+  color: #ffffff;
+}
+
+.header .header-dropdown-container {
+  background: #ffffff;
+}
+
+.header .header-dropdown-container .header-dropdown-nav li a {
+  color: #333333;
+  font-size: 13px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.header .header-dropdown-container .header-dropdown-nav li a:hover,
+.header .header-dropdown-container .header-dropdown-nav li a:active,
+.header .header-dropdown-container .header-dropdown-nav li a:focus {
+  background: none;
+  color: #f6a192;
+}
+
+.main-navbar-container {
+  background: #ffffff;
+}
+
+.main-navbar-container .main-nav .uk-nav-header {
+  color: #888888 !important;
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.main-navbar-container .main-nav li a {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  color: #777777 !important;
+}
+
+.main-navbar-container .main-nav li a:hover,
+.main-navbar-container .main-nav li a:active,
+.main-navbar-container .main-nav li a:focus {
+  background: none;
+  color: #f6a192 !important;
+}
+
+.table-rows {
+  background: #ffffff;
+  color: #666666;
+}
+
+.table-rows tr {
+  border-bottom: 1px solid #f6a192 !important;
+}
+
+.table-rows tr:last-child {
+  border-bottom: 0 !important;
+}
+
+.table-rows th {
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  color: #666666 !important;
+  border-bottom: 1px solid #f6a192 !important;
+}
+
+.modal-dialog {
+  border-radius: 4px;
+}
+
+.modal-dialog .modal-body {
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #333333;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.modal-dialog .modal-body .modal-heading {
+  font-size: 24px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  color: #333333;
+}
+

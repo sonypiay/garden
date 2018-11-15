@@ -1,0 +1,629 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,700,900);@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);@import url(https://fonts.googleapis.com/icon?family=Material+Icons);.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  -webkit-font-feature-settings: 'liga';
+          font-feature-settings: 'liga';
+}
+
+/* Rules for sizing the icon. */
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+
+.material-icons.md-light {
+  color: white;
+}
+
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.hmpg-findvendor-box .findvendor-formicon {
+  color: #ffffff;
+}
+
+.hmpg-findvendor-box .findvendor-form {
+  border: 0;
+  border-radius: 4px;
+  color: #333333;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  height: 50px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.hmpg-findvendor-box .findvendor-form::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.hmpg-findvendor-box .findvendor-form::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.hmpg-findvendor-box .findvendor-form::placeholder {
+  color: #ffffff;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover,
+.hmpg-findvendor-box .findvendor-form:focus {
+  color: #666666;
+  background: #ffffff !important;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover .findvendor-formicon,
+.hmpg-findvendor-box .findvendor-form:focus .findvendor-formicon {
+  color: #666666;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover::-webkit-input-placeholder,
+.hmpg-findvendor-box .findvendor-form:focus::-webkit-input-placeholder {
+  color: #666666;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover::-ms-input-placeholder,
+.hmpg-findvendor-box .findvendor-form:focus::-ms-input-placeholder {
+  color: #666666;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover::placeholder,
+.hmpg-findvendor-box .findvendor-form:focus::placeholder {
+  color: #666666;
+}
+
+.hmpg-findvendor-box .findcity-hmpg {
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  border: 1px solid #f6a192;
+  text-transform: capitalize;
+  height: 45px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+html,
+body {
+  background: #f9f9f9;
+  font-family: "Lato", sans-serif;
+}
+
+.cover-homepage .cover-overlay-homepage {
+  padding: 0 !important;
+  background: linear-gradient(108deg, rgba(246, 161, 146, 0.1), rgba(246, 207, 146, 0.5), rgba(246, 176, 146, 0.3)) !important;
+}
+
+.cover-homepage .navbar-homepage .logo-homepage-white img {
+  width: 160px;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg li a {
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg .navbarhmpgdropdowncustomer {
+  padding: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin: 0;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg .navbarhmpgdropdowncustomer ul li a {
+  color: #777777;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg .navbarhmpgdropdowncustomer ul li a:hover {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.cover-homepage .findvendor-hmpg-content {
+  margin-top: 9em;
+}
+
+.cover-homepage .findvendor-hmpg-content .temukan-vendor-hmpg {
+  color: #ffffff;
+  font-family: "Lato", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.cover-homepage .findvendor-hmpg-content .temukan-vendor-hmpg .tanamanhias {
+  font-size: 36px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.cover-homepage .findvendor-hmpg-content .dropdown-findcity {
+  height: 220px;
+  border-radius: 3px;
+  overflow-y: scroll;
+  padding: 0;
+}
+
+.cover-homepage .findvendor-hmpg-content .dropdown-findcity ul li a {
+  padding: 10px 16px;
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.cover-homepage .findvendor-hmpg-content .dropdown-findcity ul li a:hover,
+.cover-homepage .findvendor-hmpg-content .dropdown-findcity ul li a:focus {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.customers-loginlogo {
+  width: 150px;
+}
+
+.customers-logincontainer {
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.customers-logincontainer .customers-formlogin {
+  border: 0;
+  border-bottom: 1px solid #e9e9e9;
+  color: #333333;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  height: 50px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.customers-logincontainer .customers-formlogin::-webkit-input-placeholder {
+  font-size: 13px;
+}
+
+.customers-logincontainer .customers-formlogin::-ms-input-placeholder {
+  font-size: 13px;
+}
+
+.customers-logincontainer .customers-formlogin::placeholder {
+  font-size: 13px;
+}
+
+.customers-logincontainer .customers-formlogin:hover,
+.customers-logincontainer .customers-formlogin:focus {
+  border-bottom: 1px solid #f6b092;
+}
+
+.customers-logincontainer .customers-btnlogin {
+  border: 0;
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.customers-logincontainer .customers-loginheading {
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.customers-logincontainer .customers-loginlead {
+  color: #666666;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 15px;
+}
+
+.customers-logincontainer .customers-loginlead a {
+  color: #f6a192;
+}
+
+.customers-logincontainer .customers-loginlead a:hover {
+  color: #f6a192;
+}
+
+.customers-logincontainer .ingatkansaya {
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  margin-right: 5px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.customers-logincontainer .lupapassword {
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  color: #f6b092;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.navbarcustomer {
+  background: #ffffff;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.navbarcustomer .navtopcustomer li .logo {
+  width: 150px;
+}
+
+.navbarcustomer .navtopcustomer li .navcusticon {
+  font-size: 16px !important;
+}
+
+.navbarcustomer .navtopcustomer li a {
+  color: #777777;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.navbarcustomer .navtopcustomer li a:hover {
+  color: #f6b092;
+}
+
+.navbarcustomer .navtopcustomer .navbardropdowncustomer {
+  padding: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #e9e9e9;
+  margin: 0;
+}
+
+.navbarcustomer .navtopcustomer .navbardropdowncustomer ul li a {
+  color: #777777;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.navbarcustomer .navtopcustomer .navbardropdowncustomer ul li a:hover {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.dashb_customer {
+  padding-top: 35px;
+}
+
+.dashb_customer .dash_customername {
+  color: #777777;
+  font-size: 28px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .dash_customerhistory .dash_historytransaction {
+  color: #aaaaaa;
+  font-size: 13px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-right: 5px;
+}
+
+.dashb_customer .dash_customerhistory .dash_vendorpilihan {
+  color: #f6b092;
+  font-size: 13px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .dash_customercredit {
+  text-align: right;
+}
+
+.dashb_customer .dash_customercredit .dash_customercredit_text {
+  color: #aaaaaa;
+  font-size: 15px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .dash_customercredit .dash_customercredit_balance {
+  color: #777777;
+  font-size: 28px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .board_bookingvendor {
+  margin-top: 40px;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_neverbooking_icon {
+  font-size: 72px;
+  text-align: center;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_neverbooking_icon span {
+  color: #f6b092;
+  /*padding: 45px 45px;
+          border-radius: 100%;*/
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_neverbooking_text {
+  font-size: 16px;
+  text-align: center;
+  color: #999999;
+  margin-top: 20px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_bookbutton {
+  margin-top: 20px;
+  border: 1px solid #f6b092;
+  background: none;
+  color: #f6b092;
+  height: 50px;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  border-radius: 4px;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_bookbutton:hover,
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_bookbutton:focus {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.navcustsetting {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #e9e9e9;
+  border-radius: 3px;
+}
+
+.navcustsetting ul .membersince {
+  color: #555555;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.navcustsetting ul li a {
+  color: #777777;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.navcustsetting ul li a:hover {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.container-settingaccount {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #e9e9e9;
+  border-radius: 3px;
+}
+
+.container-settingaccount .content_headingsettingprofile {
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.container-settingaccount .form-settingaction {
+  border-radius: 4px;
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.container-settingaccount .form-settingaction::-webkit-input-placeholder {
+  color: #777777;
+}
+
+.container-settingaccount .form-settingaction::-ms-input-placeholder {
+  color: #777777;
+}
+
+.container-settingaccount .form-settingaction::placeholder {
+  color: #777777;
+}
+
+.container-settingaccount .form-settingaction:hover,
+.container-settingaccount .form-settingaction:focus {
+  color: #444444;
+  border: 1px solid #f6b092;
+}
+
+.container-settingaccount .form-settingaction:hover::-webkit-input-placeholder,
+.container-settingaccount .form-settingaction:focus::-webkit-input-placeholder {
+  color: #444444;
+}
+
+.container-settingaccount .form-settingaction:hover::-ms-input-placeholder,
+.container-settingaccount .form-settingaction:focus::-ms-input-placeholder {
+  color: #444444;
+}
+
+.container-settingaccount .form-settingaction:hover::placeholder,
+.container-settingaccount .form-settingaction:focus::placeholder {
+  color: #444444;
+}
+
+.container-settingaccount .btn_settingaction {
+  border: 0;
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  height: 45px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.container-settingaccount .btn_settingaction:hover,
+.container-settingaccount .btn_settingaction:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
