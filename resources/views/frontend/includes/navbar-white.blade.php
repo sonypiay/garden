@@ -23,7 +23,7 @@
                 <li><a href="#">Vendor Pilihan</a></li>
                 <li><a href="#">Pesanan</a></li>
                 <li class="uk-nav-divider"></li>
-                <li><a href="{{ route('editprofile_page') }}">Edit Profil &amp; Pengaturan</a></li>
+                <li><a href="{{ route('editprofilecustomer_page') }}">Edit Profil &amp; Pengaturan</a></li>
                 <li><a href="{{ route('logoutcustomer') }}">Keluar</a></li>
               </ul>
             </div>

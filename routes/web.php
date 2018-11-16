@@ -22,11 +22,18 @@ Route::group(['prefix' => 'customers'], function() {
 
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Customers\AccountCustomers@index')->name('accountcustomer_page');
-    Route::get('/edit_profile', 'Frontend\Customers\AccountCustomers@editprofile')->name('editprofile_page');
-    Route::get('/change_password', 'Frontend\Customers\AccountCustomers@change_password')->name('changepassword_page');
+    Route::get('/edit_profile', 'Frontend\Customers\AccountCustomers@editprofile')->name('editprofilecustomer_page');
+    Route::get('/change_password', 'Frontend\Customers\AccountCustomers@change_password')->name('changepasswordcustomer_page');
+    Route::get('/edit_email', 'Frontend\Customers\AccountCustomers@editemail')->name('editemailcustomer_page');
+    Route::get('/edit_notelepon', 'Frontend\Customers\AccountCustomers@editnotelepon')->name('editteleponcustomer_page');
+
+    Route::get('/rekeningbank', 'Frontend\Customers\AccountCustomers@rekeningbank')->name('rekeningbankcustomer_page');
+    Route::post('/addrekeningbank', 'Frontend\Customers\AccountCustomers@store_rekeningbank');
 
     Route::put('/edit_profile', 'Frontend\Customers\AccountCustomers@saveprofile');
     Route::put('/change_password', 'Frontend\Customers\AccountCustomers@savepassword');
+    Route::put('/edit_email', 'Frontend\Customers\AccountCustomers@saveemail');
+    Route::put('/edit_notelepon', 'Frontend\Customers\AccountCustomers@savephone');
   });
 });
 // Route frontend

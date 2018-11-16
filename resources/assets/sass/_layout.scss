@@ -2,6 +2,55 @@ html,body {
   background: #f9f9f9;
   font-family: $font-secondary;
 }
+.modal-body {
+  .form-settinglabel {
+    color: #777777;
+    font-family: $font-primary;
+    font-size: 12px;
+    @include fontstyle(400, normal, normal, 0.6px);
+  }
+  .form-settingaction {
+    border-radius: 4px;
+    color: #777777;
+    font-family: $font-primary;
+    font-size: 12px;
+    @include fontstyle(400, normal, normal, 0.6px);
+    &::placeholder { color: #777777; }
+    &:hover, &:focus {
+      &::placeholder { color: #444444; }
+      color: #444444;
+      border: 1px solid $f6b092;
+    }
+  }
+  .btn_settingaction, .btn_uploadphoto {
+    border: 0;
+    border-radius: 4px;
+    font-family: $font-primary;
+    font-size: 13px;
+    color: #ffffff;
+    background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    text-transform: capitalize;
+    @include fontstyle(600, normal, normal, 0.6px);
+    &:hover, &:focus {
+      border: 0;
+      color: #ffffff;
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    }
+  }
+
+  .modal_heading {
+    font-family: $font-primary;
+    .modal_textheading {
+      color: #666666;
+      @include fontstyle(600, normal, normal, 0.4px);
+    }
+    .modal_subtextheading {
+      color: #888888;
+      font-size: 12px;
+      @include fontstyle(400, normal, normal, 0.4px);
+    }
+  }
+}
 .cover-homepage {
   .cover-overlay-homepage {
     padding: 0 !important;
@@ -310,6 +359,12 @@ html,body {
     font-family: $font-primary;
     @include fontstyle(600, normal, normal, 0.4px);
   }
+  .form-settinglabel {
+    color: #777777;
+    font-family: $font-primary;
+    font-size: 12px;
+    @include fontstyle(400, normal, normal, 0.6px);
+  }
   .form-settingaction {
     border-radius: 4px;
     color: #777777;
@@ -327,11 +382,10 @@ html,body {
     border: 0;
     border-radius: 4px;
     font-family: $font-primary;
-    font-size: 16px;
+    font-size: 13px;
     color: #ffffff;
     background: linear-gradient(97deg, $logo-color-primary, $f6b092);
     text-transform: capitalize;
-    height: 45px;
     @include fontstyle(600, normal, normal, 0.6px);
     &:hover, &:focus {
       border: 0;

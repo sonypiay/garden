@@ -65670,8 +65670,8 @@ function applyToTag (styleElement, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(168);
-__webpack_require__(189);
-module.exports = __webpack_require__(190);
+__webpack_require__(192);
+module.exports = __webpack_require__(193);
 
 
 /***/ }),
@@ -66877,7 +66877,7 @@ var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(184)
 /* template */
-var __vue_template__ = __webpack_require__(188)
+var __vue_template__ = __webpack_require__(191)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66921,10 +66921,16 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditProfile_vue__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditProfile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__GantiPassword_vue__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__GantiPassword_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__GantiPassword_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__customers_settingaccount_EditProfile_vue__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__customers_settingaccount_EditProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__customers_settingaccount_EditProfile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__customers_settingaccount_GantiPassword_vue__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__customers_settingaccount_GantiPassword_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__customers_settingaccount_GantiPassword_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customers_settingaccount_EditEmail_vue__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customers_settingaccount_EditEmail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__customers_settingaccount_EditEmail_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customers_settingaccount_EditTelepon_vue__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customers_settingaccount_EditTelepon_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__customers_settingaccount_EditTelepon_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customers_settingaccount_RekeningBank_vue__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customers_settingaccount_RekeningBank_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__customers_settingaccount_RekeningBank_vue__);
 //
 //
 //
@@ -66933,25 +66939,145 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url', 'page', 'customers'],
-  components: { editprofile: __WEBPACK_IMPORTED_MODULE_0__EditProfile_vue___default.a, changepassword: __WEBPACK_IMPORTED_MODULE_1__GantiPassword_vue___default.a }
+  props: ['url', 'page', 'customers', 'bankcustomer'],
+  components: { editprofile: __WEBPACK_IMPORTED_MODULE_0__customers_settingaccount_EditProfile_vue___default.a, changepassword: __WEBPACK_IMPORTED_MODULE_1__customers_settingaccount_GantiPassword_vue___default.a, editemail: __WEBPACK_IMPORTED_MODULE_2__customers_settingaccount_EditEmail_vue___default.a, edittelepon: __WEBPACK_IMPORTED_MODULE_3__customers_settingaccount_EditTelepon_vue___default.a, rekeningbank: __WEBPACK_IMPORTED_MODULE_4__customers_settingaccount_RekeningBank_vue___default.a }
 });
 
 /***/ }),
-/* 185 */
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.page === "editprofile"
+    ? _c(
+        "div",
+        [
+          _c("editprofile", {
+            attrs: { url: _vm.url, customers: _vm.customers }
+          })
+        ],
+        1
+      )
+    : _vm.page === "changepassword"
+      ? _c(
+          "div",
+          [
+            _c("changepassword", {
+              attrs: { url: _vm.url, customers: _vm.customers }
+            })
+          ],
+          1
+        )
+      : _vm.page === "editemail"
+        ? _c(
+            "div",
+            [
+              _c("editemail", {
+                attrs: { url: _vm.url, customers: _vm.customers }
+              })
+            ],
+            1
+          )
+        : _vm.page === "edittelepon"
+          ? _c(
+              "div",
+              [
+                _c("edittelepon", {
+                  attrs: { url: _vm.url, customers: _vm.customers }
+                })
+              ],
+              1
+            )
+          : _c(
+              "div",
+              [
+                _c("rekeningbank", {
+                  attrs: {
+                    url: _vm.url,
+                    customers: _vm.customers,
+                    bankcustomer: _vm.bankcustomer
+                  }
+                })
+              ],
+              1
+            )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-68845a6e", module.exports)
+  }
+}
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(186)
+var __vue_script__ = __webpack_require__(213)
 /* template */
-var __vue_template__ = __webpack_require__(187)
+var __vue_template__ = __webpack_require__(214)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66968,7 +67094,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/customers/EditProfile.vue"
+Component.options.__file = "resources/assets/js/components/customers/settingaccount/EditProfile.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -66977,9 +67103,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d004ad44", Component.options)
+    hotAPI.createRecord("data-v-03945404", Component.options)
   } else {
-    hotAPI.reload("data-v-d004ad44", Component.options)
+    hotAPI.reload("data-v-03945404", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -66990,7 +67116,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 186 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67155,7 +67281,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 187 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67544,72 +67670,20 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d004ad44", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-03945404", module.exports)
   }
 }
 
 /***/ }),
-/* 188 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("changepassword", {
-    attrs: { url: _vm.url, customers: _vm.customers }
-  })
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-68845a6e", module.exports)
-  }
-}
-
-/***/ }),
-/* 189 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 190 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(210)
+var __vue_script__ = __webpack_require__(216)
 /* template */
-var __vue_template__ = __webpack_require__(211)
+var __vue_template__ = __webpack_require__(217)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67626,7 +67700,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/customers/GantiPassword.vue"
+Component.options.__file = "resources/assets/js/components/customers/settingaccount/GantiPassword.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -67635,9 +67709,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ca5fba3a", Component.options)
+    hotAPI.createRecord("data-v-53afa783", Component.options)
   } else {
-    hotAPI.reload("data-v-ca5fba3a", Component.options)
+    hotAPI.reload("data-v-53afa783", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -67648,11 +67722,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 210 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -67686,17 +67763,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         confirmpassword: ''
       },
       errors: {},
-      btnsave: 'Ubah Password'
+      btnsave: 'Ubah Sandi'
     };
   },
 
   methods: {
-    changePassword: function changePassword() {}
+    changePassword: function changePassword() {
+      var _this = this;
+
+      this.errors = {};
+      if (this.forms.password === '') {
+        this.errors.error = 'Kata sandi wajib diisi';
+      } else if (this.forms.confirmpassword === '') {
+        this.errors.error = 'Konfirmasi sandi wajib diisi';
+      } else if (this.forms.password !== this.forms.confirmpassword) {
+        this.errors.error = 'Konfirmasi kata sandi tidak sesuai.';
+      } else {
+        if (this.contentLength(this.forms.password) < 8) {
+          this.errors.error = 'Kata sandi minimal 8 huruf';
+        } else {
+          this.btnsave = '<span uk-spinner></span>';
+          axios({
+            method: 'put',
+            url: this.url + '/customers/account/change_password',
+            headers: { 'Content-Type': 'application/json' },
+            params: {
+              password: this.forms.password
+            }
+          }).then(function (res) {
+            _this.errors = {};
+            swal({
+              title: 'Berhasil',
+              text: 'Kata sandi berhasil diubah',
+              icon: 'success',
+              timer: 5000
+            });
+            _this.forms.password = '';
+            _this.forms.confirmpassword = '';
+          }).catch(function (err) {
+            if (err.response.status === 422) {
+              _this.errors.error = err.response.data.statusText;
+            } else {
+              _this.errors.error = err.response.statusText;
+            }
+          });
+          this.btnsave = 'Ubah Sandi';
+        }
+      }
+    },
+
+    contentLength: function contentLength(str) {
+      return str.length;
+    }
   }
 });
 
 /***/ }),
-/* 211 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67711,8 +67834,19 @@ var render = function() {
           "uk-card uk-card-body uk-card-default container-settingaccount"
       },
       [
+        _vm.errors.error
+          ? _c(
+              "div",
+              {
+                staticClass: "uk-alert-danger uk-margin-bottom",
+                attrs: { "uk-alert": "" }
+              },
+              [_vm._v("\r\n      " + _vm._s(_vm.errors.error) + "\r\n    ")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
         _c("h3", { staticClass: "content_headingsettingprofile" }, [
-          _vm._v("Edit Profil")
+          _vm._v("Edit Sandi")
         ]),
         _vm._v(" "),
         _c(
@@ -67739,7 +67873,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "uk-width-1-1 uk-input form-settingaction",
-                  attrs: { type: "password", placeholder: "Password Baru" },
+                  attrs: { type: "password", placeholder: "Sandi Baru" },
                   domProps: { value: _vm.forms.password },
                   on: {
                     input: function($event) {
@@ -67765,10 +67899,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "uk-width-1-1 uk-input form-settingaction",
-                  attrs: {
-                    type: "password",
-                    placeholder: "Konfirmasi Password"
-                  },
+                  attrs: { type: "password", placeholder: "Konfirmasi Sandi" },
                   domProps: { value: _vm.forms.confirmpassword },
                   on: {
                     input: function($event) {
@@ -67793,7 +67924,7 @@ var render = function() {
                   staticClass: "uk-button uk-button-default btn_settingaction",
                   domProps: { innerHTML: _vm._s(_vm.btnsave) }
                 },
-                [_vm._v("Ubah Password")]
+                [_vm._v("Ubah Sandi")]
               )
             ])
           ]
@@ -67808,7 +67939,977 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-ca5fba3a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-53afa783", module.exports)
+  }
+}
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(219)
+/* template */
+var __vue_template__ = __webpack_require__(220)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/customers/settingaccount/EditEmail.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-547bd1b1", Component.options)
+  } else {
+    hotAPI.reload("data-v-547bd1b1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 219 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'customers'],
+  data: function data() {
+    return {
+      forms: {
+        email: this.customers.customer_email
+      },
+      errors: {},
+      btnsave: 'Ubah Email'
+    };
+  },
+
+  methods: {
+    changeEmail: function changeEmail() {
+      var _this = this;
+
+      this.errors = {};
+      if (this.forms.email === '') {
+        this.errors.error = 'Email wajib diisi';
+      } else {
+        this.btnsave = '<span uk-spinner></span>';
+        axios({
+          method: 'put',
+          url: this.url + '/customers/account/edit_email',
+          headers: { 'Content-Type': 'application/json' },
+          params: {
+            email: this.forms.email
+          }
+        }).then(function (res) {
+          _this.errors = {};
+          swal({
+            title: 'Berhasil',
+            text: 'Email berhasil diubah',
+            icon: 'success',
+            timer: 5000
+          });
+        }).catch(function (err) {
+          if (err.response.status === 422) {
+            _this.errors.error = err.response.data.statusText;
+          } else {
+            _this.errors.error = err.response.statusText;
+          }
+        });
+        this.btnsave = 'Ubah Sandi';
+      }
+    }
+  }
+});
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "uk-card uk-card-body uk-card-default container-settingaccount"
+      },
+      [
+        _vm.errors.error
+          ? _c(
+              "div",
+              {
+                staticClass: "uk-alert-danger uk-margin-bottom",
+                attrs: { "uk-alert": "" }
+              },
+              [_vm._v("\r\n      " + _vm._s(_vm.errors.error) + "\r\n    ")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("h3", { staticClass: "content_headingsettingprofile" }, [
+          _vm._v("Edit Email")
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "uk-form-stacked",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.changeEmail($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "uk-form-controls" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.forms.email,
+                      expression: "forms.email"
+                    }
+                  ],
+                  staticClass: "uk-width-1-2 uk-input form-settingaction",
+                  attrs: { type: "email", placeholder: "Email" },
+                  domProps: { value: _vm.forms.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.forms, "email", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "uk-button uk-button-default btn_settingaction",
+                  domProps: { innerHTML: _vm._s(_vm.btnsave) }
+                },
+                [_vm._v("Ubah Email")]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-547bd1b1", module.exports)
+  }
+}
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(222)
+/* template */
+var __vue_template__ = __webpack_require__(223)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/customers/settingaccount/EditTelepon.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3d4864ba", Component.options)
+  } else {
+    hotAPI.reload("data-v-3d4864ba", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 222 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'customers'],
+  data: function data() {
+    return {
+      forms: {
+        phone: '0' + this.customers.customer_mobile_phone
+      },
+      errors: {},
+      btnsave: 'Ubah Telepon'
+    };
+  },
+
+  methods: {
+    changePhone: function changePhone() {
+      var _this = this;
+
+      this.errors = {};
+      if (this.forms.phone === '') {
+        this.errors.error = 'Nomor telepon wajib diisi';
+      } else if (isNaN(this.forms.phone)) {
+        this.errors.error = 'Nomor telepon tidak valid.';
+      } else {
+        this.btnsave = '<span uk-spinner></span>';
+        axios({
+          method: 'put',
+          url: this.url + '/customers/account/edit_notelepon',
+          headers: { 'Content-Type': 'application/json' },
+          params: {
+            notelepon: this.forms.phone
+          }
+        }).then(function (res) {
+          _this.errors = {};
+          swal({
+            title: 'Berhasil',
+            text: 'Nomor Telepon berhasil diubah',
+            icon: 'success',
+            timer: 5000
+          });
+        }).catch(function (err) {
+          if (err.response.status === 422) {
+            _this.errors.error = err.response.data.statusText;
+          } else {
+            _this.errors.error = err.response.statusText;
+          }
+        });
+        this.btnsave = 'Ubah Telepon';
+      }
+    }
+  }
+});
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "uk-card uk-card-body uk-card-default container-settingaccount"
+      },
+      [
+        _vm.errors.error
+          ? _c(
+              "div",
+              {
+                staticClass: "uk-alert-danger uk-margin-bottom",
+                attrs: { "uk-alert": "" }
+              },
+              [_vm._v("\r\n      " + _vm._s(_vm.errors.error) + "\r\n    ")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("h3", { staticClass: "content_headingsettingprofile" }, [
+          _vm._v("Edit Nomor Telepon")
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "uk-form-stacked",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.changePhone($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "uk-form-controls" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.forms.phone,
+                      expression: "forms.phone"
+                    }
+                  ],
+                  staticClass: "uk-width-1-2 uk-input form-settingaction",
+                  attrs: { type: "text", placeholder: "Nomor Telepon" },
+                  domProps: { value: _vm.forms.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.forms, "phone", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "uk-button uk-button-default btn_settingaction",
+                  domProps: { innerHTML: _vm._s(_vm.btnsave) }
+                },
+                [_vm._v("Ubah Telepon")]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3d4864ba", module.exports)
+  }
+}
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(225)
+/* template */
+var __vue_template__ = __webpack_require__(226)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/customers/settingaccount/RekeningBank.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b605fda4", Component.options)
+  } else {
+    hotAPI.reload("data-v-b605fda4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 225 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'customers', 'bankcustomer'],
+  data: function data() {
+    return {
+      errors: {},
+      forms: {
+        edit: false,
+        btnsubmit: 'Tambah',
+        id: '',
+        bank: '',
+        namapemilik: '',
+        rekening: '',
+        error: false
+      }
+    };
+  },
+
+  methods: {
+    addOrUpdateModal: function addOrUpdateModal(bank) {
+      if (bank === undefined || bank === '') {
+        this.forms.id = '', this.forms.bank = '';
+        this.forms.namapemilik = '';
+        this.forms.rekening = '';
+        this.forms.edit = false;
+      } else {
+        this.forms.id = bank.bank_id;
+        this.forms.bank = bank.bank_code;
+        this.forms.namapemilik = bank.ownername;
+        this.forms.rekening = bank.account_number;
+        this.forms.edit = true;
+      }
+      UIkit.modal('#modal_rekeningbank').show();
+    },
+    addOrUpdateRekening: function addOrUpdateRekening() {
+      var _this = this;
+
+      this.errors = {};
+      if (this.forms.bank === '') {
+        this.errors.error = true;
+        this.errors.bank = 'Silahkan pilih bank';
+      }
+
+      if (this.forms.namapemilik === '') {
+        this.errors.error = true;
+        this.errors.namapemilik = 'Nama pemilik rekening wajib diisi';
+      }
+
+      if (this.forms.rekening === '') {
+        this.errors.error = true;
+        this.errors.rekening = 'Nomor rekening wajib diisi';
+      }
+
+      if (this.errors.error === true) {
+        this.errors.error = false;
+        return this.errors.error;
+      }
+
+      var method, url;
+      if (this.forms.edit === true) {
+        method = 'put';
+        url = this.url + '/customers/account/rekeningbank/' + this.forms.id;
+      } else {
+        method = 'post';
+        url = this.url + '/customers/account/addrekeningbank';
+      }
+      axios({
+        method: method,
+        url: url,
+        headers: { 'Content-Type': 'application/json' },
+        params: {
+          bank: this.forms.bank,
+          pemilik: this.forms.namapemilik,
+          rekening: this.forms.rekening
+        }
+      }).then(function (res) {
+        console.log(res.data);
+      }).catch(function (err) {
+        if (err.response.status === 422) {
+          _this.errors.errorMessage = err.response.data.statusText;
+        } else {
+          _this.errors.errorMessage = err.response.statusText;
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 226 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { attrs: { id: "modal_rekeningbank", "uk-modal": "" } }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-modal-dialog uk-modal-body uk-padding-large modal-body"
+        },
+        [
+          _c("a", {
+            staticClass: "uk-modal-close-default",
+            attrs: { "uk-close": "" }
+          }),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm.errors.errorMessage
+            ? _c(
+                "div",
+                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
+                [_vm._v(_vm._s(_vm.errors.errorMessage))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass: "uk-margin-top uk-form-stacked",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.addOrUpdateRekening($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "uk-margin" }, [
+                _c(
+                  "label",
+                  { staticClass: "uk-form-label form-settinglabel" },
+                  [_vm._v("Nama Bank")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.bank,
+                          expression: "forms.bank"
+                        }
+                      ],
+                      staticClass: "uk-select form-settingaction",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.forms,
+                            "bank",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "", selected: "" } }, [
+                        _vm._v("-- Pilih Bank --")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.bankcustomer, function(bank) {
+                        return _c(
+                          "option",
+                          { domProps: { value: bank.bank_id } },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                "(" + bank.bank_code + ") " + bank.bank_name
+                              )
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.errors.bank
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.bank))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c(
+                  "label",
+                  { staticClass: "uk-form-label form-settinglabel" },
+                  [_vm._v("Nama Pemilik Rekening")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.namapemilik,
+                        expression: "forms.namapemilik"
+                      }
+                    ],
+                    staticClass: "uk-width-1-1 uk-input form-settingaction",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.namapemilik },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "namapemilik", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.errors.namapemilik
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.namapemilik))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c(
+                  "label",
+                  { staticClass: "uk-form-label form-settinglabel" },
+                  [_vm._v("No Rekening")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.rekening,
+                        expression: "forms.rekening"
+                      }
+                    ],
+                    staticClass: "uk-width-1-1 uk-input form-settingaction",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.rekening },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "rekening", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.errors.rekening
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.rekening))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("button", {
+                  staticClass: "uk-button btn_settingaction",
+                  domProps: { innerHTML: _vm._s(_vm.forms.btnsubmit) }
+                })
+              ])
+            ]
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "uk-card uk-card-body uk-card-default container-settingaccount"
+      },
+      [
+        _c("h3", { staticClass: "content_headingsettingprofile" }, [
+          _vm._v("Rekening Bank")
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass:
+              "uk-margin-top uk-margin-bottom uk-button btn_settingaction",
+            on: {
+              click: function($event) {
+                _vm.addOrUpdateModal()
+              }
+            }
+          },
+          [_vm._v("Tambah Rekening")]
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-text-center modal_heading" }, [
+      _c("h4", { staticClass: "modal_textheading" }, [
+        _vm._v("Tambah Rekening")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal_subtextheading" }, [
+        _vm._v(
+          "\r\n          Pastikan Nomor Rekening & Nama Pemilik Rekening sesuai buku tabungan.\r\n        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-overflow-auto" }, [
+      _c(
+        "table",
+        {
+          staticClass:
+            "uk-table uk-table-condensed uk-table-small uk-table-striped uk-table-divider uk-table-middle"
+        },
+        [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("#")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Nama Bank")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Nama Pemilik Rekening")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("No. Rekening")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", [
+              _c("td", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "uk-button uk-button-text",
+                    attrs: { href: "#", "uk-tooltip": "title: Ubah" }
+                  },
+                  [_c("span", { attrs: { "uk-icon": "pencil" } })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "uk-button uk-button-text",
+                    attrs: { href: "#", "uk-tooltip": "title: Hapus" }
+                  },
+                  [_c("span", { attrs: { "uk-icon": "trash" } })]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("BCA")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Sony Darmawan")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("83138179")])
+            ])
+          ])
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b605fda4", module.exports)
   }
 }
 

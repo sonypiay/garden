@@ -137,6 +137,105 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.modal-body .form-settinglabel {
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.modal-body .form-settingaction {
+  border-radius: 4px;
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.modal-body .form-settingaction::-webkit-input-placeholder {
+  color: #777777;
+}
+
+.modal-body .form-settingaction::-ms-input-placeholder {
+  color: #777777;
+}
+
+.modal-body .form-settingaction::placeholder {
+  color: #777777;
+}
+
+.modal-body .form-settingaction:hover,
+.modal-body .form-settingaction:focus {
+  color: #444444;
+  border: 1px solid #f6b092;
+}
+
+.modal-body .form-settingaction:hover::-webkit-input-placeholder,
+.modal-body .form-settingaction:focus::-webkit-input-placeholder {
+  color: #444444;
+}
+
+.modal-body .form-settingaction:hover::-ms-input-placeholder,
+.modal-body .form-settingaction:focus::-ms-input-placeholder {
+  color: #444444;
+}
+
+.modal-body .form-settingaction:hover::placeholder,
+.modal-body .form-settingaction:focus::placeholder {
+  color: #444444;
+}
+
+.modal-body .btn_settingaction,
+.modal-body .btn_uploadphoto {
+  border: 0;
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.modal-body .btn_settingaction:hover,
+.modal-body .btn_settingaction:focus,
+.modal-body .btn_uploadphoto:hover,
+.modal-body .btn_uploadphoto:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.modal-body .modal_heading {
+  font-family: "Nunito", sans-serif;
+}
+
+.modal-body .modal_heading .modal_textheading {
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.modal-body .modal_heading .modal_subtextheading {
+  color: #888888;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
 .cover-homepage .cover-overlay-homepage {
   padding: 0 !important;
   background: linear-gradient(108deg, rgba(246, 161, 146, 0.1), rgba(246, 207, 146, 0.5), rgba(246, 176, 146, 0.3)) !important;
@@ -561,6 +660,16 @@ body {
   letter-spacing: 0.4px;
 }
 
+.container-settingaccount .form-settinglabel {
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
 .container-settingaccount .form-settingaction {
   border-radius: 4px;
   color: #777777;
@@ -610,11 +719,10 @@ body {
   border: 0;
   border-radius: 4px;
   font-family: "Nunito", sans-serif;
-  font-size: 16px;
+  font-size: 13px;
   color: #ffffff;
   background: linear-gradient(97deg, #f6a192, #f6b092);
   text-transform: capitalize;
-  height: 45px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
