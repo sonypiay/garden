@@ -23,7 +23,10 @@ Route::group(['prefix' => 'customers'], function() {
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Customers\AccountCustomers@index')->name('accountcustomer_page');
     Route::get('/edit_profile', 'Frontend\Customers\AccountCustomers@editprofile')->name('editprofile_page');
+    Route::get('/change_password', 'Frontend\Customers\AccountCustomers@change_password')->name('changepassword_page');
+
     Route::put('/edit_profile', 'Frontend\Customers\AccountCustomers@saveprofile');
+    Route::put('/change_password', 'Frontend\Customers\AccountCustomers@savepassword');
   });
 });
 // Route frontend

@@ -605,7 +605,8 @@ body {
   color: #444444;
 }
 
-.container-settingaccount .btn_settingaction {
+.container-settingaccount .btn_settingaction,
+.container-settingaccount .btn_uploadphoto {
   border: 0;
   border-radius: 4px;
   font-family: "Nunito", sans-serif;
@@ -621,7 +622,9 @@ body {
 }
 
 .container-settingaccount .btn_settingaction:hover,
-.container-settingaccount .btn_settingaction:focus {
+.container-settingaccount .btn_settingaction:focus,
+.container-settingaccount .btn_uploadphoto:hover,
+.container-settingaccount .btn_uploadphoto:focus {
   border: 0;
   color: #ffffff;
   background: linear-gradient(97deg, #f6a192, #f6b092);

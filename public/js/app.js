@@ -66923,21 +66923,23 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditProfile_vue__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditProfile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__GantiPassword_vue__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__GantiPassword_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__GantiPassword_vue__);
 //
 //
 //
 //
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'page', 'customers'],
-  data: function data() {
-    return {};
-  },
-
-  components: {
-    editprofile: __WEBPACK_IMPORTED_MODULE_0__EditProfile_vue___default.a
-  }
+  components: { editprofile: __WEBPACK_IMPORTED_MODULE_0__EditProfile_vue___default.a, changepassword: __WEBPACK_IMPORTED_MODULE_1__GantiPassword_vue___default.a }
 });
 
 /***/ }),
@@ -67517,7 +67519,7 @@ var staticRenderFns = [
       [
         _c(
           "div",
-          { staticClass: "uk-tile uk-tile-secondary content_profilepicture" },
+          { staticClass: "uk-tile uk-tile-muted content_profilepicture" },
           [
             _c("div", { staticClass: "uk-position-center" }, [
               _vm._v("Image Profile")
@@ -67554,7 +67556,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("editprofile", {
+  return _c("changepassword", {
     attrs: { url: _vm.url, customers: _vm.customers }
   })
 }
@@ -67579,6 +67581,236 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(210)
+/* template */
+var __vue_template__ = __webpack_require__(211)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/customers/GantiPassword.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ca5fba3a", Component.options)
+  } else {
+    hotAPI.reload("data-v-ca5fba3a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 210 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'customers'],
+  data: function data() {
+    return {
+      forms: {
+        password: '',
+        confirmpassword: ''
+      },
+      errors: {},
+      btnsave: 'Ubah Password'
+    };
+  },
+
+  methods: {
+    changePassword: function changePassword() {}
+  }
+});
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "uk-card uk-card-body uk-card-default container-settingaccount"
+      },
+      [
+        _c("h3", { staticClass: "content_headingsettingprofile" }, [
+          _vm._v("Edit Profil")
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "uk-form-stacked",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.changePassword($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "uk-form-controls" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.forms.password,
+                      expression: "forms.password"
+                    }
+                  ],
+                  staticClass: "uk-width-1-1 uk-input form-settingaction",
+                  attrs: { type: "password", placeholder: "Password Baru" },
+                  domProps: { value: _vm.forms.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.forms, "password", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "uk-form-controls" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.forms.confirmpassword,
+                      expression: "forms.confirmpassword"
+                    }
+                  ],
+                  staticClass: "uk-width-1-1 uk-input form-settingaction",
+                  attrs: {
+                    type: "password",
+                    placeholder: "Konfirmasi Password"
+                  },
+                  domProps: { value: _vm.forms.confirmpassword },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.forms,
+                        "confirmpassword",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "uk-button uk-button-default btn_settingaction",
+                  domProps: { innerHTML: _vm._s(_vm.btnsave) }
+                },
+                [_vm._v("Ubah Password")]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ca5fba3a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

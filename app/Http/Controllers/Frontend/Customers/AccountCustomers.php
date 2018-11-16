@@ -89,4 +89,20 @@ class AccountCustomers extends Controller
     }
     return response()->json( $res, $res['status'] );
   }
+
+  public function change_password( Request $request, Customers $customers )
+  {
+    if( Cookie::get('hasLoginCustomers') )
+    {
+      $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
+      return response()->view('frontend.pages.customers.changepassword', [
+        'sessiondata' => $this->get_sessioncustomer(),
+        'myaccount' => $datacustomer
+      ]);
+    }
+    else
+    {
+      return response()->view('frontend.pages.customers.login');
+    }
+  }
 }

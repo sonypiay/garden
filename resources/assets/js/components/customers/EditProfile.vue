@@ -3,7 +3,7 @@
   <div class="uk-card uk-card-body uk-card-default container-settingaccount">
     <div class="uk-grid-medium" uk-grid>
       <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-1@s">
-        <div class="uk-tile uk-tile-secondary content_profilepicture">
+        <div class="uk-tile uk-tile-muted content_profilepicture">
           <div class="uk-position-center">Image Profile</div>
         </div>
         <button class="uk-width-1-1 uk-margin-top uk-button uk-button-default btn_uploadphoto">Upload Foto</button>
