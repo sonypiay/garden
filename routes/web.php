@@ -12,6 +12,8 @@
 */
 // Route frontend
 Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
+
+// customers
 Route::group(['prefix' => 'customers'], function() {
   Route::get('/', function(){ return redirect()->route('accountcustomer_page'); });
   Route::get('/login', 'Frontend\Customers\LoginRegisterController@login')->name('loginpage_customer');
@@ -28,7 +30,10 @@ Route::group(['prefix' => 'customers'], function() {
     Route::get('/edit_notelepon', 'Frontend\Customers\AccountCustomers@editnotelepon')->name('editteleponcustomer_page');
 
     Route::get('/rekeningbank', 'Frontend\Customers\AccountCustomers@rekeningbank')->name('rekeningbankcustomer_page');
+    Route::get('/listrekeningbank', 'Frontend\Customers\AccountCustomers@listrekeningbank');
     Route::post('/addrekeningbank', 'Frontend\Customers\AccountCustomers@store_rekeningbank');
+    Route::put('/edit_rekeningbank/{id}', 'Frontend\Customers\AccountCustomers@save_rekeningbank');
+    Route::delete('hapusbank/{id}', 'Frontend\Customers\AccountCustomers@delete_rekeningbank');
 
     Route::put('/edit_profile', 'Frontend\Customers\AccountCustomers@saveprofile');
     Route::put('/change_password', 'Frontend\Customers\AccountCustomers@savepassword');
@@ -36,6 +41,15 @@ Route::group(['prefix' => 'customers'], function() {
     Route::put('/edit_notelepon', 'Frontend\Customers\AccountCustomers@savephone');
   });
 });
+// customers
+
+// vendors
+Route::group(['prefix' => 'vendor'], function() {
+  Route::get('/', function(){ return redirect()->route('registerpage_vendor'); });
+  Route::get('/register', 'Frontend\Vendor\LoginRegisterController@registerpage')->name('registerpage_vendor');
+});
+// vendors
+
 // Route frontend
 
 // Route Administrator

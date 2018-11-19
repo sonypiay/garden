@@ -4,8 +4,8 @@ namespace App\Database;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CustomersBankAccount extends Model
+class VendorBankAccount extends Model
 {
   public $timestamps = true;
-  protected $table = 'customer_bankaccount';
+  protected $table = 'vendor_bankaccount';
 }

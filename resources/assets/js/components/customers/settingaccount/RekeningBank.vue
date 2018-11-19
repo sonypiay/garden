@@ -4,12 +4,18 @@
     <div class="uk-modal-dialog uk-modal-body uk-padding-large modal-body">
       <a class="uk-modal-close-default" uk-close></a>
       <div class="uk-text-center modal_heading">
-        <h4 class="modal_textheading">Tambah Rekening</h4>
+        <h4 class="modal_textheading">
+          <span v-if="forms.edit">Ubah Rekening Bank</span>
+          <span v-else>Tambah Rekening Bank</span>
+        </h4>
         <div class="modal_subtextheading">
-          Pastikan Nomor Rekening &amp; Nama Pemilik Rekening sesuai buku tabungan.
+          Pastikan Nomor Rekening &amp; Nama Pemilik Rekening sesuai buku tabungan.<br>
+          Maksimal hanya 3 rekening bank.
         </div>
       </div>
-      <div v-if="errors.errorMessage" class="uk-alert-danger" uk-alert>{{ errors.errorMessage }}</div>
+      <span v-if="errorMessage">
+        <div class="uk-margin-bottom uk-margin-top uk-alert-danger" uk-alert>{{ errorMessage }}</div>
+      </span>
       <form class="uk-margin-top uk-form-stacked" @submit.prevent="addOrUpdateRekening">
         <div class="uk-margin">
           <label class="uk-form-label form-settinglabel">Nama Bank</label>
@@ -55,14 +61,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="rek in rekeningbank.results">
             <td>
-              <a class="uk-button uk-button-text" href="#" uk-tooltip="title: Ubah"><span uk-icon="pencil"></span></a>
-              <a class="uk-button uk-button-text" href="#" uk-tooltip="title: Hapus"><span uk-icon="trash"></span></a>
+              <a class="uk-button uk-button-text" @click="addOrUpdateModal(rek)" uk-tooltip="title: Ubah"><span uk-icon="pencil"></span></a>
+              <a class="uk-button uk-button-text" @click="deleteRekening(rek.id)" uk-tooltip="title: Hapus"><span uk-icon="trash"></span></a>
             </td>
-            <td>BCA</td>
-            <td>Sony Darmawan</td>
-            <td>83138179</td>
+            <td>{{ rek.bank_name }}</td>
+            <td>{{ rek.ownername }}</td>
+            <td>{{ rek.account_number }}</td>
           </tr>
         </tbody>
       </table>
@@ -76,7 +82,6 @@ export default {
   props: ['url', 'customers', 'bankcustomer'],
   data() {
     return {
-      errors: {},
       forms: {
         edit: false,
         btnsubmit: 'Tambah',
@@ -85,7 +90,13 @@ export default {
         namapemilik: '',
         rekening: '',
         error: false
-      }
+      },
+      rekeningbank: {
+        total: 0,
+        results: []
+      },
+      errors: {},
+      errorMessage: ''
     }
   },
   methods: {
@@ -96,16 +107,21 @@ export default {
         this.forms.bank = '';
         this.forms.namapemilik = '';
         this.forms.rekening = '';
+        this.forms.btnsubmit = 'Tambah';
         this.forms.edit = false;
       }
       else
       {
-        this.forms.id = bank.bank_id;
-        this.forms.bank = bank.bank_code;
+        this.forms.id = bank.id;
+        this.forms.bank = bank.bank_id;
         this.forms.namapemilik = bank.ownername;
         this.forms.rekening = bank.account_number;
+        this.forms.btnsubmit = 'Simpan';
         this.forms.edit = true;
+        this.forms.error = false;
       }
+      this.errors = {};
+      this.errorMessage = '';
       UIkit.modal('#modal_rekeningbank').show();
     },
     addOrUpdateRekening()
@@ -113,39 +129,40 @@ export default {
       this.errors = {};
       if( this.forms.bank === '' )
       {
-        this.errors.error = true;
+        this.forms.error = true;
         this.errors.bank = 'Silahkan pilih bank';
       }
 
       if( this.forms.namapemilik === '' )
       {
-        this.errors.error = true;
+        this.forms.error = true;
         this.errors.namapemilik = 'Nama pemilik rekening wajib diisi';
       }
 
       if( this.forms.rekening === '' )
       {
-        this.errors.error = true;
+        this.forms.error = true;
         this.errors.rekening = 'Nomor rekening wajib diisi';
       }
 
-      if( this.errors.error === true )
+      if( this.forms.error === true )
       {
-        this.errors.error = false;
-        return this.errors.error;
+        this.forms.error = false;
+        return this.forms.error;
       }
 
       var method, url;
       if( this.forms.edit === true )
       {
         method = 'put';
-        url = this.url + '/customers/account/rekeningbank/' + this.forms.id;
+        url = this.url + '/customers/account/edit_rekeningbank/' + this.forms.id;
       }
       else
       {
         method = 'post';
         url = this.url + '/customers/account/addrekeningbank';
       }
+      this.forms.btnsubmit = '<span uk-spinner></span>';
       axios({
         method: method,
         url: url,
@@ -156,18 +173,83 @@ export default {
           rekening: this.forms.rekening
         }
       }).then( res => {
-        console.log(res.data);
+        this.errors = {};
+        this.errorMessage = '';
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success'
+        });
+        this.getRekeningBank();
+        setTimeout(function(){ UIkit.modal('#modal_rekeningbank').hide(); }, 2000);
       }).catch( err => {
-        if( err.response.status === 422 )
+        let status = err.response.status;
+        if( status === 409 )
         {
-          this.errors.errorMessage = err.response.data.statusText;
+          this.errorMessage = err.response.data.statusText;
         }
         else
         {
-          this.errors.errorMessage = err.response.statusText;
+          this.errorMessage = err.response.statusText;
         }
       });
+
+      if( this.forms.edit === true ) this.forms.btnsubmit = 'Simpan';
+      else this.forms.btnsubmit = 'Tambah';
+    },
+    deleteRekening(id)
+    {
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus rekening ini?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: true,
+          confirm: {
+            value: true,
+            text: 'Batal'
+          }
+        }
+      }).then( val => {
+        if( val )
+        {
+          axios({
+            method: 'delete',
+            url: this.url + '/customers/account/hapusbank/' + id
+          }).then( res => {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            this.getRekeningBank();
+          }).catch( err => {
+            swal({
+              title: 'Terjadi kesalahan',
+              text: err.response.statusText,
+              icon: 'danger',
+              dangerMode: true
+            });
+          });
+        }
+      })
+    },
+    getRekeningBank() {
+      axios({
+        method: 'get',
+        url: this.url + '/customers/account/listrekeningbank'
+      }).then( res => {
+        let result = res.data;
+        this.rekeningbank.total = result.total;
+        this.rekeningbank.results = result.data;
+      }).catch( err => {
+        console.log(err.response.statusText);
+      });
     }
+  },
+  mounted() {
+    this.getRekeningBank();
   }
 }
 </script>

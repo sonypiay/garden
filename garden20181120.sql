@@ -118,6 +118,24 @@ CREATE TABLE `booking_transaction` (
 
 /*Data for the table `booking_transaction` */
 
+/*Table structure for table `cust_activity_logs` */
+
+DROP TABLE IF EXISTS `cust_activity_logs`;
+
+CREATE TABLE `cust_activity_logs` (
+  `log_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `log_type` varchar(32) DEFAULT NULL,
+  `log_description` text,
+  `log_datetime` datetime DEFAULT NULL,
+  `log_ip` varchar(64) DEFAULT NULL,
+  `log_agent` text,
+  PRIMARY KEY (`log_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+/*Data for the table `cust_activity_logs` */
+
+insert  into `cust_activity_logs`(`log_id`,`log_type`,`log_description`,`log_datetime`,`log_ip`,`log_agent`) values (1,'register','sonypiay@mail.com registrasi pada 2018-11-12 17:13:10','2018-11-12 17:13:10','::1','Windows'),(2,'register','sonypiay@mail.com registrasi pada 2018-11-13 13:49:18','2018-11-13 13:49:18','::1','Windows'),(3,'register','sonypiay@mail.com registrasi pada 2018-11-14 11:19:59','2018-11-14 11:19:59','::1','Windows'),(4,'register','sonypiay@mail.com registrasi pada 2018-11-14 16:32:08','2018-11-14 16:32:08','::1','Windows'),(5,'register','sonypiay@mail.com registrasi pada 2018-11-15 06:04:27','2018-11-15 06:04:27','::1','Windows'),(6,'register','sonypiay@mail.com registrasi pada 2018-11-15 10:37:43','2018-11-15 10:37:43','::1','Windows'),(7,'register','sonypiay@mail.com registrasi pada 2018-11-16 15:48:23','2018-11-16 15:48:23','::1','Windows'),(8,'register','me@sonypiay.com registrasi pada 2018-11-16 19:01:55','2018-11-16 19:01:55','::1','Windows'),(9,'register','me@sonypiay.com registrasi pada 2018-11-16 19:35:37','2018-11-16 19:35:37','::1','Windows'),(10,'register','me@sonypiay.com registrasi pada 2018-11-16 19:35:56','2018-11-16 19:35:56','::1','Windows'),(11,'register','me@sonypiay.com registrasi pada 2018-11-18 17:28:09','2018-11-18 17:28:09','::1','Windows'),(12,'register','me@sonypiay.com registrasi pada 2018-11-19 09:34:55','2018-11-19 09:34:55','::1','Windows'),(13,'register','me@sonypiay.com registrasi pada 2018-11-19 16:31:34','2018-11-19 16:31:34','::1','Windows');
+
 /*Table structure for table `customer_bankaccount` */
 
 DROP TABLE IF EXISTS `customer_bankaccount`;
@@ -128,15 +146,19 @@ CREATE TABLE `customer_bankaccount` (
   `account_number` varchar(20) NOT NULL,
   `ownername` varchar(255) DEFAULT NULL,
   `customer_id` bigint(20) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `account_number` (`account_number`),
   KEY `fkcb_customer_id` (`customer_id`),
   KEY `fkcb_bank_id` (`bank_id`),
   CONSTRAINT `fkcb_bank_id` FOREIGN KEY (`bank_id`) REFERENCES `bankcustomer` (`bank_id`),
   CONSTRAINT `fkcb_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `customer_bankaccount` */
+
+insert  into `customer_bankaccount`(`id`,`bank_id`,`account_number`,`ownername`,`customer_id`,`created_at`,`updated_at`) values (2,1,'8770003688','Sony Darmawan',1,'2018-11-19 17:02:03','2018-11-19 17:22:06'),(4,2,'12345678909','Sony Darmawan',1,'2018-11-19 17:22:59','2018-11-19 17:22:59'),(5,1,'88888888','Labmode Indonesia',1,'2018-11-19 17:23:52','2018-11-19 17:23:52');
 
 /*Table structure for table `customers` */
 
@@ -159,12 +181,15 @@ CREATE TABLE `customers` (
   `customer_zipcode` int(5) unsigned DEFAULT NULL,
   `customer_verified` enum('N','Y') DEFAULT 'N',
   `credits` bigint(20) unsigned DEFAULT NULL,
+  `customer_registered` datetime NOT NULL,
   PRIMARY KEY (`customer_email`),
   UNIQUE KEY `customer_id` (`customer_id`),
   UNIQUE KEY `customer_mobile_phone` (`customer_mobile_phone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `customers` */
+
+insert  into `customers`(`customer_id`,`customer_name`,`customer_email`,`customer_mobile_phone`,`customer_username`,`customer_password`,`customer_profile_picture`,`customer_gender`,`customer_birthday`,`customer_region`,`customer_district`,`customer_subdistrict`,`customer_address`,`customer_zipcode`,`customer_verified`,`credits`,`customer_registered`) values (1,'Sony Darmawan','me@sonypiay.com','8561969052','sonypiay','$2y$10$1Cf/A9WGKsyo3jpVH/.8f.Nyt082sQmsrqlccspYmTVtijSNuZR/m',NULL,'male','1996-09-17',NULL,NULL,NULL,NULL,NULL,'N',NULL,'2018-11-12 17:13:10');
 
 /*Table structure for table `log_status_transaction` */
 
@@ -260,6 +285,8 @@ CREATE TABLE `vendor_bankaccount` (
   `account_number` varchar(20) NOT NULL,
   `ownername` varchar(255) DEFAULT NULL,
   `vendor_id` bigint(20) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `account_number` (`account_number`),
   KEY `fkvb_vendor_id` (`vendor_id`),
@@ -292,6 +319,7 @@ CREATE TABLE `vendors` (
   `vendor_username` varchar(128) NOT NULL,
   `vendor_password` varchar(128) NOT NULL,
   `credits_balance` bigint(20) unsigned DEFAULT '0',
+  `vendor_registered` datetime NOT NULL,
   PRIMARY KEY (`vendor_email_business`),
   UNIQUE KEY `vendor_id` (`vendor_id`),
   UNIQUE KEY `vendor_mobile_private` (`vendor_mobile_private`),

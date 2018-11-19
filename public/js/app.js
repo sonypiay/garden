@@ -4890,33 +4890,6 @@ module.exports = {
 /* 2 */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file.
@@ -5020,6 +4993,33 @@ module.exports = function normalizeComponent (
     options: options
   }
 }
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
@@ -15565,7 +15565,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 7 */
@@ -18134,7 +18134,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
 
 /***/ }),
 /* 9 */
@@ -47621,7 +47621,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(7)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(7)(module)))
 
 /***/ }),
 /* 140 */
@@ -54119,7 +54119,7 @@ if (__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.fn) {
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(10)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(10)))
 
 /***/ }),
 /* 163 */
@@ -65353,7 +65353,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(6).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(6).setImmediate))
 
 /***/ }),
 /* 165 */
@@ -65670,8 +65670,8 @@ function applyToTag (styleElement, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(168);
-__webpack_require__(192);
-module.exports = __webpack_require__(193);
+__webpack_require__(201);
+module.exports = __webpack_require__(202);
 
 
 /***/ }),
@@ -65699,6 +65699,10 @@ Vue.component('registercustomer', __webpack_require__(175));
 Vue.component('customerdashboard', __webpack_require__(180));
 Vue.component('customereditaccount', __webpack_require__(183));
 
+// vendor
+Vue.component('registervendor', __webpack_require__(221));
+// vendor
+
 var app = new Vue({
   el: '#app'
 });
@@ -65712,7 +65716,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(170)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(173)
 /* template */
@@ -65833,14 +65837,6 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -66149,7 +66145,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(176)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(178)
 /* template */
@@ -66666,7 +66662,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(181)
 /* template */
@@ -66873,11 +66869,11 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(184)
 /* template */
-var __vue_template__ = __webpack_require__(191)
+var __vue_template__ = __webpack_require__(200)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66921,15 +66917,15 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__customers_settingaccount_EditProfile_vue__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__customers_settingaccount_EditProfile_vue__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__customers_settingaccount_EditProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__customers_settingaccount_EditProfile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__customers_settingaccount_GantiPassword_vue__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__customers_settingaccount_GantiPassword_vue__ = __webpack_require__(188);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__customers_settingaccount_GantiPassword_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__customers_settingaccount_GantiPassword_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customers_settingaccount_EditEmail_vue__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customers_settingaccount_EditEmail_vue__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customers_settingaccount_EditEmail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__customers_settingaccount_EditEmail_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customers_settingaccount_EditTelepon_vue__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customers_settingaccount_EditTelepon_vue__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customers_settingaccount_EditTelepon_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__customers_settingaccount_EditTelepon_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customers_settingaccount_RekeningBank_vue__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customers_settingaccount_RekeningBank_vue__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customers_settingaccount_RekeningBank_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__customers_settingaccount_RekeningBank_vue__);
 //
 //
@@ -66961,123 +66957,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.page === "editprofile"
-    ? _c(
-        "div",
-        [
-          _c("editprofile", {
-            attrs: { url: _vm.url, customers: _vm.customers }
-          })
-        ],
-        1
-      )
-    : _vm.page === "changepassword"
-      ? _c(
-          "div",
-          [
-            _c("changepassword", {
-              attrs: { url: _vm.url, customers: _vm.customers }
-            })
-          ],
-          1
-        )
-      : _vm.page === "editemail"
-        ? _c(
-            "div",
-            [
-              _c("editemail", {
-                attrs: { url: _vm.url, customers: _vm.customers }
-              })
-            ],
-            1
-          )
-        : _vm.page === "edittelepon"
-          ? _c(
-              "div",
-              [
-                _c("edittelepon", {
-                  attrs: { url: _vm.url, customers: _vm.customers }
-                })
-              ],
-              1
-            )
-          : _c(
-              "div",
-              [
-                _c("rekeningbank", {
-                  attrs: {
-                    url: _vm.url,
-                    customers: _vm.customers,
-                    bankcustomer: _vm.bankcustomer
-                  }
-                })
-              ],
-              1
-            )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-68845a6e", module.exports)
-  }
-}
-
-/***/ }),
-/* 192 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 193 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */,
-/* 212 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(213)
+var __vue_script__ = __webpack_require__(186)
 /* template */
-var __vue_template__ = __webpack_require__(214)
+var __vue_template__ = __webpack_require__(187)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67116,7 +67004,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 213 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67281,7 +67169,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 214 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67675,15 +67563,15 @@ if (false) {
 }
 
 /***/ }),
-/* 215 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(216)
+var __vue_script__ = __webpack_require__(189)
 /* template */
-var __vue_template__ = __webpack_require__(217)
+var __vue_template__ = __webpack_require__(190)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67722,7 +67610,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 216 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67819,7 +67707,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 217 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67944,15 +67832,15 @@ if (false) {
 }
 
 /***/ }),
-/* 218 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(219)
+var __vue_script__ = __webpack_require__(192)
 /* template */
-var __vue_template__ = __webpack_require__(220)
+var __vue_template__ = __webpack_require__(193)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67991,7 +67879,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 219 */
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68055,7 +67943,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             timer: 5000
           });
         }).catch(function (err) {
-          if (err.response.status === 422) {
+          if (err.response.status === 409) {
             _this.errors.error = err.response.data.statusText;
           } else {
             _this.errors.error = err.response.statusText;
@@ -68068,7 +67956,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 220 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -68163,15 +68051,15 @@ if (false) {
 }
 
 /***/ }),
-/* 221 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(222)
+var __vue_script__ = __webpack_require__(195)
 /* template */
-var __vue_template__ = __webpack_require__(223)
+var __vue_template__ = __webpack_require__(196)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -68210,7 +68098,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 222 */
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68289,7 +68177,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 223 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -68384,15 +68272,15 @@ if (false) {
 }
 
 /***/ }),
-/* 224 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(225)
+var __vue_script__ = __webpack_require__(198)
 /* template */
-var __vue_template__ = __webpack_require__(226)
+var __vue_template__ = __webpack_require__(199)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -68431,11 +68319,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 225 */
+/* 198 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -68514,7 +68408,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['url', 'customers', 'bankcustomer'],
   data: function data() {
     return {
-      errors: {},
       forms: {
         edit: false,
         btnsubmit: 'Tambah',
@@ -68523,7 +68416,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         namapemilik: '',
         rekening: '',
         error: false
-      }
+      },
+      rekeningbank: {
+        total: 0,
+        results: []
+      },
+      errors: {},
+      errorMessage: ''
     };
   },
 
@@ -68533,14 +68432,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.forms.id = '', this.forms.bank = '';
         this.forms.namapemilik = '';
         this.forms.rekening = '';
+        this.forms.btnsubmit = 'Tambah';
         this.forms.edit = false;
       } else {
-        this.forms.id = bank.bank_id;
-        this.forms.bank = bank.bank_code;
+        this.forms.id = bank.id;
+        this.forms.bank = bank.bank_id;
         this.forms.namapemilik = bank.ownername;
         this.forms.rekening = bank.account_number;
+        this.forms.btnsubmit = 'Simpan';
         this.forms.edit = true;
+        this.forms.error = false;
       }
+      this.errors = {};
+      this.errorMessage = '';
       UIkit.modal('#modal_rekeningbank').show();
     },
     addOrUpdateRekening: function addOrUpdateRekening() {
@@ -68548,33 +68452,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.errors = {};
       if (this.forms.bank === '') {
-        this.errors.error = true;
+        this.forms.error = true;
         this.errors.bank = 'Silahkan pilih bank';
       }
 
       if (this.forms.namapemilik === '') {
-        this.errors.error = true;
+        this.forms.error = true;
         this.errors.namapemilik = 'Nama pemilik rekening wajib diisi';
       }
 
       if (this.forms.rekening === '') {
-        this.errors.error = true;
+        this.forms.error = true;
         this.errors.rekening = 'Nomor rekening wajib diisi';
       }
 
-      if (this.errors.error === true) {
-        this.errors.error = false;
-        return this.errors.error;
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return this.forms.error;
       }
 
       var method, url;
       if (this.forms.edit === true) {
         method = 'put';
-        url = this.url + '/customers/account/rekeningbank/' + this.forms.id;
+        url = this.url + '/customers/account/edit_rekeningbank/' + this.forms.id;
       } else {
         method = 'post';
         url = this.url + '/customers/account/addrekeningbank';
       }
+      this.forms.btnsubmit = '<span uk-spinner></span>';
       axios({
         method: method,
         url: url,
@@ -68585,20 +68490,88 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           rekening: this.forms.rekening
         }
       }).then(function (res) {
-        console.log(res.data);
+        _this.errors = {};
+        _this.errorMessage = '';
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success'
+        });
+        _this.getRekeningBank();
+        setTimeout(function () {
+          UIkit.modal('#modal_rekeningbank').hide();
+        }, 2000);
       }).catch(function (err) {
-        if (err.response.status === 422) {
-          _this.errors.errorMessage = err.response.data.statusText;
+        var status = err.response.status;
+        if (status === 409) {
+          _this.errorMessage = err.response.data.statusText;
         } else {
-          _this.errors.errorMessage = err.response.statusText;
+          _this.errorMessage = err.response.statusText;
         }
       });
+
+      if (this.forms.edit === true) this.forms.btnsubmit = 'Simpan';else this.forms.btnsubmit = 'Tambah';
+    },
+    deleteRekening: function deleteRekening(id) {
+      var _this2 = this;
+
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus rekening ini?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: true,
+          confirm: {
+            value: true,
+            text: 'Batal'
+          }
+        }
+      }).then(function (val) {
+        if (val) {
+          axios({
+            method: 'delete',
+            url: _this2.url + '/customers/account/hapusbank/' + id
+          }).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            _this2.getRekeningBank();
+          }).catch(function (err) {
+            swal({
+              title: 'Terjadi kesalahan',
+              text: err.response.statusText,
+              icon: 'danger',
+              dangerMode: true
+            });
+          });
+        }
+      });
+    },
+    getRekeningBank: function getRekeningBank() {
+      var _this3 = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/customers/account/listrekeningbank'
+      }).then(function (res) {
+        var result = res.data;
+        _this3.rekeningbank.total = result.total;
+        _this3.rekeningbank.results = result.data;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
     }
+  },
+  mounted: function mounted() {
+    this.getRekeningBank();
   }
 });
 
 /***/ }),
-/* 226 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -68619,14 +68592,28 @@ var render = function() {
             attrs: { "uk-close": "" }
           }),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "uk-text-center modal_heading" }, [
+            _c("h4", { staticClass: "modal_textheading" }, [
+              _vm.forms.edit
+                ? _c("span", [_vm._v("Ubah Rekening Bank")])
+                : _c("span", [_vm._v("Tambah Rekening Bank")])
+            ]),
+            _vm._v(" "),
+            _vm._m(0)
+          ]),
           _vm._v(" "),
-          _vm.errors.errorMessage
-            ? _c(
-                "div",
-                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
-                [_vm._v(_vm._s(_vm.errors.errorMessage))]
-              )
+          _vm.errorMessage
+            ? _c("span", [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-margin-bottom uk-margin-top uk-alert-danger",
+                    attrs: { "uk-alert": "" }
+                  },
+                  [_vm._v(_vm._s(_vm.errorMessage))]
+                )
+              ])
             : _vm._e(),
           _vm._v(" "),
           _c(
@@ -68824,7 +68811,61 @@ var render = function() {
           [_vm._v("Tambah Rekening")]
         ),
         _vm._v(" "),
-        _vm._m(1)
+        _c("div", { staticClass: "uk-overflow-auto" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-condensed uk-table-small uk-table-striped uk-table-divider uk-table-middle"
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.rekeningbank.results, function(rek) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "uk-button uk-button-text",
+                          attrs: { "uk-tooltip": "title: Ubah" },
+                          on: {
+                            click: function($event) {
+                              _vm.addOrUpdateModal(rek)
+                            }
+                          }
+                        },
+                        [_c("span", { attrs: { "uk-icon": "pencil" } })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "uk-button uk-button-text",
+                          attrs: { "uk-tooltip": "title: Hapus" },
+                          on: {
+                            click: function($event) {
+                              _vm.deleteRekening(rek.id)
+                            }
+                          }
+                        },
+                        [_c("span", { attrs: { "uk-icon": "trash" } })]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(rek.bank_name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(rek.ownername))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(rek.account_number))])
+                  ])
+                })
+              )
+            ]
+          )
+        ])
       ]
     )
   ])
@@ -68834,73 +68875,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-text-center modal_heading" }, [
-      _c("h4", { staticClass: "modal_textheading" }, [
-        _vm._v("Tambah Rekening")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "modal_subtextheading" }, [
-        _vm._v(
-          "\r\n          Pastikan Nomor Rekening & Nama Pemilik Rekening sesuai buku tabungan.\r\n        "
-        )
-      ])
+    return _c("div", { staticClass: "modal_subtextheading" }, [
+      _vm._v(
+        "\r\n          Pastikan Nomor Rekening & Nama Pemilik Rekening sesuai buku tabungan."
+      ),
+      _c("br"),
+      _vm._v("\r\n          Maksimal hanya 3 rekening bank.\r\n        ")
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-overflow-auto" }, [
-      _c(
-        "table",
-        {
-          staticClass:
-            "uk-table uk-table-condensed uk-table-small uk-table-striped uk-table-divider uk-table-middle"
-        },
-        [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v("#")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Nama Bank")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Nama Pemilik Rekening")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("No. Rekening")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "uk-button uk-button-text",
-                    attrs: { href: "#", "uk-tooltip": "title: Ubah" }
-                  },
-                  [_c("span", { attrs: { "uk-icon": "pencil" } })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "uk-button uk-button-text",
-                    attrs: { href: "#", "uk-tooltip": "title: Hapus" }
-                  },
-                  [_c("span", { attrs: { "uk-icon": "trash" } })]
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("BCA")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("Sony Darmawan")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("83138179")])
-            ])
-          ])
-        ]
-      )
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nama Bank")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nama Pemilik Rekening")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("No. Rekening")])
+      ])
     ])
   }
 ]
@@ -68910,6 +68906,387 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-b605fda4", module.exports)
+  }
+}
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.page === "editprofile"
+    ? _c(
+        "div",
+        [
+          _c("editprofile", {
+            attrs: { url: _vm.url, customers: _vm.customers }
+          })
+        ],
+        1
+      )
+    : _vm.page === "changepassword"
+      ? _c(
+          "div",
+          [
+            _c("changepassword", {
+              attrs: { url: _vm.url, customers: _vm.customers }
+            })
+          ],
+          1
+        )
+      : _vm.page === "editemail"
+        ? _c(
+            "div",
+            [
+              _c("editemail", {
+                attrs: { url: _vm.url, customers: _vm.customers }
+              })
+            ],
+            1
+          )
+        : _vm.page === "edittelepon"
+          ? _c(
+              "div",
+              [
+                _c("edittelepon", {
+                  attrs: { url: _vm.url, customers: _vm.customers }
+                })
+              ],
+              1
+            )
+          : _c(
+              "div",
+              [
+                _c("rekeningbank", {
+                  attrs: {
+                    url: _vm.url,
+                    customers: _vm.customers,
+                    bankcustomer: _vm.bankcustomer
+                  }
+                })
+              ],
+              1
+            )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-68845a6e", module.exports)
+  }
+}
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(222)
+/* template */
+var __vue_template__ = __webpack_require__(223)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/vendors/Register.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-159b3abe", Component.options)
+  } else {
+    hotAPI.reload("data-v-159b3abe", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 222 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("section", { staticClass: "cover-joinasvendor" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-container" }, [
+        _c(
+          "div",
+          {
+            staticClass: "uk-width-3-4 uk-align-center container-joinasvendor"
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "uk-margin-bottom slugtext-joinasvendor" },
+              [
+                _vm._v(
+                  "Bergabung dengan Mitra kami di seluruh Nusantara Indonesia"
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "uk-card uk-card-default uk-card-body sectioncontainer-joinasvendor"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-padding uk-margin-bottom sectionbox-joinasvendor"
+                  },
+                  [
+                    _c("div", [_vm._v("Kami perlu tahu tentang diri Anda")]),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(
+                        "Silahkan lengkapi formulir dengan informasi yang valid. Informasi ini tidak akan muncul di profil Anda"
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("form", { staticClass: "uk-form-stacked" }, [
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label label-joinasvendor" },
+                      [_vm._v("Nama Anda *")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("input", {
+                        staticClass: "uk-width-1-1 uk-input form-joinasvendor",
+                        attrs: { type: "text" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label label-joinasvendor" },
+                      [_vm._v("Nomor Ponsel Anda *")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("input", {
+                        staticClass: "uk-width-1-1 uk-input form-joinasvendor",
+                        attrs: { type: "text" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label label-joinasvendor" },
+                      [_vm._v("Nomor Telepon Bisnis *")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("input", {
+                        staticClass: "uk-width-1-1 uk-input form-joinasvendor",
+                        attrs: { type: "text" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label label-joinasvendor" },
+                      [_vm._v("Alamat Email *")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("input", {
+                        staticClass: "uk-width-1-1 uk-input form-joinasvendor",
+                        attrs: { type: "email" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label label-joinasvendor" },
+                      [_vm._v("Nama Jasa/Vendor *")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("input", {
+                        staticClass: "uk-width-1-1 uk-input form-joinasvendor",
+                        attrs: { type: "text" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-button uk-button-default button-joinasvendor",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Daftar")]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-159b3abe", module.exports)
   }
 }
 

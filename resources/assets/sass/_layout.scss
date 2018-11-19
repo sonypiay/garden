@@ -395,3 +395,48 @@ html,body {
   }
 }
 // customers
+
+
+// vendors
+.cover-joinasvendor {
+  background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+  height: 350px;
+}
+.container-joinasvendor {
+  margin-top: -15em;
+  .slugtext-joinasvendor {
+    text-align: center;
+    color: #ffffff;
+    @include fontstyle(300, normal, normal, 0.4px);
+    font-family: $font-primary;
+    font-size: 24px;
+  }
+  .sectioncontainer-joinasvendor {
+    border-radius: 2px;
+    .sectionheading-joinasvendor {
+      text-align: center;
+      color: #777777;
+      @include fontstyle(600, normal, normal, 0.6px);
+      font-family: $font-primary;
+    }
+    .sectionbox-joinasvendor {
+      border: 1px solid #e9e9e9;
+      div {
+        font-size: 16px;
+        text-align: center;
+        color: #555555;
+        @include fontstyle(600, normal, normal, 0.6px);
+        font-family: $font-primary;
+        text-transform: uppercase;
+      }
+      span {
+        text-align: center;
+        color: #888888;
+        @include fontstyle(400, normal, normal, 0.6px);
+        font-family: $font-primary;
+        font-size: 14px;
+      }
+    }
+  }
+}
+// vendors

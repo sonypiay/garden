@@ -32,14 +32,6 @@
         </div>
         <div class="uk-margin">
           <a href="#" class="uk-float-right lupapassword">Lupa Kata Sandi?</a>
-          <!--<div class="uk-grid-small" uk-grid>
-            <div class="uk-width-1-2">
-              <label class="ingatkansaya"><input class="uk-checkbox" type="checkbox"> Ingat saya</label>
-            </div>
-            <div class="uk-width-1-2">
-              <a href="#" class="uk-float-right lupapassword">Lupa Kata Sandi?</a>
-            </div>
-          </div>-->
         </div>
       </form>
     </div>

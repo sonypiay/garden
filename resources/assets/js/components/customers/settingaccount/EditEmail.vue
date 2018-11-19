@@ -58,7 +58,7 @@ export default {
             timer: 5000
           });
         }).catch( err => {
-          if( err.response.status === 422 )
+          if( err.response.status === 409 )
           {
             this.errors.error = err.response.data.statusText;
           }

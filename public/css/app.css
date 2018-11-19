@@ -131,6 +131,59 @@
   letter-spacing: 0.6px;
 }
 
+.sectioncontainer-joinasvendor .label-joinasvendor {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 5px;
+}
+
+.sectioncontainer-joinasvendor .sublabel-joinasvendor {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 10px;
+}
+
+.sectioncontainer-joinasvendor .form-joinasvendor {
+  border-radius: 2px;
+  color: #333333;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.sectioncontainer-joinasvendor .form-joinasvendor:hover,
+.sectioncontainer-joinasvendor .form-joinasvendor:focus {
+  border: 1px solid #f6b092;
+  color: #555555;
+}
+
+.sectioncontainer-joinasvendor .button-joinasvendor {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  border: 1px solid #f6a192;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
 html,
 body {
   background: #f9f9f9;
@@ -736,5 +789,66 @@ body {
   border: 0;
   color: #ffffff;
   background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.cover-joinasvendor {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  height: 350px;
+}
+
+.container-joinasvendor {
+  margin-top: -15em;
+}
+
+.container-joinasvendor .slugtext-joinasvendor {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor {
+  border-radius: 2px;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor .sectionheading-joinasvendor {
+  text-align: center;
+  color: #777777;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  font-family: "Nunito", sans-serif;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor .sectionbox-joinasvendor {
+  border: 1px solid #e9e9e9;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor .sectionbox-joinasvendor div {
+  font-size: 16px;
+  text-align: center;
+  color: #555555;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  font-family: "Nunito", sans-serif;
+  text-transform: uppercase;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor .sectionbox-joinasvendor span {
+  text-align: center;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
 }
 

@@ -150,7 +150,7 @@ class AccountCustomers extends Controller
       if( $checkemail === 1 )
       {
         $res = [
-          'status' => 422,
+          'status' => 409,
           'statusText' => 'Email sudah terdaftar'
         ];
       }
@@ -207,7 +207,7 @@ class AccountCustomers extends Controller
       if( $checktelepon === 1 )
       {
         $res = [
-          'status' => 422,
+          'status' => 409,
           'statusText' => 'Nomor telepon sudah terdaftar'
         ];
       }
@@ -251,6 +251,17 @@ class AccountCustomers extends Controller
     }
   }
 
+  public function listrekeningbank( Request $request, CustomersBankAccount $rekening )
+  {
+    $rek = $rekening::leftJoin('bankcustomer', 'customer_bankaccount.bank_id', '=', 'bankcustomer.bank_id')
+    ->where('customer_id', Cookie::get('customer_id'))
+    ->get();
+    return response()->json([
+      'total' => $rek->count(),
+      'data' => $rek
+    ], 200);
+  }
+
   public function store_rekeningbank( Request $request, Customers $customers, CustomersBankAccount $customerba )
   {
     $bank = $request->bank;
@@ -259,18 +270,18 @@ class AccountCustomers extends Controller
     $customerba = new $customerba;
     $checkrekening = $customerba->where('account_number', $rekening)->count();
     $countrekening = $customerba->where('customer_id', Cookie::get('customer_id'))->count();
-    if( $countrekening > 3 )
+    if( $checkrekening === 1 )
     {
       $res = [
-        'status' => 422,
-        'statusText' => 'Anda tidak dapat menambahkan rekening lagi.'
+        'status' => 409,
+        'statusText' => 'Nomor rekening sudah terdaftar'
       ];
     }
-    else if( $checkrekening === 1 )
+    else if( $countrekening >= 3 )
     {
       $res = [
-        'status' => 422,
-        'statusText' => 'Nomor rekening sudah terdaftar'
+        'status' => 409,
+        'statusText' => 'Anda hanya bisa menambahkan maksimal 3 rekening bank.'
       ];
     }
     else
@@ -282,9 +293,62 @@ class AccountCustomers extends Controller
       $customerba->save();
       $res = [
         'status' => 200,
-        'statusText' => 'Nomor rekening baru berhasil ditambah.'
+        'statusText' => 'fekening baru berhasil ditambah.'
       ];
     }
     return response()->json( $res, $res['status'] );
+  }
+
+  public function save_rekeningbank( Request $request, CustomersBankAccount $rekeningcustomer , $id )
+  {
+    $bank = $request->bank;
+    $pemilik = $request->pemilik;
+    $rekening = $request->rekening;
+    $getrekening = $rekeningcustomer->where('id', $id)->first();
+    if( $rekening == $getrekening->account_number )
+    {
+      $getrekening->bank_id = $bank;
+      $getrekening->ownername = $pemilik;
+      $getrekening->save();
+      $res = [
+        'status' => 200,
+        'statusText' => 'Rekening bank berhasil diperbarui.'
+      ];
+    }
+    else
+    {
+      $checkrekening = $rekeningcustomer->where('account_number', $rekening)->count();
+      if( $checkrekening === 1 )
+      {
+        $res = [
+          'status' => 409,
+          'statusText' => 'Nomor rekening sudah terdaftar'
+        ];
+      }
+      else
+      {
+        $getrekening->bank_id = $bank;
+        $getrekening->account_number = $rekening;
+        $getrekening->ownername = $pemilik;
+        $getrekening->save();
+        $res = [
+          'status' => 200,
+          'statusText' => 'Rekening bank berhasil diperbarui.'
+        ];
+      }
+    }
+
+    return response()->json( $res, $res['status'] );
+  }
+
+  public function delete_rekeningbank( Request $request, CustomersBankAccount $rekening , $id )
+  {
+    $result = $rekening->where('id', $id)->first();
+    $res = [
+      'status' => 200,
+      'statusText' => 'Rekening ' . $result->account_number . ' berhasil dihapus.'
+    ];
+    $rekening->where('id', $id)->delete();
+    return response()->json($res, $res['status']);
   }
 }

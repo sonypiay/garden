@@ -15,7 +15,7 @@
               </ul>
             </div>
             <div class="uk-navbar-center">
-              <a class="uk-navbar-item uk-logo logo-homepage-white">
+              <a href="{{ url('/') }}" class="uk-navbar-item uk-logo logo-homepage-white">
                 <img src="{{ asset('images/logobrand/gplogo-white.png') }}" alt="garden pages">
               </a>
             </div>

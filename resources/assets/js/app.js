@@ -19,6 +19,10 @@ Vue.component('registercustomer', require('./components/customers/Register.vue')
 Vue.component('customerdashboard', require('./components/customers/Dashboard.vue'));
 Vue.component('customereditaccount', require('./components/customers/SettingAccount.vue'));
 
+// vendor
+Vue.component('registervendor', require('./components/vendors/Register.vue'));
+// vendor
+
 const app = new Vue({
     el: '#app'
 });

@@ -17,7 +17,7 @@
     </div>
   </li>
   @else
-  <li><a class="become-vendor" href="#">Menjadi Vendor</a></li>
+  <li><a class="become-vendor" href="{{ route('registerpage_vendor') }}">Bergabung sebagai Vendor</a></li>
   <li><a href="{{ route('registerpage_customer') }}">Daftar</a></li>
   <li><a href="{{ route('loginpage_customer') }}">Masuk</a></li>
   @endif
