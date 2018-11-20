@@ -28,7 +28,7 @@
 </header>
 <div class="uk-grid-collapse" uk-grid>
   <nav class="uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@m uk-visible@s">
-    <div class="uk-card uk-card-body uk-card-small uk-card-secondary main-navbar-container" uk-height-viewport>
+    <div class="uk-card uk-card-body uk-card-small uk-card-secondary main-navbar-container">
       @include('administrator.includes.navbar-left')
     </div>
   </nav>

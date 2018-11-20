@@ -71,6 +71,9 @@ html, body {
 
 .main-navbar-container {
   background: #ffffff;
+  &:hover {
+    overflow-y: scroll;
+  }
   .main-nav {
     .uk-nav-header {
       color: #888888 !important;
@@ -83,7 +86,7 @@ html, body {
         padding: 8px 20px;
         font-size: 14px;
         font-family: $font-family-sans-serif;
-        @include fontstyle(600, normal, normal, 0.4);
+        @include fontstyle(400, normal, normal, 0.4);
         color: #777777 !important;
         &:hover, &:active, &:focus {
           background: none;

@@ -309,6 +309,10 @@ body {
   background: #ffffff;
 }
 
+.main-navbar-container:hover {
+  overflow-y: scroll;
+}
+
 .main-navbar-container .main-nav .uk-nav-header {
   color: #888888 !important;
   font-size: 16px;
@@ -323,7 +327,7 @@ body {
   padding: 8px 20px;
   font-size: 14px;
   font-family: "Nunito Sans", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.4;

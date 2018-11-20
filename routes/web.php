@@ -77,13 +77,26 @@ Route::group(['prefix' => 'cp'], function() {
       Route::post('/update/{id}', 'Administrator\BankPaymentController@update');
       Route::delete('/delete/{id}', 'Administrator\BankPaymentController@destroy');
     });
-
     Route::group(['prefix' => 'bankcustomer'], function() {
       Route::get('/', 'Administrator\BankCustomerController@index')->name('admin_bankcustomer');
       Route::get('/banklist', 'Administrator\BankCustomerController@banklist');
       Route::post('/add', 'Administrator\BankCustomerController@store');
       Route::post('/update/{id}', 'Administrator\BankCustomerController@update');
       Route::delete('/delete/{id}', 'Administrator\BankCustomerController@destroy');
+    });
+    Route::group(['prefix' => 'provinsi'], function() {
+      Route::get('/', 'Administrator\ProvinsiController@index')->name('admin_provinsipage');
+      Route::get('/data_provinsi', 'Administrator\ProvinsiController@data_provinsi');
+      Route::post('/add', 'Administrator\ProvinsiController@store');
+      Route::put('/update/{id}', 'Administrator\ProvinsiController@update');
+      Route::delete('/delete/{id}', 'Administrator\ProvinsiController@destroy');
+    });
+    Route::group(['prefix' => 'kabupaten'], function() {
+      Route::get('/', 'Administrator\KabupatenController@index')->name('admin_kabupatenpage');
+      Route::get('/data_kabupaten', 'Administrator\KabupatenController@data_kabupaten');
+      Route::post('/add', 'Administrator\KabupatenController@store');
+      Route::put('/update/{id}', 'Administrator\KabupatenController@update');
+      Route::delete('/delete/{id}', 'Administrator\KabupatenController@destroy');
     });
   });
 });

@@ -18,6 +18,8 @@ Vue.component('login-section', require('./components/administrator/Login.vue'));
 Vue.component('cpusers-section', require('./components/administrator/Users.vue'));
 Vue.component('cpbankpayment-section', require('./components/administrator/BankPayment.vue'));
 Vue.component('cpbankcustomer-section', require('./components/administrator/BankCustomer.vue'));
+Vue.component('provinsi-section', require('./components/administrator/Provinsi.vue'));
+Vue.component('kabupaten-section', require('./components/administrator/Kabupaten.vue'));
 
 const app = new Vue({
     el: '#app'
