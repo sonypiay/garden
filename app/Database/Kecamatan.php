@@ -9,4 +9,5 @@ class Kecamatan extends Model
   public $timestamps = false;
   public $incrementing = false;
   protected $primaryKey = 'kode_kec';
+  protected $table = 'kecamatan';
 }

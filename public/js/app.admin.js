@@ -65428,7 +65428,8 @@ Vue.component('cpusers-section', __webpack_require__(211));
 Vue.component('cpbankpayment-section', __webpack_require__(214));
 Vue.component('cpbankcustomer-section', __webpack_require__(217));
 Vue.component('provinsi-section', __webpack_require__(220));
-Vue.component('kabupaten-section', __webpack_require__(227));
+Vue.component('kabupaten-section', __webpack_require__(223));
+Vue.component('kecamatan-section', __webpack_require__(226));
 
 var app = new Vue({
   el: '#app'
@@ -68756,19 +68757,15 @@ if (false) {
 }
 
 /***/ }),
-/* 223 */,
-/* 224 */,
-/* 225 */,
-/* 226 */,
-/* 227 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(228)
+var __vue_script__ = __webpack_require__(224)
 /* template */
-var __vue_template__ = __webpack_require__(229)
+var __vue_template__ = __webpack_require__(225)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -68807,7 +68804,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 228 */
+/* 224 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69071,7 +69068,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 229 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -69432,6 +69429,682 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-2dd41ada", module.exports)
+  }
+}
+
+/***/ }),
+/* 226 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(227)
+/* template */
+var __vue_template__ = __webpack_require__(228)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/Kecamatan.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0821dd2c", Component.options)
+  } else {
+    hotAPI.reload("data-v-0821dd2c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 227 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'kabupaten'],
+  data: function data() {
+    return {
+      keywords: '',
+      pagination: {
+        current: 1,
+        prev: '',
+        next: '',
+        last: '',
+        path: this.url + '/kecamatan/data_kecamatan'
+      },
+      kecamatan: {
+        total: 0,
+        results: []
+      },
+      forms: {
+        id: 0,
+        kode: '',
+        nama: '',
+        kabupaten: '',
+        edit: false,
+        errors: {},
+        submit: 'Tambah'
+      },
+      errorMessage: ''
+    };
+  },
+
+  methods: {
+    addOrUpdateModal: function addOrUpdateModal(kec) {
+      if (kec === undefined || kec === '') {
+        this.forms.id = 0;
+        this.forms.kode = '';
+        this.forms.nama = '';
+        this.forms.kabupaten = '';
+        this.forms.edit = false;
+        this.forms.errors = {};
+        this.forms.submit = 'Tambah';
+      } else {
+        this.forms.id = kec.id_kec;
+        this.forms.kode = kec.kode_kec;
+        this.forms.nama = kec.nama_kec;
+        this.forms.kabupaten = kec.id_kab;
+        this.forms.edit = true;
+        this.forms.errors = {};
+        this.forms.submit = 'Simpan';
+      }
+      this.errorMessage = '';
+      UIkit.modal('#modal').show();
+    },
+    getKecamatanList: function getKecamatanList(pages) {
+      var _this = this;
+
+      var params = '&keywords=' + this.keywords;
+      if (pages === undefined) pages = this.url + '/kecamatan/data_kecamatan?page=' + this.pagination.current + params;else pages = pages + params;
+
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this.kecamatan.total = result.total;
+        _this.kecamatan.results = result.data;
+      }).catch(function (err) {
+        console.log(err.response.status);
+      });
+    },
+    addOrUpdateKecamatan: function addOrUpdateKecamatan() {
+      var _this2 = this;
+
+      this.forms.errors = {};
+      if (this.forms.kode === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.kode = 'Kode kecamatan wajib diisi.';
+      }
+      if (this.forms.nama === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.nama = 'Nama kecamatan wajib diisi.';
+      }
+      if (this.forms.kabupaten === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.kabupaten = 'Kabupaten wajib diisi.';
+      }
+      if (this.forms.errors.error === true) {
+        this.forms.errors.error = false;
+        return false;
+      }
+
+      var method, url;
+      if (this.forms.edit === false) {
+        method = 'post';url = this.url + '/kecamatan/add';
+      } else {
+        method = 'put';url = this.url + '/kecamatan/update/' + this.forms.id;
+      }
+
+      this.forms.submit = '<span uk-spinner></span>';
+      axios({
+        method: method,
+        url: url,
+        params: {
+          kode_kec: this.forms.kode,
+          nama_kecamatan: this.forms.nama,
+          kabupaten: this.forms.kabupaten
+        }
+      }).then(function (res) {
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success',
+          timer: 5000
+        });
+        _this2.errorMessage = '';
+        _this2.getKecamatanList();
+        setTimeout(function () {
+          UIkit.modal('#modal').hide();
+        }, 3000);
+      }).catch(function (err) {
+        var status = err.response.status;
+        if (status === 409) {
+          _this2.errorMessage = err.response.data.statusText;
+        } else {
+          _this2.errorMessage = err.response.statusText;
+        }
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this2.errorMessage,
+          icon: 'warning',
+          dangerMode: true
+        });
+      });
+
+      if (this.forms.edit === true) this.forms.submit = 'Simpan';
+    },
+    deleteKecamatan: function deleteKecamatan(id, val) {
+      var _this3 = this;
+
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus kecamatan ' + val + '?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: true,
+          confirm: { text: 'Hapus', value: true }
+        }
+      }).then(function (value) {
+        if (value) {
+          axios({
+            method: 'delete',
+            url: _this3.url + '/kecamatan/delete/' + id
+          }).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            _this3.getKecamatanList();
+          }).catch(function (err) {
+            swal({
+              title: 'Terjadi kesalahan',
+              text: err.response.statusText,
+              icon: 'warning',
+              dangerMode: true
+            });
+          });
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getKecamatanList();
+  }
+});
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
+    [
+      _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
+        _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
+          _c("a", {
+            staticClass: "uk-modal-close-default",
+            attrs: { "uk-close": "" }
+          }),
+          _vm._v(" "),
+          _c("h3", [
+            _vm.forms.edit
+              ? _c("span", [_vm._v("Ubah Kecamatan")])
+              : _c("span", [_vm._v("Tambah Kecamatan")])
+          ]),
+          _vm._v(" "),
+          _vm.errorMessage
+            ? _c(
+                "div",
+                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
+                [_vm._v(_vm._s(_vm.errorMessage))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass: "uk-form-stacked",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.addOrUpdateKecamatan($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Kode Kecamatan")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.kode,
+                        expression: "forms.kode"
+                      }
+                    ],
+                    staticClass:
+                      "uk-width-1-1 uk-input form-action-custom-modal",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.kode },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "kode", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.kode
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.kode))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Nama Kecamatan")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.nama,
+                        expression: "forms.nama"
+                      }
+                    ],
+                    staticClass:
+                      "uk-width-1-1 uk-input form-action-custom-modal",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.nama },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "nama", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.nama
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.nama))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Kabupaten")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.kabupaten,
+                          expression: "forms.kabupaten"
+                        }
+                      ],
+                      staticClass:
+                        "uk-width-1-1 uk-select form-action-select-modal",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.forms,
+                            "kabupaten",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "", selected: "" } }, [
+                        _vm._v("-- Pilih Kabupaten --")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.kabupaten, function(kab) {
+                        return _c(
+                          "option",
+                          { domProps: { value: kab.id_kab } },
+                          [_vm._v(_vm._s(kab.nama_kab))]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.kabupaten
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.kabupaten))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("button", {
+                  staticClass:
+                    "uk-button uk-button-default button-action-modal",
+                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                })
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                _c("a", {
+                  staticClass: "uk-form-icon",
+                  attrs: { "uk-icon": "search" },
+                  on: {
+                    click: function($event) {
+                      _vm.getKecamatanList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.keywords,
+                      expression: "keywords"
+                    }
+                  ],
+                  staticClass: "uk-input form-search uk-width-1-1",
+                  attrs: { type: "keywords", placeholder: "Search..." },
+                  domProps: { value: _vm.keywords },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      _vm.getKecamatanList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.keywords = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "uk-button button-custom-action",
+                  on: {
+                    click: function($event) {
+                      _vm.addOrUpdateModal()
+                    }
+                  }
+                },
+                [_vm._v("Tambah")]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.kecamatan.results, function(kec) {
+                  return _c("tr", [
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "pencil",
+                          "uk-tooltip": "",
+                          title: "Ubah",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.addOrUpdateModal(kec)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "trash",
+                          "uk-tooltip": "",
+                          title: "Hapus",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteKecamatan(kec.id_kec, kec.nama_kec)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _vm._v(_vm._s(kec.kode_kec))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(kec.nama_kec))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(kec.nama_kab))])
+                  ])
+                })
+              )
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kode Kecamatan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nama Kecamatan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kabupaten")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0821dd2c", module.exports)
   }
 }
 

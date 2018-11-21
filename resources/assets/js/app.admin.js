@@ -20,6 +20,7 @@ Vue.component('cpbankpayment-section', require('./components/administrator/BankP
 Vue.component('cpbankcustomer-section', require('./components/administrator/BankCustomer.vue'));
 Vue.component('provinsi-section', require('./components/administrator/Provinsi.vue'));
 Vue.component('kabupaten-section', require('./components/administrator/Kabupaten.vue'));
+Vue.component('kecamatan-section', require('./components/administrator/Kecamatan.vue'));
 
 const app = new Vue({
     el: '#app'

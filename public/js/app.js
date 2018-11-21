@@ -69087,13 +69087,240 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
   data: function data() {
-    return {};
+    return {
+      provinsi: [],
+      kabupaten: [],
+      kecamatan: [],
+      forms: {
+        error: true,
+        vendor_ownername: '',
+        phonenumber: '',
+        phonenumber_business: '',
+        vendor_email: '',
+        vendor_name: '',
+        provinsi: '',
+        kabupaten: '',
+        kecamatan: '',
+        address: '',
+        zipcode: '',
+        password: '',
+        submit: 'Daftar'
+      },
+      errors: {},
+      errorMessage: ''
+    };
   },
-  mounted: function mounted() {}
+
+  methods: {
+    getProvinsi: function getProvinsi() {
+      var _this = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/api/provinsi/all'
+      }).then(function (res) {
+        var result = res.data;
+        _this.provinsi = result.data;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    getKabupaten: function getKabupaten() {
+      var _this2 = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/api/kabupaten/provinsi/' + this.forms.provinsi
+      }).then(function (res) {
+        var result = res.data;
+        _this2.kabupaten = result.data;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    getKecamatan: function getKecamatan() {
+      var _this3 = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/api/kecamatan/kabupaten/' + this.forms.kabupaten
+      }).then(function (res) {
+        var result = res.data;
+        _this3.kecamatan = result.data;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    registerVendor: function registerVendor() {
+      var _this4 = this;
+
+      this.errors = {};
+      this.errorMessage = '';
+      if (this.forms.vendor_ownername === '') {
+        this.forms.error = true;
+        this.errors.vendor_ownername = 'Nama lengkap wajib diisi.';
+      }
+      if (this.forms.phonenumber === '') {
+        this.forms.error = true;
+        this.errors.phonenumber = 'Nomor ponsel wajib diisi.';
+      }
+      if (this.forms.phonenumber === '') {
+        this.forms.error = true;
+        this.errors.phonenumber_business = 'Nomor telepon bisnis wajib diisi.';
+      }
+      if (this.forms.vendor_email === '') {
+        this.forms.error = true;
+        this.errors.vendor_email = 'Email wajib diisi.';
+      }
+      if (this.forms.vendor_name === '') {
+        this.forms.error = true;
+        this.errors.vendor_name = 'Nama jasa/vendor wajib diisi.';
+      }
+      if (this.forms.provinsi === '') {
+        this.forms.error = true;
+        this.errors.provinsi = 'Silahkan pilih provinsi.';
+      }
+      if (this.forms.kabupaten === '') {
+        this.forms.error = true;
+        this.errors.kabupaten = 'Silahkan pilih kota/kabupaten.';
+      }
+      if (this.forms.kecamatan === '') {
+        this.forms.error = true;
+        this.errors.kecamatan = 'Silahkan pilih kecamatan.';
+      }
+      if (this.forms.address === '') {
+        this.forms.error = true;
+        this.errors.address = 'Alamat wajib diisi';
+      }
+      if (this.forms.zipcode === '') {
+        this.forms.error = true;
+        this.errors.zipcode = 'Kode pos wajib diisi.';
+      }
+      if (this.forms.password === '') {
+        this.forms.error = true;
+        this.errors.password = 'Kata sandi wajib diisi.';
+      }
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return this.forms.error;
+      }
+      if (this.getLengthPassword < 8) {
+        this.errors.password = 'Kata sandi minimal 8 karakter.';
+        return false;
+      }
+      axios({
+        method: 'post',
+        url: this.url + '/vendor/doregister',
+        headers: { 'Content-Type': 'application/json' },
+        params: {
+          vendor_name: this.forms.vendor_name,
+          phonenumber: this.forms.phonenumber,
+          phonenumber_business: this.forms.phonenumber_business,
+          region: this.forms.provinsi,
+          district: this.forms.kabupaten,
+          subdistrict: this.forms.kecamatan,
+          address: this.forms.address,
+          zipcode: this.forms.zipcode,
+          vendor_ownername: this.forms.vendor_ownername,
+          vendor_email: this.forms.vendor_email,
+          password: this.forms.password
+        }
+      }).then(function (res) {
+        var result = res.data;
+        console.log(result);
+      }).catch(function (err) {
+        var status = err.response.status;
+        if (status === 409) {
+          _this4.errorMessage = err.response.data.statusText;
+        } else {
+          _this4.errorMessage = status + ' ' + err.response.statusText;
+        }
+        _this4.forms.submit = 'Daftar';
+      });
+    }
+  },
+  computed: {
+    getLengthPassword: function getLengthPassword() {
+      var str = this.forms.password;
+      return str.length;
+    }
+  },
+  mounted: function mounted() {
+    this.getProvinsi();
+  }
 });
 
 /***/ }),
@@ -69104,58 +69331,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", { staticClass: "cover-joinasvendor" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-container" }, [
-        _c(
-          "div",
-          {
-            staticClass: "uk-width-3-4 uk-align-center container-joinasvendor"
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "uk-margin-bottom slugtext-joinasvendor" },
-              [
-                _vm._v(
-                  "Bergabung dengan Mitra kami di seluruh Nusantara Indonesia"
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "uk-card uk-card-default uk-card-body sectioncontainer-joinasvendor"
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-padding uk-margin-bottom sectionbox-joinasvendor"
-                  },
-                  [
-                    _c("div", [_vm._v("Kami perlu tahu tentang diri Anda")]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _vm._v(
-                        "Silahkan lengkapi formulir dengan informasi yang valid. Informasi ini tidak akan muncul di profil Anda"
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("form", { staticClass: "uk-form-stacked" }, [
+  return _c("div", [
+    _c("section", { staticClass: "cover-joinasvendor" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "uk-container" }, [
+      _c(
+        "div",
+        { staticClass: "uk-width-3-4 uk-align-center container-joinasvendor" },
+        [
+          _c("div", { staticClass: "uk-margin-bottom slugtext-joinasvendor" }, [
+            _vm._v("Bergabung dengan Mitra kami di seluruh Nusantara Indonesia")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-card uk-card-default uk-card-body sectioncontainer-joinasvendor"
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm.errorMessage
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "uk-alert-danger",
+                      attrs: { "uk-alert": "" }
+                    },
+                    [_vm._v(_vm._s(_vm.errorMessage))]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "uk-form-stacked",
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.registerVendor($event)
+                    }
+                  }
+                },
+                [
                   _c("div", { staticClass: "uk-margin" }, [
                     _c(
                       "label",
@@ -69165,10 +69384,39 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("div", { staticClass: "uk-form-controls" }, [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.vendor_ownername,
+                            expression: "forms.vendor_ownername"
+                          }
+                        ],
                         staticClass: "uk-width-1-1 uk-input form-joinasvendor",
-                        attrs: { type: "text" }
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.forms.vendor_ownername },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.forms,
+                              "vendor_ownername",
+                              $event.target.value
+                            )
+                          }
+                        }
                       })
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.errors.vendor_ownername
+                      ? _c(
+                          "div",
+                          { staticClass: "uk-text-danger uk-text-small" },
+                          [_vm._v(_vm._s(_vm.errors.vendor_ownername))]
+                        )
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "uk-margin" }, [
@@ -69180,10 +69428,39 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("div", { staticClass: "uk-form-controls" }, [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.phonenumber,
+                            expression: "forms.phonenumber"
+                          }
+                        ],
                         staticClass: "uk-width-1-1 uk-input form-joinasvendor",
-                        attrs: { type: "text" }
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.forms.phonenumber },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.forms,
+                              "phonenumber",
+                              $event.target.value
+                            )
+                          }
+                        }
                       })
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.errors.phonenumber
+                      ? _c(
+                          "div",
+                          { staticClass: "uk-text-danger uk-text-small" },
+                          [_vm._v(_vm._s(_vm.errors.phonenumber))]
+                        )
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "uk-margin" }, [
@@ -69195,25 +69472,39 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("div", { staticClass: "uk-form-controls" }, [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.phonenumber_business,
+                            expression: "forms.phonenumber_business"
+                          }
+                        ],
                         staticClass: "uk-width-1-1 uk-input form-joinasvendor",
-                        attrs: { type: "text" }
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.forms.phonenumber_business },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.forms,
+                              "phonenumber_business",
+                              $event.target.value
+                            )
+                          }
+                        }
                       })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-margin" }, [
-                    _c(
-                      "label",
-                      { staticClass: "uk-form-label label-joinasvendor" },
-                      [_vm._v("Alamat Email *")]
-                    ),
+                    ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "uk-form-controls" }, [
-                      _c("input", {
-                        staticClass: "uk-width-1-1 uk-input form-joinasvendor",
-                        attrs: { type: "email" }
-                      })
-                    ])
+                    _vm.errors.phonenumber_business
+                      ? _c(
+                          "div",
+                          { staticClass: "uk-text-danger uk-text-small" },
+                          [_vm._v(_vm._s(_vm.errors.phonenumber_business))]
+                        )
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "uk-margin" }, [
@@ -69225,10 +69516,546 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("div", { staticClass: "uk-form-controls" }, [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.vendor_name,
+                            expression: "forms.vendor_name"
+                          }
+                        ],
                         staticClass: "uk-width-1-1 uk-input form-joinasvendor",
-                        attrs: { type: "text" }
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.forms.vendor_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.forms,
+                              "vendor_name",
+                              $event.target.value
+                            )
+                          }
+                        }
                       })
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.errors.vendor_name
+                      ? _c(
+                          "div",
+                          { staticClass: "uk-text-danger uk-text-small" },
+                          [_vm._v(_vm._s(_vm.errors.vendor_name))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "uk-grid-small",
+                        attrs: { "uk-grid": "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s"
+                          },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "uk-form-label label-joinasvendor"
+                              },
+                              [_vm._v("Provinsi *")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "uk-form-controls" }, [
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.forms.provinsi,
+                                      expression: "forms.provinsi"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "uk-width-1-1 uk-select form-joinasvendor",
+                                  on: {
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.forms,
+                                          "provinsi",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      },
+                                      function($event) {
+                                        _vm.getKabupaten()
+                                      }
+                                    ]
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "", selected: "" } },
+                                    [_vm._v("-- Pilih Provinsi --")]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.provinsi, function(prov) {
+                                    return _c(
+                                      "option",
+                                      { domProps: { value: prov.id } },
+                                      [_vm._v(_vm._s(prov.nama))]
+                                    )
+                                  })
+                                ],
+                                2
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.provinsi
+                                ? _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "uk-text-danger uk-text-small"
+                                    },
+                                    [_vm._v(_vm._s(_vm.errors.provinsi))]
+                                  )
+                                : _vm._e()
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s"
+                          },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "uk-form-label label-joinasvendor"
+                              },
+                              [_vm._v("Kabupaten/Kota *")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "uk-form-controls" }, [
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.forms.kabupaten,
+                                      expression: "forms.kabupaten"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "uk-width-1-1 uk-select form-joinasvendor",
+                                  on: {
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.forms,
+                                          "kabupaten",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      },
+                                      function($event) {
+                                        _vm.getKecamatan()
+                                      }
+                                    ]
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "", selected: "" } },
+                                    [_vm._v("-- Pilih Kabupaten --")]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.kabupaten, function(kab) {
+                                    return _c(
+                                      "option",
+                                      { domProps: { value: kab.id } },
+                                      [_vm._v(_vm._s(kab.kabupaten))]
+                                    )
+                                  })
+                                ],
+                                2
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.kabupaten
+                                ? _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "uk-text-danger uk-text-small"
+                                    },
+                                    [_vm._v(_vm._s(_vm.errors.kabupaten))]
+                                  )
+                                : _vm._e()
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s"
+                          },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "uk-form-label label-joinasvendor"
+                              },
+                              [_vm._v("Kecamatan *")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "uk-form-controls" }, [
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.forms.kecamatan,
+                                      expression: "forms.kecamatan"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "uk-width-1-1 uk-select form-joinasvendor",
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.forms,
+                                        "kecamatan",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "", selected: "" } },
+                                    [_vm._v("-- Pilih Kecamatan --")]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.kecamatan, function(kec) {
+                                    return _c(
+                                      "option",
+                                      { domProps: { value: kec.id } },
+                                      [_vm._v(_vm._s(kec.kecamatan))]
+                                    )
+                                  })
+                                ],
+                                2
+                              ),
+                              _vm._v(" "),
+                              _vm.errors.kecamatan
+                                ? _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "uk-text-danger uk-text-small"
+                                    },
+                                    [_vm._v(_vm._s(_vm.errors.kecamatan))]
+                                  )
+                                : _vm._e()
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s"
+                          },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "uk-form-label label-joinasvendor"
+                              },
+                              [_vm._v("Kode Pos")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "uk-form-controls" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.forms.zipcode,
+                                    expression: "forms.zipcode"
+                                  }
+                                ],
+                                staticClass:
+                                  "uk-width-1-1 uk-input form-joinasvendor",
+                                attrs: { type: "number" },
+                                domProps: { value: _vm.forms.zipcode },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.forms,
+                                      "zipcode",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _vm.errors.zipcode
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass: "uk-text-danger uk-text-small"
+                                  },
+                                  [_vm._v(_vm._s(_vm.errors.zipcode))]
+                                )
+                              : _vm._e()
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-width-expand" }, [
+                          _c(
+                            "label",
+                            { staticClass: "uk-form-label label-joinasvendor" },
+                            [_vm._v("Alamat")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "uk-form-controls" }, [
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.forms.address,
+                                  expression: "forms.address"
+                                }
+                              ],
+                              staticClass:
+                                "uk-textarea uk-height-small form-joinasvendor",
+                              domProps: { value: _vm.forms.address },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.forms,
+                                    "address",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _vm.errors.address
+                            ? _c(
+                                "div",
+                                { staticClass: "uk-text-danger uk-text-small" },
+                                [_vm._v(_vm._s(_vm.errors.address))]
+                              )
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "uk-grid-small",
+                        attrs: { "uk-grid": "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                          },
+                          [
+                            _c("div", { staticClass: "uk-margin" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass:
+                                    "uk-form-label label-joinasvendor"
+                                },
+                                [_vm._v("Alamat Email *")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "uk-form-controls" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.forms.vendor_email,
+                                      expression: "forms.vendor_email"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "uk-width-1-1 uk-input form-joinasvendor",
+                                  attrs: { type: "email" },
+                                  domProps: { value: _vm.forms.vendor_email },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.forms,
+                                        "vendor_email",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _vm.errors.vendor_email
+                                ? _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "uk-text-danger uk-text-small"
+                                    },
+                                    [_vm._v(_vm._s(_vm.errors.vendor_email))]
+                                  )
+                                : _vm._e()
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                          },
+                          [
+                            _c("div", { staticClass: "uk-margin" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass:
+                                    "uk-form-label label-joinasvendor"
+                                },
+                                [_vm._v("Kata Sandi *")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "uk-form-controls" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.forms.password,
+                                      expression: "forms.password"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "uk-width-1-1 uk-input form-joinasvendor",
+                                  attrs: {
+                                    type: "password",
+                                    placeholder: "Minimal 8 karakter"
+                                  },
+                                  domProps: { value: _vm.forms.password },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.forms,
+                                        "password",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _vm.errors.password
+                                ? _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "uk-text-danger uk-text-small"
+                                    },
+                                    [_vm._v(_vm._s(_vm.errors.password))]
+                                  )
+                                : _vm._e()
+                            ])
+                          ]
+                        )
+                      ]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "uk-margin" }, [
@@ -69237,18 +70064,39 @@ var staticRenderFns = [
                       {
                         staticClass:
                           "uk-button uk-button-default button-joinasvendor",
-                        attrs: { type: "submit" }
+                        attrs: { type: "submit" },
+                        domProps: { innerHTML: _vm._s(_vm.forms.submit) }
                       },
                       [_vm._v("Daftar")]
                     )
                   ])
-                ])
-              ]
-            )
-          ]
-        )
-      ])
+                ]
+              )
+            ]
+          )
+        ]
+      )
     ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "uk-padding uk-margin-bottom sectionbox-joinasvendor" },
+      [
+        _c("div", [_vm._v("Kami perlu tahu tentang diri Anda")]),
+        _vm._v(" "),
+        _c("span", [
+          _vm._v(
+            "Silahkan lengkapi formulir dengan informasi yang valid. Informasi ini tidak akan muncul di profil Anda"
+          )
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

@@ -47,6 +47,7 @@ Route::group(['prefix' => 'customers'], function() {
 Route::group(['prefix' => 'vendor'], function() {
   Route::get('/', function(){ return redirect()->route('registerpage_vendor'); });
   Route::get('/register', 'Frontend\Vendor\LoginRegisterController@registerpage')->name('registerpage_vendor');
+  Route::post('/doregister', 'Frontend\Vendor\LoginRegisterController@doregister');
 });
 // vendors
 
@@ -97,6 +98,13 @@ Route::group(['prefix' => 'cp'], function() {
       Route::post('/add', 'Administrator\KabupatenController@store');
       Route::put('/update/{id}', 'Administrator\KabupatenController@update');
       Route::delete('/delete/{id}', 'Administrator\KabupatenController@destroy');
+    });
+    Route::group(['prefix' => 'kecamatan'], function() {
+      Route::get('/', 'Administrator\KecamatanController@index')->name('admin_kecamatanpage');
+      Route::get('/data_kecamatan', 'Administrator\KecamatanController@data_kecamatan');
+      Route::post('/add', 'Administrator\KecamatanController@store');
+      Route::put('/update/{id}', 'Administrator\KecamatanController@update');
+      Route::delete('/delete/{id}', 'Administrator\KecamatanController@destroy');
     });
   });
 });

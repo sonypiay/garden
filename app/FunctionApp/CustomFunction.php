@@ -82,4 +82,18 @@ trait CustomFunction {
     $customer = $customer->where('customer_id', $id)->first();
     return $customer;
   }
+
+  public function seoPatternSlice( $s )
+  {
+    $a = ['-',' ','@','#','!','$','^','&','*','(',')','~','`','/','\\','_'];
+    $b = ['-'];
+    $modified = strtolower( str_replace( $a, '-', $s ) );
+    return $modified;
+  }
+
+  public function replaceNumber( $s )
+  {
+    $modified = str_replace('+', '', preg_replace('/^0|^62/i', '', $s));
+    return $modified;
+  }
 }

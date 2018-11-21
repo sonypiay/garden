@@ -12,7 +12,7 @@
   <li class="uk-nav-header">Management</li>
   <li><a href="{{ route('admin_provinsipage') }}">Provinsi</a></li>
   <li><a href="{{ route('admin_kabupatenpage') }}">Kabupaten</a></li>
-  <li><a href="{{ route('admin_provinsipage') }}">Kecamatan</a></li>
+  <li><a href="{{ route('admin_kecamatanpage') }}">Kecamatan</a></li>
   <li><a href="{{ route('admin_bankpayment') }}">Bank Pembayaran</a></li>
   <li><a href="{{ route('admin_bankcustomer') }}">Bank Customer</a></li>
   <li><a href="{{ route('userspage') }}">Users</a></li>
