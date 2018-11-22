@@ -252,6 +252,8 @@ export default {
         this.errors.password = 'Kata sandi minimal 8 karakter.';
         return false;
       }
+
+      this.forms.submit = '<span uk-spinner></span>';
       axios({
         method: 'post',
         url: this.url + '/vendor/doregister',
@@ -271,7 +273,11 @@ export default {
         }
       }).then( res => {
         let result = res.data;
-        console.log(result);
+        this.errors = {};
+        this.errorMessage = '';
+
+        var redirect = this.url + '/';
+        setTimeout(function(){ document.location = redirect; }, 2000);
       }).catch( err => {
         let status = err.response.status;
         if( status === 409 )
@@ -282,6 +288,13 @@ export default {
         {
           this.errorMessage = status + ' ' + err.response.statusText;
         }
+        swal({
+          title: 'Terjadi kesalahan',
+          text: this.errorMessage,
+          icon: 'warning',
+          dangerMode: true,
+          timer: 4000
+        });
         this.forms.submit = 'Daftar';
       });
     }

@@ -69281,6 +69281,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.errors.password = 'Kata sandi minimal 8 karakter.';
         return false;
       }
+
+      this.forms.submit = '<span uk-spinner></span>';
       axios({
         method: 'post',
         url: this.url + '/vendor/doregister',
@@ -69300,7 +69302,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
       }).then(function (res) {
         var result = res.data;
-        console.log(result);
+        _this4.errors = {};
+        _this4.errorMessage = '';
+
+        var redirect = _this4.url + '/';
+        setTimeout(function () {
+          document.location = redirect;
+        }, 2000);
       }).catch(function (err) {
         var status = err.response.status;
         if (status === 409) {
@@ -69308,6 +69316,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         } else {
           _this4.errorMessage = status + ' ' + err.response.statusText;
         }
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this4.errorMessage,
+          icon: 'warning',
+          dangerMode: true,
+          timer: 4000
+        });
         _this4.forms.submit = 'Daftar';
       });
     }

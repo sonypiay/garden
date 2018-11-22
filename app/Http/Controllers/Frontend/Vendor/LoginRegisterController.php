@@ -52,14 +52,6 @@ class LoginRegisterController extends Controller
     $checkphone_fromvendor = $vendors->where('vendor_mobile_private', '=', $phonenumber)->count();
     $checkphone_business = $vendors->where('vendor_mobile_business', '=', $phonenumber_business)->count();
 
-    /*$data = [
-      'email_customer' => $checkemail_fromcustomer,
-      'email_vendor' => $checkemail_fromvendor,
-      'phone_customer' => $checkphone_fromcustomer,
-      'phone_business_customer' => $checkphone_business_fromcustomer,
-      'phone_vendor' => $checkphone_fromvendor,
-      'phone_business' => $checkphone_business
-    ];*/
     if( $checkemail_fromcustomer == 1 )
     {
       $res = [
@@ -97,6 +89,34 @@ class LoginRegisterController extends Controller
     }
     else
     {
+      $date = date('Y-m-d H:i:s');
+      $vendors = new $vendors;
+      $vendors->vendor_name = $vendor_name;
+      $vendors->vendor_mobile_private = $phonenumber;
+      $vendors->vendor_mobile_business = $phonenumber_business;
+      $vendors->vendor_region = $region;
+      $vendors->vendor_district = $district;
+      $vendors->vendor_subdistrict = $subdistrict;
+      $vendors->vendor_address = $address;
+      $vendors->vendor_zipcode = $zipcode;
+      $vendors->vendor_ownername = $vendor_ownername;
+      $vendors->vendor_email_business = $vendor_email;
+      $vendors->vendor_password = Hash::make( $password );
+      $vendors->vendor_registered = $date;
+      $vendors->vendor_slug_name = $slugname;
+      $vendors->save();
+
+      $result = $vendors->select('vendor_id')->where('vendor_email_business', $vendor_email)->first();
+      $expired = time() + 60 * 60 * 24 * 30;
+      $sessiondata = [
+        'vendor_ip' => $request->server('REMOTE_ADDR'),
+        'vendor_agent' => $request->server('HTTP_USER_AGENT'),
+        'vendor_logintime' => date('Y-m-d H:i:s')
+      ];
+      Cookie::queue( Cookie::make('hasLoginVendor', true, $expired, '/') );
+      Cookie::queue( Cookie::make('vendor_id', $result->vendor_id, $expired, '/') );
+      Cookie::queue( Cookie::make('session_vendor', base64_encode( json_encode( $sessiondata ) ), $expired, '/') );
+
       $res = [
         'status' => 200,
         'statusText' => 'success'

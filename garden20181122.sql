@@ -368,18 +368,19 @@ CREATE TABLE `vendors` (
   `vendor_zipcode` int(5) NOT NULL,
   `vendor_verified` enum('N','Y') DEFAULT 'N',
   `vendor_ownername` varchar(255) NOT NULL,
-  `vendor_username` varchar(128) NOT NULL,
+  `vendor_username` varchar(128) DEFAULT NULL,
   `vendor_password` varchar(128) NOT NULL,
   `credits_balance` bigint(20) unsigned DEFAULT '0',
   `vendor_registered` datetime NOT NULL,
   PRIMARY KEY (`vendor_email_business`),
   UNIQUE KEY `vendor_id` (`vendor_id`),
   UNIQUE KEY `vendor_mobile_private` (`vendor_mobile_private`),
-  UNIQUE KEY `vendor_mobile_business` (`vendor_mobile_business`),
-  UNIQUE KEY `vendor_username` (`vendor_username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  UNIQUE KEY `vendor_mobile_business` (`vendor_mobile_business`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `vendors` */
+
+insert  into `vendors`(`vendor_id`,`vendor_name`,`vendor_slug_name`,`vendor_logo`,`vendor_email_business`,`vendor_mobile_private`,`vendor_mobile_business`,`vendor_region`,`vendor_district`,`vendor_subdistrict`,`vendor_address`,`vendor_zipcode`,`vendor_verified`,`vendor_ownername`,`vendor_username`,`vendor_password`,`credits_balance`,`vendor_registered`) values (1,'Garden Buana','garden-buana',NULL,'sonypiay@mail.com','8888888888','8888888888',1,4,2,'kemayoran',10640,'N','Sony Darmawan',NULL,'$2y$10$hJM0ikWz8R8xJZv44ruQaOatQLyV3NpxMYC3sQ./hmVfX32he0VlK',0,'2018-11-22 10:36:23');
 
 /*Table structure for table `withdraw` */
 

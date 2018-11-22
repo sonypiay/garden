@@ -83,6 +83,12 @@ trait CustomFunction {
     return $customer;
   }
 
+  public function getvendors( $vendors, $id )
+  {
+    $vendors = $vendors->where('vendor_id', $id)->first();
+    return $vendors;
+  }
+
   public function seoPatternSlice( $s )
   {
     $a = ['-',' ','@','#','!','$','^','&','*','(',')','~','`','/','\\','_'];

@@ -39,14 +39,9 @@
                   <button class="uk-button uk-button-default findcity-hmpg">Pilih Kota <span class="fas fa-chevron-down"></span> </button>
                   <div class="dropdown-findcity" uk-dropdown="mode: click; pos: right-bottom;">
                     <ul class="uk-nav uk-dropdown-nav">
-                      <li><a href="#">Jakarta</a></li>
-                      <li><a href="#">Bandung</a></li>
-                      <li><a href="#">Bogor</a></li>
-                      <li><a href="#">Bekasi</a></li>
-                      <li><a href="#">Depok</a></li>
-                      <li><a href="#">Tangerang</a></li>
-                      <li><a href="#">Cirebon</a></li>
-                      <li><a href="#">Sukabumi</a></li>
+                      @foreach( $kabupaten as $kab )
+                      <li><a href="#{{ $kab->kode_kab }}">{{ $kab->nama_kab }}</a></li>
+                      @endforeach
                     </ul>
                   </div>
                 </div>
