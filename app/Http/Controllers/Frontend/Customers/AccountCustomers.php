@@ -21,13 +21,16 @@ class AccountCustomers extends Controller
     {
       $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
       return response()->view('frontend.pages.customers.account', [
-        'sessiondata' => $this->get_sessioncustomer(),
+        'request' => $request,
+        'sessiondata' => $this->get_cookiescustomer(),
         'myaccount' => $datacustomer
       ]);
     }
     else
     {
-      return response()->view('frontend.pages.customers.login');
+      return response()->view('frontend.pages.customers.login', [
+        'request' => $request
+      ]);
     }
   }
 
@@ -37,13 +40,16 @@ class AccountCustomers extends Controller
     {
       $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
       return response()->view('frontend.pages.customers.editaccount', [
-        'sessiondata' => $this->get_sessioncustomer(),
+        'request' => $request,
+        'sessiondata' => $this->get_cookiescustomer(),
         'myaccount' => $datacustomer
       ]);
     }
     else
     {
-      return response()->view('frontend.pages.customers.login');
+      return response()->view('frontend.pages.customers.login', [
+        'request' => $request
+      ]);
     }
   }
 
@@ -98,13 +104,16 @@ class AccountCustomers extends Controller
     {
       $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
       return response()->view('frontend.pages.customers.changepassword', [
-        'sessiondata' => $this->get_sessioncustomer(),
+        'request' => $request,
+        'sessiondata' => $this->get_cookiescustomer(),
         'myaccount' => $datacustomer
       ]);
     }
     else
     {
-      return response()->view('frontend.pages.customers.login');
+      return response()->view('frontend.pages.customers.login', [
+        'request' => $request
+      ]);
     }
   }
 
@@ -129,13 +138,16 @@ class AccountCustomers extends Controller
     {
       $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
       return response()->view('frontend.pages.customers.editemail', [
-        'sessiondata' => $this->get_sessioncustomer(),
+        'request' => $request,
+        'sessiondata' => $this->get_cookiescustomer(),
         'myaccount' => $datacustomer
       ]);
     }
     else
     {
-      return response()->view('frontend.pages.customers.login');
+      return response()->view('frontend.pages.customers.login', [
+        'request' => $request
+      ]);
     }
   }
 
@@ -186,13 +198,16 @@ class AccountCustomers extends Controller
     {
       $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
       return response()->view('frontend.pages.customers.edittelepon', [
-        'sessiondata' => $this->get_sessioncustomer(),
+        'request' => $request,
+        'sessiondata' => $this->get_cookiescustomer(),
         'myaccount' => $datacustomer
       ]);
     }
     else
     {
-      return response()->view('frontend.pages.customers.login');
+      return response()->view('frontend.pages.customers.login', [
+        'request' => $request
+      ]);
     }
   }
 
@@ -240,14 +255,17 @@ class AccountCustomers extends Controller
     {
       $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
       return response()->view('frontend.pages.customers.rekeningbank', [
-        'sessiondata' => $this->get_sessioncustomer(),
+        'request' => $request,
+        'sessiondata' => $this->get_cookiescustomer(),
         'myaccount' => $datacustomer,
         'bankcustomer' => $bankcustomer->orderBy('bank_name', 'asc')->get()
       ]);
     }
     else
     {
-      return response()->view('frontend.pages.customers.login');
+      return response()->view('frontend.pages.customers.login', [
+        'request' => $request
+      ]);
     }
   }
 

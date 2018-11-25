@@ -65694,13 +65694,17 @@ window.Vue = __webpack_require__(164);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+// customer
 Vue.component('logincustomer', __webpack_require__(169));
 Vue.component('registercustomer', __webpack_require__(175));
 Vue.component('customerdashboard', __webpack_require__(180));
 Vue.component('customereditaccount', __webpack_require__(183));
+//customer
 
 // vendor
 Vue.component('registervendor', __webpack_require__(201));
+Vue.component('loginvendor', __webpack_require__(233));
 // vendor
 
 var app = new Vue({
@@ -65957,19 +65961,11 @@ var render = function() {
           "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s uk-align-center"
       },
       [
-        _c("img", {
-          staticClass: "customers-loginlogo uk-align-center",
-          attrs: {
-            src: _vm.url + "/images/logobrand/gplogo-white.png",
-            alt: "Garden Buana"
-          }
-        }),
-        _vm._v(" "),
         _c(
           "div",
           {
             staticClass:
-              "uk-card uk-card-body uk-card-default customers-logincontainer"
+              "uk-margin-large-top uk-card uk-card-body uk-card-default customers-logincontainer"
           },
           [
             _c("h3", { staticClass: "uk-text-center customers-loginheading" }, [
@@ -70134,6 +70130,435 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(234)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(236)
+/* template */
+var __vue_template__ = __webpack_require__(237)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/vendors/Login.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7871f95e", Component.options)
+  } else {
+    hotAPI.reload("data-v-7871f95e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(235);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(166)("3b499ea1", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7871f95e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7871f95e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(165)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nhtml, body {\r\n  background: linear-gradient(108deg,\r\n  rgba(246,161,146,1),\r\n  rgba(246,176,146,1)) !important;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 236 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      btnlogin: 'Masuk',
+      errors: {},
+      forms: {
+        email: '',
+        password: '',
+        error: false
+      }
+    };
+  },
+
+  methods: {
+    doLogin: function doLogin() {
+      var _this = this;
+
+      this.errors = {};
+      if (this.forms.email === '') {
+        this.forms.error = true;
+        this.errors.email = 'Silahkan masukkan alamat email Anda.';
+      }
+
+      if (this.forms.password === '') {
+        this.forms.error = true;
+        this.errors.password = 'Silahkan masukkan kata sandi Anda.';
+      }
+
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return this.forms.error;
+      }
+      this.btnlogin = '<span uk-spinner></span>';
+      axios({
+        method: 'post',
+        url: this.url + '/vendor/dologin',
+        headers: { 'Content-Type': 'application/json' },
+        params: {
+          email: this.forms.email,
+          password: this.forms.password
+        }
+      }).then(function (res) {
+        _this.errors.errorMessage = '';
+        var redirect = _this.url + '';
+        setTimeout(function () {
+          document.location = redirect;
+        }, 3000);
+        console.log(res.data);
+      }).catch(function (err) {
+        var statusResponse = err.response.status;
+        if (statusResponse === 401) {
+          _this.errors.errorMessage = err.response.data.statusText;
+        } else {
+          _this.errors.errorMessage = err.response.statusText;
+        }
+        _this.btnlogin = 'Masuk';
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-container uk-margin-top uk-margin-large-bottom" },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s uk-align-center"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-margin-large-top uk-card uk-card-body uk-card-default customers-logincontainer"
+            },
+            [
+              _c(
+                "h3",
+                { staticClass: "uk-text-center customers-loginheading" },
+                [_vm._v("Masuk Vendor")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-text-center customers-loginlead" }, [
+                _vm._v("Belum punya akun? "),
+                _c("a", { attrs: { href: _vm.url + "/vendor/register" } }, [
+                  _vm._v("Daftar sekarang")
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.errors.errorMessage
+                ? _c("span", [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-margin-bottom uk-margin-top uk-alert-danger",
+                        attrs: { "uk-alert": "" }
+                      },
+                      [_vm._v(_vm._s(_vm.errors.errorMessage))]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "uk-form-stacked",
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.doLogin($event)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                        _c("span", {
+                          staticClass: "uk-form-icon",
+                          attrs: { "uk-icon": "user" }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.forms.email,
+                              expression: "forms.email"
+                            }
+                          ],
+                          staticClass:
+                            "uk-width-1-1 uk-input customers-formlogin",
+                          attrs: { type: "email", placeholder: "Alamat Email" },
+                          domProps: { value: _vm.forms.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.forms, "email", $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm.errors.email
+                        ? _c(
+                            "div",
+                            { staticClass: "uk-text-small uk-text-danger" },
+                            [_vm._v(_vm._s(_vm.errors.email))]
+                          )
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                        _c("span", {
+                          staticClass: "uk-form-icon",
+                          attrs: { "uk-icon": "lock" }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.forms.password,
+                              expression: "forms.password"
+                            }
+                          ],
+                          staticClass:
+                            "uk-width-1-1 uk-input customers-formlogin",
+                          attrs: {
+                            type: "password",
+                            placeholder: "Kata Sandi"
+                          },
+                          domProps: { value: _vm.forms.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.forms,
+                                "password",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm.errors.password
+                        ? _c(
+                            "div",
+                            { staticClass: "uk-text-small uk-text-danger" },
+                            [_vm._v(_vm._s(_vm.errors.password))]
+                          )
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-width-1-1 uk-button customers-btnlogin",
+                        domProps: { innerHTML: _vm._s(_vm.btnlogin) }
+                      },
+                      [_vm._v("Masuk")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              )
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin" }, [
+      _c(
+        "a",
+        { staticClass: "uk-float-right lupapassword", attrs: { href: "#" } },
+        [_vm._v("Lupa Kata Sandi?")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7871f95e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

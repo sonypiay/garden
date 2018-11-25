@@ -25,11 +25,72 @@ class LoginRegisterController extends Controller
     else
     {
       return response()->view('frontend.pages.vendors.register', [
+        'request' => $request,
         'getcookie' => $request->cookie(),
         'getsession' => $request->session()
       ]);
     }
   }
+
+  public function loginpage( Request $request )
+  {
+    if( Cookie::get('hasLoginVendor') )
+    {
+    }
+    else
+    {
+      return response()->view('frontend.pages.vendors.login', [
+        'request' => $request,
+        'getcookie' => $request->cookie(),
+        'getsession' => $request->session()
+      ]);
+    }
+  }
+
+  public function dologin( Request $request, Vendors $vendors )
+  {
+    $email = $request->email;
+    $password = $request->password;
+    $vendors = $vendors->where('vendor_email_business', $email);
+    if( $vendors->count() === 1 )
+    {
+      $getvendor = $vendors->first();
+      if( Hash::check( $password, $getvendor->vendor_password ) )
+      {
+        $expired = time() + 60 * 60 * 24 * 30;
+        $sessiondata = [
+          'vendor_ip' => $request->server('REMOTE_ADDR'),
+          'vendor_agent' => $request->server('HTTP_USER_AGENT'),
+          'vendor_logintime' => date('Y-m-d H:i:s')
+        ];
+
+        Cookie::queue( Cookie::make('hasLoginVendor', true, $expired, '/') );
+        Cookie::queue( Cookie::make('vendor_id', $getvendor->vendor_id, $expired, '/') );
+        Cookie::queue( Cookie::make('session_vendor', base64_encode( json_encode( $sessiondata ) ), $expired, '/') );
+
+        $res = [
+          'status' => 200,
+          'statusText' => 'success'
+        ];
+      }
+      else
+      {
+        $res = [
+          'status' => 401,
+          'statusText' => 'Kata sandi salah'
+        ];
+      }
+    }
+    else
+    {
+      $res = [
+        'status' => 401,
+        'statusText' => 'Email tidak terdaftar'
+      ];
+    }
+    return response()->json( $res, $res['status'] );
+  }
+
   public function doregister( Request $request, Vendors $vendors, Customers $customers )
   {
     $vendor_name = $request->vendor_name;
@@ -113,6 +174,7 @@ class LoginRegisterController extends Controller
         'vendor_agent' => $request->server('HTTP_USER_AGENT'),
         'vendor_logintime' => date('Y-m-d H:i:s')
       ];
+
       Cookie::queue( Cookie::make('hasLoginVendor', true, $expired, '/') );
       Cookie::queue( Cookie::make('vendor_id', $result->vendor_id, $expired, '/') );
       Cookie::queue( Cookie::make('session_vendor', base64_encode( json_encode( $sessiondata ) ), $expired, '/') );
@@ -123,5 +185,22 @@ class LoginRegisterController extends Controller
       ];
     }
     return response()->json( $res, $res['status'] );
+  }
+
+  public function logout( Cookie $cookie )
+  {
+    if( $cookie::get('hasLoginVendor') )
+    {
+      $cookie::queue( $cookie::forget('hasLoginVendor') );
+      $cookie::queue( $cookie::forget('vendor_id') );
+      $cookie::queue( $cookie::forget('session_vendor') );
+      session()->flush();
+
+      return redirect()->route('loginpage_vendor');
+    }
+    else
+    {
+      return redirect()->route('loginpage_vendor');
+    }
   }
 }

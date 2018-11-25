@@ -14,13 +14,17 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+// customer
 Vue.component('logincustomer', require('./components/customers/Login.vue'));
 Vue.component('registercustomer', require('./components/customers/Register.vue'));
 Vue.component('customerdashboard', require('./components/customers/Dashboard.vue'));
 Vue.component('customereditaccount', require('./components/customers/SettingAccount.vue'));
+//customer
 
 // vendor
 Vue.component('registervendor', require('./components/vendors/Register.vue'));
+Vue.component('loginvendor', require('./components/vendors/Login.vue'));
 // vendor
 
 const app = new Vue({

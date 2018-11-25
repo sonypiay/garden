@@ -12,6 +12,21 @@ namespace SebastianBergmann\Environment;
 final class Console
 {
     /**
+     * @var int
+     */
+    public const STDIN  = 0;
+
+    /**
+     * @var int
+     */
+    public const STDOUT = 1;
+
+    /**
+     * @var int
+     */
+    public const STDERR = 2;
+
+    /**
      * Returns true if STDOUT supports colorization.
      *
      * This code has been copied and adapted from
@@ -25,10 +40,16 @@ final class Console
 
         if ($this->isWindows()) {
             // @codeCoverageIgnoreStart
-            return (\function_exists('sapi_windows_vt100_support') && @sapi_windows_vt100_support(\STDOUT))
+            return (\defined('STDOUT') && \function_exists('sapi_windows_vt100_support') && @sapi_windows_vt100_support(\STDOUT))
                 || false !== \getenv('ANSICON')
                 || 'ON' === \getenv('ConEmuANSI')
                 || 'xterm' === \getenv('TERM');
+            // @codeCoverageIgnoreEnd
+        }
+
+        if (!\defined('STDOUT')) {
+            // @codeCoverageIgnoreStart
+            return false;
             // @codeCoverageIgnoreEnd
         }
 
@@ -52,7 +73,7 @@ final class Console
             return $this->getNumberOfColumnsWindows();
         }
 
-        if (!$this->isInteractive(\STDIN)) {
+        if (!$this->isInteractive(\defined('STDIN') ? \STDIN : self::STDIN)) {
             return 80;
         }
 
@@ -62,11 +83,14 @@ final class Console
     /**
      * Returns if the file descriptor is an interactive terminal or not.
      *
-     * @param resource $fileDescriptor
+     * Normally, we want to use a resource as a parameter, yet sadly it's not always awailable,
+     * eg when running code in interactive console (`php -a`), STDIN/STDOUT/STDERR constants are not defined.
+     *
+     * @param int|resource $fileDescriptor
      */
-    public function isInteractive($fileDescriptor = \STDOUT): bool
+    public function isInteractive($fileDescriptor = self::STDOUT): bool
     {
-        return (\function_exists('stream_isatty') && @\stream_isatty($fileDescriptor))
+        return (\is_resource($fileDescriptor) && \function_exists('stream_isatty') && @\stream_isatty($fileDescriptor)) // stream_isatty requires that descriptor is a real resource, not numeric ID of it
             || (\function_exists('posix_isatty') && @\posix_isatty($fileDescriptor));
     }
 

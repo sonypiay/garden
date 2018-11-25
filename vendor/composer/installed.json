@@ -640,36 +640,37 @@
     },
     {
         "name": "jakub-onderka/php-console-highlighter",
-        "version": "v0.3.2",
-        "version_normalized": "0.3.2.0",
+        "version": "v0.4",
+        "version_normalized": "0.4.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/JakubOnderka/PHP-Console-Highlighter.git",
-            "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5"
+            "reference": "9f7a229a69d52506914b4bc61bfdb199d90c5547"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Highlighter/zipball/7daa75df45242c8d5b75a22c00a201e7954e4fb5",
-            "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5",
+            "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Highlighter/zipball/9f7a229a69d52506914b4bc61bfdb199d90c5547",
+            "reference": "9f7a229a69d52506914b4bc61bfdb199d90c5547",
             "shasum": ""
         },
         "require": {
-            "jakub-onderka/php-console-color": "~0.1",
-            "php": ">=5.3.0"
+            "ext-tokenizer": "*",
+            "jakub-onderka/php-console-color": "~0.2",
+            "php": ">=5.4.0"
         },
         "require-dev": {
             "jakub-onderka/php-code-style": "~1.0",
-            "jakub-onderka/php-parallel-lint": "~0.5",
+            "jakub-onderka/php-parallel-lint": "~1.0",
             "jakub-onderka/php-var-dump-check": "~0.1",
             "phpunit/phpunit": "~4.0",
             "squizlabs/php_codesniffer": "~1.5"
         },
-        "time": "2015-04-20T18:58:01+00:00",
+        "time": "2018-09-29T18:48:56+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "JakubOnderka\\PhpConsoleHighlighter": "src/"
+            "psr-4": {
+                "JakubOnderka\\PhpConsoleHighlighter\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -682,7 +683,8 @@
                 "email": "acci@acci.cz",
                 "homepage": "http://www.acci.cz/"
             }
-        ]
+        ],
+        "description": "Highlight PHP code in terminal"
     },
     {
         "name": "laravel/framework",
@@ -892,17 +894,17 @@
     },
     {
         "name": "league/flysystem",
-        "version": "1.0.48",
-        "version_normalized": "1.0.48.0",
+        "version": "1.0.49",
+        "version_normalized": "1.0.49.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/flysystem.git",
-            "reference": "a6ded5b2f6055e2db97b4b859fdfca2b952b78aa"
+            "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a6ded5b2f6055e2db97b4b859fdfca2b952b78aa",
-            "reference": "a6ded5b2f6055e2db97b4b859fdfca2b952b78aa",
+            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a63cc83d8a931b271be45148fa39ba7156782ffd",
+            "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd",
             "shasum": ""
         },
         "require": {
@@ -932,7 +934,7 @@
             "spatie/flysystem-dropbox": "Allows you to use Dropbox storage",
             "srmklive/flysystem-dropbox-v2": "Allows you to use Dropbox storage for PHP 5 applications"
         },
-        "time": "2018-10-15T13:53:10+00:00",
+        "time": "2018-11-23T23:41:29+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1283,31 +1285,32 @@
     },
     {
         "name": "nunomaduro/collision",
-        "version": "v2.1.0",
-        "version_normalized": "2.1.0.0",
+        "version": "v2.1.1",
+        "version_normalized": "2.1.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nunomaduro/collision.git",
-            "reference": "1149ad9f36f61b121ae61f5f6de820fc77b51e6b"
+            "reference": "b5feb0c0d92978ec7169232ce5d70d6da6b29f63"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nunomaduro/collision/zipball/1149ad9f36f61b121ae61f5f6de820fc77b51e6b",
-            "reference": "1149ad9f36f61b121ae61f5f6de820fc77b51e6b",
+            "url": "https://api.github.com/repos/nunomaduro/collision/zipball/b5feb0c0d92978ec7169232ce5d70d6da6b29f63",
+            "reference": "b5feb0c0d92978ec7169232ce5d70d6da6b29f63",
             "shasum": ""
         },
         "require": {
             "filp/whoops": "^2.1.4",
-            "jakub-onderka/php-console-highlighter": "0.3.*",
+            "jakub-onderka/php-console-highlighter": "0.3.*|0.4.*",
             "php": "^7.1",
             "symfony/console": "~2.8|~3.3|~4.0"
         },
         "require-dev": {
             "laravel/framework": "5.7.*",
+            "nunomaduro/larastan": "^0.3.0",
             "phpstan/phpstan": "^0.10",
             "phpunit/phpunit": "~7.3"
         },
-        "time": "2018-10-03T20:01:54+00:00",
+        "time": "2018-11-21T21:40:54+00:00",
         "type": "library",
         "extra": {
             "laravel": {
@@ -2553,17 +2556,17 @@
     },
     {
         "name": "sebastian/environment",
-        "version": "4.0.0",
-        "version_normalized": "4.0.0.0",
+        "version": "4.0.1",
+        "version_normalized": "4.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/environment.git",
-            "reference": "66691f8e2dc4641909166b275a9a4f45c0e89092"
+            "reference": "febd209a219cea7b56ad799b30ebbea34b71eb8f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/66691f8e2dc4641909166b275a9a4f45c0e89092",
-            "reference": "66691f8e2dc4641909166b275a9a4f45c0e89092",
+            "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/febd209a219cea7b56ad799b30ebbea34b71eb8f",
+            "reference": "febd209a219cea7b56ad799b30ebbea34b71eb8f",
             "shasum": ""
         },
         "require": {
@@ -2572,7 +2575,7 @@
         "require-dev": {
             "phpunit/phpunit": "^7.4"
         },
-        "time": "2018-10-23T05:04:33+00:00",
+        "time": "2018-11-25T09:31:21+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

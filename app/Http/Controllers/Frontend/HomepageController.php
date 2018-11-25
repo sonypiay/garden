@@ -20,26 +20,29 @@ class HomepageController extends Controller
     {
       $customer = $this->getcustomer( new Customers, Cookie::get('customer_id') );
       $data = [
-        'request' => $request->all(),
+        'request' => $request,
         'hasLogin' => true,
-        'users' => $customer
+        'users' => $customer,
+        'sessiondata' => Cookie::get()
       ];
     }
     else if( Cookie::get('hasLoginVendor') )
     {
       $vendors = $this->getvendors( new Vendors, Cookie::get('vendor_id') );
       $data = [
-        'request' => $request->all(),
+        'request' => $request,
         'hasLogin' => true,
-        'users' => $vendors
+        'users' => $vendors,
+        'sessiondata' => Cookie::get()
       ];
     }
     else
     {
       $data = [
-        'request' => $request->all(),
+        'request' => $request,
         'hasLogin' => false,
-        'users' => null
+        'users' => null,
+        'sessiondata' => Cookie::get()
       ];
     }
     $kabupaten = new Kabupaten;

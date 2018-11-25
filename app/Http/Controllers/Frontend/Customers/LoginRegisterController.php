@@ -22,7 +22,11 @@ class LoginRegisterController extends Controller
     }
     else
     {
-      return response()->view('frontend.pages.customers.login');
+      return response()->view('frontend.pages.customers.login', [
+        'request' => $request,
+        'getcookie' => $request->cookie(),
+        'getsession' => $request->session()
+      ]);
     }
   }
 
@@ -35,6 +39,7 @@ class LoginRegisterController extends Controller
     else
     {
       return response()->view('frontend.pages.customers.register', [
+        'request' => $request,
         'getcookie' => $request->cookie(),
         'getsession' => $request->session()
       ]);
@@ -121,18 +126,18 @@ class LoginRegisterController extends Controller
           'cust_logintime' => date('Y-m-d H:i:s')
         ];
 
-        Cookie::queue( Cookie::make('hasLoginCustomers', true, $expired + time(), '/') );
-        Cookie::queue( Cookie::make('customer_id', $result->customer_id, $expired + time(), '/') );
-        Cookie::queue( Cookie::make('sesscustomer', base64_encode( json_encode( $sessiondata ) ), $expired + time(), '/') );
+        Cookie::queue( Cookie::make('hasLoginCustomers', true, $expired, '/') );
+        Cookie::queue( Cookie::make('customer_id', $result->customer_id, $expired, '/') );
+        Cookie::queue( Cookie::make('sesscustomer', base64_encode( json_encode( $sessiondata ) ), $expired, '/') );
         session()->put('sesscustomer', $sessiondata);
 
-        $customerlog = new CustomersActivityLog;
+        /*$customerlog = new CustomersActivityLog;
         $customerlog->log_type = 'register';
         $customerlog->log_description = $email . ' registrasi pada ' . date('Y-m-d H:i:s');
         $customerlog->log_datetime = date('Y-m-d H:i:s');
         $customerlog->log_ip = $request->server('REMOTE_ADDR');
         $customerlog->log_agent = $this->getOSAgent( $request->server('HTTP_USER_AGENT') );
-        $customerlog->save();
+        $customerlog->save();*/
 
         $res = [
           'status' => 200,

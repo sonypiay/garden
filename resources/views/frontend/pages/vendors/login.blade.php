@@ -1,6 +1,6 @@
 @extends('frontend/master')
-@section('headtitle', 'Garden Buana - Pengguna')
+@section('headtitle', 'Garden Buana - Vendor')
 @section('maincontent')
 @include('frontend.includes.navbar-white')
-<logincustomer url="{{ url('/') }}"></logincustomer>
+<loginvendor url="{{ url('/') }}" />
 @endsection

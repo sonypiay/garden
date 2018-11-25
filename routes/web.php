@@ -46,8 +46,11 @@ Route::group(['prefix' => 'customers'], function() {
 // vendors
 Route::group(['prefix' => 'vendor'], function() {
   Route::get('/', function(){ return redirect()->route('registerpage_vendor'); });
+  Route::get('/login', 'Frontend\Vendor\LoginRegisterController@loginpage')->name('loginpage_vendor');
   Route::get('/register', 'Frontend\Vendor\LoginRegisterController@registerpage')->name('registerpage_vendor');
+  Route::get('/logout', 'Frontend\Vendor\LoginRegisterController@logout')->name('logoutvendor');
   Route::post('/doregister', 'Frontend\Vendor\LoginRegisterController@doregister');
+  Route::post('/dologin', 'Frontend\Vendor\LoginRegisterController@dologin');
 });
 // vendors
 

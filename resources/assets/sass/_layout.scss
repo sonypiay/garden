@@ -51,6 +51,25 @@ html,body {
     }
   }
 }
+
+.footer {
+  margin-top: 7em;
+  .footer_links {
+    a {
+      font-family: $font-primary;
+      font-size: 12px;
+      @include fontstyle( 600, normal, normal, 0.4px );
+      margin-right: 15px;
+      color: #888888;
+      text-transform: uppercase;
+      &:hover {
+        color: $logo-color-primary;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
 .cover-homepage {
   .cover-overlay-homepage {
     padding: 0 !important;
