@@ -507,6 +507,8 @@ body {
 .navbarcustomer {
   background: #ffffff;
   border-bottom: 1px solid #e9e9e9;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .navbarcustomer .navtopcustomer li .logo {
@@ -678,14 +680,14 @@ body {
   color: #ffffff;
 }
 
-.navcustsetting {
+.navsidebar {
   -webkit-box-shadow: none;
           box-shadow: none;
   border: 1px solid #e9e9e9;
-  border-radius: 3px;
+  border-top: 0;
 }
 
-.navcustsetting ul .membersince {
+.navsidebar ul .heading {
   color: #555555;
   font-size: 14px;
   font-family: "Nunito", sans-serif;
@@ -694,12 +696,22 @@ body {
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.4px;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  text-align: center;
+  text-align: left;
 }
 
-.navcustsetting ul li a {
+.navsidebar ul .membersince {
+  color: #555555;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: left;
+}
+
+.navsidebar ul li a {
   color: #777777;
   font-size: 12px;
   font-family: "Nunito", sans-serif;
@@ -713,7 +725,7 @@ body {
   letter-spacing: 0.4px;
 }
 
-.navcustsetting ul li a:hover {
+.navsidebar ul li a:hover {
   background: linear-gradient(97deg, #f6a192, #f6b092);
   color: #ffffff;
 }
@@ -722,7 +734,6 @@ body {
   -webkit-box-shadow: none;
           box-shadow: none;
   border: 1px solid #e9e9e9;
-  border-radius: 3px;
 }
 
 .container-settingaccount .content_headingsettingprofile {

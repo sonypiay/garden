@@ -211,6 +211,7 @@ html,body {
 .navbarcustomer {
   background: #ffffff;
   border-bottom: 1px solid #e9e9e9;
+  box-shadow: none;
   .navtopcustomer li {
     .logo { width: 150px; }
     .navcusticon { font-size: 16px !important; }
@@ -335,20 +336,26 @@ html,body {
   }
 }
 
-.navcustsetting {
+.navsidebar {
   box-shadow: none;
   border: 1px solid #e9e9e9;
-  border-radius: 3px;
+  border-top: 0;
   ul {
-    .membersince {
+    .heading {
       color: #555555;
       font-size: 14px;
       font-family: $font-primary;
       text-transform: capitalize !important;
       @include fontstyle(600, normal, normal, 0.4px);
-      margin-bottom: 15px;
-      margin-top: 15px;
-      text-align: center;
+      text-align: left;
+    }
+    .membersince {
+      color: #555555;
+      font-size: 14px; 
+      font-family: $font-primary;
+      text-transform: capitalize !important;
+      @include fontstyle(600, normal, normal, 0.4px);
+      text-align: left;
     }
     li {
       a {
@@ -372,7 +379,6 @@ html,body {
 .container-settingaccount {
   box-shadow: none;
   border: 1px solid #e9e9e9;
-  border-radius: 3px;
   .content_headingsettingprofile {
     color: #777777;
     font-family: $font-primary;

@@ -21,6 +21,7 @@ class LoginRegisterController extends Controller
   {
     if( Cookie::get('hasLoginVendor') )
     {
+      return redirect()->route('accountvendor_page');
     }
     else
     {
@@ -36,6 +37,7 @@ class LoginRegisterController extends Controller
   {
     if( Cookie::get('hasLoginVendor') )
     {
+      return redirect()->route('accountvendor_page');
     }
     else
     {

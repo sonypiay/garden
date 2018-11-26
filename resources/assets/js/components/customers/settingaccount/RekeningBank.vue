@@ -1,5 +1,5 @@
 <template lang="html">
-<div>
+<div class="uk-margin-top">
   <div id="modal_rekeningbank" uk-modal>
     <div class="uk-modal-dialog uk-modal-body uk-padding-large modal-body">
       <a class="uk-modal-close-default" uk-close></a>

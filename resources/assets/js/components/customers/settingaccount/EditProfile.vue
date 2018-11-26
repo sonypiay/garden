@@ -1,5 +1,5 @@
 <template lang="html">
-<div>
+<div class="uk-margin-top">
   <div class="uk-card uk-card-body uk-card-default container-settingaccount">
     <div class="uk-grid-medium" uk-grid>
       <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-1@s">

@@ -1,5 +1,5 @@
 <template lang="html">
-<div>
+<div class="uk-margin-top">
   <div class="uk-card uk-card-body uk-card-default container-settingaccount">
     <div v-if="errors.error" class="uk-alert-danger uk-margin-bottom" uk-alert>
       {{ errors.error }}

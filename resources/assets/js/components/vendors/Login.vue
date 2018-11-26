@@ -86,9 +86,8 @@ export default {
       })
       .then( res => {
         this.errors.errorMessage = '';
-        var redirect = this.url + '';
+        var redirect = this.url + '/vendor/account';
         setTimeout(function(){ document.location = redirect; }, 3000);
-        console.log(res.data);
       })
       .catch( err => {
         let statusResponse = err.response.status;

@@ -51,6 +51,11 @@ Route::group(['prefix' => 'vendor'], function() {
   Route::get('/logout', 'Frontend\Vendor\LoginRegisterController@logout')->name('logoutvendor');
   Route::post('/doregister', 'Frontend\Vendor\LoginRegisterController@doregister');
   Route::post('/dologin', 'Frontend\Vendor\LoginRegisterController@dologin');
+
+  Route::group(['prefix' => 'account'], function() {
+    Route::get('/', 'Frontend\Vendor\AccountVendor@index')->name('accountvendor_page');
+    Route::get('/edit_account', 'Frontend\Vendor\AccountVendor@settingpage')->name('editaccountvendor_page');
+  });
 });
 // vendors
 
