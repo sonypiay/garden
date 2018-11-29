@@ -884,3 +884,29 @@ body {
   font-size: 14px;
 }
 
+.navsetvendor {
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.navsetvendor ul li a {
+  color: #777777;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.navsetvendor ul li a:hover,
+.navsetvendor ul li a:focus {
+  color: #f6a192;
+  border-bottom: 1px solid #f6a192;
+}
+
+.navsetvendor ul .active a {
+  color: #f6a192;
+  border-bottom: 1px solid #f6a192;
+}
+

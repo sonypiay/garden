@@ -25,6 +25,8 @@ Vue.component('customereditaccount', require('./components/customers/SettingAcco
 // vendor
 Vue.component('registervendor', require('./components/vendors/Register.vue'));
 Vue.component('loginvendor', require('./components/vendors/Login.vue'));
+Vue.component('vendoreditaccount', require('./components/vendors/SettingAccount.vue'));
+
 // vendor
 
 const app = new Vue({

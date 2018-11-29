@@ -54,7 +54,15 @@ Route::group(['prefix' => 'vendor'], function() {
 
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Vendor\AccountVendor@index')->name('accountvendor_page');
+    Route::get('/datavendor', 'Frontend\Vendor\AccountVendor@datavendor');
     Route::get('/edit_account', 'Frontend\Vendor\AccountVendor@settingpage')->name('editaccountvendor_page');
+    Route::put('/edit_account', 'Frontend\Vendor\AccountVendor@saveaccount');
+    Route::get('change_password', 'Frontend\Vendor\AccountVendor@change_password')->name('changepasswordvendor_page');
+    Route::put('change_password', 'Frontend\Vendor\AccountVendor@savepassword');
+    Route::get('/edit_email', 'Frontend\Vendor\AccountVendor@edit_email')->name('editemailvendor_page');
+    Route::put('/edit_email', 'Frontend\Vendor\AccountVendor@saveemail');
+    Route::get('/edit_notelepon', 'Frontend\Vendor\AccountVendor@edit_notelepon')->name('editteleponvendor_page');
+    Route::put('/edit_notelepon', 'Frontend\Vendor\AccountVendor@save_notelepon');
   });
 });
 // vendors

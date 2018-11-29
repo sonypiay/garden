@@ -351,7 +351,7 @@ html,body {
     }
     .membersince {
       color: #555555;
-      font-size: 14px; 
+      font-size: 14px;
       font-family: $font-primary;
       text-transform: capitalize !important;
       @include fontstyle(600, normal, normal, 0.4px);
@@ -460,6 +460,31 @@ html,body {
         @include fontstyle(400, normal, normal, 0.6px);
         font-family: $font-primary;
         font-size: 14px;
+      }
+    }
+  }
+}
+
+.navsetvendor {
+  border-bottom: 1px solid #e9e9e9;
+  ul {
+    li {
+      a {
+        color: #777777;
+        @include fontstyle(400, normal, normal, 0.6px);
+        font-family: $font-primary;
+        font-size: 12px;
+        text-transform: capitalize;
+        &:hover, &:focus {
+          color: $logo-color-primary;
+          border-bottom: 1px solid $logo-color-primary;
+        }
+      }
+    }
+    .active {
+      a {
+        color: $logo-color-primary;
+        border-bottom: 1px solid $logo-color-primary;
       }
     }
   }
