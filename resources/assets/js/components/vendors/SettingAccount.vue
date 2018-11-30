@@ -11,6 +11,9 @@
 <div v-else-if="pages === 'edittelepon'">
   <edittelepon :url="url" :vendors="vendors" />
 </div>
+<div v-else-if="pages === 'rekeningpencairan'">
+  <rekeningpencairan :url="url" :vendors="vendors" :bankcustomer="bankcustomer" />
+</div>
 <div v-else>
   no components
 </div>
@@ -21,14 +24,16 @@ import editaccount from '../vendors/settingaccount/EditAccount.vue';
 import changepassword from '../vendors/settingaccount/ChangePassword.vue';
 import editemail from '../vendors/settingaccount/EditEmail.vue';
 import edittelepon from '../vendors/settingaccount/EditTelepon.vue';
+import rekeningpencairan from '../vendors/settingaccount/RekeningPencairan.vue';
 
 export default {
-  props: ['url', 'pages'],
+  props: ['url', 'pages', 'bankcustomer'],
   components: {
     editaccount,
     changepassword,
     editemail,
-    edittelepon
+    edittelepon,
+    rekeningpencairan
   },
   data() {
     return {

@@ -79,7 +79,7 @@
 
 <script>
 export default {
-  props: ['url', 'customers', 'bankcustomer'],
+  props: ['url', 'vendors', 'bankcustomer'],
   data() {
     return {
       forms: {
@@ -155,12 +155,12 @@ export default {
       if( this.forms.edit === true )
       {
         method = 'put';
-        url = this.url + '/customers/account/edit_rekeningbank/' + this.forms.id;
+        url = this.url + '/vendor/account/edit_rekeningbank/' + this.forms.id;
       }
       else
       {
         method = 'post';
-        url = this.url + '/customers/account/addrekeningbank';
+        url = this.url + '/vendor/account/addrekeningbank';
       }
       this.forms.btnsubmit = '<span uk-spinner></span>';
       axios({
@@ -216,7 +216,7 @@ export default {
         {
           axios({
             method: 'delete',
-            url: this.url + '/customers/account/hapusbank/' + id
+            url: this.url + '/vendor/account/hapusbank/' + id
           }).then( res => {
             swal({
               title: 'Berhasil',
@@ -238,7 +238,7 @@ export default {
     getRekeningBank() {
       axios({
         method: 'get',
-        url: this.url + '/customers/account/listrekeningbank'
+        url: this.url + '/vendor/account/listrekeningbank'
       }).then( res => {
         let result = res.data;
         this.rekeningbank.total = result.total;

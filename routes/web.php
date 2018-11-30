@@ -55,14 +55,25 @@ Route::group(['prefix' => 'vendor'], function() {
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Vendor\AccountVendor@index')->name('accountvendor_page');
     Route::get('/datavendor', 'Frontend\Vendor\AccountVendor@datavendor');
+
     Route::get('/edit_account', 'Frontend\Vendor\AccountVendor@settingpage')->name('editaccountvendor_page');
     Route::put('/edit_account', 'Frontend\Vendor\AccountVendor@saveaccount');
+
     Route::get('change_password', 'Frontend\Vendor\AccountVendor@change_password')->name('changepasswordvendor_page');
     Route::put('change_password', 'Frontend\Vendor\AccountVendor@savepassword');
+
     Route::get('/edit_email', 'Frontend\Vendor\AccountVendor@edit_email')->name('editemailvendor_page');
     Route::put('/edit_email', 'Frontend\Vendor\AccountVendor@saveemail');
+
     Route::get('/edit_notelepon', 'Frontend\Vendor\AccountVendor@edit_notelepon')->name('editteleponvendor_page');
-    Route::put('/edit_notelepon', 'Frontend\Vendor\AccountVendor@save_notelepon');
+    Route::put('/edit_mobileprivate', 'Frontend\Vendor\AccountVendor@save_mobileprivate');
+    Route::put('/edit_mobilebusiness', 'Frontend\Vendor\AccountVendor@save_mobilebusiness');
+
+    Route::get('/rekeningpencairan', 'Frontend\Vendor\AccountVendor@rekeningpencairan')->name('rekeningbankvendor_page');
+    Route::get('/listrekeningbank', 'Frontend\Vendor\AccountVendor@listrekeningbank');
+    Route::post('/addrekeningbank', 'Frontend\Vendor\AccountVendor@store_rekeningbank');
+    Route::put('/edit_rekeningbank/{id}', 'Frontend\Vendor\AccountVendor@save_rekeningbank');
+    Route::delete('hapusbank/{id}', 'Frontend\Vendor\AccountVendor@delete_rekeningbank');
   });
 });
 // vendors

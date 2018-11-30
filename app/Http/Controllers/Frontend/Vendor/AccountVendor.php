@@ -11,6 +11,8 @@ use App\Database\Vendors;
 use App\Database\Provinsi;
 use App\Database\Kabupaten;
 use App\Database\Kecamatan;
+use App\Database\VendorBankAccount;
+use App\Database\BankCustomer;
 use App\Http\Controllers\Controller;
 
 class AccountVendor extends Controller
@@ -197,9 +199,220 @@ class AccountVendor extends Controller
     }
   }
 
-  public function save_notelepon( Request $request, Vendors $vendors )
+  public function save_mobileprivate( Request $request, Vendors $vendors )
   {
-    $mobile_private = $request->mobile_private;
-    $mobile_business = $request->mobile_business;
+    $mobile_private = $this->replaceNumber( $request->mobile_private );
+    $vendors = $vendors->where('vendor_id', Cookie::get('vendor_id'))->first();
+    if( $vendors->vendor_mobile_private === $mobile_private )
+    {
+      $vendors->vendor_mobile_private = $mobile_private;
+      $vendors->save();
+      $res = [
+        'status' => 200,
+        'statusText' => 'Perubahan berhasil disimpan'
+      ];
+    }
+    else
+    {
+      $checkphoneprivate = $vendors->where('vendor_mobile_private', $mobile_private)->count();
+      $checkphonebusiness = $vendors->where([
+        ['vendor_mobile_business', $mobile_private],
+        ['vendor_id', '!=', Cookie::get('vendor_id')]
+      ])->count();
+
+      if( $checkphoneprivate === 1 )
+      {
+        $res = [
+          'status' => 409,
+          'statusText' => $mobile_private . ' sudah terdaftar.'
+        ];
+      }
+      else if( $checkphonebusiness === 1 )
+      {
+        $res = [
+          'status' => 409,
+          'statusText' => $mobile_private . ' sudah terdaftar.'
+        ];
+      }
+      else
+      {
+        $vendors->vendor_mobile_private = $mobile_private;
+        $vendors->save();
+        $res = [
+          'status' => 200,
+          'statusText' => 'Perubahan berhasil disimpan'
+        ];
+      }
+    }
+    return response()->json( $res, $res['status'] );
+  }
+
+  public function save_mobilebusiness( Request $request, Vendors $vendors )
+  {
+    $mobile_business = $this->replaceNumber( $request->mobile_business );
+    $vendors = $vendors->where('vendor_id', Cookie::get('vendor_id'))->first();
+    if( $vendors->vendor_mobile_business === $mobile_business )
+    {
+      $vendors->vendor_mobile_business = $mobile_business;
+      $vendors->save();
+      $res = [
+        'status' => 200,
+        'statusText' => 'Perubahan berhasil disimpan'
+      ];
+    }
+    else
+    {
+      $checkphonebusiness = $vendors->where('vendor_mobile_business', $mobile_business)->count();
+      $checkphoneprivate = $vendors->where([
+        ['vendor_mobile_private', $mobile_business],
+        ['vendor_id', '!=', Cookie::get('vendor_id')]
+      ])->count();
+
+      if( $checkphonebusiness === 1 )
+      {
+        $res = [
+          'status' => 409,
+          'statusText' => $mobile_business . ' sudah terdaftar.'
+        ];
+      }
+      else if( $checkphoneprivate === 1 )
+      {
+        $res = [
+          'status' => 409,
+          'statusText' => $mobile_business . ' sudah terdaftar.'
+        ];
+      }
+      else
+      {
+        $vendors->vendor_mobile_business = $mobile_business;
+        $vendors->save();
+        $res = [
+          'status' => 200,
+          'statusText' => 'Perubahan berhasil disimpan'
+        ];
+      }
+    }
+    return response()->json( $res, $res['status'] );
+  }
+
+  public function rekeningpencairan( Request $request, BankCustomer $bankcustomer )
+  {
+    if( Cookie::get('hasLoginVendor') )
+    {
+      $datavendor = $this->getvendors( new Vendors, Cookie::get('vendor_id') );
+      return response()->view('frontend.pages.vendors.rekeningpencairan', [
+        'request' => $request,
+        'sessiondata' => Cookie::get(),
+        'users' => $datavendor,
+        'bankcustomer' => $bankcustomer->orderBy('bank_name', 'asc')->get()
+      ]);
+    }
+    else
+    {
+      return response()->view('frontend.pages.vendors.login', [
+        'request' => $request
+      ]);
+    }
+  }
+
+  public function listrekeningbank( Request $request, VendorBankAccount $rekening )
+  {
+    $rek = $rekening::leftJoin('bankcustomer', 'vendor_bankaccount.bank_id', '=', 'bankcustomer.bank_id')
+    ->where('vendor_id', Cookie::get('vendor_id'))
+    ->get();
+    return response()->json([
+      'total' => $rek->count(),
+      'data' => $rek
+    ], 200);
+  }
+
+  public function store_rekeningbank( Request $request, VendorBankAccount $vendorba )
+  {
+    $bank = $request->bank;
+    $pemilik = $request->pemilik;
+    $rekening = $request->rekening;
+    $vendorba = new $vendorba;
+    $checkrekening = $vendorba->where('account_number', $rekening)->count();
+    $countrekening = $vendorba->where('vendor_id', Cookie::get('vendor_id'))->count();
+    if( $checkrekening === 1 )
+    {
+      $res = [
+        'status' => 409,
+        'statusText' => 'Nomor rekening sudah terdaftar'
+      ];
+    }
+    else if( $countrekening >= 3 )
+    {
+      $res = [
+        'status' => 409,
+        'statusText' => 'Anda hanya bisa menambahkan maksimal 3 rekening bank.'
+      ];
+    }
+    else
+    {
+      $vendorba->bank_id = $bank;
+      $vendorba->account_number = $rekening;
+      $vendorba->ownername = $pemilik;
+      $vendorba->vendor_id = Cookie::get('vendor_id');
+      $vendorba->save();
+      $res = [
+        'status' => 200,
+        'statusText' => 'Rekening baru berhasil ditambah.'
+      ];
+    }
+    return response()->json( $res, $res['status'] );
+  }
+
+  public function save_rekeningbank( Request $request, VendorBankAccount $rekeningvendor , $id )
+  {
+    $bank = $request->bank;
+    $pemilik = $request->pemilik;
+    $rekening = $request->rekening;
+    $getrekening = $rekeningvendor->where('id', $id)->first();
+    if( $rekening == $getrekening->account_number )
+    {
+      $getrekening->bank_id = $bank;
+      $getrekening->ownername = $pemilik;
+      $getrekening->save();
+      $res = [
+        'status' => 200,
+        'statusText' => 'Rekening bank berhasil diperbarui.'
+      ];
+    }
+    else
+    {
+      $checkrekening = $rekeningvendor->where('account_number', $rekening)->count();
+      if( $checkrekening === 1 )
+      {
+        $res = [
+          'status' => 409,
+          'statusText' => 'Nomor rekening sudah terdaftar'
+        ];
+      }
+      else
+      {
+        $getrekening->bank_id = $bank;
+        $getrekening->account_number = $rekening;
+        $getrekening->ownername = $pemilik;
+        $getrekening->save();
+        $res = [
+          'status' => 200,
+          'statusText' => 'Rekening bank berhasil diperbarui.'
+        ];
+      }
+    }
+
+    return response()->json( $res, $res['status'] );
+  }
+
+  public function delete_rekeningbank( Request $request, VendorBankAccount $rekening , $id )
+  {
+    $result = $rekening->where('id', $id)->first();
+    $res = [
+      'status' => 200,
+      'statusText' => 'Rekening ' . $result->account_number . ' berhasil dihapus.'
+    ];
+    $rekening->where('id', $id)->delete();
+    return response()->json($res, $res['status']);
   }
 }

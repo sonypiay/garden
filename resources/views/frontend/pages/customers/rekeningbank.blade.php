@@ -8,7 +8,7 @@
   </div>
   <div class="uk-width-expand">
     <div class="uk-container">
-
+      <customereditaccount url="{{ url('/') }}" page="rekeningbank" :customers="{{ json_encode( $myaccount ) }}" :bankcustomer="{{ json_encode( $bankcustomer ) }}" />
     </div>
   </div>
 </div>

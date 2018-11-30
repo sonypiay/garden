@@ -311,7 +311,7 @@ class AccountCustomers extends Controller
       $customerba->save();
       $res = [
         'status' => 200,
-        'statusText' => 'fekening baru berhasil ditambah.'
+        'statusText' => 'Rekening baru berhasil ditambah.'
       ];
     }
     return response()->json( $res, $res['status'] );
