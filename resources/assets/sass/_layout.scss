@@ -379,6 +379,13 @@ html,body {
 .container-settingaccount {
   box-shadow: none;
   border: 1px solid #e9e9e9;
+  .logobrand-container {
+    background: #f9f9f9;
+    color: #666666;
+    font-family: $font-primary;
+    @include fontstyle(600, normal, normal, 0.4px);
+    border: 2px dashed #dddddd;
+  }
   .content_headingsettingprofile {
     color: #777777;
     font-family: $font-primary;

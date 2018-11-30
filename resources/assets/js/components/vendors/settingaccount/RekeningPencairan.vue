@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="uk-card uk-card-body uk-card-default container-settingaccount">
-    <h3 class="content_headingsettingprofile">Rekening Bank</h3>
+    <h3 class="content_headingsettingprofile">Rekening Pencairan</h3>
     <a class="uk-margin-top uk-margin-bottom uk-button btn_settingaction" @click="addOrUpdateModal()">Tambah Rekening</a>
     <div class="uk-overflow-auto">
       <table class="uk-table uk-table-condensed uk-table-small uk-table-striped uk-table-divider uk-table-middle">

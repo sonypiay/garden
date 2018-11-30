@@ -14,6 +14,9 @@
 <div v-else-if="pages === 'rekeningpencairan'">
   <rekeningpencairan :url="url" :vendors="vendors" :bankcustomer="bankcustomer" />
 </div>
+<div v-else-if="pages === 'brandinglogo'">
+  <brandinglogo :url="url" :vendors="vendors" />
+</div>
 <div v-else>
   no components
 </div>
@@ -25,6 +28,7 @@ import changepassword from '../vendors/settingaccount/ChangePassword.vue';
 import editemail from '../vendors/settingaccount/EditEmail.vue';
 import edittelepon from '../vendors/settingaccount/EditTelepon.vue';
 import rekeningpencairan from '../vendors/settingaccount/RekeningPencairan.vue';
+import brandinglogo from '../vendors/settingaccount/BrandingLogo.vue';
 
 export default {
   props: ['url', 'pages', 'bankcustomer'],
@@ -33,7 +37,8 @@ export default {
     changepassword,
     editemail,
     edittelepon,
-    rekeningpencairan
+    rekeningpencairan,
+    brandinglogo
   },
   data() {
     return {
@@ -50,6 +55,7 @@ export default {
         email: '',
         mobile_private: '',
         mobile_business: '',
+        logo: '',
         id: 0
       },
     }
@@ -74,6 +80,7 @@ export default {
           email: result.vendor_email_business,
           mobile_private: result.vendor_mobile_private,
           mobile_business: result.vendor_mobile_business,
+          logo: result.vendor_logo,
           id: result.vendor_id
         };
       }).catch( err => {

@@ -73,7 +73,10 @@ Route::group(['prefix' => 'vendor'], function() {
     Route::get('/listrekeningbank', 'Frontend\Vendor\AccountVendor@listrekeningbank');
     Route::post('/addrekeningbank', 'Frontend\Vendor\AccountVendor@store_rekeningbank');
     Route::put('/edit_rekeningbank/{id}', 'Frontend\Vendor\AccountVendor@save_rekeningbank');
-    Route::delete('hapusbank/{id}', 'Frontend\Vendor\AccountVendor@delete_rekeningbank');
+    Route::delete('/hapusbank/{id}', 'Frontend\Vendor\AccountVendor@delete_rekeningbank');
+
+    Route::get('/brandinglogo', 'Frontend\Vendor\AccountVendor@brandinglogo')->name('brandinglogovendor_page');
+    Route::post('/brandinglogo', 'Frontend\Vendor\AccountVendor@uploadlogo');
   });
 });
 // vendors

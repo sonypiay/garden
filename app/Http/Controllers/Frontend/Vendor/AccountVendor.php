@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\FunctionApp\CustomFunction;
 use App\Database\Vendors;
 use App\Database\Provinsi;
@@ -414,5 +415,63 @@ class AccountVendor extends Controller
     ];
     $rekening->where('id', $id)->delete();
     return response()->json($res, $res['status']);
+  }
+
+  public function brandinglogo( Request $request )
+  {
+    if( Cookie::get('hasLoginVendor') )
+    {
+      $datavendor = $this->getvendors( new Vendors, Cookie::get('vendor_id') );
+      return response()->view('frontend.pages.vendors.brandinglogo', [
+        'request' => $request,
+        'sessiondata' => Cookie::get(),
+        'users' => $datavendor
+      ]);
+    }
+    else
+    {
+      return response()->view('frontend.pages.vendors.login', [
+        'request' => $request
+      ]);
+    }
+  }
+
+  public function uploadlogo( Request $request, Vendors $vendors )
+  {
+    $logo = $request->file('logo');
+    $getfilename = $logo->getClientOriginalName();
+    $getsize = $logo->getClientSize();
+    if( $getsize > 1024000 )
+    {
+      $res = [
+        'status' => 413,
+        'statusText' => 'Ukuran gambar terlalu besar. Makmsimal 1MB'
+      ];
+    }
+    else
+    {
+      $storage = Storage::disk('imagestorage');
+      $vendor = $vendors->where('vendor_id', Cookie::get('vendor_id'))->first();
+      if( $vendor->vendor_logo === '' )
+      {
+        $storage->putAsFile('vendor/logobrand', $logo, $getfilename);
+      }
+      else
+      {
+        if( $storage->exists('vendor/logobrand/' . $vendor->vendor_logo) )
+        {
+          $storage->delete('vendor/logobrand/' . $vendor->vendor_logo);
+        }
+        $storage->putFileAs('vendor/logobrand', $logo, $getfilename);
+      }
+      $vendor->vendor_logo = $getfilename;
+      $vendor->save();
+
+      $res = [
+        'status' => 200,
+        'statusText' => 'Logo berhasil diupload.'
+      ];
+    }
+    return response()->json( $res );
   }
 }

@@ -70585,6 +70585,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vendors_settingaccount_EditTelepon_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vendors_settingaccount_EditTelepon_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vendors_settingaccount_RekeningPencairan_vue__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vendors_settingaccount_RekeningPencairan_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vendors_settingaccount_RekeningPencairan_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vendors_settingaccount_BrandingLogo_vue__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vendors_settingaccount_BrandingLogo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__vendors_settingaccount_BrandingLogo_vue__);
 //
 //
 //
@@ -70606,6 +70608,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -70620,7 +70626,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     changepassword: __WEBPACK_IMPORTED_MODULE_1__vendors_settingaccount_ChangePassword_vue___default.a,
     editemail: __WEBPACK_IMPORTED_MODULE_2__vendors_settingaccount_EditEmail_vue___default.a,
     edittelepon: __WEBPACK_IMPORTED_MODULE_3__vendors_settingaccount_EditTelepon_vue___default.a,
-    rekeningpencairan: __WEBPACK_IMPORTED_MODULE_4__vendors_settingaccount_RekeningPencairan_vue___default.a
+    rekeningpencairan: __WEBPACK_IMPORTED_MODULE_4__vendors_settingaccount_RekeningPencairan_vue___default.a,
+    brandinglogo: __WEBPACK_IMPORTED_MODULE_5__vendors_settingaccount_BrandingLogo_vue___default.a
   },
   data: function data() {
     return {
@@ -70637,6 +70644,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         email: '',
         mobile_private: '',
         mobile_business: '',
+        logo: '',
         id: 0
       }
     };
@@ -70664,6 +70672,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           email: result.vendor_email_business,
           mobile_private: result.vendor_mobile_private,
           mobile_business: result.vendor_mobile_business,
+          logo: result.vendor_logo,
           id: result.vendor_id
         };
       }).catch(function (err) {
@@ -72449,7 +72458,17 @@ var render = function() {
                 ],
                 1
               )
-            : _c("div", [_vm._v("\r\n  no components\r\n")])
+            : _vm.pages === "brandinglogo"
+              ? _c(
+                  "div",
+                  [
+                    _c("brandinglogo", {
+                      attrs: { url: _vm.url, vendors: _vm.vendors }
+                    })
+                  ],
+                  1
+                )
+              : _c("div", [_vm._v("\r\n  no components\r\n")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -73023,7 +73042,7 @@ var render = function() {
       },
       [
         _c("h3", { staticClass: "content_headingsettingprofile" }, [
-          _vm._v("Rekening Bank")
+          _vm._v("Rekening Pencairan")
         ]),
         _vm._v(" "),
         _c(
@@ -73135,6 +73154,378 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-7ab62b16", module.exports)
+  }
+}
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(257)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(259)
+/* template */
+var __vue_template__ = __webpack_require__(260)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/vendors/settingaccount/BrandingLogo.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e394dda6", Component.options)
+  } else {
+    hotAPI.reload("data-v-e394dda6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(258);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(166)("79afb373", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e394dda6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BrandingLogo.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e394dda6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BrandingLogo.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(165)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 259 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'vendors'],
+  data: function data() {
+    return {
+      errors: {},
+      errorMessage: '',
+      forms: {
+        logo: '',
+        logoAsUrl: '',
+        error: false,
+        submit: 'Ganti Logo'
+      }
+    };
+  },
+
+  methods: {
+    onUploadLogo: function onUploadLogo() {
+      var _this = this;
+
+      this.errors = {};
+      this.errorMessage = '';
+      if (this.forms.logo === '') {
+        this.errorMessage = 'Silahkan masukkan gambar terlebih dahulu.';
+      } else {
+        var formdata = new FormData();
+        formdata.append('logo', this.forms.logo);
+        axios.post(this.url + '/vendor/account/brandinglogo', formdata).then(function (res) {
+          swal({
+            title: 'Berhasil',
+            text: res.data.statusText,
+            icon: 'success',
+            timer: 5000
+          });
+          _this.forms.logo = '';
+          _this.forms.logoAsUrl = _this.vendors.logo;
+          formdata.delete('logo');
+          setTimeout(function () {
+            document.location = '';
+          }, 3000);
+        }).catch(function (err) {
+          var status = err.response.status;
+          if (status === 413) {
+            _this.errorMessage = err.response.data.statusText;
+            swal({
+              title: 'Terjadi kesalahan',
+              text: _this.errorMessage,
+              icon: 'warning',
+              timer: 5000,
+              dangerMode: true
+            });
+          } else {
+            _this.errorMessage = err.response.statusText;
+            swal({
+              title: 'Terjadi kesalahan',
+              text: _this.errorMessage,
+              icon: 'error',
+              timer: 5000,
+              dangerMode: true
+            });
+          }
+        });
+      }
+    },
+    getFormatFile: function getFormatFile(files) {
+      var length_str_file = files.length;
+      var getIndex = files.lastIndexOf(".");
+      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    selectedFile: function selectedFile(event) {
+      this.forms.logo = event.target.files[0];
+      if (this.getFormatFile(this.forms.logo.name) !== 'png' && this.getFormatFile(this.forms.logo.name) !== 'jpg') {
+        this.forms.logo = '';
+        this.errorMessage = 'Format file hanya JPG/PNG';
+      } else {
+        this.forms.logoAsUrl = URL.createObjectURL(this.forms.logo);
+        console.log(this.forms);
+      }
+    }
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "uk-margin-top" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "uk-card uk-card-default uk-card-body container-settingaccount"
+      },
+      [
+        _c("h3", { staticClass: "content_headingsettingprofile" }, [
+          _vm._v("Logo")
+        ]),
+        _vm._v(" "),
+        _vm.errorMessage
+          ? _c(
+              "div",
+              { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
+              [_vm._v(_vm._s(_vm.errorMessage))]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "uk-form-action",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.onUploadLogo($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "uk-margin" }, [
+              _vm.vendors.logo
+                ? _c("div", [
+                    _vm.forms.logo
+                      ? _c("div", [
+                          _c("img", {
+                            staticClass: "uk-width-1-4",
+                            attrs: { src: _vm.forms.logoAsUrl }
+                          })
+                        ])
+                      : _c("div", [
+                          _c("img", {
+                            staticClass: "uk-width-1-4",
+                            attrs: {
+                              src:
+                                _vm.url +
+                                "/images/vendor/logobrand/" +
+                                _vm.vendors.logo,
+                              alt: _vm.vendors.logo
+                            }
+                          })
+                        ])
+                  ])
+                : _c("div", [
+                    _vm.forms.logo
+                      ? _c("div", [
+                          _c("img", {
+                            staticClass: "uk-width-1-4",
+                            attrs: { src: _vm.forms.logoAsUrl }
+                          })
+                        ])
+                      : _c("div", [_vm._m(0)])
+                  ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "uk-form-controls" }, [
+                _c("div", { attrs: { "uk-form-custom": "target: true" } }, [
+                  _c("input", {
+                    attrs: { type: "file", id: "selectedFile" },
+                    on: { change: _vm.selectedFile }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "uk-input uk-form-width-medium",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Select file",
+                      disabled: ""
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.errors.logo
+                ? _c("div", { staticClass: "uk-text-danger uk-text-small" }, [
+                    _vm._v(_vm._s(_vm.errors.logo))
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "uk-button uk-button-default btn_settingaction",
+                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                },
+                [_vm._v("Ganti Logo")]
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "uk-width-1-5 uk-tile uk-tile-default logobrand-container"
+      },
+      [
+        _c("div", { staticClass: "uk-position-center uk-text-center" }, [
+          _vm._v("\n                JPG / PNG "),
+          _c("br"),
+          _vm._v(" 2 MB\n              ")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e394dda6", module.exports)
   }
 }
 
