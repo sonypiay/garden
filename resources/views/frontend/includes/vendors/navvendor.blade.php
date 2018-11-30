@@ -11,7 +11,7 @@
     <li><a href="#">Transaksi</a></li>
     <li><a href="#">Menunggu Pembayaran</a></li>
     <li class="uk-nav-divider"></li>
-    <li class="uk-nav-header heading">Pengaturan</li>
     <li><a href="{{ route('editaccountvendor_page') }}">Pengaturan Vendor</a></li>
+    <li><a href="{{ route('logoutvendor') }}">Keluar</a></li>
   </ul>
 </nav>

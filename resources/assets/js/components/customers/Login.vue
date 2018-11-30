@@ -3,7 +3,7 @@
   <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s uk-align-center">
     <!--<a :href="url"><img :src="url + '/images/logobrand/gplogo-white.png'" class="customers-loginlogo uk-align-center" alt="Garden Buana"></a>-->
     <div class="uk-margin-large-top uk-card uk-card-body uk-card-default customers-logincontainer">
-      <h3 class="uk-text-center customers-loginheading">Masuk</h3>
+      <h3 class="uk-text-center customers-loginheading">Masuk Pengguna</h3>
       <div class="uk-text-center customers-loginlead">Belum punya akun? <a :href="url + '/customers/register'">Daftar sekarang</a> </div>
       <span v-if="errors.errorMessage">
         <div class="uk-margin-bottom uk-margin-top uk-alert-danger" uk-alert>{{ errors.errorMessage }}</div>

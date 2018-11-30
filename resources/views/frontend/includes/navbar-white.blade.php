@@ -44,8 +44,7 @@
               <li><a href="#">Kotak Pesan</a></li>
               <li><a href="#">Pesanan</a></li>
               <li class="uk-nav-divider"></li>
-              <li><a href="#">Pengaturan Vendor</a></li>
-              <li><a href="#">Edit Profil &amp; Pengaturan</a></li>
+              <li><a href="{{ route('editaccountvendor_page') }}">Pengaturan Vendor</a></li>
               <li><a href="{{ route('logoutvendor') }}">Keluar</a></li>
             </ul>
           </div>

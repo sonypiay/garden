@@ -65971,7 +65971,7 @@ var render = function() {
           },
           [
             _c("h3", { staticClass: "uk-text-center customers-loginheading" }, [
-              _vm._v("Masuk")
+              _vm._v("Masuk Pengguna")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "uk-text-center customers-loginlead" }, [
