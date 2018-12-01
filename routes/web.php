@@ -12,7 +12,7 @@
 */
 // Route frontend
 Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
-
+Route::get('/discovery', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');
 // customers
 Route::group(['prefix' => 'customers'], function() {
   Route::get('/', function(){ return redirect()->route('accountcustomer_page'); });

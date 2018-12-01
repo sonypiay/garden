@@ -26,8 +26,9 @@ Vue.component('customereditaccount', require('./components/customers/SettingAcco
 Vue.component('registervendor', require('./components/vendors/Register.vue'));
 Vue.component('loginvendor', require('./components/vendors/Login.vue'));
 Vue.component('vendoreditaccount', require('./components/vendors/SettingAccount.vue'));
-
 // vendor
+
+Vue.component('discoveryvendor', require('./components/DiscoveryVendor.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -497,3 +497,43 @@ html,body {
   }
 }
 // vendors
+
+.coverbg {
+  height: 300px;
+  .coverbg-overlay {
+    background: linear-gradient(97deg,
+      rgba(0,0,0,0.8),
+      rgba(0,0,0,0.3),
+      rgba(0,0,0,0.1)
+    );
+    .coverbg-heading {
+      color: $f6a192;
+      font-family: $font-primary;
+      @include fontstyle(700, normal, normal, 0.4px);
+      font-size: 72px;
+      margin-bottom: 1.2em;
+      margin-left: 1.1em;
+    }
+  }
+}
+.discovery-container {
+  .discoverysearch {
+    margin-top: -1.7em;
+    .searchdiscovery {
+      border: 0;
+      border-radius: 4px;
+      color: #666666;
+      font-family: $font-primary;
+      font-size: 14px;
+      height: 55px;
+      @include fontstyle(400, normal, normal, 0.8px);
+      &::placeholder {
+        color: #999999;
+      }
+      &:hover, &:focus {
+        &::placeholder { color: #666666; }
+        color: #666666;
+      }
+    }
+  }
+}

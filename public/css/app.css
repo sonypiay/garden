@@ -921,3 +921,72 @@ body {
   border-bottom: 1px solid #f6a192;
 }
 
+.coverbg {
+  height: 300px;
+}
+
+.coverbg .coverbg-overlay {
+  background: linear-gradient(97deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+}
+
+.coverbg .coverbg-overlay .coverbg-heading {
+  color: #f6a192;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  font-size: 72px;
+  margin-bottom: 1.2em;
+  margin-left: 1.1em;
+}
+
+.discovery-container .discoverysearch {
+  margin-top: -1.7em;
+}
+
+.discovery-container .discoverysearch .searchdiscovery {
+  border: 0;
+  border-radius: 4px;
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  height: 55px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.discovery-container .discoverysearch .searchdiscovery::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.discovery-container .discoverysearch .searchdiscovery::-ms-input-placeholder {
+  color: #999999;
+}
+
+.discovery-container .discoverysearch .searchdiscovery::placeholder {
+  color: #999999;
+}
+
+.discovery-container .discoverysearch .searchdiscovery:hover,
+.discovery-container .discoverysearch .searchdiscovery:focus {
+  color: #666666;
+}
+
+.discovery-container .discoverysearch .searchdiscovery:hover::-webkit-input-placeholder,
+.discovery-container .discoverysearch .searchdiscovery:focus::-webkit-input-placeholder {
+  color: #666666;
+}
+
+.discovery-container .discoverysearch .searchdiscovery:hover::-ms-input-placeholder,
+.discovery-container .discoverysearch .searchdiscovery:focus::-ms-input-placeholder {
+  color: #666666;
+}
+
+.discovery-container .discoverysearch .searchdiscovery:hover::placeholder,
+.discovery-container .discoverysearch .searchdiscovery:focus::placeholder {
+  color: #666666;
+}
+
