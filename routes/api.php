@@ -24,6 +24,7 @@ Route::group(['prefix' => 'provinsi'], function() {
 Route::group(['prefix' => 'kabupaten'], function() {
   Route::get('/', 'Api\KabupatenApi@all');
   Route::get('/all', 'Api\KabupatenApi@all');
+  Route::get('/search/{kab}', 'Api\KabupatenApi@searchKabupaten');
   Route::get('/provinsi/{id}', 'Api\KabupatenApi@byProvinsi');
 });
 Route::group(['prefix' => 'kecamatan'], function() {

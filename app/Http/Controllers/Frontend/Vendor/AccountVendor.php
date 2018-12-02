@@ -19,6 +19,7 @@ use App\Http\Controllers\Controller;
 class AccountVendor extends Controller
 {
   use CustomFunction;
+  
   public function index( Request $request )
   {
     if( Cookie::get('hasLoginVendor') )
@@ -27,7 +28,7 @@ class AccountVendor extends Controller
       return response()->view('frontend.pages.vendors.account', [
         'request' => $request,
         'sessiondata' => Cookie::get(),
-        'users' => $datavendor
+        'myaccount' => $datavendor
       ]);
     }
     else
@@ -46,7 +47,7 @@ class AccountVendor extends Controller
       return response()->view('frontend.pages.vendors.editaccount', [
         'request' => $request,
         'sessiondata' => Cookie::get(),
-        'users' => $datavendor
+        'myaccount' => $datavendor
       ]);
     }
     else
@@ -98,7 +99,7 @@ class AccountVendor extends Controller
       return response()->view('frontend.pages.vendors.changepassword', [
         'request' => $request,
         'sessiondata' => Cookie::get(),
-        'users' => $datavendor
+        'myaccount' => $datavendor
       ]);
     }
     else
@@ -130,7 +131,7 @@ class AccountVendor extends Controller
       return response()->view('frontend.pages.vendors.editemail', [
         'request' => $request,
         'sessiondata' => Cookie::get(),
-        'users' => $datavendor
+        'myaccount' => $datavendor
       ]);
     }
     else
@@ -189,7 +190,7 @@ class AccountVendor extends Controller
       return response()->view('frontend.pages.vendors.edittelepon', [
         'request' => $request,
         'sessiondata' => Cookie::get(),
-        'users' => $datavendor
+        'myaccount' => $datavendor
       ]);
     }
     else
@@ -304,7 +305,7 @@ class AccountVendor extends Controller
       return response()->view('frontend.pages.vendors.rekeningpencairan', [
         'request' => $request,
         'sessiondata' => Cookie::get(),
-        'users' => $datavendor,
+        'myaccount' => $datavendor,
         'bankcustomer' => $bankcustomer->orderBy('bank_name', 'asc')->get()
       ]);
     }
@@ -425,7 +426,7 @@ class AccountVendor extends Controller
       return response()->view('frontend.pages.vendors.brandinglogo', [
         'request' => $request,
         'sessiondata' => Cookie::get(),
-        'users' => $datavendor
+        'myaccount' => $datavendor
       ]);
     }
     else
@@ -439,7 +440,7 @@ class AccountVendor extends Controller
   public function uploadlogo( Request $request, Vendors $vendors )
   {
     $logo = $request->file('logo');
-    $getfilename = $logo->getClientOriginalName();
+    $getfilename = md5() . $logo->getClientOriginalName();
     $getsize = $logo->getClientSize();
     if( $getsize > 1024000 )
     {

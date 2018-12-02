@@ -23,4 +23,11 @@ class KabupatenApi extends Controller
     ->orderBy('nama_kab', 'asc')->get();
     return KabupatenResource::collection( $query );
   }
+
+  public function searchKabupaten( Request $request, Kabupaten $kabupaten, $kab ) {
+    $kabupaten = new $kabupaten;
+    $query = $kabupaten->where('nama_kab', 'like', '%' . $kab . '%')
+    ->orderBy('nama_kab', 'asc')->get();
+    return KabupatenResource::collection( $query );
+  }
 }

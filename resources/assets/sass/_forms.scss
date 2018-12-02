@@ -68,3 +68,64 @@
     @include fontstyle(400, normal, normal, 0.4px);
   }
 }
+
+.form-settinglabel {
+  color: #777777;
+  font-family: $font-primary;
+  font-size: 12px;
+  @include fontstyle(400, normal, normal, 0.6px);
+}
+.form-settingaction {
+  border-radius: 4px;
+  color: #777777;
+  font-family: $font-primary;
+  font-size: 12px;
+  @include fontstyle(400, normal, normal, 0.6px);
+  &::placeholder { color: #777777; }
+  &:hover, &:focus {
+    &::placeholder { color: #444444; }
+    color: #444444;
+    border: 1px solid $f6b092;
+  }
+}
+.btn_settingaction, .btn_uploadphoto {
+  border: 0;
+  border-radius: 4px;
+  font-family: $font-primary;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+  text-transform: capitalize;
+  @include fontstyle(600, normal, normal, 0.6px);
+  &:hover, &:focus {
+    border: 0;
+    color: #ffffff;
+    background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+  }
+}
+
+.searchform {
+  border: 1px solid #dddddd;
+  border-radius: 2px;
+  color: #333333 !important;
+  font-family: $font-primary;
+  font-size: 14px;
+  @include fontstyle(400, normal, normal, 0.4px);
+  &:hover, &:focus {
+    border: 1px solid $logo-color-primary;
+  }
+}
+.buttonaction {
+  border-radius: 2px;
+  font-family: $font-primary;
+  font-size: 14px;
+  color: #ffffff;
+  background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+  border: 1px solid $logo-color-primary;
+  text-transform: capitalize;
+  @include fontstyle(400, normal, normal, 0.4px);
+  &:hover, &:focus {
+    color: #ffffff;
+    border: 1px solid $logo-color-primary;
+  }
+}

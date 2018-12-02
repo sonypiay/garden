@@ -12,7 +12,13 @@
 */
 // Route frontend
 Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
-Route::get('/discovery', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');
+
+Route::group(['prefix' => 'discovery'], function() {
+  Route::get('/', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');
+  Route::get('/vendor/{id}', 'Frontend\DiscoveryVendor@selectvendor')->name('detailvendor_page');
+  Route::get('/vendors', 'Frontend\DiscoveryVendor@discovervendor');
+});
+
 // customers
 Route::group(['prefix' => 'customers'], function() {
   Route::get('/', function(){ return redirect()->route('accountcustomer_page'); });
@@ -77,6 +83,13 @@ Route::group(['prefix' => 'vendor'], function() {
 
     Route::get('/brandinglogo', 'Frontend\Vendor\AccountVendor@brandinglogo')->name('brandinglogovendor_page');
     Route::post('/brandinglogo', 'Frontend\Vendor\AccountVendor@uploadlogo');
+  });
+
+  Route::group(['prefix' => 'portfolio'], function() {
+    Route::get('/', 'Frontend\Vendor\PortfolioController@index')->name('vendorportfolio_page');
+    Route::get('/list', 'Frontend\Vendor\PortfolioController@listportfolio');
+    Route::post('/add', 'Frontend\Vendor\PortfolioController@store_portfolio');
+    Route::put('/update/{id}', 'Frontend\Vendor\PortfolioController@save_portfolio');
   });
 });
 // vendors

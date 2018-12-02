@@ -6,7 +6,7 @@
     <li><a href="#">GardenBuana Pay</a></li>
     <li class="uk-nav-divider"></li>
     <li class="uk-nav-header heading">Akun Saya</li>
-    <li><a href="#">Galeri Portfolio</a></li>
+    <li><a href="{{ route('vendorportfolio_page') }}">Galeri Portfolio</a></li>
     <li><a href="#">Kotak Pesan</a></li>
     <li><a href="#">Transaksi</a></li>
     <li><a href="#">Menunggu Pembayaran</a></li>

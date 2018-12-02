@@ -6,7 +6,7 @@
   <img src="{{ asset('/images/banner/bgcover.jpg') }}" alt="" uk-cover>
   <div class="uk-overlay uk-overlay-primary uk-position-cover coverbg-overlay">
     <div class="uk-position-bottom-left coverbg-heading">
-      Discovery
+      Vendor
     </div>
   </div>
 </div>

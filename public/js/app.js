@@ -65670,8 +65670,8 @@ module.exports = Vue;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(168);
-__webpack_require__(232);
-module.exports = __webpack_require__(233);
+__webpack_require__(237);
+module.exports = __webpack_require__(238);
 
 
 /***/ }),
@@ -65706,9 +65706,11 @@ Vue.component('customereditaccount', __webpack_require__(183));
 Vue.component('registervendor', __webpack_require__(201));
 Vue.component('loginvendor', __webpack_require__(204));
 Vue.component('vendoreditaccount', __webpack_require__(209));
+Vue.component('vendorportfolio', __webpack_require__(269));
 // vendor
 
-Vue.component('discoveryvendor', __webpack_require__(261));
+Vue.component('discoveryvendor', __webpack_require__(232));
+Vue.component('getdetailvendor', __webpack_require__(266));
 
 var app = new Vue({
   el: '#app'
@@ -73493,61 +73495,18 @@ if (false) {
 
 /***/ }),
 /* 232 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 233 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 234 */,
-/* 235 */,
-/* 236 */,
-/* 237 */,
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */,
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(262)
-}
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(264)
+var __vue_script__ = __webpack_require__(235)
 /* template */
-var __vue_template__ = __webpack_require__(265)
+var __vue_template__ = __webpack_require__(236)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -73582,51 +73541,57 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 262 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(263);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(139)("5a0af23f", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6c465b9e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DiscoveryVendor.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6c465b9e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DiscoveryVendor.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 263 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(138)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 264 */
+/* 233 */,
+/* 234 */,
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73658,17 +73623,93 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       searchKeywords: '',
+      kabupaten: {
+        keywords: '',
+        selectedValue: 'allcity',
+        selectedName: 'Semua Kota',
+        results: []
+      },
       vendorsList: {
         total: 0,
         results: []
+      },
+      pagination: {
+        prev: '',
+        next: '',
+        path: '',
+        current: '',
+        last_page: ''
       }
     };
   },
-  mounted: function mounted() {}
+
+  methods: {
+    showKabupaten: function showKabupaten() {
+      var _this = this;
+
+      var url;
+      if (this.kabupaten.keywords === '') {
+        url = this.url + '/api/kabupaten/all';
+      } else {
+        url = this.url + '/api/kabupaten/search/' + this.kabupaten.keywords;
+      }
+      axios({
+        method: 'get',
+        url: url
+      }).then(function (res) {
+        var results = res.data;
+        _this.kabupaten.results = results.data;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    showVendors: function showVendors(pages, city) {
+      var _this2 = this;
+
+      if (city === undefined) {
+        this.kabupaten.selectedValue = 'allcity';
+      } else {
+        this.kabupaten.selectedValue = city.kode;
+      }
+
+      var param = 'keywords=' + this.searchKeywords + '&city=' + this.kabupaten.selectedValue;
+      if (pages === undefined) pages = this.url + '/discovery/vendors?page=1&' + param;else pages = pages + param;
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this2.vendorsList.results = result.data;
+        _this2.vendorsList.total = result.total;
+        _this2.pagination = {
+          prev: result.prev_page_url,
+          next: result.next_page_url,
+          last: result.last_page_url,
+          path: result.path,
+          current: result.current_page,
+          last_page: result.last_page
+        };
+
+        if (_this2.kabupaten.selectedValue === 'allcity') {
+          _this2.kabupaten.selectedValue = 'allcity';
+          _this2.kabupaten.selectedName = 'Semua Kota';
+        } else {
+          _this2.kabupaten.selectedValue = city.kode;
+          _this2.kabupaten.selectedName = city.kabupaten;
+        }
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.showKabupaten();
+    this.showVendors();
+  }
 });
 
 /***/ }),
-/* 265 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73676,52 +73717,1149 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "discovery-container" }, [
-    _c("div", { staticClass: "discoverysearch" }, [
-      _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-        _c("span", {
-          staticClass: "uk-form-icon",
-          attrs: { "uk-icon": "search" }
+    _c(
+      "div",
+      {
+        staticClass: "uk-grid-small uk-margin-large-top",
+        attrs: { "uk-grid": "" }
+      },
+      [
+        _c("div", { staticClass: "uk-width-1-4" }, [
+          _c("h3", { staticClass: "discovery_heading" }, [_vm._v("Lokasi")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+            _c("span", {
+              staticClass: "uk-form-icon",
+              attrs: { "uk-icon": "search" }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.kabupaten.keywords,
+                  expression: "kabupaten.keywords"
+                }
+              ],
+              staticClass:
+                "uk-width-1-1 uk-input uk-box-shadow-small searchkota",
+              attrs: { type: "search", placeholder: "Cari kota" },
+              domProps: { value: _vm.kabupaten.keywords },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  _vm.showKabupaten()
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.kabupaten, "keywords", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "nav",
+            {
+              staticClass:
+                "uk-card uk-card-default uk-margin-small-top discoveryfilter"
+            },
+            [
+              _c(
+                "ul",
+                {
+                  staticClass: "uk-nav uk-nav-default",
+                  attrs: { "uk-nav": "" }
+                },
+                [
+                  _c("li", [
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function($event) {
+                            _vm.showVendors(
+                              _vm.pagination.path +
+                                "?page=" +
+                                _vm.pagination.current +
+                                "&"
+                            )
+                          }
+                        }
+                      },
+                      [_vm._v("Semua Kota")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.kabupaten.results, function(kab) {
+                    return _c("li", [
+                      _c(
+                        "a",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.showVendors(
+                                _vm.pagination.path +
+                                  "?page=" +
+                                  _vm.pagination.current +
+                                  "&",
+                                kab
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(kab.kabupaten))]
+                      )
+                    ])
+                  })
+                ],
+                2
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-width-expand" }, [
+          _c("h3", { staticClass: "discovery_heading" }, [
+            _vm._v("Vendor di " + _vm._s(_vm.kabupaten.selectedName))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-margin-bottom discoverysearch" }, [
+            _c("div", { staticClass: "uk-width-1-2 uk-inline" }, [
+              _c("span", {
+                staticClass: "uk-form-icon",
+                attrs: { "uk-icon": "search" }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.searchKeywords,
+                    expression: "searchKeywords"
+                  }
+                ],
+                staticClass:
+                  "uk-width-1-1 uk-box-shadow-medium uk-input searchdiscovery",
+                attrs: { type: "text", placeholder: "Temukan Vendor" },
+                domProps: { value: _vm.searchKeywords },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !("button" in $event) &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    _vm.showVendors(
+                      _vm.pagination.path +
+                        "?page=" +
+                        _vm.pagination.current +
+                        "&"
+                    )
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.searchKeywords = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "uk-grid-small uk-grid-match",
+              attrs: { "uk-grid": "" }
+            },
+            _vm._l(_vm.vendorsList.results, function(vendor) {
+              return _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card uk-card-default discoverygrid_box"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "uk-card-media-top discoverygrid_logo" },
+                        [
+                          vendor.vendor_logo
+                            ? _c("div", [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href:
+                                        _vm.url +
+                                        "/discovery/vendor/" +
+                                        vendor.vendor_slug_name
+                                    }
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src:
+                                          _vm.url +
+                                          "/images/vendor/logobrand/" +
+                                          vendor.vendor_logo,
+                                        alt: ""
+                                      }
+                                    })
+                                  ]
+                                )
+                              ])
+                            : _c("div", [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-tile uk-tile-default discoverygrid_nologo"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "uk-position-center" },
+                                      [
+                                        _c("a", {
+                                          attrs: {
+                                            href:
+                                              _vm.url +
+                                              "/discovery/vendor/" +
+                                              vendor.vendor_slug_name,
+                                            "uk-icon": "icon: image; ratio: 4"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-card-body uk-card-small" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "uk-card-title discoverygrid_heading",
+                            attrs: {
+                              href:
+                                _vm.url + "/vendor/" + vendor.vendor_slug_name
+                            }
+                          },
+                          [_vm._v(_vm._s(vendor.vendor_name))]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "discoverygrid_subtext" }, [
+                          _vm._v(_vm._s(vendor.nama_kab))
+                        ])
+                      ])
+                    ]
+                  )
+                ]
+              )
+            })
+          )
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6c465b9e", module.exports)
+  }
+}
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(267)
+/* template */
+var __vue_template__ = __webpack_require__(268)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DetailVendor.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-31a153a0", Component.options)
+  } else {
+    hotAPI.reload("data-v-31a153a0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 267 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'vendors'],
+  data: function data() {
+    return {};
+  },
+
+  methods: {},
+  mounted: function mounted() {}
+});
+
+/***/ }),
+/* 268 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "uk-grid-small uk-margin-large-top",
+        attrs: { "uk-grid": "" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-1@s"
+          },
+          [
+            _c("div", { staticClass: "profile-badge-container" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-small uk-card-default pb-badge-header"
+                },
+                [
+                  _vm.vendors.vendor_logo
+                    ? _c("div", { staticClass: "uk-align-center" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              _vm.url +
+                              "/images/vendor/logobrand/" +
+                              _vm.vendors.vendor_logo,
+                            alt: ""
+                          }
+                        })
+                      ])
+                    : _c(
+                        "div",
+                        { staticClass: "uk-text-center uk-align-center" },
+                        [
+                          _c("span", {
+                            attrs: { "uk-icon": "icon: image; ratio: 4" }
+                          })
+                        ]
+                      ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c("div", { staticClass: "pb-badge-vendorname" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href:
+                              _vm.url +
+                              "/discovery/vendor/" +
+                              _vm.vendors.vendor_slug_name
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.vendors.vendor_name))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "pb-badge-vendorlocation" }, [
+                      _vm._v(_vm._s(_vm.vendors.nama_kab))
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-small uk-card-default pb-badge-info"
+                },
+                [
+                  _c("ul", { staticClass: "uk-list pb-listinfo" }, [
+                    _c("li", [
+                      _c("span", {
+                        staticClass: "uk-margin-small-right",
+                        attrs: { "uk-icon": "mail" }
+                      }),
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(_vm.vendors.vendor_email_business) +
+                          "\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("span", {
+                        staticClass: "uk-margin-small-right",
+                        attrs: { "uk-icon": "receiver" }
+                      }),
+                      _vm._v(
+                        "\n              +" +
+                          _vm._s(_vm.vendors.vendor_mobile_business) +
+                          "\n            "
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-width-expand" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-card uk-card-body uk-card-small uk-card-default portfolio-vendor"
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "uk-grid-medium", attrs: { "uk-grid": "" } },
+                _vm._l(12, function(i) {
+                  return _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s"
+                    },
+                    [_vm._m(1, true)]
+                  )
+                })
+              )
+            ]
+          )
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "uk-card uk-card-body uk-card-small uk-card-default pb-badge-action"
+      },
+      [
+        _c("div", { staticClass: "uk-margin-small" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "uk-width-1-1 uk-button uk-button-default pb-btnaction"
+            },
+            [
+              _c("span", { staticClass: "uk-margin-small-right" }, [
+                _c("i", { staticClass: "far fa-comment-alt" })
+              ]),
+              _vm._v(" Kirim Pesan")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-margin-small" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "uk-width-1-1 uk-button uk-button-default pb-btnaction"
+            },
+            [
+              _c("span", { staticClass: "uk-margin-small-right" }, [
+                _c("i", { staticClass: "far fa-bell" })
+              ]),
+              _vm._v(" Pesan")
+            ]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-card uk-card-default pv-images" }, [
+      _c("img", {
+        attrs: {
+          src: "https://getuikit.com/assets/uikit/tests/images/photo.jpg",
+          alt: ""
+        }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-31a153a0", module.exports)
+  }
+}
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(270)
+/* template */
+var __vue_template__ = __webpack_require__(271)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/vendors/Portfolio.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b945d86", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b945d86", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 270 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'vendors'],
+  data: function data() {
+    return {
+      keywords: '',
+      forms: {
+        selectedRows: 9,
+        id: 0,
+        namaportfolio: '',
+        submit: 'Tambah',
+        error: false,
+        edit: false
+      },
+      errorMessage: '',
+      errors: {},
+      portfolios: {
+        total: 0,
+        results: []
+      },
+      pagination: {
+        prev: '',
+        next: '',
+        last: '',
+        current: '',
+        path: this.url + '/vendor/portfolio/list'
+      }
+    };
+  },
+
+  methods: {
+    addOrUpdateModal: function addOrUpdateModal(portfolio) {
+      if (portfolio === undefined) {
+        this.forms.id = '';
+        this.forms.namaportfolio = '';
+        this.forms.submit = 'Tambah';
+        this.forms.error = false;
+        this.forms.edit = false;
+      } else {
+        this.forms.id = portfolio.portfolio_id;
+        this.forms.namaportfolio = portfolio.portfolio_name;
+        this.forms.submit = 'Simpan';
+        this.forms.error = true;
+        this.forms.edit = true;
+      }
+      this.errorMessage = '';
+      this.errors = {};
+      UIkit.modal('#modal').show();
+    },
+    showPortfolio: function showPortfolio(pages) {
+      var _this = this;
+
+      var url;
+      var param = '&keywords=' + this.keywords + '&rows=' + this.forms.selectedRows;
+      if (pages === undefined) {
+        url = this.url + '/vendor/portfolio/list?page=1' + param;
+      } else {
+        url = pages + param;
+      }
+
+      axios({
+        method: 'get',
+        url: url
+      }).then(function (res) {
+        var result = res.data;
+        _this.portfolios.results = result.data;
+        _this.portfolios.total = result.total;
+        _this.pagination = {
+          prev: result.prev_page_url,
+          next: result.next_page_url,
+          last: result.last_page,
+          current: result.current_page,
+          path: result.path
+        };
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    addOrUpdatePortfolio: function addOrUpdatePortfolio() {
+      var _this2 = this;
+
+      this.errors = {};
+      this.errorMessage = '';
+      if (this.forms.namaportfolio === '') {
+        this.errors.namaportfolio = 'Nama portfolio wajib diisi.';
+        this.forms.error = true;
+      }
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return false;
+      }
+
+      var method, url;
+      if (this.forms.edit === true) {
+        method = 'put';
+        url = this.url + '/vendor/portfolio/update/' + this.forms.id;
+      } else {
+        method = 'post';
+        url = this.url + '/vendor/portfolio/add';
+      }
+
+      this.forms.submit = '<span uk-spinner></span>';
+      axios({
+        method: method,
+        url: url,
+        params: {
+          namaportfolio: this.forms.namaportfolio
+        }
+      }).then(function (res) {
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success',
+          timer: 5000
+        });
+        _this2.errors = {};
+        _this2.errorMessage = '';
+        setTimeout(function () {
+          UIkit.modal('#modal').hide();
+        }, 3000);
+        _this2.showPortfolio();
+      }).catch(function (err) {
+        _this2.errorMessage = err.response.statusText;
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this2.errorMessage,
+          icon: 'error',
+          dangerMode: true,
+          timer: 5000
+        });
+        _this2.forms.submit = 'Tambah';
+        if (_this2.forms.edit === true) _this2.forms.submit = 'Simpan';
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.showPortfolio();
+  }
+});
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
+      _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
+        _c("a", {
+          staticClass: "uk-modal-close-default",
+          attrs: { "uk-close": "" }
         }),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.searchKeywords,
-              expression: "searchKeywords"
-            }
-          ],
-          staticClass:
-            "uk-width-1-1 uk-box-shadow-medium uk-input searchdiscovery",
-          attrs: { type: "text", placeholder: "Temukan Vendor" },
-          domProps: { value: _vm.searchKeywords },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("h3", [_vm._v("Tambah Portfolio")]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "uk-form-stacked",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.addOrUpdatePortfolio($event)
               }
-              _vm.searchKeywords = $event.target.value
             }
-          }
-        })
+          },
+          [
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("label", { staticClass: "uk-form-label form-settinglabel" }, [
+                _vm._v("Nama Portfolio")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-form-controls" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.forms.namaportfolio,
+                      expression: "forms.namaportfolio"
+                    }
+                  ],
+                  staticClass: "uk-width-1-1 uk-input form-settingaction",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.forms.namaportfolio },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.forms, "namaportfolio", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "uk-button uk-button-default btn_settingaction",
+                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                },
+                [_vm._v("Tambah")]
+              )
+            ])
+          ]
+        )
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-width-1-6@xl uk-width-1-6@l uk-width-1-6@m uk-width-1-1@s"
+        },
+        [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.forms.selectedRows,
+                  expression: "forms.selectedRows"
+                }
+              ],
+              staticClass: "uk-select form-settingaction",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.forms,
+                    "selectedRows",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "9" } }, [
+                _vm._v("9 ditampilkan")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "18" } }, [
+                _vm._v("18 ditampilkan")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "27" } }, [
+                _vm._v("27 ditampilkan")
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@s uk-width-1-1@s"
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "uk-button uk-button-default buttonaction",
+              on: {
+                click: function($event) {
+                  _vm.addOrUpdateModal()
+                }
+              }
+            },
+            [_vm._v("Tambah Portfolio")]
+          )
+        ]
+      )
     ]),
     _vm._v(" "),
     _c(
       "div",
-      {
-        staticClass: "uk-grid-medium uk-margin-large-top",
-        attrs: { "uk-grid": "" }
-      },
-      _vm._l(10, function(i) {
+      { staticClass: "uk-grid-small uk-grid-match", attrs: { "uk-grid": "" } },
+      _vm._l(_vm.portfolios.results, function(portfolio) {
         return _c(
           "div",
           {
             staticClass:
-              "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s"
+              "uk-width-1-3@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-2@s"
           },
-          [_vm._m(0, true)]
+          [
+            _c(
+              "div",
+              { staticClass: "uk-card uk-card-default portfoliogrid_box" },
+              [
+                _vm._m(1, true),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-card-body uk-card-small" }, [
+                  _c(
+                    "h3",
+                    { staticClass: "uk-card-title portfoliogrid_heading" },
+                    [_vm._v(_vm._s(portfolio.portfolio_name))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "portfoliogrid_action" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "uk-grid-collapse",
+                        attrs: { "uk-grid": "" }
+                      },
+                      [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-3@xl uk-width-1-3@l uk-text-center"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "uk-button uk-button-default uk-button-small portfoliogrid_btnaction",
+                                attrs: { "uk-tooltip": "title: Sunting" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.addOrUpdateModal(portfolio)
+                                  }
+                                }
+                              },
+                              [
+                                _c("span", { attrs: { "uk-icon": "pencil" } }),
+                                _vm._v(" "),
+                                _c("div", [_vm._v("Sunting")])
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(3, true)
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
         )
       })
     )
@@ -73732,26 +74870,87 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-card uk-card-default" }, [
-      _c("div", { staticClass: "uk-card-media-top" }, [
-        _c("img", {
-          attrs: {
-            src: "https://getuikit.com/assets/uikit/tests/images/photo.jpg",
-            alt: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-card-body" }, [
-        _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Media Top")]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
-          )
+    return _c(
+      "div",
+      {
+        staticClass:
+          "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+      },
+      [
+        _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+          _c("span", {
+            staticClass: "uk-form-icon",
+            attrs: { "uk-icon": "search" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "uk-width-1-1 uk-input form-settingaction",
+            attrs: { type: "search", placeholder: "Cari nama portfolio" }
+          })
         ])
-      ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-card-media-top" }, [
+      _c("img", {
+        attrs: {
+          src: "https://getuikit.com/assets/uikit/tests/images/photo.jpg",
+          alt: ""
+        }
+      })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "uk-width-1-3@xl uk-width-1-3@l uk-text-center" },
+      [
+        _c(
+          "button",
+          {
+            staticClass:
+              "uk-button uk-button-default uk-button-small portfoliogrid_btnaction",
+            attrs: { "uk-tooltip": "title: Lihat" }
+          },
+          [
+            _c("span", { attrs: { "uk-icon": "grid" } }),
+            _vm._v(" "),
+            _c("div", [_vm._v("Lihat")])
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "uk-width-1-3@xl uk-width-1-3@l uk-text-center" },
+      [
+        _c(
+          "button",
+          {
+            staticClass:
+              "uk-text-center uk-button uk-button-default uk-button-small portfoliogrid_btnaction",
+            attrs: { "uk-tooltip": "title: Hapus" }
+          },
+          [
+            _c("span", { attrs: { "uk-icon": "trash" } }),
+            _vm._v(" "),
+            _c("div", [_vm._v("Hapus")])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -73759,7 +74958,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6c465b9e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6b945d86", module.exports)
   }
 }
 
