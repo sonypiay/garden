@@ -65670,8 +65670,8 @@ module.exports = Vue;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(168);
-__webpack_require__(237);
-module.exports = __webpack_require__(238);
+__webpack_require__(241);
+module.exports = __webpack_require__(242);
 
 
 /***/ }),
@@ -65706,11 +65706,12 @@ Vue.component('customereditaccount', __webpack_require__(183));
 Vue.component('registervendor', __webpack_require__(201));
 Vue.component('loginvendor', __webpack_require__(204));
 Vue.component('vendoreditaccount', __webpack_require__(209));
-Vue.component('vendorportfolio', __webpack_require__(269));
+Vue.component('vendorportfolio', __webpack_require__(232));
+Vue.component('vendorportfolioimages', __webpack_require__(270));
 // vendor
 
-Vue.component('discoveryvendor', __webpack_require__(232));
-Vue.component('getdetailvendor', __webpack_require__(266));
+Vue.component('discoveryvendor', __webpack_require__(235));
+Vue.component('getdetailvendor', __webpack_require__(238));
 
 var app = new Vue({
   el: '#app'
@@ -73500,9 +73501,675 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(235)
+var __vue_script__ = __webpack_require__(233)
 /* template */
-var __vue_template__ = __webpack_require__(236)
+var __vue_template__ = __webpack_require__(234)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/vendors/Portfolio.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b945d86", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b945d86", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 233 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'vendors'],
+  data: function data() {
+    return {
+      keywords: '',
+      forms: {
+        selectedRows: 9,
+        id: 0,
+        namaportfolio: '',
+        submit: 'Tambah',
+        error: false,
+        edit: false
+      },
+      errorMessage: '',
+      errors: {},
+      portfolios: {
+        total: 0,
+        results: []
+      },
+      pagination: {
+        prev: '',
+        next: '',
+        last: '',
+        current: '',
+        path: this.url + '/vendor/portfolio/list'
+      }
+    };
+  },
+
+  methods: {
+    addOrUpdateModal: function addOrUpdateModal(portfolio) {
+      if (portfolio === undefined) {
+        this.forms.id = '';
+        this.forms.namaportfolio = '';
+        this.forms.submit = 'Tambah';
+        this.forms.error = false;
+        this.forms.edit = false;
+      } else {
+        this.forms.id = portfolio.portfolio_id;
+        this.forms.namaportfolio = portfolio.portfolio_name;
+        this.forms.submit = 'Simpan';
+        this.forms.error = true;
+        this.forms.edit = true;
+      }
+      this.errorMessage = '';
+      this.errors = {};
+      UIkit.modal('#modal').show();
+    },
+    showPortfolio: function showPortfolio(pages) {
+      var _this = this;
+
+      var url;
+      var param = '&keywords=' + this.keywords + '&rows=' + this.forms.selectedRows;
+      if (pages === undefined) {
+        url = this.url + '/vendor/portfolio/list?page=1' + param;
+      } else {
+        url = pages + param;
+      }
+
+      axios({
+        method: 'get',
+        url: url
+      }).then(function (res) {
+        var result = res.data;
+        _this.portfolios.results = result.data;
+        _this.portfolios.total = result.total;
+        _this.pagination = {
+          prev: result.prev_page_url,
+          next: result.next_page_url,
+          last: result.last_page,
+          current: result.current_page,
+          path: result.path
+        };
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    addOrUpdatePortfolio: function addOrUpdatePortfolio() {
+      var _this2 = this;
+
+      this.errors = {};
+      this.errorMessage = '';
+      if (this.forms.namaportfolio === '') {
+        this.errors.namaportfolio = 'Nama portfolio wajib diisi.';
+        this.forms.error = true;
+      }
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return false;
+      }
+
+      var method, url;
+      if (this.forms.edit === true) {
+        method = 'put';
+        url = this.url + '/vendor/portfolio/update/' + this.forms.id;
+      } else {
+        method = 'post';
+        url = this.url + '/vendor/portfolio/add';
+      }
+
+      this.forms.submit = '<span uk-spinner></span>';
+      axios({
+        method: method,
+        url: url,
+        params: {
+          namaportfolio: this.forms.namaportfolio
+        }
+      }).then(function (res) {
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success',
+          timer: 5000
+        });
+        _this2.errors = {};
+        _this2.errorMessage = '';
+        setTimeout(function () {
+          UIkit.modal('#modal').hide();
+        }, 3000);
+        _this2.showPortfolio();
+      }).catch(function (err) {
+        _this2.errorMessage = err.response.statusText;
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this2.errorMessage,
+          icon: 'error',
+          dangerMode: true,
+          timer: 5000
+        });
+        _this2.forms.submit = 'Tambah';
+        if (_this2.forms.edit === true) _this2.forms.submit = 'Simpan';
+      });
+    },
+    deletePortfolio: function deletePortfolio(id, val) {
+      var _this3 = this;
+
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus portfolio ' + val + '?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: 'Batal',
+          confirm: { value: true, text: 'Hapus' }
+        }
+      }).then(function (value) {
+        if (value) {
+          axios({
+            method: 'delete',
+            url: _this3.url + '/vendor/portfolio/delete/' + id
+          }).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: val + ' berhasil dihapus',
+              icon: 'success',
+              timer: 5000
+            });
+            _this3.showPortfolio();
+          }).catch(function (err) {
+            swal({
+              title: 'Terjadi kesalahan',
+              text: err.response.statusText,
+              icon: 'error',
+              dangerMode: true
+            });
+          });
+        }
+      });
+    },
+    viewPortfolio: function viewPortfolio(portfolio) {
+      var redirect = this.url + '/vendor/portfolio/view/' + portfolio;
+      document.location = redirect;
+    }
+  },
+  mounted: function mounted() {
+    this.showPortfolio();
+  }
+});
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
+      _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
+        _c("a", {
+          staticClass: "uk-modal-close-default",
+          attrs: { "uk-close": "" }
+        }),
+        _vm._v(" "),
+        _c("h3", [
+          _vm.forms.edit
+            ? _c("span", [_vm._v("Sunting Portfolio")])
+            : _c("span", [_vm._v("Tambah Portfolio")])
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "uk-form-stacked",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.addOrUpdatePortfolio($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("label", { staticClass: "uk-form-label form-settinglabel" }, [
+                _vm._v("Nama Portfolio")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-form-controls" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.forms.namaportfolio,
+                      expression: "forms.namaportfolio"
+                    }
+                  ],
+                  staticClass: "uk-width-1-1 uk-input form-settingaction",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.forms.namaportfolio },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.forms, "namaportfolio", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "uk-button uk-button-default btn_settingaction",
+                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                },
+                [_vm._v("Tambah")]
+              )
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-width-1-6@xl uk-width-1-6@l uk-width-1-6@m uk-width-1-1@s"
+        },
+        [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.forms.selectedRows,
+                  expression: "forms.selectedRows"
+                }
+              ],
+              staticClass: "uk-select form-settingaction",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.forms,
+                    "selectedRows",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "9" } }, [
+                _vm._v("9 ditampilkan")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "18" } }, [
+                _vm._v("18 ditampilkan")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "27" } }, [
+                _vm._v("27 ditampilkan")
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@s uk-width-1-1@s"
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "uk-button uk-button-default buttonaction",
+              domProps: { innerHTML: _vm._s(_vm.forms.submit) },
+              on: {
+                click: function($event) {
+                  _vm.addOrUpdateModal()
+                }
+              }
+            },
+            [_vm._v("Tambah Portfolio")]
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "uk-grid-small uk-grid-match", attrs: { "uk-grid": "" } },
+      _vm._l(_vm.portfolios.results, function(portfolio) {
+        return _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s"
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "uk-card uk-card-default portfoliogrid_box" },
+              [
+                _c("div", { staticClass: "uk-card-media-top" }, [
+                  portfolio.portfolio_thumbnail
+                    ? _c("div", [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              _vm.url +
+                              "/images/vendor/portfolios/" +
+                              portfolio.portfolio_thumbnail,
+                            alt: ""
+                          }
+                        })
+                      ])
+                    : _c("div", [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "https://getuikit.com/assets/uikit/tests/images/photo.jpg",
+                            alt: ""
+                          }
+                        })
+                      ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-card-body uk-card-small" }, [
+                  _c(
+                    "h3",
+                    { staticClass: "uk-card-title portfoliogrid_heading" },
+                    [_vm._v(_vm._s(portfolio.portfolio_name))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "portfoliogrid_action" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "uk-grid-collapse",
+                        attrs: { "uk-grid": "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-3@xl uk-width-1-3@l uk-text-center"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "uk-button uk-button-default uk-button-small portfoliogrid_btnaction",
+                                attrs: { "uk-tooltip": "title: Lihat" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.viewPortfolio(
+                                      portfolio.portfolio_slug_name
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("span", { attrs: { "uk-icon": "grid" } }),
+                                _vm._v(" "),
+                                _c("div", [_vm._v("Lihat")])
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-3@xl uk-width-1-3@l uk-text-center"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "uk-button uk-button-default uk-button-small portfoliogrid_btnaction",
+                                attrs: { "uk-tooltip": "title: Sunting" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.addOrUpdateModal(portfolio)
+                                  }
+                                }
+                              },
+                              [
+                                _c("span", { attrs: { "uk-icon": "pencil" } }),
+                                _vm._v(" "),
+                                _c("div", [_vm._v("Sunting")])
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-3@xl uk-width-1-3@l uk-text-center"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "uk-text-center uk-button uk-button-default uk-button-small portfoliogrid_btnaction",
+                                attrs: { "uk-tooltip": "title: Hapus" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.deletePortfolio(
+                                      portfolio.portfolio_id,
+                                      portfolio.portfolio_name
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("span", { attrs: { "uk-icon": "trash" } }),
+                                _vm._v(" "),
+                                _c("div", [_vm._v("Hapus")])
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      })
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+      },
+      [
+        _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+          _c("span", {
+            staticClass: "uk-form-icon",
+            attrs: { "uk-icon": "search" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "uk-width-1-1 uk-input form-settingaction",
+            attrs: { type: "search", placeholder: "Cari nama portfolio" }
+          })
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6b945d86", module.exports)
+  }
+}
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(236)
+/* template */
+var __vue_template__ = __webpack_require__(237)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73541,9 +74208,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 233 */,
-/* 234 */,
-/* 235 */
+/* 236 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73709,7 +74374,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73995,54 +74660,15 @@ if (false) {
 }
 
 /***/ }),
-/* 237 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
 /* 238 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */,
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(267)
+var __vue_script__ = __webpack_require__(239)
 /* template */
-var __vue_template__ = __webpack_require__(268)
+var __vue_template__ = __webpack_require__(240)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74081,7 +74707,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 267 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74154,7 +74780,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 268 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74368,15 +74994,54 @@ if (false) {
 }
 
 /***/ }),
-/* 269 */
+/* 241 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(270)
+var __vue_script__ = __webpack_require__(271)
 /* template */
-var __vue_template__ = __webpack_require__(271)
+var __vue_template__ = __webpack_require__(272)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74393,7 +75058,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/vendors/Portfolio.vue"
+Component.options.__file = "resources/assets/js/components/vendors/PortfolioImage.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -74402,9 +75067,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6b945d86", Component.options)
+    hotAPI.createRecord("data-v-3f3c96ce", Component.options)
   } else {
-    hotAPI.reload("data-v-6b945d86", Component.options)
+    hotAPI.reload("data-v-3f3c96ce", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -74415,7 +75080,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74495,23 +75160,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url', 'vendors'],
+  props: ['url', 'portfolio'],
   data: function data() {
     return {
-      keywords: '',
-      forms: {
-        selectedRows: 9,
-        id: 0,
-        namaportfolio: '',
-        submit: 'Tambah',
-        error: false,
-        edit: false
-      },
-      errorMessage: '',
-      errors: {},
-      portfolios: {
+      selectedRows: 9,
+      portfolioimage: {
         total: 0,
         results: []
       },
@@ -74520,48 +75200,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         next: '',
         last: '',
         current: '',
-        path: this.url + '/vendor/portfolio/list'
-      }
+        path: this.url + '/vendor/portfolio/view/' + this.portfolio.portfolio_slug_name
+      },
+      forms: {
+        submit: 'Tambah',
+        error: false,
+        edit: false,
+        id: '',
+        filename: '',
+        formdata: '',
+        thumbnail: ''
+      },
+      errors: {},
+      errorMessage: ''
     };
   },
 
   methods: {
-    addOrUpdateModal: function addOrUpdateModal(portfolio) {
-      if (portfolio === undefined) {
-        this.forms.id = '';
-        this.forms.namaportfolio = '';
-        this.forms.submit = 'Tambah';
-        this.forms.error = false;
-        this.forms.edit = false;
-      } else {
-        this.forms.id = portfolio.portfolio_id;
-        this.forms.namaportfolio = portfolio.portfolio_name;
-        this.forms.submit = 'Simpan';
-        this.forms.error = true;
-        this.forms.edit = true;
-      }
-      this.errorMessage = '';
-      this.errors = {};
-      UIkit.modal('#modal').show();
-    },
     showPortfolio: function showPortfolio(pages) {
       var _this = this;
 
-      var url;
-      var param = '&keywords=' + this.keywords + '&rows=' + this.forms.selectedRows;
       if (pages === undefined) {
-        url = this.url + '/vendor/portfolio/list?page=1' + param;
+        pages = this.url + '/vendor/portfolio/view/' + this.portfolio.portfolio_slug_name + '/list?page=1';
       } else {
-        url = pages + param;
+        pages = pages + '&rows=' + this.selectedRows;
       }
 
       axios({
         method: 'get',
-        url: url
+        url: pages
       }).then(function (res) {
         var result = res.data;
-        _this.portfolios.results = result.data;
-        _this.portfolios.total = result.total;
+        _this.portfolioimage.total = result.total;
+        _this.portfolioimage.results = result.data;
         _this.pagination = {
           prev: result.prev_page_url,
           next: result.next_page_url,
@@ -74573,13 +75244,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log(err.response.statusText);
       });
     },
-    addOrUpdatePortfolio: function addOrUpdatePortfolio() {
+    addOrUpdateModal: function addOrUpdateModal(images) {
+      if (images === undefined) {
+        this.forms.submit = 'Tambah';
+        this.forms.id = '';
+        this.forms.filename = '';
+        this.forms.thumbnail = '';
+        this.forms.edit = false;
+      } else {
+        this.forms.submit = 'Ubah';
+        this.forms.id = images.images_id;
+        this.forms.filename = images.images_name;
+        if (images.thumbnail === 'N') {
+          this.forms.thumbnail = false;
+        } else {
+          this.forms.thumbnail = true;
+        }
+        this.forms.edit = true;
+      }
+
+      this.forms.formdata = '';
+      this.forms.error = false;
+      this.errorMessage = '';
+      this.errors = {};
+      UIkit.modal('#modal').show();
+      console.log(this.forms);
+    },
+    addOrUpdateImages: function addOrUpdateImages() {
       var _this2 = this;
 
       this.errors = {};
       this.errorMessage = '';
-      if (this.forms.namaportfolio === '') {
-        this.errors.namaportfolio = 'Nama portfolio wajib diisi.';
+      if (this.forms.filename === '') {
+        this.errors.filename = 'Silahkan masukkan gambar terlebih dahulu.';
         this.forms.error = true;
       }
       if (this.forms.error === true) {
@@ -74587,47 +75284,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return false;
       }
 
-      var method, url;
+      var url;
       if (this.forms.edit === true) {
-        method = 'put';
-        url = this.url + '/vendor/portfolio/update/' + this.forms.id;
+        url = this.url + '/vendor/portfolio/update/image/' + this.forms.id;
       } else {
-        method = 'post';
-        url = this.url + '/vendor/portfolio/add';
+        url = this.url + '/vendor/portfolio/add/image';
       }
 
+      var formdata = new FormData();
+      formdata.append('filename', this.forms.formdata);
+      formdata.append('portfolio_id', this.portfolio.portfolio_id);
+      formdata.append('thumbnail', this.forms.thumbnail);
       this.forms.submit = '<span uk-spinner></span>';
-      axios({
-        method: method,
-        url: url,
-        params: {
-          namaportfolio: this.forms.namaportfolio
-        }
-      }).then(function (res) {
+
+      axios.post(url, formdata).then(function (res) {
+        var result = res.data;
         swal({
           title: 'Berhasil',
-          text: res.data.statusText,
+          text: result.statusText,
           icon: 'success',
           timer: 5000
         });
-        _this2.errors = {};
         _this2.errorMessage = '';
+        _this2.errors = {};
+        _this2.showPortfolio();
         setTimeout(function () {
           UIkit.modal('#modal').hide();
         }, 3000);
-        _this2.showPortfolio();
       }).catch(function (err) {
-        _this2.errorMessage = err.response.statusText;
-        swal({
-          title: 'Terjadi kesalahan',
-          text: _this2.errorMessage,
-          icon: 'error',
-          dangerMode: true,
-          timer: 5000
-        });
         _this2.forms.submit = 'Tambah';
         if (_this2.forms.edit === true) _this2.forms.submit = 'Simpan';
+        _this2.errorMessage = err.response.status + ' ' + err.response.statusText;
       });
+    },
+    getFormatFile: function getFormatFile(files) {
+      var length_str_file = files.length;
+      var getIndex = files.lastIndexOf(".");
+      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    selectedFile: function selectedFile(event) {
+      this.errorMessage = '';
+      this.forms.formdata = event.target.files[0];
+      if (this.getFormatFile(this.forms.formdata.name) !== 'png' && this.getFormatFile(this.forms.formdata.name) !== 'jpg' && this.getFormatFile(this.forms.formdata.name) !== 'jpeg') {
+        this.forms.formdata = '';
+        this.errorMessage = 'Format file hanya JPG/PNG';
+      } else {
+        this.forms.filename = URL.createObjectURL(this.forms.formdata);
+        console.log(this.forms);
+      }
     }
   },
   mounted: function mounted() {
@@ -74636,7 +75341,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74651,48 +75356,191 @@ var render = function() {
           attrs: { "uk-close": "" }
         }),
         _vm._v(" "),
-        _c("h3", [_vm._v("Tambah Portfolio")]),
+        _c("h3", [
+          _vm.forms.edit
+            ? _c("span", [_vm._v("Ubah Gambar")])
+            : _c("span", [_vm._v("Tambah Gambar")])
+        ]),
+        _vm._v(" "),
+        _vm.errorMessage
+          ? _c(
+              "div",
+              { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
+              [_vm._v(_vm._s(_vm.errorMessage))]
+            )
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "form",
           {
-            staticClass: "uk-form-stacked",
+            staticClass: "uk-form-action",
             on: {
               submit: function($event) {
                 $event.preventDefault()
-                return _vm.addOrUpdatePortfolio($event)
+                return _vm.addOrUpdateImages($event)
               }
             }
           },
           [
             _c("div", { staticClass: "uk-margin" }, [
-              _c("label", { staticClass: "uk-form-label form-settinglabel" }, [
-                _vm._v("Nama Portfolio")
+              _vm.forms.filename
+                ? _c("div", [
+                    _vm.forms.formdata
+                      ? _c("div", [
+                          _c("img", {
+                            staticClass: "uk-width-1-3",
+                            attrs: { src: _vm.forms.filename }
+                          })
+                        ])
+                      : _c("div", [
+                          _c("img", {
+                            staticClass: "uk-width-1-3",
+                            attrs: {
+                              src:
+                                _vm.url +
+                                "/images/vendor/portfolios/" +
+                                _vm.forms.filename,
+                              alt: _vm.portfolio.portfolio_slug_name
+                            }
+                          })
+                        ])
+                  ])
+                : _c("div", [
+                    _vm.forms.formdata
+                      ? _c("div", [
+                          _c("img", {
+                            staticClass: "uk-width-1-3",
+                            attrs: { src: _vm.forms.filename }
+                          })
+                        ])
+                      : _c("div", [_vm._m(0)])
+                  ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "uk-form-controls" }, [
+                _c("div", { attrs: { "uk-form-custom": "target: true" } }, [
+                  _c("input", {
+                    attrs: { type: "file", id: "selectedFile" },
+                    on: { change: _vm.selectedFile }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "uk-input",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Select file",
+                      disabled: ""
+                    }
+                  })
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "uk-form-controls" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.forms.namaportfolio,
-                      expression: "forms.namaportfolio"
-                    }
-                  ],
-                  staticClass: "uk-width-1-1 uk-input form-settingaction",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.forms.namaportfolio },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+              _vm.errors.filename
+                ? _c("div", { staticClass: "uk-text-danger uk-text-small" }, [
+                    _vm._v(_vm._s(_vm.errors.filename))
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _vm.forms.thumbnail === "Y" && _vm.forms.thumbnail !== ""
+                ? _c("label", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.thumbnail,
+                          expression: "forms.thumbnail"
+                        }
+                      ],
+                      staticClass: "uk-checkbox uk-margin-small-right",
+                      attrs: { type: "checkbox", value: "Y", checked: "" },
+                      domProps: {
+                        checked: Array.isArray(_vm.forms.thumbnail)
+                          ? _vm._i(_vm.forms.thumbnail, "Y") > -1
+                          : _vm.forms.thumbnail
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.forms.thumbnail,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "Y",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.forms,
+                                  "thumbnail",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.forms,
+                                  "thumbnail",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.forms, "thumbnail", $$c)
+                          }
+                        }
                       }
-                      _vm.$set(_vm.forms, "namaportfolio", $event.target.value)
-                    }
-                  }
-                })
-              ])
+                    }),
+                    _vm._v(" Tandai sebagai thumbnail")
+                  ])
+                : _c("label", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.thumbnail,
+                          expression: "forms.thumbnail"
+                        }
+                      ],
+                      staticClass: "uk-checkbox uk-margin-small-right",
+                      attrs: { type: "checkbox", value: "Y" },
+                      domProps: {
+                        checked: Array.isArray(_vm.forms.thumbnail)
+                          ? _vm._i(_vm.forms.thumbnail, "Y") > -1
+                          : _vm.forms.thumbnail
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.forms.thumbnail,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "Y",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.forms,
+                                  "thumbnail",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.forms,
+                                  "thumbnail",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.forms, "thumbnail", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" Tandai sebagai thumbnail")
+                  ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "uk-margin" }, [
@@ -74711,13 +75559,11 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-      _vm._m(0),
-      _vm._v(" "),
       _c(
         "div",
         {
           staticClass:
-            "uk-width-1-6@xl uk-width-1-6@l uk-width-1-6@m uk-width-1-1@s"
+            "uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@m uk-width-1-2@s"
         },
         [
           _c(
@@ -74727,27 +75573,32 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.forms.selectedRows,
-                  expression: "forms.selectedRows"
+                  value: _vm.selectedRows,
+                  expression: "selectedRows"
                 }
               ],
-              staticClass: "uk-select form-settingaction",
+              staticClass: "uk-width-1-1 uk-select form-settingaction",
               on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.forms,
-                    "selectedRows",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                }
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectedRows = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  function($event) {
+                    _vm.showPortfolio(
+                      _vm.pagination.path + "?page=" + _vm.pagination.current
+                    )
+                  }
+                ]
               }
             },
             [
@@ -74771,20 +75622,21 @@ var render = function() {
         "div",
         {
           staticClass:
-            "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@s uk-width-1-1@s"
+            "uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@m uk-width-1-2@s"
         },
         [
           _c(
             "button",
             {
-              staticClass: "uk-button uk-button-default buttonaction",
+              staticClass:
+                "uk-width-1-1 uk-button uk-button-default btn_settingaction",
               on: {
                 click: function($event) {
                   _vm.addOrUpdateModal()
                 }
               }
             },
-            [_vm._v("Tambah Portfolio")]
+            [_vm._v("Tambah")]
           )
         ]
       )
@@ -74792,73 +75644,115 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "uk-grid-small uk-grid-match", attrs: { "uk-grid": "" } },
-      _vm._l(_vm.portfolios.results, function(portfolio) {
+      { staticClass: "uk-grid-small", attrs: { "uk-grid": "masonry: true" } },
+      _vm._l(_vm.portfolioimage.results, function(img) {
         return _c(
           "div",
           {
             staticClass:
-              "uk-width-1-3@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-2@s"
+              "uk-width-1-4@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-2@s"
           },
           [
-            _c(
-              "div",
-              { staticClass: "uk-card uk-card-default portfoliogrid_box" },
-              [
-                _vm._m(1, true),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-card-body uk-card-small" }, [
+            _c("div", { staticClass: "uk-card uk-card-default plbox" }, [
+              _c("div", { staticClass: "uk-card-media-top plbox-media" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      _vm.url + "/images/vendor/portfolios/" + img.images_name,
+                    alt: _vm.portfolio.portfolio_name
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-card-body uk-card-small" }, [
+                _c("div", { staticClass: "plbox_action" }, [
                   _c(
-                    "h3",
-                    { staticClass: "uk-card-title portfoliogrid_heading" },
-                    [_vm._v(_vm._s(portfolio.portfolio_name))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "portfoliogrid_action" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "uk-grid-collapse",
-                        attrs: { "uk-grid": "" }
-                      },
-                      [
-                        _vm._m(2, true),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "uk-width-1-3@xl uk-width-1-3@l uk-text-center"
-                          },
-                          [
-                            _c(
-                              "button",
-                              {
-                                staticClass:
-                                  "uk-button uk-button-default uk-button-small portfoliogrid_btnaction",
-                                attrs: { "uk-tooltip": "title: Sunting" },
-                                on: {
-                                  click: function($event) {
-                                    _vm.addOrUpdateModal(portfolio)
-                                  }
+                    "div",
+                    {
+                      staticClass: "uk-grid-collapse",
+                      attrs: { "uk-grid": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "uk-width-1-3@xl uk-width-1-3@l uk-text-center"
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "uk-button uk-button-default uk-button-small plgrid_btnaction",
+                              attrs: { "uk-tooltip": "title: Lihat" },
+                              on: { click: function($event) {} }
+                            },
+                            [
+                              _c("span", { attrs: { "uk-icon": "grid" } }),
+                              _vm._v(" "),
+                              _c("div", [_vm._v("Lihat")])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "uk-width-1-3@xl uk-width-1-3@l uk-text-center"
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "uk-button uk-button-default uk-button-small plgrid_btnaction",
+                              attrs: { "uk-tooltip": "title: Sunting" },
+                              on: {
+                                click: function($event) {
+                                  _vm.addOrUpdateModal(img)
                                 }
-                              },
-                              [
-                                _c("span", { attrs: { "uk-icon": "pencil" } }),
-                                _vm._v(" "),
-                                _c("div", [_vm._v("Sunting")])
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm._m(3, true)
-                      ]
-                    )
-                  ])
+                              }
+                            },
+                            [
+                              _c("span", { attrs: { "uk-icon": "pencil" } }),
+                              _vm._v(" "),
+                              _c("div", [_vm._v("Sunting")])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "uk-width-1-3@xl uk-width-1-3@l uk-text-center"
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "uk-text-center uk-button uk-button-default uk-button-small plgrid_btnaction",
+                              attrs: { "uk-tooltip": "title: Hapus" },
+                              on: { click: function($event) {} }
+                            },
+                            [
+                              _c("span", { attrs: { "uk-icon": "trash" } }),
+                              _vm._v(" "),
+                              _c("div", [_vm._v("Hapus")])
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
                 ])
-              ]
-            )
+              ])
+            ])
           ]
         )
       })
@@ -74870,87 +75764,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
-      },
-      [
-        _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-          _c("span", {
-            staticClass: "uk-form-icon",
-            attrs: { "uk-icon": "search" }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "uk-width-1-1 uk-input form-settingaction",
-            attrs: { type: "search", placeholder: "Cari nama portfolio" }
-          })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-card-media-top" }, [
-      _c("img", {
-        attrs: {
-          src: "https://getuikit.com/assets/uikit/tests/images/photo.jpg",
-          alt: ""
-        }
-      })
+    return _c("div", { staticClass: "uk-width-1-3 uk-tile uk-tile-muted" }, [
+      _c("div", { staticClass: "uk-position-center uk-text-center" }, [
+        _vm._v("\n                  JPG / PNG "),
+        _c("br"),
+        _vm._v(" 2 MB\n                ")
+      ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "uk-width-1-3@xl uk-width-1-3@l uk-text-center" },
-      [
-        _c(
-          "button",
-          {
-            staticClass:
-              "uk-button uk-button-default uk-button-small portfoliogrid_btnaction",
-            attrs: { "uk-tooltip": "title: Lihat" }
-          },
-          [
-            _c("span", { attrs: { "uk-icon": "grid" } }),
-            _vm._v(" "),
-            _c("div", [_vm._v("Lihat")])
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "uk-width-1-3@xl uk-width-1-3@l uk-text-center" },
-      [
-        _c(
-          "button",
-          {
-            staticClass:
-              "uk-text-center uk-button uk-button-default uk-button-small portfoliogrid_btnaction",
-            attrs: { "uk-tooltip": "title: Hapus" }
-          },
-          [
-            _c("span", { attrs: { "uk-icon": "trash" } }),
-            _vm._v(" "),
-            _c("div", [_vm._v("Hapus")])
-          ]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -74958,7 +75778,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6b945d86", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3f3c96ce", module.exports)
   }
 }
 

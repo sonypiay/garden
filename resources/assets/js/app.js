@@ -27,6 +27,7 @@ Vue.component('registervendor', require('./components/vendors/Register.vue'));
 Vue.component('loginvendor', require('./components/vendors/Login.vue'));
 Vue.component('vendoreditaccount', require('./components/vendors/SettingAccount.vue'));
 Vue.component('vendorportfolio', require('./components/vendors/Portfolio.vue'));
+Vue.component('vendorportfolioimages', require('./components/vendors/PortfolioImage.vue'));
 // vendor
 
 Vue.component('discoveryvendor', require('./components/DiscoveryVendor.vue'));

@@ -19,7 +19,7 @@ use App\Http\Controllers\Controller;
 class AccountVendor extends Controller
 {
   use CustomFunction;
-  
+
   public function index( Request $request )
   {
     if( Cookie::get('hasLoginVendor') )
@@ -440,9 +440,9 @@ class AccountVendor extends Controller
   public function uploadlogo( Request $request, Vendors $vendors )
   {
     $logo = $request->file('logo');
-    $getfilename = md5() . $logo->getClientOriginalName();
+    $getfilename = hash('crc32b', bin2hex(time() . $logo->getClientOriginalName())) . $logo->getClientOriginalExtension();
     $getsize = $logo->getClientSize();
-    if( $getsize > 1024000 )
+    if( $getsize > 2048000 )
     {
       $res = [
         'status' => 413,

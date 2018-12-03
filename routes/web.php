@@ -87,9 +87,14 @@ Route::group(['prefix' => 'vendor'], function() {
 
   Route::group(['prefix' => 'portfolio'], function() {
     Route::get('/', 'Frontend\Vendor\PortfolioController@index')->name('vendorportfolio_page');
+    Route::get('/view/{id}', 'Frontend\Vendor\PortfolioController@detail_portfolio')->name('vendordetailportfolio_page');
+    Route::get('/view/{id}/list', 'Frontend\Vendor\PortfolioController@portfolio_image');
     Route::get('/list', 'Frontend\Vendor\PortfolioController@listportfolio');
     Route::post('/add', 'Frontend\Vendor\PortfolioController@store_portfolio');
+    Route::post('/add/image', 'Frontend\Vendor\PortfolioController@store_portfolio_image');
     Route::put('/update/{id}', 'Frontend\Vendor\PortfolioController@save_portfolio');
+    Route::post('/update/image/{id}', 'Frontend\Vendor\PortfolioController@save_portfolio_image');
+    Route::delete('/delete/{id}', 'Frontend\Vendor\PortfolioController@delete_portfolio');
   });
 });
 // vendors

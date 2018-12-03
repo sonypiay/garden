@@ -11,6 +11,7 @@
             <ul class="uk-navbar-nav nav-hmpg">
               <li><a href="#aboutus">Tentang Kami</a></li>
               <li><a href="#">Cara Kerja</a></li>
+              <li><a href="{{ route('discoveryvendor_page') }}">Vendor</a></li>
             </ul>
           </div>
           <div class="uk-navbar-center">

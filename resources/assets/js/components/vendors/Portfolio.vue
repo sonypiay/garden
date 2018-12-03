@@ -3,7 +3,10 @@
     <div id="modal" uk-modal>
       <div class="uk-modal-dialog uk-modal-body">
         <a class="uk-modal-close-default" uk-close></a>
-        <h3>Tambah Portfolio</h3>
+        <h3>
+          <span v-if="forms.edit">Sunting Portfolio</span>
+          <span v-else>Tambah Portfolio</span>
+        </h3>
         <form class="uk-form-stacked" @submit.prevent="addOrUpdatePortfolio">
           <div class="uk-margin">
             <label class="uk-form-label form-settinglabel">Nama Portfolio</label>
@@ -32,22 +35,27 @@
         </select>
       </div>
       <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@s uk-width-1-1@s">
-        <button @click="addOrUpdateModal()" class="uk-button uk-button-default buttonaction">Tambah Portfolio</button>
+        <button @click="addOrUpdateModal()" class="uk-button uk-button-default buttonaction" v-html="forms.submit">Tambah Portfolio</button>
       </div>
     </div>
 
     <div class="uk-grid-small uk-grid-match" uk-grid>
-      <div class="uk-width-1-3@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-2@s" v-for="portfolio in portfolios.results">
+      <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s" v-for="portfolio in portfolios.results">
         <div class="uk-card uk-card-default portfoliogrid_box">
           <div class="uk-card-media-top">
-            <img src="https://getuikit.com/assets/uikit/tests/images/photo.jpg" alt="">
+            <div v-if="portfolio.portfolio_thumbnail">
+              <img :src="url + '/images/vendor/portfolios/' + portfolio.portfolio_thumbnail" alt="">
+            </div>
+            <div v-else>
+              <img src="https://getuikit.com/assets/uikit/tests/images/photo.jpg" alt="">
+            </div>
           </div>
           <div class="uk-card-body uk-card-small">
             <h3 class="uk-card-title portfoliogrid_heading">{{ portfolio.portfolio_name }}</h3>
             <div class="portfoliogrid_action">
               <div class="uk-grid-collapse" uk-grid>
                 <div class="uk-width-1-3@xl uk-width-1-3@l uk-text-center">
-                  <button class="uk-button uk-button-default uk-button-small portfoliogrid_btnaction" uk-tooltip="title: Lihat">
+                  <button @click="viewPortfolio( portfolio.portfolio_slug_name )" class="uk-button uk-button-default uk-button-small portfoliogrid_btnaction" uk-tooltip="title: Lihat">
                     <span uk-icon="grid"></span>
                     <div>Lihat</div>
                   </button>
@@ -59,7 +67,7 @@
                   </button>
                 </div>
                 <div class="uk-width-1-3@xl uk-width-1-3@l uk-text-center">
-                  <button class="uk-text-center uk-button uk-button-default uk-button-small portfoliogrid_btnaction" uk-tooltip="title: Hapus">
+                  <button @click="deletePortfolio(portfolio.portfolio_id, portfolio.portfolio_name)" class="uk-text-center uk-button uk-button-default uk-button-small portfoliogrid_btnaction" uk-tooltip="title: Hapus">
                     <span uk-icon="trash"></span>
                     <div>Hapus</div>
                   </button>
@@ -212,6 +220,46 @@ export default {
         this.forms.submit = 'Tambah';
         if( this.forms.edit === true ) this.forms.submit = 'Simpan';
       });
+    },
+    deletePortfolio(id, val) {
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus portfolio ' + val + '?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: 'Batal',
+          confirm: { value: true, text: 'Hapus' }
+        }
+      }).then( value => {
+        if( value )
+        {
+          axios({
+            method: 'delete',
+            url: this.url + '/vendor/portfolio/delete/' + id
+          }).then( res => {
+            swal({
+              title: 'Berhasil',
+              text: val + ' berhasil dihapus',
+              icon: 'success',
+              timer: 5000
+            });
+            this.showPortfolio();
+          }).catch( err => {
+            swal({
+              title: 'Terjadi kesalahan',
+              text: err.response.statusText,
+              icon: 'error',
+              dangerMode: true
+            });
+          });
+        }
+      });
+    },
+    viewPortfolio(portfolio)
+    {
+      var redirect = this.url + '/vendor/portfolio/view/' + portfolio;
+      document.location = redirect;
     }
   },
   mounted() {

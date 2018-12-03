@@ -1,5 +1,4 @@
 <ul class="uk-navbar-nav nav-hmpg">
-  <li><a href="{{ route('discoveryvendor_page') }}">Vendor</a></li>
   @if( Cookie::get('hasLoginCustomers') )
   <li><a>Rp. 0</a></li>
   <li><a class="navcusticon" uk-tooltip="title: Transaksi; pos: bottom"><span><i class="fas fa-exchange-alt"></i></span></a></li>
@@ -38,7 +37,6 @@
     </div>
   </li>
   @else
-  <li><a href="{{ route('discoveryvendor_page') }}">Vendor</a></li>
   <li><a class="become-vendor" href="{{ route('loginpage_vendor') }}">Masuk sebagai Vendor</a></li>
   <li><a href="{{ route('loginpage_customer') }}">Masuk sebagai Pengguna</a></li>
   @endif

@@ -1323,3 +1323,11 @@ body {
   text-decoration: none;
 }
 
+.plbox .plbox_action .plgrid_btnaction {
+  border: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  color: #777777;
+  text-transform: capitalize;
+}
+
