@@ -70649,6 +70649,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         mobile_private: '',
         mobile_business: '',
         logo: '',
+        description: '',
         id: 0
       }
     };
@@ -70677,6 +70678,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           mobile_private: result.vendor_mobile_private,
           mobile_business: result.vendor_mobile_business,
           logo: result.vendor_logo,
+          description: result.vendor_description,
           id: result.vendor_id
         };
       }).catch(function (err) {
@@ -70742,6 +70744,12 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70931,7 +70939,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           district: this.vendors.district,
           subdistrict: this.vendors.subdistrict,
           address: this.vendors.address,
-          kodepos: this.vendors.zipcode
+          kodepos: this.vendors.zipcode,
+          deskripsi: this.vendors.description
         }
       }).then(function (res) {
         swal({
@@ -71090,6 +71099,36 @@ var render = function() {
                     _vm._v(_vm._s(_vm.errors.name))
                   ])
                 : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("label", { staticClass: "uk-form-label form-settinglabel" }, [
+                _vm._v("Deskripsi")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-form-controls" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.vendors.description,
+                      expression: "vendors.description"
+                    }
+                  ],
+                  staticClass: "uk-textarea uk-height-small form-settingaction",
+                  attrs: { placeholder: "Ceritakan bisnis Anda..." },
+                  domProps: { value: _vm.vendors.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.vendors, "description", $event.target.value)
+                    }
+                  }
+                })
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "uk-margin" }, [
@@ -73630,6 +73669,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'vendors'],
@@ -73889,8 +73930,10 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
     _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-      _vm._m(0),
+      _vm._m(1),
       _vm._v(" "),
       _c(
         "div",
@@ -74129,6 +74172,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin" }, [
+      _c("h2", [_vm._v("Portfolio")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
@@ -74213,6 +74264,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -74686,12 +74740,14 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
     _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
       _c(
         "div",
         {
           staticClass:
-            "uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@m uk-width-1-2@s"
+            "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
         },
         [
           _c(
@@ -74899,6 +74955,12 @@ var staticRenderFns = [
         _vm._v(" 2 MB\n                ")
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin" }, [_c("h2", [_vm._v("Foto")])])
   }
 ]
 render._withStripped = true

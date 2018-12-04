@@ -56,6 +56,7 @@ export default {
         mobile_private: '',
         mobile_business: '',
         logo: '',
+        description: '',
         id: 0
       },
     }
@@ -81,6 +82,7 @@ export default {
           mobile_private: result.vendor_mobile_private,
           mobile_business: result.vendor_mobile_business,
           logo: result.vendor_logo,
+          description: result.vendor_description,
           id: result.vendor_id
         };
       }).catch( err => {

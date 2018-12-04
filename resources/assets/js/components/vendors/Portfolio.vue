@@ -20,6 +20,9 @@
         </form>
       </div>
     </div>
+    <div class="uk-margin">
+      <h2>Portfolio</h2>
+    </div>
     <div class="uk-grid-small" uk-grid>
       <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s">
         <div class="uk-width-1-1 uk-inline">
@@ -38,7 +41,6 @@
         <button @click="addOrUpdateModal()" class="uk-button uk-button-default buttonaction" v-html="forms.submit">Tambah Portfolio</button>
       </div>
     </div>
-
     <div class="uk-grid-small uk-grid-match" uk-grid>
       <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s" v-for="portfolio in portfolios.results">
         <div class="uk-card uk-card-default portfoliogrid_box">

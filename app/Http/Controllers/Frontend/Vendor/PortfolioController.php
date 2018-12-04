@@ -42,11 +42,15 @@ class PortfolioController extends Controller
     $rows = $request->rows;
     if( empty( $keywords ) )
     {
-      $query = $portfolio->orderBy('portfolio_id', 'desc')->paginate( $rows );
+      $query = $portfolio->where('vendor_id', Cookie::get('vendor_id'))
+      ->orderBy('portfolio_id', 'desc')->paginate( $rows );
     }
     else
     {
-      $query = $portfolio->where('portfolio_name', 'like', '%' . $keywords . '%')
+      $query = $portfolio->where([
+        ['portfolio_name', 'like', '%' . $keywords . '%'],
+        ['vendor_id', Cookie::get('vendor_id')]
+      ])
       ->orderBy('portfolio_id', 'desc')->paginate( $rows );
     }
 
@@ -112,7 +116,10 @@ class PortfolioController extends Controller
     if( Cookie::get('hasLoginVendor') )
     {
       $datavendor = $this->getvendors( new Vendors, Cookie::get('vendor_id') );
-      $result = $portfolio->where('portfolio_slug_name', $id)->first();
+      $result = $portfolio->where([
+        ['portfolio_slug_name', $id],
+        ['vendor_id', Cookie::get('vendor_id')]
+      ])->first();
       return response()->view('frontend.pages.vendors.portfolioimage', [
         'request' => $request,
         'sessiondata' => Cookie::get(),

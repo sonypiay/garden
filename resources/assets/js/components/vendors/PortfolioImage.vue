@@ -50,8 +50,11 @@
         </form>
       </div>
     </div>
+    <div class="uk-margin">
+      <h2>Foto</h2>
+    </div>
     <div class="uk-grid-small" uk-grid>
-      <div class="uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@m uk-width-1-2@s">
+      <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s">
         <select class="uk-width-1-1 uk-select form-settingaction" v-model="selectedRows" @change="showPortfolio( pagination.path + '?page=' + pagination.current )">
           <option value="9">9 ditampilkan</option>
           <option value="18">18 ditampilkan</option>

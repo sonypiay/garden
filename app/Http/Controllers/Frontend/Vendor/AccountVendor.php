@@ -73,10 +73,12 @@ class AccountVendor extends Controller
     $subdistrict = $request->subdistrict;
     $address = $request->address;
     $kodepos = $request->kodepos;
+    $deskripsi = $request->deskripsi;
 
     $vendor = $vendors->where('vendor_id', Cookie::get('vendor_id'))->first();
     $vendor->vendor_name = $vendor_name;
     $vendor->vendor_ownername = $ownername;
+    $vendor->vendor_description = $deskripsi;
     $vendor->vendor_region = $region;
     $vendor->vendor_district = $district;
     $vendor->vendor_subdistrict = $subdistrict;

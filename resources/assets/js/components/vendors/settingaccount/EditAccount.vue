@@ -25,6 +25,12 @@
           <div v-if="errors.name" class="uk-text-danger uk-text-small">{{ errors.name }}</div>
         </div>
         <div class="uk-margin">
+          <label class="uk-form-label form-settinglabel">Deskripsi</label>
+          <div class="uk-form-controls">
+            <textarea class="uk-textarea uk-height-small form-settingaction" placeholder="Ceritakan bisnis Anda..." v-model="vendors.description"></textarea>
+          </div>
+        </div>
+        <div class="uk-margin">
           <div class="uk-grid-small" uk-grid>
             <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s">
               <label class="uk-form-label form-settinglabel">Provinsi</label>
@@ -193,7 +199,8 @@ export default {
           district: this.vendors.district,
           subdistrict: this.vendors.subdistrict,
           address: this.vendors.address,
-          kodepos: this.vendors.zipcode
+          kodepos: this.vendors.zipcode,
+          deskripsi: this.vendors.description
         }
       }).then( res => {
         swal({
