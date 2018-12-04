@@ -23,6 +23,7 @@
         "@chenfengyuan/datepicker": "^1.0.1",
         "air-datepicker": "^2.2.3",
         "moment": "^2.22.2",
-        "sweetalert": "^2.1.2"
+        "sweetalert": "^2.1.2",
+        "v-calendar": "^0.9.7"
     }
 }

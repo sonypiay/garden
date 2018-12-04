@@ -26,6 +26,7 @@ window.axios = require('axios');
 window.datepicker = require('@chenfengyuan/datepicker');
 window.swal = require('sweetalert');
 window.moment = require('moment');
+//window.vcalendar = require('v-calendar');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Content-Type, Authorization';

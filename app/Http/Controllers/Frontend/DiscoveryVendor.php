@@ -20,7 +20,7 @@ class DiscoveryVendor extends Controller
 
   public function index( Request $request, Vendors $vendors, Customers $customers )
   {
-    if( Cookie::get('hasLoginCustomer') )
+    if( Cookie::get('hasLoginCustomers') )
     {
       $customer = $this->getcustomer( $customers, Cookie::get('customer_id') );
       $data = [
@@ -95,12 +95,12 @@ class DiscoveryVendor extends Controller
     return response()->json( $fetch );
   }
 
-  public function selectvendor( Request $request, Vendors $vendors, $id )
+  public function selectvendor( Request $request, Vendors $vendors, Customers $customers, $id )
   {
     $query = $vendors->join('kabupaten','vendors.vendor_district', '=', 'kabupaten.id_kab')
     ->where('vendors.vendor_slug_name', $id)->first();
 
-    if( Cookie::get('hasLoginCustomer') )
+    if( Cookie::get('hasLoginCustomers') )
     {
       $customer = $this->getcustomer( $customers, Cookie::get('customer_id') );
       $data = [
@@ -133,5 +133,24 @@ class DiscoveryVendor extends Controller
       ];
     }
     return response()->view('frontend.pages.detail_vendor', $data);
+  }
+
+  public function portfolio_vendor( Request $request, VendorPortfolio $portfolio, $id )
+  {
+    $rows = $request->rows;
+    $getportfolio = $portfolio->select(
+      'vendors.vendor_id',
+      'vendors.vendor_slug_name',
+      'vendor_portfolio.portfolio_id',
+      'vendor_portfolio.portfolio_name',
+      'vendor_portfolio.portfolio_slug_name',
+      'vendor_portfolio.portfolio_thumbnail',
+      'vendor_portfolio.created_at'
+    )
+    ->join('vendors', 'vendor_portfolio.vendor_id', '=', 'vendors.vendor_id')
+    ->where('vendors.vendor_slug_name', '=', $id)
+    ->orderBy('vendor_portfolio.portfolio_id')
+    ->paginate( $rows );
+    return response()->json( $getportfolio );
   }
 }

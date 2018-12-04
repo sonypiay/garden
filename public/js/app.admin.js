@@ -30473,6 +30473,7 @@ window.axios = __webpack_require__(143);
 window.datepicker = __webpack_require__(162);
 window.swal = __webpack_require__(163);
 window.moment = __webpack_require__(0);
+//window.vcalendar = require('v-calendar');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Content-Type, Authorization';

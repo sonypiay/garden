@@ -16,8 +16,10 @@ Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
 Route::group(['prefix' => 'discovery'], function() {
   Route::get('/', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');
   Route::get('/vendor/{id}', 'Frontend\DiscoveryVendor@selectvendor')->name('detailvendor_page');
+  Route::get('/vendor/portfolio/{id}', 'Frontend\DiscoveryVendor@portfolio_vendor');
   Route::get('/vendors', 'Frontend\DiscoveryVendor@discovervendor');
 });
+Route::get('/booking/{name}', 'Frontend\Customers\BookingTransactionController@bookingpage');
 
 // customers
 Route::group(['prefix' => 'customers'], function() {

@@ -666,9 +666,31 @@ html,body {
 .portfolio-vendor {
   border: 1px solid #eeeeee;
   box-shadow: none;
-  .pv-images {
+  font-family: $font-primary;
+  @include fontstyle(400, normal, normal, 0.4px);
+  font-size: 13px;
+  .pv-formperrow {
     border-radius: 2px;
-    img { border-radius: 2px; }
+    border: 1px solid $f6b092;
+    color: #777777;
+    font-family: $font-primary;
+    font-size: 12px;
+    @include fontstyle(400, normal, normal, 0.4px);
+    &:hover, &:focus {
+      color: #666666;
+    }
+  }
+  .pv-thumbnail {
+    .pv-mediathumbnail {
+      .pv-iconoverlay {
+        background: rgba(0,0,0,0.7);
+        color: #ffffff
+      }
+      .pv-nothumbnail {
+        color: #ffffff;
+        background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+      }
+    }
   }
 }
 
@@ -699,6 +721,54 @@ html,body {
       font-size: 12px;
       color: #777777;
       text-transform: capitalize;
+    }
+  }
+}
+
+.booking_container {
+  .booking_header {
+    background: #f9f9f9;
+    margin-bottom: 4em;
+    .booking_heading {
+      font-family: $font-primary;
+      font-size: 21px;
+      color: #666666;
+      @include fontstyle(600, normal, normal, 0.8px);
+    }
+    .booking_subheading {
+      font-family: $font-primary;
+      font-size: 13px;
+      color: #888888;
+      @include fontstyle(400, normal, normal, 0.8px);
+    }
+  }
+  .booking_formcontent {
+    box-shadow: none;
+    .booking_bodyform {
+      margin-top: -6.5em;
+      background: #ffffff;
+    }
+    .booking_gridbox {
+      box-shadow: none;
+      .booking_formaction {
+        border-radius: 2px;
+        border: 1px solid #eeeeee;
+        color: #777777;
+        font-family: $font-primary;
+        font-size: 12px;
+        @include fontstyle(400, normal, normal, 0.4px);
+        &:hover, &:focus {
+          color: #666666;
+          border: 1px solid $f6b092;
+        }
+      }
+      .booking_gridbox_heading {
+        font-family: $font-primary;
+        font-size: 16px;
+        color: #666666;
+        @include fontstyle(600, normal, normal, 0.8px);
+        margin-bottom: 5px;
+      }
     }
   }
 }

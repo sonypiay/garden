@@ -1,5 +1,5 @@
 @extends('frontend/master')
-@section('headtitle', $myaccount->vendor_name)
+@section('headtitle', $vendor->vendor_name)
 @section('maincontent')
 @include('frontend.includes.navbar-white')
 <div class="uk-container">

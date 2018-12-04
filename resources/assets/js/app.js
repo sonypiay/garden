@@ -15,11 +15,15 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// other component
+//Vue.component('v-calendar', require('v-calendar'));
+
 // customer
 Vue.component('logincustomer', require('./components/customers/Login.vue'));
 Vue.component('registercustomer', require('./components/customers/Register.vue'));
 Vue.component('customerdashboard', require('./components/customers/Dashboard.vue'));
 Vue.component('customereditaccount', require('./components/customers/SettingAccount.vue'));
+Vue.component('bookingvendor', require('./components/customers/BookingVendor.vue'));
 //customer
 
 // vendor
