@@ -365,7 +365,7 @@ CREATE TABLE `vendor_portfolio` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`portfolio_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `vendor_portfolio` */
 
@@ -384,7 +384,7 @@ CREATE TABLE `vendor_portfolio_images` (
   PRIMARY KEY (`images_id`),
   KEY `fk_portfolio_id` (`portfolio_id`),
   CONSTRAINT `fk_portfolio_id` FOREIGN KEY (`portfolio_id`) REFERENCES `vendor_portfolio` (`portfolio_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `vendor_portfolio_images` */
 
