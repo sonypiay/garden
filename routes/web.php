@@ -21,6 +21,7 @@ Route::group(['prefix' => 'discovery'], function() {
 });
 Route::get('/booking/{name}', 'Frontend\Customers\BookingTransactionController@bookingpage');
 Route::post('/booking_process', 'Frontend\Customers\BookingTransactionController@bookingprocess');
+Route::put('/booking_checkout/{orderid}', 'Frontend\Customers\BookingTransactionController@booking_checkout');
 // customers
 Route::group(['prefix' => 'customers'], function() {
   Route::get('/', function(){ return redirect()->route('accountcustomer_page'); });
@@ -48,6 +49,8 @@ Route::group(['prefix' => 'customers'], function() {
     Route::put('/edit_email', 'Frontend\Customers\AccountCustomers@saveemail');
     Route::put('/edit_notelepon', 'Frontend\Customers\AccountCustomers@savephone');
   });
+
+  Route::get('/main_orders/{orderid}', 'Frontend\Customers\BookingTransactionController@main_orders')->name('customermainorder_page');
 });
 // customers
 

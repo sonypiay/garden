@@ -346,9 +346,11 @@ export default {
       formdata.append('additional_info', this.forms.note);
       formdata.append('customer', this.customers.customer_id);
       formdata.append('vendor', this.vendors.vendor_id);
+      this.forms.submit = '<span uk-spinner></span>';
       axios.post( this.url + '/booking_process', formdata ).then( res => {
         let result = res.data;
-        console.log( result );
+        var redirect = this.url + '/customers/main_orders/' + result.transaction_id;
+        setTimeout(function(){ document.location = redirect; },3000);
       }).catch( err => {
         this.errorMessage = err.response.statusText;
         swal({
@@ -358,6 +360,7 @@ export default {
           dangerMode: true,
           timer: 5000
         });
+        this.forms.submit = 'Pesan';
       });
     },
     formatPrice() {

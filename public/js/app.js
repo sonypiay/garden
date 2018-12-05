@@ -65705,6 +65705,7 @@ Vue.component('registercustomer', __webpack_require__(175));
 Vue.component('customerdashboard', __webpack_require__(180));
 Vue.component('customereditaccount', __webpack_require__(183));
 Vue.component('bookingvendor', __webpack_require__(201));
+Vue.component('customermainorder', __webpack_require__(279));
 //customer
 
 // vendor
@@ -69373,9 +69374,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       formdata.append('additional_info', this.forms.note);
       formdata.append('customer', this.customers.customer_id);
       formdata.append('vendor', this.vendors.vendor_id);
+      this.forms.submit = '<span uk-spinner></span>';
       axios.post(this.url + '/booking_process', formdata).then(function (res) {
         var result = res.data;
-        console.log(result);
+        var redirect = _this4.url + '/customers/main_orders/' + result.transaction_id;
+        setTimeout(function () {
+          document.location = redirect;
+        }, 3000);
       }).catch(function (err) {
         _this4.errorMessage = err.response.statusText;
         swal({
@@ -69385,6 +69390,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           dangerMode: true,
           timer: 5000
         });
+        _this4.forms.submit = 'Pesan';
       });
     },
     formatPrice: function formatPrice() {
@@ -77812,6 +77818,908 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(280)
+/* template */
+var __vue_template__ = __webpack_require__(281)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/customers/orders/MainOrders.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-55d75707", Component.options)
+  } else {
+    hotAPI.reload("data-v-55d75707", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 280 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'orders', 'vendors', 'bankpayment'],
+  data: function data() {
+    return {
+      errorMessage: '',
+      errors: {},
+      props: {
+        url: this.url,
+        orders: this.orders,
+        vendors: this.vendors
+      },
+      forms: {
+        error: false,
+        submit: 'Checkout',
+        payment_method: this.orders.payment_method,
+        bank: this.orders.payment_to,
+        payment_id: this.orders.payment_id
+      }
+    };
+  },
+
+  methods: {
+    formatDate: function formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
+      return res;
+    },
+
+    getFormatFile: function getFormatFile(files) {
+      var length_str_file = files.length;
+      var getIndex = files.lastIndexOf(".");
+      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    onCheckoutOrder: function onCheckoutOrder() {
+      this.errors = {};
+      this.errorMessage = '';
+      if (this.forms.payment_method === '') {
+        this.forms.error = true;
+        this.errors.payment_method = 'Metode pembayaran wajib diisi';
+      }
+      if (this.forms.bank === '') {
+        this.forms.error = true;
+        this.errors.bank = 'Silahkan pilih bank yang tersedia.';
+      }
+
+      console.log(this.forms);
+
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return false;
+      }
+    }
+  },
+  computed: {
+    formatFile: function formatFile() {
+      var length_str_file = this.orders.layout_design.length;
+      var getIndex = this.orders.layout_design.lastIndexOf(".");
+      var getformatfile = this.orders.layout_design.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    formatCurrency: function formatCurrency() {
+      var price = Number(this.orders.price_deal);
+      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(price);
+      return numberformat;
+    }
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+/* 281 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "content_mainorders_header" }, [
+      _c("div", { staticClass: "uk-container" }, [
+        _c(
+          "div",
+          { staticClass: "uk-card uk-card-body content_mainorders_heading" },
+          [
+            _c("div", { staticClass: "summary_headertitle" }, [
+              _vm._v("Pembayaran - #" + _vm._s(_vm.orders.transaction_id))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "summary_subtitle" }, [
+              _vm._v("Silahkan konfirmasi pembayaran pesanan Anda")
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "content_mainorder_body" }, [
+      _c("div", { staticClass: "uk-container" }, [
+        _c(
+          "div",
+          { staticClass: "uk-card uk-card-body content_summaryorder" },
+          [
+            _c(
+              "div",
+              { staticClass: "uk-grid-medium", attrs: { "uk-grid": "" } },
+              [
+                _c("div", { staticClass: "uk-width-expand" }, [
+                  _c(
+                    "div",
+                    { staticClass: "uk-padding content_summaryorder_header" },
+                    [
+                      _c("div", { staticClass: "summaryorder_title" }, [
+                        _vm._v(_vm._s(_vm.orders.vendor_name))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "summaryorder_subtitle" }, [
+                        _vm._v(_vm._s(_vm.vendors.nama_kab))
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-padding-small content_summaryorder_detail"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "uk-grid-small",
+                          attrs: { "uk-grid": "" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "summarydetail-orderdate-title"
+                                },
+                                [_vm._v("Tanggal Pesan")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "summarydetail-orderdate-value"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatDate(
+                                        _vm.orders.created_at,
+                                        "DD MMMM YYYY"
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(0)
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-padding-small content_summaryorder_detail"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "uk-grid-small",
+                          attrs: { "uk-grid": "" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "summarydetail-mobilenumber-title"
+                                },
+                                [_vm._v("Nomor Telepon")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "summarydetail-mobilenumber-value"
+                                },
+                                [_vm._v(_vm._s(_vm.orders.mobile_number))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "uk-width-expand" }, [
+                            _c(
+                              "div",
+                              { staticClass: "summarydetail-note-title" },
+                              [_vm._v("Catatan")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "summarydetail-note-value" },
+                              [_vm._v(_vm._s(_vm.orders.additional_info))]
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "uk-padding content_summaryorder_detail" },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "uk-grid-small",
+                          attrs: { "uk-grid": "" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-title" },
+                                [_vm._v("Alamat")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-value" },
+                                [_vm._v(_vm._s(_vm.orders.address))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-title" },
+                                [_vm._v("Provinsi")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-value" },
+                                [
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(_vm.orders.nama_provinsi) +
+                                      "\n                  "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-title" },
+                                [_vm._v("Kota")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-value" },
+                                [
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(_vm.orders.nama_kab) +
+                                      " "
+                                  ),
+                                  _c("br"),
+                                  _vm._v(
+                                    " " + _vm._s(_vm.orders.nama_kec) + " "
+                                  ),
+                                  _c("br"),
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(_vm.orders.zipcode) +
+                                      "\n                  "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-padding-small content_summaryorder_detail"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "summarydetail-layoutdesign-title" },
+                        [_vm._v("Layout Design")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "summarydetail-layoutdesign-value" },
+                        [
+                          _vm.orders.layout_design
+                            ? _c("div", [
+                                _vm.formatFile === "jpeg" ||
+                                _vm.formatFile === "jpg"
+                                  ? _c("img", {
+                                      attrs: {
+                                        src:
+                                          _vm.url +
+                                          "/images/customer/layout_design/" +
+                                          _vm.orders.layout_design,
+                                        alt: ""
+                                      }
+                                    })
+                                  : _c("div", [_vm._m(1)])
+                              ])
+                            : _c("div", [
+                                _vm._v(
+                                  "\n                  Layout tidak dilampirkan\n                "
+                                )
+                              ])
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-widht-1-2@s"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_header"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "sidebar_summaryorder_title" },
+                          [_vm._v("Harga Deal")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "sidebar_summaryorder_subtitle" },
+                          [_vm._v("Rp. " + _vm._s(_vm.formatCurrency))]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-kodepembayaran-title"
+                          },
+                          [_vm._v("Kode Pembayaran")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-kodepembayaran-value"
+                          },
+                          [
+                            _c("div", [
+                              _vm._v("#" + _vm._s(_vm.orders.payment_id))
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(2)
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-metodepembayaran-title"
+                          },
+                          [_vm._v("Metode Pembayaran")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-metodepembayaran-value"
+                          },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.forms.payment_method,
+                                    expression: "forms.payment_method"
+                                  }
+                                ],
+                                staticClass:
+                                  "uk-select summarydetail-formselect",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.forms,
+                                      "payment_method",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { value: "" } }, [
+                                  _vm._v("-- Pilih Metode Pembayaran --")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "TRANSFER" } }, [
+                                  _vm._v("Transfer Bank")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.errors.payment_method
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass: "uk-text-small uk-text-danger"
+                                  },
+                                  [_vm._v(_vm._s(_vm.errors.payment_method))]
+                                )
+                              : _vm._e()
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-bankpembayaran-title"
+                          },
+                          [_vm._v("Bank")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-bankpembayaran-value"
+                          },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.forms.bank,
+                                    expression: "forms.bank"
+                                  }
+                                ],
+                                staticClass: "uk-select form-settingaction",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.forms,
+                                      "bank",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { value: "" } }, [
+                                  _vm._v("-- Pilih Bank --")
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(_vm.bankpayment, function(bank) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: bank.bank_id } },
+                                    [_vm._v(_vm._s(bank.bank_name))]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _vm.errors.bank
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass: "uk-text-small uk-text-danger"
+                                  },
+                                  [_vm._v(_vm._s(_vm.errors.bank))]
+                                )
+                              : _vm._e()
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout",
+                            domProps: { innerHTML: _vm._s(_vm.forms.submit) },
+                            on: { click: _vm.onCheckoutOrder }
+                          },
+                          [_vm._v("Checkout")]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+      },
+      [
+        _c("div", { staticClass: "uk-text-right" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "uk-button uk-button-default summarydetail-editorder",
+              attrs: { href: "#" }
+            },
+            [_vm._v("Ubah Pesanan")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "uk-button uk-button-default summarydetail_download",
+        attrs: { href: "#" }
+      },
+      [
+        _c("span", { attrs: { "uk-icon": "cloud-download" } }),
+        _vm._v(" Unggah\n                    ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-text-small" }, [
+      _c("i", [
+        _vm._v("Masukkan berita acara untuk mempercepat proses verifikasi")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-55d75707", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

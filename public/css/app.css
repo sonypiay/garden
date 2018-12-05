@@ -1,65 +1,3 @@
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  -webkit-font-feature-settings: 'liga';
-          font-feature-settings: 'liga';
-}
-
-/* Rules for sizing the icon. */
-
-.material-icons.md-18 {
-  font-size: 18px;
-}
-
-.material-icons.md-24 {
-  font-size: 24px;
-}
-
-.material-icons.md-36 {
-  font-size: 36px;
-}
-
-.material-icons.md-48 {
-  font-size: 48px;
-}
-
-/* Rules for using icons as black on a light background. */
-
-.material-icons.md-dark {
-  color: rgba(0, 0, 0, 0.54);
-}
-
-.material-icons.md-dark.md-inactive {
-  color: rgba(0, 0, 0, 0.26);
-}
-
-/* Rules for using icons as white on a dark background. */
-
-.material-icons.md-light {
-  color: white;
-}
-
-.material-icons.md-light.md-inactive {
-  color: rgba(255, 255, 255, 0.3);
-}
-
 .hmpg-findvendor-box .findvendor-formicon {
   color: #ffffff;
 }
@@ -1444,5 +1382,228 @@ body {
   font-style: normal;
   letter-spacing: 0.8px;
   margin-bottom: 5px;
+}
+
+.content_mainorders_header {
+  background: #f9f9f9;
+}
+
+.content_mainorders_header .content_mainorders_heading {
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 5em;
+}
+
+.content_mainorders_header .content_mainorders_heading .summary_headertitle {
+  font-size: 28px;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorders_header .content_mainorders_heading .summary_subtitle {
+  font-size: 14px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body {
+  background: #ffffff;
+}
+
+.content_mainorder_body .content_summaryorder {
+  margin-top: -7em;
+  font-family: "Nunito", sans-serif;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_header {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_header .summaryorder_title {
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_header .summaryorder_subtitle {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail {
+  border: 1px solid #e9e9e9;
+  border-top: 0;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-orderdate-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-address-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-mobilenumber-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-note-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-title {
+  font-size: 12px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-orderdate-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-address-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-mobilenumber-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-note-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-value {
+  font-size: 16px;
+  color: #666666;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-editorder {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #f6a192;
+  border: 1px solid #f6a192;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-editorder:hover,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-editorder:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail_download {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #f6a192;
+  border: 1px solid #f6a192;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail_download:hover,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail_download:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.content_mainorder_body .sidebar_summaryorder_header {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  font-family: "Nunito", sans-serif;
+}
+
+.content_mainorder_body .sidebar_summaryorder_header .sidebar_summaryorder_title {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_header .sidebar_summaryorder_subtitle {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail {
+  font-family: "Nunito", sans-serif;
+  border: 1px solid #e9e9e9;
+  border-top: 0;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .summarydetail-formselect {
+  border-radius: 2px;
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .summarydetail-formselect:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .summarydetail-formselect:focus {
+  color: #444444;
+  border: 1px solid #f6b092;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-title,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-title,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-title {
+  font-size: 14px;
+  color: #777777;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 10px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-value,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value {
+  font-size: 14px;
+  color: #555555;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value i {
+  font-size: 11px;
+  color: #888888;
+  font-style: italic !important;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  border: 0;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
 }
 

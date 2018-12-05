@@ -787,3 +787,155 @@ html,body {
     }
   }
 }
+
+.content_mainorders_header {
+  background: #f9f9f9;
+  .content_mainorders_heading {
+    font-family: $font-primary;
+    margin-bottom: 5em;
+    .summary_headertitle {
+      font-size: 28px;
+      color: #666666;
+      @include fontstyle(600, normal, normal, 0.4px);
+    }
+    .summary_subtitle {
+      font-size: 14px;
+      color: #888888;
+      @include fontstyle(400, normal, normal, 0.4px);
+    }
+  }
+}
+.content_mainorder_body {
+  background: #ffffff;
+  .content_summaryorder {
+    margin-top: -7em;
+    font-family: $font-primary;
+    .content_summaryorder_header {
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+      .summaryorder_title {
+        font-size: 28px;
+        color: #ffffff;
+        @include fontstyle(600, normal, normal, 0.4px);
+      }
+      .summaryorder_subtitle {
+        font-size: 16px;
+        color: #ffffff;
+        @include fontstyle(400, normal, normal, 0.4px);
+      }
+    }
+    .content_summaryorder_detail {
+      border: 1px solid #e9e9e9;
+      border-top: 0;
+      .summarydetail-orderdate-title,
+      .summarydetail-address-title,
+      .summarydetail-mobilenumber-title,
+      .summarydetail-note-title,
+      .summarydetail-layoutdesign-title {
+        font-size: 12px;
+        color: #888888;
+        @include fontstyle(400, normal, normal, 0.4px);
+        margin-bottom: 5px;
+      }
+      .summarydetail-orderdate-value,
+      .summarydetail-address-value,
+      .summarydetail-mobilenumber-value,
+      .summarydetail-note-value,
+      .summarydetail-layoutdesign-value {
+        font-size: 16px;
+        color: #666666;
+        @include fontstyle(400, normal, normal, 0.4px);
+      }
+      .summarydetail-editorder {
+        border-radius: 2px;
+        font-family: $font-primary;
+        font-size: 13px;
+        color: $logo-color-primary;
+        border: 1px solid $logo-color-primary;
+        text-transform: capitalize;
+        @include fontstyle(400, normal, normal, 0.6px);
+        &:hover, &:focus {
+          color: #ffffff;
+          background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+        }
+      }
+      .summarydetail_download {
+        border-radius: 2px;
+        font-family: $font-primary;
+        font-size: 13px;
+        color: $logo-color-primary;
+        border: 1px solid $logo-color-primary;
+        text-transform: capitalize;
+        @include fontstyle(400, normal, normal, 0.6px);
+        &:hover, &:focus {
+          color: #ffffff;
+          background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+        }
+      }
+    }
+  }
+
+  .sidebar_summaryorder_header {
+    background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    font-family: $font-primary;
+    .sidebar_summaryorder_title {
+      font-size: 18px;
+      color: #ffffff;
+      @include fontstyle(400, normal, normal, 0.4px);
+    }
+    .sidebar_summaryorder_subtitle {
+      font-size: 14px;
+      color: #ffffff;
+      @include fontstyle(400, normal, normal, 0.4px);
+    }
+  }
+  .sidebar_summaryorder_detail {
+    font-family: $font-primary;
+    border: 1px solid #e9e9e9;
+    border-top: 0;
+    .summarydetail-formselect {
+      border-radius: 2px;
+      color: #777777;
+      font-family: $font-primary;
+      font-size: 12px;
+      @include fontstyle(400, normal, normal, 0.6px);
+      &:hover, &:focus {
+        color: #444444;
+        border: 1px solid $f6b092;
+      }
+    }
+    .side_summarydetail-metodepembayaran-title,
+    .side_summarydetail-bankpembayaran-title,
+    .side_summarydetail-kodepembayaran-title {
+      font-size: 14px;
+      color: #777777;
+      @include fontstyle(400, normal, normal, 0.4px);
+      margin-bottom: 10px;
+    }
+    .side_summarydetail-metodepembayaran-value,
+    .side_summarydetail-bankpembayaran-value,
+    .side_summarydetail-kodepembayaran-value {
+      font-size: 14px;
+      color: #555555;
+      @include fontstyle(400, normal, normal, 0.4px);
+    }
+    .side_summarydetail-kodepembayaran-value i {
+      font-size: 11px;
+      color: #888888;
+      font-style: italic !important;
+    }
+    .side_summarydetail-checkout {
+      border-radius: 2px;
+      font-family: $font-primary;
+      font-size: 13px;
+      color: #ffffff;
+      border: 0;
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+      text-transform: capitalize;
+      @include fontstyle(400, normal, normal, 0.6px);
+      &:hover, &:focus {
+        color: #ffffff;
+        background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+      }
+    }
+  }
+}
