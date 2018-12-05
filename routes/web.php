@@ -20,7 +20,7 @@ Route::group(['prefix' => 'discovery'], function() {
   Route::get('/vendors', 'Frontend\DiscoveryVendor@discovervendor');
 });
 Route::get('/booking/{name}', 'Frontend\Customers\BookingTransactionController@bookingpage');
-
+Route::post('/booking_process', 'Frontend\Customers\BookingTransactionController@bookingprocess');
 // customers
 Route::group(['prefix' => 'customers'], function() {
   Route::get('/', function(){ return redirect()->route('accountcustomer_page'); });

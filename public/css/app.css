@@ -1391,6 +1391,27 @@ body {
   background: #ffffff;
 }
 
+.booking_container .booking_formcontent .booking_bodyform .booking_btnaction {
+  border: 0;
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.booking_container .booking_formcontent .booking_bodyform .booking_btnaction:hover,
+.booking_container .booking_formcontent .booking_bodyform .booking_btnaction:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
 .booking_container .booking_formcontent .booking_gridbox {
   -webkit-box-shadow: none;
           box-shadow: none;

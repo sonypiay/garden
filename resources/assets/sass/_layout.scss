@@ -747,6 +747,21 @@ html,body {
     .booking_bodyform {
       margin-top: -6.5em;
       background: #ffffff;
+      .booking_btnaction {
+        border: 0;
+        border-radius: 2px;
+        font-family: $font-primary;
+        font-size: 13px;
+        color: #ffffff;
+        background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+        text-transform: capitalize;
+        @include fontstyle(600, normal, normal, 0.6px);
+        &:hover, &:focus {
+          border: 0;
+          color: #ffffff;
+          background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+        }
+      }
     }
     .booking_gridbox {
       box-shadow: none;
