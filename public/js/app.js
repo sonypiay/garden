@@ -69125,6 +69125,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -69141,18 +69168,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       kecamatan: [],
       errors: {},
       errorMessage: '',
+      isInputActive: false,
       forms: {
+        error: false,
         submit: 'Pesan',
-        schedule_date: '',
-        schedule_time: '',
+        schedule_date: new Date(),
         region: '',
         district: '',
         subdistrict: '',
         address: '',
         zipcode: '',
         notelepon: '',
-        price_deal: '',
-        layout_design: ''
+        price_deal: 0,
+        layout_design: '',
+        note: ''
       },
       datepicker: {
         selectedDate: new Date(),
@@ -69177,6 +69206,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             borderRadius: '5px',
             boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.14), 0 6px 20px 0 rgba(0, 0, 0, 0.13)'
           }
+        },
+        formats: {
+          title: 'MMMM YYYY',
+          weekdays: 'W',
+          navMonths: 'MMM',
+          input: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD'], // Only for `v-date-picker`
+          dayPopover: 'L', // Only for `v-date-picker`
+          data: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD'] // For attribute dates
         }
       }
     };
@@ -69204,7 +69241,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       var url;
-      if (val === undefined) url = this.url + '/api/kabupaten/provinsi/' + this.vendors.region;else url = this.url + '/api/kabupaten/all';
+      if (val === undefined) url = this.url + '/api/kabupaten/provinsi/' + this.forms.region;else url = this.url + '/api/kabupaten/all';
 
       axios({
         method: 'get',
@@ -69220,7 +69257,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this3 = this;
 
       var url;
-      if (val === undefined) url = this.url + '/api/kecamatan/kabupaten/' + this.vendors.district;else url = this.url + '/api/kecamatan/all';
+      if (val === undefined) url = this.url + '/api/kecamatan/kabupaten/' + this.forms.district;else url = this.url + '/api/kecamatan/all';
 
       axios({
         method: 'get',
@@ -69231,11 +69268,160 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).catch(function (err) {
         console.log(err.response.statusText);
       });
+    },
+    getFormatFile: function getFormatFile(files) {
+      var length_str_file = files.length;
+      var getIndex = files.lastIndexOf(".");
+      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    selectedFile: function selectedFile(event) {
+      if (this.getObjectSize(this.errors) === 0) this.errors = {};
+      this.forms.layout_design = event.target.files[0];
+      if (this.getFormatFile(this.forms.layout_design.name) !== 'jpg' && this.getFormatFile(this.forms.layout_design.name) !== 'jpeg' && this.getFormatFile(this.forms.layout_design.name) !== 'pdf' && this.getFormatFile(this.forms.layout_design.name) !== 'doc' && this.getFormatFile(this.forms.layout_design.name) !== 'docx') {
+        this.forms.layout_design = '';
+        this.errors.layout_design = 'Format file tidak valid.';
+        swal({
+          title: 'Whoops',
+          text: this.errors.layout_design,
+          icon: 'warning',
+          dangerMode: true,
+          timer: 5000
+        });
+      } else {
+        if (this.forms.layout_design.size > 2048000) {
+          this.forms.layout_design = '';
+          this.errors.layout_design = 'Ukuran file terlalu besar. Maksimal 2 MB.';
+          swal({
+            title: 'Whoops',
+            text: this.errors.layout_design,
+            icon: 'warning',
+            dangerMode: true,
+            timer: 5000
+          });
+        }
+      }
+    },
+
+    getObjectSize: function getObjectSize(obj) {
+      var size = 0;
+      var key;
+      for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+      }
+      return size;
+    },
+    onBooking: function onBooking() {
+      var _this4 = this;
+
+      this.errors = {};
+      this.errorMessage = '';
+      var price_deal = this.forms.price_deal;
+      if (price_deal !== 0 || price_deal === '') price_deal = Number(this.forms.price_deal.replace(/[^0-9.-]+/g, ""));
+
+      if (this.forms.schedule_date === '') {
+        this.errors.schedule_date = 'Silahkan masukkan tanggal pengerjaan.';
+        this.forms.error = true;
+      }
+      if (this.forms.notelepon === '') {
+        this.errors.notelepon = 'Nomor telepon wajib diisi';
+        this.forms.error = true;
+      }
+      if (this.forms.price_deal === '') {
+        this.errors.price_deal = 'Silahkan isi nominal harga deal dengan vendor Anda';
+        this.forms.error = true;
+      }
+      if (isNaN(price_deal)) {
+        this.errors.price_deal = 'Harga deal tidak valid.';
+        this.forms.error = true;
+      }
+      if (this.forms.region === '') {
+        this.errors.region = 'Silahkan pilih provinsi';
+        this.forms.error = true;
+      }
+      if (this.forms.district === '') {
+        this.errors.district = 'Silahkan pilih kabupaten/kota';
+        this.forms.error = true;
+      }
+      if (this.forms.subdistrict === '') {
+        this.errors.subdistrict = 'Silahkan pilih kecamatan';
+        this.forms.error = true;
+      }
+      if (this.forms.address === '') {
+        this.errors.address = 'Alamat wajib diisi';
+        this.forms.error = true;
+      }
+      if (this.forms.zipcode === '') {
+        this.errors.zipcode = 'Kode Pos wajib diisi';
+        this.forms.error = true;
+      }
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return false;
+      }
+
+      var formdata = new FormData();
+      formdata.append('schedule_date', this.formatDate(this.forms.schedule_date, 'YYYY-MM-DD'));
+      formdata.append('mobile_number', this.forms.notelepon);
+      formdata.append('region', this.forms.region);
+      formdata.append('district', this.forms.district);
+      formdata.append('subdistrict', this.forms.subdistrict);
+      formdata.append('address', this.forms.address);
+      formdata.append('zipcode', this.forms.zipcode);
+      formdata.append('price_deal', price_deal);
+      formdata.append('layout_design', this.forms.layout_design);
+      formdata.append('additional_info', this.forms.note);
+      formdata.append('customer', this.customers.customer_id);
+      formdata.append('vendor', this.vendors.vendor_id);
+      axios.post(this.url + '/booking_process', formdata).then(function (res) {
+        var result = res.data;
+        console.log(result);
+      }).catch(function (err) {
+        _this4.errorMessage = err.response.statusText;
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this4.errorMessage,
+          icon: 'error',
+          dangerMode: true,
+          timer: 5000
+        });
+      });
+    },
+    formatPrice: function formatPrice() {
+      var number = this.forms.price_deal;
+      if (isNaN(number)) {
+        number = Number(number.replace(/[^0-9.-]+/g, ""));
+      }
+      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(number);
+      this.forms.price_deal = numberformat;
     }
   },
   computed: {
     getDate: function getDate() {
       return moment().locale('id').format('dddd, DD MMMM YYYY');
+    },
+    formatCurrency: function formatCurrency() {
+      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(this.forms.price_deal);
+      return numberformat;
+    },
+
+    displayCurrency: {
+      get: function get() {
+        if (this.isInputActive === false) {
+          var number = this.value;
+          if (number === undefined || number === 0) number = 0;
+
+          var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(number);
+          this.forms.price_deal = Number(numberformat.replace(/[^0-9.-]+/g, ""));
+          return numberformat;
+        } else {
+          return this.value;
+        }
+      },
+      set: function set(val) {
+        if (val === undefined || val === 0) val = 0;
+        this.value = val;
+      }
     }
   },
   mounted: function mounted() {
@@ -69790,22 +69976,32 @@ var render = function() {
               staticClass: "uk-container uk-card uk-card-body booking_bodyform"
             },
             [
+              _vm.errorMessage
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "uk-alert-danger",
+                      attrs: { "uk-alert": "" }
+                    },
+                    [_vm._v(_vm._s(_vm.errorMessage))]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c(
                 "form",
                 {
+                  staticClass: "uk-form-stacked",
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
+                      return _vm.onBooking($event)
                     }
                   }
                 },
                 [
                   _c(
                     "div",
-                    {
-                      staticClass: "uk-grid-large uk-grid-match",
-                      attrs: { "uk-grid": "" }
-                    },
+                    { staticClass: "uk-grid-medium", attrs: { "uk-grid": "" } },
                     [
                       _c(
                         "div",
@@ -69836,6 +70032,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("v-date-picker", {
                                     attrs: {
+                                      formats: _vm.datepicker.formats,
                                       mode: "single",
                                       "select-attribute":
                                         _vm.datepicker.attributes,
@@ -69843,17 +70040,32 @@ var render = function() {
                                       "theme-styles": _vm.datepicker.themeStyles
                                     },
                                     model: {
-                                      value: _vm.datepicker.selectedDate,
+                                      value: _vm.forms.schedule_date,
                                       callback: function($$v) {
                                         _vm.$set(
-                                          _vm.datepicker,
-                                          "selectedDate",
+                                          _vm.forms,
+                                          "schedule_date",
                                           $$v
                                         )
                                       },
-                                      expression: "datepicker.selectedDate"
+                                      expression: "forms.schedule_date"
                                     }
-                                  })
+                                  }),
+                                  _vm._v(" "),
+                                  _vm.errors.schedule_date
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "uk-text-small uk-text-danger"
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(_vm.errors.schedule_date)
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e()
                                 ],
                                 1
                               ),
@@ -69893,7 +70105,18 @@ var render = function() {
                                       )
                                     }
                                   }
-                                })
+                                }),
+                                _vm._v(" "),
+                                _vm.errors.notelepon
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.notelepon))]
+                                    )
+                                  : _vm._e()
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "uk-margin" }, [
@@ -69920,6 +70143,15 @@ var render = function() {
                                   attrs: { type: "text", placeholder: "Rp. " },
                                   domProps: { value: _vm.forms.price_deal },
                                   on: {
+                                    keyup: function($event) {
+                                      _vm.formatPrice()
+                                    },
+                                    focus: function($event) {
+                                      _vm.isInputActive = true
+                                    },
+                                    blur: function($event) {
+                                      _vm.isInputActive = false
+                                    },
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
@@ -69931,7 +70163,18 @@ var render = function() {
                                       )
                                     }
                                   }
-                                })
+                                }),
+                                _vm._v(" "),
+                                _vm.errors.price_deal
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.price_deal))]
+                                    )
+                                  : _vm._e()
                               ])
                             ]
                           )
@@ -70022,7 +70265,18 @@ var render = function() {
                                     })
                                   ],
                                   2
-                                )
+                                ),
+                                _vm._v(" "),
+                                _vm.errors.region
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.region))]
+                                    )
+                                  : _vm._e()
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "uk-margin" }, [
@@ -70095,7 +70349,18 @@ var render = function() {
                                     })
                                   ],
                                   2
-                                )
+                                ),
+                                _vm._v(" "),
+                                _vm.errors.district
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.district))]
+                                    )
+                                  : _vm._e()
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "uk-margin" }, [
@@ -70160,7 +70425,18 @@ var render = function() {
                                     })
                                   ],
                                   2
-                                )
+                                ),
+                                _vm._v(" "),
+                                _vm.errors.subdistrict
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.subdistrict))]
+                                    )
+                                  : _vm._e()
                               ])
                             ]
                           )
@@ -70178,7 +70454,7 @@ var render = function() {
                             "div",
                             {
                               staticClass:
-                                "uk-card uk-card-body uk-card-default booking_gridbox"
+                                "uk-card uk-card-default booking_gridbox"
                             },
                             [
                               _c("div", { staticClass: "uk-margin" }, [
@@ -70214,7 +70490,18 @@ var render = function() {
                                       )
                                     }
                                   }
-                                })
+                                }),
+                                _vm._v(" "),
+                                _vm.errors.address
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.address))]
+                                    )
+                                  : _vm._e()
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "uk-margin" }, [
@@ -70252,14 +70539,127 @@ var render = function() {
                                       )
                                     }
                                   }
-                                })
+                                }),
+                                _vm._v(" "),
+                                _vm.errors.zipcode
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.zipcode))]
+                                    )
+                                  : _vm._e()
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "uk-margin" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-card-title booking_gridbox_heading"
+                                  },
+                                  [_vm._v("Layout Design (optional)")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    attrs: { "uk-form-custom": "target: true" }
+                                  },
+                                  [
+                                    _c("input", {
+                                      attrs: { type: "file" },
+                                      on: { change: _vm.selectedFile }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      staticClass:
+                                        "uk-input uk-form-width-medium",
+                                      attrs: {
+                                        type: "text",
+                                        id: "selectedFile",
+                                        placeholder: "Select file",
+                                        disabled: ""
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._m(0)
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm.errors.layout_design
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.layout_design))]
+                                    )
+                                  : _vm._e()
                               ])
                             ]
                           )
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-width-1-1" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-card uk-card-default booking_gridbox"
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "uk-card-title booking_gridbox_heading"
+                              },
+                              [_vm._v("Catatan")]
+                            ),
+                            _vm._v(" "),
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.forms.note,
+                                  expression: "forms.note"
+                                }
+                              ],
+                              staticClass:
+                                "uk-width-1-1 uk-textarea uk-height-small booking_formaction",
+                              domProps: { value: _vm.forms.note },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.forms,
+                                    "note",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        )
+                      ])
                     ]
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c("button", {
+                      staticClass:
+                        "uk-button uk-button-default booking_btnaction",
+                      domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                    })
+                  ])
                 ]
               )
             ]
@@ -70269,7 +70669,16 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-text-small" }, [
+      _c("i", [_vm._v("Max 2 MB (pdf/doc/jpg)")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
