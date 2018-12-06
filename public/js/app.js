@@ -66767,11 +66767,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'customers'],
   data: function data() {
-    return {};
+    return {
+      transaction: {
+        total: 0,
+        results: []
+      },
+      pagination: {
+        prev: '',
+        next: '',
+        last: '',
+        current: '',
+        path: this.url + '/customers/summary_transaction'
+      }
+    };
   },
 
-  methods: {},
-  mounted: function mounted() {}
+  methods: {
+    summaryTransaction: function summaryTransaction(pages) {
+      var _this = this;
+
+      if (pages === undefined) pages = this.url + '/customers/summary_transaction?page=1&rows=6';else pages = pages + '&rows=6';
+
+      axios({
+        method: 'get',
+        url: pages,
+        headers: { 'content-type': 'application/json' }
+      }).then(function (res) {
+        var result = res.data;
+        _this.transaction.total = result.total;
+        _this.transaction.results = result.data;
+        _this.pagination = {
+          prev: result.prev_page_url,
+          next: result.next_page_url,
+          last: result.last_page,
+          current: result.current_page,
+          path: result.path
+        };
+        console.log(_this.transaction);
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.summaryTransaction();
+  }
 });
 
 /***/ }),
@@ -66791,7 +66831,36 @@ var render = function() {
       _vm._m(0)
     ]),
     _vm._v(" "),
-    _vm._m(1)
+    _c("div", { staticClass: "board_bookingvendor" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-card uk-card-body uk-card-default board_listbookingvendor"
+        },
+        [
+          _c("div", { staticClass: "uk-width-1-3 uk-align-center" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "board_neverbooking_text" }, [
+              _vm._v("Anda belum pernah memesan vendor disini")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-text-center" }, [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "uk-button uk-button-default uk-button-large board_bookbutton",
+                  attrs: { href: _vm.url + "/discovery" }
+                },
+                [_vm._v("Pesan sekarang juga")]
+              )
+            ])
+          ])
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -66813,31 +66882,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "board_bookingvendor" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "uk-card uk-card-body uk-card-default board_listbookingvendor"
-        },
-        [
-          _c("div", { staticClass: "uk-width-1-3 uk-align-center" }, [
-            _c("div", { staticClass: "board_neverbooking_icon" }, [
-              _c("span", { staticClass: "fas fa-leaf" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "board_neverbooking_text" }, [
-              _vm._v("Anda belum pernah memesan vendor disini")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "uk-text-center" }, [
-              _c("button", { staticClass: "uk-button board_bookbutton" }, [
-                _vm._v("Pesan sekarang juga")
-              ])
-            ])
-          ])
-        ]
-      )
+    return _c("div", { staticClass: "board_neverbooking_icon" }, [
+      _c("span", { staticClass: "fas fa-leaf" })
     ])
   }
 ]

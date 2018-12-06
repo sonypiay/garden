@@ -301,4 +301,39 @@ class BookingTransactionController extends Controller
       ]);
     }
   }
+
+  public function mytransaction( Request $request, BookingTransaction $booking, Customers $customers )
+  {
+    $rows = $request->rows;
+    $results = $booking->select(
+      'vendors.vendor_name',
+      'vendors.vendor_id',
+      'booking_transaction.id',
+      'booking_transaction.transaction_id',
+      'booking_transaction.schedule_date',
+      'booking_transaction.region',
+      'booking_transaction.district',
+      'booking_transaction.subdistrict',
+      'booking_transaction.address',
+      'booking_transaction.zipcode',
+      'booking_transaction.mobile_number',
+      'booking_transaction.price_deal',
+      'booking_transaction.layout_design',
+      'booking_transaction.additional_info',
+      'booking_transaction.payment_method',
+      'booking_transaction.last_status_transaction',
+      'booking_transaction.customer_id',
+      'payment_order_verify.payment_to',
+      'payment_order_verify.status_payment',
+      'payment_order_verify.payment_id',
+      'kabupaten.nama_kab'
+    )
+    ->join('payment_order_verify', 'booking_transaction.transaction_id', '=', 'payment_order_verify.transaction_id')
+    ->join('vendors', 'booking_transaction.vendor_id', '=', 'vendors.vendor_id')
+    ->join('kabupaten', 'booking_transaction.district', '=', 'kabupaten.id_kab')
+    ->where('booking_transaction.customer_id', Cookie::get('customer_id'))->paginate( $rows );
+    //$results = $booking->where('booking_transaction.customer_id', Cookie::get('customer_id'))->paginate( $rows );
+    dd( $results );
+    return response()->json( $results );
+  }
 }

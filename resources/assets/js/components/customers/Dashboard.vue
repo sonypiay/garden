@@ -34,7 +34,7 @@
           </div>
           <div class="board_neverbooking_text">Anda belum pernah memesan vendor disini</div>
           <div class="uk-text-center">
-            <button class="uk-button board_bookbutton">Pesan sekarang juga</button>
+            <a :href="url + '/discovery'" class="uk-button uk-button-default uk-button-large board_bookbutton">Pesan sekarang juga</a>
           </div>
         </div>
       </div>
@@ -47,12 +47,49 @@ export default {
   props: ['url', 'customers'],
   data() {
     return {
-
+      transaction: {
+        total: 0,
+        results: []
+      },
+      pagination: {
+        prev: '',
+        next: '',
+        last: '',
+        current: '',
+        path: this.url + '/customers/summary_transaction'
+      }
     }
   },
-  methods: {},
-  mounted() {
+  methods: {
+    summaryTransaction(pages)
+    {
+      if( pages === undefined )
+        pages = this.url + '/customers/summary_transaction?page=1&rows=6';
+      else pages = pages + '&rows=6';
 
+      axios({
+        method: 'get',
+        url: pages,
+        headers: { 'content-type': 'application/json' }
+      }).then( res => {
+        var result = res.data;
+        this.transaction.total = result.total;
+        this.transaction.results = result.data;
+        this.pagination = {
+          prev: result.prev_page_url,
+          next: result.next_page_url,
+          last: result.last_page,
+          current: result.current_page,
+          path: result.path
+        };
+        console.log(this.transaction);
+      }).catch( err => {
+        console.log(err.response.statusText);
+      });
+    }
+  },
+  mounted() {
+    this.summaryTransaction();
   }
 }
 </script>
