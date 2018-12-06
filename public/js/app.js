@@ -65707,6 +65707,7 @@ Vue.component('customereditaccount', __webpack_require__(183));
 Vue.component('bookingvendor', __webpack_require__(201));
 Vue.component('customermainorder', __webpack_require__(209));
 Vue.component('customersummaryorder', __webpack_require__(212));
+Vue.component('customerorderlist', __webpack_require__(285));
 //customer
 
 // vendor
@@ -65721,7 +65722,22 @@ Vue.component('discoveryvendor', __webpack_require__(252));
 Vue.component('getdetailvendor', __webpack_require__(255));
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    statusTransaction: {
+      'approval': 'Menunggu Diterima',
+      'approved': 'Pesanan Diterima',
+      'rejected': 'Pesanan ditolak',
+      'pending': 'Pesanan ditunda',
+      'payment_waiting': 'Menunggu Pembayaran',
+      'payment_verify': 'Konfirmasi Pembayaran',
+      'paid': 'Dibayar',
+      'process': 'Sedang diproses',
+      'onprogress': 'Sedang dikerjakan',
+      'report': 'Laporan & Berita Acara',
+      'done': 'Selesai'
+    }
+  }
 });
 
 /***/ }),
@@ -66763,6 +66779,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'customers'],
@@ -66770,7 +66810,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       transaction: {
         total: 0,
-        results: []
+        results: [],
+        statusTransaction: {
+          approved: 0,
+          payment_waiting: 0,
+          rejected: 0
+        }
       },
       pagination: {
         prev: '',
@@ -66783,10 +66828,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    formatDate: function formatDate(str) {
+      return moment(str).locale('id').format('DD MMMM YYYY');
+    },
     summaryTransaction: function summaryTransaction(pages) {
       var _this = this;
 
-      if (pages === undefined) pages = this.url + '/customers/summary_transaction?page=1&rows=6';else pages = pages + '&rows=6';
+      if (pages === undefined) pages = this.url + '/customers/summary_transaction?page=1&rows=8';else pages = pages + '&rows=8';
 
       axios({
         method: 'get',
@@ -66794,16 +66842,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         headers: { 'content-type': 'application/json' }
       }).then(function (res) {
         var result = res.data;
-        _this.transaction.total = result.total;
-        _this.transaction.results = result.data;
-        _this.pagination = {
-          prev: result.prev_page_url,
-          next: result.next_page_url,
-          last: result.last_page,
-          current: result.current_page,
-          path: result.path
+        _this.transaction.total = result.data.transaction.total;
+        _this.transaction.results = result.data.transaction.data;
+        _this.transaction.statusTransaction = {
+          approved: result.data.status_transaction.approved,
+          payment_waiting: result.data.status_transaction.payment_waiting,
+          rejected: result.data.status_transaction.rejected
         };
-        console.log(_this.transaction);
+        _this.pagination = {
+          prev: result.data.transaction.prev_page_url,
+          next: result.data.transaction.next_page_url,
+          last: result.data.transaction.last_page,
+          current: result.data.transaction.current_page,
+          path: result.data.transaction.path
+        };
+        console.log(result);
       }).catch(function (err) {
         console.log(err.response.statusText);
       });
@@ -66828,7 +66881,23 @@ var render = function() {
         _vm._v(_vm._s(_vm.customers.customer_name))
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "dash_customerhistory" }, [
+        _c("span", { staticClass: "dash_historytransaction" }, [
+          _vm._v(_vm._s(_vm.transaction.total) + " Transaksi")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "dash_vendorpilihan" }, [
+          _vm._v(
+            "\n        " +
+              _vm._s(_vm.transaction.statusTransaction.approved) +
+              " Diterima  \n        " +
+              _vm._s(_vm.transaction.statusTransaction.payment_waiting) +
+              " Menunggu Pembayaran  \n        " +
+              _vm._s(_vm.transaction.statusTransaction.rejected) +
+              " Ditolak  \n      "
+          )
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "board_bookingvendor" }, [
@@ -66839,45 +66908,132 @@ var render = function() {
             "uk-card uk-card-body uk-card-default board_listbookingvendor"
         },
         [
-          _c("div", { staticClass: "uk-width-1-3 uk-align-center" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "board_neverbooking_text" }, [
-              _vm._v("Anda belum pernah memesan vendor disini")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "uk-text-center" }, [
-              _c(
-                "a",
+          _vm.transaction.total === 0
+            ? _c("div", { staticClass: "uk-width-1-3 uk-align-center" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "board_neverbooking_text" }, [
+                  _vm._v("Anda belum pernah memesan vendor disini")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-text-center" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "uk-button uk-button-default uk-button-large board_bookbutton",
+                      attrs: { href: _vm.url + "/discovery" }
+                    },
+                    [_vm._v("Pesan sekarang juga")]
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "uk-grid-small",
+              attrs: { "uk-grid": "masonry: true" }
+            },
+            _vm._l(_vm.transaction.results, function(result) {
+              return _c(
+                "div",
                 {
                   staticClass:
-                    "uk-button uk-button-default uk-button-large board_bookbutton",
-                  attrs: { href: _vm.url + "/discovery" }
+                    "uk-width-1-4@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s"
                 },
-                [_vm._v("Pesan sekarang juga")]
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-card uk-card-default dashboard_summary-transaction"
+                    },
+                    [
+                      _c("div", { staticClass: "uk-card-media-top" }, [
+                        result.vendor_logo
+                          ? _c("div", [
+                              _c("img", {
+                                attrs: {
+                                  src:
+                                    _vm.url +
+                                    "/images/vendor/logobrand/" +
+                                    result.vendor_logo,
+                                  alt: result.vendor_name
+                                }
+                              })
+                            ])
+                          : _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "uk-tile uk-tile-default dash_sum-transaction-banner"
+                              },
+                              [
+                                _c("span", {
+                                  attrs: { "uk-icon": "icon: image; ratio: 4" }
+                                })
+                              ]
+                            )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-card-body uk-card-small" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "uk-badge dash_sum-transaction-status"
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                _vm.$root.statusTransaction[
+                                  result.last_status_transaction
+                                ]
+                              )
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "dash_sum-transaction-title" },
+                          [_vm._v(_vm._s(result.vendor_name))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "dash_sum-transaction-orderdate" },
+                          [_vm._v(_vm._s(_vm.formatDate(result.schedule_date)))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "uk-display-block uk-margin-top dash_sum-transaction-view",
+                            attrs: {
+                              href:
+                                _vm.url +
+                                "/customers/summary_order/" +
+                                result.transaction_id
+                            }
+                          },
+                          [_vm._v("Lihat rincian")]
+                        )
+                      ])
+                    ]
+                  )
+                ]
               )
-            ])
-          ])
+            })
+          )
         ]
       )
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "dash_customerhistory" }, [
-      _c("span", { staticClass: "dash_historytransaction" }, [
-        _vm._v("5 Transaksi")
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "dash_vendorpilihan" }, [
-        _vm._v("3 Vendor Pilihan")
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -69304,7 +69460,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (this.getObjectSize(this.errors) === 0) this.errors = {};
       this.forms.layout_design = event.target.files[0];
       if (this.getFormatFile(this.forms.layout_design.name) !== 'jpg' && this.getFormatFile(this.forms.layout_design.name) !== 'jpeg' && this.getFormatFile(this.forms.layout_design.name) !== 'pdf' && this.getFormatFile(this.forms.layout_design.name) !== 'doc' && this.getFormatFile(this.forms.layout_design.name) !== 'docx') {
-        this.forms.layout_design = '';
         this.errors.layout_design = 'Format file tidak valid.';
         swal({
           title: 'Whoops',
@@ -69315,7 +69470,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       } else {
         if (this.forms.layout_design.size > 2048000) {
-          this.forms.layout_design = '';
           this.errors.layout_design = 'Ukuran file terlalu besar. Maksimal 2 MB.';
           swal({
             title: 'Whoops',
@@ -69380,42 +69534,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.errors.zipcode = 'Kode Pos wajib diisi';
         this.forms.error = true;
       }
+
       if (this.forms.error === true) {
         this.forms.error = false;
         return false;
       }
 
-      var formdata = new FormData();
-      formdata.append('schedule_date', this.formatDate(this.forms.schedule_date, 'YYYY-MM-DD'));
-      formdata.append('mobile_number', this.forms.notelepon);
-      formdata.append('region', this.forms.region);
-      formdata.append('district', this.forms.district);
-      formdata.append('subdistrict', this.forms.subdistrict);
-      formdata.append('address', this.forms.address);
-      formdata.append('zipcode', this.forms.zipcode);
-      formdata.append('price_deal', price_deal);
-      formdata.append('layout_design', this.forms.layout_design);
-      formdata.append('additional_info', this.forms.note);
-      formdata.append('customer', this.customers.customer_id);
-      formdata.append('vendor', this.vendors.vendor_id);
-      this.forms.submit = '<span uk-spinner></span>';
-      axios.post(this.url + '/booking_process', formdata).then(function (res) {
-        var result = res.data;
-        var redirect = _this4.url + '/customers/main_orders/' + result.transaction_id;
-        setTimeout(function () {
-          document.location = redirect;
-        }, 3000);
-      }).catch(function (err) {
-        _this4.errorMessage = err.response.statusText;
+      if (this.getFormatFile(this.forms.layout_design.name) !== 'jpg' && this.getFormatFile(this.forms.layout_design.name) !== 'jpeg' && this.getFormatFile(this.forms.layout_design.name) !== 'pdf' && this.getFormatFile(this.forms.layout_design.name) !== 'doc' && this.getFormatFile(this.forms.layout_design.name) !== 'docx') {
+        this.errors.layout_design = 'Format file tidak valid.';
         swal({
-          title: 'Terjadi kesalahan',
-          text: _this4.errorMessage,
-          icon: 'error',
+          title: 'Whoops',
+          text: this.errors.layout_design,
+          icon: 'warning',
           dangerMode: true,
           timer: 5000
         });
-        _this4.forms.submit = 'Pesan';
-      });
+      } else if (this.forms.layout_design > 2048000) {
+        this.errors.layout_design = 'Ukuran file terlalu besar. Maksimal 2 MB.';
+        swal({
+          title: 'Whoops',
+          text: this.errors.layout_design,
+          icon: 'warning',
+          dangerMode: true,
+          timer: 5000
+        });
+      } else {
+        var formdata = new FormData();
+        formdata.append('schedule_date', this.formatDate(this.forms.schedule_date, 'YYYY-MM-DD'));
+        formdata.append('mobile_number', this.forms.notelepon);
+        formdata.append('region', this.forms.region);
+        formdata.append('district', this.forms.district);
+        formdata.append('subdistrict', this.forms.subdistrict);
+        formdata.append('address', this.forms.address);
+        formdata.append('zipcode', this.forms.zipcode);
+        formdata.append('price_deal', price_deal);
+        formdata.append('layout_design', this.forms.layout_design);
+        formdata.append('additional_info', this.forms.note);
+        formdata.append('customer', this.customers.customer_id);
+        formdata.append('vendor', this.vendors.vendor_id);
+        this.forms.submit = '<span uk-spinner></span>';
+        axios.post(this.url + '/booking_process', formdata).then(function (res) {
+          var result = res.data;
+          var redirect = _this4.url + '/customers/main_orders/' + result.transaction_id;
+          setTimeout(function () {
+            document.location = redirect;
+          }, 3000);
+        }).catch(function (err) {
+          _this4.errorMessage = err.response.statusText;
+          swal({
+            title: 'Terjadi kesalahan',
+            text: _this4.errorMessage,
+            icon: 'error',
+            dangerMode: true,
+            timer: 5000
+          });
+          _this4.forms.submit = 'Pesan';
+        });
+      }
     },
     formatPrice: function formatPrice() {
       var number = this.forms.price_deal;
@@ -70911,6 +71086,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'orders', 'vendors', 'bankpayment'],
@@ -71100,7 +71286,7 @@ var render = function() {
                                 {
                                   staticClass: "summarydetail-orderdate-title"
                                 },
-                                [_vm._v("Tanggal Pesan")]
+                                [_vm._v("Tanggal Pengerjaan")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -71112,7 +71298,7 @@ var render = function() {
                                   _vm._v(
                                     _vm._s(
                                       _vm.formatDate(
-                                        _vm.orders.created_at,
+                                        _vm.orders.schedule_date,
                                         "DD MMMM YYYY"
                                       )
                                     )
@@ -71365,6 +71551,43 @@ var render = function() {
                           "div",
                           { staticClass: "sidebar_summaryorder_subtitle" },
                           [_vm._v("Rp. " + _vm._s(_vm.formatCurrency))]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-statustransaction-title"
+                          },
+                          [_vm._v("Status Transaksi")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-statustransaction-value"
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(
+                                  _vm.$root.statusTransaction[
+                                    _vm.orders.last_status_transaction
+                                  ]
+                                ) +
+                                "\n              "
+                            )
+                          ]
                         )
                       ]
                     ),
@@ -71636,16 +71859,36 @@ var render = function() {
                           "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
                       },
                       [
-                        _c(
-                          "button",
-                          {
-                            staticClass:
-                              "uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout",
-                            domProps: { innerHTML: _vm._s(_vm.forms.submit) },
-                            on: { click: _vm.onCheckoutOrder }
-                          },
-                          [_vm._v("Checkout")]
-                        )
+                        _vm.orders.last_status_transaction === "approval"
+                          ? _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout",
+                                  attrs: { disabled: true },
+                                  domProps: {
+                                    innerHTML: _vm._s(_vm.forms.submit)
+                                  },
+                                  on: { click: _vm.onCheckoutOrder }
+                                },
+                                [_vm._v("Checkout")]
+                              )
+                            ])
+                          : _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout",
+                                  domProps: {
+                                    innerHTML: _vm._s(_vm.forms.submit)
+                                  },
+                                  on: { click: _vm.onCheckoutOrder }
+                                },
+                                [_vm._v("Checkout")]
+                              )
+                            ])
                       ]
                     )
                   ]
@@ -71878,6 +72121,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'orders'],
@@ -71917,7 +72164,11 @@ var render = function() {
           { staticClass: "uk-card uk-card-body content_mainorders_heading" },
           [
             _c("div", { staticClass: "summary_headertitle" }, [
-              _vm._v("Detil Pesanan - #" + _vm._s(_vm.orders.transaction_id))
+              _vm._v("Rincian Pesanan")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "summary_subtitle" }, [
+              _vm._v("#" + _vm._s(_vm.orders.transaction_id))
             ])
           ]
         )
@@ -71975,7 +72226,7 @@ var render = function() {
                                 {
                                   staticClass: "summarydetail-orderdate-title"
                                 },
-                                [_vm._v("Tanggal Pesan")]
+                                [_vm._v("Tanggal Pengerjaan")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -71987,7 +72238,7 @@ var render = function() {
                                   _vm._v(
                                     _vm._s(
                                       _vm.formatDate(
-                                        _vm.orders.created_at,
+                                        _vm.orders.schedule_date,
                                         "DD MMMM YYYY"
                                       )
                                     )
@@ -72301,6 +72552,25 @@ var render = function() {
                                 "\n              "
                             )
                           ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout",
+                            attrs: { href: _vm.url + "/customers/account" }
+                          },
+                          [_vm._v("Kembali")]
                         )
                       ]
                     )
@@ -78823,7 +79093,9 @@ var render = function() {
                             staticClass: "uk-card-title discoverygrid_heading",
                             attrs: {
                               href:
-                                _vm.url + "/vendor/" + vendor.vendor_slug_name
+                                _vm.url +
+                                "/discovery/vendor/" +
+                                vendor.vendor_slug_name
                             }
                           },
                           [_vm._v(_vm._s(vendor.vendor_name))]
@@ -79490,6 +79762,395 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(286)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(288)
+/* template */
+var __vue_template__ = __webpack_require__(289)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/customers/orders/ListTransaction.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-22982f27", Component.options)
+  } else {
+    hotAPI.reload("data-v-22982f27", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(287);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(139)("6a05bf91", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-22982f27\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ListTransaction.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-22982f27\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ListTransaction.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 287 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(138)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 288 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      isLoading: false,
+      transaction: {
+        total: 0,
+        results: []
+      },
+      pagination: {
+        prev: '',
+        next: '',
+        last: '',
+        current: '',
+        path: this.url + '/customers/data_orderlist'
+      }
+    };
+  },
+
+  methods: {
+    formatDate: function formatDate(str) {
+      return moment(str).locale('id').format('DD MMMM YYYY');
+    },
+    myTransaction: function myTransaction(pages, status) {
+      var _this = this;
+
+      var param = '&rows=12&status=' + status;
+      if (pages === undefined || pages === '') pages = this.url + '/customers/data_orderlist?page=1' + param;else pages = pages + param;
+
+      this.isLoading = true;
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this.transaction.total = result.total;
+        _this.transaction.results = result.data;
+        _this.pagination = {
+          prev: result.prev_page_url,
+          next: result.next_page_url,
+          last: result.last_page,
+          current: result.current_page,
+          path: result.path
+        };
+        _this.isLoading = false;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.myTransaction('', 'all');
+  }
+});
+
+/***/ }),
+/* 289 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "uk-margin-large-top" }, [
+    _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-width-expand" }, [
+        _c(
+          "div",
+          { staticClass: "filter-statustransaction-list" },
+          _vm._l(_vm.$root.statusTransaction, function(status, index) {
+            return _c(
+              "a",
+              {
+                staticClass: "uk-button uk-button-default",
+                on: {
+                  click: function($event) {
+                    _vm.myTransaction(
+                      _vm.url +
+                        "/customers/data_orderlist?page=" +
+                        _vm.pagination.current,
+                      index
+                    )
+                  }
+                }
+              },
+              [_vm._v(_vm._s(status))]
+            )
+          })
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "uk-card uk-card-body uk-card-default uk-margin-top orderlist_content"
+      },
+      [
+        _vm.isLoading
+          ? _c("div", { staticClass: "uk-text-center uk-margin-bottom" }, [
+              _c("span", { attrs: { "uk-spinner": "" } })
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "uk-grid-small",
+            attrs: { "uk-grid": "masonry: true" }
+          },
+          _vm._l(_vm.transaction.results, function(result) {
+            return _c(
+              "div",
+              {
+                staticClass:
+                  "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-2@s"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-card uk-card-default dashboard_summary-transaction"
+                  },
+                  [
+                    _c("div", { staticClass: "uk-card-media-top" }, [
+                      result.vendor_logo
+                        ? _c("div", [
+                            _c("img", {
+                              attrs: {
+                                src:
+                                  _vm.url +
+                                  "/images/vendor/logobrand/" +
+                                  result.vendor_logo,
+                                alt: result.vendor_name
+                              }
+                            })
+                          ])
+                        : _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-tile uk-tile-default dash_sum-transaction-banner"
+                            },
+                            [
+                              _c("span", {
+                                attrs: { "uk-icon": "icon: image; ratio: 4" }
+                              })
+                            ]
+                          )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-card-body uk-card-small" }, [
+                      _c(
+                        "div",
+                        { staticClass: "uk-badge dash_sum-transaction-status" },
+                        [
+                          _vm._v(
+                            _vm._s(
+                              _vm.$root.statusTransaction[
+                                result.last_status_transaction
+                              ]
+                            )
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "dash_sum-transaction-title" }, [
+                        _vm._v(_vm._s(result.vendor_name))
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "dash_sum-transaction-orderdate" },
+                        [_vm._v(_vm._s(_vm.formatDate(result.schedule_date)))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "uk-display-block uk-margin-top dash_sum-transaction-view",
+                          attrs: {
+                            href:
+                              _vm.url +
+                              "/customers/summary_order/" +
+                              result.transaction_id
+                          }
+                        },
+                        [_vm._v("Lihat rincian")]
+                      )
+                    ])
+                  ]
+                )
+              ]
+            )
+          })
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-width-1-6@xl uk-width-1-6@l" }, [
+      _c("div", { staticClass: "filter-statustransaction-label" }, [
+        _vm._v("Filter Status")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-22982f27", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

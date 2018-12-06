@@ -56,7 +56,7 @@
                 </div>
               </div>
               <div class="uk-card-body uk-card-small">
-                <a :href="url + '/vendor/' + vendor.vendor_slug_name" class="uk-card-title discoverygrid_heading">{{ vendor.vendor_name }}</a>
+                <a :href="url + '/discovery/vendor/' + vendor.vendor_slug_name" class="uk-card-title discoverygrid_heading">{{ vendor.vendor_name }}</a>
                 <div class="discoverygrid_subtext">{{ vendor.nama_kab }}</div>
               </div>
             </div>
