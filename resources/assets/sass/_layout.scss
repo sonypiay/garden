@@ -904,7 +904,8 @@ html,body {
     }
     .side_summarydetail-metodepembayaran-title,
     .side_summarydetail-bankpembayaran-title,
-    .side_summarydetail-kodepembayaran-title {
+    .side_summarydetail-kodepembayaran-title,
+    .side_summarydetail-statustransaction-title {
       font-size: 14px;
       color: #777777;
       @include fontstyle(400, normal, normal, 0.4px);
@@ -912,7 +913,8 @@ html,body {
     }
     .side_summarydetail-metodepembayaran-value,
     .side_summarydetail-bankpembayaran-value,
-    .side_summarydetail-kodepembayaran-value {
+    .side_summarydetail-kodepembayaran-value,
+    .side_summarydetail-statustransaction-value {
       font-size: 14px;
       color: #555555;
       @include fontstyle(400, normal, normal, 0.4px);
@@ -1013,4 +1015,84 @@ html,body {
       background: linear-gradient(97deg, $logo-color-primary, $f6b092);
     }
   }
+}
+.dashboard_summary-transaction {
+  .dash_sum-transaction-banner {
+    text-align: center;
+    background: #f9f9f9;
+    color: #888888;
+    &:hover {
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+      color: #ffffff;
+    }
+  }
+  .dash_sum-transaction-status {
+    border: 1px solid $f6b092 !important;
+    color: $logo-color-primary;
+    font-family: $font-primary;
+    font-size: 12px;
+    @include fontstyle(600, normal, normal, 0.8px);
+    background: none !important;
+  }
+  .dash_sum-transaction-title {
+    font-family: $font-primary;
+    font-size: 18px;
+    color: #555555;
+    @include fontstyle(600, normal, normal, 0.8px);
+    margin-top: 10px;
+  }
+  .dash_sum-transaction-orderdate {
+    font-family: $font-primary;
+    font-size: 11px;
+    color: #888888;
+    @include fontstyle(400, normal, normal, 0.8px);
+  }
+  .dash_sum-transaction-view {
+    color: #888888;
+    font-family: $font-primary;
+    font-size: 12px;
+    @include fontstyle(400, normal, normal, 0.8px);
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    border-radius: 25px;
+    &:hover, &:focus {
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+      color: #ffffff;
+    }
+  }
+}
+.filter-statustransaction-label {
+  font-family: $font-primary;
+  font-size: 13px;
+  color: #888888;
+  @include fontstyle(400, normal, normal, 0.8px);
+}
+.filter-statustransaction-list {
+  overflow-x: hidden;
+  &:hover { overflow-x: scroll; }
+  padding-bottom: 10px;
+  white-space: nowrap;
+  a {
+    color: #888888;
+    font-family: $font-primary;
+    font-size: 12px;
+    @include fontstyle(400, normal, normal, 0.8px);
+    text-decoration: none;
+    border-radius: 25px;
+    border: 1px solid #e9e9e9;
+    text-transform: capitalize;
+    &:hover, &:focus {
+      border: 1px solid $f6b092;
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+      color: #ffffff;
+    }
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+.orderlist_content {
+  border: 1px solid #eeeeee;
+  box-shadow: none;
 }

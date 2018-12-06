@@ -26,6 +26,7 @@ Vue.component('customereditaccount', require('./components/customers/SettingAcco
 Vue.component('bookingvendor', require('./components/customers/BookingVendor.vue'));
 Vue.component('customermainorder', require('./components/customers/orders/MainOrders.vue'));
 Vue.component('customersummaryorder', require('./components/customers/orders/SummaryOrder.vue'));
+Vue.component('customerorderlist', require('./components/customers/orders/ListTransaction.vue'));
 //customer
 
 // vendor
@@ -40,5 +41,20 @@ Vue.component('discoveryvendor', require('./components/DiscoveryVendor.vue'));
 Vue.component('getdetailvendor', require('./components/DetailVendor.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+      statusTransaction: {
+        'approval': 'Menunggu Diterima',
+        'approved': 'Pesanan Diterima',
+        'rejected': 'Pesanan ditolak',
+        'pending': 'Pesanan ditunda',
+        'payment_waiting': 'Menunggu Pembayaran',
+        'payment_verify': 'Konfirmasi Pembayaran',
+        'paid': 'Dibayar',
+        'process': 'Sedang diproses',
+        'onprogress': 'Sedang dikerjakan',
+        'report': 'Laporan & Berita Acara',
+        'done': 'Selesai',
+      }
+    }
 });

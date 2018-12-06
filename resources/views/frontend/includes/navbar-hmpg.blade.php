@@ -6,10 +6,9 @@
   <li><a href="{{ route('accountcustomer_page') }}">{{ $users->customer_name }} <span class="uk-margin-small-left"><i class="fas fa-caret-down"></i></span></a>
     <div class="uk-navbar-dropdown navbarhmpgdropdowncustomer">
       <ul class="uk-nav uk-navbar-dropdown-nav">
+        <li><a href="{{ route('accountcustomer_page') }}">Dashboard</a></li>
         <li><a href="#">Kotak Pesan</a></li>
-        <li><a href="#">GardenBuana Pay</a></li>
-        <li><a href="#">Vendor Pilihan</a></li>
-        <li><a href="#">Pesanan</a></li>
+        <li><a href="{{ route('customerorderlist_page') }}">Daftar Transaksi</a></li>
         <li class="uk-nav-divider"></li>
         <li><a href="{{ route('editprofilecustomer_page') }}">Edit Profil &amp; Pengaturan</a></li>
         <li><a href="{{ route('logoutcustomer') }}">Keluar</a></li>

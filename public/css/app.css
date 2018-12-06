@@ -1559,7 +1559,8 @@ body {
 
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-title,
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-title,
-.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-title {
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-title,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-title {
   font-size: 14px;
   color: #777777;
   font-weight: 400;
@@ -1571,7 +1572,8 @@ body {
 
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-value,
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value,
-.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value {
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-value {
   font-size: 14px;
   color: #555555;
   font-weight: 400;
@@ -1704,5 +1706,118 @@ body {
 .summary-transaction-content .summary-transaction-viewdetail:focus {
   color: #ffffff;
   background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-banner {
+  text-align: center;
+  background: #f9f9f9;
+  color: #888888;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-banner:hover {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-status {
+  border: 1px solid #f6b092 !important;
+  color: #f6a192;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  background: none !important;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  color: #555555;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  margin-top: 10px;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-orderdate {
+  font-family: "Nunito", sans-serif;
+  font-size: 11px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-view {
+  color: #888888;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-view:hover,
+.dashboard_summary-transaction .dash_sum-transaction-view:focus {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.filter-statustransaction-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.filter-statustransaction-list {
+  overflow-x: hidden;
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+.filter-statustransaction-list:hover {
+  overflow-x: scroll;
+}
+
+.filter-statustransaction-list a {
+  color: #888888;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  border-radius: 25px;
+  border: 1px solid #e9e9e9;
+  text-transform: capitalize;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.filter-statustransaction-list a:hover,
+.filter-statustransaction-list a:focus {
+  border: 1px solid #f6b092;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.orderlist_content {
+  border: 1px solid #eeeeee;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 

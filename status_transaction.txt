@@ -1,0 +1,11 @@
+approval -> vendor,
+payment_waiting -> customer,
+payment_verify -> customer,
+paid -> customer,
+process -> vendor,
+onprogress -> vendor,
+report -> vendor,
+done -> vendor,
+booking_reject -> vendor,
+booking_cancel -> customer,vendor
+pending -> vendor

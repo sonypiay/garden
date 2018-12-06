@@ -20,8 +20,8 @@
               <div class="uk-padding-small content_summaryorder_detail">
                 <div class="uk-grid-small" uk-grid>
                   <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-                    <div class="summarydetail-orderdate-title">Tanggal Pesan</div>
-                    <div class="summarydetail-orderdate-value">{{ formatDate( orders.created_at, 'DD MMMM YYYY' ) }}</div>
+                    <div class="summarydetail-orderdate-title">Tanggal Pengerjaan</div>
+                    <div class="summarydetail-orderdate-value">{{ formatDate( orders.schedule_date, 'DD MMMM YYYY' ) }}</div>
                   </div>
                   <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
                     <div class="uk-text-right">
@@ -86,6 +86,12 @@
                 <div class="sidebar_summaryorder_subtitle">Rp. {{ formatCurrency }}</div>
               </div>
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
+                <div class="side_summarydetail-statustransaction-title">Status Transaksi</div>
+                <div class="side_summarydetail-statustransaction-value">
+                  {{ $root.statusTransaction[orders.last_status_transaction] }}
+                </div>
+              </div>
+              <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
                 <div class="side_summarydetail-kodepembayaran-title">Kode Pembayaran</div>
                 <div class="side_summarydetail-kodepembayaran-value">
                   <div>#{{ orders.payment_id }}</div>
@@ -128,7 +134,12 @@
                 </div>
               </div>
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
-                <button @click="onCheckoutOrder" v-html="forms.submit" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout">Checkout</button>
+                <div v-if="orders.last_status_transaction === 'approval'">
+                  <button @click="onCheckoutOrder" v-html="forms.submit" :disabled="true" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout">Checkout</button>
+                </div>
+                <div v-else>
+                  <button @click="onCheckoutOrder" v-html="forms.submit" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout">Checkout</button>
+                </div>
               </div>
             </div>
           </div>

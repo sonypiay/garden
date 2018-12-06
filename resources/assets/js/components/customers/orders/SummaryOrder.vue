@@ -3,7 +3,8 @@
     <div class="content_mainorders_header">
       <div class="uk-container">
         <div class="uk-card uk-card-body content_mainorders_heading">
-          <div class="summary_headertitle">Detil Pesanan - #{{ orders.transaction_id }}</div>
+          <div class="summary_headertitle">Rincian Pesanan</div>
+          <div class="summary_subtitle">#{{ orders.transaction_id }}</div>
         </div>
       </div>
     </div>
@@ -19,8 +20,8 @@
               <div class="uk-padding-small content_summaryorder_detail">
                 <div class="uk-grid-small" uk-grid>
                   <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-                    <div class="summarydetail-orderdate-title">Tanggal Pesan</div>
-                    <div class="summarydetail-orderdate-value">{{ formatDate( orders.created_at, 'DD MMMM YYYY' ) }}</div>
+                    <div class="summarydetail-orderdate-title">Tanggal Pengerjaan</div>
+                    <div class="summarydetail-orderdate-value">{{ formatDate( orders.schedule_date, 'DD MMMM YYYY' ) }}</div>
                   </div>
                   <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
                     <div class="uk-text-right">
@@ -94,6 +95,9 @@
                 <div class="side_summarydetail-bankpembayaran-value">
                   {{ orders.bank_name }} <br> {{ orders.account_number }}
                 </div>
+              </div>
+              <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
+                <a :href="url + '/customers/account'" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout">Kembali</a>
               </div>
             </div>
           </div>

@@ -70,7 +70,7 @@ class BookingTransactionController extends Controller
     $logstatus = new $logstatus;
     $payment_verify = new $payment_verify;
     $storage = Storage::disk('imagestorage');
-    $status_type = 'payment_waiting';
+    $status_type = 'approval';
 
     $transaction->schedule_date = $schedule_date;
     $transaction->transaction_id = $transactionid;
@@ -95,10 +95,9 @@ class BookingTransactionController extends Controller
 
     $logstatus->transaction_id = $transactionid;
     $logstatus->status_transaction = $status_type;
-    $logstatus->status_description = 'Melakukan proses pemesanan <br> Menunggu konfirmasi pembayaran';
+    $logstatus->status_description = 'Menunggu approval dari pihak Vendor';
     $logstatus->log_date = $orderdate;
 
-    $payment_verify->status_payment = 'pending';
     $payment_verify->transaction_id = $transactionid;
     $payment_verify->payment_id = date('Ymd') . substr($uniqid, 4, 2);
 
@@ -108,7 +107,7 @@ class BookingTransactionController extends Controller
 
     $res = [
       'status' => 200,
-      'statusText' => 'Melakukan proses pemesanan',
+      'statusText' => 'Proses pemesanan berhasil',
       'transaction_id' => $transactionid
     ];
 
@@ -133,6 +132,7 @@ class BookingTransactionController extends Controller
       'booking_transaction.layout_design',
       'booking_transaction.additional_info',
       'booking_transaction.payment_method',
+      'booking_transaction.last_status_transaction',
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',
@@ -144,7 +144,7 @@ class BookingTransactionController extends Controller
       'kabupaten.nama_kab',
       'provinsi.nama_provinsi'
     )
-    ->join('payment_order_verify', 'booking_transaction.transaction_id', '=', 'payment_order_verify.transaction_id')
+    ->leftJoin('payment_order_verify', 'booking_transaction.transaction_id', '=', 'payment_order_verify.transaction_id')
     ->leftJoin('bankpayment', 'payment_order_verify.payment_to', '=', 'bankpayment.bank_id')
     ->join('vendors', 'booking_transaction.vendor_id', '=', 'vendors.vendor_id')
     ->join('kabupaten', 'booking_transaction.district', '=', 'kabupaten.id_kab')
@@ -162,7 +162,6 @@ class BookingTransactionController extends Controller
     ->join('kabupaten', 'vendors.vendor_district', '=', 'kabupaten.id_kab')
     ->join('provinsi', 'kabupaten.id_provinsi', '=', 'provinsi.id_provinsi')
     ->where('vendors.vendor_id', $results->vendor_id)->first();
-
     if( Cookie::get('hasLoginCustomers') )
     {
       $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
@@ -274,8 +273,8 @@ class BookingTransactionController extends Controller
       'kabupaten.nama_kab',
       'provinsi.nama_provinsi'
     )
-    ->join('payment_order_verify', 'booking_transaction.transaction_id', '=', 'payment_order_verify.transaction_id')
-    ->join('bankpayment', 'payment_order_verify.payment_to', '=', 'bankpayment.bank_id')
+    ->leftJoin('payment_order_verify', 'booking_transaction.transaction_id', '=', 'payment_order_verify.transaction_id')
+    ->leftJoin('bankpayment', 'payment_order_verify.payment_to', '=', 'bankpayment.bank_id')
     ->join('vendors', 'booking_transaction.vendor_id', '=', 'vendors.vendor_id')
     ->join('kabupaten', 'booking_transaction.district', '=', 'kabupaten.id_kab')
     ->join('provinsi', 'kabupaten.id_provinsi', '=', 'provinsi.id_provinsi')
@@ -308,6 +307,7 @@ class BookingTransactionController extends Controller
     $results = $booking->select(
       'vendors.vendor_name',
       'vendors.vendor_id',
+      'vendors.vendor_logo',
       'booking_transaction.id',
       'booking_transaction.transaction_id',
       'booking_transaction.schedule_date',
@@ -331,9 +331,101 @@ class BookingTransactionController extends Controller
     ->join('payment_order_verify', 'booking_transaction.transaction_id', '=', 'payment_order_verify.transaction_id')
     ->join('vendors', 'booking_transaction.vendor_id', '=', 'vendors.vendor_id')
     ->join('kabupaten', 'booking_transaction.district', '=', 'kabupaten.id_kab')
-    ->where('booking_transaction.customer_id', Cookie::get('customer_id'))->paginate( $rows );
-    //$results = $booking->where('booking_transaction.customer_id', Cookie::get('customer_id'))->paginate( $rows );
-    dd( $results );
+    ->where([
+      ['booking_transaction.customer_id', '=', Cookie::get('customer_id')],
+      ['booking_transaction.last_status_transaction', '!=', 'transaction_cancel']
+    ])
+    ->orderBy('booking_transaction.created_at', 'desc')
+    ->paginate( $rows );
+    $total_transaction = $booking->where('customer_id', '=', Cookie::get('customer_id'))->count();
+    $approved_transaction = $booking->where([
+      ['customer_id', '=', Cookie::get('customer_id')],
+      ['last_status_transaction', '=', 'approved']
+    ])->count();
+    $payment_waiting = $booking->where([
+      ['customer_id', '=', Cookie::get('customer_id')],
+      ['last_status_transaction', '=', 'payment_waiting']
+    ])->count();
+    $status_rejected = $booking->where([
+      ['customer_id', '=', Cookie::get('customer_id')],
+      ['last_status_transaction', '=', 'rejected']
+    ])->count();
+    return response()->json([
+      'data' => [
+        'transaction' => $results,
+        'total_transaction' => $total_transaction,
+        'status_transaction' => [
+          'approved' => $approved_transaction,
+          'payment_waiting' => $payment_waiting,
+          'rejected' => $status_rejected
+        ]
+      ]
+    ]);
+  }
+
+  public function order_list( Request $request, Customers $customers )
+  {
+    if( Cookie::get('hasLoginCustomers') )
+    {
+      $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
+      $data = [
+        'request' => $request,
+        'sessiondata' => $this->get_cookiescustomer(),
+        'myaccount' => $datacustomer
+      ];
+      return response()->view('frontend.pages.customers.orders.order_list', $data);
+    }
+    else
+    {
+      return response()->view('frontend.pages.customers.login', [
+        'request' => $request
+      ]);
+    }
+  }
+
+  public function data_orderlist( Request $request, BookingTransaction $booking, Customers $customers )
+  {
+    $rows = $request->rows;
+    $status = $request->status;
+    $query = $booking->select(
+      'vendors.vendor_name',
+      'vendors.vendor_id',
+      'vendors.vendor_logo',
+      'booking_transaction.id',
+      'booking_transaction.transaction_id',
+      'booking_transaction.schedule_date',
+      'booking_transaction.region',
+      'booking_transaction.district',
+      'booking_transaction.subdistrict',
+      'booking_transaction.address',
+      'booking_transaction.zipcode',
+      'booking_transaction.mobile_number',
+      'booking_transaction.price_deal',
+      'booking_transaction.layout_design',
+      'booking_transaction.additional_info',
+      'booking_transaction.payment_method',
+      'booking_transaction.last_status_transaction',
+      'booking_transaction.customer_id',
+      'payment_order_verify.payment_to',
+      'payment_order_verify.status_payment',
+      'payment_order_verify.payment_id',
+      'kabupaten.nama_kab'
+    )
+    ->join('payment_order_verify', 'booking_transaction.transaction_id', '=', 'payment_order_verify.transaction_id')
+    ->join('vendors', 'booking_transaction.vendor_id', '=', 'vendors.vendor_id')
+    ->join('kabupaten', 'booking_transaction.district', '=', 'kabupaten.id_kab');
+    if( $status == 'all' )
+    {
+      $query = $query->where('booking_transaction.customer_id', '=', Cookie::get('customer_id'));
+    }
+    else
+    {
+      $query = $query->where([
+        ['booking_transaction.customer_id', '=', Cookie::get('customer_id')],
+        ['booking_transaction.last_status_transaction', '=', $status]
+      ]);
+    }
+    $results = $query->orderBy('booking_transaction.created_at', 'desc')->paginate( $rows );
     return response()->json( $results );
   }
 }

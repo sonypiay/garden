@@ -30,6 +30,8 @@ Route::group(['prefix' => 'customers'], function() {
   Route::post('/doRegister', 'Frontend\Customers\LoginRegisterController@doRegister');
   Route::post('/doLogin', 'Frontend\Customers\LoginRegisterController@doLogin');
   Route::get('/logout', 'Frontend\Customers\LoginRegisterController@logout')->name('logoutcustomer');
+  Route::get('/order_list', 'Frontend\Customers\BookingTransactionController@order_list')->name('customerorderlist_page');
+  Route::get('/data_orderlist', 'Frontend\Customers\BookingTransactionController@data_orderlist');
   Route::get('/summary_order/{orderid}', 'Frontend\Customers\BookingTransactionController@summary_order')->name('summaryordercustomer_page');
   Route::get('/summary_transaction', 'Frontend\Customers\BookingTransactionController@mytransaction');
 
