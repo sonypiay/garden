@@ -30,6 +30,7 @@ Route::group(['prefix' => 'customers'], function() {
   Route::post('/doRegister', 'Frontend\Customers\LoginRegisterController@doRegister');
   Route::post('/doLogin', 'Frontend\Customers\LoginRegisterController@doLogin');
   Route::get('/logout', 'Frontend\Customers\LoginRegisterController@logout')->name('logoutcustomer');
+  Route::get('/summary_order/{orderid}', 'Frontend\Customers\BookingTransactionController@summary_order')->name('summaryordercustomer_page');
 
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Customers\AccountCustomers@index')->name('accountcustomer_page');
@@ -51,6 +52,7 @@ Route::group(['prefix' => 'customers'], function() {
   });
 
   Route::get('/main_orders/{orderid}', 'Frontend\Customers\BookingTransactionController@main_orders')->name('customermainorder_page');
+  Route::get('/transaction_success/{orderid}', 'Frontend\Customers\BookingTransactionController@booking_transaction_success');
 });
 // customers
 

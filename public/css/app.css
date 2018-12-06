@@ -1581,6 +1581,48 @@ body {
   letter-spacing: 0.4px;
 }
 
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .side_summarydetail-dropdownbank {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #666666;
+  border: 1px solid #e9e9e9;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .side_summarydetail-dropdownbank:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .side_summarydetail-dropdownbank:focus {
+  color: #444444;
+  border: 1px solid #f6a192;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container {
+  height: 100px;
+  border-radius: 3px;
+  overflow-y: scroll;
+  padding: 0;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container ul li a {
+  padding: 10px 16px;
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container ul li a:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container ul li a:focus {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value i {
   font-size: 11px;
   color: #888888;
@@ -1603,6 +1645,64 @@ body {
 
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout:hover,
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.summary-transaction-content {
+  font-family: "Nunito", sans-serif;
+}
+
+.summary-transaction-content .summary-transaction-title {
+  font-size: 22px;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid #e9e9e9;
+  padding-bottom: 10px;
+}
+
+.summary-transaction-content .summary-transaction-contentleft,
+.summary-transaction-content .summary-transaction-contentright {
+  margin-top: 15px;
+}
+
+.summary-transaction-content .summary-transaction-detail .summary-transaction-detail-thankyou {
+  font-size: 12px;
+  color: #666666;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.summary-transaction-content .summary-transaction-detail .summary-transaction-detail-verification {
+  font-size: 14px;
+  color: #666666;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.summary-transaction-content .summary-transaction-viewdetail {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  border: 0;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.summary-transaction-content .summary-transaction-viewdetail:hover,
+.summary-transaction-content .summary-transaction-viewdetail:focus {
   color: #ffffff;
   background: linear-gradient(97deg, #f6a192, #f6b092);
 }

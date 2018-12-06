@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PaymentOrderVerify extends Model
 {
-  public $timestammps = false;
+  public $timestamps = true;
   protected $table = 'payment_order_verify';
+  protected $guarded = ['created_at','updated_at'];
 }

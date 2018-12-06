@@ -8,6 +8,6 @@ class BookingTransaction extends Model
 {
   public $timestamps = true;
   protected $table = 'booking_transaction';
-  protected $primaryKey = 'booking_id';
+  protected $primaryKey = 'transaction_id';
   public $incrementing = false;
 }

@@ -25,6 +25,7 @@ Vue.component('customerdashboard', require('./components/customers/Dashboard.vue
 Vue.component('customereditaccount', require('./components/customers/SettingAccount.vue'));
 Vue.component('bookingvendor', require('./components/customers/BookingVendor.vue'));
 Vue.component('customermainorder', require('./components/customers/orders/MainOrders.vue'));
+Vue.component('customersummaryorder', require('./components/customers/orders/SummaryOrder.vue'));
 //customer
 
 // vendor
