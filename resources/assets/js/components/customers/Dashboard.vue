@@ -1,13 +1,18 @@
 <template lang="html">
   <div class="dashb_customer">
     <div class="uk-container">
-      <div class="uk-grid-small" uk-grid>
+      <div class="dash_customername">{{ customers.customer_name }}</div>
+      <div class="dash_customerhistory">
+        <span class="dash_historytransaction">5 Transaksi</span>
+        <span class="dash_vendorpilihan">3 Vendor Pilihan</span>
+      </div>
+      <!--<div class="uk-grid-small" uk-grid>
+      <div class="dash_customername">{{ customers.customer_name }}</div>
+      <div class="dash_customerhistory">
+      <span class="dash_historytransaction">5 Transaksi</span>
+      <span class="dash_vendorpilihan">3 Vendor Pilihan</span>
+    </div>
         <div class="uk-width-3-4@xl uk-width-3-4@xl uk-width-2-3@m uk-width-1-2@s">
-          <div class="dash_customername">{{ customers.customer_name }}</div>
-          <div class="dash_customerhistory">
-            <span class="dash_historytransaction">5 Transaksi</span>
-            <span class="dash_vendorpilihan">3 Vendor Pilihan</span>
-          </div>
         </div>
         <div class="uk-width-expand">
           <div class="uk-float-right dash_customercredit">
@@ -18,6 +23,7 @@
           </div>
         </div>
       </div>
+    -->
     </div>
 
     <div class="board_bookingvendor">

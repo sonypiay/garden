@@ -4,7 +4,7 @@
       <div class="uk-container">
         <div class="uk-card uk-card-body content_mainorders_heading">
           <div class="summary_headertitle">Pembayaran - #{{ orders.transaction_id }}</div>
-          <div class="summary_subtitle">Silahkan konfirmasi pembayaran pesanan Anda</div>
+          <div class="summary_subtitle">Silahkan lakukan pembayaran pesanan Anda</div>
         </div>
       </div>
     </div>
@@ -81,6 +81,7 @@
             </div>
             <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-widht-1-2@s">
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_header">
+                <div v-if="errorMessage" class="uk-alert-danger" uk-alert>{{ errorMessage }}</div>
                 <div class="sidebar_summaryorder_title">Harga Deal</div>
                 <div class="sidebar_summaryorder_subtitle">Rp. {{ formatCurrency }}</div>
               </div>
@@ -106,11 +107,24 @@
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
                 <div class="side_summarydetail-bankpembayaran-title">Bank</div>
                 <div class="side_summarydetail-bankpembayaran-value">
-                  <select class="uk-select form-settingaction" v-model="forms.bank">
-                    <option value="">-- Pilih Bank --</option>
-                    <option v-for="bank in bankpayment" :value="bank.bank_id">{{ bank.bank_name }}</option>
-                  </select>
+                  <div class="uk-width-1-1 uk-inline">
+                    <button class="uk-width-1-1 uk-button uk-button-default side_summarydetail-dropdownbank" v-html="forms.selectedBank.name">Pilih Bank <span class="fas fa-chevron-down"></span></button>
+                    <div class="uk-width-1-1 summarydetail_dropdownbank-container" uk-dropdown="mode: click; pos: top">
+                      <ul class="uk-nav uk-dropdown-nav">
+                        <li v-for="bank in bankpayment"><a @click="onSelectedBank( bank )">{{ bank.bank_name }}</a></li>
+                      </ul>
+                    </div>
+                  </div>
                   <div v-if="errors.bank" class="uk-text-small uk-text-danger">{{ errors.bank }}</div>
+                </div>
+              </div>
+              <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail" v-if="forms.bank">
+                <div class="side_summarydetail-bankpembayaran-title">
+                  <span v-if="forms.bank !== ''">{{ forms.selectedBank.name }}</span>
+                </div>
+                <div class="side_summarydetail-bankpembayaran-value">
+                  {{ forms.selectedBank.account_number }} <br>
+                  {{ forms.selectedBank.code }}
                 </div>
               </div>
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
@@ -139,9 +153,15 @@ export default {
       forms: {
         error: false,
         submit: 'Checkout',
-        payment_method: this.orders.payment_method,
-        bank: this.orders.payment_to,
-        payment_id: this.orders.payment_id
+        payment_method: this.orders.payment_method === null ? '' : this.orders.payment_method,
+        bank:  this.orders.payment_to === null ? null : this.orders.payment_to,
+        payment_id: this.orders.payment_id,
+        selectedBank: {
+          id: this.orders.bank_id === null ? '' : this.orders.bank_id,
+          name: this.orders.bank_name === null ? 'Pilih bank <span class="fas fa-chevron-down"></span>' : this.orders.bank_name,
+          account_number: this.orders.account_number === null ? '' : this.orders.account_number,
+          code: this.orders.bank_code === null ? '' : this.orders.bank_code
+        }
       },
     }
   },
@@ -155,6 +175,13 @@ export default {
       var getIndex = files.lastIndexOf(".");
       var getformatfile = files.substring( length_str_file, getIndex + 1 ).toLowerCase();
       return getformatfile;
+    },
+    onSelectedBank(bank) {
+      this.forms.bank = bank.bank_id;
+      this.forms.selectedBank.name = bank.bank_name;
+      this.forms.selectedBank.account_number = bank.account_number;
+      this.forms.selectedBank.code = bank.bank_code;
+      console.log(this.forms.selectedBank);
     },
     onCheckoutOrder() {
       this.errors = {};
@@ -170,13 +197,37 @@ export default {
         this.errors.bank = 'Silahkan pilih bank yang tersedia.';
       }
 
-      console.log(this.forms);
-
       if( this.forms.error === true )
       {
         this.forms.error = false;
         return false;
       }
+      this.forms.submit = '<span uk-spinner></span>';
+      axios({
+        method: 'put',
+        url: this.url + '/booking_checkout/' + this.orders.transaction_id,
+        headers: { 'Content-Type': 'application/json' },
+        params: {
+          payment_id: this.forms.payment_id,
+          payment_method: this.forms.payment_method,
+          bank: this.forms.bank
+        }
+      }).then( res => {
+        let result = res.data;
+        var redirect = this.url + '/customers/transaction_success/' + this.orders.transaction_id;
+        setTimeout(function(){ document.location = redirect; }, 3000);
+        console.log( result );
+      }).catch( err => {
+        this.forms.submit = 'Checkout';
+        this.errorMessage = err.response.status + ' ' + err.response.statusText;
+        swal({
+          title: 'Terjadi kesalahan',
+          text: err.response.statusText,
+          icon: 'warning',
+          dangerMode: true,
+          timer: 5000
+        });
+      });
     }
   },
   computed: {

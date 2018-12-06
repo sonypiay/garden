@@ -918,6 +918,41 @@ html,body {
       color: #555555;
       @include fontstyle(400, normal, normal, 0.4px);
     }
+    .side_summarydetail-bankpembayaran-value {
+      .side_summarydetail-dropdownbank {
+        border-radius: 2px;
+        font-family: $font-primary;
+        font-size: 13px;
+        color: #666666;
+        border: 1px solid #e9e9e9;
+        text-transform: capitalize;
+        @include fontstyle(400, normal, normal, 0.6px);
+        &:hover, &:focus {
+          color: #444444;
+          border: 1px solid $logo-color-primary;
+        }
+      }
+      .summarydetail_dropdownbank-container {
+        height: 100px;
+        border-radius: 3px;
+        overflow-y: scroll;
+        padding: 0;
+        ul {
+          li {
+            a {
+              padding: 10px 16px;
+              color: #666666;
+              font-family: $font-primary;
+              @include fontstyle(300, normal, normal, 0.4px);
+              &:hover, &:focus {
+                background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+                color: #ffffff;
+              }
+            }
+          }
+        }
+      }
+    }
     .side_summarydetail-kodepembayaran-value i {
       font-size: 11px;
       color: #888888;
@@ -936,6 +971,47 @@ html,body {
         color: #ffffff;
         background: linear-gradient(97deg, $logo-color-primary, $f6b092);
       }
+    }
+  }
+}
+
+.summary-transaction-content {
+  font-family: $font-primary;
+  .summary-transaction-title {
+    font-size: 22px;
+    color: #666666;
+    @include fontstyle(600, normal, normal, 0.4px);
+    border-bottom: 1px solid #e9e9e9;
+    padding-bottom: 10px;
+  }
+  .summary-transaction-contentleft,
+  .summary-transaction-contentright {
+    margin-top: 15px;
+  }
+  .summary-transaction-detail {
+    .summary-transaction-detail-thankyou {
+      font-size: 12px;
+      color: #666666;
+      @include fontstyle(300, normal, normal, 0.4px);
+    }
+    .summary-transaction-detail-verification {
+      font-size: 14px;
+      color: #666666;
+      @include fontstyle(300, normal, normal, 0.4px);
+    }
+  }
+  .summary-transaction-viewdetail {
+    border-radius: 2px;
+    font-family: $font-primary;
+    font-size: 13px;
+    color: #ffffff;
+    border: 0;
+    background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    text-transform: capitalize;
+    @include fontstyle(400, normal, normal, 0.6px);
+    &:hover, &:focus {
+      color: #ffffff;
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
     }
   }
 }
