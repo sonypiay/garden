@@ -3,8 +3,7 @@
     <div class="content_mainorders_header">
       <div class="uk-container">
         <div class="uk-card uk-card-body content_mainorders_heading">
-          <div class="summary_headertitle">Pembayaran - #{{ orders.transaction_id }}</div>
-          <div class="summary_subtitle">Silahkan lakukan pembayaran pesanan Anda</div>
+          <div class="summary_headertitle">Pesanan - #{{ orders.transaction_id }}</div>
         </div>
       </div>
     </div>
@@ -14,8 +13,8 @@
           <div class="uk-grid-medium" uk-grid>
             <div class="uk-width-expand">
               <div class="uk-padding content_summaryorder_header">
-                <div class="summaryorder_title">{{ orders.vendor_name }}</div>
-                <div class="summaryorder_subtitle">{{ vendors.nama_kab }}</div>
+                <div class="summaryorder_title">{{ orders.customer_name }}</div>
+                <div class="summaryorder_subtitle">{{ vendors.kabupaten }}</div>
               </div>
               <div class="uk-padding-small content_summaryorder_detail">
                 <div class="uk-grid-small" uk-grid>
@@ -81,7 +80,6 @@
             </div>
             <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-widht-1-2@s">
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_header">
-                <div v-if="errorMessage" class="uk-alert-danger" uk-alert>{{ errorMessage }}</div>
                 <div class="sidebar_summaryorder_title">Harga Deal</div>
                 <div class="sidebar_summaryorder_subtitle">Rp. {{ formatCurrency }}</div>
               </div>
@@ -92,67 +90,22 @@
                 </div>
               </div>
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
-                <div class="side_summarydetail-kodepembayaran-title">Kode Pembayaran</div>
-                <div class="side_summarydetail-kodepembayaran-value">
-                  <div>#{{ orders.payment_id }}</div>
-                  <div class="uk-text-small">
-                    <i>Masukkan berita acara untuk mempercepat proses verifikasi</i>
-                  </div>
-                </div>
-              </div>
-              <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
                 <div class="side_summarydetail-metodepembayaran-title">Metode Pembayaran</div>
                 <div class="side_summarydetail-metodepembayaran-value">
-                  <select class="uk-select summarydetail-formselect" v-model="forms.payment_method">
-                    <option value="">-- Pilih Metode Pembayaran --</option>
-                    <option value="TRANSFER">Transfer Bank</option>
-                  </select>
-                  <div v-if="errors.payment_method" class="uk-text-small uk-text-danger">{{ errors.payment_method }}</div>
+                  {{ orders.payment_method }}
                 </div>
               </div>
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
-                <div class="side_summarydetail-bankpembayaran-title">Bank</div>
-                <div class="side_summarydetail-bankpembayaran-value">
-                  <div class="uk-width-1-1 uk-inline">
-                    <button class="uk-width-1-1 uk-button uk-button-default side_summarydetail-dropdownbank" v-html="forms.selectedBank.name">Pilih Bank <span class="fas fa-chevron-down"></span></button>
-                    <div class="uk-width-1-1 summarydetail_dropdownbank-container" uk-dropdown="mode: click; pos: top">
-                      <ul class="uk-nav uk-dropdown-nav">
-                        <li v-for="bank in bankpayment"><a @click="onSelectedBank( bank )">{{ bank.bank_name }}</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div v-if="errors.bank" class="uk-text-small uk-text-danger">{{ errors.bank }}</div>
-                </div>
-              </div>
-              <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail" v-if="forms.bank">
-                <div class="side_summarydetail-bankpembayaran-title">
-                  <span v-if="forms.bank !== ''">{{ forms.selectedBank.name }}</span>
-                </div>
-                <div class="side_summarydetail-bankpembayaran-value">
-                  {{ forms.selectedBank.account_number }} <br>
-                  {{ forms.selectedBank.code }}
-                </div>
-              </div>
-              <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
-                <div class="side_summarydetail-layananpremium-title">
-                  Tambahkan Layanan Premium
-                </div>
+                <div class="side_summarydetail-layananpremium-title">Layanan Premium</div>
                 <div class="side_summarydetail-layananpremium-value">
-                  <select class="uk-select summarydetail-formselect" v-model="forms.premium">
-                    <option value="N">Tidak</option>
-                    <option value="Y">Ya</option>
-                  </select>
-                  <div class="uk-text-small uk-text-muted side_summarydetail-subvalue">
-                    <i>Dengan menjadi Pembeli Premium kamu akan mendapatkan prioritas layanan dari tim layanan pengguna kami untuk menambahkan kenyamanan dalam bertransaksi.</i>
-                  </div>
+                  <span v-if="orders.isPremium === 'Y'">Ya</span>
+                  <span v-else>Tidak</span>
                 </div>
               </div>
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
                 <div v-if="orders.last_status_transaction === 'approval'">
-                  <button @click="onCheckoutOrder" v-html="forms.submit" :disabled="true" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout">Checkout</button>
-                </div>
-                <div v-else>
-                  <button @click="onCheckoutOrder" v-html="forms.submit" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-checkout">Checkout</button>
+                  <button @click="onCheckoutOrder" v-html="forms.approved" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-approved">Approve</button>
+                  <button @click="onCheckoutOrder" v-html="forms.rejected" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-reject">Reject</button>
                 </div>
               </div>
             </div>
@@ -165,29 +118,16 @@
 
 <script>
 export default {
-  props: ['url', 'orders', 'vendors', 'bankpayment'],
+  props: ['url', 'orders', 'vendors'],
   data() {
     return {
       errorMessage: '',
-      errors: {},
-      props: {
-        url: this.url,
-        orders: this.orders,
-        vendors: this.vendors
-      },
       forms: {
         error: false,
         submit: 'Checkout',
-        payment_method: this.orders.payment_method === null ? '' : this.orders.payment_method,
-        bank:  this.orders.payment_to === null ? null : this.orders.payment_to,
-        payment_id: this.orders.payment_id,
-        premium: 'N',
-        selectedBank: {
-          id: this.orders.bank_id === null ? '' : this.orders.bank_id,
-          name: this.orders.bank_name === null ? 'Pilih bank <span class="fas fa-chevron-down"></span>' : this.orders.bank_name,
-          account_number: this.orders.account_number === null ? '' : this.orders.account_number,
-          code: this.orders.bank_code === null ? '' : this.orders.bank_code
-        }
+        approved: 'Approve',
+        rejected: 'Reject',
+        isApprove: ''
       },
     }
   },
@@ -209,51 +149,8 @@ export default {
       this.forms.selectedBank.code = bank.bank_code;
       console.log(this.forms.selectedBank);
     },
-    onCheckoutOrder() {
-      this.errors = {};
-      this.errorMessage = '';
-      if( this.forms.payment_method === '' )
-      {
-        this.forms.error = true;
-        this.errors.payment_method = 'Metode pembayaran wajib diisi';
-      }
-      if( this.forms.bank === '' )
-      {
-        this.forms.error = true;
-        this.errors.bank = 'Silahkan pilih bank yang tersedia.';
-      }
-
-      if( this.forms.error === true )
-      {
-        this.forms.error = false;
-        return false;
-      }
-      this.forms.submit = '<span uk-spinner></span>';
-      axios({
-        method: 'put',
-        url: this.url + '/booking_checkout/' + this.orders.transaction_id,
-        headers: { 'Content-Type': 'application/json' },
-        params: {
-          payment_id: this.forms.payment_id,
-          payment_method: this.forms.payment_method,
-          bank: this.forms.bank
-        }
-      }).then( res => {
-        let result = res.data;
-        var redirect = this.url + '/customers/transaction_success/' + this.orders.transaction_id;
-        setTimeout(function(){ document.location = redirect; }, 3000);
-        console.log( result );
-      }).catch( err => {
-        this.forms.submit = 'Checkout';
-        this.errorMessage = err.response.status + ' ' + err.response.statusText;
-        swal({
-          title: 'Terjadi kesalahan',
-          text: err.response.statusText,
-          icon: 'warning',
-          dangerMode: true,
-          timer: 5000
-        });
-      });
+    onApproval(approval) {
+      this.forms.isApprove = approval;
     }
   },
   computed: {

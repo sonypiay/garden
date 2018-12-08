@@ -65716,6 +65716,8 @@ Vue.component('loginvendor', __webpack_require__(223));
 Vue.component('vendoreditaccount', __webpack_require__(228));
 Vue.component('vendorportfolio', __webpack_require__(251));
 Vue.component('vendorportfolioimages', __webpack_require__(254));
+Vue.component('vendororderlist', __webpack_require__(290));
+Vue.component('vendorsummaryorder', __webpack_require__(293));
 // vendor
 
 Vue.component('discoveryvendor', __webpack_require__(257));
@@ -66803,6 +66805,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'customers'],
@@ -67004,23 +67007,38 @@ var render = function() {
                         _c(
                           "div",
                           { staticClass: "dash_sum-transaction-orderdate" },
-                          [_vm._v(_vm._s(_vm.formatDate(result.schedule_date)))]
+                          [_vm._v(_vm._s(_vm.formatDate(result.created_at)))]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "uk-display-block uk-margin-top dash_sum-transaction-view",
-                            attrs: {
-                              href:
-                                _vm.url +
-                                "/customers/summary_order/" +
-                                result.transaction_id
-                            }
-                          },
-                          [_vm._v("Lihat rincian")]
-                        )
+                        result.last_status_transaction === "approval"
+                          ? _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "uk-display-block uk-margin-top dash_sum-transaction-view",
+                                attrs: {
+                                  href:
+                                    _vm.url +
+                                    "/customers/main_orders/" +
+                                    result.transaction_id
+                                }
+                              },
+                              [_vm._v("Lihat rincian")]
+                            )
+                          : _c(
+                              "a",
+                              {
+                                staticClass:
+                                  "uk-display-block uk-margin-top dash_sum-transaction-view",
+                                attrs: {
+                                  href:
+                                    _vm.url +
+                                    "/customers/summary_order/" +
+                                    result.transaction_id
+                                }
+                              },
+                              [_vm._v("Konfirmasi")]
+                            )
                       ])
                     ]
                   )
@@ -69540,57 +69558,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return false;
       }
 
-      if (this.getFormatFile(this.forms.layout_design.name) !== 'jpg' && this.getFormatFile(this.forms.layout_design.name) !== 'jpeg' && this.getFormatFile(this.forms.layout_design.name) !== 'pdf' && this.getFormatFile(this.forms.layout_design.name) !== 'doc' && this.getFormatFile(this.forms.layout_design.name) !== 'docx') {
-        this.errors.layout_design = 'Format file tidak valid.';
-        swal({
-          title: 'Whoops',
-          text: this.errors.layout_design,
-          icon: 'warning',
-          dangerMode: true,
-          timer: 5000
-        });
-      } else if (this.forms.layout_design > 2048000) {
-        this.errors.layout_design = 'Ukuran file terlalu besar. Maksimal 2 MB.';
-        swal({
-          title: 'Whoops',
-          text: this.errors.layout_design,
-          icon: 'warning',
-          dangerMode: true,
-          timer: 5000
-        });
-      } else {
-        var formdata = new FormData();
-        formdata.append('schedule_date', this.formatDate(this.forms.schedule_date, 'YYYY-MM-DD'));
-        formdata.append('mobile_number', this.forms.notelepon);
-        formdata.append('region', this.forms.region);
-        formdata.append('district', this.forms.district);
-        formdata.append('subdistrict', this.forms.subdistrict);
-        formdata.append('address', this.forms.address);
-        formdata.append('zipcode', this.forms.zipcode);
-        formdata.append('price_deal', price_deal);
-        formdata.append('layout_design', this.forms.layout_design);
-        formdata.append('additional_info', this.forms.note);
-        formdata.append('customer', this.customers.customer_id);
-        formdata.append('vendor', this.vendors.vendor_id);
-        this.forms.submit = '<span uk-spinner></span>';
-        axios.post(this.url + '/booking_process', formdata).then(function (res) {
-          var result = res.data;
-          var redirect = _this4.url + '/customers/main_orders/' + result.transaction_id;
-          setTimeout(function () {
-            document.location = redirect;
-          }, 3000);
-        }).catch(function (err) {
-          _this4.errorMessage = err.response.statusText;
+      if (this.forms.layout_design !== '') {
+        if (this.getFormatFile(this.forms.layout_design.name) !== 'jpg' && this.getFormatFile(this.forms.layout_design.name) !== 'jpeg' && this.getFormatFile(this.forms.layout_design.name) !== 'pdf' && this.getFormatFile(this.forms.layout_design.name) !== 'doc' && this.getFormatFile(this.forms.layout_design.name) !== 'docx') {
+          this.errors.layout_design = 'Format file tidak valid.';
           swal({
-            title: 'Terjadi kesalahan',
-            text: _this4.errorMessage,
-            icon: 'error',
+            title: 'Whoops',
+            text: this.errors.layout_design,
+            icon: 'warning',
             dangerMode: true,
             timer: 5000
           });
-          _this4.forms.submit = 'Pesan';
-        });
+          return false;
+        }
+
+        if (this.forms.layout_design.size > 2048000) {
+          this.errors.layout_design = 'Ukuran file terlalu besar. Maksimal 2 MB.';
+          swal({
+            title: 'Whoops',
+            text: this.errors.layout_design,
+            icon: 'warning',
+            dangerMode: true,
+            timer: 5000
+          });
+          return false;
+        }
       }
+
+      var formdata = new FormData();
+      formdata.append('schedule_date', this.formatDate(this.forms.schedule_date, 'YYYY-MM-DD'));
+      formdata.append('mobile_number', this.forms.notelepon);
+      formdata.append('region', this.forms.region);
+      formdata.append('district', this.forms.district);
+      formdata.append('subdistrict', this.forms.subdistrict);
+      formdata.append('address', this.forms.address);
+      formdata.append('zipcode', this.forms.zipcode);
+      formdata.append('price_deal', price_deal);
+      formdata.append('layout_design', this.forms.layout_design);
+      formdata.append('additional_info', this.forms.note);
+      formdata.append('customer', this.customers.customer_id);
+      formdata.append('vendor', this.vendors.vendor_id);
+      this.forms.submit = '<span uk-spinner></span>';
+      axios.post(this.url + '/booking_process', formdata).then(function (res) {
+        var result = res.data;
+        var redirect = _this4.url + '/customers/main_orders/' + result.transaction_id;
+        setTimeout(function () {
+          document.location = redirect;
+        }, 3000);
+      }).catch(function (err) {
+        _this4.errorMessage = err.response.statusText;
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this4.errorMessage,
+          icon: 'error',
+          dangerMode: true,
+          timer: 5000
+        });
+        _this4.forms.submit = 'Pesan';
+      });
     },
     formatPrice: function formatPrice() {
       var number = this.forms.price_deal;
@@ -71097,6 +71121,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'orders', 'vendors', 'bankpayment'],
@@ -71115,6 +71153,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         payment_method: this.orders.payment_method === null ? '' : this.orders.payment_method,
         bank: this.orders.payment_to === null ? null : this.orders.payment_to,
         payment_id: this.orders.payment_id,
+        premium: 'N',
         selectedBank: {
           id: this.orders.bank_id === null ? '' : this.orders.bank_id,
           name: this.orders.bank_name === null ? 'Pilih bank <span class="fas fa-chevron-down"></span>' : this.orders.bank_name,
@@ -71859,6 +71898,84 @@ var render = function() {
                           "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
                       },
                       [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-layananpremium-title"
+                          },
+                          [
+                            _vm._v(
+                              "\n                Tambahkan Layanan Premium\n              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-layananpremium-value"
+                          },
+                          [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.forms.premium,
+                                    expression: "forms.premium"
+                                  }
+                                ],
+                                staticClass:
+                                  "uk-select summarydetail-formselect",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.forms,
+                                      "premium",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { value: "N" } }, [
+                                  _vm._v("Tidak")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "Y" } }, [
+                                  _vm._v("Ya")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(3)
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
                         _vm.orders.last_status_transaction === "approval"
                           ? _c("div", [
                               _c(
@@ -71952,6 +72069,24 @@ var staticRenderFns = [
         _vm._v("Masukkan berita acara untuk mempercepat proses verifikasi")
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "uk-text-small uk-text-muted side_summarydetail-subvalue"
+      },
+      [
+        _c("i", [
+          _vm._v(
+            "Dengan menjadi Pembeli Premium kamu akan mendapatkan prioritas layanan dari tim layanan pengguna kami untuk menambahkan kenyamanan dalam bertransaksi."
+          )
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -72641,10 +72776,6 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(216)
-}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(218)
@@ -72653,7 +72784,7 @@ var __vue_template__ = __webpack_require__(219)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -72688,51 +72819,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 216 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(217);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(139)("6a05bf91", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-22982f27\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ListTransaction.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-22982f27\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ListTransaction.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 217 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(7)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 216 */,
+/* 217 */,
 /* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -72839,8 +72933,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "uk-margin-large-top" }, [
     _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-      _vm._m(0),
-      _vm._v(" "),
       _c("div", { staticClass: "uk-width-expand" }, [
         _c(
           "div",
@@ -72954,20 +73046,35 @@ var render = function() {
                         [_vm._v(_vm._s(_vm.formatDate(result.schedule_date)))]
                       ),
                       _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "uk-display-block uk-margin-top dash_sum-transaction-view",
-                          attrs: {
-                            href:
-                              _vm.url +
-                              "/customers/summary_order/" +
-                              result.transaction_id
-                          }
-                        },
-                        [_vm._v("Lihat rincian")]
-                      )
+                      result.last_status_transaction === "approval"
+                        ? _c(
+                            "a",
+                            {
+                              staticClass:
+                                "uk-display-block uk-margin-top dash_sum-transaction-view",
+                              attrs: {
+                                href:
+                                  _vm.url +
+                                  "/customers/main_orders/" +
+                                  result.transaction_id
+                              }
+                            },
+                            [_vm._v("Lihat rincian")]
+                          )
+                        : _c(
+                            "a",
+                            {
+                              staticClass:
+                                "uk-display-block uk-margin-top dash_sum-transaction-view",
+                              attrs: {
+                                href:
+                                  _vm.url +
+                                  "/customers/summary_order/" +
+                                  result.transaction_id
+                              }
+                            },
+                            [_vm._v("Konfirmasi")]
+                          )
                     ])
                   ]
                 )
@@ -72979,18 +73086,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-width-1-6@xl uk-width-1-6@l" }, [
-      _c("div", { staticClass: "filter-statustransaction-label" }, [
-        _vm._v("Filter Status")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -80126,6 +80222,1097 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(291)
+/* template */
+var __vue_template__ = __webpack_require__(292)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/vendors/orders/ListTransaction.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0049c551", Component.options)
+  } else {
+    hotAPI.reload("data-v-0049c551", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 291 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'vendors'],
+  data: function data() {
+    return {
+      isLoading: false,
+      transaction: {
+        total: 0,
+        results: []
+      },
+      pagination: {
+        prev: '',
+        next: '',
+        last: '',
+        current: '',
+        path: this.url + '/vendor/data_orderlist'
+      }
+    };
+  },
+
+  methods: {
+    formatDate: function formatDate(str) {
+      return moment(str).locale('id').format('DD MMMM YYYY');
+    },
+    myTransaction: function myTransaction(pages, status) {
+      var _this = this;
+
+      var param = '&rows=12&status=' + status;
+      if (pages === undefined || pages === '') pages = this.url + '/vendor/data_orderlist?page=1' + param;else pages = pages + param;
+
+      this.isLoading = true;
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this.transaction.total = result.total;
+        _this.transaction.results = result.data;
+        _this.pagination = {
+          prev: result.prev_page_url,
+          next: result.next_page_url,
+          last: result.last_page,
+          current: result.current_page,
+          path: result.path
+        };
+        _this.isLoading = false;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.myTransaction('', 'all');
+  }
+});
+
+/***/ }),
+/* 292 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "uk-margin-large-top" }, [
+    _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+      _c("div", { staticClass: "uk-width-expand" }, [
+        _c(
+          "div",
+          { staticClass: "filter-statustransaction-list" },
+          _vm._l(_vm.$root.statusTransaction, function(status, index) {
+            return _c(
+              "a",
+              {
+                staticClass: "uk-button uk-button-default",
+                on: {
+                  click: function($event) {
+                    _vm.myTransaction(
+                      _vm.url +
+                        "/vendor/data_orderlist?page=" +
+                        _vm.pagination.current,
+                      index
+                    )
+                  }
+                }
+              },
+              [_vm._v(_vm._s(status))]
+            )
+          })
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "uk-card uk-card-body uk-card-default uk-margin-top orderlist_content"
+      },
+      [
+        _vm.isLoading
+          ? _c("div", { staticClass: "uk-text-center uk-margin-bottom" }, [
+              _c("span", { attrs: { "uk-spinner": "" } })
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "uk-grid-small",
+            attrs: { "uk-grid": "masonry: true" }
+          },
+          _vm._l(_vm.transaction.results, function(result) {
+            return _c(
+              "div",
+              {
+                staticClass:
+                  "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-2@s"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-card uk-card-default dashboard_summary-transaction"
+                  },
+                  [
+                    _c("div", { staticClass: "uk-card-media-top" }, [
+                      _vm.vendors.vendor_logo
+                        ? _c("div", [
+                            _c("img", {
+                              attrs: {
+                                src:
+                                  _vm.url +
+                                  "/images/vendor/logobrand/" +
+                                  _vm.vendors.vendor_logo,
+                                alt: _vm.vendors.vendor_name
+                              }
+                            })
+                          ])
+                        : _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-tile uk-tile-default dash_sum-transaction-banner"
+                            },
+                            [
+                              _c("span", {
+                                attrs: { "uk-icon": "icon: image; ratio: 4" }
+                              })
+                            ]
+                          )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-card-body uk-card-small" }, [
+                      _c(
+                        "div",
+                        { staticClass: "uk-badge dash_sum-transaction-status" },
+                        [
+                          _vm._v(
+                            _vm._s(
+                              _vm.$root.statusTransaction[
+                                result.last_status_transaction
+                              ]
+                            )
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "dash_sum-transaction-title" }, [
+                        _vm._v(_vm._s(result.customer_name))
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "dash_sum-transaction-orderdate" },
+                        [_vm._v(_vm._s(_vm.formatDate(result.schedule_date)))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "uk-display-block uk-margin-top dash_sum-transaction-view",
+                          attrs: {
+                            href:
+                              _vm.url +
+                              "/vendor/summary_order/" +
+                              result.transaction_id
+                          }
+                        },
+                        [_vm._v("Lihat rincian")]
+                      )
+                    ])
+                  ]
+                )
+              ]
+            )
+          })
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0049c551", module.exports)
+  }
+}
+
+/***/ }),
+/* 293 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(294)
+/* template */
+var __vue_template__ = __webpack_require__(295)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/vendors/orders/SummaryOrder.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-020ed5b2", Component.options)
+  } else {
+    hotAPI.reload("data-v-020ed5b2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 294 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'orders', 'vendors'],
+  data: function data() {
+    return {
+      errorMessage: '',
+      forms: {
+        error: false,
+        submit: 'Checkout',
+        approved: 'Approve',
+        rejected: 'Reject',
+        isApprove: ''
+      }
+    };
+  },
+
+  methods: {
+    formatDate: function formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
+      return res;
+    },
+
+    getFormatFile: function getFormatFile(files) {
+      var length_str_file = files.length;
+      var getIndex = files.lastIndexOf(".");
+      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    onSelectedBank: function onSelectedBank(bank) {
+      this.forms.bank = bank.bank_id;
+      this.forms.selectedBank.name = bank.bank_name;
+      this.forms.selectedBank.account_number = bank.account_number;
+      this.forms.selectedBank.code = bank.bank_code;
+      console.log(this.forms.selectedBank);
+    },
+    onApproval: function onApproval(approval) {
+      this.forms.isApprove = approval;
+    }
+  },
+  computed: {
+    formatFile: function formatFile() {
+      var length_str_file = this.orders.layout_design.length;
+      var getIndex = this.orders.layout_design.lastIndexOf(".");
+      var getformatfile = this.orders.layout_design.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    formatCurrency: function formatCurrency() {
+      var price = Number(this.orders.price_deal);
+      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(price);
+      return numberformat;
+    }
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+/* 295 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "content_mainorders_header" }, [
+      _c("div", { staticClass: "uk-container" }, [
+        _c(
+          "div",
+          { staticClass: "uk-card uk-card-body content_mainorders_heading" },
+          [
+            _c("div", { staticClass: "summary_headertitle" }, [
+              _vm._v("Pesanan - #" + _vm._s(_vm.orders.transaction_id))
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "content_mainorder_body" }, [
+      _c("div", { staticClass: "uk-container" }, [
+        _c(
+          "div",
+          { staticClass: "uk-card uk-card-body content_summaryorder" },
+          [
+            _c(
+              "div",
+              { staticClass: "uk-grid-medium", attrs: { "uk-grid": "" } },
+              [
+                _c("div", { staticClass: "uk-width-expand" }, [
+                  _c(
+                    "div",
+                    { staticClass: "uk-padding content_summaryorder_header" },
+                    [
+                      _c("div", { staticClass: "summaryorder_title" }, [
+                        _vm._v(_vm._s(_vm.orders.customer_name))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "summaryorder_subtitle" }, [
+                        _vm._v(_vm._s(_vm.vendors.kabupaten))
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-padding-small content_summaryorder_detail"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "uk-grid-small",
+                          attrs: { "uk-grid": "" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "summarydetail-orderdate-title"
+                                },
+                                [_vm._v("Tanggal Pengerjaan")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "summarydetail-orderdate-value"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatDate(
+                                        _vm.orders.schedule_date,
+                                        "DD MMMM YYYY"
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(0)
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-padding-small content_summaryorder_detail"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "uk-grid-small",
+                          attrs: { "uk-grid": "" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "summarydetail-mobilenumber-title"
+                                },
+                                [_vm._v("Nomor Telepon")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "summarydetail-mobilenumber-value"
+                                },
+                                [_vm._v(_vm._s(_vm.orders.mobile_number))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "uk-width-expand" }, [
+                            _c(
+                              "div",
+                              { staticClass: "summarydetail-note-title" },
+                              [_vm._v("Catatan")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "summarydetail-note-value" },
+                              [_vm._v(_vm._s(_vm.orders.additional_info))]
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "uk-padding content_summaryorder_detail" },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "uk-grid-small",
+                          attrs: { "uk-grid": "" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-title" },
+                                [_vm._v("Alamat")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-value" },
+                                [_vm._v(_vm._s(_vm.orders.address))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-title" },
+                                [_vm._v("Provinsi")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-value" },
+                                [
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(_vm.orders.nama_provinsi) +
+                                      "\n                  "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-title" },
+                                [_vm._v("Kota")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "summarydetail-address-value" },
+                                [
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(_vm.orders.nama_kab) +
+                                      " "
+                                  ),
+                                  _c("br"),
+                                  _vm._v(
+                                    " " + _vm._s(_vm.orders.nama_kec) + " "
+                                  ),
+                                  _c("br"),
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(_vm.orders.zipcode) +
+                                      "\n                  "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-padding-small content_summaryorder_detail"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "summarydetail-layoutdesign-title" },
+                        [_vm._v("Layout Design")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "summarydetail-layoutdesign-value" },
+                        [
+                          _vm.orders.layout_design
+                            ? _c("div", [
+                                _vm.formatFile === "jpeg" ||
+                                _vm.formatFile === "jpg"
+                                  ? _c("img", {
+                                      attrs: {
+                                        src:
+                                          _vm.url +
+                                          "/images/customer/layout_design/" +
+                                          _vm.orders.layout_design,
+                                        alt: ""
+                                      }
+                                    })
+                                  : _c("div", [_vm._m(1)])
+                              ])
+                            : _c("div", [
+                                _vm._v(
+                                  "\n                  Layout tidak dilampirkan\n                "
+                                )
+                              ])
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-widht-1-2@s"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_header"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "sidebar_summaryorder_title" },
+                          [_vm._v("Harga Deal")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "sidebar_summaryorder_subtitle" },
+                          [_vm._v("Rp. " + _vm._s(_vm.formatCurrency))]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-statustransaction-title"
+                          },
+                          [_vm._v("Status Transaksi")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-statustransaction-value"
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(
+                                  _vm.$root.statusTransaction[
+                                    _vm.orders.last_status_transaction
+                                  ]
+                                ) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-metodepembayaran-title"
+                          },
+                          [_vm._v("Metode Pembayaran")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-metodepembayaran-value"
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(_vm.orders.payment_method) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-layananpremium-title"
+                          },
+                          [_vm._v("Layanan Premium")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "side_summarydetail-layananpremium-value"
+                          },
+                          [
+                            _vm.orders.isPremium === "Y"
+                              ? _c("span", [_vm._v("Ya")])
+                              : _c("span", [_vm._v("Tidak")])
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
+                      },
+                      [
+                        _vm.orders.last_status_transaction === "approval"
+                          ? _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-approved",
+                                  domProps: {
+                                    innerHTML: _vm._s(_vm.forms.approved)
+                                  },
+                                  on: { click: _vm.onCheckoutOrder }
+                                },
+                                [_vm._v("Approve")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-reject",
+                                  domProps: {
+                                    innerHTML: _vm._s(_vm.forms.rejected)
+                                  },
+                                  on: { click: _vm.onCheckoutOrder }
+                                },
+                                [_vm._v("Reject")]
+                              )
+                            ])
+                          : _vm._e()
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+      },
+      [
+        _c("div", { staticClass: "uk-text-right" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "uk-button uk-button-default summarydetail-editorder",
+              attrs: { href: "#" }
+            },
+            [_vm._v("Ubah Pesanan")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "uk-button uk-button-default summarydetail_download",
+        attrs: { href: "#" }
+      },
+      [
+        _c("span", { attrs: { "uk-icon": "cloud-download" } }),
+        _vm._v(" Unggah\n                    ")
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-020ed5b2", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

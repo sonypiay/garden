@@ -34,6 +34,8 @@ Route::group(['prefix' => 'customers'], function() {
   Route::get('/data_orderlist', 'Frontend\Customers\BookingTransactionController@data_orderlist');
   Route::get('/summary_order/{orderid}', 'Frontend\Customers\BookingTransactionController@summary_order')->name('summaryordercustomer_page');
   Route::get('/summary_transaction', 'Frontend\Customers\BookingTransactionController@mytransaction');
+  Route::get('/main_orders/{orderid}', 'Frontend\Customers\BookingTransactionController@main_orders')->name('customermainorder_page');
+  Route::get('/transaction_success/{orderid}', 'Frontend\Customers\BookingTransactionController@booking_transaction_success');
 
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Customers\AccountCustomers@index')->name('accountcustomer_page');
@@ -53,9 +55,6 @@ Route::group(['prefix' => 'customers'], function() {
     Route::put('/edit_email', 'Frontend\Customers\AccountCustomers@saveemail');
     Route::put('/edit_notelepon', 'Frontend\Customers\AccountCustomers@savephone');
   });
-
-  Route::get('/main_orders/{orderid}', 'Frontend\Customers\BookingTransactionController@main_orders')->name('customermainorder_page');
-  Route::get('/transaction_success/{orderid}', 'Frontend\Customers\BookingTransactionController@booking_transaction_success');
 });
 // customers
 
@@ -67,6 +66,11 @@ Route::group(['prefix' => 'vendor'], function() {
   Route::get('/logout', 'Frontend\Vendor\LoginRegisterController@logout')->name('logoutvendor');
   Route::post('/doregister', 'Frontend\Vendor\LoginRegisterController@doregister');
   Route::post('/dologin', 'Frontend\Vendor\LoginRegisterController@dologin');
+
+  Route::get('/order_list', 'Frontend\Vendor\BookingTransactionController@index')->name('orderlistvendor_page');
+  Route::get('/data_orderlist', 'Frontend\Vendor\BookingTransactionController@data_orderlist');
+  Route::get('/summary_order/{orderid}', 'Frontend\Vendor\BookingTransactionController@summary_order')->name('summaryordervendor_page');
+  Route::get('/main_orders/{orderid}', 'Frontend\Customers\BookingTransactionController@main_orders')->name('customermainorder_page');
 
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Vendor\AccountVendor@index')->name('accountvendor_page');

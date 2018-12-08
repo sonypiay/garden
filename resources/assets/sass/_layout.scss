@@ -905,7 +905,8 @@ html,body {
     .side_summarydetail-metodepembayaran-title,
     .side_summarydetail-bankpembayaran-title,
     .side_summarydetail-kodepembayaran-title,
-    .side_summarydetail-statustransaction-title {
+    .side_summarydetail-statustransaction-title,
+    .side_summarydetail-layananpremium-title {
       font-size: 14px;
       color: #777777;
       @include fontstyle(400, normal, normal, 0.4px);
@@ -914,7 +915,8 @@ html,body {
     .side_summarydetail-metodepembayaran-value,
     .side_summarydetail-bankpembayaran-value,
     .side_summarydetail-kodepembayaran-value,
-    .side_summarydetail-statustransaction-value {
+    .side_summarydetail-statustransaction-value,
+    .side_summarydetail-layananpremium-value {
       font-size: 14px;
       color: #555555;
       @include fontstyle(400, normal, normal, 0.4px);
@@ -958,6 +960,11 @@ html,body {
       font-size: 11px;
       color: #888888;
       font-style: italic !important;
+    }
+    .side_summarydetail-subvalue {
+      font-size: 11px;
+      color: #888888;
+      margin-top: 10px;
     }
     .side_summarydetail-checkout {
       border-radius: 2px;

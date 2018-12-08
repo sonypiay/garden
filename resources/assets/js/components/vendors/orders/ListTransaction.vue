@@ -6,7 +6,7 @@
       </div>-->
       <div class="uk-width-expand">
         <div class="filter-statustransaction-list">
-          <a v-for="(status, index) in $root.statusTransaction" @click="myTransaction( url + '/customers/data_orderlist?page=' + pagination.current, index  )" class="uk-button uk-button-default">{{ status }}</a>
+          <a v-for="(status, index) in $root.statusTransaction" @click="myTransaction( url + '/vendor/data_orderlist?page=' + pagination.current, index  )" class="uk-button uk-button-default">{{ status }}</a>
         </div>
       </div>
     </div>
@@ -18,8 +18,8 @@
         <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-2@s" v-for="result in transaction.results">
           <div class="uk-card uk-card-default dashboard_summary-transaction">
             <div class="uk-card-media-top">
-              <div v-if="result.vendor_logo">
-                <img :src="url + '/images/vendor/logobrand/' + result.vendor_logo" :alt="result.vendor_name">
+              <div v-if="vendors.vendor_logo">
+                <img :src="url + '/images/vendor/logobrand/' + vendors.vendor_logo" :alt="vendors.vendor_name">
               </div>
               <div class="uk-tile uk-tile-default dash_sum-transaction-banner" v-else>
                 <span uk-icon="icon: image; ratio: 4"></span>
@@ -27,10 +27,9 @@
             </div>
             <div class="uk-card-body uk-card-small">
               <div class="uk-badge dash_sum-transaction-status">{{ $root.statusTransaction[result.last_status_transaction] }}</div>
-              <div class="dash_sum-transaction-title">{{ result.vendor_name }}</div>
+              <div class="dash_sum-transaction-title">{{ result.customer_name }}</div>
               <div class="dash_sum-transaction-orderdate">{{ formatDate( result.schedule_date ) }}</div>
-              <a v-if="result.last_status_transaction === 'approval'" class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/customers/main_orders/' + result.transaction_id">Lihat rincian</a>
-              <a v-else class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/customers/summary_order/' + result.transaction_id">Konfirmasi</a>
+                <a class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/vendor/summary_order/' + result.transaction_id">Lihat rincian</a>
             </div>
           </div>
         </div>
@@ -41,7 +40,7 @@
 
 <script>
 export default {
-  props: ['url'],
+  props: ['url', 'vendors'],
   data() {
     return {
       isLoading: false,
@@ -54,7 +53,7 @@ export default {
         next: '',
         last: '',
         current: '',
-        path: this.url + '/customers/data_orderlist'
+        path: this.url + '/vendor/data_orderlist'
       }
     }
   },
@@ -65,7 +64,7 @@ export default {
     myTransaction(pages, status) {
       var param = '&rows=12&status=' + status;
       if( pages === undefined || pages === '' )
-        pages = this.url + '/customers/data_orderlist?page=1' + param;
+        pages = this.url + '/vendor/data_orderlist?page=1' + param;
       else
         pages = pages + param;
 
