@@ -332,65 +332,69 @@ export default {
         return false;
       }
 
-      if( this.getFormatFile( this.forms.layout_design.name ) !== 'jpg'
-        && this.getFormatFile( this.forms.layout_design.name ) !== 'jpeg'
-        && this.getFormatFile( this.forms.layout_design.name ) !== 'pdf'
-        && this.getFormatFile( this.forms.layout_design.name ) !== 'doc'
-        && this.getFormatFile( this.forms.layout_design.name ) !== 'docx'
-      )
+      if( this.forms.layout_design !== '' )
       {
-        this.errors.layout_design = 'Format file tidak valid.';
-        swal({
-          title: 'Whoops',
-          text: this.errors.layout_design,
-          icon: 'warning',
-          dangerMode: true,
-          timer: 5000
-        });
-      }
-      else if( this.forms.layout_design > 2048000 )
-      {
-        this.errors.layout_design = 'Ukuran file terlalu besar. Maksimal 2 MB.';
-        swal({
-          title: 'Whoops',
-          text: this.errors.layout_design,
-          icon: 'warning',
-          dangerMode: true,
-          timer: 5000
-        });
-      }
-      else
-      {
-        var formdata = new FormData();
-        formdata.append('schedule_date', this.formatDate( this.forms.schedule_date, 'YYYY-MM-DD' ));
-        formdata.append('mobile_number', this.forms.notelepon);
-        formdata.append('region', this.forms.region);
-        formdata.append('district', this.forms.district);
-        formdata.append('subdistrict', this.forms.subdistrict);
-        formdata.append('address', this.forms.address);
-        formdata.append('zipcode', this.forms.zipcode);
-        formdata.append('price_deal', price_deal);
-        formdata.append('layout_design', this.forms.layout_design);
-        formdata.append('additional_info', this.forms.note);
-        formdata.append('customer', this.customers.customer_id);
-        formdata.append('vendor', this.vendors.vendor_id);
-        this.forms.submit = '<span uk-spinner></span>';
-        axios.post( this.url + '/booking_process', formdata ).then( res => {
-          let result = res.data;
-          var redirect = this.url + '/customers/main_orders/' + result.transaction_id;
-          setTimeout(function(){ document.location = redirect; },3000);
-        }).catch( err => {
-          this.errorMessage = err.response.statusText;
+        if( this.getFormatFile( this.forms.layout_design.name ) !== 'jpg'
+          && this.getFormatFile( this.forms.layout_design.name ) !== 'jpeg'
+          && this.getFormatFile( this.forms.layout_design.name ) !== 'pdf'
+          && this.getFormatFile( this.forms.layout_design.name ) !== 'doc'
+          && this.getFormatFile( this.forms.layout_design.name ) !== 'docx'
+        )
+        {
+          this.errors.layout_design = 'Format file tidak valid.';
           swal({
-            title: 'Terjadi kesalahan',
-            text: this.errorMessage,
-            icon: 'error',
+            title: 'Whoops',
+            text: this.errors.layout_design,
+            icon: 'warning',
             dangerMode: true,
             timer: 5000
           });
-          this.forms.submit = 'Pesan';
-        });   
+          return false;
+        }
+
+        if( this.forms.layout_design.size > 2048000 )
+        {
+          this.errors.layout_design = 'Ukuran file terlalu besar. Maksimal 2 MB.';
+          swal({
+            title: 'Whoops',
+            text: this.errors.layout_design,
+            icon: 'warning',
+            dangerMode: true,
+            timer: 5000
+          });
+          return false;
+        }
       }
+
+      var formdata = new FormData();
+      formdata.append('schedule_date', this.formatDate( this.forms.schedule_date, 'YYYY-MM-DD' ));
+      formdata.append('mobile_number', this.forms.notelepon);
+      formdata.append('region', this.forms.region);
+      formdata.append('district', this.forms.district);
+      formdata.append('subdistrict', this.forms.subdistrict);
+      formdata.append('address', this.forms.address);
+      formdata.append('zipcode', this.forms.zipcode);
+      formdata.append('price_deal', price_deal);
+      formdata.append('layout_design', this.forms.layout_design);
+      formdata.append('additional_info', this.forms.note);
+      formdata.append('customer', this.customers.customer_id);
+      formdata.append('vendor', this.vendors.vendor_id);
+      this.forms.submit = '<span uk-spinner></span>';
+      axios.post( this.url + '/booking_process', formdata ).then( res => {
+        let result = res.data;
+        var redirect = this.url + '/customers/main_orders/' + result.transaction_id;
+        setTimeout(function(){ document.location = redirect; },3000);
+      }).catch( err => {
+        this.errorMessage = err.response.statusText;
+        swal({
+          title: 'Terjadi kesalahan',
+          text: this.errorMessage,
+          icon: 'error',
+          dangerMode: true,
+          timer: 5000
+        });
+        this.forms.submit = 'Pesan';
+      });
     },
     formatPrice() {
       var number = this.forms.price_deal;

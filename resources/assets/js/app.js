@@ -35,6 +35,8 @@ Vue.component('loginvendor', require('./components/vendors/Login.vue'));
 Vue.component('vendoreditaccount', require('./components/vendors/SettingAccount.vue'));
 Vue.component('vendorportfolio', require('./components/vendors/Portfolio.vue'));
 Vue.component('vendorportfolioimages', require('./components/vendors/PortfolioImage.vue'));
+Vue.component('vendororderlist', require('./components/vendors/orders/ListTransaction.vue'));
+Vue.component('vendorsummaryorder', require('./components/vendors/orders/SummaryOrder.vue'));
 // vendor
 
 Vue.component('discoveryvendor', require('./components/DiscoveryVendor.vue'));

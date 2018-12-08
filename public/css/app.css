@@ -1560,7 +1560,8 @@ body {
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-title,
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-title,
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-title,
-.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-title {
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-title,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-layananpremium-title {
   font-size: 14px;
   color: #777777;
   font-weight: 400;
@@ -1573,7 +1574,8 @@ body {
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-value,
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value,
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value,
-.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-value {
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-value,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-layananpremium-value {
   font-size: 14px;
   color: #555555;
   font-weight: 400;
@@ -1628,6 +1630,12 @@ body {
   font-size: 11px;
   color: #888888;
   font-style: italic !important;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-subvalue {
+  font-size: 11px;
+  color: #888888;
+  margin-top: 10px;
 }
 
 .content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout {
