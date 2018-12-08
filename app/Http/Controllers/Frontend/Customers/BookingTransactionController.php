@@ -133,6 +133,7 @@ class BookingTransactionController extends Controller
       'booking_transaction.additional_info',
       'booking_transaction.payment_method',
       'booking_transaction.last_status_transaction',
+      'booking_transaction.isPremium',
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',
@@ -188,25 +189,30 @@ class BookingTransactionController extends Controller
     $payment_id = $request->payment_id;
     $bank = $request->bank;
     $payment_method = $request->payment_method;
+    $payment_amount = $request->payment_amount;
     $status_transaction = 'payment_verify';
+    $premium = $request->premium;
     $booking = $booking->where('transaction_id', $orderid)->first();
     $logstatus = new $logstatus;
     $payment_verify = $payment_verify->where([
         ['transaction_id', '=', $orderid],
         ['payment_id', '=', $payment_id]
     ])->first();
+    
     $booking->payment_method = $payment_method;
     $booking->last_status_transaction = $status_transaction;
+    $booking->isPremium = $premium;
     $booking->save();
 
     $logstatus->transaction_id = $orderid;
     $logstatus->status_transaction = $status_transaction;
-    $logstatus->status_description = 'Menunggu proses pembayaran verifikasi pihak ketiga.';
+    $logstatus->status_description = 'Menunggu verifikasi pembayaran oleh pihak tim Garden Buana.';
     $logstatus->log_date = date('Y-m-d H:i:s');
     $logstatus->save();
 
     $payment_verify->payment_to = $bank;
     $payment_verify->status_payment = 'verification';
+    $payment_verify->payment_amount = $payment_amount;
     $payment_verify->save();
 
     $res = [
@@ -262,6 +268,8 @@ class BookingTransactionController extends Controller
       'booking_transaction.layout_design',
       'booking_transaction.additional_info',
       'booking_transaction.payment_method',
+      'booking_transaction.last_status_transaction',
+      'booking_transaction.isPremium',
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',
@@ -323,6 +331,7 @@ class BookingTransactionController extends Controller
       'booking_transaction.payment_method',
       'booking_transaction.last_status_transaction',
       'booking_transaction.customer_id',
+      'booking_transaction.isPremium',
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',

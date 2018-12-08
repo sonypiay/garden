@@ -82,7 +82,43 @@
             <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-widht-1-2@s">
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_header">
                 <div class="sidebar_summaryorder_title">Harga Deal</div>
-                <div class="sidebar_summaryorder_subtitle">Rp. {{ formatCurrency }}</div>
+                <div class="sidebar_summaryorder_subtitle">Rp. {{ formatCurrency( orders.price_deal ) }}</div>
+              </div>
+              <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
+                <div class="side_summarydetail-totaltransaction-title">Total Transaksi</div>
+                <div class="side_summarydetail-totaltransaction-value">
+                  <div class="uk-grid-small" uk-grid v-if="orders.bank_code === '014'">
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      Biaya transfer BCA
+                    </div>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      <div class="uk-text-right">
+                        + Rp. 4.000
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uk-grid-small" uk-grid v-if="orders.isPremium === 'Y'">
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      Pemesan Premium
+                    </div>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      <div class="uk-text-right">
+                        + Rp. 5.000
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="uk-grid-small" uk-grid>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      Total yang harus dibayar
+                    </div>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      <div class="uk-text-right">
+                        Rp. {{ formatCurrency( grandTotalPrice ) }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
                 <div class="side_summarydetail-metodepembayaran-title">Metode Pembayaran</div>
@@ -111,20 +147,57 @@
 export default {
   props: ['url', 'orders'],
   data() {
-    return {}
+    return {
+      bcaCharge: 4000,
+      premiumOrder: this.orders.isPremium
+    }
   },
   methods: {
     formatDate(str, format) {
       var res = moment(str).locale('id').format(format);
       return res;
     },
-  },
-  computed: {
-    formatCurrency() {
-      var price = Number( this.orders.price_deal );
-      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format( price );
+    formatCurrency(price) {
+      var getprice = Number( price );
+      var numberformat = new Intl.NumberFormat('en-ID').format( getprice );
       return numberformat;
     },
+    getFormatFile: function(files) {
+      var length_str_file = files.length;
+      var getIndex = files.lastIndexOf(".");
+      var getformatfile = files.substring( length_str_file, getIndex + 1 ).toLowerCase();
+      return getformatfile;
+    }
+  },
+  computed: {
+    grandTotalPrice()
+    {
+      var total = 0;
+      if( this.orders.isPremium === 'Y' )
+      {
+        total = this.orders.price_deal + 5000;
+        if( this.orders.bank_code === '014' )
+        {
+          total = this.orders.price_deal + 5000 + 4000;
+        }
+      }
+      else
+      {
+        total = this.orders.price_deal;
+        if( this.orders.bank_code === '014' )
+        {
+          total = this.orders.price_deal + 4000;
+        }
+      }
+      return total;
+    },
+    formatFile()
+    {
+      var length_str_file = this.orders.layout_design.length;
+      var getIndex = this.orders.layout_design.lastIndexOf(".");
+      var getformatfile = this.orders.layout_design.substring( length_str_file, getIndex + 1 ).toLowerCase();
+      return getformatfile;
+    }
   },
   mounted() {
 

@@ -104,8 +104,20 @@
               </div>
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
                 <div v-if="orders.last_status_transaction === 'approval'">
-                  <button @click="onCheckoutOrder" v-html="forms.approved" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-approved">Approve</button>
-                  <button @click="onCheckoutOrder" v-html="forms.rejected" class="uk-width-1-1 uk-button uk-button-large uk-button-default side_summarydetail-reject">Reject</button>
+                  <div class="uk-grid-small" uk-grid>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+                      <button v-html="forms.approved" @click="onApproval('Y')" class="uk-width-1-1 uk-button uk-button-default side_summarydetail-approved">Approve</button>
+                    </div>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+                      <button v-html="forms.rejected" @click="onApproval('N')" class="uk-width-1-1 uk-button uk-button-default side_summarydetail-reject">Reject</button>
+                    </div>
+                  </div>
+                </div>
+                <div v-else-if="orders.last_status_transaction === 'payment_waiting'">
+                  <button class="uk-width-1-1 uk-button uk-button-default side_summarydetail-checkout" :disabled="true">Proses</button>
+                </div>
+                <div v-else>
+                  <button class="uk-width-1-1 uk-button uk-button-default side_summarydetail-checkout">Proses</button>
                 </div>
               </div>
             </div>
@@ -125,9 +137,9 @@ export default {
       forms: {
         error: false,
         submit: 'Checkout',
-        approved: 'Approve',
-        rejected: 'Reject',
-        isApprove: ''
+        approved: 'Terima',
+        rejected: 'Tolak',
+        isApprove: this.orders.isPremium === 'N' ? 'N' : 'Y'
       },
     }
   },
@@ -142,15 +154,61 @@ export default {
       var getformatfile = files.substring( length_str_file, getIndex + 1 ).toLowerCase();
       return getformatfile;
     },
-    onSelectedBank(bank) {
-      this.forms.bank = bank.bank_id;
-      this.forms.selectedBank.name = bank.bank_name;
-      this.forms.selectedBank.account_number = bank.account_number;
-      this.forms.selectedBank.code = bank.bank_code;
-      console.log(this.forms.selectedBank);
-    },
     onApproval(approval) {
       this.forms.isApprove = approval;
+      if( this.forms.isApprove === 'Y' )
+      {
+        this.forms.approved = '<span uk-spinner></span>';
+      }
+      else
+      {
+        this.forms.rejected = '<span uk-spinner></span>';
+      }
+
+      axios({
+        method: 'put',
+        url: this.url + '/vendor/order_approval/' + this.orders.transaction_id,
+        headers: { 'Content-Type': 'application/json' },
+        params: { approval: this.forms.isApprove }
+      }).then( res => {
+        if( this.forms.isApprove === 'Y' )
+        {
+          swal({
+            title: 'Konfirmasi Approval',
+            text: 'Transaksi ' + this.orders.transaction_id + ' diterima',
+            icon: 'success',
+            timer: 5000
+          });
+          this.forms.approved = 'Terima';
+        }
+        else
+        {
+          swal({
+            title: 'Konfirmasi Approval',
+            text: 'Transaksi ' + this.orders.transaction_id + ' ditolak',
+            icon: 'success',
+            timer: 5000
+          });
+          this.forms.rejected = 'Tolak';
+        }
+        setTimeout(function(){ document.location = ''; }, 3000);
+      }).catch( err => {
+        swal({
+          title: 'Terjadi Kesalahan',
+          text: err.response.statusText,
+          icon: 'error',
+          timer: 5000,
+          dangerMode: true
+        });
+        if( this.forms.isApprove === 'Y' )
+        {
+          this.forms.approved = 'Terima';
+        }
+        else
+        {
+          this.forms.rejected = 'Tolak';
+        }
+      });
     }
   },
   computed: {
@@ -165,8 +223,6 @@ export default {
       var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format( price );
       return numberformat;
     }
-  },
-  mounted() {
   }
 }
 </script>

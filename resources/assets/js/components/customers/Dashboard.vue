@@ -56,7 +56,7 @@
                 <div class="uk-badge dash_sum-transaction-status">{{ $root.statusTransaction[result.last_status_transaction] }}</div>
                 <div class="dash_sum-transaction-title">{{ result.vendor_name }}</div>
                 <div class="dash_sum-transaction-orderdate">{{ formatDate( result.created_at ) }}</div>
-                <a v-if="result.last_status_transaction === 'approval'" class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/customers/main_orders/' + result.transaction_id">Lihat rincian</a>
+                <a v-if="result.last_status_transaction === 'approval' || result.last_status_transaction === 'payment_waiting'" class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/customers/main_orders/' + result.transaction_id">Lihat rincian</a>
                 <a v-else class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/customers/summary_order/' + result.transaction_id">Konfirmasi</a>
               </div>
             </div>

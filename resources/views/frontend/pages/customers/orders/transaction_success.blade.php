@@ -12,7 +12,7 @@
         <div class="summary-transaction-contentleft">
           <div class="uk-margin-top summary-transaction-detail">
             <div class="uk-margin-top summary-transaction-detail-verification">
-              Pembayaran Anda akan kami verifikasi terlebih dahulu sebelum diteruskan ke Vendor.
+              Pembayaran Anda akan kami verifikasi terlebih dahulu oleh tim Garden Buana.
             </div>
             <div class="uk-margin-top summary-transaction-detail-thankyou">Terima kasih telah memesan melalui Garden Buana</div>
           </div>

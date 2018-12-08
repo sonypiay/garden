@@ -148,4 +148,42 @@ class BookingTransactionController extends Controller
       ]);
     }
   }
+
+  public function approval_order( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
+  {
+    $approval = $request->approval;
+    $update = $booking->where('transaction_id', '=', $orderid)
+    ->first();
+    if( $approval === 'Y' )
+    {
+      $logstatus = new $logstatus;
+      $update->last_status_transaction = 'payment_waiting';
+
+      $logstatus->transaction_id = $orderid;
+      $logstatus->status_transaction = 'payment_waiting';
+      $logstatus->status_description = 'Menunggu konfirmasi pembayaran.';
+      $res = [
+        'status' => 200,
+        'statusText' => 'Approved'
+      ];
+    }
+    else
+    {
+      $logstatus = new $logstatus;
+      $update->last_status_transaction = 'rejected';
+
+      $logstatus->transaction_id = $orderid;
+      $logstatus->status_transaction = 'rejected';
+      $logstatus->status_description = 'Transaksi ditolak';
+      $res = [
+        'status' => 200,
+        'statusText' => 'Rejected'
+      ];
+    }
+    $logstatus->log_date = date('Y-m-d H:i:s');
+    $logstatus->save();
+    $update->save();
+
+    return response()->json( $res, $res['status'] );
+  }
 }

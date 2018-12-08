@@ -83,7 +83,43 @@
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_header">
                 <div v-if="errorMessage" class="uk-alert-danger" uk-alert>{{ errorMessage }}</div>
                 <div class="sidebar_summaryorder_title">Harga Deal</div>
-                <div class="sidebar_summaryorder_subtitle">Rp. {{ formatCurrency }}</div>
+                <div class="sidebar_summaryorder_subtitle">Rp. {{ formatCurrency( orders.price_deal ) }}</div>
+              </div>
+              <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
+                <div class="side_summarydetail-totaltransaction-title">Total Transaksi</div>
+                <div class="side_summarydetail-totaltransaction-value">
+                  <div class="uk-grid-small" uk-grid v-if="forms.selectedBank.code === '014'">
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      Biaya transfer BCA
+                    </div>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      <div class="uk-text-right">
+                        + Rp. 4.000
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uk-grid-small" uk-grid v-if="forms.premium === 'Y'">
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      Pemesan Premium
+                    </div>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      <div class="uk-text-right">
+                        + Rp. 5.000
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="uk-grid-small" uk-grid>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      Total yang harus dibayar
+                    </div>
+                    <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
+                      <div class="uk-text-right">
+                        Rp. {{ formatCurrency( forms.subtotal.total ) }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
                 <div class="side_summarydetail-statustransaction-title">Status Transaksi</div>
@@ -138,12 +174,12 @@
                   Tambahkan Layanan Premium
                 </div>
                 <div class="side_summarydetail-layananpremium-value">
-                  <select class="uk-select summarydetail-formselect" v-model="forms.premium">
+                  <select class="uk-select summarydetail-formselect" @change="onPremiumOrder()" v-model="forms.premium">
                     <option value="N">Tidak</option>
                     <option value="Y">Ya</option>
                   </select>
                   <div class="uk-text-small uk-text-muted side_summarydetail-subvalue">
-                    <i>Dengan menjadi Pembeli Premium kamu akan mendapatkan prioritas layanan dari tim layanan pengguna kami untuk menambahkan kenyamanan dalam bertransaksi.</i>
+                    Dengan menjadi Pemesan Premium kamu akan mendapatkan prioritas layanan dari tim layanan pengguna kami untuk menambahkan kenyamanan dalam bertransaksi.
                   </div>
                 </div>
               </div>
@@ -179,9 +215,13 @@ export default {
         error: false,
         submit: 'Checkout',
         payment_method: this.orders.payment_method === null ? '' : this.orders.payment_method,
-        bank:  this.orders.payment_to === null ? null : this.orders.payment_to,
+        bank:  this.orders.payment_to === null ? '' : this.orders.payment_to,
         payment_id: this.orders.payment_id,
-        premium: 'N',
+        premium: this.orders.isPremium,
+        premiumCharge: 5000,
+        subtotal: {
+          total: this.orders.price_deal
+        },
         selectedBank: {
           id: this.orders.bank_id === null ? '' : this.orders.bank_id,
           name: this.orders.bank_name === null ? 'Pilih bank <span class="fas fa-chevron-down"></span>' : this.orders.bank_name,
@@ -196,6 +236,11 @@ export default {
       var res = moment(str).locale('id').format(format);
       return res;
     },
+    formatCurrency(price) {
+      price = Number( price );
+      var numberformat = new Intl.NumberFormat('en-ID').format( price );
+      return numberformat;
+    },
     getFormatFile: function(files) {
       var length_str_file = files.length;
       var getIndex = files.lastIndexOf(".");
@@ -207,7 +252,50 @@ export default {
       this.forms.selectedBank.name = bank.bank_name;
       this.forms.selectedBank.account_number = bank.account_number;
       this.forms.selectedBank.code = bank.bank_code;
-      console.log(this.forms.selectedBank);
+      var total = this.forms.subtotal.total;
+      if( this.forms.selectedBank.code === '014' )
+      {
+        if( this.forms.premium === 'N' )
+        {
+          total = this.orders.price_deal + 4000;
+        }
+        else
+        {
+          total = this.orders.price_deal + 4000 + this.forms.premiumCharge;
+        }
+      }
+      else
+      {
+        total = this.orders.price_deal;
+        if( this.forms.premium === 'Y' )
+        {
+          total = this.orders.price_deal + this.forms.premiumCharge;
+        }
+      }
+      this.forms.subtotal.total = total;
+    },
+    onPremiumOrder() {
+      var total = this.orders.price_deal;
+      if( this.forms.selectedBank.code === '014' )
+      {
+        if( this.forms.premium === 'N' )
+        {
+          total = this.orders.price_deal + 4000;
+        }
+        else
+        {
+          total = this.orders.price_deal + 4000 + this.forms.premiumCharge;
+        }
+      }
+      else
+      {
+        total = this.orders.price_deal;
+        if( this.forms.premium === 'Y' )
+        {
+          total = this.orders.price_deal + this.forms.premiumCharge;
+        }
+      }
+      this.forms.subtotal.total = total;
     },
     onCheckoutOrder() {
       this.errors = {};
@@ -236,7 +324,9 @@ export default {
         params: {
           payment_id: this.forms.payment_id,
           payment_method: this.forms.payment_method,
-          bank: this.forms.bank
+          bank: this.forms.bank,
+          payment_amount: this.forms.subtotal.total,
+          premium: this.forms.isPremium
         }
       }).then( res => {
         let result = res.data;
@@ -262,11 +352,6 @@ export default {
       var getIndex = this.orders.layout_design.lastIndexOf(".");
       var getformatfile = this.orders.layout_design.substring( length_str_file, getIndex + 1 ).toLowerCase();
       return getformatfile;
-    },
-    formatCurrency() {
-      var price = Number( this.orders.price_deal );
-      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format( price );
-      return numberformat;
     }
   },
   mounted() {

@@ -70,7 +70,7 @@ Route::group(['prefix' => 'vendor'], function() {
   Route::get('/order_list', 'Frontend\Vendor\BookingTransactionController@index')->name('orderlistvendor_page');
   Route::get('/data_orderlist', 'Frontend\Vendor\BookingTransactionController@data_orderlist');
   Route::get('/summary_order/{orderid}', 'Frontend\Vendor\BookingTransactionController@summary_order')->name('summaryordervendor_page');
-  Route::get('/main_orders/{orderid}', 'Frontend\Customers\BookingTransactionController@main_orders')->name('customermainorder_page');
+  Route::put('/order_approval/{orderid}', 'Frontend\Vendor\BookingTransactionController@approval_order');
 
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Vendor\AccountVendor@index')->name('accountvendor_page');
