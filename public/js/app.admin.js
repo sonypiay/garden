@@ -70355,6 +70355,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         results: []
       },
       orders: {},
+      logstatus: {
+        total: 0,
+        results: []
+      },
+      region: '',
+      district: '',
+      subdistrict: '',
       pagination: {
         current: 1,
         next: '',
@@ -70394,7 +70401,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     onViewTransaction: function onViewTransaction(order) {
+      var _this2 = this;
+
       this.orders = order;
+
+      axios({
+        method: 'get',
+        url: this.url + '/transaction/view_transaction/' + order.transaction_id
+      }).then(function (res) {
+        var result = res.data;
+        _this2.logstatus.total = result.total;
+        _this2.logstatus.results = result.results;
+        _this2.region = result.location.provinsi;
+        _this2.district = result.location.kabupaten;
+        _this2.subdistrict = result.location.kecamatan;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
       UIkit.modal('#viewTransaction').show();
     }
   },

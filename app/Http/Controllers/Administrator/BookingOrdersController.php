@@ -50,9 +50,6 @@ class BookingOrdersController extends Controller
       'booking_transaction.id',
       'booking_transaction.transaction_id',
       'booking_transaction.schedule_date',
-      'booking_transaction.region',
-      'booking_transaction.district',
-      'booking_transaction.subdistrict',
       'booking_transaction.address',
       'booking_transaction.zipcode',
       'booking_transaction.mobile_number',
@@ -119,10 +116,7 @@ class BookingOrdersController extends Controller
   public function view_transaction( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
   {
     $query = $booking->select(
-      'booking_transaction.transaction_id',
-      'booking_transaction.region',
-      'booking_transaction.district',
-      'booking_transaction.subdistrict',
+      'kecamatan.nama_kec',
       'kabupaten.nama_kab',
       'provinsi.nama_provinsi'
     )
@@ -132,7 +126,20 @@ class BookingOrdersController extends Controller
     ->where('booking_transaction.transaction_id', '=', $orderid)->first();
 
     $logstatus = $logstatus->where('transaction_id', '=', $orderid)
-    ->orderBy('log_date',' asc')
-    ->get();
+    ->orderBy('log_date',' asc');
+
+    $data = [
+      'logstatus' => [
+        'total' => $logstatus->count(),
+        'results' => $logstatus->get()
+      ],
+      'location' => [
+        'kecamatan' => $query->nama_kec,
+        'kabupaten' => $query->nama_kab,
+        'provinsi' => $query->nama_provinsi
+      ]
+    ];
+
+    return response()->json( $data );
   }
 }

@@ -24,7 +24,7 @@
             <div class="view-transaction-value">{{ formatDate( orders.created_at, 'DD MMMM YYYY HH:mm' ) }}</div>
           </div>
           <hr>
-          
+
         </div>
         <div class="uk-modal-footer">
           <button class="uk-button uk-button-primary" name="button">Pembayaran Diterima</button>
@@ -108,6 +108,13 @@ export default {
         results: []
       },
       orders: {},
+      logstatus: {
+        total: 0,
+        results: []
+      },
+      region: '',
+      district: '',
+      subdistrict: '',
       pagination: {
         current: 1,
         next: '',
@@ -149,6 +156,20 @@ export default {
     },
     onViewTransaction(order) {
       this.orders = order;
+
+      axios({
+        method: 'get',
+        url: this.url + '/transaction/view_transaction/' + order.transaction_id
+      }).then( res => {
+        let result = res.data;
+        this.logstatus.total = result.total;
+        this.logstatus.results = result.results;
+        this.region = result.location.provinsi;
+        this.district = result.location.kabupaten;
+        this.subdistrict = result.location.kecamatan;
+      }).catch( err => {
+        console.log( err.response.statusText );
+      });
       UIkit.modal('#viewTransaction').show();
     }
   },
