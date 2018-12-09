@@ -129,8 +129,26 @@ html, body {
     }
   }
 }
-//// layout
 
-///////// dashboard
-
-///////// dashboard
+.view-transaction {
+  border-radius: 3px;
+  .view-transaction-header {
+    font-size: 20px;
+    font-family: $font-family-sans-serif;
+    color: #333333;
+    @include fontstyle(600, normal, normal, 0.4px);
+    text-align: center;
+  }
+  .view-transaction-heading {
+    font-size: 13px;
+    font-family: $font-family-sans-serif;
+    color: #333333;
+    @include fontstyle(400, normal, normal, 0.4px);
+  }
+  .view-transaction-value {
+    font-size: 16px;
+    font-family: $font-family-sans-serif;
+    color: #333333;
+    @include fontstyle(400, normal, normal, 0.4px);
+  }
+}

@@ -165,10 +165,19 @@ body {
   text-align: center;
 }
 
+.footer .copyright {
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
 .footer .footer_links a {
   font-family: "Karla", sans-serif;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.4px;

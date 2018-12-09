@@ -134,6 +134,7 @@ class BookingTransactionController extends Controller
       'booking_transaction.payment_method',
       'booking_transaction.last_status_transaction',
       'booking_transaction.isPremium',
+      'booking_transaction.created_at',
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',
@@ -374,6 +375,7 @@ class BookingTransactionController extends Controller
     ])
     ->orderBy('booking_transaction.created_at', 'desc')
     ->paginate( $rows );
+
     $total_transaction = $booking->where('customer_id', '=', Cookie::get('customer_id'))->count();
     $approved_transaction = $booking->where([
       ['customer_id', '=', Cookie::get('customer_id')],

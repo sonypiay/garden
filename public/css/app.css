@@ -343,7 +343,16 @@ body {
 }
 
 .footer {
-  margin-top: 7em;
+  margin-top: 5em;
+}
+
+.footer .copyright {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
 }
 
 .footer .footer_links a {

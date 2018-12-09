@@ -119,10 +119,15 @@ Route::group(['prefix' => 'vendor'], function() {
 // Route Administrator
 Route::group(['prefix' => 'cp'], function() {
   Route::get('/', function(){ return redirect( route('dashboard_admin') ); });
-  Route::get('/dashboard', 'Administrator\DashboardController@index')->name('dashboard_admin');
   Route::get('/login', 'Administrator\LoginController@index')->name('loginadminpage');
   Route::get('/logout', 'Administrator\LoginController@logout')->name('logoutadminpage');
   Route::post('/login', 'Administrator\LoginController@dologin');
+  Route::get('/dashboard', 'Administrator\DashboardController@index')->name('dashboard_admin');
+  Route::group(['prefix' => '/transaction'], function() {
+    Route::get('/order_list', 'Administrator\BookingOrdersController@index')->name('orderlist_admin');
+    Route::get('/data_orderlist', 'Administrator\BookingOrdersController@data_orderlist');
+    Route::get('/view_transaction/{orderid}', 'Administrator\BookingOrdersController@view_transaction');
+  });
 
   // users
   Route::group(['prefix' => 'users'], function() {

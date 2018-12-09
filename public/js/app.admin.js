@@ -65495,6 +65495,7 @@ Vue.component('cpbankcustomer-section', __webpack_require__(281));
 Vue.component('provinsi-section', __webpack_require__(284));
 Vue.component('kabupaten-section', __webpack_require__(287));
 Vue.component('kecamatan-section', __webpack_require__(290));
+Vue.component('orderlist-section', __webpack_require__(296));
 
 var app = new Vue({
   el: '#app',
@@ -70185,6 +70186,603 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-0821dd2c", module.exports)
+  }
+}
+
+/***/ }),
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(297)
+/* template */
+var __vue_template__ = __webpack_require__(298)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/OrderList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-757ae53a", Component.options)
+  } else {
+    hotAPI.reload("data-v-757ae53a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 297 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      keywords: '',
+      status_transaction: 'all',
+      selectedRows: 10,
+      isLoading: {
+        value: false,
+        text: ''
+      },
+      orderlist: {
+        total: 0,
+        results: []
+      },
+      orders: {},
+      pagination: {
+        current: 1,
+        next: '',
+        prev: '',
+        last: '',
+        path: this.url + '/transaction/data_orderlist'
+      }
+    };
+  },
+
+  methods: {
+    formatDate: function formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
+      return res;
+    },
+    getOrderList: function getOrderList(pages) {
+      var _this = this;
+
+      var param = '&keywords=' + this.keywords + '&rows=' + this.selectedRows + '&status=' + this.status_transaction;
+      if (pages === undefined || pages === null || pages === '') pages = this.url + '/transaction/data_orderlist?page=1' + param;else pages = pages + param;
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this.orderlist.total = result.total;
+        _this.orderlist.results = result.data;
+        _this.pagination = {
+          current: result.current_page,
+          next: result.next_page_url,
+          prev: result.prev_page_url,
+          last: result.last_page,
+          path: result.path
+        };
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    onViewTransaction: function onViewTransaction(order) {
+      this.orders = order;
+      UIkit.modal('#viewTransaction').show();
+    }
+  },
+  mounted: function mounted() {
+    this.getOrderList();
+  }
+});
+
+/***/ }),
+/* 298 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "uk-margin-large-top" }, [
+    _c("div", { attrs: { id: "viewTransaction", "uk-modal": "" } }, [
+      _c("div", { staticClass: "uk-modal-dialog view-transaction" }, [
+        _c("a", {
+          staticClass: "uk-modal-close-default",
+          attrs: { "uk-close": "" }
+        }),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "uk-modal-body", attrs: { "uk-overflow-auto": "" } },
+          [
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "view-transaction-heading" }, [
+                _vm._v("Nomor Transaksi")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "view-transaction-value" }, [
+                _vm._v(_vm._s(_vm.orders.transaction_id))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "view-transaction-heading" }, [
+                _vm._v("Status Pesanan")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "view-transaction-value" }, [
+                _vm._v(
+                  _vm._s(
+                    _vm.$root.statusTransaction[
+                      _vm.orders.last_status_transaction
+                    ]
+                  )
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "view-transaction-heading" }, [
+                _vm._v("Vendor")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "view-transaction-value" }, [
+                _vm._v(_vm._s(_vm.orders.vendor_name))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "view-transaction-heading" }, [
+                _vm._v("Tanggal Pesan")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "view-transaction-value" }, [
+                _vm._v(
+                  _vm._s(
+                    _vm.formatDate(_vm.orders.created_at, "DD MMMM YYYY HH:mm")
+                  )
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("hr")
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("h3", {}, [_vm._v("Daftar Transaksi")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+      _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
+          },
+          [
+            _c("div", { staticClass: "uk-inline" }, [
+              _c("span", {
+                staticClass: "uk-form-icon",
+                attrs: { "uk-icon": "search" }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.keywords,
+                    expression: "keywords"
+                  }
+                ],
+                staticClass: "uk-input form-search uk-width-1-1",
+                attrs: { type: "text", placeholder: "Cari..." },
+                domProps: { value: _vm.keywords },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !("button" in $event) &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    _vm.getOrderList()
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.keywords = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
+          },
+          [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.selectedRows,
+                    expression: "selectedRows"
+                  }
+                ],
+                staticClass: "uk-select form-select",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.selectedRows = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      _vm.getOrderList()
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "10" } }, [
+                  _vm._v("10 ditampilkan")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20" } }, [
+                  _vm._v("20 ditampilkan")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "30" } }, [
+                  _vm._v("30 ditampilkan")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "50" } }, [
+                  _vm._v("50 ditampilkan")
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
+          },
+          [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.status_transaction,
+                    expression: "status_transaction"
+                  }
+                ],
+                staticClass: "uk-select form-select",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.status_transaction = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      _vm.getOrderList()
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "all" } }, [
+                  _vm._v("-- Semua Status --")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.$root.statusTransaction, function(val, key) {
+                  return _c("option", { domProps: { value: key } }, [
+                    _vm._v(_vm._s(val))
+                  ])
+                })
+              ],
+              2
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-margin-top" }, [
+        _c("div", { staticClass: "uk-label" }, [
+          _vm._v(_vm._s(_vm.orderlist.total) + " Transaksi")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-small uk-table-divider uk-table-middle uk-table-hover"
+            },
+            [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.orderlist.results, function(order) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c("button", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "cog",
+                          "uk-tooltip": "title: Lihat Rincian; pos: right"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.onViewTransaction(order)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(order.transaction_id))]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "uk-text-truncate" }, [
+                      _vm._v(_vm._s(order.customer_name))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(order.vendor_name))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(
+                          _vm.$root.statusTransaction[
+                            order.last_status_transaction
+                          ]
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(
+                          _vm.formatDate(order.created_at, "MMM DD, YYYY HH:mm")
+                        )
+                      )
+                    ])
+                  ])
+                })
+              )
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-modal-header" }, [
+      _c("div", { staticClass: "view-transaction-header" }, [
+        _vm._v("Rincian Pesanan")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "uk-button uk-button-primary",
+          attrs: { name: "button" }
+        },
+        [_vm._v("Pembayaran Diterima")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "uk-button uk-button-danger",
+          attrs: { name: "button" }
+        },
+        [_vm._v("Batalkan Pesanan")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("ID Transaksi")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Customer")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Vendor")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tanggal Pesan")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-757ae53a", module.exports)
   }
 }
 
