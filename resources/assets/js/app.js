@@ -57,6 +57,7 @@ const app = new Vue({
         'onprogress': 'Sedang dikerjakan',
         'report': 'Laporan & Berita Acara',
         'done': 'Selesai',
+        'cancel': 'Pesanan Dibatalkan'
       }
     }
 });

@@ -143,4 +143,33 @@ class BookingOrdersController extends Controller
 
     return response()->json( $data );
   }
+
+  public function update( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
+  {
+    $value = $request->value;
+    $booking = $booking->where('transaction_id', $orderid)->first();
+    $logstatus = new $logstatus;
+    if( $value == 'accept' )
+    {
+      $booking->last_status_transaction = 'paid';
+      $logstatus->transaction_id = $orderid;
+      $logstatus->status_description = 'Pembayaran telah diterima Garden Buana dan pesanan Anda sudah diteruskan ke vendor.';
+      $logstatus->status_transaction = 'paid';
+    }
+    else
+    {
+      $booking->last_status_transaction = 'cancel';
+      $logstatus->transaction_id = $orderid;
+      $logstatus->status_description = 'Pesanan dibatalkan oleh Garden Buana';
+      $logstatus->status_transaction = 'cancel';
+    }
+    $logstatus->log_date = date('Y-m-d H:i:s');
+    $booking->save();
+    $logstatus->save();
+    $res = [
+      'status' => 200,
+      'statusText' => 'success'
+    ];
+    return response()->json( $res, $res['status'] );
+  }
 }

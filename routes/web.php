@@ -127,6 +127,7 @@ Route::group(['prefix' => 'cp'], function() {
     Route::get('/order_list', 'Administrator\BookingOrdersController@index')->name('orderlist_admin');
     Route::get('/data_orderlist', 'Administrator\BookingOrdersController@data_orderlist');
     Route::get('/view_transaction/{orderid}', 'Administrator\BookingOrdersController@view_transaction');
+    Route::put('/update_order/{orderid}', 'Administrator\BookingOrdersController@update');
   });
 
   // users

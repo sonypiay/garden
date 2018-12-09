@@ -7,21 +7,23 @@
           <div class="view-transaction-header">Rincian Pesanan</div>
         </div>
         <div class="uk-modal-body" uk-overflow-auto>
-          <div class="uk-margin">
-            <div class="view-transaction-heading">Nomor Transaksi</div>
-            <div class="view-transaction-value">{{ orders.transaction_id }}</div>
-          </div>
-          <div class="uk-margin">
-            <div class="view-transaction-heading">Status Pesanan</div>
-            <div class="view-transaction-value">{{ $root.statusTransaction[orders.last_status_transaction] }}</div>
-          </div>
-          <div class="uk-margin">
-            <div class="view-transaction-heading">Vendor</div>
-            <div class="view-transaction-value">{{ orders.vendor_name }}</div>
-          </div>
-          <div class="uk-margin">
-            <div class="view-transaction-heading">Tanggal Pesan</div>
-            <div class="view-transaction-value">{{ formatDate( orders.created_at, 'DD MMMM YYYY HH:mm' ) }}</div>
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Nomor Transaksi</div>
+              <div class="view-transaction-value">{{ orders.transaction_id }}</div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Status Pesanan</div>
+              <div class="view-transaction-value">{{ $root.statusTransaction[orders.last_status_transaction] }}</div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Vendor</div>
+              <div class="view-transaction-value">{{ orders.vendor_name }}</div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Tanggal Pesan</div>
+              <div class="view-transaction-value">{{ formatDate( orders.created_at, 'DD MMMM YYYY HH:mm' ) }}</div>
+            </div>
           </div>
           <hr>
           <div class="uk-grid-small" uk-grid>
@@ -73,10 +75,34 @@
               <div class="view-transaction-value">{{ orders.zipcode }}</div>
             </div>
           </div>
+          <hr>
+          <div class="uk-margin">
+            <div class="view-transaction-heading">Status Pesanan</div>
+            <div class="view-transaction-value">
+              <div class="uk-margin" v-for="log in logstatus.results">
+                <div class="uk-grid-small" uk-grid>
+                  <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s">
+                    <div class="uk-text-right view-transaction-value">{{ formatDate( log.log_date, 'DD MMM YYYY HH:mm:ss' ) }}</div>
+                  </div>
+                  <div class="uk-width-expand">
+                    <div class="view-transaction-heading">{{ $root.statusTransaction[log.status_transaction] }}</div>
+                    <div class="view-transaction-value">{{ log.status_description }}</div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="uk-modal-footer">
-          <button class="uk-button uk-button-primary" name="button">Pembayaran Diterima</button>
-          <button class="uk-button uk-button-danger" name="button">Batalkan Pesanan</button>
+          <div class="uk-grid-small uk-flex-center" uk-grid>
+            <div class="uk-width-1-2">
+              <button class="uk-width-1-1 uk-button uk-button-success view_transaction-accept" @click="onAcceptOrCancel('accept')" name="button">Pembayaran Diterima</button>
+            </div>
+            <div class="uk-width-1-2">
+              <button class="uk-width-1-1 uk-button uk-button-danger view_transaction-reject" @click="onAcceptOrCancel('cancel')" name="button">Batalkan Pesanan</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -209,14 +235,13 @@ export default {
     },
     onViewTransaction(order) {
       this.orders = order;
-
       axios({
         method: 'get',
         url: this.url + '/transaction/view_transaction/' + order.transaction_id
       }).then( res => {
         let result = res.data;
-        this.logstatus.total = result.total;
-        this.logstatus.results = result.results;
+        this.logstatus.total = result.logstatus.total;
+        this.logstatus.results = result.logstatus.results;
         this.region = result.location.provinsi;
         this.district = result.location.kabupaten;
         this.subdistrict = result.location.kecamatan;
@@ -224,6 +249,97 @@ export default {
         console.log( err.response.statusText );
       });
       UIkit.modal('#viewTransaction').show();
+    },
+    onAcceptOrCancel(val)
+    {
+      if( val === 'accept' )
+      {
+        swal({
+          title: 'Konfirmasi',
+          text: 'Apakah pembayaran sudah diterima?',
+          icon: 'warning',
+          buttons: {
+            cancel: 'Tidak',
+            confirm: {
+              value: true,
+              text: 'Ya'
+            }
+          }
+        }).then( value => {
+          if( value )
+          {
+            axios({
+              method: 'put',
+              url: this.url + '/transaction/update_order/' + this.orders.transaction_id,
+              params: {
+                value: 'accept'
+              }
+            }).then( res => {
+              swal({
+                title: 'Berhasil',
+                text: 'Pembayaran diterima',
+                icon: 'success',
+                timer: 5000
+              });
+              setTimeout(function(){
+                UIkit.modal('#viewTransaction').hide();
+              }, 2000);
+            }).catch( err => {
+              swal({
+                title: 'Terjadi Kesalahan',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true,
+                timer: 5000
+              });
+            })
+          }
+        });
+      }
+      else
+      {
+        swal({
+          title: 'Konfirmasi',
+          text: 'Apakah ingin membatalkan pesanan ' + this.orders.transaction_id + '?',
+          icon: 'warning',
+          buttons: {
+            cancel: 'Tidak',
+            confirm: {
+              value: true,
+              text: 'Ya'
+            }
+          }
+        }).then( value => {
+          if( value )
+          {
+            axios({
+              method: 'put',
+              url: this.url + '/transaction/update_order/' + this.orders.transaction_id,
+              params: {
+                value: 'cancel'
+              }
+            }).then( res => {
+              swal({
+                title: 'Berhasil',
+                text: 'Pesanan telah dibatalkan',
+                icon: 'success',
+                timer: 5000
+              });
+              setTimeout(function(){
+                UIkit.modal('#viewTransaction').hide();
+              }, 2000);
+            }).catch( err => {
+              swal({
+                title: 'Terjadi Kesalahan',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true,
+                timer: 5000
+              });
+            })
+          }
+        });
+      }
     }
   },
   mounted() {

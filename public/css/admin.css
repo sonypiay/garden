@@ -424,3 +424,25 @@ body {
   letter-spacing: 0.4px;
 }
 
+.view-transaction .view_transaction-accept {
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.view-transaction .view_transaction-reject {
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+

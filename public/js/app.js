@@ -65738,7 +65738,8 @@ var app = new Vue({
       'process': 'Sedang diproses',
       'onprogress': 'Sedang dikerjakan',
       'report': 'Laporan & Berita Acara',
-      'done': 'Selesai'
+      'done': 'Selesai',
+      'cancel': 'Pesanan Dibatalkan'
     }
   }
 });

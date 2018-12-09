@@ -65511,7 +65511,8 @@ var app = new Vue({
       'process': 'Sedang diproses',
       'onprogress': 'Sedang dikerjakan',
       'report': 'Laporan & Berita Acara',
-      'done': 'Selesai'
+      'done': 'Selesai',
+      'cancel': 'Pesanan Dibatalkan'
     }
   }
 });
@@ -70386,6 +70387,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
@@ -70457,14 +70484,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       this.orders = order;
-
       axios({
         method: 'get',
         url: this.url + '/transaction/view_transaction/' + order.transaction_id
       }).then(function (res) {
         var result = res.data;
-        _this2.logstatus.total = result.total;
-        _this2.logstatus.results = result.results;
+        _this2.logstatus.total = result.logstatus.total;
+        _this2.logstatus.results = result.logstatus.results;
         _this2.region = result.location.provinsi;
         _this2.district = result.location.kabupaten;
         _this2.subdistrict = result.location.kecamatan;
@@ -70472,6 +70498,93 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log(err.response.statusText);
       });
       UIkit.modal('#viewTransaction').show();
+    },
+    onAcceptOrCancel: function onAcceptOrCancel(val) {
+      var _this3 = this;
+
+      if (val === 'accept') {
+        swal({
+          title: 'Konfirmasi',
+          text: 'Apakah pembayaran sudah diterima?',
+          icon: 'warning',
+          buttons: {
+            cancel: 'Tidak',
+            confirm: {
+              value: true,
+              text: 'Ya'
+            }
+          }
+        }).then(function (value) {
+          if (value) {
+            axios({
+              method: 'put',
+              url: _this3.url + '/transaction/update_order/' + _this3.orders.transaction_id,
+              params: {
+                value: 'accept'
+              }
+            }).then(function (res) {
+              swal({
+                title: 'Berhasil',
+                text: 'Pembayaran diterima',
+                icon: 'success',
+                timer: 5000
+              });
+              setTimeout(function () {
+                UIkit.modal('#viewTransaction').hide();
+              }, 2000);
+            }).catch(function (err) {
+              swal({
+                title: 'Terjadi Kesalahan',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true,
+                timer: 5000
+              });
+            });
+          }
+        });
+      } else {
+        swal({
+          title: 'Konfirmasi',
+          text: 'Apakah ingin membatalkan pesanan ' + this.orders.transaction_id + '?',
+          icon: 'warning',
+          buttons: {
+            cancel: 'Tidak',
+            confirm: {
+              value: true,
+              text: 'Ya'
+            }
+          }
+        }).then(function (value) {
+          if (value) {
+            axios({
+              method: 'put',
+              url: _this3.url + '/transaction/update_order/' + _this3.orders.transaction_id,
+              params: {
+                value: 'cancel'
+              }
+            }).then(function (res) {
+              swal({
+                title: 'Berhasil',
+                text: 'Pesanan telah dibatalkan',
+                icon: 'success',
+                timer: 5000
+              });
+              setTimeout(function () {
+                UIkit.modal('#viewTransaction').hide();
+              }, 2000);
+            }).catch(function (err) {
+              swal({
+                title: 'Terjadi Kesalahan',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true,
+                timer: 5000
+              });
+            });
+          }
+        });
+      }
     }
   },
   mounted: function mounted() {
@@ -70501,55 +70614,92 @@ var render = function() {
           "div",
           { staticClass: "uk-modal-body", attrs: { "uk-overflow-auto": "" } },
           [
-            _c("div", { staticClass: "uk-margin" }, [
-              _c("div", { staticClass: "view-transaction-heading" }, [
-                _vm._v("Nomor Transaksi")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "view-transaction-value" }, [
-                _vm._v(_vm._s(_vm.orders.transaction_id))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "uk-margin" }, [
-              _c("div", { staticClass: "view-transaction-heading" }, [
-                _vm._v("Status Pesanan")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "view-transaction-value" }, [
-                _vm._v(
-                  _vm._s(
-                    _vm.$root.statusTransaction[
-                      _vm.orders.last_status_transaction
-                    ]
-                  )
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Nomor Transaksi")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.transaction_id))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Status Pesanan")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.$root.statusTransaction[
+                            _vm.orders.last_status_transaction
+                          ]
+                        )
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Vendor")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.vendor_name))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Tanggal Pesan")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.formatDate(
+                            _vm.orders.created_at,
+                            "DD MMMM YYYY HH:mm"
+                          )
+                        )
+                      )
+                    ])
+                  ]
                 )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "uk-margin" }, [
-              _c("div", { staticClass: "view-transaction-heading" }, [
-                _vm._v("Vendor")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "view-transaction-value" }, [
-                _vm._v(_vm._s(_vm.orders.vendor_name))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "uk-margin" }, [
-              _c("div", { staticClass: "view-transaction-heading" }, [
-                _vm._v("Tanggal Pesan")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "view-transaction-value" }, [
-                _vm._v(
-                  _vm._s(
-                    _vm.formatDate(_vm.orders.created_at, "DD MMMM YYYY HH:mm")
-                  )
-                )
-              ])
-            ]),
+              ]
+            ),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
@@ -70740,11 +70890,128 @@ var render = function() {
                   ]
                 )
               ]
-            )
+            ),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "view-transaction-heading" }, [
+                _vm._v("Status Pesanan")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "view-transaction-value" },
+                _vm._l(_vm.logstatus.results, function(log) {
+                  return _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "uk-grid-small",
+                        attrs: { "uk-grid": "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s"
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "uk-text-right view-transaction-value"
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.formatDate(
+                                      log.log_date,
+                                      "DD MMM YYYY HH:mm:ss"
+                                    )
+                                  )
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-width-expand" }, [
+                          _c(
+                            "div",
+                            { staticClass: "view-transaction-heading" },
+                            [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.$root.statusTransaction[
+                                    log.status_transaction
+                                  ]
+                                )
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "view-transaction-value" }, [
+                            _vm._v(_vm._s(log.status_description))
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("hr")
+                  ])
+                })
+              )
+            ])
           ]
         ),
         _vm._v(" "),
-        _vm._m(1)
+        _c("div", { staticClass: "uk-modal-footer" }, [
+          _c(
+            "div",
+            {
+              staticClass: "uk-grid-small uk-flex-center",
+              attrs: { "uk-grid": "" }
+            },
+            [
+              _c("div", { staticClass: "uk-width-1-2" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "uk-width-1-1 uk-button uk-button-success view_transaction-accept",
+                    attrs: { name: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.onAcceptOrCancel("accept")
+                      }
+                    }
+                  },
+                  [_vm._v("Pembayaran Diterima")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-width-1-2" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "uk-width-1-1 uk-button uk-button-danger view_transaction-reject",
+                    attrs: { name: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.onAcceptOrCancel("cancel")
+                      }
+                    }
+                  },
+                  [_vm._v("Batalkan Pesanan")]
+                )
+              ])
+            ]
+          )
+        ])
       ])
     ]),
     _vm._v(" "),
@@ -70930,7 +71197,7 @@ var render = function() {
                 "uk-table uk-table-small uk-table-divider uk-table-middle uk-table-hover"
             },
             [
-              _vm._m(2),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -70995,30 +71262,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "view-transaction-header" }, [
         _vm._v("Rincian Pesanan")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "uk-button uk-button-primary",
-          attrs: { name: "button" }
-        },
-        [_vm._v("Pembayaran Diterima")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "uk-button uk-button-danger",
-          attrs: { name: "button" }
-        },
-        [_vm._v("Batalkan Pesanan")]
-      )
     ])
   },
   function() {
