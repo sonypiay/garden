@@ -6,19 +6,26 @@
     <img class="uk-width-1-4 uk-align-center" src="{{ asset('images/logobrand/gplogo-primary.png') }}" alt="">
   </div>
   <div class="uk-card uk-card-body uk-card-default summary-transaction-content">
-    <div class="uk-card-title summary-transaction-title">Transaksi Berhasil</div>
+    <div class="uk-card-title summary-transaction-title">Pembayaran</div>
+    <div class="summary-transaction-amount">
+      <div class="summary-transaction-paymentcode">No. Referensi : {{ $results->payment_id }}</div>
+      <div class="summary-transaction-totalamount">IDR {{ number_format( $results->payment_amount, 0, ',', '.' ) }}</div>
+    </div>
     <div class="uk-grid-small uk-grid-match" uk-grid>
       <div class="uk-width-expand">
         <div class="summary-transaction-contentleft">
-          <div class="uk-margin-top summary-transaction-detail">
-            <div class="uk-margin-top summary-transaction-detail-verification">
-              Pembayaran Anda akan kami verifikasi terlebih dahulu oleh tim Garden Buana.
+          <div class="summary-transaction-detail">
+            <div class="summary-transaction-detail-verification">
+              {{ $results->bank_name }}<br>
+              {{ $results->account_number }}
             </div>
-            <div class="uk-margin-top summary-transaction-detail-thankyou">Terima kasih telah memesan melalui Garden Buana</div>
+            <div class="uk-margin-top summary-transaction-detail-thankyou">
+              Masukkan berita transfer/nomor referensi <strong>{{ $results->payment_id }}</strong> ketika melakukan transfer dana.
+            </div>
           </div>
         </div>
       </div>
-      <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@">
+      <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s">
         <div class="summary-transaction-contentright">
           <div class="uk-width-1-1 uk-tile uk-tile-default">
             <div class="uk-width-1-1 uk-position-center">

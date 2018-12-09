@@ -127,15 +127,17 @@
                   {{ $root.statusTransaction[orders.last_status_transaction] }}
                 </div>
               </div>
+              <!--
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
                 <div class="side_summarydetail-kodepembayaran-title">Kode Pembayaran</div>
                 <div class="side_summarydetail-kodepembayaran-value">
-                  <div>#{{ orders.payment_id }}</div>
                   <div class="uk-text-small">
-                    <i>Masukkan berita acara untuk mempercepat proses verifikasi</i>
+                    <i>Masukkan berita transfer/nomor referensi <strong>{{ orders.payment_id }}</strong>
+                    ketika melakukan transfer dana.</i>
                   </div>
                 </div>
               </div>
+              -->
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_detail">
                 <div class="side_summarydetail-metodepembayaran-title">Metode Pembayaran</div>
                 <div class="side_summarydetail-metodepembayaran-value">
@@ -326,11 +328,11 @@ export default {
           payment_method: this.forms.payment_method,
           bank: this.forms.bank,
           payment_amount: this.forms.subtotal.total,
-          premium: this.forms.isPremium
+          premium: this.forms.premium
         }
       }).then( res => {
         let result = res.data;
-        var redirect = this.url + '/customers/transaction_success/' + this.orders.transaction_id;
+        var redirect = this.url + '/customers/process_checkout/' + this.orders.transaction_id;
         setTimeout(function(){ document.location = redirect; }, 3000);
         console.log( result );
       }).catch( err => {

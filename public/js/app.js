@@ -71172,6 +71172,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'orders', 'vendors', 'bankpayment'],
@@ -71286,11 +71288,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           payment_method: this.forms.payment_method,
           bank: this.forms.bank,
           payment_amount: this.forms.subtotal.total,
-          premium: this.forms.isPremium
+          premium: this.forms.premium
         }
       }).then(function (res) {
         var result = res.data;
-        var redirect = _this.url + '/customers/transaction_success/' + _this.orders.transaction_id;
+        var redirect = _this.url + '/customers/process_checkout/' + _this.orders.transaction_id;
         setTimeout(function () {
           document.location = redirect;
         }, 3000);
@@ -71849,39 +71851,6 @@ var render = function() {
                           "div",
                           {
                             staticClass:
-                              "side_summarydetail-kodepembayaran-title"
-                          },
-                          [_vm._v("Kode Pembayaran")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "side_summarydetail-kodepembayaran-value"
-                          },
-                          [
-                            _c("div", [
-                              _vm._v("#" + _vm._s(_vm.orders.payment_id))
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(4)
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "uk-card uk-card-body uk-card-small sidebar_summaryorder_detail"
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
                               "side_summarydetail-metodepembayaran-title"
                           },
                           [_vm._v("Metode Pembayaran")]
@@ -72318,16 +72287,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-text-small" }, [
-      _c("i", [
-        _vm._v("Masukkan berita acara untuk mempercepat proses verifikasi")
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -72392,13 +72351,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -72611,7 +72563,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "summary_subtitle" }, [
-              _vm._v("#" + _vm._s(_vm.orders.transaction_id))
+              _vm._v(
+                _vm._s(
+                  _vm.formatDate(_vm.orders.created_at, "DD MMMM YYYY, HH:mm")
+                ) +
+                  " - #" +
+                  _vm._s(_vm.orders.transaction_id)
+              )
             ])
           ]
         )
@@ -72659,39 +72617,24 @@ var render = function() {
                         [
                           _c(
                             "div",
-                            {
-                              staticClass:
-                                "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "summarydetail-orderdate-title"
-                                },
-                                [_vm._v("Tanggal Pengerjaan")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "summarydetail-orderdate-value"
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm.formatDate(
-                                        _vm.orders.schedule_date,
-                                        "DD MMMM YYYY"
-                                      )
-                                    )
-                                  )
-                                ]
-                              )
-                            ]
+                            { staticClass: "summarydetail-orderdate-title" },
+                            [_vm._v("Tanggal Pengerjaan")]
                           ),
                           _vm._v(" "),
-                          _vm._m(0)
+                          _c(
+                            "div",
+                            { staticClass: "summarydetail-orderdate-value" },
+                            [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.formatDate(
+                                    _vm.orders.schedule_date,
+                                    "DD MMMM YYYY"
+                                  )
+                                )
+                              )
+                            ]
+                          )
                         ]
                       )
                     ]
@@ -72886,7 +72829,7 @@ var render = function() {
                                         alt: ""
                                       }
                                     })
-                                  : _c("div", [_vm._m(1)])
+                                  : _c("div", [_vm._m(0)])
                               ])
                             : _c("div", [
                                 _vm._v(
@@ -72978,7 +72921,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._m(2)
+                                    _vm._m(1)
                                   ]
                                 )
                               : _vm._e(),
@@ -73004,7 +72947,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._m(3)
+                                    _vm._m(2)
                                   ]
                                 )
                               : _vm._e(),
@@ -73026,7 +72969,7 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                    Total yang harus dibayar\n                  "
+                                      "\n                    Total pembayaran\n                  "
                                     )
                                   ]
                                 ),
@@ -73163,31 +73106,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-      },
-      [
-        _c("div", { staticClass: "uk-text-right" }, [
-          _c(
-            "a",
-            {
-              staticClass:
-                "uk-button uk-button-default summarydetail-editorder",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Ubah Pesanan")]
-          )
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
