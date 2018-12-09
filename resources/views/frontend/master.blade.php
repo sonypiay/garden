@@ -13,8 +13,7 @@
   <div class="uk-card uk-card-body uk-card-small uk-card-default">
     <div class="uk-container">
       <div class="footer_links">
-        <a href="#">Tentang Kami</a>
-        <a href="#">Kontak</a>
+        <a href="{{ route('aboutus') }}">Tentang Kami</a>
         <a href="#">Bergabung sebagai Vendor</a>
       </div>
     </div>

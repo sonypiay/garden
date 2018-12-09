@@ -1,0 +1,173 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+
+$f6a192:	rgb(246,161,146);
+$f6b092:	rgb(246,176,146);
+$f6c492:	rgb(246,196,146);
+$f6cf92:	rgb(246,207,146);
+$f6d992:	rgb(246,217,146);
+
+// Body
+$body-bg: #ffffff;
+
+// Typography
+$font-primary: 'Karla', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+$logo-color-primary: $f6a192;
+$logo-color-secondary: $f6d992;
+
+@mixin fontstyle( $weight, $stretch, $style, $spacing ) {
+  font-weight: $weight;
+  font-stretch: $stretch;
+  font-style: $style;
+  letter-spacing: $spacing;
+}
+
+html, body {
+  font-family: $font-primary;
+  background: $body-bg;
+}
+
+.navbar {
+  z-index: 9999;
+  .logo {
+    img {
+      width: 120px;
+    }
+  }
+}
+.cover-container {
+  height: 550px;
+  .cover-overlay {
+    background: linear-gradient(97deg,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.3));
+    .cover-overlay-heading {
+      background: none;
+      .cover-heading {
+        color: #ffffff;
+        font-family: $font-primary;
+        @include fontstyle(400, normal, normal, 0.8px);
+        font-size: 42px;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .cover-subheading {
+        color: #ffffff;
+        font-family: $font-primary;
+        @include fontstyle(400, normal, normal, 0.4px);
+        font-size: 16px;
+        text-align: center;
+      }
+    }
+  }
+}
+.contentabout_us {
+  box-shadow: none;
+  .contentabout_heading {
+    color: #666666;
+    font-family: $font-primary;
+    @include fontstyle(400, normal, normal, 0.8px);
+    font-size: 42px;
+    text-align: left;
+    padding: 20px;
+    .hr {
+      width: 140px;
+      border-top: 2px solid $f6a192;
+    }
+  }
+  .contentabout_subheading {
+    color: #666666;
+    font-family: $font-primary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    font-size: 16px;
+    text-align: left;
+    padding: 20px;
+  }
+}
+
+.contentabout_visimisi {
+  background: linear-gradient(97deg, $f6a192, $f6b092);
+  .contentvisimisi {
+    border-radius: 3px;
+    .contentvisi_heading,
+    .contentmisi_heading {
+      color: $f6a192;
+      font-family: $font-primary;
+      @include fontstyle(400, normal, normal, 0.8px);
+      font-size: 36px;
+      text-align: left;
+      margin-bottom: 15px;
+      padding-left: 1.3em;
+      padding-right: 1.3em;
+    }
+    .contentvisi_subheading,
+    .contentmisi_subheading {
+      color: #666666;
+      font-family: $font-primary;
+      @include fontstyle(400, normal, normal, 0.4px);
+      font-size: 16px;
+      text-align: left;
+      padding-left: 3em;
+      padding-right: 3em;
+    }
+  }
+  .contentabout_logo {
+    background: none;
+    img {}
+  }
+}
+.ourteam {
+  .ourteam-heading {
+    color: #666666;
+    font-family: $font-primary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .ourteam-box {
+    .ourteam-box-header {
+      color: #ffffff;
+      text-align: center;
+      .uk-tile-default {
+        background: linear-gradient(97deg, $f6a192, $f6b092);
+      }
+    }
+    .ourteam-box-body {
+      .ourteam-box-title {
+        color: #444444;
+        font-family: $font-primary;
+        @include fontstyle(700, normal, normal, 0.2px);
+        font-size: 22px;
+        text-align: center;
+      }
+      .ourteam-box-division {
+        color: #666666;
+        font-family: $font-primary;
+        @include fontstyle(400, normal, normal, 0.2px);
+        font-size: 13px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.footer {
+  .footer_links {
+    a {
+      font-family: $font-primary;
+      font-size: 12px;
+      @include fontstyle( 600, normal, normal, 0.4px );
+      margin-right: 15px;
+      color: #888888;
+      text-transform: uppercase;
+      &:hover {
+        color: $logo-color-primary;
+        text-decoration: none;
+      }
+    }
+  }
+}

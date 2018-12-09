@@ -1,0 +1,184 @@
+@import url(https://fonts.googleapis.com/css?family=Karla:400,700);html,
+body {
+  font-family: "Karla", sans-serif;
+  background: #ffffff;
+}
+
+.navbar {
+  z-index: 9999;
+}
+
+.navbar .logo img {
+  width: 120px;
+}
+
+.cover-container {
+  height: 550px;
+}
+
+.cover-container .cover-overlay {
+  background: linear-gradient(97deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+}
+
+.cover-container .cover-overlay .cover-overlay-heading {
+  background: none;
+}
+
+.cover-container .cover-overlay .cover-overlay-heading .cover-heading {
+  color: #ffffff;
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  font-size: 42px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.cover-container .cover-overlay .cover-overlay-heading .cover-subheading {
+  color: #ffffff;
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.contentabout_us {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.contentabout_us .contentabout_heading {
+  color: #666666;
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  font-size: 42px;
+  text-align: left;
+  padding: 20px;
+}
+
+.contentabout_us .contentabout_heading .hr {
+  width: 140px;
+  border-top: 2px solid #f6a192;
+}
+
+.contentabout_us .contentabout_subheading {
+  color: #666666;
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+  text-align: left;
+  padding: 20px;
+}
+
+.contentabout_visimisi {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.contentabout_visimisi .contentvisimisi {
+  border-radius: 3px;
+}
+
+.contentabout_visimisi .contentvisimisi .contentvisi_heading,
+.contentabout_visimisi .contentvisimisi .contentmisi_heading {
+  color: #f6a192;
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  font-size: 36px;
+  text-align: left;
+  margin-bottom: 15px;
+  padding-left: 1.3em;
+  padding-right: 1.3em;
+}
+
+.contentabout_visimisi .contentvisimisi .contentvisi_subheading,
+.contentabout_visimisi .contentvisimisi .contentmisi_subheading {
+  color: #666666;
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+  text-align: left;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.contentabout_visimisi .contentabout_logo {
+  background: none;
+}
+
+.ourteam .ourteam-heading {
+  color: #666666;
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ourteam .ourteam-box .ourteam-box-header {
+  color: #ffffff;
+  text-align: center;
+}
+
+.ourteam .ourteam-box .ourteam-box-header .uk-tile-default {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.ourteam .ourteam-box .ourteam-box-body .ourteam-box-title {
+  color: #444444;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.2px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.ourteam .ourteam-box .ourteam-box-body .ourteam-box-division {
+  color: #666666;
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.2px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.footer .footer_links a {
+  font-family: "Karla", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-right: 15px;
+  color: #888888;
+  text-transform: uppercase;
+}
+
+.footer .footer_links a:hover {
+  color: #f6a192;
+  text-decoration: none;
+}
+

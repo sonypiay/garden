@@ -65672,7 +65672,8 @@ module.exports = Vue;
 
 __webpack_require__(168);
 __webpack_require__(267);
-module.exports = __webpack_require__(268);
+__webpack_require__(268);
+module.exports = __webpack_require__(269);
 
 
 /***/ }),
@@ -65732,7 +65733,7 @@ var app = new Vue({
       'rejected': 'Pesanan ditolak',
       'pending': 'Pesanan ditunda',
       'payment_waiting': 'Menunggu Pembayaran',
-      'payment_verify': 'Konfirmasi Pembayaran',
+      'payment_verify': 'Verifikasi Pembayaran',
       'paid': 'Dibayar',
       'process': 'Sedang diproses',
       'onprogress': 'Sedang dikerjakan',
@@ -67038,7 +67039,7 @@ var render = function() {
                                     result.transaction_id
                                 }
                               },
-                              [_vm._v("Konfirmasi")]
+                              [_vm._v("Lihat Rincian")]
                             )
                       ])
                     ]
@@ -73260,7 +73261,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
@@ -73439,11 +73439,7 @@ var render = function() {
                         { staticClass: "dash_sum-transaction-orderdate" },
                         [_vm._v(_vm._s(_vm.formatDate(result.schedule_date)))]
                       ),
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(result.last_status_transaction) +
-                          "\n            "
-                      ),
+                      _vm._v(" "),
                       result.last_status_transaction === "approval" ||
                       result.last_status_transaction === "payment_waiting"
                         ? _c(
@@ -81797,6 +81793,12 @@ if (false) {
 
 /***/ }),
 /* 268 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 269 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

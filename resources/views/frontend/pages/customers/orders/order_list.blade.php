@@ -1,5 +1,5 @@
 @extends('frontend.master')
-@section('headtitle', 'Garden Buana - Konfirmasi Pesanan')
+@section('headtitle', 'Garden Buana - Daftar Transaksi')
 @section('maincontent')
 @include('frontend.includes.navbar-white')
 <div class="uk-grid-small" uk-grid>

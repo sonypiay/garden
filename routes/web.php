@@ -12,6 +12,7 @@
 */
 // Route frontend
 Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
+Route::get('/tentang_kami', 'Frontend\HomepageController@aboutus')->name('aboutus');
 
 Route::group(['prefix' => 'discovery'], function() {
   Route::get('/', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');
