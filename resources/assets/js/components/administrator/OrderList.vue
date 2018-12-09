@@ -24,7 +24,55 @@
             <div class="view-transaction-value">{{ formatDate( orders.created_at, 'DD MMMM YYYY HH:mm' ) }}</div>
           </div>
           <hr>
-
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="uk-margin" v-if="orders.isPremium === 'Y'">
+                <div class="view-transaction-heading">Pemesan Premium</div>
+                <div class="view-transaction-value">+ Rp. 5.000</div>
+              </div>
+              <div class="uk-margin" v-if="orders.bank_code === '014'">
+                <div class="view-transaction-heading">Biaya transfer BCA</div>
+                <div class="view-transaction-value">+ Rp. 4.000</div>
+              </div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Total Pembayaran</div>
+              <div class="view-transaction-value">Rp. {{ formatCurrency( orders.payment_amount ) }}</div>
+            </div>
+          </div>
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Nama Pemesan</div>
+              <div class="view-transaction-value">{{ orders.customer_name }}</div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Nomor Telepon</div>
+              <div class="view-transaction-value">{{ orders.mobile_number }}</div>
+            </div>
+          </div>
+          <hr>
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-1">
+              <div class="view-transaction-heading">Alamat</div>
+              <div class="view-transaction-value">{{ orders.address }}</div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Provinsi</div>
+              <div class="view-transaction-value">{{ region }}</div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Kota</div>
+              <div class="view-transaction-value">{{ district }}</div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Kecamatan</div>
+              <div class="view-transaction-value">{{ subdistrict }}</div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Kode Pos</div>
+              <div class="view-transaction-value">{{ orders.zipcode }}</div>
+            </div>
+          </div>
         </div>
         <div class="uk-modal-footer">
           <button class="uk-button uk-button-primary" name="button">Pembayaran Diterima</button>
@@ -128,6 +176,11 @@ export default {
     formatDate(str, format) {
       var res = moment(str).locale('id').format(format);
       return res;
+    },
+    formatCurrency(price) {
+      price = Number( price );
+      var numberformat = new Intl.NumberFormat('en-ID').format( price );
+      return numberformat;
     },
     getOrderList(pages)
     {

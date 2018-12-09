@@ -63,6 +63,7 @@ class BookingOrdersController extends Controller
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',
+      'payment_order_verify.payment_amount',
       'bankpayment.bank_id',
       'bankpayment.bank_code',
       'bankpayment.bank_name',

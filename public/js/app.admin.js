@@ -70338,6 +70338,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
@@ -70376,6 +70424,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     formatDate: function formatDate(str, format) {
       var res = moment(str).locale('id').format(format);
       return res;
+    },
+    formatCurrency: function formatCurrency(price) {
+      price = Number(price);
+      var numberformat = new Intl.NumberFormat('en-ID').format(price);
+      return numberformat;
     },
     getOrderList: function getOrderList(pages) {
       var _this = this;
@@ -70498,7 +70551,196 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("hr")
+            _c("hr"),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _vm.orders.isPremium === "Y"
+                      ? _c("div", { staticClass: "uk-margin" }, [
+                          _c(
+                            "div",
+                            { staticClass: "view-transaction-heading" },
+                            [_vm._v("Pemesan Premium")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "view-transaction-value" }, [
+                            _vm._v("+ Rp. 5.000")
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.orders.bank_code === "014"
+                      ? _c("div", { staticClass: "uk-margin" }, [
+                          _c(
+                            "div",
+                            { staticClass: "view-transaction-heading" },
+                            [_vm._v("Biaya transfer BCA")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "view-transaction-value" }, [
+                            _vm._v("+ Rp. 4.000")
+                          ])
+                        ])
+                      : _vm._e()
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Total Pembayaran")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(
+                        "Rp. " +
+                          _vm._s(_vm.formatCurrency(_vm.orders.payment_amount))
+                      )
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Nama Pemesan")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.customer_name))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Nomor Telepon")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.mobile_number))
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c("div", { staticClass: "uk-width-1-1" }, [
+                  _c("div", { staticClass: "view-transaction-heading" }, [
+                    _vm._v("Alamat")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "view-transaction-value" }, [
+                    _vm._v(_vm._s(_vm.orders.address))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Provinsi")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.region))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Kota")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.district))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Kecamatan")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.subdistrict))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Kode Pos")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.zipcode))
+                    ])
+                  ]
+                )
+              ]
+            )
           ]
         ),
         _vm._v(" "),
