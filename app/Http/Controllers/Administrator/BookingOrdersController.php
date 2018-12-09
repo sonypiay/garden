@@ -42,6 +42,8 @@ class BookingOrdersController extends Controller
     $rows = $request->rows;
     $keywords = $request->keywords;
     $status = $request->status;
+    $premium = $request->premium;
+
     $query = $booking->select(
       'vendors.vendor_name',
       'vendors.vendor_id',
@@ -78,35 +80,92 @@ class BookingOrdersController extends Controller
     {
       if( $status == 'all' )
       {
-        $query = $query->orderBy('booking_transaction.created_at');
+        if( $premium == 'all' )
+        {
+          $query = $query->orderBy('booking_transaction.created_at');
+        }
+        else
+        {
+          $query = $query->where('booking_transaction.isPremium', '=', $premium)
+          ->orderBy('booking_transaction.created_at');
+        }
       }
       else
       {
-        $query = $query->where('booking_transaction.last_status_transaction', '=', $status);
+        if( $premium == 'all' )
+        {
+          $query = $query->where('booking_transaction.last_status_transaction', '=', $status);
+        }
+        else
+        {
+          $query = $query->where([
+            ['booking_transaction.last_status_transaction', '=', $status],
+            ['booking_transaction.isPremium', '=', $premium]
+          ]);
+        }
       }
     }
     else
     {
       if( $status == 'all' )
       {
-        $query = $query->where('booking_transaction.transaction_id', 'like', '%' . $keywords . '%')
-        ->orWhere('customers.customer_name', 'like', '%' . $keywords . '%')
-        ->orWhere('vendors.vendor_name', 'like', '%' . $keywords . '%');
+        if( $premium == 'all' )
+        {
+          $query = $query->where('booking_transaction.transaction_id', 'like', '%' . $keywords . '%')
+          ->orWhere('customers.customer_name', 'like', '%' . $keywords . '%')
+          ->orWhere('vendors.vendor_name', 'like', '%' . $keywords . '%');
+        }
+        else
+        {
+          $query = $query->where([
+            ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%'],
+            ['booking_transaction.isPremium', '=', $premium]
+          ])
+          ->orWhere([
+            ['customers.customer_name', 'like', '%' . $keywords . '%'],
+            ['booking_transaction.isPremium', '=', $premium]
+          ])
+          ->orWhere([
+            ['vendors.vendor_name', 'like', '%' . $keywords . '%'],
+            ['booking_transaction.isPremium', '=', $premium]
+          ]);
+        }
       }
       else
       {
-        $query = $query->where([
-          ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%'],
-          ['booking_transaction.last_status_transaction', '=', $status]
-        ])
-        ->orWhere([
-          ['customers.customer_name', 'like', '%' . $keywords . '%'],
-          ['booking_transaction.last_status_transaction', '=', $status]
-        ])
-        ->orWhere([
-          ['vendors.vendor_name', 'like', '%' . $keywords . '%'],
-          ['booking_transaction.last_status_transaction', '=', $status]
-        ]);
+        if( $premium == 'all' )
+        {
+          $query = $query->where([
+            ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%'],
+            ['booking_transaction.last_status_transaction', '=', $status]
+          ])
+          ->orWhere([
+            ['customers.customer_name', 'like', '%' . $keywords . '%'],
+            ['booking_transaction.last_status_transaction', '=', $status]
+          ])
+          ->orWhere([
+            ['vendors.vendor_name', 'like', '%' . $keywords . '%'],
+            ['booking_transaction.last_status_transaction', '=', $status]
+          ]);
+        }
+        else
+        {
+          $query = $query->where([
+            ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%'],
+            ['booking_transaction.last_status_transaction', '=', $status],
+            ['booking_transaction.isPremium', '=', $premium]
+          ])
+          ->orWhere([
+            ['customers.customer_name', 'like', '%' . $keywords . '%'],
+            ['booking_transaction.last_status_transaction', '=', $status],
+            ['booking_transaction.isPremium', '=', $premium]
+          ])
+          ->orWhere([
+            ['vendors.vendor_name', 'like', '%' . $keywords . '%'],
+            ['booking_transaction.last_status_transaction', '=', $status],
+            ['booking_transaction.isPremium', '=', $premium]
+          ]);
+        }
       }
     }
 

@@ -70413,6 +70413,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
@@ -70425,6 +70432,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         value: false,
         text: ''
       },
+      premium: 'all',
       orderlist: {
         total: 0,
         results: []
@@ -70460,7 +70468,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getOrderList: function getOrderList(pages) {
       var _this = this;
 
-      var param = '&keywords=' + this.keywords + '&rows=' + this.selectedRows + '&status=' + this.status_transaction;
+      var param = '&keywords=' + this.keywords + '&rows=' + this.selectedRows + '&status=' + this.status_transaction + '&premium=' + this.premium;
       if (pages === undefined || pages === null || pages === '') pages = this.url + '/transaction/data_orderlist?page=1' + param;else pages = pages + param;
       axios({
         method: 'get',
@@ -70532,6 +70540,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               setTimeout(function () {
                 UIkit.modal('#viewTransaction').hide();
               }, 2000);
+              _this3.getOrderList();
             }).catch(function (err) {
               swal({
                 title: 'Terjadi Kesalahan',
@@ -70573,6 +70582,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               setTimeout(function () {
                 UIkit.modal('#viewTransaction').hide();
               }, 2000);
+              _this3.getOrderList();
             }).catch(function (err) {
               swal({
                 title: 'Terjadi Kesalahan',
@@ -71052,7 +71062,9 @@ var render = function() {
                     ) {
                       return null
                     }
-                    _vm.getOrderList()
+                    _vm.getOrderList(
+                      _vm.pagination.path + "?page=" + _vm.pagination.current
+                    )
                   },
                   input: function($event) {
                     if ($event.target.composing) {
@@ -71101,7 +71113,9 @@ var render = function() {
                         : $$selectedVal[0]
                     },
                     function($event) {
-                      _vm.getOrderList()
+                      _vm.getOrderList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
                     }
                   ]
                 }
@@ -71122,6 +71136,61 @@ var render = function() {
                 _c("option", { attrs: { value: "50" } }, [
                   _vm._v("50 ditampilkan")
                 ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
+          },
+          [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.premium,
+                    expression: "premium"
+                  }
+                ],
+                staticClass: "uk-select form-select",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.premium = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      _vm.getOrderList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "all" } }, [
+                  _vm._v("-- Premium/Non Premium --")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Y" } }, [_vm._v("Premium")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "N" } }, [_vm._v("Non Premium")])
               ]
             )
           ]
@@ -71162,7 +71231,9 @@ var render = function() {
                         : $$selectedVal[0]
                     },
                     function($event) {
-                      _vm.getOrderList()
+                      _vm.getOrderList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
                     }
                   ]
                 }

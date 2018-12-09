@@ -113,11 +113,11 @@
         <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s">
           <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="search"></span>
-            <input @keyup.enter="getOrderList()" type="text" class="uk-input form-search uk-width-1-1" v-model="keywords" placeholder="Cari...">
+            <input @keyup.enter="getOrderList( pagination.path + '?page=' + pagination.current )" type="text" class="uk-input form-search uk-width-1-1" v-model="keywords" placeholder="Cari...">
           </div>
         </div>
         <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s">
-          <select class="uk-select form-select" v-model="selectedRows" @change="getOrderList()">
+          <select class="uk-select form-select" v-model="selectedRows" @change="getOrderList( pagination.path + '?page=' + pagination.current )">
             <option value="10">10 ditampilkan</option>
             <option value="20">20 ditampilkan</option>
             <option value="30">30 ditampilkan</option>
@@ -125,7 +125,14 @@
           </select>
         </div>
         <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s">
-          <select class="uk-select form-select" v-model="status_transaction" @change="getOrderList()">
+          <select class="uk-select form-select" v-model="premium" @change="getOrderList( pagination.path + '?page=' + pagination.current )">
+            <option value="all">-- Premium/Non Premium --</option>
+            <option value="Y">Premium</option>
+            <option value="N">Non Premium</option>
+          </select>
+        </div>
+        <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s">
+          <select class="uk-select form-select" v-model="status_transaction" @change="getOrderList( pagination.path + '?page=' + pagination.current )">
             <option value="all">-- Semua Status --</option>
             <option v-for="(val,key) in $root.statusTransaction" :value="key">{{ val }}</option>
           </select>
@@ -177,6 +184,7 @@ export default {
         value: false,
         text: ''
       },
+      premium: 'all',
       orderlist: {
         total: 0,
         results: []
@@ -210,7 +218,7 @@ export default {
     },
     getOrderList(pages)
     {
-      var param = '&keywords=' + this.keywords + '&rows=' + this.selectedRows + '&status=' + this.status_transaction;
+      var param = '&keywords=' + this.keywords + '&rows=' + this.selectedRows + '&status=' + this.status_transaction + '&premium=' + this.premium;
       if( pages === undefined || pages === null || pages === '' )
         pages = this.url + '/transaction/data_orderlist?page=1' + param;
       else
@@ -284,6 +292,7 @@ export default {
               setTimeout(function(){
                 UIkit.modal('#viewTransaction').hide();
               }, 2000);
+              this.getOrderList();
             }).catch( err => {
               swal({
                 title: 'Terjadi Kesalahan',
@@ -328,6 +337,7 @@ export default {
               setTimeout(function(){
                 UIkit.modal('#viewTransaction').hide();
               }, 2000);
+              this.getOrderList();
             }).catch( err => {
               swal({
                 title: 'Terjadi Kesalahan',
