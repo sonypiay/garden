@@ -65495,7 +65495,7 @@ Vue.component('cpbankcustomer-section', __webpack_require__(281));
 Vue.component('provinsi-section', __webpack_require__(284));
 Vue.component('kabupaten-section', __webpack_require__(287));
 Vue.component('kecamatan-section', __webpack_require__(290));
-Vue.component('orderlist-section', __webpack_require__(296));
+Vue.component('orderlist-section', __webpack_require__(293));
 
 var app = new Vue({
   el: '#app',
@@ -70191,18 +70191,15 @@ if (false) {
 }
 
 /***/ }),
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(297)
+var __vue_script__ = __webpack_require__(294)
 /* template */
-var __vue_template__ = __webpack_require__(298)
+var __vue_template__ = __webpack_require__(295)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -70241,11 +70238,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 297 */
+/* 294 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -70603,7 +70602,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 298 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70987,37 +70986,55 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "uk-width-1-2" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "uk-width-1-1 uk-button uk-button-success view_transaction-accept",
-                    attrs: { name: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.onAcceptOrCancel("accept")
-                      }
-                    }
-                  },
-                  [_vm._v("Pembayaran Diterima")]
-                )
+                _vm.orders.last_status_transaction === "payment_verify"
+                  ? _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-width-1-1 uk-button uk-button-success view_transaction-accept",
+                        on: {
+                          click: function($event) {
+                            _vm.onAcceptOrCancel("accept")
+                          }
+                        }
+                      },
+                      [_vm._v("Pembayaran Diterima")]
+                    )
+                  : _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-width-1-1 uk-button uk-button-success view_transaction-accept"
+                      },
+                      [_vm._v("Pembayaran Diterima")]
+                    )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "uk-width-1-2" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "uk-width-1-1 uk-button uk-button-danger view_transaction-reject",
-                    attrs: { name: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.onAcceptOrCancel("cancel")
-                      }
-                    }
-                  },
-                  [_vm._v("Batalkan Pesanan")]
-                )
+                _vm.orders.last_status_transaction !== "cancel" &&
+                _vm.orders.last_status_transaction !== "paid"
+                  ? _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-width-1-1 uk-button uk-button-danger view_transaction-reject",
+                        on: {
+                          click: function($event) {
+                            _vm.onAcceptOrCancel("cancel")
+                          }
+                        }
+                      },
+                      [_vm._v("Batalkan Pesanan")]
+                    )
+                  : _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-width-1-1 uk-button uk-button-danger view_transaction-reject",
+                        attrs: { name: "button" }
+                      },
+                      [_vm._v("Batalkan Pesanan")]
+                    )
               ])
             ]
           )
@@ -71289,11 +71306,23 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(order.transaction_id))]),
+                    _c(
+                      "td",
+                      {
+                        staticClass: "uk-text-truncate",
+                        attrs: { title: order.transaction_id }
+                      },
+                      [_vm._v(_vm._s(order.transaction_id))]
+                    ),
                     _vm._v(" "),
-                    _c("td", { staticClass: "uk-text-truncate" }, [
-                      _vm._v(_vm._s(order.customer_name))
-                    ]),
+                    _c(
+                      "td",
+                      {
+                        staticClass: "uk-text-truncate",
+                        attrs: { title: order.customer_name }
+                      },
+                      [_vm._v(_vm._s(order.customer_name))]
+                    ),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(order.vendor_name))]),
                     _vm._v(" "),

@@ -97,10 +97,12 @@
         <div class="uk-modal-footer">
           <div class="uk-grid-small uk-flex-center" uk-grid>
             <div class="uk-width-1-2">
-              <button class="uk-width-1-1 uk-button uk-button-success view_transaction-accept" @click="onAcceptOrCancel('accept')" name="button">Pembayaran Diterima</button>
+              <button v-if="orders.last_status_transaction === 'payment_verify'" class="uk-width-1-1 uk-button uk-button-success view_transaction-accept" @click="onAcceptOrCancel('accept')">Pembayaran Diterima</button>
+              <button v-else class="uk-width-1-1 uk-button uk-button-success view_transaction-accept">Pembayaran Diterima</button>
             </div>
             <div class="uk-width-1-2">
-              <button class="uk-width-1-1 uk-button uk-button-danger view_transaction-reject" @click="onAcceptOrCancel('cancel')" name="button">Batalkan Pesanan</button>
+              <button v-if="orders.last_status_transaction !== 'cancel' && orders.last_status_transaction !== 'paid'" class="uk-width-1-1 uk-button uk-button-danger view_transaction-reject" @click="onAcceptOrCancel('cancel')">Batalkan Pesanan</button>
+              <button v-else class="uk-width-1-1 uk-button uk-button-danger view_transaction-reject" name="button">Batalkan Pesanan</button>
             </div>
           </div>
         </div>
@@ -158,8 +160,8 @@
                 <td>
                   <button @click="onViewTransaction(order)" class="uk-button uk-button-text" uk-icon="cog" uk-tooltip="title: Lihat Rincian; pos: right"></button>
                 </td>
-                <td>{{ order.transaction_id }}</td>
-                <td class="uk-text-truncate">{{ order.customer_name }}</td>
+                <td class="uk-text-truncate" :title="order.transaction_id">{{ order.transaction_id }}</td>
+                <td class="uk-text-truncate" :title="order.customer_name">{{ order.customer_name }}</td>
                 <td>{{ order.vendor_name }}</td>
                 <td>{{ $root.statusTransaction[order.last_status_transaction] }}</td>
                 <td>{{ formatDate( order.created_at, 'MMM DD, YYYY HH:mm' ) }}</td>

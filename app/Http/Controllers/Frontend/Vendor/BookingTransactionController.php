@@ -106,6 +106,7 @@ class BookingTransactionController extends Controller
       'booking_transaction.payment_method',
       'booking_transaction.isPremium',
       'booking_transaction.last_status_transaction',
+      'booking_transaction.created_at',
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',
@@ -185,5 +186,56 @@ class BookingTransactionController extends Controller
     $update->save();
 
     return response()->json( $res, $res['status'] );
+  }
+
+  public function process_order( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
+  {
+    $booking = $booking->where('transaction_id', $orderid)->first();
+    $logstatus = new $logstatus;
+    $booking->last_status_transaction = 'process';
+    $booking->save();
+
+    $logstatus->transaction_id = $orderid;
+    $logstatus->status_transaction = 'process';
+    $logstatus->status_description = 'Pesanan sedang diproses oleh pihak Vendor';
+    $logstatus->log_date = date('Y-m-d H:i:s');
+    $logstatus->save();
+
+    $res = [
+      'status' => 200,
+      'statusText' => 'Success'
+    ];
+    return response()->json( $res, $res['status'] );
+  }
+
+  public function progress_order( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
+  {
+    $booking = $booking->where('transaction_id', $orderid)->first();
+    $logstatus = new $logstatus;
+    $booking->last_status_transaction = 'onprogress';
+    $booking->save();
+
+    $logstatus->transaction_id = $orderid;
+    $logstatus->status_transaction = 'onprogress';
+    $logstatus->status_description = 'Pesanan sedang dikerjakan';
+    $logstatus->log_date = date('Y-m-d H:i:s');
+    $logstatus->save();
+
+    $res = [
+      'status' => 200,
+      'statusText' => 'Success'
+    ];
+    return response()->json( $res, $res['status'] );
+  }
+
+  public function createreport( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
+  {
+    $filereport = $request->filereport;
+    $res = [];
+    foreach( $filereport as $key => $val )
+    {
+      $res[] = $val->getClientOriginalName();
+    }
+    return response()->json( $res );
   }
 }

@@ -72,6 +72,9 @@ Route::group(['prefix' => 'vendor'], function() {
   Route::get('/data_orderlist', 'Frontend\Vendor\BookingTransactionController@data_orderlist');
   Route::get('/summary_order/{orderid}', 'Frontend\Vendor\BookingTransactionController@summary_order')->name('summaryordervendor_page');
   Route::put('/order_approval/{orderid}', 'Frontend\Vendor\BookingTransactionController@approval_order');
+  Route::put('/process_order/{orderid}', 'Frontend\Vendor\BookingTransactionController@process_order');
+  Route::put('/progress_order/{orderid}', 'Frontend\Vendor\BookingTransactionController@progress_order');
+  Route::post('/createreport/{orderid}', 'Frontend\Vendor\BookingTransactionController@createreport');
 
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Vendor\AccountVendor@index')->name('accountvendor_page');

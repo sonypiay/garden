@@ -18,10 +18,8 @@
                 <div class="summaryorder_subtitle">{{ orders.nama_kab }}</div>
               </div>
               <div class="uk-padding-small content_summaryorder_detail">
-                <div class="uk-grid-small" uk-grid>
-                  <div class="summarydetail-orderdate-title">Tanggal Pengerjaan</div>
-                  <div class="summarydetail-orderdate-value">{{ formatDate( orders.schedule_date, 'DD MMMM YYYY' ) }}</div>
-                </div>
+                <div class="summarydetail-orderdate-title">Tanggal Pengerjaan</div>
+                <div class="summarydetail-orderdate-value">{{ formatDate( orders.schedule_date, 'DD MMMM YYYY' ) }}</div>
               </div>
               <div class="uk-padding-small content_summaryorder_detail">
                 <div class="uk-grid-small" uk-grid>
