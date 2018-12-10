@@ -91,7 +91,7 @@ html,body {
         @include fontstyle( 400, normal, normal, 0.4px );
         color: #ffffff;
         &:hover {
-          color: $logo-color-primary;
+          color: #ffffff;
           text-decoration: none;
         }
       }
@@ -110,7 +110,7 @@ html,body {
       color: #ffffff;
       text-transform: capitalize;
       &:hover {
-        color: $logo-color-primary;
+        color: #ffffff;
         text-decoration: none;
       }
     }
