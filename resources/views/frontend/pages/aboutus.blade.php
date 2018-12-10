@@ -104,21 +104,40 @@
   </div>
 </div>
 <footer class="footer">
-  <div class="uk-card uk-card-body uk-card-small uk-card-default">
+  <div class="uk-card uk-card-body uk-card-default mainfooter">
     <div class="uk-container">
-      <div class="uk-grid-small" uk-grid>
+      <div class="uk-grid-medium" uk-grid>
         <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s">
-          <div class="copyright">
-            &copy; {{ date('Y') }}. Made with <span uk-icon="heart"></span> by Garden Buana
+          <div class="aboutus">
+            <div class="footer-aboutus_heading">Tentang Garden Buana</div>
+            <div class="footer-aboutus_text">
+              Garden Buana merupakan salah satu e-commerce yang menyediakan Jasa Penata Taman Hias (Gardener) yang dibutuhkan untuk menata lahan kosong atau membuat sebuah taman yang indah. Semua orang dapat menjadi bagian dalam Garden Buana dengan menjadi vendor Gardener.
+            </div>
           </div>
         </div>
-        <div class="uk-width-expand">
-          <div class="uk-align-right footer_links">
-            <a href="{{ route('aboutus') }}">Tentang Kami</a>
-            <a href="#">Bergabung sebagai Vendor</a>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s">
+          <ul class="uk-nav footer_links">
+            <li><a href="{{ route('aboutus') }}">Tentang Kami</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Kebijakan Privasi</a></li>
+            <li><a href="#">Syarat &amp; Ketentuan</a></li>
+          </ul>
+        </div>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s">
+          <div class="contactus">
+            <div class="footer-contact_heading">Kontak Kami</div>
+            <div class="footer-contact_text">
+              Jl. Raya Meruya Selatan No. 1 Kembangan, Jakarta Barat<br>
+              <a href="mailto: cs@example.com">cs@gardenbuana.id</a>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="uk-card uk-card-body uk-card-small uk-card-default">
+    <div class="uk-text-center copyright">
+      &copy; {{ date('Y') }}. Made with <span uk-icon="heart"></span> by Garden Buana
     </div>
   </div>
 </footer>

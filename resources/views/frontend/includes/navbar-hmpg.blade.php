@@ -36,7 +36,7 @@
     </div>
   </li>
   @else
-  <li><a class="become-vendor" href="{{ route('loginpage_vendor') }}">Masuk sebagai Vendor</a></li>
-  <li><a href="{{ route('loginpage_customer') }}">Masuk sebagai Pengguna</a></li>
+  <li><a class="joinascustomer" href="{{ route('registerpage_customer') }}"><div>Daftar</div></a></li>
+  <li><a class="loginascustomer" href="{{ route('loginpage_customer') }}"><div>Masuk</div></a></li>
   @endif
 </ul>

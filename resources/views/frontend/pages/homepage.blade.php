@@ -3,15 +3,14 @@
 @section('maincontent')
 <main>
   <div class="uk-cover-container uk-height-viewport cover-homepage">
-    <img src="{{ asset('images/banner/bgcover.jpg') }}" alt="Photo by Markus Spiske on Unsplash" uk-cover>
+    <img src="{{ asset('images/banner/Banner4.jpg') }}" alt="Photo by Markus Spiske on Unsplash" uk-cover>
     <div class="uk-overlay cover-overlay-homepage uk-position-cover">
       <header class="header-hmpg">
         <div class="uk-navbar navbar-homepage" uk-navbar>
           <div class="uk-navbar-left">
             <ul class="uk-navbar-nav nav-hmpg">
               <li><a href="{{ route('aboutus') }}">Tentang Kami</a></li>
-              <li><a href="#">Cara Kerja</a></li>
-              <li><a href="{{ route('discoveryvendor_page') }}">Vendor</a></li>
+              <li><a href="{{ route('discoveryvendor_page') }}">Cari Vendor</a></li>
             </ul>
           </div>
           <div class="uk-navbar-center">
@@ -25,27 +24,15 @@
         </div>
       </header>
       <div class="uk-container">
-        <div class="uk-width-1-2 findvendor-hmpg-content">
-          <div class="uk-margin-bottom temukan-vendor-hmpg">Pesan <span class="tanamanhias">Jasa Tanaman Hias</span> Terbaik Anda</div>
-          <div class="hmpg-findvendor-box">
+        <div class="uk-width-1-2 uk-position-center-left findvendor-hmpg-content">
+          <div class="temukan-vendor-hmpg">Pesan jasa taman hias yang terpercaya dan professional sesuai dengan kebutuhan Anda</div>
+          <div class="hmpg-button">
             <div class="uk-grid-small" uk-grid>
-              <div class="uk-width-1-1">
-                <div class="uk-width-1-1 uk-inline">
-                  <span class="uk-form-icon findvendor-formicon"><i class="fas fa-search"></i></span>
-                  <input type="search" class="uk-width-1-1 uk-input uk-box-shadow-medium findvendor-form" placeholder="Aku ingin memesan...">
-                </div>
+              <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+                <a class="uk-display-block uk-button uk-button-default uk-button-large joinasvendor" href="{{ route('registerpage_vendor') }}">Bergabung Sebagai Vendor</a>
               </div>
-              <div class="uk-width-expand">
-                <div class="uk-width-1-1 uk-inline">
-                  <button class="uk-button uk-button-default findcity-hmpg">Pilih Kota <span class="fas fa-chevron-down"></span> </button>
-                  <div class="dropdown-findcity" uk-dropdown="mode: click; pos: right-bottom;">
-                    <ul class="uk-nav uk-dropdown-nav">
-                      @foreach( $kabupaten as $kab )
-                      <li><a href="#{{ $kab->kode_kab }}">{{ $kab->nama_kab }}</a></li>
-                      @endforeach
-                    </ul>
-                  </div>
-                </div>
+              <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+                <a class="uk-display-block uk-button uk-button-default uk-button-large findvendor" href="{{ route('discoveryvendor_page') }}">Cari Vendor</a>
               </div>
             </div>
           </div>

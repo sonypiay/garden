@@ -97,6 +97,12 @@ html,body {
         font-size: 13px;
         @include fontstyle(600, normal, normal, 0.4px);
       }
+      .joinascustomer div {
+        border-radius: 3px;
+        background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+        color: #ffffff;
+        padding: 10px 20px;
+      }
     }
     .nav-hmpg {
       .navbarhmpgdropdowncustomer {
@@ -125,34 +131,43 @@ html,body {
     }
   }
   .findvendor-hmpg-content {
-    margin-top: 9em;
+    margin-left: 5em;
     .temukan-vendor-hmpg {
       color: #ffffff;
       font-family: $font-secondary;
-      font-size: 28px;
+      font-size: 42px;
       @include fontstyle(400, normal, normal, 0.4px);
-      .tanamanhias {
-        font-size: 36px;
-        @include fontstyle(700, normal, normal, 0.4px);
-      }
     }
-    .dropdown-findcity {
-      height: 220px;
-      border-radius: 3px;
-      overflow-y: scroll;
-      padding: 0;
-      ul {
-        li {
-          a {
-            padding: 10px 16px;
-            color: #666666;
-            font-family: $font-primary;
-            @include fontstyle(300, normal, normal, 0.4px);
-            &:hover, &:focus {
-              background: linear-gradient(97deg, $logo-color-primary, $f6b092);
-              color: #ffffff;
-            }
-          }
+    .hmpg-button {
+      margin-top: 25px;
+      .joinasvendor {
+        color: #ffffff;
+        font-family: $font-primary;
+        font-size: 12px;
+        @include fontstyle(400, normal, normal, 0.8px);
+        text-decoration: none;
+        border-radius: 4px;
+        border: 0;
+        background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+        &:hover, &:focus {
+          border: 0;
+          background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+          color: #ffffff;
+        }
+      }
+      .findvendor {
+        color: #666666;
+        font-family: $font-primary;
+        font-size: 12px;
+        @include fontstyle(400, normal, normal, 0.8px);
+        text-decoration: none;
+        border-radius: 4px;
+        border: 0;
+        background: #ffffff;
+        &:hover, &:focus {
+          border: 0;
+          background: #ffffff;
+          color: #666666;
         }
       }
     }
