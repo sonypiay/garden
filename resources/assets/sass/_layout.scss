@@ -898,7 +898,8 @@ html,body {
       .summarydetail-address-title,
       .summarydetail-mobilenumber-title,
       .summarydetail-note-title,
-      .summarydetail-layoutdesign-title {
+      .summarydetail-layoutdesign-title,
+      .summarydetail-report-title {
         font-size: 12px;
         color: #888888;
         @include fontstyle(400, normal, normal, 0.4px);
@@ -908,10 +909,25 @@ html,body {
       .summarydetail-address-value,
       .summarydetail-mobilenumber-value,
       .summarydetail-note-value,
-      .summarydetail-layoutdesign-value {
+      .summarydetail-layoutdesign-value,
+      .summarydetail-report-value {
         font-size: 16px;
         color: #666666;
         @include fontstyle(400, normal, normal, 0.4px);
+      }
+      .summarydetail-report-value {
+        .view-transaction-heading {
+          font-size: 14px;
+          font-family: $font-primary;
+          color: #333333;
+          @include fontstyle(400, normal, normal, 0.4px);
+        }
+        .view-transaction-value {
+          font-size: 14px;
+          font-family: $font-primary;
+          color: #333333;
+          @include fontstyle(400, normal, normal, 0.4px);
+        }
       }
       .summarydetail-editorder {
         border-radius: 2px;

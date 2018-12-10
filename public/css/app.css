@@ -1548,7 +1548,8 @@ body {
 .content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-address-title,
 .content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-mobilenumber-title,
 .content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-note-title,
-.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-title {
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-title {
   font-size: 12px;
   color: #888888;
   font-weight: 400;
@@ -1562,9 +1563,30 @@ body {
 .content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-address-value,
 .content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-mobilenumber-value,
 .content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-note-value,
-.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-value {
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-value {
   font-size: 16px;
   color: #666666;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-value .view-transaction-heading {
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  color: #333333;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-value .view-transaction-value {
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  color: #333333;
   font-weight: 400;
   font-stretch: normal;
   font-style: normal;

@@ -65737,7 +65737,7 @@ var app = new Vue({
       'paid': 'Dibayar',
       'process': 'Sedang diproses',
       'onprogress': 'Sedang dikerjakan',
-      'report': 'Laporan & Berita Acara',
+      'report': 'Laporan Terlampir',
       'done': 'Selesai',
       'cancel': 'Pesanan Dibatalkan'
     }
@@ -72489,13 +72489,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'orders'],
   data: function data() {
     return {
       bcaCharge: 4000,
-      premiumOrder: this.orders.isPremium
+      premiumOrder: this.orders.isPremium,
+      logstatus: {
+        total: 0,
+        results: []
+      },
+      reports: ''
     };
   },
 
@@ -72515,6 +72547,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var getIndex = files.lastIndexOf(".");
       var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
       return getformatfile;
+    },
+    viewLogAndReport: function viewLogAndReport() {
+      var _this = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/customers/view_summaryorder/' + this.orders.transaction_id
+      }).then(function (res) {
+        var result = res.data;
+        _this.logstatus.total = result.logstatus.total;
+        _this.logstatus.results = result.logstatus.result;
+        _this.reports = result.report;
+        console.log(_this.reports);
+      });
     }
   },
   computed: {
@@ -72540,7 +72586,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return getformatfile;
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.viewLogAndReport();
+  }
 });
 
 /***/ }),
@@ -72828,6 +72876,124 @@ var render = function() {
                                 )
                               ])
                         ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-padding-small content_summaryorder_detail"
+                    },
+                    [
+                      _c("div", { staticClass: "summarydetail-report-title" }, [
+                        _vm._v("Status Transaksi")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "summarydetail-report-value" },
+                        _vm._l(_vm.logstatus.results, function(log) {
+                          return _c("div", { staticClass: "uk-margin" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "uk-grid-small",
+                                attrs: { "uk-grid": "" }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-right view-transaction-value"
+                                      },
+                                      [
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm.formatDate(
+                                              log.log_date,
+                                              "DD MMM YYYY HH:mm:ss"
+                                            )
+                                          )
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "uk-width-expand" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "view-transaction-heading" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.$root.statusTransaction[
+                                            log.status_transaction
+                                          ]
+                                        )
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "view-transaction-value" },
+                                    [
+                                      _vm._v(
+                                        "\n                        " +
+                                          _vm._s(log.status_description) +
+                                          "\n                        "
+                                      ),
+                                      log.status_transaction === "report"
+                                        ? _c("div", [
+                                            _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "uk-button uk-button-default summarydetail_download",
+                                                attrs: { href: "#" }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                            Unduh Report\n                          "
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "uk-button uk-button-default summarydetail_download",
+                                                attrs: { href: "#" }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                            Konfirmasi\n                          "
+                                                )
+                                              ]
+                                            )
+                                          ])
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("hr")
+                          ])
+                        })
                       )
                     ]
                   )
@@ -80018,6 +80184,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'orders', 'vendors'],
@@ -80030,7 +80200,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         approved: 'Terima',
         rejected: 'Tolak',
         isApprove: this.orders.isPremium === 'N' ? 'N' : 'Y',
-        filereport: []
+        filereport: '',
+        deskripsi: ''
       }
     };
   },
@@ -80046,12 +80217,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return numberformat;
     },
     selectedFile: function selectedFile(event) {
-      this.forms.filereport = event.target.files;
-      for (var i = 0; i < event.target.files.length; i++) {
-        this.forms.filereport = event.target.files[i];
-        console.log(event.target.files[i].name);
+      var files = event.target.files[0];
+      var extension = this.getFormatFile(files.name);
+      if (extension !== 'pdf' && extension !== 'zip') {
+        this.forms.filereport = '';
+        swal({
+          title: 'Format file tidak valid',
+          text: 'Format hanya bisa berupa zip/pdf',
+          icon: 'warning',
+          dangerMode: true,
+          timer: 5000
+        });
+      } else if (this.forms.filereport.size > 2048000) {
+        this.forms.filereport = '';
+        swal({
+          title: 'Format file tidak valid',
+          text: 'Format hanya bisa berupa zip/pdf',
+          icon: 'warning',
+          dangerMode: true,
+          timer: 5000
+        });
+      } else {
+        this.forms.filereport = files;
       }
-      this.forms.filereport[0];
+      console.log(this.forms);
     },
 
     getFormatFile: function getFormatFile(files) {
@@ -80167,16 +80356,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       UIkit.modal('#createModal').show();
     },
     onCreateReport: function onCreateReport() {
-      if (this.forms.filereport.length === 0) {
+      if (this.forms.filereport === '' || this.forms.filereport === null) {
         return false;
       }
 
       var formdata = new FormData();
-      formdata.append('filereport[]', this.forms.filereport);
+      formdata.append('filereport', this.forms.filereport);
+      formdata.append('deskripsi', this.forms.deskripsi);
       axios.post(this.url + '/vendor/createreport/' + this.orders.transaction_id, formdata, {
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then(function (res) {
-        console.log(res.data);
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success',
+          timer: 5000
+        });
+        setTimeout(function () {
+          document.location = '';
+        }, 3000);
       }).catch(function (err) {
         swal({
           title: 'Terjadi Kesalahan',
@@ -80241,10 +80439,38 @@ var render = function() {
               _c("div", { staticClass: "uk-margin" }, [
                 _c("div", { staticClass: "uk-form-controls" }, [
                   _c("input", {
-                    attrs: { type: "file", id: "selectedFile", multiple: "" },
+                    attrs: { type: "file", id: "selectedFile" },
                     on: { change: _vm.selectedFile }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-text-small" }, [
+                    _vm._v("zip/pdf. Max 2MB")
+                  ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.forms.deskripsi,
+                      expression: "forms.deskripsi"
+                    }
+                  ],
+                  staticClass: "uk-textarea uk-height-small form-settingaction",
+                  attrs: { placeholder: "Deskripsi" },
+                  domProps: { value: _vm.forms.deskripsi },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.forms, "deskripsi", $event.target.value)
+                    }
+                  }
+                })
               ]),
               _vm._v(" "),
               _vm._m(0)

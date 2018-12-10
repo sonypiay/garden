@@ -69,6 +69,33 @@
                   </div>
                 </div>
               </div>
+              <div class="uk-padding-small content_summaryorder_detail">
+                <div class="summarydetail-report-title">Status Transaksi</div>
+                <div class="summarydetail-report-value">
+                  <div class="uk-margin" v-for="log in logstatus.results">
+                    <div class="uk-grid-small" uk-grid>
+                      <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s">
+                        <div class="uk-text-right view-transaction-value">{{ formatDate( log.log_date, 'DD MMM YYYY HH:mm:ss' ) }}</div>
+                      </div>
+                      <div class="uk-width-expand">
+                        <div class="view-transaction-heading">{{ $root.statusTransaction[log.status_transaction] }}</div>
+                        <div class="view-transaction-value">
+                          {{ log.status_description }}
+                          <div v-if="log.status_transaction === 'report'">
+                            <a class="uk-button uk-button-default summarydetail_download" href="#">
+                              Unduh Report
+                            </a>
+                            <a class="uk-button uk-button-default summarydetail_download" href="#">
+                              Konfirmasi
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-widht-1-2@s">
               <div class="uk-card uk-card-body uk-card-small sidebar_summaryorder_header">
@@ -140,7 +167,12 @@ export default {
   data() {
     return {
       bcaCharge: 4000,
-      premiumOrder: this.orders.isPremium
+      premiumOrder: this.orders.isPremium,
+      logstatus: {
+        total: 0,
+        results: []
+      },
+      reports: ''
     }
   },
   methods: {
@@ -158,6 +190,19 @@ export default {
       var getIndex = files.lastIndexOf(".");
       var getformatfile = files.substring( length_str_file, getIndex + 1 ).toLowerCase();
       return getformatfile;
+    },
+    viewLogAndReport()
+    {
+      axios({
+        method: 'get',
+        url: this.url + '/customers/view_summaryorder/' + this.orders.transaction_id
+      }).then( res => {
+        let result = res.data;
+        this.logstatus.total = result.logstatus.total;
+        this.logstatus.results = result.logstatus.result;
+        this.reports = result.report;
+        console.log( this.reports );
+      });
     }
   },
   computed: {
@@ -191,7 +236,7 @@ export default {
     }
   },
   mounted() {
-
+    this.viewLogAndReport();
   }
 }
 </script>

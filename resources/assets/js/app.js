@@ -55,7 +55,7 @@ const app = new Vue({
         'paid': 'Dibayar',
         'process': 'Sedang diproses',
         'onprogress': 'Sedang dikerjakan',
-        'report': 'Laporan & Berita Acara',
+        'report': 'Laporan Terlampir',
         'done': 'Selesai',
         'cancel': 'Pesanan Dibatalkan'
       }

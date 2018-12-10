@@ -7,8 +7,12 @@
           <form class="uk-form-stacked" @submit.prevent="onCreateReport">
             <div class="uk-margin">
               <div class="uk-form-controls">
-                <input type="file" id="selectedFile" @change="selectedFile" multiple>
+                <input type="file" id="selectedFile" @change="selectedFile">
+                <div class="uk-text-small">zip/pdf. Max 2MB</div>
               </div>
+            </div>
+            <div class="uk-margin">
+              <textarea class="uk-textarea uk-height-small form-settingaction" placeholder="Deskripsi" v-model="forms.deskripsi"></textarea>
             </div>
             <div class="uk-margin">
               <button class="uk-button uk-button-default">Upload</button>
@@ -198,8 +202,9 @@ export default {
         approved: 'Terima',
         rejected: 'Tolak',
         isApprove: this.orders.isPremium === 'N' ? 'N' : 'Y',
-        filereport: []
-      },
+        filereport: '',
+        deskripsi: ''
+      }
     }
   },
   methods: {
@@ -213,13 +218,35 @@ export default {
       return numberformat;
     },
     selectedFile(event) {
-      this.forms.filereport = event.target.files;
-      for( var i = 0; i < event.target.files.length; i++ )
+      var files = event.target.files[0];
+      var extension = this.getFormatFile( files.name );
+      if( extension !== 'pdf' && extension !== 'zip' )
       {
-        this.forms.filereport = event.target.files[i];
-        console.log(event.target.files[i].name);
+        this.forms.filereport = '';
+        swal({
+          title: 'Format file tidak valid',
+          text: 'Format hanya bisa berupa zip/pdf',
+          icon: 'warning',
+          dangerMode: true,
+          timer: 5000
+        });
       }
-      this.forms.filereport[0];
+      else if( this.forms.filereport.size > 2048000 )
+      {
+        this.forms.filereport = '';
+        swal({
+          title: 'Format file tidak valid',
+          text: 'Format hanya bisa berupa zip/pdf',
+          icon: 'warning',
+          dangerMode: true,
+          timer: 5000
+        });
+      }
+      else
+      {
+        this.forms.filereport = files;
+      }
+      console.log(this.forms);
     },
     getFormatFile: function(files) {
       var length_str_file = files.length;
@@ -335,18 +362,27 @@ export default {
     },
     onCreateReport()
     {
-      if( this.forms.filereport.length === 0 )
+      if( this.forms.filereport === '' || this.forms.filereport === null )
       {
         return false;
       }
 
       var formdata = new FormData();
-      formdata.append( 'filereport[]', this.forms.filereport );
+      formdata.append('filereport', this.forms.filereport);
+      formdata.append('deskripsi', this.forms.deskripsi);
       axios.post( this.url + '/vendor/createreport/' + this.orders.transaction_id, formdata, {
         headers: { 'Content-Type': 'multipart/form-data' }
       })
       .then( res => {
-        console.log( res.data );
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success',
+          timer: 5000,
+        });
+        setTimeout(function() {
+          document.location = '';
+        }, 3000);
       }).catch( err => {
         swal({
           title: 'Terjadi Kesalahan',

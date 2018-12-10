@@ -34,6 +34,7 @@ Route::group(['prefix' => 'customers'], function() {
   Route::get('/order_list', 'Frontend\Customers\BookingTransactionController@order_list')->name('customerorderlist_page');
   Route::get('/data_orderlist', 'Frontend\Customers\BookingTransactionController@data_orderlist');
   Route::get('/summary_order/{orderid}', 'Frontend\Customers\BookingTransactionController@summary_order')->name('summaryordercustomer_page');
+  Route::get('/view_summaryorder/{orderid}', 'Frontend\Customers\BookingTransactionController@view_summaryorder');
   Route::get('/summary_transaction', 'Frontend\Customers\BookingTransactionController@mytransaction');
   Route::get('/main_orders/{orderid}', 'Frontend\Customers\BookingTransactionController@main_orders')->name('customermainorder_page');
   Route::get('/process_checkout/{orderid}', 'Frontend\Customers\BookingTransactionController@booking_process_checkout');

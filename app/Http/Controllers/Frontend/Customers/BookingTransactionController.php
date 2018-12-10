@@ -13,6 +13,7 @@ use App\Database\Vendors;
 use App\Database\Customers;
 use App\Database\BankPayment;
 use App\Database\BookingTransaction;
+use App\Database\VendorReport;
 use App\Database\PaymentOrderVerify;
 use App\Database\LogStatusTransaction;
 use App\Http\Controllers\Controller;
@@ -336,6 +337,21 @@ class BookingTransactionController extends Controller
         'request' => $request
       ]);
     }
+  }
+
+  public function view_summaryorder( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, VendorReport $report, $orderid )
+  {
+    $logstatus = $logstatus->where('transaction_id', $orderid)->orderBy('log_date', 'desc');
+    $report = $report->where('transaction_id', $orderid)->first();
+    $data = [
+      'logstatus' => [
+        'total' => $logstatus->count(),
+        'result' => $logstatus->get()
+      ],
+      'report' => $report
+    ];
+
+    return response()->json( $data );
   }
 
   public function mytransaction( Request $request, BookingTransaction $booking, Customers $customers )

@@ -10,6 +10,7 @@ use App\FunctionApp\CustomFunction;
 use App\Database\Provinsi;
 use App\Database\Kabupaten;
 use App\Database\Vendors;
+use App\Database\VendorReport;
 use App\Database\Customers;
 use App\Database\BankPayment;
 use App\Database\BookingTransaction;
@@ -228,15 +229,39 @@ class BookingTransactionController extends Controller
     return response()->json( $res, $res['status'] );
   }
 
-  public function createreport( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
+  public function createreport( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, VendorReport $report, $orderid )
   {
     $filereport = $request->filereport;
-    $filename = $filereport->getClientOriginalName();
-    $extension = $filereport->getClientOriginalExtenstion();
+    $deskripsi = $request->deskripsi;
+    $extension = $filereport->getClientOriginalExtension();
+    $filename = date('Ymd') . '_' . hash('crc32b', bin2hex( $filereport->getClientOriginalName() ) ) . '.' . $extension;
+    $booking = $booking->where('transaction_id', $orderid)->first();
+    $logstatus = new $logstatus;
+    $report = new $report;
+    $storage = Storage::disk('imagestorage');
+
+    $status = 'report';
+    $booking->last_status_transaction = $status;
+    $booking->save();
+
+    $logstatus->transaction_id = $orderid;
+    $logstatus->status_transaction = $status;
+    $logstatus->status_description = 'Laporan hasil pekerjaan terlampir.';
+    $logstatus->log_date = date('Y-m-d H:i:s');
+    $logstatus->save();
+
+    $report->report_file = $filename;
+    $report->report_description = $deskripsi;
+    $report->transaction_id = $orderid;
+    $report->save();
+
+    $storage->putFileAs('vendor/reports', $filereport, $filename);
+
     $res = [
-      'filename' => $filename,
-      'extension' => $extension
+      'status' => 200,
+      'statusText' => 'Laporan berhasil dilampirkan'
     ];
-    return response()->json( $res );
+
+    return response()->json( $res, $res['status'] );
   }
 }
