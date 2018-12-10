@@ -65671,9 +65671,9 @@ module.exports = Vue;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(168);
-__webpack_require__(267);
-__webpack_require__(268);
-module.exports = __webpack_require__(269);
+__webpack_require__(270);
+__webpack_require__(271);
+module.exports = __webpack_require__(272);
 
 
 /***/ }),
@@ -65706,23 +65706,24 @@ Vue.component('registercustomer', __webpack_require__(175));
 Vue.component('customerdashboard', __webpack_require__(180));
 Vue.component('customereditaccount', __webpack_require__(183));
 Vue.component('bookingvendor', __webpack_require__(201));
-Vue.component('customermainorder', __webpack_require__(209));
-Vue.component('customersummaryorder', __webpack_require__(212));
-Vue.component('customerorderlist', __webpack_require__(215));
+Vue.component('editbookingvendor', __webpack_require__(209));
+Vue.component('customermainorder', __webpack_require__(212));
+Vue.component('customersummaryorder', __webpack_require__(215));
+Vue.component('customerorderlist', __webpack_require__(218));
 //customer
 
 // vendor
-Vue.component('registervendor', __webpack_require__(218));
-Vue.component('loginvendor', __webpack_require__(221));
-Vue.component('vendoreditaccount', __webpack_require__(226));
-Vue.component('vendorportfolio', __webpack_require__(249));
-Vue.component('vendorportfolioimages', __webpack_require__(252));
-Vue.component('vendororderlist', __webpack_require__(255));
-Vue.component('vendorsummaryorder', __webpack_require__(258));
+Vue.component('registervendor', __webpack_require__(221));
+Vue.component('loginvendor', __webpack_require__(224));
+Vue.component('vendoreditaccount', __webpack_require__(229));
+Vue.component('vendorportfolio', __webpack_require__(252));
+Vue.component('vendorportfolioimages', __webpack_require__(255));
+Vue.component('vendororderlist', __webpack_require__(258));
+Vue.component('vendorsummaryorder', __webpack_require__(261));
 // vendor
 
-Vue.component('discoveryvendor', __webpack_require__(261));
-Vue.component('getdetailvendor', __webpack_require__(264));
+Vue.component('discoveryvendor', __webpack_require__(264));
+Vue.component('getdetailvendor', __webpack_require__(267));
 
 var app = new Vue({
   el: '#app',
@@ -70946,6 +70947,1220 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
+Component.options.__file = "resources/assets/js/components/customers/EditBooking.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-bce95fe4", Component.options)
+  } else {
+    hotAPI.reload("data-v-bce95fe4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 210 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_v_calendar__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_v_calendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_v_calendar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_calendar_lib_v_calendar_min_css__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_calendar_lib_v_calendar_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_v_calendar_lib_v_calendar_min_css__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'booking'],
+  components: {
+    VCalendar: __WEBPACK_IMPORTED_MODULE_0_v_calendar___default.a
+  },
+  data: function data() {
+    return {
+      provinsi: [],
+      kabupaten: [],
+      kecamatan: [],
+      errors: {},
+      errorMessage: '',
+      isInputActive: false,
+      forms: {
+        error: false,
+        submit: 'Simpan',
+        schedule_date: new Date(),
+        transaction_id: this.booking.transaction_id,
+        region: this.booking.region,
+        district: this.booking.district,
+        subdistrict: this.booking.subdistrict,
+        address: this.booking.address,
+        zipcode: this.booking.zipcode,
+        notelepon: this.booking.mobile_number,
+        price_deal: this.booking.price_deal,
+        layout_design: '',
+        note: this.booking.additional_info
+      },
+      getScheduleDate: {
+        year: 2018,
+        month: 1,
+        date: 1
+      },
+      datepicker: {
+        selectedDate: new Date(),
+        props: {
+          class: "uk-width-1-1 uk-input booking_formaction",
+          placeholder: "Masukkan tanggal pengerjaan",
+          readonly: true
+        },
+        attributes: {
+          highlight: {
+            backgroundColor: '#f6a192', // Red background
+            borderColor: '#f6a192',
+            borderWidth: '2px',
+            borderStyle: 'solid'
+          }
+        },
+        themeStyles: {
+          wrapper: {
+            background: '#ffffff',
+            color: '#ffffff',
+            border: '0',
+            borderRadius: '5px',
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.14), 0 6px 20px 0 rgba(0, 0, 0, 0.13)'
+          }
+        },
+        formats: {
+          title: 'MMMM YYYY',
+          weekdays: 'W',
+          navMonths: 'MMM',
+          input: ['L', 'YYYY-MM-DD'], // Only for `v-date-picker`
+          dayPopover: 'L', // Only for `v-date-picker`
+          data: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD'] // For attribute dates
+        }
+      }
+    };
+  },
+
+  methods: {
+    formatDate: function formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
+      return res;
+    },
+    getProvinsi: function getProvinsi() {
+      var _this = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/api/provinsi/all'
+      }).then(function (res) {
+        var result = res.data;
+        _this.provinsi = result.data;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    getKabupaten: function getKabupaten(val) {
+      var _this2 = this;
+
+      var url;
+      if (val === undefined) url = this.url + '/api/kabupaten/provinsi/' + this.forms.region;else url = this.url + '/api/kabupaten/all';
+
+      axios({
+        method: 'get',
+        url: url
+      }).then(function (res) {
+        var result = res.data;
+        _this2.kabupaten = result.data;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    getKecamatan: function getKecamatan(val) {
+      var _this3 = this;
+
+      var url;
+      if (val === undefined) url = this.url + '/api/kecamatan/kabupaten/' + this.forms.district;else url = this.url + '/api/kecamatan/all';
+
+      axios({
+        method: 'get',
+        url: url
+      }).then(function (res) {
+        var result = res.data;
+        _this3.kecamatan = result.data;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    getFormatFile: function getFormatFile(files) {
+      var length_str_file = files.length;
+      var getIndex = files.lastIndexOf(".");
+      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    selectedFile: function selectedFile(event) {
+      if (this.getObjectSize(this.errors) === 0) this.errors = {};
+      this.forms.layout_design = event.target.files[0];
+      if (this.getFormatFile(this.forms.layout_design.name) !== 'jpg' && this.getFormatFile(this.forms.layout_design.name) !== 'jpeg' && this.getFormatFile(this.forms.layout_design.name) !== 'pdf' && this.getFormatFile(this.forms.layout_design.name) !== 'doc' && this.getFormatFile(this.forms.layout_design.name) !== 'docx') {
+        this.errors.layout_design = 'Format file tidak valid.';
+        swal({
+          title: 'Whoops',
+          text: this.errors.layout_design,
+          icon: 'warning',
+          dangerMode: true,
+          timer: 5000
+        });
+      } else {
+        if (this.forms.layout_design.size > 2048000) {
+          this.errors.layout_design = 'Ukuran file terlalu besar. Maksimal 2 MB.';
+          swal({
+            title: 'Whoops',
+            text: this.errors.layout_design,
+            icon: 'warning',
+            dangerMode: true,
+            timer: 5000
+          });
+        }
+      }
+    },
+
+    getObjectSize: function getObjectSize(obj) {
+      var size = 0;
+      var key;
+      for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+      }
+      return size;
+    },
+    onBookingUpdate: function onBookingUpdate() {
+      var _this4 = this;
+
+      this.errors = {};
+      this.errorMessage = '';
+      var price_deal = this.forms.price_deal;
+      if (price_deal !== 0 || price_deal === '') {
+        if (isNaN(price_deal)) {
+          price_deal = Number(price_deal.replace(/[^0-9.-]+/g, ""));
+        }
+      }
+
+      if (this.forms.schedule_date === '') {
+        this.errors.schedule_date = 'Silahkan masukkan tanggal pengerjaan.';
+        this.forms.error = true;
+      }
+      if (this.forms.notelepon === '') {
+        this.errors.notelepon = 'Nomor telepon wajib diisi';
+        this.forms.error = true;
+      }
+      if (this.forms.price_deal === 0) {
+        this.errors.price_deal = 'Silahkan isi nominal harga deal dengan vendor Anda';
+        this.forms.error = true;
+      }
+      if (isNaN(price_deal)) {
+        this.errors.price_deal = 'Harga deal tidak valid.';
+        this.forms.error = true;
+      }
+      if (this.forms.region === '') {
+        this.errors.region = 'Silahkan pilih provinsi';
+        this.forms.error = true;
+      }
+      if (this.forms.district === '') {
+        this.errors.district = 'Silahkan pilih kabupaten/kota';
+        this.forms.error = true;
+      }
+      if (this.forms.subdistrict === '') {
+        this.errors.subdistrict = 'Silahkan pilih kecamatan';
+        this.forms.error = true;
+      }
+      if (this.forms.address === '') {
+        this.errors.address = 'Alamat wajib diisi';
+        this.forms.error = true;
+      }
+      if (this.forms.zipcode === '') {
+        this.errors.zipcode = 'Kode Pos wajib diisi';
+        this.forms.error = true;
+      }
+
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return false;
+      }
+
+      if (this.forms.layout_design !== '') {
+        if (this.getFormatFile(this.forms.layout_design.name) !== 'jpg' && this.getFormatFile(this.forms.layout_design.name) !== 'jpeg' && this.getFormatFile(this.forms.layout_design.name) !== 'pdf' && this.getFormatFile(this.forms.layout_design.name) !== 'doc' && this.getFormatFile(this.forms.layout_design.name) !== 'docx') {
+          this.errors.layout_design = 'Format file tidak valid.';
+          swal({
+            title: 'Whoops',
+            text: this.errors.layout_design,
+            icon: 'warning',
+            dangerMode: true,
+            timer: 5000
+          });
+          return false;
+        }
+
+        if (this.forms.layout_design.size > 2048000) {
+          this.errors.layout_design = 'Ukuran file terlalu besar. Maksimal 2 MB.';
+          swal({
+            title: 'Whoops',
+            text: this.errors.layout_design,
+            icon: 'warning',
+            dangerMode: true,
+            timer: 5000
+          });
+          return false;
+        }
+      }
+
+      var formdata = new FormData();
+      formdata.append('schedule_date', this.formatDate(this.forms.schedule_date, 'YYYY-MM-DD'));
+      formdata.append('mobile_number', this.forms.notelepon);
+      formdata.append('region', this.forms.region);
+      formdata.append('district', this.forms.district);
+      formdata.append('subdistrict', this.forms.subdistrict);
+      formdata.append('address', this.forms.address);
+      formdata.append('zipcode', this.forms.zipcode);
+      formdata.append('price_deal', price_deal);
+      formdata.append('layout_design', this.forms.layout_design);
+      formdata.append('additional_info', this.forms.note);
+      this.forms.submit = '<span uk-spinner></span>';
+
+      axios.post(this.url + '/edit_booking/' + this.forms.transaction_id, formdata).then(function (res) {
+        var redirect = _this4.url + '/customers/main_orders/' + _this4.forms.transaction_id;
+        setTimeout(function () {
+          document.location = redirect;
+        }, 3000);
+      }).catch(function (err) {
+        _this4.errorMessage = err.response.statusText;
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this4.errorMessage,
+          icon: 'error',
+          dangerMode: true,
+          timer: 5000
+        });
+        _this4.forms.submit = 'Pesan';
+      });
+    },
+    formatPrice: function formatPrice() {
+      var number = this.forms.price_deal;
+      if (isNaN(number)) {
+        number = Number(number.replace(/[^0-9.-]+/g, ""));
+      }
+      var numberformat = new Intl.NumberFormat('en-ID').format(number);
+      this.forms.price_deal = numberformat;
+    }
+  },
+  computed: {
+    getDate: function getDate() {
+      return moment().locale('id').format('dddd, DD MMMM YYYY');
+    },
+    formatCurrency: function formatCurrency() {
+      var number = this.booking.price_deal;
+      if (isNaN(number)) {
+        number = Number(number.replace(/[^0-9.-]+/g, ""));
+      }
+      var numberformat = new Intl.NumberFormat('en-ID').format(number);
+      return numberformat;
+    }
+  },
+  mounted: function mounted() {
+    this.getScheduleDate.year = this.formatDate(this.booking.schedule_date, 'YYYY');
+    this.getScheduleDate.month = this.formatDate(this.booking.schedule_date, 'MM');
+    this.getScheduleDate.date = this.formatDate(this.booking.schedule_date, 'DD');
+    this.getProvinsi('all');this.getKabupaten('all');this.getKecamatan('all');
+  }
+});
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "booking_container" }, [
+      _c("div", { staticClass: "booking_header" }, [
+        _c("div", { staticClass: "uk-container" }, [
+          _c("div", { staticClass: "uk-card uk-card-body" }, [
+            _c("div", { staticClass: "uk-card-title booking_heading" }, [
+              _vm._v(
+                "\n            Pesan Vendor - " +
+                  _vm._s(_vm.booking.vendor_name) +
+                  "\n          "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "booking_subheading" }, [
+              _vm._v("\n            " + _vm._s(_vm.getDate) + " "),
+              _c("br")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-card uk-card-body uk-card-default booking_formcontent"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "uk-container uk-card uk-card-body booking_bodyform"
+            },
+            [
+              _vm.errorMessage
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "uk-alert-danger",
+                      attrs: { "uk-alert": "" }
+                    },
+                    [_vm._v(_vm._s(_vm.errorMessage))]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "uk-form-stacked",
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.onBookingUpdate($event)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "uk-grid-medium", attrs: { "uk-grid": "" } },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-card uk-card-default booking_gridbox"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "uk-margin" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "uk-card-title booking_gridbox_heading"
+                                    },
+                                    [_vm._v("Tanggal Pengerjaan")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-date-picker", {
+                                    attrs: {
+                                      formats: _vm.datepicker.formats,
+                                      mode: "single",
+                                      "select-attribute":
+                                        _vm.datepicker.attributes,
+                                      "input-props": _vm.datepicker.props,
+                                      "theme-styles": _vm.datepicker.themeStyles
+                                    },
+                                    model: {
+                                      value: _vm.forms.schedule_date,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.forms,
+                                          "schedule_date",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "forms.schedule_date"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _vm.errors.schedule_date
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "uk-text-small uk-text-danger"
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(_vm.errors.schedule_date)
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "uk-margin" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-card-title booking_gridbox_heading"
+                                  },
+                                  [_vm._v("Nomor Telepon")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.forms.notelepon,
+                                      expression: "forms.notelepon"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "uk-width-1-1 uk-input booking_formaction",
+                                  attrs: { type: "text", placeholder: "+62" },
+                                  domProps: { value: _vm.forms.notelepon },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.forms,
+                                        "notelepon",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.errors.notelepon
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.notelepon))]
+                                    )
+                                  : _vm._e()
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "uk-margin" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-card-title booking_gridbox_heading"
+                                  },
+                                  [_vm._v("Harga Deal")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.forms.price_deal,
+                                      expression: "forms.price_deal"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "uk-width-1-1 uk-input booking_formaction",
+                                  attrs: { type: "text", placeholder: "Rp. " },
+                                  domProps: { value: _vm.forms.price_deal },
+                                  on: {
+                                    keyup: function($event) {
+                                      _vm.formatPrice()
+                                    },
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.forms,
+                                        "price_deal",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.errors.price_deal
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.price_deal))]
+                                    )
+                                  : _vm._e()
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-card uk-card-default booking_gridbox"
+                            },
+                            [
+                              _c("div", { staticClass: "uk-margin" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-card-title booking_gridbox_heading"
+                                  },
+                                  [_vm._v("Provinsi")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.forms.region,
+                                        expression: "forms.region"
+                                      }
+                                    ],
+                                    staticClass:
+                                      "uk-width-1-1 uk-select booking_formaction",
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.forms,
+                                            "region",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          _vm.getKabupaten()
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { value: "", selected: "" } },
+                                      [_vm._v("-- Pilih Provinsi --")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.provinsi, function(prov) {
+                                      return _c(
+                                        "option",
+                                        { domProps: { value: prov.id } },
+                                        [_vm._v(_vm._s(prov.nama))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _vm.errors.region
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.region))]
+                                    )
+                                  : _vm._e()
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "uk-margin" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-card-title booking_gridbox_heading"
+                                  },
+                                  [_vm._v("Kabupaten/Kota")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.forms.district,
+                                        expression: "forms.district"
+                                      }
+                                    ],
+                                    staticClass:
+                                      "uk-width-1-1 uk-select booking_formaction",
+                                    on: {
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.forms,
+                                            "district",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        function($event) {
+                                          _vm.getKecamatan()
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { value: "", selected: "" } },
+                                      [_vm._v("-- Pilih Kabupaten --")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.kabupaten, function(kab) {
+                                      return _c(
+                                        "option",
+                                        { domProps: { value: kab.id } },
+                                        [_vm._v(_vm._s(kab.kabupaten))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _vm.errors.district
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.district))]
+                                    )
+                                  : _vm._e()
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "uk-margin" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-card-title booking_gridbox_heading"
+                                  },
+                                  [_vm._v("Kabupaten/Kota")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.forms.subdistrict,
+                                        expression: "forms.subdistrict"
+                                      }
+                                    ],
+                                    staticClass:
+                                      "uk-width-1-1 uk-select booking_formaction",
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.forms,
+                                          "subdistrict",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "option",
+                                      { attrs: { value: "", selected: "" } },
+                                      [_vm._v("-- Pilih Kecamatan --")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.kecamatan, function(kec) {
+                                      return _c(
+                                        "option",
+                                        { domProps: { value: kec.id } },
+                                        [_vm._v(_vm._s(kec.kecamatan))]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _vm.errors.subdistrict
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.subdistrict))]
+                                    )
+                                  : _vm._e()
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-card uk-card-default booking_gridbox"
+                            },
+                            [
+                              _c("div", { staticClass: "uk-margin" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-card-title booking_gridbox_heading"
+                                  },
+                                  [_vm._v("Address")]
+                                ),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.forms.address,
+                                      expression: "forms.address"
+                                    }
+                                  ],
+                                  staticClass: "uk-textarea booking_formaction",
+                                  domProps: { value: _vm.forms.address },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.forms,
+                                        "address",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.errors.address
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.address))]
+                                    )
+                                  : _vm._e()
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "uk-margin" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-card-title booking_gridbox_heading"
+                                  },
+                                  [_vm._v("Kode Pos")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.forms.zipcode,
+                                      expression: "forms.zipcode"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "uk-width-1-1 uk-input booking_formaction",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.forms.zipcode },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.forms,
+                                        "zipcode",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.errors.zipcode
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.zipcode))]
+                                    )
+                                  : _vm._e()
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "uk-margin" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "uk-card-title booking_gridbox_heading"
+                                  },
+                                  [_vm._v("Layout Design (optional)")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    attrs: { "uk-form-custom": "target: true" }
+                                  },
+                                  [
+                                    _c("input", {
+                                      attrs: { type: "file" },
+                                      on: { change: _vm.selectedFile }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      staticClass:
+                                        "uk-input uk-form-width-medium",
+                                      attrs: {
+                                        type: "text",
+                                        id: "selectedFile",
+                                        placeholder: "Select file",
+                                        disabled: ""
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._m(0)
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm.errors.layout_design
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "uk-text-small uk-text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.errors.layout_design))]
+                                    )
+                                  : _vm._e()
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-width-1-1" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-card uk-card-default booking_gridbox"
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "uk-card-title booking_gridbox_heading"
+                              },
+                              [_vm._v("Catatan")]
+                            ),
+                            _vm._v(" "),
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.forms.note,
+                                  expression: "forms.note"
+                                }
+                              ],
+                              staticClass:
+                                "uk-width-1-1 uk-textarea uk-height-small booking_formaction",
+                              domProps: { value: _vm.forms.note },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.forms,
+                                    "note",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c("button", {
+                      staticClass:
+                        "uk-button uk-button-default booking_btnaction",
+                      domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                    })
+                  ])
+                ]
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-text-small" }, [
+      _c("i", [_vm._v("Max 2 MB (pdf/doc/jpg)")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-bce95fe4", module.exports)
+  }
+}
+
+/***/ }),
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(213)
+/* template */
+var __vue_template__ = __webpack_require__(214)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
 Component.options.__file = "resources/assets/js/components/customers/orders/MainOrders.vue"
 
 /* hot reload */
@@ -70968,7 +72183,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 210 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71324,7 +72539,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 211 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71423,7 +72638,31 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _vm._m(0)
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                            },
+                            [
+                              _c("div", { staticClass: "uk-text-right" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "uk-button uk-button-default summarydetail-editorder",
+                                    attrs: {
+                                      href:
+                                        _vm.url +
+                                        "/edit_booking/" +
+                                        _vm.orders.transaction_id
+                                    }
+                                  },
+                                  [_vm._v("Ubah Pesanan")]
+                                )
+                              ])
+                            ]
+                          )
                         ]
                       )
                     ]
@@ -71618,7 +72857,7 @@ var render = function() {
                                         alt: ""
                                       }
                                     })
-                                  : _c("div", [_vm._m(1)])
+                                  : _c("div", [_vm._m(0)])
                               ])
                             : _c("div", [
                                 _vm._v(
@@ -71721,7 +72960,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._m(2)
+                                    _vm._m(1)
                                   ]
                                 )
                               : _vm._e(),
@@ -71747,7 +72986,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._m(3)
+                                    _vm._m(2)
                                   ]
                                 )
                               : _vm._e(),
@@ -72220,31 +73459,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "div",
-      {
-        staticClass:
-          "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-      },
-      [
-        _c("div", { staticClass: "uk-text-right" }, [
-          _c(
-            "a",
-            {
-              staticClass:
-                "uk-button uk-button-default summarydetail-editorder",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Ubah Pesanan")]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
       "a",
       {
         staticClass: "uk-button uk-button-default summarydetail_download",
@@ -72301,15 +73515,15 @@ if (false) {
 }
 
 /***/ }),
-/* 212 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(213)
+var __vue_script__ = __webpack_require__(216)
 /* template */
-var __vue_template__ = __webpack_require__(214)
+var __vue_template__ = __webpack_require__(217)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -72348,7 +73562,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 213 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72635,7 +73849,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 214 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73374,15 +74588,15 @@ if (false) {
 }
 
 /***/ }),
-/* 215 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(216)
+var __vue_script__ = __webpack_require__(219)
 /* template */
-var __vue_template__ = __webpack_require__(217)
+var __vue_template__ = __webpack_require__(220)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73421,13 +74635,11 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 216 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -73524,7 +74736,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 217 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73532,6 +74744,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "uk-margin-large-top" }, [
+    _c("h3", [_vm._v("Daftar Transaksi")]),
+    _vm._v(" "),
     _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
       _c("div", { staticClass: "uk-width-expand" }, [
         _c(
@@ -73674,7 +74888,7 @@ var render = function() {
                                   result.transaction_id
                               }
                             },
-                            [_vm._v("Konfirmasi")]
+                            [_vm._v("Lihat Rincian")]
                           )
                     ])
                   ]
@@ -73698,15 +74912,15 @@ if (false) {
 }
 
 /***/ }),
-/* 218 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(219)
+var __vue_script__ = __webpack_require__(222)
 /* template */
-var __vue_template__ = __webpack_require__(220)
+var __vue_template__ = __webpack_require__(223)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73745,7 +74959,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 219 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74055,7 +75269,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 220 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74840,19 +76054,19 @@ if (false) {
 }
 
 /***/ }),
-/* 221 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(222)
+  __webpack_require__(225)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(224)
+var __vue_script__ = __webpack_require__(227)
 /* template */
-var __vue_template__ = __webpack_require__(225)
+var __vue_template__ = __webpack_require__(228)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74891,13 +76105,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 222 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(223);
+var content = __webpack_require__(226);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -74917,7 +76131,7 @@ if(false) {
 }
 
 /***/ }),
-/* 223 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(138)(false);
@@ -74931,7 +76145,7 @@ exports.push([module.i, "\nhtml, body {\r\n  background: linear-gradient(108deg,
 
 
 /***/ }),
-/* 224 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75040,7 +76254,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 225 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -75241,15 +76455,15 @@ if (false) {
 }
 
 /***/ }),
-/* 226 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(227)
+var __vue_script__ = __webpack_require__(230)
 /* template */
-var __vue_template__ = __webpack_require__(248)
+var __vue_template__ = __webpack_require__(251)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -75288,22 +76502,22 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 227 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vendors_settingaccount_EditAccount_vue__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vendors_settingaccount_EditAccount_vue__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vendors_settingaccount_EditAccount_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vendors_settingaccount_EditAccount_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vendors_settingaccount_ChangePassword_vue__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vendors_settingaccount_ChangePassword_vue__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vendors_settingaccount_ChangePassword_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vendors_settingaccount_ChangePassword_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vendors_settingaccount_EditEmail_vue__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vendors_settingaccount_EditEmail_vue__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vendors_settingaccount_EditEmail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vendors_settingaccount_EditEmail_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vendors_settingaccount_EditTelepon_vue__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vendors_settingaccount_EditTelepon_vue__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vendors_settingaccount_EditTelepon_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vendors_settingaccount_EditTelepon_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vendors_settingaccount_RekeningPencairan_vue__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vendors_settingaccount_RekeningPencairan_vue__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vendors_settingaccount_RekeningPencairan_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vendors_settingaccount_RekeningPencairan_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vendors_settingaccount_BrandingLogo_vue__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vendors_settingaccount_BrandingLogo_vue__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vendors_settingaccount_BrandingLogo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__vendors_settingaccount_BrandingLogo_vue__);
 //
 //
@@ -75406,15 +76620,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 228 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(229)
+var __vue_script__ = __webpack_require__(232)
 /* template */
-var __vue_template__ = __webpack_require__(230)
+var __vue_template__ = __webpack_require__(233)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -75453,7 +76667,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 229 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75683,7 +76897,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 230 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76196,15 +77410,15 @@ if (false) {
 }
 
 /***/ }),
-/* 231 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(232)
+var __vue_script__ = __webpack_require__(235)
 /* template */
-var __vue_template__ = __webpack_require__(233)
+var __vue_template__ = __webpack_require__(236)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -76243,7 +77457,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 232 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76360,7 +77574,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 233 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76505,15 +77719,15 @@ if (false) {
 }
 
 /***/ }),
-/* 234 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(235)
+var __vue_script__ = __webpack_require__(238)
 /* template */
-var __vue_template__ = __webpack_require__(236)
+var __vue_template__ = __webpack_require__(239)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -76552,7 +77766,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 235 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76647,7 +77861,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 236 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76749,15 +77963,15 @@ if (false) {
 }
 
 /***/ }),
-/* 237 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(238)
+var __vue_script__ = __webpack_require__(241)
 /* template */
-var __vue_template__ = __webpack_require__(239)
+var __vue_template__ = __webpack_require__(242)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -76796,7 +78010,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 238 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76977,7 +78191,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 239 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77160,15 +78374,15 @@ if (false) {
 }
 
 /***/ }),
-/* 240 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(241)
+var __vue_script__ = __webpack_require__(244)
 /* template */
-var __vue_template__ = __webpack_require__(242)
+var __vue_template__ = __webpack_require__(245)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -77207,7 +78421,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 241 */
+/* 244 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77459,7 +78673,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 242 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77798,19 +79012,19 @@ if (false) {
 }
 
 /***/ }),
-/* 243 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(244)
+  __webpack_require__(247)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(246)
+var __vue_script__ = __webpack_require__(249)
 /* template */
-var __vue_template__ = __webpack_require__(247)
+var __vue_template__ = __webpack_require__(250)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -77849,13 +79063,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 244 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(245);
+var content = __webpack_require__(248);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -77875,7 +79089,7 @@ if(false) {
 }
 
 /***/ }),
-/* 245 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(138)(false);
@@ -77889,7 +79103,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 246 */
+/* 249 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78024,7 +79238,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 247 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -78170,7 +79384,7 @@ if (false) {
 }
 
 /***/ }),
-/* 248 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -78248,15 +79462,15 @@ if (false) {
 }
 
 /***/ }),
-/* 249 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(250)
+var __vue_script__ = __webpack_require__(253)
 /* template */
-var __vue_template__ = __webpack_require__(251)
+var __vue_template__ = __webpack_require__(254)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -78295,7 +79509,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 250 */
+/* 253 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78566,7 +79780,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 251 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -78926,15 +80140,15 @@ if (false) {
 }
 
 /***/ }),
-/* 252 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(253)
+var __vue_script__ = __webpack_require__(256)
 /* template */
-var __vue_template__ = __webpack_require__(254)
+var __vue_template__ = __webpack_require__(257)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -78973,7 +80187,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 253 */
+/* 256 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79237,7 +80451,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 254 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -79687,15 +80901,15 @@ if (false) {
 }
 
 /***/ }),
-/* 255 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(256)
+var __vue_script__ = __webpack_require__(259)
 /* template */
-var __vue_template__ = __webpack_require__(257)
+var __vue_template__ = __webpack_require__(260)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -79734,7 +80948,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 256 */
+/* 259 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79836,7 +81050,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 257 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -79994,15 +81208,15 @@ if (false) {
 }
 
 /***/ }),
-/* 258 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(259)
+var __vue_script__ = __webpack_require__(262)
 /* template */
-var __vue_template__ = __webpack_require__(260)
+var __vue_template__ = __webpack_require__(263)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -80041,7 +81255,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 259 */
+/* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80461,7 +81675,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 260 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -81341,15 +82555,15 @@ if (false) {
 }
 
 /***/ }),
-/* 261 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(262)
+var __vue_script__ = __webpack_require__(265)
 /* template */
-var __vue_template__ = __webpack_require__(263)
+var __vue_template__ = __webpack_require__(266)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -81388,7 +82602,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 262 */
+/* 265 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81537,7 +82751,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 263 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -81825,15 +83039,15 @@ if (false) {
 }
 
 /***/ }),
-/* 264 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(265)
+var __vue_script__ = __webpack_require__(268)
 /* template */
-var __vue_template__ = __webpack_require__(266)
+var __vue_template__ = __webpack_require__(269)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -81872,7 +83086,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 265 */
+/* 268 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82033,7 +83247,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 266 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -82450,19 +83664,19 @@ if (false) {
 }
 
 /***/ }),
-/* 267 */
+/* 270 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 268 */
+/* 271 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 269 */
+/* 272 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -1,9 +1,7 @@
 <template lang="html">
   <div class="uk-margin-large-top">
+    <h3>Daftar Transaksi</h3>
     <div class="uk-grid-small" uk-grid>
-      <!--<div class="uk-width-1-6@xl uk-width-1-6@l">
-        <div class="filter-statustransaction-label">Filter Status</div>
-      </div>-->
       <div class="uk-width-expand">
         <div class="filter-statustransaction-list">
           <a v-for="(status, index) in $root.statusTransaction" @click="myTransaction( url + '/customers/data_orderlist?page=' + pagination.current, index  )" class="uk-button uk-button-default">{{ status }}</a>
@@ -30,7 +28,7 @@
               <div class="dash_sum-transaction-title">{{ result.vendor_name }}</div>
               <div class="dash_sum-transaction-orderdate">{{ formatDate( result.schedule_date ) }}</div>
               <a v-if="result.last_status_transaction === 'approval' || result.last_status_transaction === 'payment_waiting'" class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/customers/main_orders/' + result.transaction_id">Lihat rincian</a>
-              <a v-else class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/customers/summary_order/' + result.transaction_id">Konfirmasi</a>
+              <a v-else class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/customers/summary_order/' + result.transaction_id">Lihat Rincian</a>
             </div>
           </div>
         </div>

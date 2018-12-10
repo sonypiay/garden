@@ -268,7 +268,7 @@ class BookingTransactionController extends Controller
         'myaccount' => $datacustomer,
         'results' => $results
       ];
-      return response()->view('frontend.pages.customers.orders.transaction_success', $data);
+      return response()->view('frontend.pages.customers.orders.process_checkout', $data);
     }
     else
     {
@@ -505,5 +505,78 @@ class BookingTransactionController extends Controller
     ];
 
     return response()->json( $res, $res['status'] );
+  }
+
+  public function editbooking_page( Request $request, BookingTransaction $booking, Customers $customers, $orderid )
+  {
+    if( Cookie::get('hasLoginCustomers') )
+    {
+      $datacustomer = $this->getcustomer( $customers, Cookie::get('customer_id') );
+      $data_booking = $booking->where('transaction_id', $orderid);
+      if( $data_booking->count() === 0 ) abort(404);
+      $data_booking = $data_booking->first();
+
+      return response()->view('frontend.pages.customers.editbooking', [
+        'request' => $request,
+        'sessiondata' => $this->get_cookiescustomer(),
+        'myaccount' => $datacustomer,
+        'booking' => $data_booking
+      ]);
+    }
+    else
+    {
+      return response()->view('frontend.pages.customers.login', [
+        'request' => $request
+      ]);
+    }
+  }
+
+  public function editbooking( Request $request, BookingTransaction $booking, $orderid )
+  {
+    $schedule_date = $request->schedule_date;
+    $region = $request->region;
+    $district = $request->district;
+    $subdistrict = $request->subdistrict;
+    $layout_design = $request->layout_design;
+    $mobile_number = $request->mobile_number;
+    $price_deal = $request->price_deal;
+    $address = $request->address;
+    $zipcode = $request->zipcode;
+    $customer = $request->customer;
+    $vendor = $request->vendor;
+    $additional_info = $request->additional_info;
+    $booking = $booking->orderBy('id', 'desc')->first();
+    $storage = Storage::disk('imagestorage');
+
+    $booking->schedule_date = $schedule_date;
+    $booking->region = $region;
+    $booking->district = $district;
+    $booking->subdistrict = $subdistrict;
+    $booking->address = $address;
+    $booking->zipcode = $zipcode;
+    $booking->mobile_number = $mobile_number;
+    $booking->price_deal = $price_deal;
+    $booking->additional_info = $additional_info;
+
+    if( ! empty( $layout_design ) )
+    {
+      if( $storage->exists('customer/layout_design/' . $booking->layout_design) )
+      {
+        $storage->delete('customer/layout_design/' . $booking->layout_design);
+      }
+
+      $filename = date('Ymd') . '_' . hash( 'crc32b', bin2hex( $layout_design->getClientOriginalName() ) ) . '.' . $layout_design->getClientOriginalExtention();
+      $storage->putFileAs('customer/layout_design', $layout_design, $filename);
+      $booking->layout_design = $filename;
+    }
+
+    $booking->save();
+
+    $res = [
+      'status' => 200,
+      'statusText' => 'Pesanan berhasil diubah.'
+    ];
+
+    return response()->json($res, $res['status']);
   }
 }
