@@ -346,28 +346,88 @@ body {
   margin-top: 5em;
 }
 
+.footer .mainfooter {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.footer .aboutus .footer-aboutus_heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer .aboutus .footer-aboutus_text {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+}
+
+.footer .contactus .footer-contact_heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer .contactus .footer-contact_text {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+}
+
+.footer .contactus .footer-contact_text a {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+}
+
+.footer .contactus .footer-contact_text a:hover {
+  color: #f6a192;
+  text-decoration: none;
+}
+
 .footer .copyright {
   font-family: "Nunito", sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.4px;
 }
 
-.footer .footer_links a {
+.footer .footer_links li a {
   font-family: "Nunito", sans-serif;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.4px;
-  margin-right: 15px;
-  color: #888888;
-  text-transform: uppercase;
+  color: #ffffff;
+  text-transform: capitalize;
 }
 
-.footer .footer_links a:hover {
+.footer .footer_links li a:hover {
   color: #f6a192;
   text-decoration: none;
 }

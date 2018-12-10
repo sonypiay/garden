@@ -54,19 +54,61 @@ html,body {
 
 .footer {
   margin-top: 5em;
+  .mainfooter {
+    background: linear-gradient(97deg, $f6a192, $f6b092);
+  }
+  .aboutus {
+    .footer-aboutus_heading {
+      font-family: $font-primary;
+      font-size: 20px;
+      @include fontstyle( 400, normal, normal, 0.4px );
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .footer-aboutus_text {
+      font-family: $font-primary;
+      font-size: 14px;
+      @include fontstyle( 400, normal, normal, 0.8px );
+      color: #ffffff;
+    }
+  }
+  .contactus {
+    .footer-contact_heading {
+      font-family: $font-primary;
+      font-size: 20px;
+      @include fontstyle( 400, normal, normal, 0.4px );
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .footer-contact_text {
+      font-family: $font-primary;
+      font-size: 14px;
+      @include fontstyle( 400, normal, normal, 0.8px );
+      color: #ffffff;
+      a {
+        font-family: $font-primary;
+        font-size: 14px;
+        @include fontstyle( 400, normal, normal, 0.4px );
+        color: #ffffff;
+        &:hover {
+          color: $logo-color-primary;
+          text-decoration: none;
+        }
+      }
+    }
+  }
   .copyright {
     font-family: $font-primary;
     font-size: 14px;
-    @include fontstyle( 600, normal, normal, 0.4px );
+    @include fontstyle( 400, normal, normal, 0.4px );
   }
   .footer_links {
-    a {
+    li a {
       font-family: $font-primary;
-      font-size: 12px;
-      @include fontstyle( 600, normal, normal, 0.4px );
-      margin-right: 15px;
-      color: #888888;
-      text-transform: uppercase;
+      font-size: 14px;
+      @include fontstyle( 400, normal, normal, 0.4px );
+      color: #ffffff;
+      text-transform: capitalize;
       &:hover {
         color: $logo-color-primary;
         text-decoration: none;
