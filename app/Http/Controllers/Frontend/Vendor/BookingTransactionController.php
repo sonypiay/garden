@@ -64,6 +64,7 @@ class BookingTransactionController extends Controller
       'booking_transaction.payment_method',
       'booking_transaction.last_status_transaction',
       'booking_transaction.customer_id',
+      'booking_transaction.isPremium',
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',

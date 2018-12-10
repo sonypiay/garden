@@ -1169,6 +1169,13 @@ html,body {
     @include fontstyle(600, normal, normal, 0.8px);
     margin-top: 10px;
   }
+  .dash_sum-transaction-labelpremium {
+    background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    color: #ffffff;
+    font-size: 12px;
+    @include fontstyle(600, normal, normal, 0.8px);
+    text-transform: capitalize;
+  }
   .dash_sum-transaction-orderdate {
     font-family: $font-primary;
     font-size: 11px;

@@ -1927,6 +1927,17 @@ body {
   margin-top: 10px;
 }
 
+.dashboard_summary-transaction .dash_sum-transaction-labelpremium {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-transform: capitalize;
+}
+
 .dashboard_summary-transaction .dash_sum-transaction-orderdate {
   font-family: "Nunito", sans-serif;
   font-size: 11px;

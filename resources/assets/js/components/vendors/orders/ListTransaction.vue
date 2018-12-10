@@ -27,9 +27,14 @@
             </div>
             <div class="uk-card-body uk-card-small">
               <div class="uk-badge dash_sum-transaction-status">{{ $root.statusTransaction[result.last_status_transaction] }}</div>
-              <div class="dash_sum-transaction-title">{{ result.customer_name }}</div>
+              <div class="dash_sum-transaction-title">
+                {{ result.customer_name }}
+              </div>
               <div class="dash_sum-transaction-orderdate">{{ formatDate( result.schedule_date ) }}</div>
-                <a class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/vendor/summary_order/' + result.transaction_id">Lihat rincian</a>
+              <div v-if="result.isPremium === 'Y'">
+                <label class="uk-label dash_sum-transaction-labelpremium">Layanan Premium</label>
+              </div>
+              <a class="uk-display-block uk-margin-top dash_sum-transaction-view" :href="url + '/vendor/summary_order/' + result.transaction_id">Lihat rincian</a>
             </div>
           </div>
         </div>

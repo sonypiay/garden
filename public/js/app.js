@@ -80993,6 +80993,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'vendors'],
@@ -81163,7 +81168,11 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "dash_sum-transaction-title" }, [
-                        _vm._v(_vm._s(result.customer_name))
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(result.customer_name) +
+                            "\n            "
+                        )
                       ]),
                       _vm._v(" "),
                       _c(
@@ -81171,6 +81180,19 @@ var render = function() {
                         { staticClass: "dash_sum-transaction-orderdate" },
                         [_vm._v(_vm._s(_vm.formatDate(result.schedule_date)))]
                       ),
+                      _vm._v(" "),
+                      result.isPremium === "Y"
+                        ? _c("div", [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "uk-label dash_sum-transaction-labelpremium"
+                              },
+                              [_vm._v("Layanan Premium")]
+                            )
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
                       _c(
                         "a",
