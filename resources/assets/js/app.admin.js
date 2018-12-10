@@ -21,7 +21,24 @@ Vue.component('cpbankcustomer-section', require('./components/administrator/Bank
 Vue.component('provinsi-section', require('./components/administrator/Provinsi.vue'));
 Vue.component('kabupaten-section', require('./components/administrator/Kabupaten.vue'));
 Vue.component('kecamatan-section', require('./components/administrator/Kecamatan.vue'));
+Vue.component('orderlist-section', require('./components/administrator/OrderList.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+      statusTransaction: {
+        'approval': 'Menunggu Diterima',
+        'approved': 'Pesanan Diterima',
+        'rejected': 'Pesanan ditolak',
+        'pending': 'Pesanan ditunda',
+        'payment_waiting': 'Menunggu Pembayaran',
+        'payment_verify': 'Verifikasi Pembayaran',
+        'paid': 'Dibayar',
+        'process': 'Sedang diproses',
+        'onprogress': 'Sedang dikerjakan',
+        'report': 'Laporan & Berita Acara',
+        'done': 'Selesai',
+        'cancel': 'Pesanan Dibatalkan'
+      }
+    }
 });

@@ -4,7 +4,7 @@
       <div class="uk-container">
         <div class="uk-card uk-card-body content_mainorders_heading">
           <div class="summary_headertitle">Rincian Pesanan</div>
-          <div class="summary_subtitle">#{{ orders.transaction_id }}</div>
+          <div class="summary_subtitle">{{ formatDate( orders.created_at, 'DD MMMM YYYY, HH:mm' ) }} - #{{ orders.transaction_id }}</div>
         </div>
       </div>
     </div>
@@ -18,17 +18,8 @@
                 <div class="summaryorder_subtitle">{{ orders.nama_kab }}</div>
               </div>
               <div class="uk-padding-small content_summaryorder_detail">
-                <div class="uk-grid-small" uk-grid>
-                  <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-                    <div class="summarydetail-orderdate-title">Tanggal Pengerjaan</div>
-                    <div class="summarydetail-orderdate-value">{{ formatDate( orders.schedule_date, 'DD MMMM YYYY' ) }}</div>
-                  </div>
-                  <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-                    <div class="uk-text-right">
-                      <a href="#" class="uk-button uk-button-default summarydetail-editorder">Ubah Pesanan</a>
-                    </div>
-                  </div>
-                </div>
+                <div class="summarydetail-orderdate-title">Tanggal Pengerjaan</div>
+                <div class="summarydetail-orderdate-value">{{ formatDate( orders.schedule_date, 'DD MMMM YYYY' ) }}</div>
               </div>
               <div class="uk-padding-small content_summaryorder_detail">
                 <div class="uk-grid-small" uk-grid>
@@ -110,7 +101,7 @@
                   <hr>
                   <div class="uk-grid-small" uk-grid>
                     <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
-                      Total yang harus dibayar
+                      Total pembayaran
                     </div>
                     <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-1@m uk-width-1-1@s">
                       <div class="uk-text-right">

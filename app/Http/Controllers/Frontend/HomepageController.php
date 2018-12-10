@@ -49,4 +49,9 @@ class HomepageController extends Controller
     $data['kabupaten'] = $kabupaten->orderBy('nama_kab', 'asc')->get();
     return response()->view('frontend.pages.homepage', $data);
   }
+
+  public function aboutus( Request $request )
+  {
+    return response()->view('frontend.pages.aboutus');
+  }
 }

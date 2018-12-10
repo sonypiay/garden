@@ -99,7 +99,7 @@ class BookingTransactionController extends Controller
     $logstatus->log_date = $orderdate;
 
     $payment_verify->transaction_id = $transactionid;
-    $payment_verify->payment_id = date('Ymd') . substr($uniqid, 4, 2);
+    $payment_verify->payment_id = date('Ymd') . substr($uniqid, 3, 3);
 
     $transaction->save();
     $logstatus->save();
@@ -134,6 +134,7 @@ class BookingTransactionController extends Controller
       'booking_transaction.payment_method',
       'booking_transaction.last_status_transaction',
       'booking_transaction.isPremium',
+      'booking_transaction.created_at',
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',
@@ -198,7 +199,7 @@ class BookingTransactionController extends Controller
         ['transaction_id', '=', $orderid],
         ['payment_id', '=', $payment_id]
     ])->first();
-    
+
     $booking->payment_method = $payment_method;
     $booking->last_status_transaction = $status_transaction;
     $booking->isPremium = $premium;
@@ -223,10 +224,37 @@ class BookingTransactionController extends Controller
     return response()->json( $res, $res['status'] );
   }
 
-  public function booking_transaction_success( Request $request, Customers $customers, BookingTransaction $booking, BankPayment $bankpayment, $orderid )
+  public function booking_process_checkout( Request $request, Customers $customers, BookingTransaction $booking, BankPayment $bankpayment, $orderid )
   {
-    $booking = $booking->join('payment_order_verify', 'booking_transaction.transaction_id', '=', 'payment_order_verify.transaction_id')
+    $booking = $booking->select(
+      'booking_transaction.id',
+      'booking_transaction.transaction_id',
+      'booking_transaction.schedule_date',
+      'booking_transaction.region',
+      'booking_transaction.district',
+      'booking_transaction.subdistrict',
+      'booking_transaction.address',
+      'booking_transaction.zipcode',
+      'booking_transaction.mobile_number',
+      'booking_transaction.price_deal',
+      'booking_transaction.layout_design',
+      'booking_transaction.additional_info',
+      'booking_transaction.payment_method',
+      'booking_transaction.last_status_transaction',
+      'booking_transaction.isPremium',
+      'payment_order_verify.payment_to',
+      'payment_order_verify.status_payment',
+      'payment_order_verify.payment_id',
+      'payment_order_verify.payment_amount',
+      'bankpayment.bank_id',
+      'bankpayment.bank_code',
+      'bankpayment.bank_name',
+      'bankpayment.account_number'
+    )
+    ->join('payment_order_verify', 'booking_transaction.transaction_id', '=', 'payment_order_verify.transaction_id')
+    ->join('bankpayment', 'payment_order_verify.payment_to', '=', 'bankpayment.bank_id')
     ->where('booking_transaction.transaction_id', $orderid);
+
     if( $booking->count() == 0 ) abort(404);
     $results = $booking->first();
 
@@ -237,8 +265,7 @@ class BookingTransactionController extends Controller
         'request' => $request,
         'sessiondata' => $this->get_cookiescustomer(),
         'myaccount' => $datacustomer,
-        'results' => $results,
-        'bankpayment' => $bankpayment->select('bank_id','bank_code','bank_name')->orderBy('bank_name', 'asc')->get()
+        'results' => $results
       ];
       return response()->view('frontend.pages.customers.orders.transaction_success', $data);
     }
@@ -270,9 +297,11 @@ class BookingTransactionController extends Controller
       'booking_transaction.payment_method',
       'booking_transaction.last_status_transaction',
       'booking_transaction.isPremium',
+      'booking_transaction.created_at',
       'payment_order_verify.payment_to',
       'payment_order_verify.status_payment',
       'payment_order_verify.payment_id',
+      'payment_order_verify.payment_amount',
       'bankpayment.bank_id',
       'bankpayment.bank_code',
       'bankpayment.bank_name',
@@ -346,6 +375,7 @@ class BookingTransactionController extends Controller
     ])
     ->orderBy('booking_transaction.created_at', 'desc')
     ->paginate( $rows );
+
     $total_transaction = $booking->where('customer_id', '=', Cookie::get('customer_id'))->count();
     $approved_transaction = $booking->where([
       ['customer_id', '=', Cookie::get('customer_id')],

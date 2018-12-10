@@ -51,12 +51,13 @@ const app = new Vue({
         'rejected': 'Pesanan ditolak',
         'pending': 'Pesanan ditunda',
         'payment_waiting': 'Menunggu Pembayaran',
-        'payment_verify': 'Konfirmasi Pembayaran',
+        'payment_verify': 'Verifikasi Pembayaran',
         'paid': 'Dibayar',
         'process': 'Sedang diproses',
         'onprogress': 'Sedang dikerjakan',
         'report': 'Laporan & Berita Acara',
         'done': 'Selesai',
+        'cancel': 'Pesanan Dibatalkan'
       }
     }
 });

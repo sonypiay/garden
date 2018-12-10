@@ -12,6 +12,7 @@
 */
 // Route frontend
 Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
+Route::get('/tentang_kami', 'Frontend\HomepageController@aboutus')->name('aboutus');
 
 Route::group(['prefix' => 'discovery'], function() {
   Route::get('/', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');
@@ -35,7 +36,7 @@ Route::group(['prefix' => 'customers'], function() {
   Route::get('/summary_order/{orderid}', 'Frontend\Customers\BookingTransactionController@summary_order')->name('summaryordercustomer_page');
   Route::get('/summary_transaction', 'Frontend\Customers\BookingTransactionController@mytransaction');
   Route::get('/main_orders/{orderid}', 'Frontend\Customers\BookingTransactionController@main_orders')->name('customermainorder_page');
-  Route::get('/transaction_success/{orderid}', 'Frontend\Customers\BookingTransactionController@booking_transaction_success');
+  Route::get('/process_checkout/{orderid}', 'Frontend\Customers\BookingTransactionController@booking_process_checkout');
 
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Customers\AccountCustomers@index')->name('accountcustomer_page');
@@ -71,6 +72,9 @@ Route::group(['prefix' => 'vendor'], function() {
   Route::get('/data_orderlist', 'Frontend\Vendor\BookingTransactionController@data_orderlist');
   Route::get('/summary_order/{orderid}', 'Frontend\Vendor\BookingTransactionController@summary_order')->name('summaryordervendor_page');
   Route::put('/order_approval/{orderid}', 'Frontend\Vendor\BookingTransactionController@approval_order');
+  Route::put('/process_order/{orderid}', 'Frontend\Vendor\BookingTransactionController@process_order');
+  Route::put('/progress_order/{orderid}', 'Frontend\Vendor\BookingTransactionController@progress_order');
+  Route::post('/createreport/{orderid}', 'Frontend\Vendor\BookingTransactionController@createreport');
 
   Route::group(['prefix' => 'account'], function() {
     Route::get('/', 'Frontend\Vendor\AccountVendor@index')->name('accountvendor_page');
@@ -118,10 +122,16 @@ Route::group(['prefix' => 'vendor'], function() {
 // Route Administrator
 Route::group(['prefix' => 'cp'], function() {
   Route::get('/', function(){ return redirect( route('dashboard_admin') ); });
-  Route::get('/dashboard', 'Administrator\DashboardController@index')->name('dashboard_admin');
   Route::get('/login', 'Administrator\LoginController@index')->name('loginadminpage');
   Route::get('/logout', 'Administrator\LoginController@logout')->name('logoutadminpage');
   Route::post('/login', 'Administrator\LoginController@dologin');
+  Route::get('/dashboard', 'Administrator\DashboardController@index')->name('dashboard_admin');
+  Route::group(['prefix' => '/transaction'], function() {
+    Route::get('/order_list', 'Administrator\BookingOrdersController@index')->name('orderlist_admin');
+    Route::get('/data_orderlist', 'Administrator\BookingOrdersController@data_orderlist');
+    Route::get('/view_transaction/{orderid}', 'Administrator\BookingOrdersController@view_transaction');
+    Route::put('/update_order/{orderid}', 'Administrator\BookingOrdersController@update');
+  });
 
   // users
   Route::group(['prefix' => 'users'], function() {
