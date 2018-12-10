@@ -565,7 +565,7 @@ class BookingTransactionController extends Controller
         $storage->delete('customer/layout_design/' . $booking->layout_design);
       }
 
-      $filename = date('Ymd') . '_' . hash( 'crc32b', bin2hex( $layout_design->getClientOriginalName() ) ) . '.' . $layout_design->getClientOriginalExtention();
+      $filename = date('Ymd') . '_' . hash( 'crc32b', bin2hex( $layout_design->getClientOriginalName() ) ) . '.' . $layout_design->getClientOriginalExtension();
       $storage->putFileAs('customer/layout_design', $layout_design, $filename);
       $booking->layout_design = $filename;
     }
