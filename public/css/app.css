@@ -389,6 +389,7 @@ body {
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.4px;
+  text-transform: capitalize !important;
 }
 
 .cover-homepage .navbar-homepage .nav-hmpg li .joinascustomer div {
@@ -616,6 +617,13 @@ body {
 
 .navbarcustomer .navtopcustomer li a:hover {
   color: #f6b092;
+}
+
+.navbarcustomer .navtopcustomer li .joinascustomer div {
+  border-radius: 3px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  padding: 10px 20px;
 }
 
 .navbarcustomer .navtopcustomer .navbardropdowncustomer {

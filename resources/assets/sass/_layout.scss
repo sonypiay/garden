@@ -96,6 +96,7 @@ html,body {
         font-family: $font-primary;
         font-size: 13px;
         @include fontstyle(600, normal, normal, 0.4px);
+        text-transform: capitalize !important;
       }
       .joinascustomer div {
         border-radius: 3px;
@@ -243,6 +244,12 @@ html,body {
       text-transform: capitalize !important;
       @include fontstyle(600, normal, normal, 0.4px);
       &:hover { color: $f6b092; }
+    }
+    .joinascustomer div {
+      border-radius: 3px;
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+      color: #ffffff;
+      padding: 10px 20px;
     }
   }
   .navtopcustomer {
