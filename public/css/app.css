@@ -506,8 +506,8 @@ body {
 .cover-homepage .findvendor-hmpg-content .hmpg-button .joinasvendor {
   color: #ffffff;
   font-family: "Nunito", sans-serif;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 600;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.8px;
@@ -515,6 +515,7 @@ body {
   border-radius: 4px;
   border: 0;
   background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
 }
 
 .cover-homepage .findvendor-hmpg-content .hmpg-button .joinasvendor:hover,
@@ -527,12 +528,13 @@ body {
 .cover-homepage .findvendor-hmpg-content .hmpg-button .findvendor {
   color: #666666;
   font-family: "Nunito", sans-serif;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 600;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.8px;
   text-decoration: none;
+  text-transform: capitalize;
   border-radius: 4px;
   border: 0;
   background: #ffffff;

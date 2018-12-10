@@ -82,10 +82,10 @@
                         <div class="view-transaction-value">
                           {{ log.status_description }}
                           <div v-if="log.status_transaction === 'report'">
-                            <a class="uk-button uk-button-default summarydetail_download" href="#">
+                            <a class="uk-button uk-button-default summarydetail_download">
                               Unduh Report
                             </a>
-                            <a class="uk-button uk-button-default summarydetail_download" href="#">
+                            <a v-if="orders.last_status_transaction === 'report'" class="uk-button uk-button-default summarydetail_download" @click="onConfirmReport()">
                               Konfirmasi
                             </a>
                           </div>
@@ -202,7 +202,48 @@ export default {
         this.logstatus.results = result.logstatus.result;
         this.reports = result.report;
         console.log( this.reports );
+      }).catch( err => {
+        console.log( err.response.statusText );
       });
+    },
+    onConfirmReport()
+    {
+      swal({
+        title: 'Konfirmasi Pesanan',
+        text: 'Apakah pekerjaan sudah selesai?',
+        icon: 'warning',
+        buttons: {
+          cancel: 'Belum',
+          confirm: {
+            value: true,
+            text: 'Sudah'
+          }
+        }
+      }).then( value => {
+        if( value )
+        {
+          axios({
+            method: 'put',
+            url: this.url + '/customers/confirmreport/' + this.orders.transaction_id
+          }).then( res => {
+            swal({
+              title: 'Selesai',
+              text: res.data.statusText,
+              icon: 'success',
+              timer: 5000
+            });
+            setTimeout(function(){ document.location = ''; }, 3000);
+          }).catch( err => {
+            swal({
+              title: 'Terjadi Kesalahan',
+              text: err.response.statusText,
+              icon: 'danger',
+              timer: 5000,
+              dangerMode: true
+            });
+          });
+        }
+      })
     }
   },
   computed: {

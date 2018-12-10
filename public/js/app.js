@@ -72560,6 +72560,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.logstatus.results = result.logstatus.result;
         _this.reports = result.report;
         console.log(_this.reports);
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    onConfirmReport: function onConfirmReport() {
+      var _this2 = this;
+
+      swal({
+        title: 'Konfirmasi Pesanan',
+        text: 'Apakah pekerjaan sudah selesai?',
+        icon: 'warning',
+        buttons: {
+          cancel: 'Belum',
+          confirm: {
+            value: true,
+            text: 'Sudah'
+          }
+        }
+      }).then(function (value) {
+        if (value) {
+          axios({
+            method: 'put',
+            url: _this2.url + '/customers/confirmreport/' + _this2.orders.transaction_id
+          }).then(function (res) {
+            swal({
+              title: 'Selesai',
+              text: res.data.statusText,
+              icon: 'success',
+              timer: 5000
+            });
+            setTimeout(function () {
+              document.location = '';
+            }, 3000);
+          }).catch(function (err) {
+            swal({
+              title: 'Terjadi Kesalahan',
+              text: err.response.statusText,
+              icon: 'danger',
+              timer: 5000,
+              dangerMode: true
+            });
+          });
+        }
       });
     }
   },
@@ -72960,8 +73003,7 @@ var render = function() {
                                               "a",
                                               {
                                                 staticClass:
-                                                  "uk-button uk-button-default summarydetail_download",
-                                                attrs: { href: "#" }
+                                                  "uk-button uk-button-default summarydetail_download"
                                               },
                                               [
                                                 _vm._v(
@@ -72970,19 +73012,27 @@ var render = function() {
                                               ]
                                             ),
                                             _vm._v(" "),
-                                            _c(
-                                              "a",
-                                              {
-                                                staticClass:
-                                                  "uk-button uk-button-default summarydetail_download",
-                                                attrs: { href: "#" }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                            Konfirmasi\n                          "
+                                            _vm.orders
+                                              .last_status_transaction ===
+                                            "report"
+                                              ? _c(
+                                                  "a",
+                                                  {
+                                                    staticClass:
+                                                      "uk-button uk-button-default summarydetail_download",
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.onConfirmReport()
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                            Konfirmasi\n                          "
+                                                    )
+                                                  ]
                                                 )
-                                              ]
-                                            )
+                                              : _vm._e()
                                           ])
                                         : _vm._e()
                                     ]

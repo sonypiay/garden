@@ -186,12 +186,13 @@ html,body {
       .joinasvendor {
         color: #ffffff;
         font-family: $font-primary;
-        font-size: 12px;
-        @include fontstyle(400, normal, normal, 0.8px);
+        font-size: 14px;
+        @include fontstyle(600, normal, normal, 0.8px);
         text-decoration: none;
         border-radius: 4px;
         border: 0;
         background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+        text-transform: capitalize;
         &:hover, &:focus {
           border: 0;
           background: linear-gradient(97deg, $logo-color-primary, $f6b092);
@@ -201,9 +202,10 @@ html,body {
       .findvendor {
         color: #666666;
         font-family: $font-primary;
-        font-size: 12px;
-        @include fontstyle(400, normal, normal, 0.8px);
+        font-size: 14px;
+        @include fontstyle(600, normal, normal, 0.8px);
         text-decoration: none;
+        text-transform: capitalize;
         border-radius: 4px;
         border: 0;
         background: #ffffff;

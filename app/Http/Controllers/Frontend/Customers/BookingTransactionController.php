@@ -483,4 +483,27 @@ class BookingTransactionController extends Controller
     $results = $query->orderBy('booking_transaction.created_at', 'desc')->paginate( $rows );
     return response()->json( $results );
   }
+
+  public function confirmreport( BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
+  {
+    $booking = $booking->where('transaction_id', $orderid)->first();
+    $logstatus = new $logstatus;
+    $status = 'done';
+
+    $booking->last_status_transaction = $status;
+    $booking->save();
+
+    $logstatus->transaction_id = $orderid;
+    $logstatus->status_transaction = $status;
+    $logstatus->status_description = 'Pesanan sudah selesai dikerjakan.';
+    $logstatus->log_date = date('Y-m-d H:i:s');
+    $logstatus->save();
+
+    $res = [
+      'status' => 200,
+      'statusText' => 'Pekerjaan sudah selesai.'
+    ];
+
+    return response()->json( $res, $res['status'] );
+  }
 }
