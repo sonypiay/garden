@@ -7,11 +7,6 @@
     @include('frontend.includes.vendors.navvendor')
   </div>
   <div class="uk-width-expand">
-    @if( $myaccount->vendor_verified === 'N' )
-    <div class="uk-margin-top uk-alert-warning" uk-alert>
-      Akun Anda belum terverifikasi. Silahkan periksa kembali email inbox/spam Anda untuk verifikasi akun.
-    </div>
-    @endif
     @php
       $datavendor = [
         'vendor_logo' => $myaccount->vendor_logo,
@@ -19,7 +14,9 @@
         'vendor_id' => $myaccount->vendor_id
       ]
     @endphp
-    <vendororderlist url="{{ url('/') }}" :vendors="{{ json_encode( $datavendor ) }}" />
+    <div class="uk-container">
+      <vendororderlist url="{{ url('/') }}" :vendors="{{ json_encode( $datavendor ) }}" />
+    </div>
   </div>
 </div>
 @endsection

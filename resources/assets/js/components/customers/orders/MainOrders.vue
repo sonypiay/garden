@@ -25,7 +25,7 @@
                   </div>
                   <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
                     <div class="uk-text-right">
-                      <a href="#" class="uk-button uk-button-default summarydetail-editorder">Ubah Pesanan</a>
+                      <a :href="url + '/edit_booking/' + orders.transaction_id" class="uk-button uk-button-default summarydetail-editorder">Ubah Pesanan</a>
                     </div>
                   </div>
                 </div>

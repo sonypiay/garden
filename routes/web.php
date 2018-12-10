@@ -23,6 +23,8 @@ Route::group(['prefix' => 'discovery'], function() {
 Route::get('/booking/{name}', 'Frontend\Customers\BookingTransactionController@bookingpage');
 Route::post('/booking_process', 'Frontend\Customers\BookingTransactionController@bookingprocess');
 Route::put('/booking_checkout/{orderid}', 'Frontend\Customers\BookingTransactionController@booking_checkout');
+Route::get('/edit_booking/{orderid}', 'Frontend\Customers\BookingTransactionController@editbooking_page');
+Route::post('/edit_booking/{orderid}', 'Frontend\Customers\BookingTransactionController@editbooking');
 // customers
 Route::group(['prefix' => 'customers'], function() {
   Route::get('/', function(){ return redirect()->route('accountcustomer_page'); });
@@ -31,6 +33,7 @@ Route::group(['prefix' => 'customers'], function() {
   Route::post('/doRegister', 'Frontend\Customers\LoginRegisterController@doRegister');
   Route::post('/doLogin', 'Frontend\Customers\LoginRegisterController@doLogin');
   Route::get('/logout', 'Frontend\Customers\LoginRegisterController@logout')->name('logoutcustomer');
+  Route::get('/lupa_password', 'Frontend\Customers\LoginRegisterController@lupapassword')->name('lupapasswordcustomer_page');
   Route::get('/order_list', 'Frontend\Customers\BookingTransactionController@order_list')->name('customerorderlist_page');
   Route::get('/data_orderlist', 'Frontend\Customers\BookingTransactionController@data_orderlist');
   Route::get('/summary_order/{orderid}', 'Frontend\Customers\BookingTransactionController@summary_order')->name('summaryordercustomer_page');

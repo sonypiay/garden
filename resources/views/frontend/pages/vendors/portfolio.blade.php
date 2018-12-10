@@ -8,11 +8,6 @@
   </div>
   <div class="uk-width-expand">
     <div class="uk-container">
-      @if( $myaccount->vendor_verified === 'N' )
-      <div class="uk-margin-top uk-alert-warning" uk-alert>
-        Akun Anda belum terverifikasi. Silahkan periksa kembali email inbox/spam Anda untuk verifikasi akun.
-      </div>
-      @endif
       <vendorportfolio url="{{ url('/') }}" />
     </div>
   </div>

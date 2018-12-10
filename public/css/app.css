@@ -651,6 +651,99 @@ body {
   letter-spacing: 0.6px;
 }
 
+.forgotpassword-container {
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-top: 8em;
+}
+
+.forgotpassword-container h2 {
+  color: #555555;
+  font-size: 28px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.forgotpassword-container .homepage {
+  color: #666666;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 15px;
+}
+
+.forgotpassword-container .homepage a {
+  color: #f6a192;
+}
+
+.forgotpassword-container .homepage a:hover {
+  color: #f6a192;
+}
+
+.forgotpassword-container .forgotpassword_label {
+  color: #444444;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.forgotpassword-container .forgotpassword_form {
+  border: 0;
+  border-bottom: 1px solid #e9e9e9;
+  color: #333333;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  height: 50px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.forgotpassword-container .forgotpassword_form::-webkit-input-placeholder {
+  font-size: 13px;
+}
+
+.forgotpassword-container .forgotpassword_form::-ms-input-placeholder {
+  font-size: 13px;
+}
+
+.forgotpassword-container .forgotpassword_form::placeholder {
+  font-size: 13px;
+}
+
+.forgotpassword-container .forgotpassword_form:hover,
+.forgotpassword-container .forgotpassword_form:focus {
+  border-bottom: 1px solid #f6b092;
+}
+
+.forgotpassword-container .forgotpassword_btn {
+  border: 0;
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
 .navbarcustomer {
   background: #ffffff;
   border-bottom: 1px solid #e9e9e9;
@@ -1925,6 +2018,17 @@ body {
   font-style: normal;
   letter-spacing: 0.8px;
   margin-top: 10px;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-labelpremium {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-transform: capitalize;
 }
 
 .dashboard_summary-transaction .dash_sum-transaction-orderdate {

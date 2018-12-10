@@ -9,11 +9,6 @@
   <div class="uk-width-expand">
     <div class="uk-container uk-margin-top">
       @include('frontend.includes.vendors.navsettingaccount')
-      @if( $myaccount->vendor_verified === 'N' )
-      <div class="uk-margin-top uk-alert-warning" uk-alert>
-        Akun Anda belum terverifikasi. Silahkan periksa kembali email inbox/spam Anda untuk verifikasi akun.
-      </div>
-      @endif
       <vendoreditaccount pages="changepassword" url="{{ url('/') }}" />
     </div>
   </div>

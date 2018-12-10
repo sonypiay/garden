@@ -182,4 +182,18 @@ class LoginRegisterController extends Controller
       return redirect()->route('loginpage_customer');
     }
   }
+
+  public function lupapassword( Request $request, Customers $customers )
+  {
+    if( Cookie::get('hasLoginCustomers') )
+    {
+      return redirect()->route('accountcustomer_page');
+    }
+    else
+    {
+      return response()->view('frontend.pages.customers.lupapassword', [
+        'request' => $request
+      ]);
+    }
+  }
 }
