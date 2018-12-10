@@ -575,17 +575,16 @@ html,body {
       rgba(0,0,0,0.1)
     );
     .coverbg-heading {
-      font-family: $font-primary;
-      @include fontstyle(300, normal, normal, 0.4px);
+      font-family: $font-secondary;
+      @include fontstyle(600, normal, normal, 0.4px);
       font-size: 64px;
       margin-bottom: 1em;
       margin-left: 1.1em;
-      color: #ffffff;
-      /*background-image: $webkit-gradient-color;
+      background-image: $webkit-gradient-color;
       background-image: $gradient-color;
       color:transparent;
       -webkit-background-clip: text;
-      background-clip: text;*/
+      background-clip: text;
     }
   }
 }

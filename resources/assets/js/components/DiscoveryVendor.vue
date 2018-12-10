@@ -1,22 +1,5 @@
 <template lang="html">
   <div class="discovery-container">
-    <!--
-    <h3 class="discovery_heading">Vendor Terbaik di {{ kabupaten.selectedValue }}</h3>
-    <div class="uk-grid-medium" uk-grid>
-      <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s" v-for="vendor in vendorsList.results">
-        <div class="uk-card uk-card-default discoverygrid_box">
-          <div class="uk-card-media-top">
-            <img src="https://getuikit.com/assets/uikit/tests/images/photo.jpg" alt="">
-          </div>
-          <div class="uk-card-body uk-card-small">
-            <a class="uk-card-title discoverygrid_heading">{{ vendor.vendor_name }}</a>
-            <div class="discoverygrid_subtext">{{ vendor.nama_kab }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  -->
-
     <div class="uk-grid-small uk-margin-large-top" uk-grid>
       <div class="uk-width-1-4">
         <h3 class="discovery_heading">Lokasi</h3>

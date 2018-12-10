@@ -3,7 +3,7 @@
 @section('maincontent')
 @include('frontend.includes.navbar-white')
 <div class="uk-cover-container coverbg">
-  <img src="{{ asset('/images/banner/bgcover.jpg') }}" alt="" uk-cover>
+  <img src="{{ asset('/images/banner/Banner2.jpg') }}" alt="" uk-cover>
   <div class="uk-overlay uk-overlay-primary uk-position-cover coverbg-overlay">
     <div class="uk-position-bottom-left coverbg-heading">
       Vendor
