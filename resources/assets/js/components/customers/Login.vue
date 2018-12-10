@@ -31,7 +31,7 @@
           <button v-html="btnlogin" class="uk-width-1-1 uk-button customers-btnlogin">Masuk</button>
         </div>
         <div class="uk-margin">
-          <a href="#" class="uk-float-right lupapassword">Lupa Kata Sandi?</a>
+          <a :href="url + '/customers/lupa_password'" class="uk-float-right lupapassword">Lupa Kata Sandi?</a>
         </div>
       </form>
     </div>

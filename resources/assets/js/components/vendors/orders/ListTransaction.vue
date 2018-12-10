@@ -1,9 +1,9 @@
 <template lang="html">
   <div class="uk-margin-large-top">
+    <div class="uk-margin">
+      <h2>Daftar Transaksi</h2>
+    </div>
     <div class="uk-grid-small" uk-grid>
-      <!--<div class="uk-width-1-6@xl uk-width-1-6@l">
-        <div class="filter-statustransaction-label">Filter Status</div>
-      </div>-->
       <div class="uk-width-expand">
         <div class="filter-statustransaction-list">
           <a v-for="(status, index) in $root.statusTransaction" @click="myTransaction( url + '/vendor/data_orderlist?page=' + pagination.current, index  )" class="uk-button uk-button-default">{{ status }}</a>

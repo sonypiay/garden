@@ -33,6 +33,7 @@ Route::group(['prefix' => 'customers'], function() {
   Route::post('/doRegister', 'Frontend\Customers\LoginRegisterController@doRegister');
   Route::post('/doLogin', 'Frontend\Customers\LoginRegisterController@doLogin');
   Route::get('/logout', 'Frontend\Customers\LoginRegisterController@logout')->name('logoutcustomer');
+  Route::get('/lupa_password', 'Frontend\Customers\LoginRegisterController@lupapassword')->name('lupapasswordcustomer_page');
   Route::get('/order_list', 'Frontend\Customers\BookingTransactionController@order_list')->name('customerorderlist_page');
   Route::get('/data_orderlist', 'Frontend\Customers\BookingTransactionController@data_orderlist');
   Route::get('/summary_order/{orderid}', 'Frontend\Customers\BookingTransactionController@summary_order')->name('summaryordercustomer_page');

@@ -65710,6 +65710,7 @@ Vue.component('editbookingvendor', __webpack_require__(209));
 Vue.component('customermainorder', __webpack_require__(212));
 Vue.component('customersummaryorder', __webpack_require__(215));
 Vue.component('customerorderlist', __webpack_require__(218));
+Vue.component('lupapasswordcustomer', __webpack_require__(302));
 //customer
 
 // vendor
@@ -66134,7 +66135,16 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "uk-float-right lupapassword",
+                      attrs: { href: _vm.url + "/customers/lupa_password" }
+                    },
+                    [_vm._v("Lupa Kata Sandi?")]
+                  )
+                ])
               ]
             )
           ]
@@ -66143,20 +66153,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-margin" }, [
-      _c(
-        "a",
-        { staticClass: "uk-float-right lupapassword", attrs: { href: "#" } },
-        [_vm._v("Lupa Kata Sandi?")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -81063,6 +81060,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "uk-margin-large-top" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
       _c("div", { staticClass: "uk-width-expand" }, [
         _c(
@@ -81219,7 +81218,16 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin" }, [
+      _c("h2", [_vm._v("Daftar Transaksi")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -83702,6 +83710,375 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(303)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(305)
+/* template */
+var __vue_template__ = __webpack_require__(306)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/customers/LupaPassword.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-41d0ce34", Component.options)
+  } else {
+    hotAPI.reload("data-v-41d0ce34", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 303 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(304);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(139)("227a26cb", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-41d0ce34\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LupaPassword.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-41d0ce34\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LupaPassword.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 304 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(138)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nhtml, body {\r\n  background: linear-gradient(108deg,\r\n  rgba(246,161,146,1),\r\n  rgba(246,176,146,1)) !important;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 305 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      errors: '',
+      btnsubmit: 'Daftar',
+      forms: {
+        notelepon: '',
+        password: '',
+        email: '',
+        fullname: '',
+        error: false
+      }
+    };
+  },
+
+  methods: {
+    onCheckEmail: function onCheckEmail() {
+      var _this = this;
+
+      this.errors = {};
+
+      if (this.forms.email === '') {
+        this.forms.error = true;
+        this.errors.email = 'Email wajib diisi';
+      }
+
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return false;
+      }
+
+      if (this.countLength(this.forms.password) < 8) {
+        this.errors.password = 'Sandi minimal 8 karakter';
+      } else {
+        this.btnsubmit = '<span uk-spinner></span>';
+        axios({
+          method: 'post',
+          url: this.url + '/customers/checkemail',
+          headers: { 'Content-Type': 'application/json' },
+          params: {
+            email: this.forms.email
+          }
+        }).then(function (res) {
+          _this.errors.errorMessage = '';
+          //var redirect = this.url + '/customers/account';
+          setTimeout(function () {
+            document.location = '';
+          }, 3000);
+        }).catch(function (err) {
+          var status = err.response.status;
+          if (status === 422) {
+            _this.errors.errorMessage = err.response.data.statusText;
+          } else {
+            _this.errors.errorMessage = err.response.statusText;
+          }
+          _this.btnsubmit = 'Daftar';
+        });
+      }
+    },
+
+    countLength: function countLength(str) {
+      return str.length;
+    }
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "uk-container" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s uk-align-center"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-card uk-card-body uk-card-default forgotpassword-container"
+          },
+          [
+            _c("h2", { staticClass: "uk-text-center uk-margin-bottom" }, [
+              _vm._v("Lupa Password")
+            ]),
+            _vm._v(" "),
+            _vm.errors.errorMessage
+              ? _c("span", [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-margin-bottom uk-margin-top uk-alert-danger",
+                      attrs: { "uk-alert": "" }
+                    },
+                    [_vm._v(_vm._s(_vm.errors.errorMessage))]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                staticClass: "uk-form-stacked",
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.onCheckEmail($event)
+                  }
+                }
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c("div", { staticClass: "uk-form-controls" }, [
+                    _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                      _c("span", {
+                        staticClass: "uk-form-icon",
+                        attrs: { "uk-icon": "mail" }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.email,
+                            expression: "forms.email"
+                          }
+                        ],
+                        staticClass:
+                          "uk-width-1-1 uk-input forgotpassword_form",
+                        attrs: { type: "email", placeholder: "Email" },
+                        domProps: { value: _vm.forms.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.forms, "email", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm.errors.email
+                      ? _c(
+                          "div",
+                          { staticClass: "uk-text-danger uk-text-small" },
+                          [_vm._v(_vm._s(_vm.errors.email))]
+                        )
+                      : _vm._e()
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "uk-width-1-1 uk-button uk-button-default forgotpassword_btn",
+                      domProps: { innerHTML: _vm._s(_vm.btnsubmit) }
+                    },
+                    [_vm._v("Verifikasi")]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-text-center homepage" }, [
+              _c("a", { attrs: { href: _vm.url + "/" } }, [
+                _vm._v("Kembali ke Halaman Utama")
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin" }, [
+      _c("label", { staticClass: "forgotpassword_label" }, [
+        _vm._v("Masukan E-mail anda untuk mendapatkan password baru:")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-41d0ce34", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
