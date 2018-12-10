@@ -8,14 +8,13 @@
 <div id="app">
 @yield('maincontent')
 </div>
-@if(
-  $request->route()->getName() !== 'homepage' OR
-  $request->route()->getName() !== 'loginpage_customer' OR
-  $request->route()->getName() !== 'registerpage_customer' OR
-  $request->route()->getName() !== 'registerpage_customer' OR
-  $request->route()->getName() !== 'loginpage_vendor' OR
-  $request->route()->getName() !== 'registerpage_vendor'
- )
+@if( $request->route()->getName() != 'homepage' AND
+$request->route()->getName() != 'loginpage_customer' AND
+$request->route()->getName() != 'registerpage_customer' AND
+$request->route()->getName() != 'registerpage_customer' AND
+$request->route()->getName() != 'loginpage_vendor' AND
+$request->route()->getName() != 'registerpage_vendor'
+)
 <footer class="footer">
   <div class="uk-card uk-card-body uk-card-small uk-card-default">
     <div class="uk-container">

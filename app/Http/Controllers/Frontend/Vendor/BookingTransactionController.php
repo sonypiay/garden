@@ -231,11 +231,12 @@ class BookingTransactionController extends Controller
   public function createreport( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
   {
     $filereport = $request->filereport;
-    $res = [];
-    foreach( $filereport as $key => $val )
-    {
-      $res[] = $val->getClientOriginalName();
-    }
+    $filename = $filereport->getClientOriginalName();
+    $extension = $filereport->getClientOriginalExtenstion();
+    $res = [
+      'filename' => $filename,
+      'extension' => $extension
+    ];
     return response()->json( $res );
   }
 }

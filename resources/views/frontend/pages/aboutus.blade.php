@@ -70,22 +70,22 @@
       <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s">
         <div class="uk-card uk-card-default ourteam-box">
           <div class="uk-card-media-top ourteam-box-header">
-            <img src="{{ asset('images/teams/sony.jpg') }}" alt="">
+            <img src="{{ asset('images/teams/ana.jpg') }}" alt="">
           </div>
           <div class="uk-card-body uk-card-small ourteam-box-body">
             <div class="ourteam-box-title">Ana Velayati</div>
-            <div class="ourteam-box-division">System Analyst</div>
+            <div class="ourteam-box-division">Project Manager</div>
           </div>
         </div>
       </div>
       <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-1@s">
         <div class="uk-card uk-card-default ourteam-box">
           <div class="uk-card-media-top ourteam-box-header">
-            <img src="{{ asset('images/teams/sony.jpg') }}" alt="">
+            <img src="{{ asset('images/teams/umam.jpg') }}" alt="">
           </div>
           <div class="uk-card-body uk-card-small ourteam-box-body">
             <div class="ourteam-box-title">Chairul Umam</div>
-            <div class="ourteam-box-division">Project Manager</div>
+            <div class="ourteam-box-division">Designer</div>
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
           </div>
           <div class="uk-card-body uk-card-small ourteam-box-body">
             <div class="ourteam-box-title">Sony Darmawan</div>
-            <div class="ourteam-box-division">Senior Web Programmer</div>
+            <div class="ourteam-box-division">Senior Web Developer</div>
           </div>
         </div>
       </div>
