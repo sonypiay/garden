@@ -171,6 +171,15 @@ html, body {
   }
 }
 
+// dashboard
+.dashboard_filter_action {
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+  color: #777777;
+  font-size: 14px;
+  font-family: $font-family-sans-serif;
+  @include fontstyle(400, normal, normal, 0.4px);
+}
 .dashboard-welcome-screen
 {
   .dashboard-hello {
@@ -222,3 +231,4 @@ html, body {
     margin-bottom: 5px;
   }
 }
+// dashboard

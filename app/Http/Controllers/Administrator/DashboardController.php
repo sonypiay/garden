@@ -85,7 +85,7 @@ class DashboardController extends Controller
     $status = $request->status;
 
     $booking = new $booking;
-    $dateformat = DB::raw('date_format(created_at, "%Y-%m-%d")');
+    $dateformat = DB::raw('date_format(booking_transaction.created_at, "%Y-%m-%d")');
     $begin = new DateTime(date('Y-m-d'));
     $end = new DateTime();
     $query = $booking->select(
@@ -99,7 +99,7 @@ class DashboardController extends Controller
       'booking_transaction.last_status_transaction',
       'booking_transaction.isPremium',
       'booking_transaction.created_at',
-      'kabupaten.nama_kab',
+      'kabupaten.nama_kab'
     )
     ->join('customers', 'booking_transaction.customer_id', '=', 'customers.customer_id')
     ->join('vendors', 'booking_transaction.vendor_id', '=', 'vendors.vendor_id')
@@ -222,7 +222,8 @@ class DashboardController extends Controller
       $interval = new DateInterval('P1D');
       $daterange = new DatePeriod($end, $interval , $begin);
       $range = [];
-      if( $filter_day == 'today' )
+
+      if( $filter_day == 'this_month' )
       {
         foreach( $daterange as $date )
         {
@@ -249,7 +250,7 @@ class DashboardController extends Controller
           {
             $query = $booking->where([
               [$dateformat, '>=', $startdate],
-              [$dateformat, '<=', $enddate],
+              [$dateformat, '<=', $enddate]
             ]);
           }
           else

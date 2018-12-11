@@ -452,6 +452,18 @@ body {
   letter-spacing: 0.4px;
 }
 
+.dashboard_filter_action {
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+  color: #777777;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
 .dashboard-welcome-screen .dashboard-hello {
   font-size: 26px;
   font-family: "Nunito Sans", sans-serif;

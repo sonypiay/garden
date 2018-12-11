@@ -84,7 +84,27 @@
         </div>
         <div class="uk-width-expand">
           <div class="uk-float-right">
-            Hello World
+            <div class="uk-grid-small" uk-grid>
+              <div class="uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s">
+                <select class="uk-select dashboard_filter_action" v-model="forms.filter_rows">
+                  <option value="10">10 ditampilkan</option>
+                  <option value="20">20 ditampilkan</option>
+                  <option value="30">30 ditampilkan</option>
+                  <option value="50">50 ditampilkan</option>
+                  <option value="100">100 ditampilkan</option>
+                </select>
+              </div>
+              <div class="uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s">
+                <select class="uk-select dashboard_filter_action" v-model="forms.filter_day">
+                  <option value="today">Hari ini</option>
+                  <option value="7day">7 hari terakhir</option>
+                  <option value="14day">14 hari terakhir</option>
+                  <option value="28day">28 hari terakhir</option>
+                  <option value="last_month">1 bulan terakhir</option>
+                  <option value="this_month">Bulan ini</option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -97,6 +117,13 @@ export default {
   props: ['url'],
   data() {
     return {
+      forms: {
+        filter_rows: 10,
+        filter_day: 'today',
+        keywords: '',
+        status: 'all',
+        premium: 'all'
+      },
       activity_transaction: {
         selectedDate: 'today',
         total: 0,

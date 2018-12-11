@@ -71857,7 +71857,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71962,11 +71962,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
   data: function data() {
     return {
+      forms: {
+        filter_rows: 10,
+        filter_day: 'today',
+        keywords: '',
+        status: 'all',
+        premium: 'all'
+      },
       activity_transaction: {
         selectedDate: 'today',
         total: 0,
@@ -72259,7 +72286,153 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "uk-margin-top" }, [
+        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-width-expand" }, [
+            _c("div", { staticClass: "uk-float-right" }, [
+              _c(
+                "div",
+                { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.forms.filter_rows,
+                              expression: "forms.filter_rows"
+                            }
+                          ],
+                          staticClass: "uk-select dashboard_filter_action",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.forms,
+                                "filter_rows",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "10" } }, [
+                            _vm._v("10 ditampilkan")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "20" } }, [
+                            _vm._v("20 ditampilkan")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "30" } }, [
+                            _vm._v("30 ditampilkan")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "50" } }, [
+                            _vm._v("50 ditampilkan")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "100" } }, [
+                            _vm._v("100 ditampilkan")
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.forms.filter_day,
+                              expression: "forms.filter_day"
+                            }
+                          ],
+                          staticClass: "uk-select dashboard_filter_action",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.forms,
+                                "filter_day",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "today" } }, [
+                            _vm._v("Hari ini")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "7day" } }, [
+                            _vm._v("7 hari terakhir")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "14day" } }, [
+                            _vm._v("14 hari terakhir")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "28day" } }, [
+                            _vm._v("28 hari terakhir")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "last_month" } }, [
+                            _vm._v("1 bulan terakhir")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "this_month" } }, [
+                            _vm._v("Bulan ini")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
     ]
   )
 }
@@ -72282,28 +72455,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-margin-top" }, [
-      _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-6@xl uk-width-1-6@l uk-width-1-6@m uk-width-1-4@s"
-          },
-          [
-            _c("h2", { staticClass: "dashboard_transaction_heading" }, [
-              _vm._v("Transaksi")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "uk-width-expand" }, [
-          _c("div", { staticClass: "uk-float-right" }, [
-            _vm._v("\n          Hello World\n        ")
-          ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "uk-width-1-6@xl uk-width-1-6@l uk-width-1-6@m uk-width-1-4@s"
+      },
+      [
+        _c("h2", { staticClass: "dashboard_transaction_heading" }, [
+          _vm._v("Transaksi")
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
