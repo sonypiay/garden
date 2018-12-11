@@ -214,7 +214,7 @@ class LoginRegisterController extends Controller
     }
     else
     {
-      return response()->view('frontend.pages.vendor.lupapassword', [
+      return response()->view('frontend.pages.vendors.lupapassword', [
         'request' => $request
       ]);
     }
@@ -223,7 +223,7 @@ class LoginRegisterController extends Controller
   public function checkemail( Request $request, Vendors $vendors )
   {
     $email = $request->email;
-    $checkemail = $vendors->where('vendor_email', $email)->count();
+    $checkemail = $vendors->where('vendor_email_business', $email)->count();
     if( $checkemail === 1 )
     {
       $request->session()->put('changepassword_vendor', true);
@@ -254,7 +254,7 @@ class LoginRegisterController extends Controller
     {
       if( $request->session('changepassword_vendor') )
       {
-        return response()->view('frontend.pages.vendor.reset_password', [
+        return response()->view('frontend.pages.vendors.reset_password', [
           'request' => $request
         ]);
       }
@@ -269,7 +269,7 @@ class LoginRegisterController extends Controller
   {
     $password = $request->password;
     $email = $request->session()->get('session_email_vendor');
-    $vendors = $vendors->where('vendor_email', $email)->first();
+    $vendors = $vendors->where('vendor_email_business', $email)->first();
     $vendors->vendor_password = Hash::make( $password, ['round' => 16] );
     $vendors->save();
 

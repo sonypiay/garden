@@ -4,7 +4,11 @@ html, body {
 }
 
 @import 'forms';
-
+.divider {
+  border-top: 1px solid #eeeeee;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 .logo-container {
   background: linear-gradient(97deg, $logo-color-primary, $f6b092);
   border-radius: 8px 0 0 8px;
@@ -166,3 +170,75 @@ html, body {
     @include fontstyle(400, normal, normal, 0.4px);
   }
 }
+
+// dashboard
+.dashboard_filter_action {
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+  color: #777777;
+  font-size: 12px;
+  font-family: $font-family-sans-serif;
+  @include fontstyle(400, normal, normal, 0.4px);
+  &:hover, &:focus {
+    border: 1px solid $f6c492;
+    color: #555555;
+  }
+}
+.dashboard-welcome-screen
+{
+  .dashboard-hello {
+    font-size: 26px;
+    font-family: $font-family-sans-serif;
+    color: #666666;
+    @include fontstyle(400, normal, normal, 0.4px);
+  }
+}
+
+.dashboard_alluser_header {
+  font-size: 22px;
+  font-family: $font-family-sans-serif;
+  color: #444444;
+  @include fontstyle(400, normal, normal, 0.4px);
+}
+.dashboard_alluser_grid {
+  border-radius: 4px;
+  .dashboard_alluser_value {
+    font-size: 22px;
+    font-family: $font-family-sans-serif;
+    color: #444444;
+    @include fontstyle(400, normal, normal, 0.4px);
+    margin-bottom: 5px;
+  }
+  .dashboard_alluser_title {
+    font-size: 13px;
+    font-family: $font-family-sans-serif;
+    color: #999999;
+    @include fontstyle(400, normal, normal, 0.4px);
+    margin-top: 5px;
+  }
+}
+
+.dashboard_grid_statustransaction {
+  border-radius: 4px;
+  .dash_statustransaction_title {
+    font-size: 13px;
+    font-family: $font-family-sans-serif;
+    color: #999999;
+    @include fontstyle(400, normal, normal, 0.4px);
+    margin-top: 5px;
+  }
+  .dash_statustransaction_value {
+    font-size: 22px;
+    font-family: $font-family-sans-serif;
+    color: #444444;
+    @include fontstyle(400, normal, normal, 0.4px);
+    margin-bottom: 5px;
+  }
+}
+.dashboard_transaction_heading {
+  font-size: 22px;
+  font-family: $font-family-sans-serif;
+  color: #444444;
+  @include fontstyle(400, normal, normal, 0.4px);
+}
+// dashboard

@@ -128,23 +128,27 @@ html,body {
   }
   .navbar-homepage {
     .logo-homepage-white {
+      margin-top: 20px;
       img {
-        width: 160px;
+        width: 120px;
       }
     }
-    .nav-hmpg li {
-      a {
-        color: #ffffff;
-        font-family: $font-primary;
-        font-size: 13px;
-        @include fontstyle(600, normal, normal, 0.4px);
-        text-transform: capitalize !important;
-      }
-      .joinascustomer div {
-        border-radius: 3px;
-        background: linear-gradient(97deg, $logo-color-primary, $f6b092);
-        color: #ffffff;
-        padding: 10px 20px;
+    .nav-hmpg {
+      margin-right: 2em;
+      li {
+        a {
+          color: #ffffff;
+          font-family: $font-primary;
+          font-size: 13px;
+          @include fontstyle(600, normal, normal, 0.4px);
+          text-transform: capitalize !important;
+        }
+        .joinascustomer div {
+          border-radius: 3px;
+          background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+          color: #ffffff;
+          padding: 10px 20px;
+        }
       }
     }
     .nav-hmpg {

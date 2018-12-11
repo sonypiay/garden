@@ -1,6 +1,5 @@
 <ul class="uk-navbar-nav nav-hmpg">
   @if( Cookie::get('hasLoginCustomers') )
-  <li><a>Rp. 0</a></li>
   <li><a class="navcusticon" uk-tooltip="title: Transaksi; pos: bottom"><span><i class="fas fa-exchange-alt"></i></span></a></li>
   <li><a class="navcusticon" uk-tooltip="title: Notifikasi; pos: bottom"><span><i class="far fa-bell"></i></span></a></li>
   <li><a href="{{ route('accountcustomer_page') }}">{{ $users->customer_name }} <span class="uk-margin-small-left"><i class="fas fa-caret-down"></i></span></a>
@@ -36,6 +35,8 @@
     </div>
   </li>
   @else
+  <li><a href="{{ route('aboutus') }}">Tentang Kami</a></li>
+  <li><a href="{{ route('discoveryvendor_page') }}">Cari Vendor</a></li>
   <li><a class="joinascustomer" href="{{ route('signuppage') }}"><div>Daftar</div></a></li>
   <li><a class="loginascustomer" href="{{ route('loginpage') }}"><div>Masuk</div></a></li>
   @endif

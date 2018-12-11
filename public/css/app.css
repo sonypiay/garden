@@ -437,8 +437,16 @@ body {
   background: linear-gradient(108deg, rgba(246, 161, 146, 0.1), rgba(246, 207, 146, 0.5), rgba(246, 176, 146, 0.3)) !important;
 }
 
+.cover-homepage .navbar-homepage .logo-homepage-white {
+  margin-top: 20px;
+}
+
 .cover-homepage .navbar-homepage .logo-homepage-white img {
-  width: 160px;
+  width: 120px;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg {
+  margin-right: 2em;
 }
 
 .cover-homepage .navbar-homepage .nav-hmpg li a {
