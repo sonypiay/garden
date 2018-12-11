@@ -1,9 +1,44 @@
 <template lang="html">
-  <div class="uk-container uk-margin-large-top">
-    <div class="dashboard-welcome-screen">
+  <div class="uk-container uk-margin-large-bottom uk-margin-large-top">
+    <div class="uk-margin-bottom dashboard-welcome-screen">
       <div class="dashboard-hello">Selamat Datang, John Doe</div>
     </div>
-    <div class="uk-grid-small uk-margin-top" uk-grid>
+    <!--<div class="uk-grid-medium uk-grid-match" uk-grid>
+      <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+        <div class="uk-grid-small" uk-grid>
+          <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+            <div class="uk-card uk-card-body uk-card-default dashboard_alluser_grid">
+              <div class="uk-card-title dashboard_alluser_value">{{ allusers.customers.total_customer }}</div>
+              <div class="dashboard_alluser_title">Pelanggan</div>
+            </div>
+          </div>
+          <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+            <div class="uk-card uk-card-body uk-card-default dashboard_alluser_grid">
+              <div class="uk-card-title dashboard_alluser_value">{{ allusers.customers.registered }}</div>
+              <div class="dashboard_alluser_title">Registrasi per Hari Ini</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+        <div class="uk-grid-small" uk-grid>
+          <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+            <div class="uk-card uk-card-body uk-card-default dashboard_alluser_grid">
+              <div class="uk-card-title dashboard_alluser_value">{{ allusers.vendor.total_vendor }}</div>
+              <div class="dashboard_alluser_title">Vendor</div>
+            </div>
+          </div>
+          <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+            <div class="uk-card uk-card-body uk-card-default dashboard_alluser_grid">
+              <div class="uk-card-title dashboard_alluser_value">{{ allusers.vendor.registered }}</div>
+              <div class="dashboard_alluser_title">Registrasi per Hari Ini</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  -->
+    <div class="uk-grid-small uk-grid-match uk-margin-top" uk-grid>
       <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
         <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
           <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.payment_waiting }}</div>
@@ -41,8 +76,18 @@
         </div>
       </div>
     </div>
-    <div class="uk-grid-small" uk-grid>
 
+    <div class="uk-margin-top">
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-1-6@xl uk-width-1-6@l uk-width-1-6@m uk-width-1-4@s">
+          <h2 class="dashboard_transaction_heading">Transaksi</h2>
+        </div>
+        <div class="uk-width-expand">
+          <div class="uk-float-right">
+            Hello World
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

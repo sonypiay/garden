@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use App\FunctionApp\CustomFunction;
+use App\Database\Vendors;
+use App\Database\Customers;
+use App\Database\Kabupaten;
 use App\Database\BookingTransaction;
 use App\Database\LogStatusTransaction;
 use App\Http\Controllers\Controller;
@@ -73,93 +76,286 @@ class DashboardController extends Controller
     return response()->json( $data, 200 );
   }
 
-  public function analytic_activity_transaction( Request $request, LogStatusTransaction $logstatus )
+  public function analytic_activity_transaction( Request $request, BookingTransaction $booking )
   {
     $filter_day = $request->filter_day;
-    $logstatus = new $logstatus;
-    $dateformat = DB::raw('date_format(log_date, "%Y-%m-%d")');
+    $rows = $request->rows;
+    $keywords = $request->keywords;
+    $premium = $request->premium;
+    $status = $request->status;
+
+    $booking = new $booking;
+    $dateformat = DB::raw('date_format(created_at, "%Y-%m-%d")');
     $begin = new DateTime(date('Y-m-d'));
     $end = new DateTime();
-
+    $query = $booking->select(
+      'vendors.vendor_name',
+      'customers.customer_name',
+      'booking_transaction.id',
+      'booking_transaction.transaction_id',
+      'booking_transaction.schedule_date',
+      'booking_transaction.layout_design',
+      'booking_transaction.payment_method',
+      'booking_transaction.last_status_transaction',
+      'booking_transaction.isPremium',
+      'booking_transaction.created_at',
+      'kabupaten.nama_kab',
+    )
+    ->join('customers', 'booking_transaction.customer_id', '=', 'customers.customer_id')
+    ->join('vendors', 'booking_transaction.vendor_id', '=', 'vendors.vendor_id')
+    ->join('kabupaten', 'booking_transaction.district', '=', 'kabupaten.id_kab');
     if( $filter_day == 'today' )
     {
-      $query = $logstatus->where( $dateformat, '=', date('Y-m-d') );
-    }
-    else if( $filter_day == '7day' )
-    {
-      $end = $end->modify( '7 days ago' );
-      $interval = new DateInterval('P1D');
-      $daterange = new DatePeriod($end, $interval , $begin);
-      $range = [];
-      foreach( $daterange as $date )
+      if( empty( $keywords ) )
       {
-        $range[] = $date->format('Y-m-d');
+        if( $premium == 'all' )
+        {
+          if( $status == 'all' )
+          {
+            $query = $booking->where( $dateformat, '=', date('Y-m-d') );
+          }
+          else
+          {
+            $query = $booking->where([
+              [$dateformat, '=', date('Y-m-d')],
+              ['booking_transaction.last_status_transaction', '=', $status]
+            ]);
+          }
+        }
+        else
+        {
+          if( $status == 'all' )
+          {
+            $query = $booking->where([
+              [$dateformat, '=', date('Y-m-d')],
+              ['booking_transaction.isPremium', '=', $premium]
+            ]);
+          }
+          else
+          {
+            $query = $booking->where([
+              [$dateformat, '=', date('Y-m-d')],
+              ['booking_transaction.isPremium', '=', $premium],
+              ['booking_transaction.last_status_transaction', '=', $status]
+            ]);
+          }
+        }
       }
-      $startdate = $range[0];
-      $enddate = end( $range );
-      $query = $logstatus->where([
-        [$dateformat, '>=', $startdate],
-        [$dateformat, '<=', $enddate],
-      ]);
-    }
-    else if( $filter_day == '14day' )
-    {
-      $end = $end->modify( '14 days ago' );
-      $interval = new DateInterval('P1D');
-      $daterange = new DatePeriod($end, $interval , $begin);
-      $range = [];
-      foreach( $daterange as $date )
+      else
       {
-        $range[] = $date->format('Y-m-d');
+        if( $premium == 'all' )
+        {
+          if( $status == 'all' )
+          {
+            $query = $booking->where([
+              [$dateformat, '=', date('Y-m-d')],
+              ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
+            ])
+            ->orWhere([
+              [$dateformat, '=', date('Y-m-d')],
+              ['customers.customer_name', 'like', '%' . $keywords . '%']
+            ])
+            ->orWhere([
+              [$dateformat, '=', date('Y-m-d')],
+              ['vendors.vendor_name', 'like', '%' . $keywords . '%']
+            ]);
+          }
+          else
+          {
+            $query = $booking->where([
+              [$dateformat, '=', date('Y-m-d')],
+              ['booking_transaction.last_status_transaction', '=', $status],
+              ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
+            ])
+            ->orWhere([
+              [$dateformat, '=', date('Y-m-d')],
+              ['booking_transaction.last_status_transaction', '=', $status],
+              ['customers.customer_name', 'like', '%' . $keywords . '%']
+            ])
+            ->orWhere([
+              [$dateformat, '=', date('Y-m-d')],
+              ['booking_transaction.last_status_transaction', '=', $status],
+              ['vendors.vendor_name', 'like', '%' . $keywords . '%']
+            ]);
+          }
+        }
+        else
+        {
+          if( $status == 'all' )
+          {
+            $query = $booking->where([
+              [$dateformat, '=', date('Y-m-d')],
+              ['booking_transaction.isPremium', '=', $premium],
+              ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
+            ]);
+          }
+          else
+          {
+            $query = $booking->where([
+              [$dateformat, '=', date('Y-m-d')],
+              ['booking_transaction.isPremium', '=', $premium],
+              ['booking_transaction.last_status_transaction', '=', $status],
+              ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
+            ]);
+          }
+        }
       }
-      $startdate = $range[0];
-      $enddate = end( $range );
-      $query = $logstatus->where([
-        [$dateformat, '>=', $startdate],
-        [$dateformat, '<=', $enddate],
-      ]);
-    }
-    else if( $filter_day == '28day' )
-    {
-      $end = $end->modify( '28 days ago' );
-      $interval = new DateInterval('P1D');
-      $daterange = new DatePeriod($end, $interval , $begin);
-      $range = [];
-      foreach( $daterange as $date )
-      {
-        $range[] = $date->format('Y-m-d');
-      }
-      $startdate = $range[0];
-      $enddate = end( $range );
-      $query = $logstatus->where([
-        [$dateformat, '>=', $startdate],
-        [$dateformat, '<=', $enddate],
-      ]);
     }
     else
     {
-      $end = $end->modify( '1 month ago' );
+      if( $filter_day == '7day' )
+      {
+        $end = $end->modify( '7 days ago' );
+      }
+      else if( $filter_day == '14day' )
+      {
+        $end = $end->modify( '14 days ago' );
+      }
+      else if( $filter_day == '28day' )
+      {
+        $end = $end->modify( '28 days ago' );
+      }
+      else
+      {
+        $end = $end->modify( '1 month ago' );
+      }
       $interval = new DateInterval('P1D');
       $daterange = new DatePeriod($end, $interval , $begin);
       $range = [];
-      foreach( $daterange as $date )
+      if( $filter_day == 'today' )
       {
-        if( $date->format('Ym') == date('Ym') )
-          $range[] = $date->format('Y-m-d');
+        foreach( $daterange as $date )
+        {
+          if( $date->format('Ym') == date('Ym')  )
+            $range[] = $date->format('Y-m-d');
+        }
       }
+      else
+      {
+        foreach( $daterange as $date )
+        {
+            $range[] = $date->format('Y-m-d');
+        }
+      }
+
       $startdate = $range[0];
       $enddate = end( $range );
-      $query = $logstatus->where([
-        [$dateformat, '>=', $startdate],
-        [$dateformat, '<=', $enddate],
-      ]);
+
+      if( empty( $keywords ) )
+      {
+        if( $premium == 'all' )
+        {
+          if( $status == 'all' )
+          {
+            $query = $booking->where([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+            ]);
+          }
+          else
+          {
+            $query = $booking->where([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['booking_transaction.last_status_transaction', '=', $status]
+            ]);
+          }
+        }
+        else
+        {
+          if( $status == 'all' )
+          {
+            $query = $booking->where([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['booking_transaction.isPremium', '=', $premium]
+            ]);
+          }
+          else
+          {
+            $query = $booking->where([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['booking_transaction.isPremium', '=', $premium],
+              ['booking_transaction.last_status_transaction', '=', $status]
+            ]);
+          }
+        }
+      }
+      else
+      {
+        if( $premium == 'all' )
+        {
+          if( $status == 'all' )
+          {
+            $query = $booking->where([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
+            ])
+            ->orWhere([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['customers.customer_name', 'like', '%' . $keywords . '%']
+            ])
+            ->orWhere([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['vendors.vendor_name', 'like', '%' . $keywords . '%']
+            ]);
+          }
+          else
+          {
+            $query = $booking->where([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['booking_transaction.last_status_transaction', '=', $status],
+              ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
+            ])
+            ->orWhere([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['booking_transaction.last_status_transaction', '=', $status],
+              ['customers.customer_name', 'like', '%' . $keywords . '%']
+            ])
+            ->orWhere([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['booking_transaction.last_status_transaction', '=', $status],
+              ['vendors.vendor_name', 'like', '%' . $keywords . '%']
+            ]);
+          }
+        }
+        else
+        {
+          if( $status == 'all' )
+          {
+            $query = $booking->where([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['booking_transaction.isPremium', '=', $premium],
+              ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
+            ]);
+          }
+          else
+          {
+            $query = $booking->where([
+              [$dateformat, '>=', $startdate],
+              [$dateformat, '<=', $enddate],
+              ['booking_transaction.isPremium', '=', $premium],
+              ['booking_transaction.last_status_transaction', '=', $status],
+              ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
+            ]);
+          }
+        }
+      }
     }
 
     $data = [
       'results' => [
-        'total' => $query->count(),
-        'result' => $query->orderBy('log_date', 'desc')->get()
-      ]
+        $query->orderBy('booking_transaction.created_at', 'desc')->paginate( $rows )
+      ],
+      'filterDay' => $filter_day
     ];
     return response()->json( $data );
   }

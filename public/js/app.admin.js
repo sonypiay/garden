@@ -71857,7 +71857,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71868,6 +71868,51 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -72019,194 +72064,244 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "uk-container uk-margin-large-top" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "uk-grid-small uk-margin-top", attrs: { "uk-grid": "" } },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "uk-card-title dash_statustransaction_value" },
-                  [_vm._v(_vm._s(_vm.total_transaction.payment_waiting))]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "dash_statustransaction_title" }, [
-                  _vm._v("Menunggu Pembayaran")
-                ])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "uk-card-title dash_statustransaction_value" },
-                  [_vm._v(_vm._s(_vm.total_transaction.payment_verify))]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "dash_statustransaction_title" }, [
-                  _vm._v("Verifikasi Pembayaran")
-                ])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "uk-card-title dash_statustransaction_value" },
-                  [_vm._v(_vm._s(_vm.total_transaction.paid))]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "dash_statustransaction_title" }, [
-                  _vm._v("Dibayar")
-                ])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "uk-card-title dash_statustransaction_value" },
-                  [_vm._v(_vm._s(_vm.total_transaction.onprogress))]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "dash_statustransaction_title" }, [
-                  _vm._v("Sedang Dikerjakan")
-                ])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "uk-card-title dash_statustransaction_value" },
-                  [_vm._v(_vm._s(_vm.total_transaction.report))]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "dash_statustransaction_title" }, [
-                  _vm._v("Laporan Pekerjaan")
-                ])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "uk-card-title dash_statustransaction_value" },
-                  [_vm._v(_vm._s(_vm.total_transaction.done))]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "dash_statustransaction_title" }, [
-                  _vm._v("Pekerjaan Selesai")
-                ])
-              ]
-            )
-          ]
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } })
-  ])
+  return _c(
+    "div",
+    { staticClass: "uk-container uk-margin-large-bottom uk-margin-large-top" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "uk-grid-small uk-grid-match uk-margin-top",
+          attrs: { "uk-grid": "" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.payment_waiting))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Menunggu Pembayaran")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.payment_verify))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Verifikasi Pembayaran")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.paid))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Dibayar")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.onprogress))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Sedang Dikerjakan")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.report))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Laporan Pekerjaan")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.done))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Pekerjaan Selesai")
+                  ])
+                ]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(1)
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "dashboard-welcome-screen" }, [
-      _c("div", { staticClass: "dashboard-hello" }, [
-        _vm._v("Selamat Datang, John Doe")
+    return _c(
+      "div",
+      { staticClass: "uk-margin-bottom dashboard-welcome-screen" },
+      [
+        _c("div", { staticClass: "dashboard-hello" }, [
+          _vm._v("Selamat Datang, John Doe")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin-top" }, [
+      _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-6@xl uk-width-1-6@l uk-width-1-6@m uk-width-1-4@s"
+          },
+          [
+            _c("h2", { staticClass: "dashboard_transaction_heading" }, [
+              _vm._v("Transaksi")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-width-expand" }, [
+          _c("div", { staticClass: "uk-float-right" }, [
+            _vm._v("\n          Hello World\n        ")
+          ])
+        ])
       ])
     ])
   }

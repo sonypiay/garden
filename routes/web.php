@@ -143,6 +143,7 @@ Route::group(['prefix' => 'cp'], function() {
   Route::get('/dashboard', 'Administrator\DashboardController@index')->name('dashboard_admin');
 
   Route::group(['prefix' => '/analytic'], function() {
+    Route::get('/allusers', 'Administrator\DashboardController@total_vendor_customer');
     Route::get('/total_transaction', 'Administrator\DashboardController@total_current_analytic_transaction');
     Route::get('/activity_transaction', 'Administrator\DashboardController@analytic_activity_transaction');
   });

@@ -220,6 +220,12 @@ body {
   background: #f6b092;
 }
 
+.divider {
+  border-top: 1px solid #eeeeee;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .logo-container {
   background: linear-gradient(97deg, #f6a192, #f6b092);
   border-radius: 8px 0 0 8px;
@@ -454,6 +460,42 @@ body {
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.4px;
+}
+
+.dashboard_alluser_header {
+  font-size: 22px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #444444;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashboard_alluser_grid {
+  border-radius: 4px;
+}
+
+.dashboard_alluser_grid .dashboard_alluser_value {
+  font-size: 22px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #444444;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+
+.dashboard_alluser_grid .dashboard_alluser_title {
+  font-size: 13px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #999999;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-top: 5px;
 }
 
 .dashboard_grid_statustransaction {
