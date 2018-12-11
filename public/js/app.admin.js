@@ -71857,7 +71857,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71868,6 +71868,53 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -71994,6 +72041,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         status: 'all',
         premium: 'all'
       },
+      pagination: {
+        current: 1,
+        next: null,
+        prev: null,
+        last: 1,
+        path: this.url + '/analytic/activity_transaction'
+      },
       activity_transaction: {
         selectedDate: 'today',
         total: 0,
@@ -72021,6 +72075,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    formatDate: function formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
+      return res;
+    },
     getTotalTransaction: function getTotalTransaction() {
       var _this = this;
 
@@ -72041,16 +72099,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log(err.response.statusText);
       });
     },
-    getActivityTransaction: function getActivityTransaction() {
+    getActivityTransaction: function getActivityTransaction(pages) {
       var _this2 = this;
+
+      var param = '&keywords=' + this.forms.keywords + '&rows=' + this.forms.filter_rows + '&filter_day=' + this.forms.filter_day + '&status=' + this.forms.status + '&premium=' + this.forms.premium;
+      if (pages === undefined || pages === null || pages === '') {
+        pages = this.url + '/analytic/activity_transaction?page=' + this.pagination.current + param;
+      } else {
+        pages = pages + param;
+      }
 
       axios({
         method: 'get',
-        url: this.url + '/analytic/activity_transaction'
+        url: pages
       }).then(function (res) {
         var result = res.data;
         _this2.activity_transaction.total = result.results.total;
-        _this2.activity_transaction.results = result.results.result;
+        _this2.activity_transaction.results = result.results.data;
+        console.log(result.results);
       }).catch(function (err) {
         console.log(err.response.statusText);
       });
@@ -72316,23 +72382,32 @@ var render = function() {
                           ],
                           staticClass: "uk-select dashboard_filter_action",
                           on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.forms,
-                                "filter_rows",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.forms,
+                                  "filter_rows",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                _vm.getActivityTransaction(
+                                  _vm.pagination.path +
+                                    "?page=" +
+                                    _vm.pagination.path
+                                )
+                              }
+                            ]
                           }
                         },
                         [
@@ -72380,23 +72455,32 @@ var render = function() {
                           ],
                           staticClass: "uk-select dashboard_filter_action",
                           on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.forms,
-                                "filter_day",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.forms,
+                                  "filter_day",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                _vm.getActivityTransaction(
+                                  _vm.pagination.path +
+                                    "?page=" +
+                                    _vm.pagination.path
+                                )
+                              }
+                            ]
                           }
                         },
                         [
@@ -72426,11 +72510,253 @@ var render = function() {
                         ]
                       )
                     ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
+                    },
+                    [
+                      _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                        _c("span", {
+                          staticClass: "uk-form-icon",
+                          attrs: { "uk-icon": "search" }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.forms.keywords,
+                              expression: "forms.keywords"
+                            }
+                          ],
+                          staticClass:
+                            "uk-width-1-1 uk-input dashboard_filter_action",
+                          attrs: { type: "search", placeholder: "Cari..." },
+                          domProps: { value: _vm.forms.keywords },
+                          on: {
+                            keyup: function($event) {
+                              if (
+                                !("button" in $event) &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              _vm.getActivityTransaction(
+                                _vm.pagination.path +
+                                  "?page=" +
+                                  _vm.pagination.path
+                              )
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.forms,
+                                "keywords",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.forms.premium,
+                              expression: "forms.premium"
+                            }
+                          ],
+                          staticClass: "uk-select dashboard_filter_action",
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.forms,
+                                  "premium",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                _vm.getActivityTransaction(
+                                  _vm.pagination.path +
+                                    "?page=" +
+                                    _vm.pagination.path
+                                )
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "all" } }, [
+                            _vm._v("Premium / Non Premium")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Y" } }, [
+                            _vm._v("Premium")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "N" } }, [
+                            _vm._v("Non Premium")
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@s uk-width-1-3@s"
+                    },
+                    [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.forms.status,
+                              expression: "forms.status"
+                            }
+                          ],
+                          staticClass: "uk-select dashboard_filter_action",
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.forms,
+                                  "status",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function($event) {
+                                _vm.getActivityTransaction(
+                                  _vm.pagination.path +
+                                    "?page=" +
+                                    _vm.pagination.path
+                                )
+                              }
+                            ]
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "all" } }, [
+                            _vm._v("-- Semua Status --")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.$root.statusTransaction, function(
+                            val,
+                            key
+                          ) {
+                            return _c("option", { domProps: { value: key } }, [
+                              _vm._v(_vm._s(val))
+                            ])
+                          })
+                        ],
+                        2
+                      )
+                    ]
                   )
                 ]
               )
             ])
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-small uk-table-hover uk-table-divider uk-table-hover uk-table-middle"
+            },
+            [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.activity_transaction.results, function(tr) {
+                  return _c("tr", [
+                    _vm._m(3, true),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(tr.transaction_id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(tr.vendor_name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(tr.customer_name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(tr.nama_kab))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(
+                          _vm.$root.statusTransaction[
+                            tr.last_status_transaction
+                          ]
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(
+                          _vm.formatDate(tr.created_at, "MMM DD, YYYY HH:mm")
+                        )
+                      )
+                    ])
+                  ])
+                })
+              )
+            ]
+          )
         ])
       ])
     ]
@@ -72462,11 +72788,47 @@ var staticRenderFns = [
           "uk-width-1-6@xl uk-width-1-6@l uk-width-1-6@m uk-width-1-4@s"
       },
       [
-        _c("h2", { staticClass: "dashboard_transaction_heading" }, [
+        _c("h3", { staticClass: "dashboard_transaction_heading" }, [
           _vm._v("Transaksi")
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("No. Transaksi")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Vendor")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Pelanggan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kota")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tanggal Pesan")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("button", {
+        staticClass: "uk-button uk-button-text",
+        attrs: {
+          "uk-icon": "cog",
+          "uk-tooltip": "title: Lihat Rincian; pos: right"
+        }
+      })
+    ])
   }
 ]
 render._withStripped = true

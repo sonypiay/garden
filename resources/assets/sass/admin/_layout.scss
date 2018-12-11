@@ -176,9 +176,13 @@ html, body {
   border-radius: 3px;
   border: 1px solid #eeeeee;
   color: #777777;
-  font-size: 14px;
+  font-size: 12px;
   font-family: $font-family-sans-serif;
   @include fontstyle(400, normal, normal, 0.4px);
+  &:hover, &:focus {
+    border: 1px solid $f6c492;
+    color: #555555;
+  }
 }
 .dashboard-welcome-screen
 {
@@ -230,5 +234,11 @@ html, body {
     @include fontstyle(400, normal, normal, 0.4px);
     margin-bottom: 5px;
   }
+}
+.dashboard_transaction_heading {
+  font-size: 22px;
+  font-family: $font-family-sans-serif;
+  color: #444444;
+  @include fontstyle(400, normal, normal, 0.4px);
 }
 // dashboard

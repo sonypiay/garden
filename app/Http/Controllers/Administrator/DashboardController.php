@@ -112,11 +112,11 @@ class DashboardController extends Controller
         {
           if( $status == 'all' )
           {
-            $query = $booking->where( $dateformat, '=', date('Y-m-d') );
+            $query = $query->where( $dateformat, '=', date('Y-m-d') );
           }
           else
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '=', date('Y-m-d')],
               ['booking_transaction.last_status_transaction', '=', $status]
             ]);
@@ -126,14 +126,14 @@ class DashboardController extends Controller
         {
           if( $status == 'all' )
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '=', date('Y-m-d')],
               ['booking_transaction.isPremium', '=', $premium]
             ]);
           }
           else
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '=', date('Y-m-d')],
               ['booking_transaction.isPremium', '=', $premium],
               ['booking_transaction.last_status_transaction', '=', $status]
@@ -147,7 +147,7 @@ class DashboardController extends Controller
         {
           if( $status == 'all' )
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '=', date('Y-m-d')],
               ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
             ])
@@ -162,7 +162,7 @@ class DashboardController extends Controller
           }
           else
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '=', date('Y-m-d')],
               ['booking_transaction.last_status_transaction', '=', $status],
               ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
@@ -183,7 +183,7 @@ class DashboardController extends Controller
         {
           if( $status == 'all' )
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '=', date('Y-m-d')],
               ['booking_transaction.isPremium', '=', $premium],
               ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
@@ -191,7 +191,7 @@ class DashboardController extends Controller
           }
           else
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '=', date('Y-m-d')],
               ['booking_transaction.isPremium', '=', $premium],
               ['booking_transaction.last_status_transaction', '=', $status],
@@ -248,14 +248,14 @@ class DashboardController extends Controller
         {
           if( $status == 'all' )
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '>=', $startdate],
               [$dateformat, '<=', $enddate]
             ]);
           }
           else
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '>=', $startdate],
               [$dateformat, '<=', $enddate],
               ['booking_transaction.last_status_transaction', '=', $status]
@@ -266,7 +266,7 @@ class DashboardController extends Controller
         {
           if( $status == 'all' )
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '>=', $startdate],
               [$dateformat, '<=', $enddate],
               ['booking_transaction.isPremium', '=', $premium]
@@ -274,7 +274,7 @@ class DashboardController extends Controller
           }
           else
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '>=', $startdate],
               [$dateformat, '<=', $enddate],
               ['booking_transaction.isPremium', '=', $premium],
@@ -289,7 +289,7 @@ class DashboardController extends Controller
         {
           if( $status == 'all' )
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '>=', $startdate],
               [$dateformat, '<=', $enddate],
               ['booking_transaction.transaction_id', 'like', '%' . $keywords . '%']
@@ -307,7 +307,7 @@ class DashboardController extends Controller
           }
           else
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '>=', $startdate],
               [$dateformat, '<=', $enddate],
               ['booking_transaction.last_status_transaction', '=', $status],
@@ -331,7 +331,7 @@ class DashboardController extends Controller
         {
           if( $status == 'all' )
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '>=', $startdate],
               [$dateformat, '<=', $enddate],
               ['booking_transaction.isPremium', '=', $premium],
@@ -340,7 +340,7 @@ class DashboardController extends Controller
           }
           else
           {
-            $query = $booking->where([
+            $query = $query->where([
               [$dateformat, '>=', $startdate],
               [$dateformat, '<=', $enddate],
               ['booking_transaction.isPremium', '=', $premium],
@@ -353,9 +353,7 @@ class DashboardController extends Controller
     }
 
     $data = [
-      'results' => [
-        $query->orderBy('booking_transaction.created_at', 'desc')->paginate( $rows )
-      ],
+      'results' => $query->orderBy('booking_transaction.created_at', 'desc')->paginate( $rows ),
       'filterDay' => $filter_day
     ];
     return response()->json( $data );
