@@ -36,7 +36,7 @@
     </div>
   </li>
   @else
-  <li><a class="joinascustomer" href="{{ route('registerpage_customer') }}"><div>Daftar</div></a></li>
-  <li><a class="loginascustomer" href="{{ route('loginpage_customer') }}"><div>Masuk</div></a></li>
+  <li><a class="joinascustomer" href="{{ route('loginpage') }}"><div>Daftar</div></a></li>
+  <li><a class="loginascustomer" href="{{ route('signuppage') }}"><div>Masuk</div></a></li>
   @endif
 </ul>

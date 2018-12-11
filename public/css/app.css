@@ -2110,3 +2110,79 @@ body {
           box-shadow: none;
 }
 
+.signup_login {
+  background: none;
+}
+
+.signup_login .signup_login_container {
+  border-radius: 4px;
+  background: none;
+}
+
+.signup_login .signup_login_container .signup_login_heading {
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-align: center;
+}
+
+.signup_login .signup_login_container .signup_login_icon {
+  text-align: center;
+  font-size: 90px;
+  color: #ffffff;
+}
+
+.signup_login .signup_login_container .signup_login_text {
+  font-size: 24px;
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.signup_login .signup_login_container:hover,
+.signup_login .signup_login_container:focus {
+  text-decoration: none;
+  background: #ffffff;
+  transition: all 0.20s ease 0s;
+  -moz-transition: all 0.20s ease 0s;
+  -webkit-transition: all 0.20s ease 0s;
+}
+
+.signup_login .signup_login_container:hover .signup_login_icon,
+.signup_login .signup_login_container:hover .signup_login_text,
+.signup_login .signup_login_container:focus .signup_login_icon,
+.signup_login .signup_login_container:focus .signup_login_text {
+  color: #f6a192;
+}
+
+.signup_login .signup_login_backtohome {
+  border: 0;
+  background: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  border-radius: 3px;
+  text-transform: capitalize;
+  margin-top: 30px;
+}
+
+.signup_login .signup_login_backtohome:hover,
+.signup_login .signup_login_backtohome:focus {
+  border: 0;
+  background: #ffffff;
+  color: #f6a192;
+}
+

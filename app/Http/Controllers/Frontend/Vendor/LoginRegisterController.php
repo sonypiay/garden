@@ -205,4 +205,78 @@ class LoginRegisterController extends Controller
       return redirect()->route('loginpage_vendor');
     }
   }
+
+  public function lupapassword( Request $request, Customers $customers )
+  {
+    if( Cookie::get('hasLoginCustomers') || Cookie::get('hasLoginVendor') )
+    {
+      return redirect()->route('homepage');
+    }
+    else
+    {
+      return response()->view('frontend.pages.vendor.lupapassword', [
+        'request' => $request
+      ]);
+    }
+  }
+
+  public function checkemail( Request $request, Vendors $vendors )
+  {
+    $email = $request->email;
+    $checkemail = $vendors->where('vendor_email', $email)->count();
+    if( $checkemail === 1 )
+    {
+      $request->session()->put('changepassword_vendor', true);
+      $request->session()->put('session_email_vendor', $email);
+      $res = [
+        'status' => 200,
+        'statusText' => 'Email ditemukan'
+      ];
+    }
+    else
+    {
+      $res = [
+        'status' => 401,
+        'statusText' => 'Email tidak terdaftar'
+      ];
+    }
+
+    return response()->json( $res, $res['status'] );
+  }
+
+  public function change_password( Request $request )
+  {
+    if( Cookie::get('hasLoginCustomers') || Cookie::get('hasLoginVendor') )
+    {
+      return redirect()->route('homepage');
+    }
+    else
+    {
+      if( $request->session('changepassword_vendor') )
+      {
+        return response()->view('frontend.pages.vendor.reset_password', [
+          'request' => $request
+        ]);
+      }
+      else
+      {
+        return redirect()->route('homepage');
+      }
+    }
+  }
+
+  public function reset_password( Request $request, Vendors $vendors )
+  {
+    $password = $request->password;
+    $email = $request->session()->get('session_email_vendor');
+    $vendors = $vendors->where('vendor_email', $email)->first();
+    $vendors->vendor_password = Hash::make( $password, ['round' => 16] );
+    $vendors->save();
+
+    $res = [
+      'status' => 200,
+      'statusText' => 'success'
+    ];
+    return response()->json( $res, $res['status'] );
+  }
 }

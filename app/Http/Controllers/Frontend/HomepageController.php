@@ -54,4 +54,28 @@ class HomepageController extends Controller
   {
     return response()->view('frontend.pages.aboutus');
   }
+
+  public function loginpage( Request $request )
+  {
+    if( Cookie::get('hasLoginCustomers') || Cookie::get('hasLoginVendor') )
+    {
+      return redirect()->route('homepage');
+    }
+    else
+    {
+      return response()->view('frontend.pages.login', ['request' => $request]);
+    }
+  }
+
+  public function signuppage( Request $request )
+  {
+    if( Cookie::get('hasLoginCustomers') || Cookie::get('hasLoginVendor') )
+    {
+      return redirect()->route('homepage');
+    }
+    else
+    {
+      return response()->view('frontend.pages.signup', ['request' => $request]);
+    }
+  }
 }
