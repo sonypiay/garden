@@ -36,8 +36,9 @@ export default {
 
 <style lang="css">
 html, body {
-  background: linear-gradient(108deg,
-  rgba(246,161,146,1),
-  rgba(246,176,146,1)) !important;
+  background: linear-gradient(30deg,
+    rgba(246,161,146,1),
+    rgba(246,207,146,1)
+  ) !important;
 }
 </style>

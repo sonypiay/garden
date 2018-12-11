@@ -85439,7 +85439,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\nhtml, body {\r\n  background: linear-gradient(108deg,\r\n  rgba(246,161,146,1),\r\n  rgba(246,176,146,1)) !important;\n}\r\n", ""]);
+exports.push([module.i, "\nhtml, body {\r\n  background: linear-gradient(30deg,\r\n    rgba(246,161,146,1),\r\n    rgba(246,207,146,1)\r\n  ) !important;\n}\r\n", ""]);
 
 // exports
 
