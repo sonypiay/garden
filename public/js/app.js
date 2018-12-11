@@ -65736,7 +65736,8 @@ window.Vue = __webpack_require__(166);
  */
 
 // other component
-//Vue.component('v-calendar', require('v-calendar'));
+Vue.component('loginas', __webpack_require__(322));
+Vue.component('signupas', __webpack_require__(325));
 
 // customer
 Vue.component('logincustomer', __webpack_require__(171));
@@ -65749,6 +65750,7 @@ Vue.component('customermainorder', __webpack_require__(212));
 Vue.component('customersummaryorder', __webpack_require__(215));
 Vue.component('customerorderlist', __webpack_require__(218));
 Vue.component('lupapasswordcustomer', __webpack_require__(221));
+Vue.component('changepasswordcustomer', __webpack_require__(307));
 //customer
 
 // vendor
@@ -65759,6 +65761,8 @@ Vue.component('vendorportfolio', __webpack_require__(257));
 Vue.component('vendorportfolioimages', __webpack_require__(260));
 Vue.component('vendororderlist', __webpack_require__(263));
 Vue.component('vendorsummaryorder', __webpack_require__(266));
+Vue.component('lupapasswordvendor', __webpack_require__(312));
+Vue.component('changepasswordvendor', __webpack_require__(317));
 // vendor
 
 Vue.component('discoveryvendor', __webpack_require__(269));
@@ -75042,12 +75046,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       errors: '',
-      btnsubmit: 'Daftar',
+      btnsubmit: 'Verifikasi',
       forms: {
-        notelepon: '',
-        password: '',
         email: '',
-        fullname: '',
         error: false
       }
     };
@@ -75069,37 +75070,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return false;
       }
 
-      if (this.countLength(this.forms.password) < 8) {
-        this.errors.password = 'Sandi minimal 8 karakter';
-      } else {
-        this.btnsubmit = '<span uk-spinner></span>';
-        axios({
-          method: 'post',
-          url: this.url + '/customers/checkemail',
-          headers: { 'Content-Type': 'application/json' },
-          params: {
-            email: this.forms.email
-          }
-        }).then(function (res) {
-          _this.errors.errorMessage = '';
-          //var redirect = this.url + '/customers/account';
-          setTimeout(function () {
-            document.location = '';
-          }, 3000);
-        }).catch(function (err) {
-          var status = err.response.status;
-          if (status === 422) {
-            _this.errors.errorMessage = err.response.data.statusText;
-          } else {
-            _this.errors.errorMessage = err.response.statusText;
-          }
-          _this.btnsubmit = 'Daftar';
-        });
-      }
-    },
-
-    countLength: function countLength(str) {
-      return str.length;
+      this.btnsubmit = '<span uk-spinner></span>';
+      axios({
+        method: 'post',
+        url: this.url + '/customers/checkemail',
+        headers: { 'Content-Type': 'application/json' },
+        params: {
+          email: this.forms.email
+        }
+      }).then(function (res) {
+        _this.errors.errorMessage = '';
+        var redirect = _this.url + '/customers/change_password';
+        setTimeout(function () {
+          document.location = redirect;
+        }, 3000);
+      }).catch(function (err) {
+        var status = err.response.status;
+        if (status === 401) {
+          _this.errors.errorMessage = err.response.data.statusText;
+        } else {
+          _this.errors.errorMessage = err.response.statusText;
+        }
+        _this.btnsubmit = 'Verifikasi';
+      });
     }
   },
   mounted: function mounted() {}
@@ -84050,6 +84043,549 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\xampp\\htdocs\\works\\garden\\resources\\assets\\js\\components\\customers\\ChangePassword.vue'");
+
+/***/ }),
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\xampp\\htdocs\\works\\garden\\resources\\assets\\js\\components\\vendors\\LupaPassword.vue'");
+
+/***/ }),
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\xampp\\htdocs\\works\\garden\\resources\\assets\\js\\components\\vendors\\ChangePassword.vue'");
+
+/***/ }),
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(326)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(323)
+/* template */
+var __vue_template__ = __webpack_require__(324)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/LoginAs.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-70d2a814", Component.options)
+  } else {
+    hotAPI.reload("data-v-70d2a814", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 323 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url']
+});
+
+/***/ }),
+/* 324 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "uk-container uk-margin-large-top" }, [
+    _c("div", { staticClass: "uk-tile uk-tile-default signup_login" }, [
+      _c(
+        "div",
+        {
+          staticClass: "uk-grid-large uk-grid-match",
+          attrs: { "uk-grid": "" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "uk-display-block uk-tile uk-tile-default signup_login_container",
+                  attrs: { href: _vm.url + "/vendor/login" }
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "signup_login_text" }, [
+                    _vm._v("Masuk Sebagai Vendor")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "uk-display-block uk-tile uk-tile-default signup_login_container",
+                  attrs: { href: _vm.url + "/customers/login" }
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "signup_login_text" }, [
+                    _vm._v("Masuk Sebagai Pelanggan")
+                  ])
+                ]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-text-center" }, [
+        _c(
+          "a",
+          {
+            staticClass:
+              "uk-button uk-button-default uk-button-large signup_login_backtohome",
+            attrs: { href: _vm.url + "/" }
+          },
+          [_vm._v("Kembali ke Halaman Utama")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "signup_login_icon" }, [
+      _c("span", { staticClass: "fas fa-users" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "signup_login_icon" }, [
+      _c("span", { staticClass: "fas fa-user-circle" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-70d2a814", module.exports)
+  }
+}
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(328)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(330)
+/* template */
+var __vue_template__ = __webpack_require__(331)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/SignUpAs.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f20ea87e", Component.options)
+  } else {
+    hotAPI.reload("data-v-f20ea87e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(327);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(139)("6b89a758", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-70d2a814\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LoginAs.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-70d2a814\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LoginAs.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nhtml, body {\r\n  background: linear-gradient(30deg,\r\n    rgba(246,161,146,1),\r\n    rgba(246,207,146,1)\r\n  ) !important;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 328 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(329);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(139)("3466cfc7", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f20ea87e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SignUpAs.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f20ea87e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SignUpAs.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nhtml, body {\r\n  background: linear-gradient(30deg,\r\n    rgba(246,161,146,1),\r\n    rgba(246,207,146,1)\r\n  ) !important;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 330 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url']
+});
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "uk-container uk-margin-large-top" }, [
+    _c("div", { staticClass: "uk-tile uk-tile-default signup_login" }, [
+      _c(
+        "div",
+        {
+          staticClass: "uk-grid-large uk-grid-match",
+          attrs: { "uk-grid": "" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "uk-display-block uk-tile uk-tile-default signup_login_container",
+                  attrs: { href: _vm.url + "/vendor/register" }
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "signup_login_text" }, [
+                    _vm._v("Daftar Sebagai Vendor")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "uk-display-block uk-tile uk-tile-default signup_login_container",
+                  attrs: { href: _vm.url + "/customers/register" }
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "signup_login_text" }, [
+                    _vm._v("Daftar Sebagai Pelanggan")
+                  ])
+                ]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-text-center" }, [
+        _c(
+          "a",
+          {
+            staticClass:
+              "uk-button uk-button-default uk-button-large signup_login_backtohome",
+            attrs: { href: _vm.url + "/" }
+          },
+          [_vm._v("Kembali ke Halaman Utama")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "signup_login_icon" }, [
+      _c("span", { staticClass: "fas fa-users" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "signup_login_icon" }, [
+      _c("span", { staticClass: "fas fa-user-circle" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f20ea87e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

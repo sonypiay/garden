@@ -13,6 +13,8 @@
 // Route frontend
 Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
 Route::get('/tentang_kami', 'Frontend\HomepageController@aboutus')->name('aboutus');
+Route::get('/login', 'Frontend\HomepageController@loginpage')->name('loginpage');
+Route::get('/join', 'Frontend\HomepageController@signuppage')->name('signuppage');
 
 Route::group(['prefix' => 'discovery'], function() {
   Route::get('/', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');
@@ -34,6 +36,10 @@ Route::group(['prefix' => 'customers'], function() {
   Route::post('/doLogin', 'Frontend\Customers\LoginRegisterController@doLogin');
   Route::get('/logout', 'Frontend\Customers\LoginRegisterController@logout')->name('logoutcustomer');
   Route::get('/lupa_password', 'Frontend\Customers\LoginRegisterController@lupapassword')->name('lupapasswordcustomer_page');
+  Route::post('/checkemail', 'Frontend\Customers\LoginRegisterController@checkemail');
+  Route::get('/change_password', 'Frontend\Customers\LoginRegisterController@change_password');
+  Route::put('/reset_password', 'Frontend\Customers\LoginRegisterController@reset_password');
+
   Route::get('/order_list', 'Frontend\Customers\BookingTransactionController@order_list')->name('customerorderlist_page');
   Route::get('/data_orderlist', 'Frontend\Customers\BookingTransactionController@data_orderlist');
   Route::get('/summary_order/{orderid}', 'Frontend\Customers\BookingTransactionController@summary_order')->name('summaryordercustomer_page');
@@ -72,6 +78,10 @@ Route::group(['prefix' => 'vendor'], function() {
   Route::get('/logout', 'Frontend\Vendor\LoginRegisterController@logout')->name('logoutvendor');
   Route::post('/doregister', 'Frontend\Vendor\LoginRegisterController@doregister');
   Route::post('/dologin', 'Frontend\Vendor\LoginRegisterController@dologin');
+  Route::get('/lupa_password', 'Frontend\Vendor\LoginRegisterController@lupapassword')->name('lupapasswordvendor_page');
+  Route::post('/checkemail', 'Frontend\Vendor\LoginRegisterController@checkemail');
+  Route::get('/change_password', 'Frontend\Vendor\LoginRegisterController@change_password');
+  Route::put('/reset_password', 'Frontend\Vendor\LoginRegisterController@reset_password');
 
   Route::get('/order_list', 'Frontend\Vendor\BookingTransactionController@index')->name('orderlistvendor_page');
   Route::get('/data_orderlist', 'Frontend\Vendor\BookingTransactionController@data_orderlist');

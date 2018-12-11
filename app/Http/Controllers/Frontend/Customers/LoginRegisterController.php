@@ -185,7 +185,7 @@ class LoginRegisterController extends Controller
 
   public function lupapassword( Request $request, Customers $customers )
   {
-    if( Cookie::get('hasLoginCustomers') )
+    if( Cookie::get('hasLoginCustomers') || Cookie::get('hasLoginVendor') )
     {
       return redirect()->route('accountcustomer_page');
     }
@@ -195,5 +195,65 @@ class LoginRegisterController extends Controller
         'request' => $request
       ]);
     }
+  }
+
+  public function checkemail( Request $request, Customers $customers )
+  {
+    $email = $request->email;
+    $checkemail = $customers->where('customer_email', $email)->count();
+    if( $checkemail === 1 )
+    {
+      $request->session()->put('changepassword_customer', true);
+      $request->session()->put('session_email_customer', $email);
+      $res = [
+        'status' => 200,
+        'statusText' => 'Email ditemukan'
+      ];
+    }
+    else
+    {
+      $res = [
+        'status' => 401,
+        'statusText' => 'Email tidak terdaftar'
+      ];
+    }
+
+    return response()->json( $res, $res['status'] );
+  }
+
+  public function change_password( Request $request )
+  {
+    if( Cookie::get('hasLoginCustomers') || Cookie::get('hasLoginVendor') )
+    {
+      return redirect()->route('accountcustomer_page');
+    }
+    else
+    {
+      if( $request->session('changepassword_customer') )
+      {
+        return response()->view('frontend.pages.customers.reset_password', [
+          'request' => $request
+        ]);
+      }
+      else
+      {
+        return redirect()->route('accountcustomer_page');
+      }
+    }
+  }
+
+  public function reset_password( Request $request, Customers $customers )
+  {
+    $password = $request->password;
+    $email = $request->session()->get('session_email_customer');
+    $customers = $customers->where('customer_email', $email)->first();
+    $customers->customer_password = Hash::make( $password, ['round' => 16] );
+    $customers->save();
+
+    $res = [
+      'status' => 200,
+      'statusText' => 'success'
+    ];
+    return response()->json( $res, $res['status'] );
   }
 }

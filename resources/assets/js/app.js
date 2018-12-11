@@ -16,7 +16,8 @@ window.Vue = require('vue');
  */
 
 // other component
-//Vue.component('v-calendar', require('v-calendar'));
+Vue.component('loginas', require('./components/LoginAs.vue'));
+Vue.component('signupas', require('./components/SignUpAs.vue'));
 
 // customer
 Vue.component('logincustomer', require('./components/customers/Login.vue'));
@@ -29,6 +30,7 @@ Vue.component('customermainorder', require('./components/customers/orders/MainOr
 Vue.component('customersummaryorder', require('./components/customers/orders/SummaryOrder.vue'));
 Vue.component('customerorderlist', require('./components/customers/orders/ListTransaction.vue'));
 Vue.component('lupapasswordcustomer', require('./components/customers/LupaPassword.vue'));
+Vue.component('changepasswordcustomer', require('./components/customers/ChangePassword.vue'));
 //customer
 
 // vendor
@@ -39,6 +41,8 @@ Vue.component('vendorportfolio', require('./components/vendors/Portfolio.vue'));
 Vue.component('vendorportfolioimages', require('./components/vendors/PortfolioImage.vue'));
 Vue.component('vendororderlist', require('./components/vendors/orders/ListTransaction.vue'));
 Vue.component('vendorsummaryorder', require('./components/vendors/orders/SummaryOrder.vue'));
+Vue.component('lupapasswordvendor', require('./components/vendors/LupaPassword.vue'));
+Vue.component('changepasswordvendor', require('./components/vendors/ChangePassword.vue'));
 // vendor
 
 Vue.component('discoveryvendor', require('./components/DiscoveryVendor.vue'));

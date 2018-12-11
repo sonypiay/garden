@@ -60,7 +60,7 @@ export default {
       this.btnsubmit = '<span uk-spinner></span>';
       axios({
         method: 'post',
-        url: this.url + '/customers/checkemail',
+        url: this.url + '/vendor/checkemail',
         headers: { 'Content-Type': 'application/json' },
         params: {
           email: this.forms.email
@@ -68,7 +68,7 @@ export default {
       })
       .then( res => {
         this.errors.errorMessage = '';
-        var redirect = this.url + '/customers/change_password';
+        var redirect = this.url + '/vendor/change_password';
         setTimeout(function(){ document.location = redirect; }, 3000);
       })
       .catch( err => {

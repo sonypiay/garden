@@ -11,10 +11,12 @@
 @if( $request->route()->getName() != 'homepage' AND
 $request->route()->getName() != 'loginpage_customer' AND
 $request->route()->getName() != 'registerpage_customer' AND
-$request->route()->getName() != 'registerpage_customer' AND
 $request->route()->getName() != 'loginpage_vendor' AND
-$request->route()->getName() != 'registerpage_vendor' AND
-$request->route()->getName() != 'lupapasswordcustomer_page'
+$request->route()->getName() != 'lupapasswordcustomer_page' AND
+$request->route()->getName() != 'loginpage' AND
+$request->route()->getName() != 'signuppage' AND
+$request->route()->getName() != 'lupapasswordcustomer_page' AND
+$request->route()->getName() != 'lupapasswordvendor_page'
 )
 <footer class="footer">
   <div class="uk-card uk-card-body uk-card-default mainfooter">
