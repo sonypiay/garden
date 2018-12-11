@@ -71857,7 +71857,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71868,14 +71868,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -72352,413 +72344,407 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "uk-margin-top" }, [
-        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-          _vm._m(1),
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-card uk-card-body uk-card-small uk-card-default uk-margin-top"
+        },
+        [
+          _c("h3", { staticClass: "dashboard_transaction_heading" }, [
+            _vm._v("Transaksi")
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "uk-width-expand" }, [
-            _c("div", { staticClass: "uk-float-right" }, [
+          _c(
+            "div",
+            { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+            [
               _c(
                 "div",
-                { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+                {
+                  staticClass:
+                    "uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s"
+                },
                 [
                   _c(
-                    "div",
+                    "select",
                     {
-                      staticClass:
-                        "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
-                    },
-                    [
-                      _c(
-                        "select",
+                      directives: [
                         {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.forms.filter_rows,
-                              expression: "forms.filter_rows"
-                            }
-                          ],
-                          staticClass: "uk-select dashboard_filter_action",
-                          on: {
-                            change: [
-                              function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.forms,
-                                  "filter_rows",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              },
-                              function($event) {
-                                _vm.getActivityTransaction(
-                                  _vm.pagination.path +
-                                    "?page=" +
-                                    _vm.pagination.path
-                                )
-                              }
-                            ]
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.filter_rows,
+                          expression: "forms.filter_rows"
+                        }
+                      ],
+                      staticClass: "uk-select dashboard_filter_action",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.forms,
+                              "filter_rows",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.getActivityTransaction(
+                              _vm.pagination.path +
+                                "?page=" +
+                                _vm.pagination.path
+                            )
                           }
-                        },
-                        [
-                          _c("option", { attrs: { value: "10" } }, [
-                            _vm._v("10 ditampilkan")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "20" } }, [
-                            _vm._v("20 ditampilkan")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "30" } }, [
-                            _vm._v("30 ditampilkan")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "50" } }, [
-                            _vm._v("50 ditampilkan")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "100" } }, [
-                            _vm._v("100 ditampilkan")
-                          ])
                         ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
+                      }
                     },
                     [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.forms.filter_day,
-                              expression: "forms.filter_day"
-                            }
-                          ],
-                          staticClass: "uk-select dashboard_filter_action",
-                          on: {
-                            change: [
-                              function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.forms,
-                                  "filter_day",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              },
-                              function($event) {
-                                _vm.getActivityTransaction(
-                                  _vm.pagination.path +
-                                    "?page=" +
-                                    _vm.pagination.path
-                                )
-                              }
-                            ]
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "today" } }, [
-                            _vm._v("Hari ini")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "7day" } }, [
-                            _vm._v("7 hari terakhir")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "14day" } }, [
-                            _vm._v("14 hari terakhir")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "28day" } }, [
-                            _vm._v("28 hari terakhir")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "last_month" } }, [
-                            _vm._v("1 bulan terakhir")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "this_month" } }, [
-                            _vm._v("Bulan ini")
-                          ])
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
-                    },
-                    [
-                      _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-                        _c("span", {
-                          staticClass: "uk-form-icon",
-                          attrs: { "uk-icon": "search" }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.forms.keywords,
-                              expression: "forms.keywords"
-                            }
-                          ],
-                          staticClass:
-                            "uk-width-1-1 uk-input dashboard_filter_action",
-                          attrs: { type: "search", placeholder: "Cari..." },
-                          domProps: { value: _vm.forms.keywords },
-                          on: {
-                            keyup: function($event) {
-                              if (
-                                !("button" in $event) &&
-                                _vm._k(
-                                  $event.keyCode,
-                                  "enter",
-                                  13,
-                                  $event.key,
-                                  "Enter"
-                                )
-                              ) {
-                                return null
-                              }
-                              _vm.getActivityTransaction(
-                                _vm.pagination.path +
-                                  "?page=" +
-                                  _vm.pagination.path
-                              )
-                            },
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.forms,
-                                "keywords",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
+                      _c("option", { attrs: { value: "10" } }, [
+                        _vm._v("10 ditampilkan")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "20" } }, [
+                        _vm._v("20 ditampilkan")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "30" } }, [
+                        _vm._v("30 ditampilkan")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "50" } }, [
+                        _vm._v("50 ditampilkan")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "100" } }, [
+                        _vm._v("100 ditampilkan")
                       ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
-                    },
-                    [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.forms.premium,
-                              expression: "forms.premium"
-                            }
-                          ],
-                          staticClass: "uk-select dashboard_filter_action",
-                          on: {
-                            change: [
-                              function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.forms,
-                                  "premium",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              },
-                              function($event) {
-                                _vm.getActivityTransaction(
-                                  _vm.pagination.path +
-                                    "?page=" +
-                                    _vm.pagination.path
-                                )
-                              }
-                            ]
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "all" } }, [
-                            _vm._v("Premium / Non Premium")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "Y" } }, [
-                            _vm._v("Premium")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "N" } }, [
-                            _vm._v("Non Premium")
-                          ])
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@s uk-width-1-3@s"
-                    },
-                    [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.forms.status,
-                              expression: "forms.status"
-                            }
-                          ],
-                          staticClass: "uk-select dashboard_filter_action",
-                          on: {
-                            change: [
-                              function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.forms,
-                                  "status",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              },
-                              function($event) {
-                                _vm.getActivityTransaction(
-                                  _vm.pagination.path +
-                                    "?page=" +
-                                    _vm.pagination.path
-                                )
-                              }
-                            ]
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "all" } }, [
-                            _vm._v("-- Semua Status --")
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(_vm.$root.statusTransaction, function(
-                            val,
-                            key
-                          ) {
-                            return _c("option", { domProps: { value: key } }, [
-                              _vm._v(_vm._s(val))
-                            ])
-                          })
-                        ],
-                        2
-                      )
                     ]
                   )
                 ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "uk-table uk-table-small uk-table-hover uk-table-divider uk-table-hover uk-table-middle"
-            },
-            [
-              _vm._m(2),
+              ),
               _vm._v(" "),
               _c(
-                "tbody",
-                _vm._l(_vm.activity_transaction.results, function(tr) {
-                  return _c("tr", [
-                    _vm._m(3, true),
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.filter_day,
+                          expression: "forms.filter_day"
+                        }
+                      ],
+                      staticClass: "uk-select dashboard_filter_action",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.forms,
+                              "filter_day",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.getActivityTransaction(
+                              _vm.pagination.path +
+                                "?page=" +
+                                _vm.pagination.path
+                            )
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "today" } }, [
+                        _vm._v("Hari ini")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "7day" } }, [
+                        _vm._v("7 hari terakhir")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "14day" } }, [
+                        _vm._v("14 hari terakhir")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "28day" } }, [
+                        _vm._v("28 hari terakhir")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "last_month" } }, [
+                        _vm._v("1 bulan terakhir")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "this_month" } }, [
+                        _vm._v("Bulan ini")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-4@xl uk-width-1-4@l uk-width-1-3@s uk-width-1-3@s"
+                },
+                [
+                  _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                    _c("span", {
+                      staticClass: "uk-form-icon",
+                      attrs: { "uk-icon": "search" }
+                    }),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(tr.transaction_id))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(tr.vendor_name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(tr.customer_name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(tr.nama_kab))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _vm._v(
-                        _vm._s(
-                          _vm.$root.statusTransaction[
-                            tr.last_status_transaction
-                          ]
-                        )
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _vm._v(
-                        _vm._s(
-                          _vm.formatDate(tr.created_at, "MMM DD, YYYY HH:mm")
-                        )
-                      )
-                    ])
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.keywords,
+                          expression: "forms.keywords"
+                        }
+                      ],
+                      staticClass:
+                        "uk-width-1-1 uk-input dashboard_filter_action",
+                      attrs: { type: "search", placeholder: "Cari..." },
+                      domProps: { value: _vm.forms.keywords },
+                      on: {
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          _vm.getActivityTransaction(
+                            _vm.pagination.path + "?page=" + _vm.pagination.path
+                          )
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.forms, "keywords", $event.target.value)
+                        }
+                      }
+                    })
                   ])
-                })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.premium,
+                          expression: "forms.premium"
+                        }
+                      ],
+                      staticClass: "uk-select dashboard_filter_action",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.forms,
+                              "premium",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.getActivityTransaction(
+                              _vm.pagination.path +
+                                "?page=" +
+                                _vm.pagination.path
+                            )
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "all" } }, [
+                        _vm._v("Premium / Non Premium")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Y" } }, [
+                        _vm._v("Premium")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "N" } }, [
+                        _vm._v("Non Premium")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.status,
+                          expression: "forms.status"
+                        }
+                      ],
+                      staticClass: "uk-select dashboard_filter_action",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.forms,
+                              "status",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.getActivityTransaction(
+                              _vm.pagination.path +
+                                "?page=" +
+                                _vm.pagination.path
+                            )
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "all" } }, [
+                        _vm._v("-- Semua Status --")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.$root.statusTransaction, function(val, key) {
+                        return _c("option", { domProps: { value: key } }, [
+                          _vm._v(_vm._s(val))
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]
               )
             ]
-          )
-        ])
-      ])
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+            _c(
+              "table",
+              {
+                staticClass:
+                  "uk-table uk-table-small uk-table-hover uk-table-divider uk-table-hover uk-table-middle"
+              },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.activity_transaction.results, function(tr) {
+                    return _c("tr", [
+                      _vm._m(2, true),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(tr.transaction_id))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(tr.vendor_name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(tr.customer_name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(tr.nama_kab))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm.$root.statusTransaction[
+                              tr.last_status_transaction
+                            ]
+                          )
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm.formatDate(tr.created_at, "MMM DD, YYYY HH:mm")
+                          )
+                        )
+                      ])
+                    ])
+                  })
+                )
+              ]
+            )
+          ])
+        ]
+      )
     ]
   )
 }
@@ -72773,23 +72759,6 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "dashboard-hello" }, [
           _vm._v("Selamat Datang, John Doe")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "uk-width-1-6@xl uk-width-1-6@l uk-width-1-6@m uk-width-1-4@s"
-      },
-      [
-        _c("h3", { staticClass: "dashboard_transaction_heading" }, [
-          _vm._v("Transaksi")
         ])
       ]
     )

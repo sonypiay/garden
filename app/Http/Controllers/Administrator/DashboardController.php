@@ -36,7 +36,7 @@ class DashboardController extends Controller
 
   public function total_current_analytic_transaction( Request $request, BookingTransaction $booking, LogStatusTransaction $logstatus )
   {
-    $now = '2018-12-09';
+    $now = date('Y-m-d');
     $payment_waiting = $booking->where([
       ['last_status_transaction', '=', 'payment_waiting'],
       [DB::raw('date_format(updated_at, "%Y-%m-%d")'), '=', $now]
