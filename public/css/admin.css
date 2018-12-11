@@ -446,3 +446,39 @@ body {
   letter-spacing: 0.4px;
 }
 
+.dashboard-welcome-screen .dashboard-hello {
+  font-size: 26px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #666666;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashboard_grid_statustransaction {
+  border-radius: 4px;
+}
+
+.dashboard_grid_statustransaction .dash_statustransaction_title {
+  font-size: 13px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #999999;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-top: 5px;
+}
+
+.dashboard_grid_statustransaction .dash_statustransaction_value {
+  font-size: 22px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #444444;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+

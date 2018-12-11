@@ -14,6 +14,7 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+Vue.component('dashboardadmin', require('./components/administrator/Dashboard.vue'));
 Vue.component('login-section', require('./components/administrator/Login.vue'));
 Vue.component('cpusers-section', require('./components/administrator/Users.vue'));
 Vue.component('cpbankpayment-section', require('./components/administrator/BankPayment.vue'));

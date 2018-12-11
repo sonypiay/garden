@@ -1,6 +1,6 @@
 <ul class="uk-nav uk-nav-default uk-nav-parent-icon main-nav" uk-nav>
   <li class="uk-nav-header">Main Menu</li>
-  <li><a href="#">Dashboard</a></li>
+  <li><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
   <li><a href="{{ route('orderlist_admin') }}">Transaksi</a></li>
   <li><a href="#">Pelanggan</a></li>
   <li class="uk-parent"><a href="#">Vendor</a>

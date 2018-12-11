@@ -12,7 +12,6 @@
     <div class="uk-navbar-right">
       <ul class="uk-navbar-nav navtopcustomer">
         @if( Cookie::get('hasLoginCustomers') )
-        <li><a>Rp. 0</a></li>
         <li><a class="navcusticon" uk-tooltip="title: Transaksi; pos: bottom"><span><i class="fas fa-exchange-alt"></i></span></a></li>
         <li><a class="navcusticon" uk-tooltip="title: Notifikasi; pos: bottom"><span><i class="far fa-bell"></i></span></a></li>
         <li><a>{{ $myaccount->customer_name }} <span class="uk-margin-small-left"><i class="fas fa-caret-down"></i></span></a>

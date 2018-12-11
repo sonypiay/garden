@@ -141,6 +141,12 @@ Route::group(['prefix' => 'cp'], function() {
   Route::get('/logout', 'Administrator\LoginController@logout')->name('logoutadminpage');
   Route::post('/login', 'Administrator\LoginController@dologin');
   Route::get('/dashboard', 'Administrator\DashboardController@index')->name('dashboard_admin');
+
+  Route::group(['prefix' => '/analytic'], function() {
+    Route::get('/total_transaction', 'Administrator\DashboardController@total_current_analytic_transaction');
+    Route::get('/activity_transaction', 'Administrator\DashboardController@analytic_activity_transaction');
+  });
+
   Route::group(['prefix' => '/transaction'], function() {
     Route::get('/order_list', 'Administrator\BookingOrdersController@index')->name('orderlist_admin');
     Route::get('/data_orderlist', 'Administrator\BookingOrdersController@data_orderlist');

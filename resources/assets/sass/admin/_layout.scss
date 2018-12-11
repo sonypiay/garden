@@ -166,3 +166,30 @@ html, body {
     @include fontstyle(400, normal, normal, 0.4px);
   }
 }
+
+.dashboard-welcome-screen
+{
+  .dashboard-hello {
+    font-size: 26px;
+    font-family: $font-family-sans-serif;
+    color: #666666;
+    @include fontstyle(400, normal, normal, 0.4px);
+  }
+}
+.dashboard_grid_statustransaction {
+  border-radius: 4px;
+  .dash_statustransaction_title {
+    font-size: 13px;
+    font-family: $font-family-sans-serif;
+    color: #999999;
+    @include fontstyle(400, normal, normal, 0.4px);
+    margin-top: 5px;
+  }
+  .dash_statustransaction_value {
+    font-size: 22px;
+    font-family: $font-family-sans-serif;
+    color: #444444;
+    @include fontstyle(400, normal, normal, 0.4px);
+    margin-bottom: 5px;
+  }
+}
