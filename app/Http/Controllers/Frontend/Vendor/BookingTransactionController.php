@@ -164,7 +164,7 @@ class BookingTransactionController extends Controller
 
       $logstatus->transaction_id = $orderid;
       $logstatus->status_transaction = 'payment_waiting';
-      $logstatus->status_description = 'Menunggu konfirmasi pembayaran.';
+      $logstatus->status_description = 'Pesanan diterima oleh pihak Vendor. <br> Menunggu pembayaran dari sisi Pelanggan.';
       $res = [
         'status' => 200,
         'statusText' => 'Approved'
@@ -177,7 +177,7 @@ class BookingTransactionController extends Controller
 
       $logstatus->transaction_id = $orderid;
       $logstatus->status_transaction = 'rejected';
-      $logstatus->status_description = 'Transaksi ditolak';
+      $logstatus->status_description = 'Pesanan ditolak oleh pihak Vendor.';
       $res = [
         'status' => 200,
         'statusText' => 'Rejected'

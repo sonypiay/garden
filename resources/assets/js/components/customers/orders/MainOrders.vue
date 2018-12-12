@@ -3,8 +3,9 @@
     <div class="content_mainorders_header">
       <div class="uk-container">
         <div class="uk-card uk-card-body content_mainorders_heading">
-          <div class="summary_headertitle">Pembayaran - #{{ orders.transaction_id }}</div>
-          <div class="summary_subtitle">Silahkan lakukan pembayaran pesanan Anda</div>
+          <div class="summary_headertitle">Pesanan - #{{ orders.transaction_id }}</div>
+          <div class="summary_subtitle">Silahkan konfirmasi pesanan Anda terlebih dahulu</div>
+          <div class="summary_subtitle">Status pesanan saat ini : <strong>{{ $root.statusTransaction[orders.last_status_transaction] }}</strong> </div>
         </div>
       </div>
     </div>

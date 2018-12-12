@@ -7,15 +7,9 @@
     <div class="uk-overlay cover-overlay-homepage uk-position-cover">
       <header class="header-hmpg">
         <div class="uk-navbar navbar-homepage" uk-navbar>
-          <!--<div class="uk-navbar-left">
-            <ul class="uk-navbar-nav nav-hmpg">
-              <li><a href="{{ route('aboutus') }}">Tentang Kami</a></li>
-              <li><a href="{{ route('discoveryvendor_page') }}">Cari Vendor</a></li>
-            </ul>
-          </div>-->
           <div class="uk-navbar-left">
             <a href="{{ url('/') }}" class="uk-navbar-item uk-logo logo-homepage-white">
-              <img class="uk-border-circle" src="{{ asset('images/logobrand/logobaru2.jpeg') }}" alt="garden pages">
+              <img class="uk-border-circle" src="{{ asset('images/logobrand/gplogo-white-new2.png') }}" alt="garden pages">
             </a>
           </div>
           <div class="uk-navbar-right">

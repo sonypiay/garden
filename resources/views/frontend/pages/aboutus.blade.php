@@ -18,7 +18,7 @@
 <header class="uk-box-shadow-small uk-navbar navbar">
   <div class="uk-navbar-center">
     <a href="{{ route('homepage') }}" class="uk-navbar-item uk-logo logo">
-      <img src="{{ asset('images/logobrand/logobaru2.jpeg') }}" alt="gardenbuana">
+      <img src="{{ asset('images/logobrand/gplogo-primary-new.png') }}" alt="gardenbuana">
     </a>
   </div>
 </header>
@@ -35,7 +35,7 @@
   <div class="uk-grid-collapse uk-grid-match" uk-grid>
     <div class="uk-width-1-2">
       <div class="uk-tile uk-tile-default contentabout_logo">
-        <img src="{{ asset('images/logobrand/logobaru2.jpeg') }}" alt="gardenbuana-white">
+        <img src="{{ asset('images/logobrand/gplogo-white-new2.png') }}" alt="gardenbuana-white">
       </div>
     </div>
     <div class="uk-width-1-2">

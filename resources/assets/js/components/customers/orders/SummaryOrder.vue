@@ -60,7 +60,7 @@
                     <img v-if="formatFile === 'jpeg' || formatFile === 'jpg'" :src="url + '/images/customer/layout_design/' + orders.layout_design" alt="">
                     <div v-else>
                       <a class="uk-button uk-button-default summarydetail_download" href="#">
-                        <span uk-icon="cloud-download"></span> Unggah
+                        <span uk-icon="cloud-download"></span> Unduh Layout
                       </a>
                     </div>
                   </div>
@@ -79,16 +79,14 @@
                       </div>
                       <div class="uk-width-expand">
                         <div class="view-transaction-heading">{{ $root.statusTransaction[log.status_transaction] }}</div>
-                        <div class="view-transaction-value">
-                          {{ log.status_description }}
-                          <div v-if="log.status_transaction === 'report'">
-                            <a class="uk-button uk-button-default summarydetail_download">
-                              Unduh Report
-                            </a>
-                            <a v-if="orders.last_status_transaction === 'report'" class="uk-button uk-button-default summarydetail_download" @click="onConfirmReport()">
-                              Konfirmasi
-                            </a>
-                          </div>
+                        <div class="view-transaction-value" v-html="log.status_description"></div>
+                        <div v-if="log.status_transaction === 'report'">
+                          <a class="uk-button uk-button-default summarydetail_download">
+                            Unduh Report
+                          </a>
+                          <a v-if="orders.last_status_transaction === 'report'" class="uk-button uk-button-default summarydetail_download" @click="onConfirmReport()">
+                            Konfirmasi
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -232,7 +230,8 @@ export default {
               icon: 'success',
               timer: 5000
             });
-            setTimeout(function(){ document.location = ''; }, 3000);
+            var redirect = this.url + '/customers/summary_order/' + this.orders.transaction_id;
+            setTimeout(function(){ document.location = redirect; }, 3000);
           }).catch( err => {
             swal({
               title: 'Terjadi Kesalahan',

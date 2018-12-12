@@ -275,7 +275,7 @@ export default {
         {
           swal({
             title: 'Konfirmasi Approval',
-            text: 'Transaksi ' + this.orders.transaction_id + ' diterima',
+            text: 'Nomor pesanan ' + this.orders.transaction_id + ' diterima',
             icon: 'success',
             timer: 5000
           });
@@ -285,13 +285,14 @@ export default {
         {
           swal({
             title: 'Konfirmasi Approval',
-            text: 'Transaksi ' + this.orders.transaction_id + ' ditolak',
+            text: 'Nomor pesanan ' + this.orders.transaction_id + ' ditolak',
             icon: 'success',
             timer: 5000
           });
           this.forms.rejected = 'Tolak';
         }
-        setTimeout(function(){ document.location = ''; }, 3000);
+        var redirect = this.url + '/vendor/summary_order/' + this.orders.transaction_id;
+        setTimeout(function(){ document.location = redirect; }, 3000);
       }).catch( err => {
         swal({
           title: 'Terjadi Kesalahan',
@@ -322,7 +323,7 @@ export default {
           icon: 'success',
           timer: 5000
         });
-        var redirect = this.url + '/vendor/order_list';
+        var redirect = this.url + '/vendor/summary_order/' + this.orders.transaction_id;
         setTimeout(function(){ document.location = redirect; }, 2000);
       }).catch( err => {
         swal({
@@ -345,7 +346,7 @@ export default {
           icon: 'success',
           timer: 5000
         });
-        var redirect = this.url + '/vendor/order_list';
+        var redirect = this.url + '/vendor/summary_order/' + this.orders.transaction_id;
         setTimeout(function(){ document.location = redirect; }, 2000);
       }).catch( err => {
         swal({
@@ -380,9 +381,8 @@ export default {
           icon: 'success',
           timer: 5000,
         });
-        setTimeout(function() {
-          document.location = '';
-        }, 3000);
+        var redirect = this.url + '/vendor/summary_order/' + this.orders.transaction_id;
+        setTimeout(function(){ document.location = redirect; }, 3000);
       }).catch( err => {
         swal({
           title: 'Terjadi Kesalahan',

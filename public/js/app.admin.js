@@ -4999,33 +4999,6 @@ module.exports = {
 /* 3 */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -5105,7 +5078,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -5124,7 +5097,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(174)
+var listToStyles = __webpack_require__(167)
 
 /*
 type StyleObject = {
@@ -5330,6 +5303,33 @@ function applyToTag (styleElement, obj) {
     styleElement.appendChild(document.createTextNode(css))
   }
 }
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
@@ -15875,7 +15875,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 9 */
@@ -18444,7 +18444,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)))
 
 /***/ }),
 /* 11 */
@@ -47932,7 +47932,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(9)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(9)(module)))
 
 /***/ }),
 /* 142 */
@@ -54430,7 +54430,7 @@ if (__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.fn) {
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(12)))
 
 /***/ }),
 /* 165 */
@@ -65664,17 +65664,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(8).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(8).setImmediate))
 
 /***/ }),
-/* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */,
-/* 174 */
+/* 167 */
 /***/ (function(module, exports) {
 
 /**
@@ -65707,6 +65700,13 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
 /* 175 */,
 /* 176 */,
 /* 177 */,
@@ -65861,15 +65861,15 @@ window.Vue = __webpack_require__(166);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('dashboardadmin', __webpack_require__(332));
-Vue.component('login-section', __webpack_require__(305));
-Vue.component('cpusers-section', __webpack_require__(308));
-Vue.component('cpbankpayment-section', __webpack_require__(311));
-Vue.component('cpbankcustomer-section', __webpack_require__(314));
-Vue.component('provinsi-section', __webpack_require__(317));
-Vue.component('kabupaten-section', __webpack_require__(320));
-Vue.component('kecamatan-section', __webpack_require__(323));
-Vue.component('orderlist-section', __webpack_require__(326));
+Vue.component('dashboardadmin', __webpack_require__(305));
+Vue.component('login-section', __webpack_require__(310));
+Vue.component('cpusers-section', __webpack_require__(313));
+Vue.component('cpbankpayment-section', __webpack_require__(316));
+Vue.component('cpbankcustomer-section', __webpack_require__(319));
+Vue.component('provinsi-section', __webpack_require__(322));
+Vue.component('kabupaten-section', __webpack_require__(325));
+Vue.component('kecamatan-section', __webpack_require__(328));
+Vue.component('orderlist-section', __webpack_require__(331));
 
 var app = new Vue({
   el: '#app',
@@ -65896,5895 +65896,15 @@ var app = new Vue({
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(306)
-/* template */
-var __vue_template__ = __webpack_require__(307)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/administrator/Login.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-43d32e80", Component.options)
-  } else {
-    hotAPI.reload("data-v-43d32e80", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 306 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url'],
-  data: function data() {
-    return {
-      username: '',
-      password: '',
-      iserror: false,
-      errors: {},
-      signinLoading: 'Sign In'
-    };
-  },
-
-  methods: {
-    doLogin: function doLogin() {
-      var _this = this;
-
-      this.errors = {};
-      if (this.username === '') {
-        this.errors.username = 'Silahkan masukkan username.';
-        this.iserror = true;
-      }
-
-      if (this.password === '') {
-        this.errors.password = 'Silahkan masukkan password';
-        this.iserror = true;
-      }
-      if (this.iserror === true) return false;
-      this.signinLoading = '<span uk-spinner></span>';
-      axios({
-        url: this.url + '/cp/login',
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        params: {
-          username: this.username,
-          password: this.password
-        }
-      }).then(function (res) {
-        var result = res.data;
-        if (result.status === 200) {
-          swal({
-            title: 'Login berhasil',
-            text: 'Redirecting...',
-            icon: 'success'
-          });
-          setTimeout(function () {
-            document.location = '';
-          }, 3000);
-        }
-      }).catch(function (err) {
-        var status = err.response.status;
-        var message = err.response.data;
-        if (status === 422) {
-          swal({
-            title: 'Pesan Error',
-            text: message.statusText,
-            icon: 'warning',
-            dangerMode: true
-          });
-        }
-        _this.signinLoading = 'Log in';
-      });
-    }
-  }
-});
-
-/***/ }),
-/* 307 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-container uk-margin-large-top login-section" },
-    [
-      _c(
-        "div",
-        {
-          staticClass:
-            "uk-width-2-3@xl uk-width-2-3@l uk-width-2-3@m uk-width-1-2@s uk-margin-large-top uk-align-center"
-        },
-        [
-          _c("div", { staticClass: "uk-hidden@m uk-text-center" }, [
-            _c("img", {
-              staticClass: "uk-width-1-2",
-              attrs: { src: _vm.url + "/images/logobrand/gplogo-green.png" }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "uk-grid-small uk-grid-collapse uk-grid-match",
-              attrs: { "uk-grid": "" }
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-visible@m uk-visible@s"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "uk-tile uk-tile-default uk-padding-large logo-container"
-                    },
-                    [
-                      _c("div", { staticClass: "uk-position-center" }, [
-                        _c("img", {
-                          staticClass: "logo-login uk-border-circle",
-                          attrs: {
-                            src: _vm.url + "/images/logobrand/gplogo-white.png"
-                          }
-                        })
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-width-expand" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-card uk-card-body uk-card-default login-container"
-                  },
-                  [
-                    _c("h2", { staticClass: "uk-card-title uk-text-center" }, [
-                      _vm._v("Login")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "form",
-                      {
-                        staticClass: "uk-form-stacked",
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            return _vm.doLogin($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "uk-margin" }, [
-                          _vm.errors.username
-                            ? _c("div", [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "uk-alert-warning",
-                                    attrs: { "uk-alert": "" }
-                                  },
-                                  [_vm._v(_vm._s(_vm.errors["username"]))]
-                                )
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            { staticClass: "uk-form-label label-login" },
-                            [_vm._v("Username")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "uk-form-controls" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.username,
-                                  expression: "username"
-                                }
-                              ],
-                              staticClass: "uk-input input-login",
-                              attrs: { type: "text", placeholder: "" },
-                              domProps: { value: _vm.username },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.username = $event.target.value
-                                }
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "uk-margin" }, [
-                          _vm.errors.password
-                            ? _c("div", [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "uk-alert-warning",
-                                    attrs: { "uk-alert": "" }
-                                  },
-                                  [_vm._v(_vm._s(_vm.errors.password))]
-                                )
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            { staticClass: "uk-form-label label-login" },
-                            [_vm._v("Password")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "uk-form-controls" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.password,
-                                  expression: "password"
-                                }
-                              ],
-                              staticClass: "uk-input input-login",
-                              attrs: { type: "password", placeholder: "" },
-                              domProps: { value: _vm.password },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.password = $event.target.value
-                                }
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "uk-margin" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass:
-                                "uk-width-1-1 uk-button uk-button-default button-login",
-                              domProps: { innerHTML: _vm._s(_vm.signinLoading) }
-                            },
-                            [_vm._v("Sign In")]
-                          )
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ]
-          )
-        ]
-      )
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-43d32e80", module.exports)
-  }
-}
-
-/***/ }),
-/* 308 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(309)
-/* template */
-var __vue_template__ = __webpack_require__(310)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/administrator/Users.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-59d89fdf", Component.options)
-  } else {
-    hotAPI.reload("data-v-59d89fdf", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 309 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url'],
-  data: function data() {
-    return {
-      selectedRows: 10,
-      searchuser: '',
-      users: {
-        total: 0,
-        results: []
-      },
-      pagination: {
-        current: 1,
-        prev: '',
-        next: '',
-        last: '',
-        path: this.url + '/users/datausers',
-        perpage: 0
-      },
-      forms: {
-        id: '',
-        username: '',
-        password: '',
-        fullname: '',
-        email: '',
-        privilege: 'full',
-        edit: false
-      },
-      errors: {}
-    };
-  },
-
-  methods: {
-    btnAddOrUpdate: function btnAddOrUpdate(user) {
-      if (user === undefined || user === '') {
-        this.forms = {
-          id: '',
-          username: '',
-          password: '',
-          fullname: '',
-          email: '',
-          privilege: 'full',
-          edit: false,
-          submitButton: 'Tambah'
-        };
-        this.errors = {};
-      } else {
-        this.forms = {
-          id: user.uid,
-          username: user.username_panel,
-          password: '',
-          fullname: user.fullname,
-          email: user.email,
-          privilege: user.privileges_user,
-          edit: true,
-          submitButton: 'Simpan'
-        };
-      }
-
-      UIkit.modal('#addOrUpdateUser').show();
-    },
-    getUsersList: function getUsersList(pages) {
-      var _this = this;
-
-      var url = this.url + '/users/datausers?page=1&limit=' + this.selectedRows + '&searchuser=' + this.searchuser;
-      if (pages !== undefined) url = pages + '&limit=' + this.selectedRows + '&searchuser=' + this.searchuser;
-
-      axios({
-        url: url,
-        method: 'get'
-      }).then(function (res) {
-        var results = res.data;
-        _this.users = {
-          total: results.results.total,
-          results: results.results.data
-        };
-
-        _this.pagination = {
-          current: results.results.current_page,
-          prev: results.results.prev_page_url,
-          next: results.results.next_page_url,
-          last: results.results.last_page_url,
-          path: results.results.path,
-          perpage: results.results.per_page
-        };
-      }).catch(function (err) {
-        console.log(err.response);
-      });
-    },
-    addOrUpdateUser: function addOrUpdateUser() {
-      var _this2 = this;
-
-      this.errors = {};
-      this.errors.iserror = false;
-      if (this.forms.fullname === '') {
-        this.errors.fullname = 'Nama harap diisi.';
-        this.errors.iserror = true;
-      }
-      if (this.forms.username === '') {
-        this.errors.username = 'Username harap diisi.';
-        this.errors.iserror = true;
-      }
-      if (this.forms.email === '') {
-        this.errors.email = 'Email harap diisi.';
-        this.errors.iserror = true;
-      }
-      if (this.forms.password === '' && this.forms.edit === false) {
-        this.errors.password = 'Password harap diisi.';
-        this.errors.iserror = true;
-      }
-
-      if (this.errors.iserror === true) return false;
-      var method,
-          url = '';
-      if (this.forms.edit === false) {
-        url = this.url + '/users/add';
-        method = 'post';
-        if (this.countLength(this.forms.password) < 8) {
-          this.errors.password = 'Password terlalu pendek. Minimal 8 karakter.';
-          return false;
-        }
-      } else {
-        url = this.url + '/users/update/' + this.forms.id;
-        method = 'put';
-        if (this.forms.password !== '') {
-          if (this.countLength(this.forms.password) < 8) {
-            this.errors.password = 'Password terlalu pendek. Minimal 8 karakter.';
-            return false;
-          }
-        }
-      }
-
-      this.forms.submitButton = '<span uk-spinner></span>';
-      axios({
-        url: url,
-        method: method,
-        headers: { 'Content-Type': 'application/json' },
-        params: {
-          fullname: this.forms.fullname,
-          username: this.forms.username,
-          password: this.forms.password,
-          email: this.forms.email,
-          privilege: this.forms.privilege
-        }
-      }).then(function (res) {
-        var result = res.data;
-        swal({
-          title: 'Berhasil',
-          text: result.statusText,
-          icon: 'success',
-          timer: 3000
-        });
-        $('#submitButton').html('Tambah');
-        _this2.getUsersList();
-        setTimeout(function () {
-          UIkit.modal('#addOrUpdateUser').hide();
-        }, 3000);
-        if (_this2.forms.edit === false) {
-          _this2.forms = {
-            id: '',
-            username: '',
-            password: '',
-            fullname: '',
-            email: '',
-            privilege: 'full',
-            edit: false,
-            submitButton: 'Tambah'
-          };
-          _this2.errors = {};
-        } else {
-          _this2.forms.submitButton = 'Simpan';
-        }
-      }).catch(function (err) {
-        var status = err.response.status;
-        var message = err.response.data;
-        if (status === 422) {
-          swal({
-            title: 'Whoops',
-            text: message.statusText,
-            icon: 'warning',
-            dangerMode: true
-          });
-        }
-      });
-    },
-
-    countLength: function countLength(str) {
-      return str.length;
-    }
-  },
-  computed: {},
-  mounted: function mounted() {
-    this.getUsersList();
-  }
-});
-
-/***/ }),
-/* 310 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
-    [
-      _c("div", { attrs: { id: "addOrUpdateUser", "uk-modal": "" } }, [
-        _c("div", { staticClass: "uk-modal-dialog modal-dialog" }, [
-          _c("a", {
-            staticClass: "uk-modal-close-default",
-            attrs: { "uk-close": "" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "uk-modal-body modal-body" }, [
-            _c("div", { staticClass: "modal-heading" }, [
-              _vm.forms.edit
-                ? _c("span", [_vm._v("Edit User")])
-                : _c("span", [_vm._v("Tambah User")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "uk-margin-top" }, [
-              _c(
-                "form",
-                {
-                  staticClass: "uk-form-stacked",
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.addOrUpdateUser($event)
-                    }
-                  }
-                },
-                [
-                  _c("div", { staticClass: "uk-margin" }, [
-                    _c(
-                      "label",
-                      { staticClass: "uk-form-label form-label-modal" },
-                      [_vm._v("Nama")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-form-controls" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.forms.fullname,
-                            expression: "forms.fullname"
-                          }
-                        ],
-                        staticClass: "uk-input form-action-custom-modal",
-                        attrs: { type: "text", placeholder: "Nama Lengkap..." },
-                        domProps: { value: _vm.forms.fullname },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.forms, "fullname", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors.fullname
-                        ? _c("span", [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "uk-alert-warning uk-margin-small-top",
-                                attrs: { "uk-alert": "" }
-                              },
-                              [_vm._v(_vm._s(_vm.errors.fullname))]
-                            )
-                          ])
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-margin" }, [
-                    _c(
-                      "label",
-                      { staticClass: "uk-form-label form-label-modal" },
-                      [_vm._v("Email")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-form-controls" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.forms.email,
-                            expression: "forms.email"
-                          }
-                        ],
-                        staticClass: "uk-input form-action-custom-modal",
-                        attrs: {
-                          type: "email",
-                          placeholder: "Alamat Email..."
-                        },
-                        domProps: { value: _vm.forms.email },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.forms, "email", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors.email
-                        ? _c("span", [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "uk-alert-warning uk-margin-small-top",
-                                attrs: { "uk-alert": "" }
-                              },
-                              [_vm._v(_vm._s(_vm.errors.email))]
-                            )
-                          ])
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-margin" }, [
-                    _c(
-                      "label",
-                      { staticClass: "uk-form-label form-label-modal" },
-                      [_vm._v("Username")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-form-controls" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.forms.username,
-                            expression: "forms.username"
-                          }
-                        ],
-                        staticClass: "uk-input form-action-custom-modal",
-                        attrs: { type: "text", placeholder: "Username..." },
-                        domProps: { value: _vm.forms.username },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.forms, "username", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors.username
-                        ? _c("span", [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "uk-alert-warning uk-margin-small-top",
-                                attrs: { "uk-alert": "" }
-                              },
-                              [_vm._v(_vm._s(_vm.errors.username))]
-                            )
-                          ])
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-margin" }, [
-                    _c(
-                      "label",
-                      { staticClass: "uk-form-label form-label-modal" },
-                      [_vm._v("Password")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-form-controls" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.forms.password,
-                            expression: "forms.password"
-                          }
-                        ],
-                        staticClass: "uk-input form-action-custom-modal",
-                        attrs: { type: "password", placeholder: "Password..." },
-                        domProps: { value: _vm.forms.password },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.forms, "password", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors.password
-                        ? _c("span", [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "uk-alert-warning uk-margin-small-top",
-                                attrs: { "uk-alert": "" }
-                              },
-                              [_vm._v(_vm._s(_vm.errors.password))]
-                            )
-                          ])
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-margin" }, [
-                    _c(
-                      "label",
-                      { staticClass: "uk-form-label form-label-modal" },
-                      [_vm._v("Privilege")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "uk-form-controls" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.forms.privilege,
-                              expression: "forms.privilege"
-                            }
-                          ],
-                          staticClass: "uk-select form-action-select-modal",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.forms,
-                                "privilege",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "full" } }, [
-                            _vm._v("Full Access")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "write" } }, [
-                            _vm._v("Write & Read")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "read" } }, [
-                            _vm._v("Read Only")
-                          ])
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-margin" }, [
-                    _c("button", {
-                      staticClass:
-                        "uk-button uk-button-default button-action-modal",
-                      attrs: { id: "submitButton" },
-                      domProps: { innerHTML: _vm._s(_vm.forms.submitButton) }
-                    })
-                  ])
-                ]
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "uk-grid-small uk-grid-margin",
-          attrs: { "uk-grid": "" }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
-            },
-            [
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selectedRows,
-                      expression: "selectedRows"
-                    }
-                  ],
-                  staticClass: "uk-width-1-1 uk-select form-select",
-                  on: {
-                    change: [
-                      function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.selectedRows = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      },
-                      function($event) {
-                        _vm.getUsersList(
-                          _vm.pagination.path +
-                            "?page=" +
-                            _vm.pagination.current
-                        )
-                      }
-                    ]
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "", disabled: true } }, [
-                    _vm._v("Tampilkan")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "10" } }, [
-                    _vm._v("10 baris")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "15" } }, [
-                    _vm._v("15 baris")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "20" } }, [_vm._v("20 baris")])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
-            },
-            [
-              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-                _c("a", {
-                  staticClass: "uk-form-icon",
-                  attrs: { "uk-icon": "search" },
-                  on: {
-                    click: function($event) {
-                      _vm.getUsersList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.searchuser,
-                      expression: "searchuser"
-                    }
-                  ],
-                  staticClass: "uk-width-1-1 uk-input form-search",
-                  attrs: { type: "search", placeholder: "Cari user..." },
-                  domProps: { value: _vm.searchuser },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      _vm.getUsersList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.searchuser = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "uk-button uk-button-default button-custom-action",
-                  on: {
-                    click: function($event) {
-                      _vm.btnAddOrUpdate()
-                    }
-                  }
-                },
-                [_vm._v("Tambah")]
-              )
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _vm.users.total == 0
-        ? _c("div", [
-            _c(
-              "div",
-              {
-                staticClass: "uk-alert-warning uk-margin-top",
-                attrs: { "uk-alert": "" }
-              },
-              [_vm._v("Tidak ada data")]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
-        _c(
-          "table",
-          {
-            staticClass:
-              "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
-          },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.users.results, function(user) {
-                return _c("tr", [
-                  _c("td", [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: { "uk-tooltip": "", title: "Sunting" },
-                        on: {
-                          click: function($event) {
-                            _vm.btnAddOrUpdate(user)
-                          }
-                        }
-                      },
-                      [_c("span", { attrs: { "uk-icon": "pencil" } })]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: { "uk-tooltip": "", title: "Hapus" },
-                        on: {
-                          click: function($event) {
-                            _vm.btnAddOrUpdate()
-                          }
-                        }
-                      },
-                      [_c("span", { attrs: { "uk-icon": "trash" } })]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.fullname))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.email))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.privileges_user))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("No")])
-                ])
-              })
-            )
-          ]
-        )
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nama")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Privileges")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Blocked")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-59d89fdf", module.exports)
-  }
-}
-
-/***/ }),
-/* 311 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(312)
-/* template */
-var __vue_template__ = __webpack_require__(313)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/administrator/BankPayment.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4b3de47e", Component.options)
-  } else {
-    hotAPI.reload("data-v-4b3de47e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 312 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url'],
-  data: function data() {
-    return {
-      forms: {
-        id: '',
-        name: '',
-        code: '',
-        logo: '',
-        edit: false
-      },
-      submitBtn: 'Tambah',
-      banklist: {
-        total: 0,
-        results: []
-      },
-      keywords: '',
-      pagination: {
-        current: 1,
-        prev: '',
-        next: '',
-        last: '',
-        path: this.url + '/bankpayment'
-      }
-    };
-  },
-
-  methods: {
-    addOrUpdateBtn: function addOrUpdateBtn(d) {
-      if (d === undefined) {
-        this.forms = {
-          id: '',
-          name: '',
-          code: '',
-          logo: '',
-          edit: false
-        };
-        this.submitBtn = 'Tambah';
-      } else {
-        this.forms = {
-          id: d.bank_id,
-          name: d.bank_name,
-          code: d.bank_code,
-          logo: d.bank_logo,
-          edit: true
-        };
-        this.submitBtn = 'Simpan';
-      }
-      $("#selectedFile").val('');
-      UIkit.modal('#addOrUpdate').show();
-    },
-    addOrUpdateBank: function addOrUpdateBank() {
-      var _this = this;
-
-      if (this.forms.name === '') {
-        swal({
-          title: 'Warning',
-          text: 'Silahkan masukkan nama bank',
-          icon: 'warning',
-          dangerMode: true
-        });
-      } else if (this.forms.code === '') {
-        swal({
-          title: 'Warning',
-          text: 'Silahkan masukkan kode bank',
-          icon: 'warning',
-          dangerMode: true
-        });
-      } else {
-        if (this.forms.edit === false) {
-          if (this.forms.logo === '') {
-            swal({
-              title: 'Warning',
-              text: 'Silahkan masukkan logo bank',
-              icon: 'warning',
-              dangerMode: true
-            });
-          } else {
-            if (this.getFormatFile(this.forms.logo.name) !== 'jpg' && this.getFormatFile(this.forms.logo.name) !== 'png') {
-              swal({
-                title: 'Warning',
-                text: 'Format gambar hanya JPG atau PNG',
-                icon: 'warning',
-                dangerMode: true
-              });
-              return false;
-            }
-            var formfile = new FormData();
-            formfile.append('bank_code', this.forms.code);
-            formfile.append('bank_name', this.forms.name);
-            formfile.append('bank_logo', this.forms.logo, this.forms.logo.name);
-            axios.post(this.url + '/bankpayment/add', formfile).then(function (res) {
-              swal({
-                title: 'Berhasil',
-                text: res.data.statusText,
-                icon: 'success'
-              });
-              _this.getBankList();
-              setTimeout(function () {
-                UIkit.modal('#addOrUpdate').hide();
-              }, 2000);
-            }).catch(function (err) {
-              if (err.response.status === 500) {
-                swal({
-                  title: 'Whoops',
-                  text: err.response.statusText,
-                  icon: 'error',
-                  dangerMode: true
-                });
-              } else {
-                swal({
-                  title: 'Whoops',
-                  text: err.response.data.statusText,
-                  icon: 'error',
-                  dangerMode: true
-                });
-              }
-            });
-          }
-        } else {
-          if (this.forms.logo !== '') {
-            if (this.getFormatFile(this.forms.logo.name) !== 'jpg' && this.getFormatFile(this.forms.logo.name) !== 'png') {
-              swal({
-                title: 'Warning',
-                text: 'Format gambar hanya JPG atau PNG',
-                icon: 'warning',
-                dangerMode: true
-              });
-              return false;
-            }
-          }
-
-          var _formfile = new FormData();
-          _formfile.append('bank_code', this.forms.code);
-          _formfile.append('bank_name', this.forms.name);
-          _formfile.append('bank_logo', this.forms.logo, this.forms.logo.name);
-          axios.post(this.url + '/bankpayment/update/' + this.forms.id, _formfile).then(function (res) {
-            swal({
-              title: 'Berhasil',
-              text: res.data.statusText,
-              icon: 'success'
-            });
-            _this.getBankList();
-            setTimeout(function () {
-              UIkit.modal('#addOrUpdate').hide();
-            }, 3000);
-          }).catch(function (err) {
-            if (err.response.status === 500) {
-              swal({
-                title: 'Whoops',
-                text: err.response.statusText,
-                icon: 'error',
-                dangerMode: true
-              });
-            } else {
-              swal({
-                title: 'Whoops',
-                text: err.response.data.statusText,
-                icon: 'error',
-                dangerMode: true
-              });
-            }
-          });
-        }
-      }
-    },
-    deleteBankList: function deleteBankList(id) {
-      var _this2 = this;
-
-      swal({
-        title: 'Konfirmasi',
-        text: 'Apakah anda ingin menghapus bank ini?',
-        icon: 'warning',
-        dangerMode: true,
-        buttons: {
-          cancel: true,
-          confirm: {
-            text: 'Hapus',
-            value: true
-          }
-        }
-      }).then(function (res) {
-        if (res) {
-          axios({
-            method: 'delete',
-            url: _this2.url + '/bankpayment/delete/' + id
-          }).then(function (res) {
-            swal({
-              title: 'Berhasil',
-              text: res.data.statusText,
-              icon: 'success'
-            });
-            _this2.getBankList();
-          }).catch(function (err) {
-            if (err.response.status === 500) {
-              swal({
-                title: 'Whoops',
-                text: err.response.statusText,
-                icon: 'error',
-                dangerMode: true
-              });
-            } else {
-              swal({
-                title: 'Whoops',
-                text: err.response.data.statusText,
-                icon: 'error',
-                dangerMode: true
-              });
-            }
-          });
-        }
-      });
-    },
-    getBankList: function getBankList(pages) {
-      var _this3 = this;
-
-      var params = '&keywords=' + this.keywords + '';
-      if (pages === undefined) pages = this.url + '/bankpayment/banklist?page=' + this.pagination.current + params;else pages = pages + params;
-
-      axios({
-        method: 'get',
-        url: pages
-      }).then(function (res) {
-        var results = res.data;
-        _this3.banklist = {
-          total: results.total,
-          results: results.data
-        };
-        _this3.pagination = {
-          current: results.current_page,
-          prev: results.prev_page_url,
-          next: results.next_page_url,
-          last: results.last_page,
-          path: results.path
-        };
-      }).catch(function (err) {
-        console.log(err.response.statusText);
-      });
-    },
-    getFormatFile: function getFormatFile(files) {
-      var length_str_file = files.length;
-      var getIndex = files.lastIndexOf(".");
-      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
-      return getformatfile;
-    },
-    selectedFile: function selectedFile(event) {
-      this.forms.logo = event.target.files[0];
-    }
-  },
-  mounted: function mounted() {
-    this.getBankList();
-  }
-});
-
-/***/ }),
-/* 313 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
-    [
-      _c("div", { attrs: { id: "addOrUpdate", "uk-modal": "" } }, [
-        _c("div", { staticClass: "uk-modal-dialog" }, [
-          _c("a", {
-            staticClass: "uk-modal-close-default",
-            attrs: { "uk-close": "" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "uk-modal-body" }, [
-            _c("h3", [
-              _vm.forms.edit
-                ? _c("span", [_vm._v("Ubah Bank")])
-                : _c("span", [_vm._v("Tambah Bank")])
-            ]),
-            _vm._v(" "),
-            _c(
-              "form",
-              {
-                staticClass: "uk-form-stacked",
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.addOrUpdateBank($event)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "uk-margin" }, [
-                  _c("label", { staticClass: "uk-form-label" }, [
-                    _vm._v("Nama Bank *")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-form-controls" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.name,
-                          expression: "forms.name"
-                        }
-                      ],
-                      staticClass: "uk-input form-action-custom-modal",
-                      attrs: { type: "text" },
-                      domProps: { value: _vm.forms.name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.forms, "name", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-margin" }, [
-                  _c("label", { staticClass: "uk-form-label" }, [
-                    _vm._v("Kode Bank *")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-form-controls" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.code,
-                          expression: "forms.code"
-                        }
-                      ],
-                      staticClass: "uk-input form-action-custom-modal",
-                      attrs: { type: "text" },
-                      domProps: { value: _vm.forms.code },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.forms, "code", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-margin" }, [
-                  _c("label", { staticClass: "uk-form-label" }, [
-                    _vm._v("Logo Bank *")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-form-controls" }, [
-                    _c("div", { attrs: { "uk-form-custom": "target: true" } }, [
-                      _c("input", {
-                        attrs: { type: "file", id: "selectedFile" },
-                        on: { change: _vm.selectedFile }
-                      }),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "uk-input uk-form-width-medium",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Select file",
-                          disabled: ""
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(0)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-margin" }, [
-                  _c("button", {
-                    staticClass:
-                      "uk-button uk-button-default button-action-modal",
-                    domProps: { innerHTML: _vm._s(_vm.submitBtn) }
-                  })
-                ])
-              ]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
-        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-                _c("a", {
-                  staticClass: "uk-form-icon",
-                  attrs: { "uk-icon": "search" },
-                  on: {
-                    click: function($event) {
-                      _vm.getBankList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.keywords,
-                      expression: "keywords"
-                    }
-                  ],
-                  staticClass: "uk-input form-search uk-width-1-1",
-                  attrs: { type: "keywords", placeholder: "Search..." },
-                  domProps: { value: _vm.keywords },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      _vm.getBankList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.keywords = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "uk-button button-custom-action",
-                  on: {
-                    click: function($event) {
-                      _vm.addOrUpdateBtn()
-                    }
-                  }
-                },
-                [_vm._v("Tambah")]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
-            },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.banklist.results, function(bank) {
-                  return _c("tr", [
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "pencil",
-                          "uk-tooltip": "",
-                          title: "Ubah",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.addOrUpdateBtn(bank)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "trash",
-                          "uk-tooltip": "",
-                          title: "Hapus",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.deleteBankList(bank.bank_id)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _vm._v(_vm._s(bank.bank_code))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(bank.bank_name))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("img", {
-                        staticClass: "uk-width-1-6",
-                        attrs: {
-                          src:
-                            _vm.url.replace("/cp/management", "") +
-                            "/images/bankpayment/" +
-                            bank.bank_logo,
-                          alt: bank.bank_name
-                        }
-                      })
-                    ])
-                  ])
-                })
-              )
-            ]
-          )
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-text-small" }, [
-      _c("i", [_vm._v("Upload format JPG atau PNG")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Kode Bank")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nama Bank")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Logo Bank")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4b3de47e", module.exports)
-  }
-}
-
-/***/ }),
-/* 314 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(315)
-/* template */
-var __vue_template__ = __webpack_require__(316)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/administrator/BankCustomer.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-70ac089a", Component.options)
-  } else {
-    hotAPI.reload("data-v-70ac089a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 315 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url'],
-  data: function data() {
-    return {
-      forms: {
-        id: '',
-        name: '',
-        code: '',
-        logo: '',
-        edit: false
-      },
-      submitBtn: 'Tambah',
-      banklist: {
-        total: 0,
-        results: []
-      },
-      keywords: '',
-      pagination: {
-        current: 1,
-        prev: '',
-        next: '',
-        last: '',
-        path: this.url + '/bankcustomer'
-      }
-    };
-  },
-
-  methods: {
-    addOrUpdateBtn: function addOrUpdateBtn(d) {
-      if (d === undefined) {
-        this.forms = {
-          id: '',
-          name: '',
-          code: '',
-          logo: '',
-          edit: false
-        };
-        this.submitBtn = 'Tambah';
-      } else {
-        this.forms = {
-          id: d.bank_id,
-          name: d.bank_name,
-          code: d.bank_code,
-          logo: '',
-          edit: true
-        };
-        this.submitBtn = 'Simpan';
-      }
-      $("#selectedFile").val('');
-      UIkit.modal('#addOrUpdate').show();
-    },
-    addOrUpdateBank: function addOrUpdateBank() {
-      var _this = this;
-
-      if (this.forms.name === '') {
-        swal({
-          title: 'Warning',
-          text: 'Silahkan masukkan nama bank',
-          icon: 'warning',
-          dangerMode: true
-        });
-      } else if (this.forms.code === '') {
-        swal({
-          title: 'Warning',
-          text: 'Silahkan masukkan kode bank',
-          icon: 'warning',
-          dangerMode: true
-        });
-      } else {
-        if (this.forms.edit === false) {
-          if (this.forms.logo === '') {
-            swal({
-              title: 'Warning',
-              text: 'Silahkan masukkan logo bank',
-              icon: 'warning',
-              dangerMode: true
-            });
-          } else {
-            if (this.getFormatFile(this.forms.logo.name) !== 'jpg' && this.getFormatFile(this.forms.logo.name) !== 'png') {
-              swal({
-                title: 'Warning',
-                text: 'Format gambar hanya JPG atau PNG',
-                icon: 'warning',
-                dangerMode: true
-              });
-              return false;
-            }
-            var formfile = new FormData();
-            formfile.append('bank_code', this.forms.code);
-            formfile.append('bank_name', this.forms.name);
-            formfile.append('bank_logo', this.forms.logo, this.forms.logo.name);
-            axios.post(this.url + '/bankcustomer/add', formfile).then(function (res) {
-              swal({
-                title: 'Berhasil',
-                text: res.data.statusText,
-                icon: 'success'
-              });
-              _this.getBankList();
-              setTimeout(function () {
-                UIkit.modal('#addOrUpdate').hide();
-              }, 3000);
-            }).catch(function (err) {
-              if (err.response.status === 500) {
-                swal({
-                  title: 'Whoops',
-                  text: err.response.statusText,
-                  icon: 'error',
-                  dangerMode: true
-                });
-              } else {
-                swal({
-                  title: 'Whoops',
-                  text: err.response.data.statusText,
-                  icon: 'error',
-                  dangerMode: true
-                });
-              }
-            });
-          }
-        } else {
-          if (this.forms.logo !== '') {
-            if (this.getFormatFile(this.forms.logo.name) !== 'jpg' && this.getFormatFile(this.forms.logo.name) !== 'png') {
-              swal({
-                title: 'Warning',
-                text: 'Format gambar hanya JPG atau PNG',
-                icon: 'warning',
-                dangerMode: true
-              });
-              return false;
-            }
-          }
-
-          var _formfile = new FormData();
-          _formfile.append('bank_code', this.forms.code);
-          _formfile.append('bank_name', this.forms.name);
-          _formfile.append('bank_logo', this.forms.logo, this.forms.logo.name);
-          axios.post(this.url + '/bankcustomer/update/' + this.forms.id, _formfile).then(function (res) {
-            swal({
-              title: 'Berhasil',
-              text: res.data.statusText,
-              icon: 'success'
-            });
-            _this.getBankList();
-            setTimeout(function () {
-              UIkit.modal('#addOrUpdate').hide();
-            }, 3000);
-          }).catch(function (err) {
-            if (err.response.status === 500) {
-              swal({
-                title: 'Whoops',
-                text: err.response.statusText,
-                icon: 'error',
-                dangerMode: true
-              });
-            } else {
-              swal({
-                title: 'Whoops',
-                text: err.response.data.statusText,
-                icon: 'error',
-                dangerMode: true
-              });
-            }
-          });
-        }
-      }
-    },
-    deleteBankList: function deleteBankList(id) {
-      var _this2 = this;
-
-      swal({
-        title: 'Konfirmasi',
-        text: 'Apakah anda ingin menghapus bank ini?',
-        icon: 'warning',
-        dangerMode: true,
-        buttons: {
-          cancel: true,
-          confirm: {
-            text: 'Hapus',
-            value: true
-          }
-        }
-      }).then(function (res) {
-        if (res) {
-          axios({
-            method: 'delete',
-            url: _this2.url + '/bankcustomer/delete/' + id
-          }).then(function (res) {
-            swal({
-              title: 'Berhasil',
-              text: res.data.statusText,
-              icon: 'success'
-            });
-            _this2.getBankList();
-          }).catch(function (err) {
-            if (err.response.status === 500) {
-              swal({
-                title: 'Whoops',
-                text: err.response.statusText,
-                icon: 'error',
-                dangerMode: true
-              });
-            } else {
-              swal({
-                title: 'Whoops',
-                text: err.response.data.statusText,
-                icon: 'error',
-                dangerMode: true
-              });
-            }
-          });
-        }
-      });
-    },
-    getBankList: function getBankList(pages) {
-      var _this3 = this;
-
-      var params = '&keywords=' + this.keywords + '';
-      if (pages === undefined) pages = this.url + '/bankcustomer/banklist?page=' + this.pagination.current + params;else pages = pages + params;
-
-      axios({
-        method: 'get',
-        url: pages
-      }).then(function (res) {
-        var results = res.data;
-        _this3.banklist = {
-          total: results.total,
-          results: results.data
-        };
-        _this3.pagination = {
-          current: results.current_page,
-          prev: results.prev_page_url,
-          next: results.next_page_url,
-          last: results.last_page,
-          path: results.path
-        };
-      }).catch(function (err) {
-        console.log(err.response.statusText);
-      });
-    },
-    getFormatFile: function getFormatFile(files) {
-      var length_str_file = files.length;
-      var getIndex = files.lastIndexOf(".");
-      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
-      return getformatfile;
-    },
-    selectedFile: function selectedFile(event) {
-      this.forms.logo = event.target.files[0];
-    }
-  },
-  mounted: function mounted() {
-    this.getBankList();
-  }
-});
-
-/***/ }),
-/* 316 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
-    [
-      _c("div", { attrs: { id: "addOrUpdate", "uk-modal": "" } }, [
-        _c("div", { staticClass: "uk-modal-dialog" }, [
-          _c("a", {
-            staticClass: "uk-modal-close-default",
-            attrs: { "uk-close": "" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "uk-modal-body" }, [
-            _c("h3", [
-              _vm.forms.edit
-                ? _c("span", [_vm._v("Ubah Bank")])
-                : _c("span", [_vm._v("Tambah Bank")])
-            ]),
-            _vm._v(" "),
-            _c(
-              "form",
-              {
-                staticClass: "uk-form-stacked",
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.addOrUpdateBank($event)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "uk-margin" }, [
-                  _c("label", { staticClass: "uk-form-label" }, [
-                    _vm._v("Nama Bank *")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-form-controls" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.name,
-                          expression: "forms.name"
-                        }
-                      ],
-                      staticClass: "uk-input form-action-custom-modal",
-                      attrs: { type: "text" },
-                      domProps: { value: _vm.forms.name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.forms, "name", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-margin" }, [
-                  _c("label", { staticClass: "uk-form-label" }, [
-                    _vm._v("Kode Bank *")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-form-controls" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.code,
-                          expression: "forms.code"
-                        }
-                      ],
-                      staticClass: "uk-input form-action-custom-modal",
-                      attrs: { type: "text" },
-                      domProps: { value: _vm.forms.code },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.forms, "code", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-margin" }, [
-                  _c("label", { staticClass: "uk-form-label" }, [
-                    _vm._v("Logo Bank *")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-form-controls" }, [
-                    _c("div", { attrs: { "uk-form-custom": "target: true" } }, [
-                      _c("input", {
-                        attrs: { type: "file", id: "selectedFile" },
-                        on: { change: _vm.selectedFile }
-                      }),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "uk-input uk-form-width-medium",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Select file",
-                          disabled: ""
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(0)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-margin" }, [
-                  _c("button", {
-                    staticClass:
-                      "uk-button uk-button-default button-action-modal",
-                    domProps: { innerHTML: _vm._s(_vm.submitBtn) }
-                  })
-                ])
-              ]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
-        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-                _c("a", {
-                  staticClass: "uk-form-icon",
-                  attrs: { "uk-icon": "search" },
-                  on: {
-                    click: function($event) {
-                      _vm.getBankList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.keywords,
-                      expression: "keywords"
-                    }
-                  ],
-                  staticClass: "uk-input form-search uk-width-1-1",
-                  attrs: { type: "keywords", placeholder: "Search..." },
-                  domProps: { value: _vm.keywords },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      _vm.getBankList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.keywords = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "uk-button button-custom-action",
-                  on: {
-                    click: function($event) {
-                      _vm.addOrUpdateBtn()
-                    }
-                  }
-                },
-                [_vm._v("Tambah")]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
-            },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.banklist.results, function(bank) {
-                  return _c("tr", [
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "pencil",
-                          "uk-tooltip": "",
-                          title: "Ubah",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.addOrUpdateBtn(bank)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "trash",
-                          "uk-tooltip": "",
-                          title: "Hapus",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.deleteBankList(bank.bank_id)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _vm._v(_vm._s(bank.bank_code))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(bank.bank_name))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("img", {
-                        staticClass: "uk-width-1-6",
-                        attrs: {
-                          src:
-                            _vm.url.replace("/cp/management", "") +
-                            "/images/bankcustomer/" +
-                            bank.bank_logo,
-                          alt: bank.bank_name
-                        }
-                      })
-                    ])
-                  ])
-                })
-              )
-            ]
-          )
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-text-small" }, [
-      _c("i", [_vm._v("Upload format JPG atau PNG")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Kode Bank")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nama Bank")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Logo Bank")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-70ac089a", module.exports)
-  }
-}
-
-/***/ }),
-/* 317 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(318)
-/* template */
-var __vue_template__ = __webpack_require__(319)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/administrator/Provinsi.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-756863c6", Component.options)
-  } else {
-    hotAPI.reload("data-v-756863c6", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 318 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url'],
-  data: function data() {
-    return {
-      keywords: '',
-      pagination: {
-        current: 1,
-        prev: '',
-        next: '',
-        last: '',
-        path: this.url + '/provinsi/data_provinsi'
-      },
-      provinsi: {
-        total: 0,
-        results: []
-      },
-      forms: {
-        id: 0,
-        kode: '',
-        nama: '',
-        edit: false,
-        errors: {},
-        submit: 'Tambah'
-      },
-      errorMessage: ''
-    };
-  },
-
-  methods: {
-    addOrUpdateModal: function addOrUpdateModal(prov) {
-      if (prov === undefined || prov === '') {
-        this.forms.id = 0;
-        this.forms.kode = '';
-        this.forms.nama = '';
-        this.forms.edit = false;
-        this.forms.errors = {};
-        this.forms.submit = 'Tambah';
-      } else {
-        this.forms.id = prov.id_provinsi;
-        this.forms.kode = prov.kode_provinsi;
-        this.forms.nama = prov.nama_provinsi;
-        this.forms.edit = true;
-        this.forms.errors = {};
-        this.forms.submit = 'Simpan';
-      }
-      this.errorMessage = '';
-      UIkit.modal('#modal').show();
-    },
-    getProvinsiList: function getProvinsiList(pages) {
-      var _this = this;
-
-      var params = '&keywords=' + this.keywords;
-      if (pages === undefined) pages = this.url + '/provinsi/data_provinsi?page=' + this.pagination.current + params;else pages = pages + params;
-
-      axios({
-        method: 'get',
-        url: pages
-      }).then(function (res) {
-        var result = res.data;
-        _this.provinsi.total = result.total;
-        _this.provinsi.results = result.data;
-      }).catch(function (err) {
-        console.log(err.response.status);
-      });
-    },
-    addOrUpdateProvinsi: function addOrUpdateProvinsi() {
-      var _this2 = this;
-
-      this.forms.errors = {};
-      if (this.forms.kode === '') {
-        this.forms.errors.error = true;
-        this.forms.errors.kode = 'Kode provinsi wajib diisi.';
-      }
-      if (this.forms.nama === '') {
-        this.forms.errors.error = true;
-        this.forms.errors.nama = 'Nama provinsi wajib diisi.';
-      }
-      if (this.forms.errors.error === true) {
-        this.forms.errors.error = false;
-        return false;
-      }
-
-      var method, url;
-      if (this.forms.edit === false) {
-        method = 'post';url = this.url + '/provinsi/add';
-      } else {
-        method = 'put';url = this.url + '/provinsi/update/' + this.forms.id;
-      }
-
-      this.forms.submit = '<span uk-spinner></span>';
-      axios({
-        method: method,
-        url: url,
-        params: {
-          kode_provinsi: this.forms.kode,
-          nama_provinsi: this.forms.nama
-        }
-      }).then(function (res) {
-        swal({
-          title: 'Berhasil',
-          text: res.data.statusText,
-          icon: 'success',
-          timer: 5000
-        });
-        _this2.errorMessage = '';
-        _this2.getProvinsiList();
-        setTimeout(function () {
-          UIkit.modal('#modal').hide();
-        }, 3000);
-      }).catch(function (err) {
-        var status = err.response.status;
-        if (status === 409) {
-          _this2.errorMessage = err.response.data.statusText;
-        } else {
-          _this2.errorMessage = err.response.statusText;
-        }
-        swal({
-          title: 'Terjadi kesalahan',
-          text: _this2.errorMessage,
-          icon: 'warning',
-          dangerMode: true
-        });
-      });
-
-      if (this.forms.edit === true) this.forms.submit = 'Simpan';
-    },
-    deleteProvinsi: function deleteProvinsi(id, val) {
-      var _this3 = this;
-
-      swal({
-        title: 'Konfirmasi',
-        text: 'Apakah anda ingin menghapus provinsi ' + val + '?',
-        icon: 'warning',
-        dangerMode: true,
-        buttons: {
-          cancel: true,
-          confirm: { text: 'Hapus', value: true }
-        }
-      }).then(function (value) {
-        if (value) {
-          axios({
-            method: 'delete',
-            url: _this3.url + '/provinsi/delete/' + id
-          }).then(function (res) {
-            swal({
-              title: 'Berhasil',
-              text: res.data.statusText,
-              icon: 'success'
-            });
-            _this3.getProvinsiList();
-          }).catch(function (err) {
-            swal({
-              title: 'Terjadi kesalahan',
-              text: err.response.statusText,
-              icon: 'warning',
-              dangerMode: true
-            });
-          });
-        }
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.getProvinsiList();
-  }
-});
-
-/***/ }),
-/* 319 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
-    [
-      _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
-        _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
-          _c("a", {
-            staticClass: "uk-modal-close-default",
-            attrs: { "uk-close": "" }
-          }),
-          _vm._v(" "),
-          _c("h3", [
-            _vm.forms.edit
-              ? _c("span", [_vm._v("Ubah Provinsi")])
-              : _c("span", [_vm._v("Tambah Provinsi")])
-          ]),
-          _vm._v(" "),
-          _vm.errorMessage
-            ? _c(
-                "div",
-                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
-                [_vm._v(_vm._s(_vm.errorMessage))]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "uk-form-stacked",
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.addOrUpdateProvinsi($event)
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("label", { staticClass: "uk-form-label" }, [
-                  _vm._v("Kode Provinsi")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-form-controls" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.forms.kode,
-                        expression: "forms.kode"
-                      }
-                    ],
-                    staticClass:
-                      "uk-width-1-1 uk-input form-action-custom-modal",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.forms.kode },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.forms, "kode", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm.forms.errors.kode
-                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
-                      _vm._v(_vm._s(_vm.forms.errors.kode))
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("label", { staticClass: "uk-form-label" }, [
-                  _vm._v("Nama Provinsi")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-form-controls" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.forms.nama,
-                        expression: "forms.nama"
-                      }
-                    ],
-                    staticClass:
-                      "uk-width-1-1 uk-input form-action-custom-modal",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.forms.nama },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.forms, "nama", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm.forms.errors.nama
-                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
-                      _vm._v(_vm._s(_vm.forms.errors.nama))
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("button", {
-                  staticClass:
-                    "uk-button uk-button-default button-action-modal",
-                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
-                })
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
-        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-                _c("a", {
-                  staticClass: "uk-form-icon",
-                  attrs: { "uk-icon": "search" },
-                  on: {
-                    click: function($event) {
-                      _vm.getProvinsiList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.keywords,
-                      expression: "keywords"
-                    }
-                  ],
-                  staticClass: "uk-input form-search uk-width-1-1",
-                  attrs: { type: "keywords", placeholder: "Search..." },
-                  domProps: { value: _vm.keywords },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      _vm.getProvinsiList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.keywords = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "uk-button button-custom-action",
-                  on: {
-                    click: function($event) {
-                      _vm.addOrUpdateModal()
-                    }
-                  }
-                },
-                [_vm._v("Tambah")]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
-            },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.provinsi.results, function(prov) {
-                  return _c("tr", [
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "pencil",
-                          "uk-tooltip": "",
-                          title: "Ubah",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.addOrUpdateModal(prov)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "trash",
-                          "uk-tooltip": "",
-                          title: "Hapus",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.deleteProvinsi(
-                              prov.id_provinsi,
-                              prov.nama_provinsi
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _vm._v(_vm._s(prov.kode_provinsi))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(prov.nama_provinsi))])
-                  ])
-                })
-              )
-            ]
-          )
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Kode Provinsi")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nama Provinsi")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-756863c6", module.exports)
-  }
-}
-
-/***/ }),
-/* 320 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(321)
-/* template */
-var __vue_template__ = __webpack_require__(322)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/administrator/Kabupaten.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2dd41ada", Component.options)
-  } else {
-    hotAPI.reload("data-v-2dd41ada", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 321 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url', 'provinsi'],
-  data: function data() {
-    return {
-      keywords: '',
-      pagination: {
-        current: 1,
-        prev: '',
-        next: '',
-        last: '',
-        path: this.url + '/kabupaten/data_kabupaten'
-      },
-      kabupaten: {
-        total: 0,
-        results: []
-      },
-      forms: {
-        id: 0,
-        kode: '',
-        nama: '',
-        provinsi: '',
-        edit: false,
-        errors: {},
-        submit: 'Tambah'
-      },
-      errorMessage: ''
-    };
-  },
-
-  methods: {
-    addOrUpdateModal: function addOrUpdateModal(kab) {
-      if (kab === undefined || kab === '') {
-        this.forms.id = 0;
-        this.forms.kode = '';
-        this.forms.nama = '';
-        this.forms.provinsi = '';
-        this.forms.edit = false;
-        this.forms.errors = {};
-        this.forms.submit = 'Tambah';
-      } else {
-        this.forms.id = kab.id_kab;
-        this.forms.kode = kab.kode_kab;
-        this.forms.nama = kab.nama_kab;
-        this.forms.provinsi = kab.id_provinsi;
-        this.forms.edit = true;
-        this.forms.errors = {};
-        this.forms.submit = 'Simpan';
-      }
-      this.errorMessage = '';
-      UIkit.modal('#modal').show();
-    },
-    getKabupatenList: function getKabupatenList(pages) {
-      var _this = this;
-
-      var params = '&keywords=' + this.keywords;
-      if (pages === undefined) pages = this.url + '/kabupaten/data_kabupaten?page=' + this.pagination.current + params;else pages = pages + params;
-
-      axios({
-        method: 'get',
-        url: pages
-      }).then(function (res) {
-        var result = res.data;
-        _this.kabupaten.total = result.total;
-        _this.kabupaten.results = result.data;
-      }).catch(function (err) {
-        console.log(err.response.status);
-      });
-    },
-    addOrUpdateKabupaten: function addOrUpdateKabupaten() {
-      var _this2 = this;
-
-      this.forms.errors = {};
-      if (this.forms.kode === '') {
-        this.forms.errors.error = true;
-        this.forms.errors.kode = 'Kode kabupaten wajib diisi.';
-      }
-      if (this.forms.nama === '') {
-        this.forms.errors.error = true;
-        this.forms.errors.nama = 'Nama kabupaten wajib diisi.';
-      }
-      if (this.forms.provinsi === '') {
-        this.forms.errors.error = true;
-        this.forms.errors.provinsi = 'Provinsi wajib diisi.';
-      }
-      if (this.forms.errors.error === true) {
-        this.forms.errors.error = false;
-        return false;
-      }
-
-      var method, url;
-      if (this.forms.edit === false) {
-        method = 'post';url = this.url + '/kabupaten/add';
-      } else {
-        method = 'put';url = this.url + '/kabupaten/update/' + this.forms.id;
-      }
-
-      this.forms.submit = '<span uk-spinner></span>';
-      axios({
-        method: method,
-        url: url,
-        params: {
-          kode_kab: this.forms.kode,
-          nama_kabupaten: this.forms.nama,
-          provinsi: this.forms.provinsi
-        }
-      }).then(function (res) {
-        swal({
-          title: 'Berhasil',
-          text: res.data.statusText,
-          icon: 'success',
-          timer: 5000
-        });
-        _this2.errorMessage = '';
-        _this2.getKabupatenList();
-        setTimeout(function () {
-          UIkit.modal('#modal').hide();
-        }, 3000);
-      }).catch(function (err) {
-        var status = err.response.status;
-        if (status === 409) {
-          _this2.errorMessage = err.response.data.statusText;
-        } else {
-          _this2.errorMessage = err.response.statusText;
-        }
-        swal({
-          title: 'Terjadi kesalahan',
-          text: _this2.errorMessage,
-          icon: 'warning',
-          dangerMode: true
-        });
-      });
-
-      if (this.forms.edit === true) this.forms.submit = 'Simpan';
-    },
-    deleteKabupaten: function deleteKabupaten(id, val) {
-      var _this3 = this;
-
-      swal({
-        title: 'Konfirmasi',
-        text: 'Apakah anda ingin menghapus kabupaten ' + val + '?',
-        icon: 'warning',
-        dangerMode: true,
-        buttons: {
-          cancel: true,
-          confirm: { text: 'Hapus', value: true }
-        }
-      }).then(function (value) {
-        if (value) {
-          axios({
-            method: 'delete',
-            url: _this3.url + '/kabupaten/delete/' + id
-          }).then(function (res) {
-            swal({
-              title: 'Berhasil',
-              text: res.data.statusText,
-              icon: 'success'
-            });
-            _this3.getKabupatenList();
-          }).catch(function (err) {
-            swal({
-              title: 'Terjadi kesalahan',
-              text: err.response.statusText,
-              icon: 'warning',
-              dangerMode: true
-            });
-          });
-        }
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.getKabupatenList();
-  }
-});
-
-/***/ }),
-/* 322 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
-    [
-      _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
-        _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
-          _c("a", {
-            staticClass: "uk-modal-close-default",
-            attrs: { "uk-close": "" }
-          }),
-          _vm._v(" "),
-          _c("h3", [
-            _vm.forms.edit
-              ? _c("span", [_vm._v("Ubah Kabupaten")])
-              : _c("span", [_vm._v("Tambah Kabupaten")])
-          ]),
-          _vm._v(" "),
-          _vm.errorMessage
-            ? _c(
-                "div",
-                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
-                [_vm._v(_vm._s(_vm.errorMessage))]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "uk-form-stacked",
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.addOrUpdateKabupaten($event)
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("label", { staticClass: "uk-form-label" }, [
-                  _vm._v("Kode Kabupaten")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-form-controls" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.forms.kode,
-                        expression: "forms.kode"
-                      }
-                    ],
-                    staticClass:
-                      "uk-width-1-1 uk-input form-action-custom-modal",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.forms.kode },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.forms, "kode", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm.forms.errors.kode
-                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
-                      _vm._v(_vm._s(_vm.forms.errors.kode))
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("label", { staticClass: "uk-form-label" }, [
-                  _vm._v("Nama Kabupaten")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-form-controls" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.forms.nama,
-                        expression: "forms.nama"
-                      }
-                    ],
-                    staticClass:
-                      "uk-width-1-1 uk-input form-action-custom-modal",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.forms.nama },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.forms, "nama", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm.forms.errors.nama
-                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
-                      _vm._v(_vm._s(_vm.forms.errors.nama))
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("label", { staticClass: "uk-form-label" }, [
-                  _vm._v("Provinsi")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-form-controls" }, [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.provinsi,
-                          expression: "forms.provinsi"
-                        }
-                      ],
-                      staticClass:
-                        "uk-width-1-1 uk-select form-action-select-modal",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.forms,
-                            "provinsi",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "", selected: "" } }, [
-                        _vm._v("-- Pilih Provinsi --")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.provinsi, function(prov) {
-                        return _c(
-                          "option",
-                          { domProps: { value: prov.id_provinsi } },
-                          [_vm._v(_vm._s(prov.nama_provinsi))]
-                        )
-                      })
-                    ],
-                    2
-                  )
-                ]),
-                _vm._v(" "),
-                _vm.forms.errors.provinsi
-                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
-                      _vm._v(_vm._s(_vm.forms.errors.provinsi))
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("button", {
-                  staticClass:
-                    "uk-button uk-button-default button-action-modal",
-                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
-                })
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
-        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-                _c("a", {
-                  staticClass: "uk-form-icon",
-                  attrs: { "uk-icon": "search" },
-                  on: {
-                    click: function($event) {
-                      _vm.getKabupatenList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.keywords,
-                      expression: "keywords"
-                    }
-                  ],
-                  staticClass: "uk-input form-search uk-width-1-1",
-                  attrs: { type: "keywords", placeholder: "Search..." },
-                  domProps: { value: _vm.keywords },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      _vm.getKabupatenList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.keywords = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "uk-button button-custom-action",
-                  on: {
-                    click: function($event) {
-                      _vm.addOrUpdateModal()
-                    }
-                  }
-                },
-                [_vm._v("Tambah")]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
-            },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.kabupaten.results, function(kab) {
-                  return _c("tr", [
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "pencil",
-                          "uk-tooltip": "",
-                          title: "Ubah",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.addOrUpdateModal(kab)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "trash",
-                          "uk-tooltip": "",
-                          title: "Hapus",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.deleteKabupaten(kab.id_kab, kab.nama_kab)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _vm._v(_vm._s(kab.kode_kab))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(kab.nama_kab))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(kab.nama_provinsi))])
-                  ])
-                })
-              )
-            ]
-          )
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Kode Kabupaten")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nama Kabupaten")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Provinsi")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2dd41ada", module.exports)
-  }
-}
-
-/***/ }),
-/* 323 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(324)
-/* template */
-var __vue_template__ = __webpack_require__(325)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/administrator/Kecamatan.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0821dd2c", Component.options)
-  } else {
-    hotAPI.reload("data-v-0821dd2c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 324 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url', 'kabupaten'],
-  data: function data() {
-    return {
-      keywords: '',
-      pagination: {
-        current: 1,
-        prev: '',
-        next: '',
-        last: '',
-        path: this.url + '/kecamatan/data_kecamatan'
-      },
-      kecamatan: {
-        total: 0,
-        results: []
-      },
-      forms: {
-        id: 0,
-        kode: '',
-        nama: '',
-        kabupaten: '',
-        edit: false,
-        errors: {},
-        submit: 'Tambah'
-      },
-      errorMessage: ''
-    };
-  },
-
-  methods: {
-    addOrUpdateModal: function addOrUpdateModal(kec) {
-      if (kec === undefined || kec === '') {
-        this.forms.id = 0;
-        this.forms.kode = '';
-        this.forms.nama = '';
-        this.forms.kabupaten = '';
-        this.forms.edit = false;
-        this.forms.errors = {};
-        this.forms.submit = 'Tambah';
-      } else {
-        this.forms.id = kec.id_kec;
-        this.forms.kode = kec.kode_kec;
-        this.forms.nama = kec.nama_kec;
-        this.forms.kabupaten = kec.id_kab;
-        this.forms.edit = true;
-        this.forms.errors = {};
-        this.forms.submit = 'Simpan';
-      }
-      this.errorMessage = '';
-      UIkit.modal('#modal').show();
-    },
-    getKecamatanList: function getKecamatanList(pages) {
-      var _this = this;
-
-      var params = '&keywords=' + this.keywords;
-      if (pages === undefined) pages = this.url + '/kecamatan/data_kecamatan?page=' + this.pagination.current + params;else pages = pages + params;
-
-      axios({
-        method: 'get',
-        url: pages
-      }).then(function (res) {
-        var result = res.data;
-        _this.kecamatan.total = result.total;
-        _this.kecamatan.results = result.data;
-      }).catch(function (err) {
-        console.log(err.response.status);
-      });
-    },
-    addOrUpdateKecamatan: function addOrUpdateKecamatan() {
-      var _this2 = this;
-
-      this.forms.errors = {};
-      if (this.forms.kode === '') {
-        this.forms.errors.error = true;
-        this.forms.errors.kode = 'Kode kecamatan wajib diisi.';
-      }
-      if (this.forms.nama === '') {
-        this.forms.errors.error = true;
-        this.forms.errors.nama = 'Nama kecamatan wajib diisi.';
-      }
-      if (this.forms.kabupaten === '') {
-        this.forms.errors.error = true;
-        this.forms.errors.kabupaten = 'Kabupaten wajib diisi.';
-      }
-      if (this.forms.errors.error === true) {
-        this.forms.errors.error = false;
-        return false;
-      }
-
-      var method, url;
-      if (this.forms.edit === false) {
-        method = 'post';url = this.url + '/kecamatan/add';
-      } else {
-        method = 'put';url = this.url + '/kecamatan/update/' + this.forms.id;
-      }
-
-      this.forms.submit = '<span uk-spinner></span>';
-      axios({
-        method: method,
-        url: url,
-        params: {
-          kode_kec: this.forms.kode,
-          nama_kecamatan: this.forms.nama,
-          kabupaten: this.forms.kabupaten
-        }
-      }).then(function (res) {
-        swal({
-          title: 'Berhasil',
-          text: res.data.statusText,
-          icon: 'success',
-          timer: 5000
-        });
-        _this2.errorMessage = '';
-        _this2.getKecamatanList();
-        setTimeout(function () {
-          UIkit.modal('#modal').hide();
-        }, 3000);
-      }).catch(function (err) {
-        var status = err.response.status;
-        if (status === 409) {
-          _this2.errorMessage = err.response.data.statusText;
-        } else {
-          _this2.errorMessage = err.response.statusText;
-        }
-        swal({
-          title: 'Terjadi kesalahan',
-          text: _this2.errorMessage,
-          icon: 'warning',
-          dangerMode: true
-        });
-      });
-
-      if (this.forms.edit === true) this.forms.submit = 'Simpan';
-    },
-    deleteKecamatan: function deleteKecamatan(id, val) {
-      var _this3 = this;
-
-      swal({
-        title: 'Konfirmasi',
-        text: 'Apakah anda ingin menghapus kecamatan ' + val + '?',
-        icon: 'warning',
-        dangerMode: true,
-        buttons: {
-          cancel: true,
-          confirm: { text: 'Hapus', value: true }
-        }
-      }).then(function (value) {
-        if (value) {
-          axios({
-            method: 'delete',
-            url: _this3.url + '/kecamatan/delete/' + id
-          }).then(function (res) {
-            swal({
-              title: 'Berhasil',
-              text: res.data.statusText,
-              icon: 'success'
-            });
-            _this3.getKecamatanList();
-          }).catch(function (err) {
-            swal({
-              title: 'Terjadi kesalahan',
-              text: err.response.statusText,
-              icon: 'warning',
-              dangerMode: true
-            });
-          });
-        }
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.getKecamatanList();
-  }
-});
-
-/***/ }),
-/* 325 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
-    [
-      _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
-        _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
-          _c("a", {
-            staticClass: "uk-modal-close-default",
-            attrs: { "uk-close": "" }
-          }),
-          _vm._v(" "),
-          _c("h3", [
-            _vm.forms.edit
-              ? _c("span", [_vm._v("Ubah Kecamatan")])
-              : _c("span", [_vm._v("Tambah Kecamatan")])
-          ]),
-          _vm._v(" "),
-          _vm.errorMessage
-            ? _c(
-                "div",
-                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
-                [_vm._v(_vm._s(_vm.errorMessage))]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "uk-form-stacked",
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.addOrUpdateKecamatan($event)
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("label", { staticClass: "uk-form-label" }, [
-                  _vm._v("Kode Kecamatan")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-form-controls" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.forms.kode,
-                        expression: "forms.kode"
-                      }
-                    ],
-                    staticClass:
-                      "uk-width-1-1 uk-input form-action-custom-modal",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.forms.kode },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.forms, "kode", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm.forms.errors.kode
-                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
-                      _vm._v(_vm._s(_vm.forms.errors.kode))
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("label", { staticClass: "uk-form-label" }, [
-                  _vm._v("Nama Kecamatan")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-form-controls" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.forms.nama,
-                        expression: "forms.nama"
-                      }
-                    ],
-                    staticClass:
-                      "uk-width-1-1 uk-input form-action-custom-modal",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.forms.nama },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.forms, "nama", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm.forms.errors.nama
-                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
-                      _vm._v(_vm._s(_vm.forms.errors.nama))
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("label", { staticClass: "uk-form-label" }, [
-                  _vm._v("Kabupaten")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "uk-form-controls" }, [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.kabupaten,
-                          expression: "forms.kabupaten"
-                        }
-                      ],
-                      staticClass:
-                        "uk-width-1-1 uk-select form-action-select-modal",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.forms,
-                            "kabupaten",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "", selected: "" } }, [
-                        _vm._v("-- Pilih Kabupaten --")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.kabupaten, function(kab) {
-                        return _c(
-                          "option",
-                          { domProps: { value: kab.id_kab } },
-                          [_vm._v(_vm._s(kab.nama_kab))]
-                        )
-                      })
-                    ],
-                    2
-                  )
-                ]),
-                _vm._v(" "),
-                _vm.forms.errors.kabupaten
-                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
-                      _vm._v(_vm._s(_vm.forms.errors.kabupaten))
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-margin" }, [
-                _c("button", {
-                  staticClass:
-                    "uk-button uk-button-default button-action-modal",
-                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
-                })
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
-        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-                _c("a", {
-                  staticClass: "uk-form-icon",
-                  attrs: { "uk-icon": "search" },
-                  on: {
-                    click: function($event) {
-                      _vm.getKecamatanList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.keywords,
-                      expression: "keywords"
-                    }
-                  ],
-                  staticClass: "uk-input form-search uk-width-1-1",
-                  attrs: { type: "keywords", placeholder: "Search..." },
-                  domProps: { value: _vm.keywords },
-                  on: {
-                    keyup: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      _vm.getKecamatanList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.keywords = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "uk-button button-custom-action",
-                  on: {
-                    click: function($event) {
-                      _vm.addOrUpdateModal()
-                    }
-                  }
-                },
-                [_vm._v("Tambah")]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
-            },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.kecamatan.results, function(kec) {
-                  return _c("tr", [
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "pencil",
-                          "uk-tooltip": "",
-                          title: "Ubah",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.addOrUpdateModal(kec)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("a", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "trash",
-                          "uk-tooltip": "",
-                          title: "Hapus",
-                          href: "#"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.deleteKecamatan(kec.id_kec, kec.nama_kec)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "uk-width-small" }, [
-                      _vm._v(_vm._s(kec.kode_kec))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(kec.nama_kec))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(kec.nama_kab))])
-                  ])
-                })
-              )
-            ]
-          )
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Kode Kecamatan")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nama Kecamatan")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Kabupaten")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0821dd2c", module.exports)
-  }
-}
-
-/***/ }),
-/* 326 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(327)
-/* template */
-var __vue_template__ = __webpack_require__(328)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/administrator/OrderList.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-757ae53a", Component.options)
-  } else {
-    hotAPI.reload("data-v-757ae53a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 327 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url'],
-  data: function data() {
-    return {
-      keywords: '',
-      status_transaction: 'all',
-      selectedRows: 10,
-      isLoading: {
-        value: false,
-        text: ''
-      },
-      premium: 'all',
-      orderlist: {
-        total: 0,
-        results: []
-      },
-      orders: {},
-      logstatus: {
-        total: 0,
-        results: []
-      },
-      region: '',
-      district: '',
-      subdistrict: '',
-      pagination: {
-        current: 1,
-        next: '',
-        prev: '',
-        last: '',
-        path: this.url + '/transaction/data_orderlist'
-      }
-    };
-  },
-
-  methods: {
-    formatDate: function formatDate(str, format) {
-      var res = moment(str).locale('id').format(format);
-      return res;
-    },
-    formatCurrency: function formatCurrency(price) {
-      price = Number(price);
-      var numberformat = new Intl.NumberFormat('en-ID').format(price);
-      return numberformat;
-    },
-    getOrderList: function getOrderList(pages) {
-      var _this = this;
-
-      var param = '&keywords=' + this.keywords + '&rows=' + this.selectedRows + '&status=' + this.status_transaction + '&premium=' + this.premium;
-      if (pages === undefined || pages === null || pages === '') pages = this.url + '/transaction/data_orderlist?page=1' + param;else pages = pages + param;
-      axios({
-        method: 'get',
-        url: pages
-      }).then(function (res) {
-        var result = res.data;
-        _this.orderlist.total = result.total;
-        _this.orderlist.results = result.data;
-        _this.pagination = {
-          current: result.current_page,
-          next: result.next_page_url,
-          prev: result.prev_page_url,
-          last: result.last_page,
-          path: result.path
-        };
-      }).catch(function (err) {
-        console.log(err.response.statusText);
-      });
-    },
-    onViewTransaction: function onViewTransaction(order) {
-      var _this2 = this;
-
-      this.orders = order;
-      axios({
-        method: 'get',
-        url: this.url + '/transaction/view_transaction/' + order.transaction_id
-      }).then(function (res) {
-        var result = res.data;
-        _this2.logstatus.total = result.logstatus.total;
-        _this2.logstatus.results = result.logstatus.results;
-        _this2.region = result.location.provinsi;
-        _this2.district = result.location.kabupaten;
-        _this2.subdistrict = result.location.kecamatan;
-      }).catch(function (err) {
-        console.log(err.response.statusText);
-      });
-      UIkit.modal('#viewTransaction').show();
-    },
-    onAcceptOrCancel: function onAcceptOrCancel(val) {
-      var _this3 = this;
-
-      if (val === 'accept') {
-        swal({
-          title: 'Konfirmasi',
-          text: 'Apakah pembayaran sudah diterima?',
-          icon: 'warning',
-          buttons: {
-            cancel: 'Tidak',
-            confirm: {
-              value: true,
-              text: 'Ya'
-            }
-          }
-        }).then(function (value) {
-          if (value) {
-            axios({
-              method: 'put',
-              url: _this3.url + '/transaction/update_order/' + _this3.orders.transaction_id,
-              params: {
-                value: 'accept'
-              }
-            }).then(function (res) {
-              swal({
-                title: 'Berhasil',
-                text: 'Pembayaran diterima',
-                icon: 'success',
-                timer: 5000
-              });
-              setTimeout(function () {
-                UIkit.modal('#viewTransaction').hide();
-              }, 2000);
-              _this3.getOrderList();
-            }).catch(function (err) {
-              swal({
-                title: 'Terjadi Kesalahan',
-                text: err.response.statusText,
-                icon: 'error',
-                dangerMode: true,
-                timer: 5000
-              });
-            });
-          }
-        });
-      } else {
-        swal({
-          title: 'Konfirmasi',
-          text: 'Apakah ingin membatalkan pesanan ' + this.orders.transaction_id + '?',
-          icon: 'warning',
-          buttons: {
-            cancel: 'Tidak',
-            confirm: {
-              value: true,
-              text: 'Ya'
-            }
-          }
-        }).then(function (value) {
-          if (value) {
-            axios({
-              method: 'put',
-              url: _this3.url + '/transaction/update_order/' + _this3.orders.transaction_id,
-              params: {
-                value: 'cancel'
-              }
-            }).then(function (res) {
-              swal({
-                title: 'Berhasil',
-                text: 'Pesanan telah dibatalkan',
-                icon: 'success',
-                timer: 5000
-              });
-              setTimeout(function () {
-                UIkit.modal('#viewTransaction').hide();
-              }, 2000);
-              _this3.getOrderList();
-            }).catch(function (err) {
-              swal({
-                title: 'Terjadi Kesalahan',
-                text: err.response.statusText,
-                icon: 'error',
-                dangerMode: true,
-                timer: 5000
-              });
-            });
-          }
-        });
-      }
-    }
-  },
-  mounted: function mounted() {
-    this.getOrderList();
-  }
-});
-
-/***/ }),
-/* 328 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "uk-margin-large-top" }, [
-    _c("div", { attrs: { id: "viewTransaction", "uk-modal": "" } }, [
-      _c("div", { staticClass: "uk-modal-dialog view-transaction" }, [
-        _c("a", {
-          staticClass: "uk-modal-close-default",
-          attrs: { "uk-close": "" }
-        }),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "uk-modal-body", attrs: { "uk-overflow-auto": "" } },
-          [
-            _c(
-              "div",
-              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Nomor Transaksi")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.orders.transaction_id))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Status Pesanan")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(
-                        _vm._s(
-                          _vm.$root.statusTransaction[
-                            _vm.orders.last_status_transaction
-                          ]
-                        )
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Vendor")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.orders.vendor_name))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Tanggal Pesan")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(
-                        _vm._s(
-                          _vm.formatDate(
-                            _vm.orders.created_at,
-                            "DD MMMM YYYY HH:mm"
-                          )
-                        )
-                      )
-                    ])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _vm.orders.isPremium === "Y"
-                      ? _c("div", { staticClass: "uk-margin" }, [
-                          _c(
-                            "div",
-                            { staticClass: "view-transaction-heading" },
-                            [_vm._v("Pemesan Premium")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "view-transaction-value" }, [
-                            _vm._v("+ Rp. 5.000")
-                          ])
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.orders.bank_code === "014"
-                      ? _c("div", { staticClass: "uk-margin" }, [
-                          _c(
-                            "div",
-                            { staticClass: "view-transaction-heading" },
-                            [_vm._v("Biaya transfer BCA")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "view-transaction-value" }, [
-                            _vm._v("+ Rp. 4.000")
-                          ])
-                        ])
-                      : _vm._e()
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Total Pembayaran")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(
-                        "Rp. " +
-                          _vm._s(_vm.formatCurrency(_vm.orders.payment_amount))
-                      )
-                    ])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Nama Pemesan")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.orders.customer_name))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Nomor Telepon")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.orders.mobile_number))
-                    ])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
-              [
-                _c("div", { staticClass: "uk-width-1-1" }, [
-                  _c("div", { staticClass: "view-transaction-heading" }, [
-                    _vm._v("Alamat")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "view-transaction-value" }, [
-                    _vm._v(_vm._s(_vm.orders.address))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Provinsi")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.region))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Kota")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.district))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Kecamatan")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.subdistrict))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Kode Pos")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.orders.zipcode))
-                    ])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("div", { staticClass: "uk-margin" }, [
-              _c("div", { staticClass: "view-transaction-heading" }, [
-                _vm._v("Status Pesanan")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "view-transaction-value" },
-                _vm._l(_vm.logstatus.results, function(log) {
-                  return _c("div", { staticClass: "uk-margin" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "uk-grid-small",
-                        attrs: { "uk-grid": "" }
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "uk-text-right view-transaction-value"
-                              },
-                              [
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.formatDate(
-                                      log.log_date,
-                                      "DD MMM YYYY HH:mm:ss"
-                                    )
-                                  )
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "uk-width-expand" }, [
-                          _c(
-                            "div",
-                            { staticClass: "view-transaction-heading" },
-                            [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.$root.statusTransaction[
-                                    log.status_transaction
-                                  ]
-                                )
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "view-transaction-value" }, [
-                            _vm._v(_vm._s(log.status_description))
-                          ])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("hr")
-                  ])
-                })
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "uk-modal-footer" }, [
-          _c(
-            "div",
-            {
-              staticClass: "uk-grid-small uk-flex-center",
-              attrs: { "uk-grid": "" }
-            },
-            [
-              _c("div", { staticClass: "uk-width-1-2" }, [
-                _vm.orders.last_status_transaction === "payment_verify"
-                  ? _c(
-                      "button",
-                      {
-                        staticClass:
-                          "uk-width-1-1 uk-button uk-button-success view_transaction-accept",
-                        on: {
-                          click: function($event) {
-                            _vm.onAcceptOrCancel("accept")
-                          }
-                        }
-                      },
-                      [_vm._v("Pembayaran Diterima")]
-                    )
-                  : _c(
-                      "button",
-                      {
-                        staticClass:
-                          "uk-width-1-1 uk-button uk-button-success view_transaction-accept"
-                      },
-                      [_vm._v("Pembayaran Diterima")]
-                    )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "uk-width-1-2" }, [
-                _vm.orders.last_status_transaction !== "cancel" &&
-                _vm.orders.last_status_transaction !== "paid"
-                  ? _c(
-                      "button",
-                      {
-                        staticClass:
-                          "uk-width-1-1 uk-button uk-button-danger view_transaction-reject",
-                        on: {
-                          click: function($event) {
-                            _vm.onAcceptOrCancel("cancel")
-                          }
-                        }
-                      },
-                      [_vm._v("Batalkan Pesanan")]
-                    )
-                  : _c(
-                      "button",
-                      {
-                        staticClass:
-                          "uk-width-1-1 uk-button uk-button-danger view_transaction-reject",
-                        attrs: { name: "button" }
-                      },
-                      [_vm._v("Batalkan Pesanan")]
-                    )
-              ])
-            ]
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("h3", {}, [_vm._v("Daftar Transaksi")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
-      _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
-          },
-          [
-            _c("div", { staticClass: "uk-inline" }, [
-              _c("span", {
-                staticClass: "uk-form-icon",
-                attrs: { "uk-icon": "search" }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.keywords,
-                    expression: "keywords"
-                  }
-                ],
-                staticClass: "uk-input form-search uk-width-1-1",
-                attrs: { type: "text", placeholder: "Cari..." },
-                domProps: { value: _vm.keywords },
-                on: {
-                  keyup: function($event) {
-                    if (
-                      !("button" in $event) &&
-                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                    ) {
-                      return null
-                    }
-                    _vm.getOrderList(
-                      _vm.pagination.path + "?page=" + _vm.pagination.current
-                    )
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.keywords = $event.target.value
-                  }
-                }
-              })
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
-          },
-          [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.selectedRows,
-                    expression: "selectedRows"
-                  }
-                ],
-                staticClass: "uk-select form-select",
-                on: {
-                  change: [
-                    function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.selectedRows = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    },
-                    function($event) {
-                      _vm.getOrderList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    }
-                  ]
-                }
-              },
-              [
-                _c("option", { attrs: { value: "10" } }, [
-                  _vm._v("10 ditampilkan")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "20" } }, [
-                  _vm._v("20 ditampilkan")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "30" } }, [
-                  _vm._v("30 ditampilkan")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "50" } }, [
-                  _vm._v("50 ditampilkan")
-                ])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
-          },
-          [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.premium,
-                    expression: "premium"
-                  }
-                ],
-                staticClass: "uk-select form-select",
-                on: {
-                  change: [
-                    function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.premium = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    },
-                    function($event) {
-                      _vm.getOrderList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    }
-                  ]
-                }
-              },
-              [
-                _c("option", { attrs: { value: "all" } }, [
-                  _vm._v("-- Premium/Non Premium --")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Y" } }, [_vm._v("Premium")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "N" } }, [_vm._v("Non Premium")])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
-          },
-          [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.status_transaction,
-                    expression: "status_transaction"
-                  }
-                ],
-                staticClass: "uk-select form-select",
-                on: {
-                  change: [
-                    function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.status_transaction = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    },
-                    function($event) {
-                      _vm.getOrderList(
-                        _vm.pagination.path + "?page=" + _vm.pagination.current
-                      )
-                    }
-                  ]
-                }
-              },
-              [
-                _c("option", { attrs: { value: "all" } }, [
-                  _vm._v("-- Semua Status --")
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.$root.statusTransaction, function(val, key) {
-                  return _c("option", { domProps: { value: key } }, [
-                    _vm._v(_vm._s(val))
-                  ])
-                })
-              ],
-              2
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-margin-top" }, [
-        _c("div", { staticClass: "uk-label" }, [
-          _vm._v(_vm._s(_vm.orderlist.total) + " Transaksi")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "uk-table uk-table-small uk-table-divider uk-table-middle uk-table-hover"
-            },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.orderlist.results, function(order) {
-                  return _c("tr", [
-                    _c("td", [
-                      _c("button", {
-                        staticClass: "uk-button uk-button-text",
-                        attrs: {
-                          "uk-icon": "cog",
-                          "uk-tooltip": "title: Lihat Rincian; pos: right"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.onViewTransaction(order)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      {
-                        staticClass: "uk-text-truncate",
-                        attrs: { title: order.transaction_id }
-                      },
-                      [_vm._v(_vm._s(order.transaction_id))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      {
-                        staticClass: "uk-text-truncate",
-                        attrs: { title: order.customer_name }
-                      },
-                      [_vm._v(_vm._s(order.customer_name))]
-                    ),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(order.vendor_name))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _vm._v(
-                        _vm._s(
-                          _vm.$root.statusTransaction[
-                            order.last_status_transaction
-                          ]
-                        )
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _vm._v(
-                        _vm._s(
-                          _vm.formatDate(order.created_at, "MMM DD, YYYY HH:mm")
-                        )
-                      )
-                    ])
-                  ])
-                })
-              )
-            ]
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-modal-header" }, [
-      _c("div", { staticClass: "view-transaction-header" }, [
-        _vm._v("Rincian Pesanan")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("ID Transaksi")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Customer")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Vendor")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Status")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Tanggal Pesan")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-757ae53a", module.exports)
-  }
-}
-
-/***/ }),
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(333)
+  __webpack_require__(306)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(335)
+var __vue_script__ = __webpack_require__(308)
 /* template */
-var __vue_template__ = __webpack_require__(336)
+var __vue_template__ = __webpack_require__(309)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -71823,17 +65943,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 333 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(334);
+var content = __webpack_require__(307);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("2d070bb8", content, false, {});
+var update = __webpack_require__(4)("2d070bb8", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -71849,10 +65969,10 @@ if(false) {
 }
 
 /***/ }),
-/* 334 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -71863,7 +65983,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 335 */
+/* 308 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72142,7 +66262,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 336 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72806,6 +66926,5914 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-425bc22a", module.exports)
+  }
+}
+
+/***/ }),
+/* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(311)
+/* template */
+var __vue_template__ = __webpack_require__(312)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/Login.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-43d32e80", Component.options)
+  } else {
+    hotAPI.reload("data-v-43d32e80", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 311 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      username: '',
+      password: '',
+      iserror: false,
+      errors: {},
+      signinLoading: 'Sign In'
+    };
+  },
+
+  methods: {
+    doLogin: function doLogin() {
+      var _this = this;
+
+      this.errors = {};
+      if (this.username === '') {
+        this.errors.username = 'Silahkan masukkan username.';
+        this.iserror = true;
+      }
+
+      if (this.password === '') {
+        this.errors.password = 'Silahkan masukkan password';
+        this.iserror = true;
+      }
+      if (this.iserror === true) return false;
+      this.signinLoading = '<span uk-spinner></span>';
+      axios({
+        url: this.url + '/cp/login',
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        params: {
+          username: this.username,
+          password: this.password
+        }
+      }).then(function (res) {
+        var result = res.data;
+        if (result.status === 200) {
+          swal({
+            title: 'Login berhasil',
+            text: 'Redirecting...',
+            icon: 'success'
+          });
+          setTimeout(function () {
+            document.location = '';
+          }, 3000);
+        }
+      }).catch(function (err) {
+        var status = err.response.status;
+        var message = err.response.data;
+        if (status === 422) {
+          swal({
+            title: 'Pesan Error',
+            text: message.statusText,
+            icon: 'warning',
+            dangerMode: true
+          });
+        }
+        _this.signinLoading = 'Log in';
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-container uk-margin-large-top login-section" },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-width-2-3@xl uk-width-2-3@l uk-width-2-3@m uk-width-1-2@s uk-margin-large-top uk-align-center"
+        },
+        [
+          _c("div", { staticClass: "uk-hidden@m uk-text-center" }, [
+            _c("img", {
+              staticClass: "uk-width-1-2",
+              attrs: { src: _vm.url + "/images/logobrand/gplogo-green.png" }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "uk-grid-small uk-grid-collapse uk-grid-match",
+              attrs: { "uk-grid": "" }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-visible@m uk-visible@s"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-tile uk-tile-default uk-padding-large logo-container"
+                    },
+                    [
+                      _c("div", { staticClass: "uk-position-center" }, [
+                        _c("img", {
+                          staticClass: "logo-login uk-border-circle",
+                          attrs: {
+                            src: _vm.url + "/images/logobrand/gplogo-white.png"
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-width-expand" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-card uk-card-body uk-card-default login-container"
+                  },
+                  [
+                    _c("h2", { staticClass: "uk-card-title uk-text-center" }, [
+                      _vm._v("Login")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "form",
+                      {
+                        staticClass: "uk-form-stacked",
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.doLogin($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "uk-margin" }, [
+                          _vm.errors.username
+                            ? _c("div", [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "uk-alert-warning",
+                                    attrs: { "uk-alert": "" }
+                                  },
+                                  [_vm._v(_vm._s(_vm.errors["username"]))]
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            { staticClass: "uk-form-label label-login" },
+                            [_vm._v("Username")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "uk-form-controls" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.username,
+                                  expression: "username"
+                                }
+                              ],
+                              staticClass: "uk-input input-login",
+                              attrs: { type: "text", placeholder: "" },
+                              domProps: { value: _vm.username },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.username = $event.target.value
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-margin" }, [
+                          _vm.errors.password
+                            ? _c("div", [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "uk-alert-warning",
+                                    attrs: { "uk-alert": "" }
+                                  },
+                                  [_vm._v(_vm._s(_vm.errors.password))]
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            { staticClass: "uk-form-label label-login" },
+                            [_vm._v("Password")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "uk-form-controls" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.password,
+                                  expression: "password"
+                                }
+                              ],
+                              staticClass: "uk-input input-login",
+                              attrs: { type: "password", placeholder: "" },
+                              domProps: { value: _vm.password },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.password = $event.target.value
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-margin" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "uk-width-1-1 uk-button uk-button-default button-login",
+                              domProps: { innerHTML: _vm._s(_vm.signinLoading) }
+                            },
+                            [_vm._v("Sign In")]
+                          )
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-43d32e80", module.exports)
+  }
+}
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(314)
+/* template */
+var __vue_template__ = __webpack_require__(315)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/Users.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-59d89fdf", Component.options)
+  } else {
+    hotAPI.reload("data-v-59d89fdf", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 314 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      selectedRows: 10,
+      searchuser: '',
+      users: {
+        total: 0,
+        results: []
+      },
+      pagination: {
+        current: 1,
+        prev: '',
+        next: '',
+        last: '',
+        path: this.url + '/users/datausers',
+        perpage: 0
+      },
+      forms: {
+        id: '',
+        username: '',
+        password: '',
+        fullname: '',
+        email: '',
+        privilege: 'full',
+        edit: false
+      },
+      errors: {}
+    };
+  },
+
+  methods: {
+    btnAddOrUpdate: function btnAddOrUpdate(user) {
+      if (user === undefined || user === '') {
+        this.forms = {
+          id: '',
+          username: '',
+          password: '',
+          fullname: '',
+          email: '',
+          privilege: 'full',
+          edit: false,
+          submitButton: 'Tambah'
+        };
+        this.errors = {};
+      } else {
+        this.forms = {
+          id: user.uid,
+          username: user.username_panel,
+          password: '',
+          fullname: user.fullname,
+          email: user.email,
+          privilege: user.privileges_user,
+          edit: true,
+          submitButton: 'Simpan'
+        };
+      }
+
+      UIkit.modal('#addOrUpdateUser').show();
+    },
+    getUsersList: function getUsersList(pages) {
+      var _this = this;
+
+      var url = this.url + '/users/datausers?page=1&limit=' + this.selectedRows + '&searchuser=' + this.searchuser;
+      if (pages !== undefined) url = pages + '&limit=' + this.selectedRows + '&searchuser=' + this.searchuser;
+
+      axios({
+        url: url,
+        method: 'get'
+      }).then(function (res) {
+        var results = res.data;
+        _this.users = {
+          total: results.results.total,
+          results: results.results.data
+        };
+
+        _this.pagination = {
+          current: results.results.current_page,
+          prev: results.results.prev_page_url,
+          next: results.results.next_page_url,
+          last: results.results.last_page_url,
+          path: results.results.path,
+          perpage: results.results.per_page
+        };
+      }).catch(function (err) {
+        console.log(err.response);
+      });
+    },
+    addOrUpdateUser: function addOrUpdateUser() {
+      var _this2 = this;
+
+      this.errors = {};
+      this.errors.iserror = false;
+      if (this.forms.fullname === '') {
+        this.errors.fullname = 'Nama harap diisi.';
+        this.errors.iserror = true;
+      }
+      if (this.forms.username === '') {
+        this.errors.username = 'Username harap diisi.';
+        this.errors.iserror = true;
+      }
+      if (this.forms.email === '') {
+        this.errors.email = 'Email harap diisi.';
+        this.errors.iserror = true;
+      }
+      if (this.forms.password === '' && this.forms.edit === false) {
+        this.errors.password = 'Password harap diisi.';
+        this.errors.iserror = true;
+      }
+
+      if (this.errors.iserror === true) return false;
+      var method,
+          url = '';
+      if (this.forms.edit === false) {
+        url = this.url + '/users/add';
+        method = 'post';
+        if (this.countLength(this.forms.password) < 8) {
+          this.errors.password = 'Password terlalu pendek. Minimal 8 karakter.';
+          return false;
+        }
+      } else {
+        url = this.url + '/users/update/' + this.forms.id;
+        method = 'put';
+        if (this.forms.password !== '') {
+          if (this.countLength(this.forms.password) < 8) {
+            this.errors.password = 'Password terlalu pendek. Minimal 8 karakter.';
+            return false;
+          }
+        }
+      }
+
+      this.forms.submitButton = '<span uk-spinner></span>';
+      axios({
+        url: url,
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+        params: {
+          fullname: this.forms.fullname,
+          username: this.forms.username,
+          password: this.forms.password,
+          email: this.forms.email,
+          privilege: this.forms.privilege
+        }
+      }).then(function (res) {
+        var result = res.data;
+        swal({
+          title: 'Berhasil',
+          text: result.statusText,
+          icon: 'success',
+          timer: 3000
+        });
+        $('#submitButton').html('Tambah');
+        _this2.getUsersList();
+        setTimeout(function () {
+          UIkit.modal('#addOrUpdateUser').hide();
+        }, 3000);
+        if (_this2.forms.edit === false) {
+          _this2.forms = {
+            id: '',
+            username: '',
+            password: '',
+            fullname: '',
+            email: '',
+            privilege: 'full',
+            edit: false,
+            submitButton: 'Tambah'
+          };
+          _this2.errors = {};
+        } else {
+          _this2.forms.submitButton = 'Simpan';
+        }
+      }).catch(function (err) {
+        var status = err.response.status;
+        var message = err.response.data;
+        if (status === 422) {
+          swal({
+            title: 'Whoops',
+            text: message.statusText,
+            icon: 'warning',
+            dangerMode: true
+          });
+        }
+      });
+    },
+
+    countLength: function countLength(str) {
+      return str.length;
+    }
+  },
+  computed: {},
+  mounted: function mounted() {
+    this.getUsersList();
+  }
+});
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
+    [
+      _c("div", { attrs: { id: "addOrUpdateUser", "uk-modal": "" } }, [
+        _c("div", { staticClass: "uk-modal-dialog modal-dialog" }, [
+          _c("a", {
+            staticClass: "uk-modal-close-default",
+            attrs: { "uk-close": "" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-modal-body modal-body" }, [
+            _c("div", { staticClass: "modal-heading" }, [
+              _vm.forms.edit
+                ? _c("span", [_vm._v("Edit User")])
+                : _c("span", [_vm._v("Tambah User")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin-top" }, [
+              _c(
+                "form",
+                {
+                  staticClass: "uk-form-stacked",
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.addOrUpdateUser($event)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label form-label-modal" },
+                      [_vm._v("Nama")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.fullname,
+                            expression: "forms.fullname"
+                          }
+                        ],
+                        staticClass: "uk-input form-action-custom-modal",
+                        attrs: { type: "text", placeholder: "Nama Lengkap..." },
+                        domProps: { value: _vm.forms.fullname },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.forms, "fullname", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.fullname
+                        ? _c("span", [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "uk-alert-warning uk-margin-small-top",
+                                attrs: { "uk-alert": "" }
+                              },
+                              [_vm._v(_vm._s(_vm.errors.fullname))]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label form-label-modal" },
+                      [_vm._v("Email")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.email,
+                            expression: "forms.email"
+                          }
+                        ],
+                        staticClass: "uk-input form-action-custom-modal",
+                        attrs: {
+                          type: "email",
+                          placeholder: "Alamat Email..."
+                        },
+                        domProps: { value: _vm.forms.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.forms, "email", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.email
+                        ? _c("span", [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "uk-alert-warning uk-margin-small-top",
+                                attrs: { "uk-alert": "" }
+                              },
+                              [_vm._v(_vm._s(_vm.errors.email))]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label form-label-modal" },
+                      [_vm._v("Username")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.username,
+                            expression: "forms.username"
+                          }
+                        ],
+                        staticClass: "uk-input form-action-custom-modal",
+                        attrs: { type: "text", placeholder: "Username..." },
+                        domProps: { value: _vm.forms.username },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.forms, "username", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.username
+                        ? _c("span", [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "uk-alert-warning uk-margin-small-top",
+                                attrs: { "uk-alert": "" }
+                              },
+                              [_vm._v(_vm._s(_vm.errors.username))]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label form-label-modal" },
+                      [_vm._v("Password")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.password,
+                            expression: "forms.password"
+                          }
+                        ],
+                        staticClass: "uk-input form-action-custom-modal",
+                        attrs: { type: "password", placeholder: "Password..." },
+                        domProps: { value: _vm.forms.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.forms, "password", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.password
+                        ? _c("span", [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "uk-alert-warning uk-margin-small-top",
+                                attrs: { "uk-alert": "" }
+                              },
+                              [_vm._v(_vm._s(_vm.errors.password))]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "label",
+                      { staticClass: "uk-form-label form-label-modal" },
+                      [_vm._v("Privilege")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "uk-form-controls" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.forms.privilege,
+                              expression: "forms.privilege"
+                            }
+                          ],
+                          staticClass: "uk-select form-action-select-modal",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.forms,
+                                "privilege",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "full" } }, [
+                            _vm._v("Full Access")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "write" } }, [
+                            _vm._v("Write & Read")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "read" } }, [
+                            _vm._v("Read Only")
+                          ])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-margin" }, [
+                    _c("button", {
+                      staticClass:
+                        "uk-button uk-button-default button-action-modal",
+                      attrs: { id: "submitButton" },
+                      domProps: { innerHTML: _vm._s(_vm.forms.submitButton) }
+                    })
+                  ])
+                ]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "uk-grid-small uk-grid-margin",
+          attrs: { "uk-grid": "" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+            },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.selectedRows,
+                      expression: "selectedRows"
+                    }
+                  ],
+                  staticClass: "uk-width-1-1 uk-select form-select",
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.selectedRows = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                      function($event) {
+                        _vm.getUsersList(
+                          _vm.pagination.path +
+                            "?page=" +
+                            _vm.pagination.current
+                        )
+                      }
+                    ]
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "", disabled: true } }, [
+                    _vm._v("Tampilkan")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "10" } }, [
+                    _vm._v("10 baris")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "15" } }, [
+                    _vm._v("15 baris")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "20" } }, [_vm._v("20 baris")])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+            },
+            [
+              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                _c("a", {
+                  staticClass: "uk-form-icon",
+                  attrs: { "uk-icon": "search" },
+                  on: {
+                    click: function($event) {
+                      _vm.getUsersList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.searchuser,
+                      expression: "searchuser"
+                    }
+                  ],
+                  staticClass: "uk-width-1-1 uk-input form-search",
+                  attrs: { type: "search", placeholder: "Cari user..." },
+                  domProps: { value: _vm.searchuser },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      _vm.getUsersList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.searchuser = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s"
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "uk-button uk-button-default button-custom-action",
+                  on: {
+                    click: function($event) {
+                      _vm.btnAddOrUpdate()
+                    }
+                  }
+                },
+                [_vm._v("Tambah")]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm.users.total == 0
+        ? _c("div", [
+            _c(
+              "div",
+              {
+                staticClass: "uk-alert-warning uk-margin-top",
+                attrs: { "uk-alert": "" }
+              },
+              [_vm._v("Tidak ada data")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+        _c(
+          "table",
+          {
+            staticClass:
+              "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
+          },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.users.results, function(user) {
+                return _c("tr", [
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: { "uk-tooltip": "", title: "Sunting" },
+                        on: {
+                          click: function($event) {
+                            _vm.btnAddOrUpdate(user)
+                          }
+                        }
+                      },
+                      [_c("span", { attrs: { "uk-icon": "pencil" } })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: { "uk-tooltip": "", title: "Hapus" },
+                        on: {
+                          click: function($event) {
+                            _vm.btnAddOrUpdate()
+                          }
+                        }
+                      },
+                      [_c("span", { attrs: { "uk-icon": "trash" } })]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.fullname))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.email))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.privileges_user))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("No")])
+                ])
+              })
+            )
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nama")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Privileges")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Blocked")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-59d89fdf", module.exports)
+  }
+}
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(317)
+/* template */
+var __vue_template__ = __webpack_require__(318)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/BankPayment.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4b3de47e", Component.options)
+  } else {
+    hotAPI.reload("data-v-4b3de47e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 317 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      forms: {
+        id: '',
+        name: '',
+        code: '',
+        logo: '',
+        edit: false
+      },
+      submitBtn: 'Tambah',
+      banklist: {
+        total: 0,
+        results: []
+      },
+      keywords: '',
+      pagination: {
+        current: 1,
+        prev: '',
+        next: '',
+        last: '',
+        path: this.url + '/bankpayment'
+      }
+    };
+  },
+
+  methods: {
+    addOrUpdateBtn: function addOrUpdateBtn(d) {
+      if (d === undefined) {
+        this.forms = {
+          id: '',
+          name: '',
+          code: '',
+          logo: '',
+          edit: false
+        };
+        this.submitBtn = 'Tambah';
+      } else {
+        this.forms = {
+          id: d.bank_id,
+          name: d.bank_name,
+          code: d.bank_code,
+          logo: d.bank_logo,
+          edit: true
+        };
+        this.submitBtn = 'Simpan';
+      }
+      $("#selectedFile").val('');
+      UIkit.modal('#addOrUpdate').show();
+    },
+    addOrUpdateBank: function addOrUpdateBank() {
+      var _this = this;
+
+      if (this.forms.name === '') {
+        swal({
+          title: 'Warning',
+          text: 'Silahkan masukkan nama bank',
+          icon: 'warning',
+          dangerMode: true
+        });
+      } else if (this.forms.code === '') {
+        swal({
+          title: 'Warning',
+          text: 'Silahkan masukkan kode bank',
+          icon: 'warning',
+          dangerMode: true
+        });
+      } else {
+        if (this.forms.edit === false) {
+          if (this.forms.logo === '') {
+            swal({
+              title: 'Warning',
+              text: 'Silahkan masukkan logo bank',
+              icon: 'warning',
+              dangerMode: true
+            });
+          } else {
+            if (this.getFormatFile(this.forms.logo.name) !== 'jpg' && this.getFormatFile(this.forms.logo.name) !== 'png') {
+              swal({
+                title: 'Warning',
+                text: 'Format gambar hanya JPG atau PNG',
+                icon: 'warning',
+                dangerMode: true
+              });
+              return false;
+            }
+            var formfile = new FormData();
+            formfile.append('bank_code', this.forms.code);
+            formfile.append('bank_name', this.forms.name);
+            formfile.append('bank_logo', this.forms.logo, this.forms.logo.name);
+            axios.post(this.url + '/bankpayment/add', formfile).then(function (res) {
+              swal({
+                title: 'Berhasil',
+                text: res.data.statusText,
+                icon: 'success'
+              });
+              _this.getBankList();
+              setTimeout(function () {
+                UIkit.modal('#addOrUpdate').hide();
+              }, 2000);
+            }).catch(function (err) {
+              if (err.response.status === 500) {
+                swal({
+                  title: 'Whoops',
+                  text: err.response.statusText,
+                  icon: 'error',
+                  dangerMode: true
+                });
+              } else {
+                swal({
+                  title: 'Whoops',
+                  text: err.response.data.statusText,
+                  icon: 'error',
+                  dangerMode: true
+                });
+              }
+            });
+          }
+        } else {
+          if (this.forms.logo !== '') {
+            if (this.getFormatFile(this.forms.logo.name) !== 'jpg' && this.getFormatFile(this.forms.logo.name) !== 'png') {
+              swal({
+                title: 'Warning',
+                text: 'Format gambar hanya JPG atau PNG',
+                icon: 'warning',
+                dangerMode: true
+              });
+              return false;
+            }
+          }
+
+          var _formfile = new FormData();
+          _formfile.append('bank_code', this.forms.code);
+          _formfile.append('bank_name', this.forms.name);
+          _formfile.append('bank_logo', this.forms.logo, this.forms.logo.name);
+          axios.post(this.url + '/bankpayment/update/' + this.forms.id, _formfile).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            _this.getBankList();
+            setTimeout(function () {
+              UIkit.modal('#addOrUpdate').hide();
+            }, 3000);
+          }).catch(function (err) {
+            if (err.response.status === 500) {
+              swal({
+                title: 'Whoops',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true
+              });
+            } else {
+              swal({
+                title: 'Whoops',
+                text: err.response.data.statusText,
+                icon: 'error',
+                dangerMode: true
+              });
+            }
+          });
+        }
+      }
+    },
+    deleteBankList: function deleteBankList(id) {
+      var _this2 = this;
+
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus bank ini?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: true,
+          confirm: {
+            text: 'Hapus',
+            value: true
+          }
+        }
+      }).then(function (res) {
+        if (res) {
+          axios({
+            method: 'delete',
+            url: _this2.url + '/bankpayment/delete/' + id
+          }).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            _this2.getBankList();
+          }).catch(function (err) {
+            if (err.response.status === 500) {
+              swal({
+                title: 'Whoops',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true
+              });
+            } else {
+              swal({
+                title: 'Whoops',
+                text: err.response.data.statusText,
+                icon: 'error',
+                dangerMode: true
+              });
+            }
+          });
+        }
+      });
+    },
+    getBankList: function getBankList(pages) {
+      var _this3 = this;
+
+      var params = '&keywords=' + this.keywords + '';
+      if (pages === undefined) pages = this.url + '/bankpayment/banklist?page=' + this.pagination.current + params;else pages = pages + params;
+
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var results = res.data;
+        _this3.banklist = {
+          total: results.total,
+          results: results.data
+        };
+        _this3.pagination = {
+          current: results.current_page,
+          prev: results.prev_page_url,
+          next: results.next_page_url,
+          last: results.last_page,
+          path: results.path
+        };
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    getFormatFile: function getFormatFile(files) {
+      var length_str_file = files.length;
+      var getIndex = files.lastIndexOf(".");
+      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    selectedFile: function selectedFile(event) {
+      this.forms.logo = event.target.files[0];
+    }
+  },
+  mounted: function mounted() {
+    this.getBankList();
+  }
+});
+
+/***/ }),
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
+    [
+      _c("div", { attrs: { id: "addOrUpdate", "uk-modal": "" } }, [
+        _c("div", { staticClass: "uk-modal-dialog" }, [
+          _c("a", {
+            staticClass: "uk-modal-close-default",
+            attrs: { "uk-close": "" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-modal-body" }, [
+            _c("h3", [
+              _vm.forms.edit
+                ? _c("span", [_vm._v("Ubah Bank")])
+                : _c("span", [_vm._v("Tambah Bank")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                staticClass: "uk-form-stacked",
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.addOrUpdateBank($event)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c("label", { staticClass: "uk-form-label" }, [
+                    _vm._v("Nama Bank *")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-form-controls" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.name,
+                          expression: "forms.name"
+                        }
+                      ],
+                      staticClass: "uk-input form-action-custom-modal",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.forms.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.forms, "name", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c("label", { staticClass: "uk-form-label" }, [
+                    _vm._v("Kode Bank *")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-form-controls" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.code,
+                          expression: "forms.code"
+                        }
+                      ],
+                      staticClass: "uk-input form-action-custom-modal",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.forms.code },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.forms, "code", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c("label", { staticClass: "uk-form-label" }, [
+                    _vm._v("Logo Bank *")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-form-controls" }, [
+                    _c("div", { attrs: { "uk-form-custom": "target: true" } }, [
+                      _c("input", {
+                        attrs: { type: "file", id: "selectedFile" },
+                        on: { change: _vm.selectedFile }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "uk-input uk-form-width-medium",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Select file",
+                          disabled: ""
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c("button", {
+                    staticClass:
+                      "uk-button uk-button-default button-action-modal",
+                    domProps: { innerHTML: _vm._s(_vm.submitBtn) }
+                  })
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                _c("a", {
+                  staticClass: "uk-form-icon",
+                  attrs: { "uk-icon": "search" },
+                  on: {
+                    click: function($event) {
+                      _vm.getBankList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.keywords,
+                      expression: "keywords"
+                    }
+                  ],
+                  staticClass: "uk-input form-search uk-width-1-1",
+                  attrs: { type: "keywords", placeholder: "Search..." },
+                  domProps: { value: _vm.keywords },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      _vm.getBankList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.keywords = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "uk-button button-custom-action",
+                  on: {
+                    click: function($event) {
+                      _vm.addOrUpdateBtn()
+                    }
+                  }
+                },
+                [_vm._v("Tambah")]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.banklist.results, function(bank) {
+                  return _c("tr", [
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "pencil",
+                          "uk-tooltip": "",
+                          title: "Ubah",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.addOrUpdateBtn(bank)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "trash",
+                          "uk-tooltip": "",
+                          title: "Hapus",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteBankList(bank.bank_id)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _vm._v(_vm._s(bank.bank_code))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(bank.bank_name))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("img", {
+                        staticClass: "uk-width-1-6",
+                        attrs: {
+                          src:
+                            _vm.url.replace("/cp/management", "") +
+                            "/images/bankpayment/" +
+                            bank.bank_logo,
+                          alt: bank.bank_name
+                        }
+                      })
+                    ])
+                  ])
+                })
+              )
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-text-small" }, [
+      _c("i", [_vm._v("Upload format JPG atau PNG")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kode Bank")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nama Bank")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Logo Bank")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4b3de47e", module.exports)
+  }
+}
+
+/***/ }),
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(320)
+/* template */
+var __vue_template__ = __webpack_require__(321)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/BankCustomer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-70ac089a", Component.options)
+  } else {
+    hotAPI.reload("data-v-70ac089a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 320 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      forms: {
+        id: '',
+        name: '',
+        code: '',
+        logo: '',
+        edit: false
+      },
+      submitBtn: 'Tambah',
+      banklist: {
+        total: 0,
+        results: []
+      },
+      keywords: '',
+      pagination: {
+        current: 1,
+        prev: '',
+        next: '',
+        last: '',
+        path: this.url + '/bankcustomer'
+      }
+    };
+  },
+
+  methods: {
+    addOrUpdateBtn: function addOrUpdateBtn(d) {
+      if (d === undefined) {
+        this.forms = {
+          id: '',
+          name: '',
+          code: '',
+          logo: '',
+          edit: false
+        };
+        this.submitBtn = 'Tambah';
+      } else {
+        this.forms = {
+          id: d.bank_id,
+          name: d.bank_name,
+          code: d.bank_code,
+          logo: '',
+          edit: true
+        };
+        this.submitBtn = 'Simpan';
+      }
+      $("#selectedFile").val('');
+      UIkit.modal('#addOrUpdate').show();
+    },
+    addOrUpdateBank: function addOrUpdateBank() {
+      var _this = this;
+
+      if (this.forms.name === '') {
+        swal({
+          title: 'Warning',
+          text: 'Silahkan masukkan nama bank',
+          icon: 'warning',
+          dangerMode: true
+        });
+      } else if (this.forms.code === '') {
+        swal({
+          title: 'Warning',
+          text: 'Silahkan masukkan kode bank',
+          icon: 'warning',
+          dangerMode: true
+        });
+      } else {
+        if (this.forms.edit === false) {
+          if (this.forms.logo === '') {
+            swal({
+              title: 'Warning',
+              text: 'Silahkan masukkan logo bank',
+              icon: 'warning',
+              dangerMode: true
+            });
+          } else {
+            if (this.getFormatFile(this.forms.logo.name) !== 'jpg' && this.getFormatFile(this.forms.logo.name) !== 'png') {
+              swal({
+                title: 'Warning',
+                text: 'Format gambar hanya JPG atau PNG',
+                icon: 'warning',
+                dangerMode: true
+              });
+              return false;
+            }
+            var formfile = new FormData();
+            formfile.append('bank_code', this.forms.code);
+            formfile.append('bank_name', this.forms.name);
+            formfile.append('bank_logo', this.forms.logo, this.forms.logo.name);
+            axios.post(this.url + '/bankcustomer/add', formfile).then(function (res) {
+              swal({
+                title: 'Berhasil',
+                text: res.data.statusText,
+                icon: 'success'
+              });
+              _this.getBankList();
+              setTimeout(function () {
+                UIkit.modal('#addOrUpdate').hide();
+              }, 3000);
+            }).catch(function (err) {
+              if (err.response.status === 500) {
+                swal({
+                  title: 'Whoops',
+                  text: err.response.statusText,
+                  icon: 'error',
+                  dangerMode: true
+                });
+              } else {
+                swal({
+                  title: 'Whoops',
+                  text: err.response.data.statusText,
+                  icon: 'error',
+                  dangerMode: true
+                });
+              }
+            });
+          }
+        } else {
+          if (this.forms.logo !== '') {
+            if (this.getFormatFile(this.forms.logo.name) !== 'jpg' && this.getFormatFile(this.forms.logo.name) !== 'png') {
+              swal({
+                title: 'Warning',
+                text: 'Format gambar hanya JPG atau PNG',
+                icon: 'warning',
+                dangerMode: true
+              });
+              return false;
+            }
+          }
+
+          var _formfile = new FormData();
+          _formfile.append('bank_code', this.forms.code);
+          _formfile.append('bank_name', this.forms.name);
+          _formfile.append('bank_logo', this.forms.logo, this.forms.logo.name);
+          axios.post(this.url + '/bankcustomer/update/' + this.forms.id, _formfile).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            _this.getBankList();
+            setTimeout(function () {
+              UIkit.modal('#addOrUpdate').hide();
+            }, 3000);
+          }).catch(function (err) {
+            if (err.response.status === 500) {
+              swal({
+                title: 'Whoops',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true
+              });
+            } else {
+              swal({
+                title: 'Whoops',
+                text: err.response.data.statusText,
+                icon: 'error',
+                dangerMode: true
+              });
+            }
+          });
+        }
+      }
+    },
+    deleteBankList: function deleteBankList(id) {
+      var _this2 = this;
+
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus bank ini?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: true,
+          confirm: {
+            text: 'Hapus',
+            value: true
+          }
+        }
+      }).then(function (res) {
+        if (res) {
+          axios({
+            method: 'delete',
+            url: _this2.url + '/bankcustomer/delete/' + id
+          }).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            _this2.getBankList();
+          }).catch(function (err) {
+            if (err.response.status === 500) {
+              swal({
+                title: 'Whoops',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true
+              });
+            } else {
+              swal({
+                title: 'Whoops',
+                text: err.response.data.statusText,
+                icon: 'error',
+                dangerMode: true
+              });
+            }
+          });
+        }
+      });
+    },
+    getBankList: function getBankList(pages) {
+      var _this3 = this;
+
+      var params = '&keywords=' + this.keywords + '';
+      if (pages === undefined) pages = this.url + '/bankcustomer/banklist?page=' + this.pagination.current + params;else pages = pages + params;
+
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var results = res.data;
+        _this3.banklist = {
+          total: results.total,
+          results: results.data
+        };
+        _this3.pagination = {
+          current: results.current_page,
+          prev: results.prev_page_url,
+          next: results.next_page_url,
+          last: results.last_page,
+          path: results.path
+        };
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    getFormatFile: function getFormatFile(files) {
+      var length_str_file = files.length;
+      var getIndex = files.lastIndexOf(".");
+      var getformatfile = files.substring(length_str_file, getIndex + 1).toLowerCase();
+      return getformatfile;
+    },
+    selectedFile: function selectedFile(event) {
+      this.forms.logo = event.target.files[0];
+    }
+  },
+  mounted: function mounted() {
+    this.getBankList();
+  }
+});
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
+    [
+      _c("div", { attrs: { id: "addOrUpdate", "uk-modal": "" } }, [
+        _c("div", { staticClass: "uk-modal-dialog" }, [
+          _c("a", {
+            staticClass: "uk-modal-close-default",
+            attrs: { "uk-close": "" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-modal-body" }, [
+            _c("h3", [
+              _vm.forms.edit
+                ? _c("span", [_vm._v("Ubah Bank")])
+                : _c("span", [_vm._v("Tambah Bank")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                staticClass: "uk-form-stacked",
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.addOrUpdateBank($event)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c("label", { staticClass: "uk-form-label" }, [
+                    _vm._v("Nama Bank *")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-form-controls" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.name,
+                          expression: "forms.name"
+                        }
+                      ],
+                      staticClass: "uk-input form-action-custom-modal",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.forms.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.forms, "name", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c("label", { staticClass: "uk-form-label" }, [
+                    _vm._v("Kode Bank *")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-form-controls" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.code,
+                          expression: "forms.code"
+                        }
+                      ],
+                      staticClass: "uk-input form-action-custom-modal",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.forms.code },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.forms, "code", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c("label", { staticClass: "uk-form-label" }, [
+                    _vm._v("Logo Bank *")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "uk-form-controls" }, [
+                    _c("div", { attrs: { "uk-form-custom": "target: true" } }, [
+                      _c("input", {
+                        attrs: { type: "file", id: "selectedFile" },
+                        on: { change: _vm.selectedFile }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "uk-input uk-form-width-medium",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Select file",
+                          disabled: ""
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-margin" }, [
+                  _c("button", {
+                    staticClass:
+                      "uk-button uk-button-default button-action-modal",
+                    domProps: { innerHTML: _vm._s(_vm.submitBtn) }
+                  })
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                _c("a", {
+                  staticClass: "uk-form-icon",
+                  attrs: { "uk-icon": "search" },
+                  on: {
+                    click: function($event) {
+                      _vm.getBankList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.keywords,
+                      expression: "keywords"
+                    }
+                  ],
+                  staticClass: "uk-input form-search uk-width-1-1",
+                  attrs: { type: "keywords", placeholder: "Search..." },
+                  domProps: { value: _vm.keywords },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      _vm.getBankList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.keywords = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "uk-button button-custom-action",
+                  on: {
+                    click: function($event) {
+                      _vm.addOrUpdateBtn()
+                    }
+                  }
+                },
+                [_vm._v("Tambah")]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.banklist.results, function(bank) {
+                  return _c("tr", [
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "pencil",
+                          "uk-tooltip": "",
+                          title: "Ubah",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.addOrUpdateBtn(bank)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "trash",
+                          "uk-tooltip": "",
+                          title: "Hapus",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteBankList(bank.bank_id)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _vm._v(_vm._s(bank.bank_code))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(bank.bank_name))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("img", {
+                        staticClass: "uk-width-1-6",
+                        attrs: {
+                          src:
+                            _vm.url.replace("/cp/management", "") +
+                            "/images/bankcustomer/" +
+                            bank.bank_logo,
+                          alt: bank.bank_name
+                        }
+                      })
+                    ])
+                  ])
+                })
+              )
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-text-small" }, [
+      _c("i", [_vm._v("Upload format JPG atau PNG")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kode Bank")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nama Bank")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Logo Bank")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-70ac089a", module.exports)
+  }
+}
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(323)
+/* template */
+var __vue_template__ = __webpack_require__(324)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/Provinsi.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-756863c6", Component.options)
+  } else {
+    hotAPI.reload("data-v-756863c6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 323 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      keywords: '',
+      pagination: {
+        current: 1,
+        prev: '',
+        next: '',
+        last: '',
+        path: this.url + '/provinsi/data_provinsi'
+      },
+      provinsi: {
+        total: 0,
+        results: []
+      },
+      forms: {
+        id: 0,
+        kode: '',
+        nama: '',
+        edit: false,
+        errors: {},
+        submit: 'Tambah'
+      },
+      errorMessage: ''
+    };
+  },
+
+  methods: {
+    addOrUpdateModal: function addOrUpdateModal(prov) {
+      if (prov === undefined || prov === '') {
+        this.forms.id = 0;
+        this.forms.kode = '';
+        this.forms.nama = '';
+        this.forms.edit = false;
+        this.forms.errors = {};
+        this.forms.submit = 'Tambah';
+      } else {
+        this.forms.id = prov.id_provinsi;
+        this.forms.kode = prov.kode_provinsi;
+        this.forms.nama = prov.nama_provinsi;
+        this.forms.edit = true;
+        this.forms.errors = {};
+        this.forms.submit = 'Simpan';
+      }
+      this.errorMessage = '';
+      UIkit.modal('#modal').show();
+    },
+    getProvinsiList: function getProvinsiList(pages) {
+      var _this = this;
+
+      var params = '&keywords=' + this.keywords;
+      if (pages === undefined) pages = this.url + '/provinsi/data_provinsi?page=' + this.pagination.current + params;else pages = pages + params;
+
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this.provinsi.total = result.total;
+        _this.provinsi.results = result.data;
+      }).catch(function (err) {
+        console.log(err.response.status);
+      });
+    },
+    addOrUpdateProvinsi: function addOrUpdateProvinsi() {
+      var _this2 = this;
+
+      this.forms.errors = {};
+      if (this.forms.kode === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.kode = 'Kode provinsi wajib diisi.';
+      }
+      if (this.forms.nama === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.nama = 'Nama provinsi wajib diisi.';
+      }
+      if (this.forms.errors.error === true) {
+        this.forms.errors.error = false;
+        return false;
+      }
+
+      var method, url;
+      if (this.forms.edit === false) {
+        method = 'post';url = this.url + '/provinsi/add';
+      } else {
+        method = 'put';url = this.url + '/provinsi/update/' + this.forms.id;
+      }
+
+      this.forms.submit = '<span uk-spinner></span>';
+      axios({
+        method: method,
+        url: url,
+        params: {
+          kode_provinsi: this.forms.kode,
+          nama_provinsi: this.forms.nama
+        }
+      }).then(function (res) {
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success',
+          timer: 5000
+        });
+        _this2.errorMessage = '';
+        _this2.getProvinsiList();
+        setTimeout(function () {
+          UIkit.modal('#modal').hide();
+        }, 3000);
+      }).catch(function (err) {
+        var status = err.response.status;
+        if (status === 409) {
+          _this2.errorMessage = err.response.data.statusText;
+        } else {
+          _this2.errorMessage = err.response.statusText;
+        }
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this2.errorMessage,
+          icon: 'warning',
+          dangerMode: true
+        });
+      });
+
+      if (this.forms.edit === true) this.forms.submit = 'Simpan';
+    },
+    deleteProvinsi: function deleteProvinsi(id, val) {
+      var _this3 = this;
+
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus provinsi ' + val + '?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: true,
+          confirm: { text: 'Hapus', value: true }
+        }
+      }).then(function (value) {
+        if (value) {
+          axios({
+            method: 'delete',
+            url: _this3.url + '/provinsi/delete/' + id
+          }).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            _this3.getProvinsiList();
+          }).catch(function (err) {
+            swal({
+              title: 'Terjadi kesalahan',
+              text: err.response.statusText,
+              icon: 'warning',
+              dangerMode: true
+            });
+          });
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getProvinsiList();
+  }
+});
+
+/***/ }),
+/* 324 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
+    [
+      _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
+        _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
+          _c("a", {
+            staticClass: "uk-modal-close-default",
+            attrs: { "uk-close": "" }
+          }),
+          _vm._v(" "),
+          _c("h3", [
+            _vm.forms.edit
+              ? _c("span", [_vm._v("Ubah Provinsi")])
+              : _c("span", [_vm._v("Tambah Provinsi")])
+          ]),
+          _vm._v(" "),
+          _vm.errorMessage
+            ? _c(
+                "div",
+                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
+                [_vm._v(_vm._s(_vm.errorMessage))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass: "uk-form-stacked",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.addOrUpdateProvinsi($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Kode Provinsi")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.kode,
+                        expression: "forms.kode"
+                      }
+                    ],
+                    staticClass:
+                      "uk-width-1-1 uk-input form-action-custom-modal",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.kode },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "kode", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.kode
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.kode))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Nama Provinsi")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.nama,
+                        expression: "forms.nama"
+                      }
+                    ],
+                    staticClass:
+                      "uk-width-1-1 uk-input form-action-custom-modal",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.nama },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "nama", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.nama
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.nama))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("button", {
+                  staticClass:
+                    "uk-button uk-button-default button-action-modal",
+                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                })
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                _c("a", {
+                  staticClass: "uk-form-icon",
+                  attrs: { "uk-icon": "search" },
+                  on: {
+                    click: function($event) {
+                      _vm.getProvinsiList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.keywords,
+                      expression: "keywords"
+                    }
+                  ],
+                  staticClass: "uk-input form-search uk-width-1-1",
+                  attrs: { type: "keywords", placeholder: "Search..." },
+                  domProps: { value: _vm.keywords },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      _vm.getProvinsiList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.keywords = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "uk-button button-custom-action",
+                  on: {
+                    click: function($event) {
+                      _vm.addOrUpdateModal()
+                    }
+                  }
+                },
+                [_vm._v("Tambah")]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.provinsi.results, function(prov) {
+                  return _c("tr", [
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "pencil",
+                          "uk-tooltip": "",
+                          title: "Ubah",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.addOrUpdateModal(prov)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "trash",
+                          "uk-tooltip": "",
+                          title: "Hapus",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteProvinsi(
+                              prov.id_provinsi,
+                              prov.nama_provinsi
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _vm._v(_vm._s(prov.kode_provinsi))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(prov.nama_provinsi))])
+                  ])
+                })
+              )
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kode Provinsi")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nama Provinsi")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-756863c6", module.exports)
+  }
+}
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(326)
+/* template */
+var __vue_template__ = __webpack_require__(327)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/Kabupaten.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2dd41ada", Component.options)
+  } else {
+    hotAPI.reload("data-v-2dd41ada", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 326 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'provinsi'],
+  data: function data() {
+    return {
+      keywords: '',
+      pagination: {
+        current: 1,
+        prev: '',
+        next: '',
+        last: '',
+        path: this.url + '/kabupaten/data_kabupaten'
+      },
+      kabupaten: {
+        total: 0,
+        results: []
+      },
+      forms: {
+        id: 0,
+        kode: '',
+        nama: '',
+        provinsi: '',
+        edit: false,
+        errors: {},
+        submit: 'Tambah'
+      },
+      errorMessage: ''
+    };
+  },
+
+  methods: {
+    addOrUpdateModal: function addOrUpdateModal(kab) {
+      if (kab === undefined || kab === '') {
+        this.forms.id = 0;
+        this.forms.kode = '';
+        this.forms.nama = '';
+        this.forms.provinsi = '';
+        this.forms.edit = false;
+        this.forms.errors = {};
+        this.forms.submit = 'Tambah';
+      } else {
+        this.forms.id = kab.id_kab;
+        this.forms.kode = kab.kode_kab;
+        this.forms.nama = kab.nama_kab;
+        this.forms.provinsi = kab.id_provinsi;
+        this.forms.edit = true;
+        this.forms.errors = {};
+        this.forms.submit = 'Simpan';
+      }
+      this.errorMessage = '';
+      UIkit.modal('#modal').show();
+    },
+    getKabupatenList: function getKabupatenList(pages) {
+      var _this = this;
+
+      var params = '&keywords=' + this.keywords;
+      if (pages === undefined) pages = this.url + '/kabupaten/data_kabupaten?page=' + this.pagination.current + params;else pages = pages + params;
+
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this.kabupaten.total = result.total;
+        _this.kabupaten.results = result.data;
+      }).catch(function (err) {
+        console.log(err.response.status);
+      });
+    },
+    addOrUpdateKabupaten: function addOrUpdateKabupaten() {
+      var _this2 = this;
+
+      this.forms.errors = {};
+      if (this.forms.kode === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.kode = 'Kode kabupaten wajib diisi.';
+      }
+      if (this.forms.nama === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.nama = 'Nama kabupaten wajib diisi.';
+      }
+      if (this.forms.provinsi === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.provinsi = 'Provinsi wajib diisi.';
+      }
+      if (this.forms.errors.error === true) {
+        this.forms.errors.error = false;
+        return false;
+      }
+
+      var method, url;
+      if (this.forms.edit === false) {
+        method = 'post';url = this.url + '/kabupaten/add';
+      } else {
+        method = 'put';url = this.url + '/kabupaten/update/' + this.forms.id;
+      }
+
+      this.forms.submit = '<span uk-spinner></span>';
+      axios({
+        method: method,
+        url: url,
+        params: {
+          kode_kab: this.forms.kode,
+          nama_kabupaten: this.forms.nama,
+          provinsi: this.forms.provinsi
+        }
+      }).then(function (res) {
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success',
+          timer: 5000
+        });
+        _this2.errorMessage = '';
+        _this2.getKabupatenList();
+        setTimeout(function () {
+          UIkit.modal('#modal').hide();
+        }, 3000);
+      }).catch(function (err) {
+        var status = err.response.status;
+        if (status === 409) {
+          _this2.errorMessage = err.response.data.statusText;
+        } else {
+          _this2.errorMessage = err.response.statusText;
+        }
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this2.errorMessage,
+          icon: 'warning',
+          dangerMode: true
+        });
+      });
+
+      if (this.forms.edit === true) this.forms.submit = 'Simpan';
+    },
+    deleteKabupaten: function deleteKabupaten(id, val) {
+      var _this3 = this;
+
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus kabupaten ' + val + '?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: true,
+          confirm: { text: 'Hapus', value: true }
+        }
+      }).then(function (value) {
+        if (value) {
+          axios({
+            method: 'delete',
+            url: _this3.url + '/kabupaten/delete/' + id
+          }).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            _this3.getKabupatenList();
+          }).catch(function (err) {
+            swal({
+              title: 'Terjadi kesalahan',
+              text: err.response.statusText,
+              icon: 'warning',
+              dangerMode: true
+            });
+          });
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getKabupatenList();
+  }
+});
+
+/***/ }),
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
+    [
+      _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
+        _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
+          _c("a", {
+            staticClass: "uk-modal-close-default",
+            attrs: { "uk-close": "" }
+          }),
+          _vm._v(" "),
+          _c("h3", [
+            _vm.forms.edit
+              ? _c("span", [_vm._v("Ubah Kabupaten")])
+              : _c("span", [_vm._v("Tambah Kabupaten")])
+          ]),
+          _vm._v(" "),
+          _vm.errorMessage
+            ? _c(
+                "div",
+                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
+                [_vm._v(_vm._s(_vm.errorMessage))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass: "uk-form-stacked",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.addOrUpdateKabupaten($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Kode Kabupaten")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.kode,
+                        expression: "forms.kode"
+                      }
+                    ],
+                    staticClass:
+                      "uk-width-1-1 uk-input form-action-custom-modal",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.kode },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "kode", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.kode
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.kode))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Nama Kabupaten")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.nama,
+                        expression: "forms.nama"
+                      }
+                    ],
+                    staticClass:
+                      "uk-width-1-1 uk-input form-action-custom-modal",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.nama },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "nama", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.nama
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.nama))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Provinsi")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.provinsi,
+                          expression: "forms.provinsi"
+                        }
+                      ],
+                      staticClass:
+                        "uk-width-1-1 uk-select form-action-select-modal",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.forms,
+                            "provinsi",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "", selected: "" } }, [
+                        _vm._v("-- Pilih Provinsi --")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.provinsi, function(prov) {
+                        return _c(
+                          "option",
+                          { domProps: { value: prov.id_provinsi } },
+                          [_vm._v(_vm._s(prov.nama_provinsi))]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.provinsi
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.provinsi))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("button", {
+                  staticClass:
+                    "uk-button uk-button-default button-action-modal",
+                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                })
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                _c("a", {
+                  staticClass: "uk-form-icon",
+                  attrs: { "uk-icon": "search" },
+                  on: {
+                    click: function($event) {
+                      _vm.getKabupatenList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.keywords,
+                      expression: "keywords"
+                    }
+                  ],
+                  staticClass: "uk-input form-search uk-width-1-1",
+                  attrs: { type: "keywords", placeholder: "Search..." },
+                  domProps: { value: _vm.keywords },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      _vm.getKabupatenList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.keywords = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "uk-button button-custom-action",
+                  on: {
+                    click: function($event) {
+                      _vm.addOrUpdateModal()
+                    }
+                  }
+                },
+                [_vm._v("Tambah")]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.kabupaten.results, function(kab) {
+                  return _c("tr", [
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "pencil",
+                          "uk-tooltip": "",
+                          title: "Ubah",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.addOrUpdateModal(kab)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "trash",
+                          "uk-tooltip": "",
+                          title: "Hapus",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteKabupaten(kab.id_kab, kab.nama_kab)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _vm._v(_vm._s(kab.kode_kab))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(kab.nama_kab))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(kab.nama_provinsi))])
+                  ])
+                })
+              )
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kode Kabupaten")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nama Kabupaten")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Provinsi")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2dd41ada", module.exports)
+  }
+}
+
+/***/ }),
+/* 328 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(329)
+/* template */
+var __vue_template__ = __webpack_require__(330)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/Kecamatan.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0821dd2c", Component.options)
+  } else {
+    hotAPI.reload("data-v-0821dd2c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 329 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'kabupaten'],
+  data: function data() {
+    return {
+      keywords: '',
+      pagination: {
+        current: 1,
+        prev: '',
+        next: '',
+        last: '',
+        path: this.url + '/kecamatan/data_kecamatan'
+      },
+      kecamatan: {
+        total: 0,
+        results: []
+      },
+      forms: {
+        id: 0,
+        kode: '',
+        nama: '',
+        kabupaten: '',
+        edit: false,
+        errors: {},
+        submit: 'Tambah'
+      },
+      errorMessage: ''
+    };
+  },
+
+  methods: {
+    addOrUpdateModal: function addOrUpdateModal(kec) {
+      if (kec === undefined || kec === '') {
+        this.forms.id = 0;
+        this.forms.kode = '';
+        this.forms.nama = '';
+        this.forms.kabupaten = '';
+        this.forms.edit = false;
+        this.forms.errors = {};
+        this.forms.submit = 'Tambah';
+      } else {
+        this.forms.id = kec.id_kec;
+        this.forms.kode = kec.kode_kec;
+        this.forms.nama = kec.nama_kec;
+        this.forms.kabupaten = kec.id_kab;
+        this.forms.edit = true;
+        this.forms.errors = {};
+        this.forms.submit = 'Simpan';
+      }
+      this.errorMessage = '';
+      UIkit.modal('#modal').show();
+    },
+    getKecamatanList: function getKecamatanList(pages) {
+      var _this = this;
+
+      var params = '&keywords=' + this.keywords;
+      if (pages === undefined) pages = this.url + '/kecamatan/data_kecamatan?page=' + this.pagination.current + params;else pages = pages + params;
+
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this.kecamatan.total = result.total;
+        _this.kecamatan.results = result.data;
+      }).catch(function (err) {
+        console.log(err.response.status);
+      });
+    },
+    addOrUpdateKecamatan: function addOrUpdateKecamatan() {
+      var _this2 = this;
+
+      this.forms.errors = {};
+      if (this.forms.kode === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.kode = 'Kode kecamatan wajib diisi.';
+      }
+      if (this.forms.nama === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.nama = 'Nama kecamatan wajib diisi.';
+      }
+      if (this.forms.kabupaten === '') {
+        this.forms.errors.error = true;
+        this.forms.errors.kabupaten = 'Kabupaten wajib diisi.';
+      }
+      if (this.forms.errors.error === true) {
+        this.forms.errors.error = false;
+        return false;
+      }
+
+      var method, url;
+      if (this.forms.edit === false) {
+        method = 'post';url = this.url + '/kecamatan/add';
+      } else {
+        method = 'put';url = this.url + '/kecamatan/update/' + this.forms.id;
+      }
+
+      this.forms.submit = '<span uk-spinner></span>';
+      axios({
+        method: method,
+        url: url,
+        params: {
+          kode_kec: this.forms.kode,
+          nama_kecamatan: this.forms.nama,
+          kabupaten: this.forms.kabupaten
+        }
+      }).then(function (res) {
+        swal({
+          title: 'Berhasil',
+          text: res.data.statusText,
+          icon: 'success',
+          timer: 5000
+        });
+        _this2.errorMessage = '';
+        _this2.getKecamatanList();
+        setTimeout(function () {
+          UIkit.modal('#modal').hide();
+        }, 3000);
+      }).catch(function (err) {
+        var status = err.response.status;
+        if (status === 409) {
+          _this2.errorMessage = err.response.data.statusText;
+        } else {
+          _this2.errorMessage = err.response.statusText;
+        }
+        swal({
+          title: 'Terjadi kesalahan',
+          text: _this2.errorMessage,
+          icon: 'warning',
+          dangerMode: true
+        });
+      });
+
+      if (this.forms.edit === true) this.forms.submit = 'Simpan';
+    },
+    deleteKecamatan: function deleteKecamatan(id, val) {
+      var _this3 = this;
+
+      swal({
+        title: 'Konfirmasi',
+        text: 'Apakah anda ingin menghapus kecamatan ' + val + '?',
+        icon: 'warning',
+        dangerMode: true,
+        buttons: {
+          cancel: true,
+          confirm: { text: 'Hapus', value: true }
+        }
+      }).then(function (value) {
+        if (value) {
+          axios({
+            method: 'delete',
+            url: _this3.url + '/kecamatan/delete/' + id
+          }).then(function (res) {
+            swal({
+              title: 'Berhasil',
+              text: res.data.statusText,
+              icon: 'success'
+            });
+            _this3.getKecamatanList();
+          }).catch(function (err) {
+            swal({
+              title: 'Terjadi kesalahan',
+              text: err.response.statusText,
+              icon: 'warning',
+              dangerMode: true
+            });
+          });
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getKecamatanList();
+  }
+});
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-margin-large-top uk-margin-large-bottom" },
+    [
+      _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
+        _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
+          _c("a", {
+            staticClass: "uk-modal-close-default",
+            attrs: { "uk-close": "" }
+          }),
+          _vm._v(" "),
+          _c("h3", [
+            _vm.forms.edit
+              ? _c("span", [_vm._v("Ubah Kecamatan")])
+              : _c("span", [_vm._v("Tambah Kecamatan")])
+          ]),
+          _vm._v(" "),
+          _vm.errorMessage
+            ? _c(
+                "div",
+                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
+                [_vm._v(_vm._s(_vm.errorMessage))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass: "uk-form-stacked",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.addOrUpdateKecamatan($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Kode Kecamatan")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.kode,
+                        expression: "forms.kode"
+                      }
+                    ],
+                    staticClass:
+                      "uk-width-1-1 uk-input form-action-custom-modal",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.kode },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "kode", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.kode
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.kode))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Nama Kecamatan")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.nama,
+                        expression: "forms.nama"
+                      }
+                    ],
+                    staticClass:
+                      "uk-width-1-1 uk-input form-action-custom-modal",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.forms.nama },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "nama", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.nama
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.nama))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label" }, [
+                  _vm._v("Kabupaten")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.kabupaten,
+                          expression: "forms.kabupaten"
+                        }
+                      ],
+                      staticClass:
+                        "uk-width-1-1 uk-select form-action-select-modal",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.forms,
+                            "kabupaten",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "", selected: "" } }, [
+                        _vm._v("-- Pilih Kabupaten --")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.kabupaten, function(kab) {
+                        return _c(
+                          "option",
+                          { domProps: { value: kab.id_kab } },
+                          [_vm._v(_vm._s(kab.nama_kab))]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.forms.errors.kabupaten
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.forms.errors.kabupaten))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("button", {
+                  staticClass:
+                    "uk-button uk-button-default button-action-modal",
+                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                })
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+        _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                _c("a", {
+                  staticClass: "uk-form-icon",
+                  attrs: { "uk-icon": "search" },
+                  on: {
+                    click: function($event) {
+                      _vm.getKecamatanList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.keywords,
+                      expression: "keywords"
+                    }
+                  ],
+                  staticClass: "uk-input form-search uk-width-1-1",
+                  attrs: { type: "keywords", placeholder: "Search..." },
+                  domProps: { value: _vm.keywords },
+                  on: {
+                    keyup: function($event) {
+                      if (
+                        !("button" in $event) &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      _vm.getKecamatanList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.keywords = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-2-3@m uk-width-1-2@s"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "uk-button button-custom-action",
+                  on: {
+                    click: function($event) {
+                      _vm.addOrUpdateModal()
+                    }
+                  }
+                },
+                [_vm._v("Tambah")]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-small uk-table-divider uk-table-middle table-rows"
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.kecamatan.results, function(kec) {
+                  return _c("tr", [
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "pencil",
+                          "uk-tooltip": "",
+                          title: "Ubah",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.addOrUpdateModal(kec)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("a", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "trash",
+                          "uk-tooltip": "",
+                          title: "Hapus",
+                          href: "#"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteKecamatan(kec.id_kec, kec.nama_kec)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "uk-width-small" }, [
+                      _vm._v(_vm._s(kec.kode_kec))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(kec.nama_kec))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(kec.nama_kab))])
+                  ])
+                })
+              )
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kode Kecamatan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nama Kecamatan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kabupaten")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0821dd2c", module.exports)
+  }
+}
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(332)
+/* template */
+var __vue_template__ = __webpack_require__(333)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/OrderList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-757ae53a", Component.options)
+  } else {
+    hotAPI.reload("data-v-757ae53a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 332 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      keywords: '',
+      status_transaction: 'all',
+      selectedRows: 10,
+      isLoading: {
+        value: false,
+        text: ''
+      },
+      premium: 'all',
+      orderlist: {
+        total: 0,
+        results: []
+      },
+      orders: {},
+      logstatus: {
+        total: 0,
+        results: []
+      },
+      region: '',
+      district: '',
+      subdistrict: '',
+      pagination: {
+        current: 1,
+        next: '',
+        prev: '',
+        last: '',
+        path: this.url + '/transaction/data_orderlist'
+      }
+    };
+  },
+
+  methods: {
+    formatDate: function formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
+      return res;
+    },
+    formatCurrency: function formatCurrency(price) {
+      price = Number(price);
+      var numberformat = new Intl.NumberFormat('en-ID').format(price);
+      return numberformat;
+    },
+    getOrderList: function getOrderList(pages) {
+      var _this = this;
+
+      var param = '&keywords=' + this.keywords + '&rows=' + this.selectedRows + '&status=' + this.status_transaction + '&premium=' + this.premium;
+      if (pages === undefined || pages === null || pages === '') pages = this.url + '/transaction/data_orderlist?page=1' + param;else pages = pages + param;
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this.orderlist.total = result.total;
+        _this.orderlist.results = result.data;
+        _this.pagination = {
+          current: result.current_page,
+          next: result.next_page_url,
+          prev: result.prev_page_url,
+          last: result.last_page,
+          path: result.path
+        };
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    onViewTransaction: function onViewTransaction(order) {
+      var _this2 = this;
+
+      this.orders = order;
+      axios({
+        method: 'get',
+        url: this.url + '/transaction/view_transaction/' + order.transaction_id
+      }).then(function (res) {
+        var result = res.data;
+        _this2.logstatus.total = result.logstatus.total;
+        _this2.logstatus.results = result.logstatus.results;
+        _this2.region = result.location.provinsi;
+        _this2.district = result.location.kabupaten;
+        _this2.subdistrict = result.location.kecamatan;
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+      UIkit.modal('#viewTransaction').show();
+    },
+    onAcceptOrCancel: function onAcceptOrCancel(val) {
+      var _this3 = this;
+
+      if (val === 'accept') {
+        swal({
+          title: 'Konfirmasi',
+          text: 'Apakah pembayaran sudah diterima?',
+          icon: 'warning',
+          buttons: {
+            cancel: 'Tidak',
+            confirm: {
+              value: true,
+              text: 'Ya'
+            }
+          }
+        }).then(function (value) {
+          if (value) {
+            axios({
+              method: 'put',
+              url: _this3.url + '/transaction/update_order/' + _this3.orders.transaction_id,
+              params: {
+                value: 'accept'
+              }
+            }).then(function (res) {
+              swal({
+                title: 'Berhasil',
+                text: 'Pembayaran diterima',
+                icon: 'success',
+                timer: 5000
+              });
+              setTimeout(function () {
+                UIkit.modal('#viewTransaction').hide();
+              }, 2000);
+              _this3.getOrderList();
+            }).catch(function (err) {
+              swal({
+                title: 'Terjadi Kesalahan',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true,
+                timer: 5000
+              });
+            });
+          }
+        });
+      } else {
+        swal({
+          title: 'Konfirmasi',
+          text: 'Apakah ingin membatalkan pesanan ' + this.orders.transaction_id + '?',
+          icon: 'warning',
+          buttons: {
+            cancel: 'Tidak',
+            confirm: {
+              value: true,
+              text: 'Ya'
+            }
+          }
+        }).then(function (value) {
+          if (value) {
+            axios({
+              method: 'put',
+              url: _this3.url + '/transaction/update_order/' + _this3.orders.transaction_id,
+              params: {
+                value: 'cancel'
+              }
+            }).then(function (res) {
+              swal({
+                title: 'Berhasil',
+                text: 'Pesanan telah dibatalkan',
+                icon: 'success',
+                timer: 5000
+              });
+              setTimeout(function () {
+                UIkit.modal('#viewTransaction').hide();
+              }, 2000);
+              _this3.getOrderList();
+            }).catch(function (err) {
+              swal({
+                title: 'Terjadi Kesalahan',
+                text: err.response.statusText,
+                icon: 'error',
+                dangerMode: true,
+                timer: 5000
+              });
+            });
+          }
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.getOrderList();
+  }
+});
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "uk-margin-large-top" }, [
+    _c("div", { attrs: { id: "viewTransaction", "uk-modal": "" } }, [
+      _c("div", { staticClass: "uk-modal-dialog view-transaction" }, [
+        _c("a", {
+          staticClass: "uk-modal-close-default",
+          attrs: { "uk-close": "" }
+        }),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "uk-modal-body", attrs: { "uk-overflow-auto": "" } },
+          [
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Nomor Transaksi")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.transaction_id))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Status Pesanan")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.$root.statusTransaction[
+                            _vm.orders.last_status_transaction
+                          ]
+                        )
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Vendor")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.vendor_name))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Tanggal Pesan")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.formatDate(
+                            _vm.orders.created_at,
+                            "DD MMMM YYYY HH:mm"
+                          )
+                        )
+                      )
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Nama Pemesan")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.customer_name))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Nomor Telepon")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.mobile_number))
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "uk-margin" }, [
+                      _c("div", { staticClass: "view-transaction-heading" }, [
+                        _vm._v("Harga Kesepakatan")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "view-transaction-value" }, [
+                        _vm._v(
+                          "Rp. " +
+                            _vm._s(_vm.formatCurrency(_vm.orders.price_deal))
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.orders.payment_amount
+                      ? _c("div", { staticClass: "uk-margin" }, [
+                          _c(
+                            "div",
+                            { staticClass: "view-transaction-heading" },
+                            [_vm._v("Total Pembayaran")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "view-transaction-value" }, [
+                            _vm._v(
+                              "Rp. " +
+                                _vm._s(
+                                  _vm.formatCurrency(_vm.orders.payment_amount)
+                                )
+                            )
+                          ])
+                        ])
+                      : _vm._e()
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _vm.orders.isPremium === "Y"
+                      ? _c("div", { staticClass: "uk-margin" }, [
+                          _c(
+                            "div",
+                            { staticClass: "view-transaction-heading" },
+                            [_vm._v("Pemesan Premium")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "view-transaction-value" }, [
+                            _vm._v("+ Rp. 5.000")
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.orders.bank_code === "014"
+                      ? _c("div", { staticClass: "uk-margin" }, [
+                          _c(
+                            "div",
+                            { staticClass: "view-transaction-heading" },
+                            [_vm._v("Biaya transfer BCA")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "view-transaction-value" }, [
+                            _vm._v("+ Rp. 4.000")
+                          ])
+                        ])
+                      : _vm._e()
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c("div", { staticClass: "uk-width-1-1" }, [
+                  _c("div", { staticClass: "view-transaction-heading" }, [
+                    _vm._v("Alamat")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "view-transaction-value" }, [
+                    _vm._v(_vm._s(_vm.orders.address))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Provinsi")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.region))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Kota")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.district))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Kecamatan")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.subdistrict))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Kode Pos")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.zipcode))
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-margin" }, [
+              _c("div", { staticClass: "view-transaction-heading" }, [
+                _vm._v("Status Pesanan")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "view-transaction-value" },
+                _vm._l(_vm.logstatus.results, function(log) {
+                  return _c("div", { staticClass: "uk-margin" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "uk-grid-small",
+                        attrs: { "uk-grid": "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s"
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "uk-text-right view-transaction-value"
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.formatDate(
+                                      log.log_date,
+                                      "DD MMM YYYY HH:mm:ss"
+                                    )
+                                  )
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "uk-width-expand" }, [
+                          _c(
+                            "div",
+                            { staticClass: "view-transaction-heading" },
+                            [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.$root.statusTransaction[
+                                    log.status_transaction
+                                  ]
+                                )
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", {
+                            staticClass: "view-transaction-value",
+                            domProps: {
+                              innerHTML: _vm._s(log.status_description)
+                            }
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("hr")
+                  ])
+                })
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-modal-footer" }, [
+          _c(
+            "div",
+            {
+              staticClass: "uk-grid-small uk-flex-center",
+              attrs: { "uk-grid": "" }
+            },
+            [
+              _c("div", { staticClass: "uk-width-1-2" }, [
+                _vm.orders.last_status_transaction === "payment_verify"
+                  ? _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-width-1-1 uk-button uk-button-success view_transaction-accept",
+                        on: {
+                          click: function($event) {
+                            _vm.onAcceptOrCancel("accept")
+                          }
+                        }
+                      },
+                      [_vm._v("Pembayaran Diterima")]
+                    )
+                  : _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-width-1-1 uk-button uk-button-success view_transaction-accept"
+                      },
+                      [_vm._v("Pembayaran Diterima")]
+                    )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-width-1-2" }, [
+                _vm.orders.last_status_transaction !== "cancel" &&
+                _vm.orders.last_status_transaction !== "paid"
+                  ? _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-width-1-1 uk-button uk-button-danger view_transaction-reject",
+                        on: {
+                          click: function($event) {
+                            _vm.onAcceptOrCancel("cancel")
+                          }
+                        }
+                      },
+                      [_vm._v("Batalkan Pesanan")]
+                    )
+                  : _c(
+                      "button",
+                      {
+                        staticClass:
+                          "uk-width-1-1 uk-button uk-button-danger view_transaction-reject",
+                        attrs: { name: "button" }
+                      },
+                      [_vm._v("Batalkan Pesanan")]
+                    )
+              ])
+            ]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("h3", {}, [_vm._v("Daftar Transaksi")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+      _c("div", { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
+          },
+          [
+            _c("div", { staticClass: "uk-inline" }, [
+              _c("span", {
+                staticClass: "uk-form-icon",
+                attrs: { "uk-icon": "search" }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.keywords,
+                    expression: "keywords"
+                  }
+                ],
+                staticClass: "uk-input form-search uk-width-1-1",
+                attrs: { type: "text", placeholder: "Cari..." },
+                domProps: { value: _vm.keywords },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !("button" in $event) &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    _vm.getOrderList(
+                      _vm.pagination.path + "?page=" + _vm.pagination.current
+                    )
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.keywords = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
+          },
+          [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.selectedRows,
+                    expression: "selectedRows"
+                  }
+                ],
+                staticClass: "uk-select form-select",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.selectedRows = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      _vm.getOrderList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "10" } }, [
+                  _vm._v("10 ditampilkan")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20" } }, [
+                  _vm._v("20 ditampilkan")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "30" } }, [
+                  _vm._v("30 ditampilkan")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "50" } }, [
+                  _vm._v("50 ditampilkan")
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
+          },
+          [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.premium,
+                    expression: "premium"
+                  }
+                ],
+                staticClass: "uk-select form-select",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.premium = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      _vm.getOrderList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "all" } }, [
+                  _vm._v("-- Premium/Non Premium --")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Y" } }, [_vm._v("Premium")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "N" } }, [_vm._v("Non Premium")])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s"
+          },
+          [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.status_transaction,
+                    expression: "status_transaction"
+                  }
+                ],
+                staticClass: "uk-select form-select",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.status_transaction = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      _vm.getOrderList(
+                        _vm.pagination.path + "?page=" + _vm.pagination.current
+                      )
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "all" } }, [
+                  _vm._v("-- Semua Status --")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.$root.statusTransaction, function(val, key) {
+                  return _c("option", { domProps: { value: key } }, [
+                    _vm._v(_vm._s(val))
+                  ])
+                })
+              ],
+              2
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-margin-top" }, [
+        _c("div", { staticClass: "uk-label" }, [
+          _vm._v(_vm._s(_vm.orderlist.total) + " Transaksi")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-small uk-table-divider uk-table-middle uk-table-hover"
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.orderlist.results, function(order) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c("button", {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-icon": "cog",
+                          "uk-tooltip": "title: Lihat Rincian; pos: right"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.onViewTransaction(order)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        staticClass: "uk-text-truncate",
+                        attrs: { title: order.transaction_id }
+                      },
+                      [_vm._v(_vm._s(order.transaction_id))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        staticClass: "uk-text-truncate",
+                        attrs: { title: order.customer_name }
+                      },
+                      [_vm._v(_vm._s(order.customer_name))]
+                    ),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(order.vendor_name))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(
+                          _vm.$root.statusTransaction[
+                            order.last_status_transaction
+                          ]
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(
+                          _vm.formatDate(order.created_at, "MMM DD, YYYY HH:mm")
+                        )
+                      )
+                    ])
+                  ])
+                })
+              )
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-modal-header" }, [
+      _c("div", { staticClass: "view-transaction-header" }, [
+        _vm._v("Rincian Pesanan")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("ID Transaksi")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Customer")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Vendor")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tanggal Pesan")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-757ae53a", module.exports)
   }
 }
 

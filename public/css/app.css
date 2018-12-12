@@ -438,11 +438,11 @@ body {
 }
 
 .cover-homepage .navbar-homepage .logo-homepage-white {
-  margin-top: 20px;
+  margin-left: -20px;
 }
 
 .cover-homepage .navbar-homepage .logo-homepage-white img {
-  width: 120px;
+  width: 160px;
 }
 
 .cover-homepage .navbar-homepage .nav-hmpg {
@@ -760,7 +760,7 @@ body {
 }
 
 .navbarcustomer .navtopcustomer li .logo {
-  width: 150px;
+  width: 120px;
 }
 
 .navbarcustomer .navtopcustomer li .navcusticon {
@@ -1091,6 +1091,10 @@ body {
 .cover-joinasvendor {
   background: linear-gradient(97deg, #f6a192, #f6b092);
   height: 350px;
+}
+
+.cover-joinasvendor .cover-overlay-joinasvendor {
+  background: linear-gradient(108deg, rgba(246, 161, 146, 0.1), rgba(246, 207, 146, 0.5), rgba(246, 176, 146, 0.3)) !important;
 }
 
 .container-joinasvendor {
