@@ -453,6 +453,7 @@ CREATE TABLE `withdraw` (
   `vendor_bankid` int(10) unsigned NOT NULL,
   `nominal` bigint(20) unsigned NOT NULL,
   `status_withdraw` enum('pending','success') DEFAULT 'pending',
+  `vendor_id` bigint(20) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`withdraw_id`),
@@ -462,7 +463,7 @@ CREATE TABLE `withdraw` (
 
 /*Data for the table `withdraw` */
 
-insert  into `withdraw`(`withdraw_id`,`ticket_id`,`vendor_bankid`,`nominal`,`status_withdraw`,`created_at`,`updated_at`) values (1,'C201812124F00001',1,9855000,'pending','2018-12-12 19:01:39','2018-12-12 19:01:39'),(2,'C20181213E2D0002',2,5508000,'pending','2018-12-13 02:32:49','2018-12-13 02:32:49');
+insert  into `withdraw`(`withdraw_id`,`ticket_id`,`vendor_bankid`,`nominal`,`status_withdraw`,`vendor_id`,`created_at`,`updated_at`) values (1,'C201812124F00001',1,9855000,'pending',1,'2018-12-12 19:01:39','2018-12-12 19:01:39'),(2,'C20181213E2D0002',2,5508000,'pending',2,'2018-12-13 02:32:49','2018-12-13 02:32:49');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

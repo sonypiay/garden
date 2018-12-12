@@ -65,6 +65,7 @@ class WithdrawController extends Controller
       $withdraw->vendor_bankid = $rekening;
       $withdraw->nominal = $nominal;
       $withdraw->status_withdraw = 'pending';
+      $withdraw->vendor_id = Cookie::get('vendor_id');
 
       $history->history_type = 'withdraw';
       $history->history_transaction_id = $ticketid;
