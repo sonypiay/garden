@@ -16,6 +16,7 @@ use App\Database\BookingTransaction;
 use App\Database\VendorReport;
 use App\Database\PaymentOrderVerify;
 use App\Database\LogStatusTransaction;
+use App\Database\HistoryTransaction;
 use App\Http\Controllers\Controller;
 
 class BookingTransactionController extends Controller
@@ -66,7 +67,7 @@ class BookingTransactionController extends Controller
     $fetchid = $transaction->orderBy('id', 'desc')->count();
     $generate_id = str_pad( $fetchid + 1, 5, '0', STR_PAD_LEFT );
     $uniqid = strtoupper(hash('crc32b', uniqid()));
-    $transactionid = 'GB' . date('Ymd') . substr($uniqid, 4, 2) . $generate_id;
+    $transactionid = 'GB' . date('Ymd') . substr($uniqid, 0, 3) . $generate_id;
     $transaction = new $transaction;
     $logstatus = new $logstatus;
     $payment_verify = new $payment_verify;
@@ -100,7 +101,7 @@ class BookingTransactionController extends Controller
     $logstatus->log_date = $orderdate;
 
     $payment_verify->transaction_id = $transactionid;
-    $payment_verify->payment_id = date('Ymd') . substr($uniqid, 3, 3);
+    $payment_verify->payment_id = date('Ymd') . substr($uniqid, 0, 3);
 
     $transaction->save();
     $logstatus->save();
@@ -484,21 +485,20 @@ class BookingTransactionController extends Controller
     return response()->json( $results );
   }
 
-  public function confirmreport( BookingTransaction $booking, LogStatusTransaction $logstatus, Vendors $vendors, $orderid )
+  public function confirmreport( BookingTransaction $booking, LogStatusTransaction $logstatus, Vendors $vendors, HistoryTransaction $history, $orderid )
   {
     $booking = $booking->where('transaction_id', $orderid)->first();
     $vendors = $vendors->where('vendor_id', $booking->vendor_id)->first();
     $logstatus = new $logstatus;
+    $history = new $history;
     $status = 'done';
 
     $booking->last_status_transaction = $status;
-    $booking->save();
 
     $logstatus->transaction_id = $orderid;
     $logstatus->status_transaction = $status;
     $logstatus->status_description = 'Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.';
     $logstatus->log_date = date('Y-m-d H:i:s');
-    $logstatus->save();
 
     if( empty( $vendors->credits_balance ) || $vendors->credits_balance === 0 || $vendors->credits_balance === '' )
     {
@@ -511,7 +511,18 @@ class BookingTransactionController extends Controller
 
     $balance = $booking->price_deal + $vendor_balance;
     $vendors->credits_balance = $balance;
+
+    $history->history_type = 'penerimaan';
+    $history->history_transaction_id = $orderid;
+    $history->history_amount = $booking->price_deal;
+    $history->history_current_amount = $balance;
+    $history->history_description = 'Penerimaan dana dari no. transaksi ' . $orderid;
+    $history->vendor_id = $booking->vendor_id;
+
+    $booking->save();
     $vendors->save();
+    $logstatus->save();
+    $history->save();
 
     $res = [
       'status' => 200,

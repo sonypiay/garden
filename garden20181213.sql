@@ -57,36 +57,6 @@ CREATE TABLE `bankpayment` (
 
 insert  into `bankpayment`(`bank_id`,`bank_code`,`bank_name`,`account_number`,`bank_logo`,`created_at`,`updated_at`) values (1,'014','Bank Central Asia (BCA)','0286828689','bankbca-logo.png','2018-10-29 16:05:36','2018-10-29 16:05:36'),(2,'013','Bank Permata','8770003688','permatabank-logo.png','2018-10-29 16:05:59','2018-10-29 16:05:59');
 
-/*Table structure for table `booking_list` */
-
-DROP TABLE IF EXISTS `booking_list`;
-
-CREATE TABLE `booking_list` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `booking_id` varchar(10) NOT NULL,
-  `schedule_date` date NOT NULL,
-  `schedule_time` time NOT NULL,
-  `region` int(10) unsigned NOT NULL,
-  `address` text NOT NULL,
-  `zipcode` int(5) NOT NULL,
-  `mobile_number` varchar(16) NOT NULL,
-  `price_deal` bigint(20) unsigned NOT NULL,
-  `layout_design` varchar(128) NOT NULL,
-  `customer_id` bigint(20) unsigned NOT NULL,
-  `vendor_id` bigint(20) unsigned NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `deleted_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`booking_id`),
-  UNIQUE KEY `id` (`id`),
-  KEY `fkbl_customer_id` (`customer_id`),
-  KEY `fkbl_vendor_id` (`vendor_id`),
-  CONSTRAINT `fkbl_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
-  CONSTRAINT `fkbl_vendor_id` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`vendor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `booking_list` */
-
 /*Table structure for table `booking_transaction` */
 
 DROP TABLE IF EXISTS `booking_transaction`;
@@ -117,11 +87,11 @@ CREATE TABLE `booking_transaction` (
   KEY `fkbtrans_vendor_id` (`vendor_id`),
   CONSTRAINT `fkbtrans_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
   CONSTRAINT `fkbtrans_vendor_id` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`vendor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `booking_transaction` */
 
-insert  into `booking_transaction`(`id`,`transaction_id`,`schedule_date`,`region`,`district`,`subdistrict`,`address`,`zipcode`,`mobile_number`,`price_deal`,`layout_design`,`additional_info`,`customer_id`,`vendor_id`,`payment_method`,`isPremium`,`last_status_transaction`,`created_at`,`updated_at`) values (1,'GB201812080500001','2018-12-15',1,4,3,'Jl. Intan Baiduri No. 28',10640,'0856129819',10000000,NULL,'Jawa Ipsum gelung kalung ayam manah jawah, luh bebed kancing. Sapu sima peksi susu piring tuwi enjing mucal dipun pendhet wos? Peksi cariyos, sakit suku epek-epek ngulemi pedhang, untu manah nyukani maesa. Bidal minggat supena ngulemi? Peksi dhateng, kangge; kinten nyepeng ayam toya peksi, \"sima wilujeng maos sirah kuping ngadeg dolan makarya.\" Jejeran wawarat embok saweg mantun ajrih benang ningali gujeng pedhang tumut swanten awon',1,1,NULL,'N','payment_waiting','2018-12-08 06:23:48','2018-12-08 20:36:24'),(3,'GB201812082500003','2018-12-13',2,3,4,'Perumahan Japos',10640,'08561969052',1000000,'20181208_Poster SiAGA.pdf','jawa Ipsum gelung kalung ayam manah jawah, luh bebed kancing. Sapu sima peksi susu piring tuwi enjing mucal dipun pendhet wos? Peksi cariyos, sakit suku epek-epek ngulemi pedhang, untu manah nyukani maesa. Bidal minggat supena ngulemi? Peksi dhateng, kangge; kinten nyepeng ayam toya peksi, \"sima wilujeng maos sirah kuping ngadeg dolan makarya.\" Jejeran wawarat embok saweg mantun ajrih benang ningali gujeng pedhang tumut swanten awon.',2,2,'TRANSFER','Y','payment_verify','2018-12-08 06:40:37','2018-12-08 20:06:08'),(2,'GB201812086D00002','2018-12-29',1,4,3,'Jl. Intan Baiduri No. 28',10640,'085619521297',100000000,'20181208_pexels-photo-139389.jpeg','Jawa Ipsum gelung kalung ayam manah jawah, luh bebed kancing. Sapu sima peksi susu piring tuwi enjing mucal dipun pendhet wos? Peksi cariyos, sakit suku epek-epek ngulemi pedhang, untu manah nyukani maesa. Bidal minggat supena ngulemi? Peksi dhateng, kangge; kinten nyepeng ayam toya peksi, \"sima wilujeng maos sirah kuping ngadeg dolan makarya.\" Jejeran wawarat embok saweg mantun ajrih benang ningali gujeng pedhang tumut swanten awon.',2,1,'TRANSFER','Y','payment_verify','2018-12-08 06:39:25','2018-12-08 20:38:22');
+insert  into `booking_transaction`(`id`,`transaction_id`,`schedule_date`,`region`,`district`,`subdistrict`,`address`,`zipcode`,`mobile_number`,`price_deal`,`layout_design`,`additional_info`,`customer_id`,`vendor_id`,`payment_method`,`isPremium`,`last_status_transaction`,`created_at`,`updated_at`) values (7,'GB201812121F00003','2018-12-20',1,7,1,'Kebayoran Baru',12898,'08561969052',15000000,NULL,'Lorem ipsum dolor sit amet',1,1,'TRANSFER','Y','done','2018-12-12 09:06:37','2018-12-12 09:34:15'),(8,'GB2018121229B00004','2018-12-13',1,7,9,'Konohagakure',38381,'088888888',5000000,NULL,'Tsukuyomi',2,2,'TRANSFER','Y','done','2018-12-12 19:08:59','2018-12-12 19:21:51'),(6,'GB201812127600006','2018-12-12',1,7,4,'Pasar Minggu',12990,'08561969052',550000,NULL,NULL,1,1,NULL,'N','rejected','2018-12-12 06:40:56','2018-12-12 08:41:19'),(5,'GB20181212D000005','2018-12-14',1,4,12,'Jl. Intan Baiduri No. 28',10640,'08561969052',9450000,'20181212_63a522a3.pdf','Lorem ipsum dolor sit amet',1,1,'TRANSFER','Y','done','2018-12-12 06:38:32','2018-12-12 08:57:39'),(9,'GB20181212D6200005','2019-02-05',1,4,12,'Menteng',12982,'08882883',15000000,NULL,'menteng',2,2,'TRANSFER','Y','done','2018-12-12 19:22:52','2018-12-12 19:29:26');
 
 /*Table structure for table `cust_activity_logs` */
 
@@ -159,11 +129,9 @@ CREATE TABLE `customer_bankaccount` (
   KEY `fkcb_bank_id` (`bank_id`),
   CONSTRAINT `fkcb_bank_id` FOREIGN KEY (`bank_id`) REFERENCES `bankcustomer` (`bank_id`),
   CONSTRAINT `fkcb_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `customer_bankaccount` */
-
-insert  into `customer_bankaccount`(`id`,`bank_id`,`account_number`,`ownername`,`customer_id`,`created_at`,`updated_at`) values (2,1,'8770003688','Sony Darmawan',1,'2018-11-19 17:02:03','2018-11-19 17:22:06'),(4,2,'12345678909','Sony Darmawan',1,'2018-11-19 17:22:59','2018-11-19 17:22:59');
 
 /*Table structure for table `customers` */
 
@@ -190,11 +158,11 @@ CREATE TABLE `customers` (
   PRIMARY KEY (`customer_email`),
   UNIQUE KEY `customer_id` (`customer_id`),
   UNIQUE KEY `customer_mobile_phone` (`customer_mobile_phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `customers` */
 
-insert  into `customers`(`customer_id`,`customer_name`,`customer_email`,`customer_mobile_phone`,`customer_username`,`customer_password`,`customer_profile_picture`,`customer_gender`,`customer_birthday`,`customer_region`,`customer_district`,`customer_subdistrict`,`customer_address`,`customer_zipcode`,`customer_verified`,`credits`,`customer_registered`) values (4,'Chairul Umam','chairul.umam@gmail.com','8567103819',NULL,'$2y$10$5Llfk5p02rr3ieR7eBSnpuB8nz9hjzcvTLIUyYXac63uDBU6wuGGm',NULL,'male',NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,'2018-12-08 05:35:47'),(2,'Diwantara Anugrah Putra','diwantara.anug@gmail.com','8561969053',NULL,'$2y$10$jAeXAXpPjqIeI/6SLRqaFupem2ajxT5awKQEngbOdYXl0oyueB6K6',NULL,'male',NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,'2018-12-07 17:12:52'),(3,'Gema Cita Andirk','gemacita@gmail.com','81753878768',NULL,'$2y$10$s2pePR3.xw0CODpA7rm5M.YokhIYSBYvOP6dkgHMCkSKfNGDCcZ9i',NULL,'male',NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,'2018-12-08 05:34:54'),(1,'Sony Darmawan','me@sonypiay.com','8561969052','sonypiay','$2y$10$1Cf/A9WGKsyo3jpVH/.8f.Nyt082sQmsrqlccspYmTVtijSNuZR/m',NULL,'male','1996-09-17',NULL,NULL,NULL,NULL,NULL,'N',NULL,'2018-11-12 17:13:10');
+insert  into `customers`(`customer_id`,`customer_name`,`customer_email`,`customer_mobile_phone`,`customer_username`,`customer_password`,`customer_profile_picture`,`customer_gender`,`customer_birthday`,`customer_region`,`customer_district`,`customer_subdistrict`,`customer_address`,`customer_zipcode`,`customer_verified`,`credits`,`customer_registered`) values (2,'Rizqy Caesario','rizqycaesario@gmail.com','8561291279',NULL,'$2y$10$lHCEwqi8RLTi5TxhTVX1w.oqeBITDE0YNka7xI9qlFBOXat1gaTxe',NULL,'male',NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,'2018-12-12 19:02:14'),(1,'Sony Darmawan','sonypiay@mail.com','8561969052',NULL,'$2y$10$KB27E/HNPKgCrRofOxRVGOAkDfOrdY269IgapxBk.KrTsbotTv.jO',NULL,'male',NULL,NULL,NULL,NULL,NULL,NULL,'N',NULL,'2018-12-12 06:23:37');
 
 /*Table structure for table `kabupaten` */
 
@@ -209,11 +177,11 @@ CREATE TABLE `kabupaten` (
   UNIQUE KEY `id_kab` (`id_kab`),
   KEY `fk_kab_provinsi` (`id_provinsi`),
   CONSTRAINT `fk_kab_provinsi` FOREIGN KEY (`id_provinsi`) REFERENCES `provinsi` (`id_provinsi`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `kabupaten` */
 
-insert  into `kabupaten`(`id_kab`,`kode_kab`,`nama_kab`,`id_provinsi`) values (4,'JKP','Jakarta Pusat',1),(2,'JKT','Jakarta Timur',1),(1,'SRG','Serang',2),(3,'TNG','Tangerang',2);
+insert  into `kabupaten`(`id_kab`,`kode_kab`,`nama_kab`,`id_provinsi`) values (6,'JKB','Jakarta Barat',1),(4,'JKP','Jakarta Pusat',1),(7,'JKS','Jakarta Selatan',1),(2,'JKT','Jakarta Timur',1),(5,'JKU','Jakarta Utara',1),(1,'SRG','Serang',2),(3,'TNG','Tangerang',2);
 
 /*Table structure for table `kecamatan` */
 
@@ -221,16 +189,16 @@ DROP TABLE IF EXISTS `kecamatan`;
 
 CREATE TABLE `kecamatan` (
   `id_kec` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `kode_kec` varchar(5) NOT NULL,
+  `kode_kec` varchar(7) NOT NULL,
   `nama_kec` varchar(128) NOT NULL,
   `id_kab` int(10) unsigned NOT NULL,
   PRIMARY KEY (`kode_kec`),
   UNIQUE KEY `id_kec` (`id_kec`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 /*Data for the table `kecamatan` */
 
-insert  into `kecamatan`(`id_kec`,`kode_kec`,`nama_kec`,`id_kab`) values (4,'CLD','Ciledug',3),(2,'KMY','Kemayoran',4),(3,'SUMBA','Sumur Batu',4);
+insert  into `kecamatan`(`id_kec`,`kode_kec`,`nama_kec`,`id_kab`) values (3,'CLK','Cilandak',7),(10,'GMB','Gambir',4),(5,'JGK','Jagakarsa',7),(1,'KYB','Kebayoran Baru',7),(6,'MPT','Mampang Prapatan',7),(12,'MTG','Menteng',4),(2,'PES','Pesanggrahan',7),(7,'PNR','Pancoran',7),(4,'PSM','Pasar Minggu',7),(13,'SENEN','Senen',4),(9,'STB','Setiabudi',7),(8,'TBT','Tebet',7),(11,'TNB','Tanah Abang',4);
 
 /*Table structure for table `log_status_transaction` */
 
@@ -245,11 +213,11 @@ CREATE TABLE `log_status_transaction` (
   PRIMARY KEY (`id`),
   KEY `fklogtrans_transaction_id` (`transaction_id`),
   CONSTRAINT `fklogtrans_transaction_id` FOREIGN KEY (`transaction_id`) REFERENCES `booking_transaction` (`transaction_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 /*Data for the table `log_status_transaction` */
 
-insert  into `log_status_transaction`(`id`,`transaction_id`,`status_transaction`,`status_description`,`log_date`) values (1,'GB201812080500001','approval','Menunggu approval dari pihak Vendor','2018-12-08 06:23:48'),(2,'GB201812086D00002','approval','Menunggu approval dari pihak Vendor','2018-12-08 06:39:24'),(3,'GB201812082500003','approval','Menunggu approval dari pihak Vendor','2018-12-08 06:40:36'),(4,'GB201812082500003','payment_waiting','Menunggu konfirmasi pembayaran.','2018-12-08 16:46:51'),(5,'GB201812082500003','payment_verify','Menunggu verifikasi pembayaran oleh pihak tim Garden Buana.','2018-12-08 20:06:08'),(6,'GB201812086D00002','payment_waiting','Menunggu konfirmasi pembayaran.','2018-12-08 20:36:07'),(7,'GB201812080500001','payment_waiting','Menunggu konfirmasi pembayaran.','2018-12-08 20:36:24'),(8,'GB201812086D00002','payment_verify','Menunggu verifikasi pembayaran oleh pihak tim Garden Buana.','2018-12-08 20:38:22');
+insert  into `log_status_transaction`(`id`,`transaction_id`,`status_transaction`,`status_description`,`log_date`) values (1,'GB20181212D000005','approval','Menunggu approval dari pihak Vendor','2018-12-12 06:38:32'),(2,'GB201812127600006','approval','Menunggu approval dari pihak Vendor','2018-12-12 06:40:56'),(3,'GB20181212D000005','payment_waiting','Menunggu konfirmasi pembayaran.','2018-12-12 08:26:06'),(4,'GB20181212D000005','payment_verify','Menunggu verifikasi pembayaran oleh pihak tim Garden Buana.','2018-12-12 08:29:09'),(5,'GB201812127600006','rejected','Transaksi ditolak','2018-12-12 08:41:19'),(6,'GB20181212D000005','paid','Pembayaran telah diterima Garden Buana dan pesanan Anda sudah diteruskan ke vendor.','2018-12-12 08:42:41'),(7,'GB20181212D000005','process','Pesanan sedang diproses oleh pihak Vendor','2018-12-12 08:48:57'),(8,'GB20181212D000005','onprogress','Pesanan sedang dikerjakan','2018-12-12 08:49:36'),(9,'GB20181212D000005','report','Laporan hasil pekerjaan terlampir.','2018-12-12 08:50:48'),(10,'GB20181212D000005','done','Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.','2018-12-12 08:57:39'),(11,'GB201812121F00003','approval','Menunggu approval dari pihak Vendor','2018-12-12 09:06:37'),(12,'GB201812121F00003','payment_waiting','Pesanan diterima oleh pihak Vendor. <br> Menunggu pembayaran dari sisi Pelanggan.','2018-12-12 09:16:42'),(13,'GB201812121F00003','payment_verify','Menunggu verifikasi pembayaran oleh tim Garden Buana.','2018-12-12 09:21:46'),(14,'GB201812121F00003','paid','Pembayaran telah diterima Garden Buana dan pesanan Anda sudah diteruskan ke vendor.','2018-12-12 09:27:38'),(15,'GB201812121F00003','process','Pesanan sedang diproses oleh pihak Vendor','2018-12-12 09:28:24'),(16,'GB201812121F00003','onprogress','Pesanan sedang dikerjakan','2018-12-12 09:28:43'),(17,'GB201812121F00003','report','Laporan hasil pekerjaan terlampir.','2018-12-12 09:31:56'),(18,'GB201812121F00003','done','Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.','2018-12-12 09:34:15'),(19,'GB2018121229B00004','approval','Menunggu approval dari pihak Vendor','2018-12-12 19:08:57'),(20,'GB2018121229B00004','payment_waiting','Pesanan diterima oleh pihak Vendor. <br> Menunggu pembayaran dari sisi Pelanggan.','2018-12-12 19:09:55'),(21,'GB2018121229B00004','payment_verify','Menunggu verifikasi pembayaran oleh tim Garden Buana.','2018-12-12 19:10:57'),(22,'GB2018121229B00004','paid','Pembayaran telah diterima Garden Buana dan pesanan Anda sudah diteruskan ke vendor.','2018-12-12 19:11:47'),(23,'GB2018121229B00004','process','Pesanan sedang diproses oleh pihak Vendor','2018-12-12 19:12:42'),(24,'GB2018121229B00004','onprogress','Pesanan sedang dikerjakan','2018-12-12 19:12:51'),(25,'GB2018121229B00004','report','Laporan hasil pekerjaan terlampir.','2018-12-12 19:13:37'),(26,'GB2018121229B00004','done','Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.','2018-12-12 19:21:51'),(27,'GB20181212D6200005','approval','Menunggu approval dari pihak Vendor','2018-12-12 19:22:52'),(28,'GB20181212D6200005','payment_waiting','Pesanan diterima oleh pihak Vendor. <br> Menunggu pembayaran dari sisi Pelanggan.','2018-12-12 19:23:37'),(29,'GB20181212D6200005','payment_verify','Menunggu verifikasi pembayaran oleh tim Garden Buana.','2018-12-12 19:24:42'),(30,'GB20181212D6200005','paid','Pembayaran telah diterima Garden Buana dan pesanan Anda sudah diteruskan ke vendor.','2018-12-12 19:26:16'),(31,'GB20181212D6200005','process','Pesanan sedang diproses oleh pihak Vendor','2018-12-12 19:28:02'),(32,'GB20181212D6200005','onprogress','Pesanan sedang dikerjakan','2018-12-12 19:28:13'),(33,'GB20181212D6200005','report','Laporan hasil pekerjaan terlampir.','2018-12-12 19:28:31'),(34,'GB20181212D6200005','done','Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.','2018-12-12 19:29:26');
 
 /*Table structure for table `payment_order_verify` */
 
@@ -269,11 +237,11 @@ CREATE TABLE `payment_order_verify` (
   KEY `fkpov_bank_payment_id` (`payment_to`),
   CONSTRAINT `fkpov_bank_payment_id` FOREIGN KEY (`payment_to`) REFERENCES `bankpayment` (`bank_id`),
   CONSTRAINT `fkpov_transaction_id` FOREIGN KEY (`transaction_id`) REFERENCES `booking_transaction` (`transaction_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `payment_order_verify` */
 
-insert  into `payment_order_verify`(`id`,`payment_to`,`status_payment`,`transaction_id`,`payment_id`,`payment_amount`,`created_at`,`updated_at`) values (1,NULL,'pending','GB201812080500001','2018120805',NULL,'2018-12-08 06:23:48','2018-12-08 06:23:48'),(2,2,'verification','GB201812086D00002','201812086D',100005000,'2018-12-08 06:39:25','2018-12-08 20:38:22'),(3,1,'verification','GB201812082500003','2018120825',1009000,'2018-12-08 06:40:37','2018-12-08 20:06:08');
+insert  into `payment_order_verify`(`id`,`payment_to`,`status_payment`,`transaction_id`,`payment_id`,`payment_amount`,`created_at`,`updated_at`) values (1,1,'verification','GB20181212D000005','201812123D0',9459000,'2018-12-12 06:38:32','2018-12-12 08:29:09'),(2,NULL,'pending','GB201812127600006','20181212F76',NULL,'2018-12-12 06:40:56','2018-12-12 06:40:56'),(3,1,'verification','GB201812121F00003','20181212F1F',15009000,'2018-12-12 09:06:37','2018-12-12 09:21:46'),(4,2,'verification','GB2018121229B00004','2018121229B',5005000,'2018-12-12 19:08:59','2018-12-12 19:10:57'),(5,1,'verification','GB20181212D6200005','20181212D62',15009000,'2018-12-12 19:22:53','2018-12-12 19:24:43');
 
 /*Table structure for table `payment_subscription` */
 
@@ -353,11 +321,32 @@ CREATE TABLE `vendor_bankaccount` (
   KEY `fkvb_bank_id` (`bank_id`),
   CONSTRAINT `fkvb_bank_id` FOREIGN KEY (`bank_id`) REFERENCES `bankcustomer` (`bank_id`),
   CONSTRAINT `fkvb_vendor_id` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`vendor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `vendor_bankaccount` */
 
-insert  into `vendor_bankaccount`(`id`,`bank_id`,`account_number`,`ownername`,`vendor_id`,`created_at`,`updated_at`) values (1,1,'8770003688','Sony Darmawan',1,'2018-11-30 15:29:04','2018-11-30 15:30:54');
+insert  into `vendor_bankaccount`(`id`,`bank_id`,`account_number`,`ownername`,`vendor_id`,`created_at`,`updated_at`) values (1,1,'8770003688','Sony Darmawan',1,'2018-12-12 17:01:47','2018-12-12 17:01:47'),(2,2,'877373873','Uchiha Itachi',2,'2018-12-12 19:06:09','2018-12-12 19:06:09');
+
+/*Table structure for table `vendor_history_transaction` */
+
+DROP TABLE IF EXISTS `vendor_history_transaction`;
+
+CREATE TABLE `vendor_history_transaction` (
+  `history_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `history_type` enum('withdraw','penerimaan','berlangganan') NOT NULL,
+  `history_transaction_id` varchar(25) NOT NULL,
+  `history_amount` bigint(20) unsigned NOT NULL,
+  `history_current_amount` bigint(20) unsigned DEFAULT '0',
+  `history_description` text,
+  `vendor_id` bigint(20) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`history_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+/*Data for the table `vendor_history_transaction` */
+
+insert  into `vendor_history_transaction`(`history_id`,`history_type`,`history_transaction_id`,`history_amount`,`history_current_amount`,`history_description`,`vendor_id`,`created_at`,`updated_at`) values (1,'withdraw','C201812124F00001',9855000,0,'Penarikan dana no. tiket C201812124F00001',1,'2018-12-12 19:01:39','2018-12-12 19:01:39'),(2,'penerimaan','GB2018121229B00004',5000000,5000000,'Penerimaan dana dari no. transaksi GB2018121229B00004',2,'2018-12-12 19:21:51','2018-12-12 19:21:51'),(3,'penerimaan','GB20181212D6200005',15000000,20000000,'Penerimaan dana dari no. transaksi GB20181212D6200005',2,'2018-12-12 19:29:26','2018-12-12 19:29:26'),(4,'withdraw','C20181213E2D0002',5508000,0,'Penarikan dana no. tiket C20181213E2D0002',2,'2018-12-13 02:32:49','2018-12-13 02:32:49');
 
 /*Table structure for table `vendor_portfolio` */
 
@@ -377,7 +366,7 @@ CREATE TABLE `vendor_portfolio` (
 
 /*Data for the table `vendor_portfolio` */
 
-insert  into `vendor_portfolio`(`portfolio_id`,`portfolio_name`,`portfolio_slug_name`,`portfolio_thumbnail`,`vendor_id`,`created_at`,`updated_at`,`deleted_at`) values (1,'Project 1','project-1','54b87e9c.jpeg',1,'2018-12-04 11:00:16','2018-12-04 11:06:00',NULL),(2,'Lorem Ipsum Project','lorem-ipsum-project','ca7defe2.jpeg',3,'2018-12-04 11:11:00','2018-12-04 11:12:09',NULL),(3,'Lorem Ipsum','lorem-ipsum','4397cb1b.jpeg',2,'2018-12-04 11:13:05','2018-12-04 11:13:20',NULL);
+insert  into `vendor_portfolio`(`portfolio_id`,`portfolio_name`,`portfolio_slug_name`,`portfolio_thumbnail`,`vendor_id`,`created_at`,`updated_at`,`deleted_at`) values (1,'Portfolio Test','portfolio-test','ca2c8713.jpg',1,'2018-12-12 06:27:25','2018-12-12 06:28:27',NULL),(2,'Portfolio Test 2','portfolio-test-2','a90e7551.jpeg',1,'2018-12-12 06:31:21','2018-12-12 06:35:55',NULL),(3,'Akatsuki','akatsuki',NULL,2,'2018-12-12 19:06:49','2018-12-12 19:06:49',NULL);
 
 /*Table structure for table `vendor_portfolio_images` */
 
@@ -394,11 +383,31 @@ CREATE TABLE `vendor_portfolio_images` (
   PRIMARY KEY (`images_id`),
   KEY `fk_portfolio_id` (`portfolio_id`),
   CONSTRAINT `fk_portfolio_id` FOREIGN KEY (`portfolio_id`) REFERENCES `vendor_portfolio` (`portfolio_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `vendor_portfolio_images` */
 
-insert  into `vendor_portfolio_images`(`images_id`,`images_name`,`portfolio_id`,`thumbnail`,`created_at`,`updated_at`,`deleted_at`) values (1,'54b87e9c.jpeg',1,'N','2018-12-04 11:04:57','2018-12-04 11:06:27',NULL),(2,'c6313365.jpg',1,'N','2018-12-04 11:05:10','2018-12-04 11:06:27',NULL),(3,'e0294541.jpeg',1,'N','2018-12-04 11:05:22','2018-12-04 11:06:27',NULL),(4,'3893e7ba.jpeg',1,'N','2018-12-04 11:05:50','2018-12-04 11:06:27',NULL),(5,'deb3cd7e.jpeg',1,'N','2018-12-04 11:06:27','2018-12-04 11:06:27',NULL),(6,'a7c2fcf0.jpeg',1,'N','2018-12-04 11:06:41','2018-12-04 11:06:41',NULL),(7,'b1f65b2e.jpg',2,'N','2018-12-04 11:11:14','2018-12-04 11:12:09',NULL),(8,'ca7defe2.jpeg',2,'Y','2018-12-04 11:11:26','2018-12-04 11:12:09',NULL),(9,'ef1513cf.jpeg',2,'N','2018-12-04 11:11:45','2018-12-04 11:12:09',NULL),(10,'4397cb1b.jpeg',3,'Y','2018-12-04 11:13:20','2018-12-04 11:13:38',NULL),(11,'c446513c.jpeg',3,'N','2018-12-04 11:13:31','2018-12-04 11:13:38',NULL);
+insert  into `vendor_portfolio_images`(`images_id`,`images_name`,`portfolio_id`,`thumbnail`,`created_at`,`updated_at`,`deleted_at`) values (1,'ca2c8713.jpg',1,'N','2018-12-12 06:28:27','2018-12-12 06:28:53',NULL),(2,'60a1a2b3.jpeg',1,'N','2018-12-12 06:28:53','2018-12-12 06:28:53',NULL),(3,'e5136c82.jpeg',1,'N','2018-12-12 06:29:18','2018-12-12 06:29:18',NULL),(4,'91acbd1f.jpeg',1,'N','2018-12-12 06:29:36','2018-12-12 06:29:36',NULL),(5,'05fbf371.jpeg',1,'N','2018-12-12 06:30:05','2018-12-12 06:30:05',NULL),(6,'7de513e4.jpeg',2,'N','2018-12-12 06:31:53','2018-12-12 06:35:55',NULL),(7,'93886ab1.jpg',2,'N','2018-12-12 06:32:11','2018-12-12 06:35:55',NULL),(8,'189f53eb.jpeg',2,'N','2018-12-12 06:32:23','2018-12-12 06:35:55',NULL),(9,'a90e7551.jpeg',2,'Y','2018-12-12 06:35:55','2018-12-12 06:35:55',NULL);
+
+/*Table structure for table `vendor_report_transaction` */
+
+DROP TABLE IF EXISTS `vendor_report_transaction`;
+
+CREATE TABLE `vendor_report_transaction` (
+  `report_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `report_file` varchar(128) NOT NULL,
+  `report_description` text,
+  `transaction_id` varchar(25) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`report_id`),
+  KEY `fkreport_transaction_id` (`transaction_id`),
+  CONSTRAINT `fkreport_transaction_id` FOREIGN KEY (`transaction_id`) REFERENCES `booking_transaction` (`transaction_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+/*Data for the table `vendor_report_transaction` */
+
+insert  into `vendor_report_transaction`(`report_id`,`report_file`,`report_description`,`transaction_id`,`created_at`,`updated_at`) values (1,'20181212_63a522a3.pdf','Berikut hasil pekerjaan yang sudah selesai. terima kasih','GB20181212D000005','2018-12-12 08:50:48','2018-12-12 08:50:48'),(2,'20181212_ed589715.pdf','Terlampir hasil pekerjaan yang sudah dilakukan.\r\n\r\nTerima kasih.','GB201812121F00003','2018-12-12 09:31:56','2018-12-12 09:31:56'),(3,'20181212_ed589715.pdf','laporan hasil pekerjaan','GB2018121229B00004','2018-12-12 19:13:37','2018-12-12 19:13:37'),(4,'20181212_63a522a3.pdf','laporan','GB20181212D6200005','2018-12-12 19:28:31','2018-12-12 19:28:31');
 
 /*Table structure for table `vendors` */
 
@@ -428,11 +437,11 @@ CREATE TABLE `vendors` (
   UNIQUE KEY `vendor_id` (`vendor_id`),
   UNIQUE KEY `vendor_mobile_private` (`vendor_mobile_private`),
   UNIQUE KEY `vendor_mobile_business` (`vendor_mobile_business`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `vendors` */
 
-insert  into `vendors`(`vendor_id`,`vendor_name`,`vendor_slug_name`,`vendor_description`,`vendor_logo`,`vendor_email_business`,`vendor_mobile_private`,`vendor_mobile_business`,`vendor_region`,`vendor_district`,`vendor_subdistrict`,`vendor_address`,`vendor_zipcode`,`vendor_verified`,`vendor_ownername`,`vendor_username`,`vendor_password`,`credits_balance`,`vendor_registered`) values (2,'TaraArtsLife','taraartslife','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc congue mauris quis enim aliquet, sed dapibus est tristique. Phasellus quam augue, mollis et nibh sit amet, auctor dignissim neque. Cras velit nunc, volutpat eu dignissim eu, dictum ut odio. Vestibulum elementum tortor at ex ornare, eu ornare felis tristique. Nam enim nisi, facilisis id enim id, dapibus imperdiet mi. Donec vel finibus sapien. Nam maximus arcu eu nibh volutpat posuere.',NULL,'pyscho30@gmail.com','8561969053','8561969053',2,3,4,'Perumahan japos',10012,'N','Diwantara Anugrah Putra',NULL,'$2y$10$MsfW2XKGWhjPaWsj/yV4kuXpWEKjmMYJ6N7ULM4crdAJmLrY7IBaC',0,'2018-11-30 13:57:53'),(3,'Test Garden Buana','test-garden-buana','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc congue mauris quis enim aliquet, sed dapibus est tristique. Phasellus quam augue, mollis et nibh sit amet, auctor dignissim neque. Cras velit nunc, volutpat eu dignissim eu, dictum ut odio. Vestibulum elementum tortor at ex ornare, eu ornare felis tristique. Nam enim nisi, facilisis id enim id, dapibus imperdiet mi. Donec vel finibus sapien. Nam maximus arcu eu nibh volutpat posuere.',NULL,'sonypiay@gmail.com','21888888888','21888888888',1,4,2,'Kemayoran',10640,'N','Test Garden',NULL,'$2y$10$bsWTqh68HjXDgXsUTSdiRukp8JMgq9A5aIE4/G5B97WDdQHj9L4Zy',0,'2018-12-01 03:33:24'),(1,'Buana Garden','buana-garden','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc congue mauris quis enim aliquet, sed dapibus est tristique. Phasellus quam augue, mollis et nibh sit amet, auctor dignissim neque. Cras velit nunc, volutpat eu dignissim eu, dictum ut odio. Vestibulum elementum tortor at ex ornare, eu ornare felis tristique. Nam enim nisi, facilisis id enim id, dapibus imperdiet mi. Donec vel finibus sapien. Nam maximus arcu eu nibh volutpat posuere.','gplogo.jpg','sonypiay@mail.com','8561969051','8561969051',1,4,2,'kemayoran',10640,'N','Sony Darmawan',NULL,'$2y$10$/YUU9kV5L3d3IH7IdSeECuK9o5vt2lRWMzEEHkL4tbiEWiwexCtMq',0,'2018-11-22 10:36:23');
+insert  into `vendors`(`vendor_id`,`vendor_name`,`vendor_slug_name`,`vendor_description`,`vendor_logo`,`vendor_email_business`,`vendor_mobile_private`,`vendor_mobile_business`,`vendor_region`,`vendor_district`,`vendor_subdistrict`,`vendor_address`,`vendor_zipcode`,`vendor_verified`,`vendor_ownername`,`vendor_username`,`vendor_password`,`credits_balance`,`vendor_registered`) values (1,'Tara Arts','tara-arts',NULL,'28de002cjpg','diwantara.anug@gmail.com','8561969053','8561969053',1,4,10,'Jawa Ipsum gelung kalung ayam manah jawah, luh bebed kancing. Sapu sima peksi susu piring tuwi enjing mucal dipun pendhet wos? Peksi cariyos, sakit suku epek-epek ngulemi pedhang, untu manah nyukani maesa. Bidal minggat supena ngulemi',10640,'N','Diwantara Anugrah Putra',NULL,'$2y$10$jlJ478uaUJE6yqYQCXaIsuKjStjHnVeNHKt6HTnFqigbnyPaHL0du',24450000,'2018-12-12 06:26:34'),(2,'Uchiha Gakure','uchiha-gakure',NULL,NULL,'itachi.uchiha@mail.com','825657876','825657876',1,7,5,'Menteng Dalam',12121,'N','Itachi Uchiha',NULL,'$2y$10$9V/B3s3bbTBaXXPMjZaqA.QttJ3YwaLusGEvkRGz36JAQjl1MJFOa',20000000,'2018-12-12 19:04:35');
 
 /*Table structure for table `withdraw` */
 
@@ -440,17 +449,21 @@ DROP TABLE IF EXISTS `withdraw`;
 
 CREATE TABLE `withdraw` (
   `withdraw_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `ticket_id` varchar(25) NOT NULL,
   `vendor_bankid` int(10) unsigned NOT NULL,
   `nominal` bigint(20) unsigned NOT NULL,
   `status_withdraw` enum('pending','success') DEFAULT 'pending',
+  `vendor_id` bigint(20) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`withdraw_id`),
   KEY `fkwd_vendorbankid` (`vendor_bankid`),
   CONSTRAINT `fkwd_vendorbankid` FOREIGN KEY (`vendor_bankid`) REFERENCES `vendor_bankaccount` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `withdraw` */
+
+insert  into `withdraw`(`withdraw_id`,`ticket_id`,`vendor_bankid`,`nominal`,`status_withdraw`,`vendor_id`,`created_at`,`updated_at`) values (1,'C201812124F00001',1,9855000,'pending',1,'2018-12-12 19:01:39','2018-12-12 19:01:39'),(2,'C20181213E2D0002',2,5508000,'pending',2,'2018-12-13 02:32:49','2018-12-13 02:32:49');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

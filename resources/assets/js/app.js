@@ -43,6 +43,7 @@ Vue.component('vendororderlist', require('./components/vendors/orders/ListTransa
 Vue.component('vendorsummaryorder', require('./components/vendors/orders/SummaryOrder.vue'));
 Vue.component('lupapasswordvendor', require('./components/vendors/LupaPassword.vue'));
 Vue.component('changepasswordvendor', require('./components/vendors/ChangePassword.vue'));
+Vue.component('withdrawvendor', require('./components/vendors/Withdraw.vue'));
 // vendor
 
 Vue.component('discoveryvendor', require('./components/DiscoveryVendor.vue'));

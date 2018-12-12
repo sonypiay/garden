@@ -14,6 +14,7 @@ use App\Database\Kabupaten;
 use App\Database\Kecamatan;
 use App\Database\VendorBankAccount;
 use App\Database\BankCustomer;
+use App\Database\Withdraw;
 use App\Http\Controllers\Controller;
 
 class AccountVendor extends Controller

@@ -1344,3 +1344,146 @@ html,body {
     }
   }
 }
+
+.withdraw_balance_box {
+  border-radius: 3px;
+  .balance_title {
+    margin-bottom: 3px;
+    font-size: 16px;
+    font-family: $font-secondary;
+    @include fontstyle(300, normal, normal, 0.4px);
+    color: #888888;
+  }
+  .balance_value {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-family: $font-secondary;
+    @include fontstyle(300, normal, normal, 0.4px);
+    color: #666666;
+  }
+  .balance_withdraw_button {
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-family: $font-secondary;
+    @include fontstyle(300, normal, normal, 0.4px);
+    color: #ffffff;
+    border: 0;
+    background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+  }
+}
+.withdraw_history_transaction {
+  border-radius: 3px;
+  .withdraw_history_form {
+    border-radius: 3px;
+    border: 1px solid #eeeeee;
+    color: #444444;
+    font-size: 16px;
+    font-family: $font-secondary;
+    @include fontstyle(300, normal, normal, 0.4px);
+    &::placeholder {
+      color: #999999;
+    }
+    &:hover, &:focus {
+      &::placeholder {
+        color: #444444;
+      }
+      border: 1px solid $f6b092;
+    }
+  }
+  .withdraw_selectdropdown {
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(300, normal, normal, 0.4px);
+    color: #666666;
+    border: 1px solid #eeeeee;
+    background: #ffffff;
+    &:hover, &:focus {
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+      color: #ffffff;
+      border: $logo-color-primary;
+    }
+  }
+}
+.modal-withdraw {
+  .withdraw_formlabel {
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #666666;
+  }
+  .withdraw_selectdropdown {
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(300, normal, normal, 0.4px);
+    color: #666666;
+    border: 1px solid #eeeeee;
+    &:hover, &:focus {
+      color: #555555;
+      border: 1px solid #dddddd;
+    }
+  }
+  .withdraw_fyi {
+    font-size: 12px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #666666;
+  }
+  .withdraw_formtext {
+    border-radius: 3px;
+    border: 1px solid #eeeeee;
+    color: #444444;
+    font-size: 16px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    &::placeholder {
+      color: #999999;
+    }
+    &:hover, &:focus {
+      &::placeholder {
+        color: #444444;
+      }
+      border: 1px solid $f6b092;
+    }
+  }
+  .withdraw_dropdown_content {
+    border-radius: 3px;
+    ul {
+      li {
+        a {
+          font-size: 12px;
+          font-family: $font-secondary;
+          @include fontstyle(400, normal, normal, 0.4px);
+          color: #666666;
+          &:hover { color: $logo-color-primary; }
+        }
+      }
+    }
+  }
+  .wihtdraw_cancel_btn {
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 13px;
+    border: 1px solid #e9e9e9;
+    color: #666666;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+  }
+  .withdraw_submit_btn {
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #ffffff;
+    border: 0;
+    background: $logo-color-primary;
+    &:hover, &:focus {
+      color: #ffffff;
+    }
+  }
+}

@@ -402,7 +402,7 @@ export default {
       {
         number = Number(number.replace(/[^0-9.-]+/g, ""));
       }
-      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(number);
+      var numberformat = new Intl.NumberFormat('en-ID').format(number);
       this.forms.price_deal = numberformat;
     }
   },
@@ -411,7 +411,7 @@ export default {
       return moment().locale('id').format('dddd, DD MMMM YYYY');
     },
     formatCurrency() {
-      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(this.forms.price_deal);
+      var numberformat = Intl.NumberFormat('en-ID').format(this.forms.price_deal);
       return numberformat;
     },
     displayCurrency: {
