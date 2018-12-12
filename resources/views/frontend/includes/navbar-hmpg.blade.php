@@ -15,7 +15,7 @@
     </div>
   </li>
   @elseif( Cookie::get('hasLoginVendor') )
-  <li><a>Rp. 0</a></li>
+  <li><a href="{{ route('withdrawvendor_page') }}">Rp. {{ number_format( $users->credits_balance, 0, ',', '.' ) }}</a></li>
   <li><a class="navcusticon" uk-tooltip="title: Transaksi; pos: bottom"><span><i class="fas fa-exchange-alt"></i></span></a></li>
   <li><a class="navcusticon" uk-tooltip="title: Notifikasi; pos: bottom"><span><i class="far fa-bell"></i></span></a></li>
   <li><a href="#">{{ $users->vendor_name }} <span class="uk-margin-small-left"><i class="fas fa-caret-down"></i></span></a>

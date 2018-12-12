@@ -65796,6 +65796,7 @@ Vue.component('vendororderlist', __webpack_require__(278));
 Vue.component('vendorsummaryorder', __webpack_require__(281));
 Vue.component('lupapasswordvendor', __webpack_require__(284));
 Vue.component('changepasswordvendor', __webpack_require__(289));
+Vue.component('withdrawvendor', __webpack_require__(337));
 // vendor
 
 Vue.component('discoveryvendor', __webpack_require__(294));
@@ -70148,7 +70149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (isNaN(number)) {
         number = Number(number.replace(/[^0-9.-]+/g, ""));
       }
-      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(number);
+      var numberformat = new Intl.NumberFormat('en-ID').format(number);
       this.forms.price_deal = numberformat;
     }
   },
@@ -70157,7 +70158,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return moment().locale('id').format('dddd, DD MMMM YYYY');
     },
     formatCurrency: function formatCurrency() {
-      var numberformat = Intl.NumberFormat('en-ID', { maximumSignificantDigits: 3 }).format(this.forms.price_deal);
+      var numberformat = Intl.NumberFormat('en-ID').format(this.forms.price_deal);
       return numberformat;
     },
 
@@ -85637,6 +85638,689 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(340)
+/* template */
+var __vue_template__ = __webpack_require__(341)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/vendors/Withdraw.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-46dce8b6", Component.options)
+  } else {
+    hotAPI.reload("data-v-46dce8b6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 338 */,
+/* 339 */,
+/* 340 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_v_calendar__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_v_calendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_v_calendar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_calendar_lib_v_calendar_min_css__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_v_calendar_lib_v_calendar_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_v_calendar_lib_v_calendar_min_css__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url', 'vendors', 'vendorbank'],
+  data: function data() {
+    return {
+      datepicker: {
+        ranges: {
+          start: new Date(),
+          end: new Date()
+        },
+        props: {
+          class: "uk-width-1-1 uk-input withdraw_history_form",
+          placeholder: "Masukkan tanggal",
+          readonly: true
+        },
+        attributes: {
+          highlight: {
+            backgroundColor: '#f6a192', // Red background
+            borderColor: '#f6a192',
+            borderWidth: '2px',
+            borderStyle: 'solid'
+          }
+        },
+        themeStyles: {
+          wrapper: {
+            background: '#ffffff',
+            color: '#ffffff',
+            border: '0',
+            borderRadius: '5px',
+            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.14), 0 6px 20px 0 rgba(0, 0, 0, 0.13)'
+          }
+        },
+        formats: {
+          title: 'MMMM YYYY',
+          weekdays: 'W',
+          navMonths: 'MMM',
+          input: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD'], // Only for `v-date-picker`
+          dayPopover: 'L', // Only for `v-date-picker`
+          data: ['L', 'YYYY-MM-DD', 'YYYY/MM/DD'] // For attribute dates
+        }
+      },
+      errors: {},
+      errorMessage: null,
+      forms: {
+        error: false,
+        submit: 'Tarik Dana',
+        status: 'all',
+        statusText: 'Semua Status <span uk-icon="chevron-down"></span>',
+        nominal: 0,
+        rekening: {
+          selectedName: 'Pilih Rekening <span uk-icon="chevron-down"></span>',
+          selectedValue: null
+        },
+        password: null
+      }
+    };
+  },
+
+  components: {
+    VCalendar: __WEBPACK_IMPORTED_MODULE_0_v_calendar___default.a
+  },
+  methods: {
+    formatDate: function formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
+      return res;
+    },
+    formatCurrency: function formatCurrency(price) {
+      var getprice = Number(price);
+      var numberformat = new Intl.NumberFormat('en-ID').format(getprice);
+      return numberformat;
+    },
+    formatPrice: function formatPrice() {
+      var number = this.forms.nominal;
+      if (isNaN(number)) {
+        number = Number(number.replace(/[^0-9.-]+/g, ""));
+      }
+      var numberformat = new Intl.NumberFormat('en-ID').format(number);
+      this.forms.nominal = numberformat;
+    },
+    onSelectedAccountNumber: function onSelectedAccountNumber(bank) {
+      this.forms.rekening.selectedName = bank.account_number + ' a/n ' + bank.ownername;
+      this.forms.rekening.selectedValue = bank.bank_id;
+      console.log(this.forms.rekening);
+    },
+    onWithdraw: function onWithdraw() {
+      var _this = this;
+
+      this.errors = {};
+      this.errorMessage = null;
+      var nominal = this.forms.nominal;
+
+      if (nominal !== 0 || nominal === '') nominal = Number(nominal.replace(/[^0-9.-]+/g, ""));
+
+      if (nominal === 0) {
+        this.forms.error = true;
+        this.errors.nominal = 'Masukkan nominal angka yang ingin dicairkan.';
+      }
+      if (this.forms.rekening.selectedValue === null) {
+        this.forms.error = true;
+        this.errors.rekening = 'Silahkan pilih rekening Anda.';
+      }
+      if (this.forms.password === null) {
+        this.forms.error = true;
+        this.errors.password = 'Masukkan kata sandi Anda.';
+      }
+      if (this.forms.error === true) {
+        this.forms.error = false;
+        return false;
+      }
+
+      if (this.vendors.credits_balance === 0) {
+        this.errorMessage = 'Dana Anda saat ini Rp. 0';
+      } else if (nominal < 50000) {
+        this.errorMessage = 'Minimum penarikan dana yang bisa dilakukan adalah Rp. 50.000';
+      } else if (nominal > 10000000) {
+        this.errorMessage = 'Maksimal penarikan dana yang bisa dilakukan adalah Rp. 10.000.000';
+      } else {
+        axios({
+          method: 'post',
+          url: this.url + '/vendor/account/withdraw',
+          headers: { 'Content-Type': 'application/json' },
+          params: {
+            nominal: nominal,
+            password: this.forms.password,
+            rekening: this.forms.rekening.selectedValue
+          }
+        }).then(function (res) {
+          swal({
+            title: 'Berhasil',
+            text: res.data.statusText,
+            icon: 'success',
+            timer: 3000
+          });
+          var redirect = _this.url + '/vendor/account/withdraw';
+          setTimeout(function () {
+            document.location = redirect;
+          }, 3000);
+        }).catch(function (err) {
+          var status = err.response.status;
+          if (status === 401 || status === 400) {
+            _this.errorMessage = err.response.data.statusText;
+          } else {
+            _this.errorMessage = err.response.statusText;
+          }
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+/* 341 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "uk-margin-large-top" }, [
+    _c("div", { attrs: { id: "modal", "uk-modal": "" } }, [
+      _c("div", { staticClass: "uk-modal-dialog" }, [
+        _c("a", {
+          staticClass: "uk-modal-close-default",
+          attrs: { "uk-close": "" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-modal-body modal-withdraw" }, [
+          _c("h3", [_vm._v("Penarikan Dana")]),
+          _vm._v(" "),
+          _vm.errorMessage
+            ? _c(
+                "div",
+                { staticClass: "uk-alert-danger", attrs: { "uk-alert": "" } },
+                [_vm._v(_vm._s(_vm.errorMessage))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass: "uk-form-stacked",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.onWithdraw($event)
+                }
+              }
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c(
+                  "label",
+                  { staticClass: "uk-form-label withdraw_formlabel" },
+                  [_vm._v("Jumlah Penarikan")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.nominal,
+                        expression: "forms.nominal"
+                      }
+                    ],
+                    staticClass: "uk-input withdraw_formtext",
+                    attrs: { type: "text", placeholder: "0" },
+                    domProps: { value: _vm.forms.nominal },
+                    on: {
+                      keyup: function($event) {
+                        _vm.formatPrice()
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "nominal", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.errors.nominal
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.nominal))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c(
+                  "label",
+                  { staticClass: "uk-form-label withdraw_formlabel" },
+                  [_vm._v("Nomor Rekening")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("a", {
+                    staticClass:
+                      "uk-button uk-button-default withdraw_selectdropdown",
+                    domProps: {
+                      innerHTML: _vm._s(_vm.forms.rekening.selectedName)
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "withdraw_dropdown_content",
+                      attrs: { "uk-dropdown": "mode: click" }
+                    },
+                    [
+                      _c(
+                        "ul",
+                        { staticClass: "uk-nav uk-dropdown-nav" },
+                        _vm._l(_vm.vendorbank, function(bank) {
+                          return _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.onSelectedAccountNumber(bank)
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(bank.bank_name) +
+                                    " a/n " +
+                                    _vm._s(bank.ownername)
+                                )
+                              ]
+                            )
+                          ])
+                        })
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.errors.rekening
+                    ? _c(
+                        "div",
+                        { staticClass: "uk-text-small uk-text-danger" },
+                        [_vm._v(_vm._s(_vm.errors.rekening))]
+                      )
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c(
+                  "label",
+                  { staticClass: "uk-form-label withdraw_formlabel" },
+                  [_vm._v("Kata Sandi")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.forms.password,
+                        expression: "forms.password"
+                      }
+                    ],
+                    staticClass: "uk-input withdraw_formtext",
+                    attrs: { type: "password" },
+                    domProps: { value: _vm.forms.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.forms, "password", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.errors.password
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.password))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "uk-button uk-button-default wihtdraw_cancel_btn uk-modal-close"
+                  },
+                  [_vm._v("Batal")]
+                ),
+                _vm._v(" "),
+                _c("button", {
+                  staticClass:
+                    "uk-button uk-button-default withdraw_submit_btn",
+                  domProps: { innerHTML: _vm._s(_vm.forms.submit) }
+                })
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "uk-grid-medium", attrs: { "uk-grid": "" } }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-width-1-3@xl uk-width-1-3@l uk-width-1-4@m uk-visible@s"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-card uk-card-body uk-card-default withdraw_balance_box"
+            },
+            [
+              _c("div", { staticClass: "balance_title" }, [
+                _vm._v("Dana tersedia")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "balance_value" }, [
+                _vm._v("Rp. " + _vm._s(_vm.formatCurrency(_vm.vendors.credits)))
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "uk-width-1-1 uk-button uk-button-default balance_withdraw_button",
+                  attrs: { "uk-toggle": "target: #modal" }
+                },
+                [_vm._v("Tarik Dana")]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-width-expand" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "uk-card uk-card-body uk-card-default withdraw_history_transaction"
+          },
+          [
+            _c("div", { staticClass: "uk-card-title" }, [
+              _vm._v("Riwayat Transaksi")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("v-date-picker", {
+                      attrs: {
+                        formats: _vm.datepicker.formats,
+                        mode: "range",
+                        "select-attribute": _vm.datepicker.attributes,
+                        "input-props": _vm.datepicker.props,
+                        "theme-styles": _vm.datepicker.themeStyles
+                      },
+                      model: {
+                        value: _vm.datepicker.ranges,
+                        callback: function($$v) {
+                          _vm.$set(_vm.datepicker, "ranges", $$v)
+                        },
+                        expression: "datepicker.ranges"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-width-expand" }, [
+                  _c("div", { staticClass: "uk-inline" }, [
+                    _c("button", {
+                      staticClass:
+                        "uk-button uk-button-default withdraw_selectdropdown",
+                      domProps: { innerHTML: _vm._s(_vm.forms.statusText) }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin" }, [
+      _c("div", { staticClass: "withdraw_fyi" }, [
+        _vm._v(
+          "Demi kelancaran proses pencairan dana, mohon pastikan kembali nama dan nomor rekening yang dicantumkan sudah sesuai dengan yang tertera pada bukti tabungan Anda"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "withdraw_fyi" }, [
+      _vm._v("\n          *) Penarikan dana akan diproses dalam 2x24 jam."),
+      _c("br"),
+      _vm._v(
+        "\n          *) Minimum penarikan dana yang bisa dilakukan maksimal Rp. 50.000\n          *) Maksimal penarikan dana yang bisa dilakukan maksimal Rp. 10.000.000\n        "
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { "uk-dropdown": "mode: click" } }, [
+      _c("ul", { staticClass: "uk-nav uk-dropdown-nav" }, [
+        _c("li", [_c("a", [_vm._v("Penerimaan")])]),
+        _vm._v(" "),
+        _c("li", [_c("a", [_vm._v("Penarikan")])])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-46dce8b6", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

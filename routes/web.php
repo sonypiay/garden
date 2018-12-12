@@ -116,6 +116,9 @@ Route::group(['prefix' => 'vendor'], function() {
 
     Route::get('/brandinglogo', 'Frontend\Vendor\AccountVendor@brandinglogo')->name('brandinglogovendor_page');
     Route::post('/brandinglogo', 'Frontend\Vendor\AccountVendor@uploadlogo');
+
+    Route::get('/withdraw', 'Frontend\Vendor\WithdrawController@withdraw_page')->name('withdrawvendor_page');
+    Route::post('/withdraw', 'Frontend\Vendor\WithdrawController@process_withdraw');
   });
 
   Route::group(['prefix' => 'portfolio'], function() {

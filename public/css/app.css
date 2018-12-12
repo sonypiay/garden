@@ -2198,3 +2198,245 @@ body {
   color: #f6a192;
 }
 
+.withdraw_balance_box {
+  border-radius: 3px;
+}
+
+.withdraw_balance_box .balance_title {
+  margin-bottom: 3px;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #888888;
+}
+
+.withdraw_balance_box .balance_value {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.withdraw_balance_box .balance_withdraw_button {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  border: 0;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.withdraw_history_transaction {
+  border-radius: 3px;
+}
+
+.withdraw_history_transaction .withdraw_history_form {
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+  color: #444444;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.withdraw_history_transaction .withdraw_history_form::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.withdraw_history_transaction .withdraw_history_form::-ms-input-placeholder {
+  color: #999999;
+}
+
+.withdraw_history_transaction .withdraw_history_form::placeholder {
+  color: #999999;
+}
+
+.withdraw_history_transaction .withdraw_history_form:hover,
+.withdraw_history_transaction .withdraw_history_form:focus {
+  border: 1px solid #f6b092;
+}
+
+.withdraw_history_transaction .withdraw_history_form:hover::-webkit-input-placeholder,
+.withdraw_history_transaction .withdraw_history_form:focus::-webkit-input-placeholder {
+  color: #444444;
+}
+
+.withdraw_history_transaction .withdraw_history_form:hover::-ms-input-placeholder,
+.withdraw_history_transaction .withdraw_history_form:focus::-ms-input-placeholder {
+  color: #444444;
+}
+
+.withdraw_history_transaction .withdraw_history_form:hover::placeholder,
+.withdraw_history_transaction .withdraw_history_form:focus::placeholder {
+  color: #444444;
+}
+
+.withdraw_history_transaction .withdraw_selectdropdown {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+  border: 1px solid #eeeeee;
+  background: #ffffff;
+}
+
+.withdraw_history_transaction .withdraw_selectdropdown:hover,
+.withdraw_history_transaction .withdraw_selectdropdown:focus {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  border: #f6a192;
+}
+
+.modal-withdraw .withdraw_formlabel {
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal-withdraw .withdraw_selectdropdown {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+  border: 1px solid #eeeeee;
+}
+
+.modal-withdraw .withdraw_selectdropdown:hover,
+.modal-withdraw .withdraw_selectdropdown:focus {
+  color: #555555;
+  border: 1px solid #dddddd;
+}
+
+.modal-withdraw .withdraw_fyi {
+  font-size: 12px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal-withdraw .withdraw_formtext {
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+  color: #444444;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.modal-withdraw .withdraw_formtext::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.modal-withdraw .withdraw_formtext::-ms-input-placeholder {
+  color: #999999;
+}
+
+.modal-withdraw .withdraw_formtext::placeholder {
+  color: #999999;
+}
+
+.modal-withdraw .withdraw_formtext:hover,
+.modal-withdraw .withdraw_formtext:focus {
+  border: 1px solid #f6b092;
+}
+
+.modal-withdraw .withdraw_formtext:hover::-webkit-input-placeholder,
+.modal-withdraw .withdraw_formtext:focus::-webkit-input-placeholder {
+  color: #444444;
+}
+
+.modal-withdraw .withdraw_formtext:hover::-ms-input-placeholder,
+.modal-withdraw .withdraw_formtext:focus::-ms-input-placeholder {
+  color: #444444;
+}
+
+.modal-withdraw .withdraw_formtext:hover::placeholder,
+.modal-withdraw .withdraw_formtext:focus::placeholder {
+  color: #444444;
+}
+
+.modal-withdraw .withdraw_dropdown_content {
+  border-radius: 3px;
+}
+
+.modal-withdraw .withdraw_dropdown_content ul li a {
+  font-size: 12px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal-withdraw .withdraw_dropdown_content ul li a:hover {
+  color: #f6a192;
+}
+
+.modal-withdraw .wihtdraw_cancel_btn {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  border: 1px solid #e9e9e9;
+  color: #666666;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.modal-withdraw .withdraw_submit_btn {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  border: 0;
+  background: #f6a192;
+}
+
+.modal-withdraw .withdraw_submit_btn:hover,
+.modal-withdraw .withdraw_submit_btn:focus {
+  color: #ffffff;
+}
+
