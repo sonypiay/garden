@@ -1,6 +1,9 @@
 <template lang="html">
 <div>
-  <section class="cover-joinasvendor"></section>
+  <section class="uk-cover-container cover-joinasvendor">
+    <img :src="url + '/images/banner/Banner10.jpg'" alt="" uk-cover>
+    <div class="uk-overlay uk-overlay-primary uk-position-cover uk-light cover-overlay-joinasvendor"></div>
+  </section>
   <div class="uk-container">
     <div class="uk-width-3-4 uk-align-center container-joinasvendor">
       <div class="uk-margin-bottom slugtext-joinasvendor">Bergabung dengan Mitra kami di seluruh Nusantara Indonesia</div>

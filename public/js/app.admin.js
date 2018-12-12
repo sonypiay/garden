@@ -4999,33 +4999,6 @@ module.exports = {
 /* 3 */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -5105,7 +5078,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -5124,7 +5097,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(174)
+var listToStyles = __webpack_require__(167)
 
 /*
 type StyleObject = {
@@ -5330,6 +5303,33 @@ function applyToTag (styleElement, obj) {
     styleElement.appendChild(document.createTextNode(css))
   }
 }
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
@@ -15875,7 +15875,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 9 */
@@ -18444,7 +18444,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)))
 
 /***/ }),
 /* 11 */
@@ -47932,7 +47932,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(9)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(9)(module)))
 
 /***/ }),
 /* 142 */
@@ -54430,7 +54430,7 @@ if (__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.fn) {
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(12)))
 
 /***/ }),
 /* 165 */
@@ -65664,17 +65664,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(8).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(8).setImmediate))
 
 /***/ }),
-/* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */,
-/* 174 */
+/* 167 */
 /***/ (function(module, exports) {
 
 /**
@@ -65707,6 +65700,13 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
 /* 175 */,
 /* 176 */,
 /* 177 */,
@@ -65861,15 +65861,15 @@ window.Vue = __webpack_require__(166);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('dashboardadmin', __webpack_require__(332));
-Vue.component('login-section', __webpack_require__(305));
-Vue.component('cpusers-section', __webpack_require__(308));
-Vue.component('cpbankpayment-section', __webpack_require__(311));
-Vue.component('cpbankcustomer-section', __webpack_require__(314));
-Vue.component('provinsi-section', __webpack_require__(317));
-Vue.component('kabupaten-section', __webpack_require__(320));
-Vue.component('kecamatan-section', __webpack_require__(323));
-Vue.component('orderlist-section', __webpack_require__(326));
+Vue.component('dashboardadmin', __webpack_require__(305));
+Vue.component('login-section', __webpack_require__(310));
+Vue.component('cpusers-section', __webpack_require__(313));
+Vue.component('cpbankpayment-section', __webpack_require__(316));
+Vue.component('cpbankcustomer-section', __webpack_require__(319));
+Vue.component('provinsi-section', __webpack_require__(322));
+Vue.component('kabupaten-section', __webpack_require__(325));
+Vue.component('kecamatan-section', __webpack_require__(328));
+Vue.component('orderlist-section', __webpack_require__(331));
 
 var app = new Vue({
   el: '#app',
@@ -65896,11 +65896,1049 @@ var app = new Vue({
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(306)
+}
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(306)
+var __vue_script__ = __webpack_require__(308)
 /* template */
-var __vue_template__ = __webpack_require__(307)
+var __vue_template__ = __webpack_require__(309)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/administrator/Dashboard.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-425bc22a", Component.options)
+  } else {
+    hotAPI.reload("data-v-425bc22a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(307);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("2d070bb8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-425bc22a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Dashboard.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-425bc22a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Dashboard.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 308 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      forms: {
+        filter_rows: 10,
+        filter_day: 'today',
+        keywords: '',
+        status: 'all',
+        premium: 'all'
+      },
+      pagination: {
+        current: 1,
+        next: null,
+        prev: null,
+        last: 1,
+        path: this.url + '/analytic/activity_transaction'
+      },
+      activity_transaction: {
+        selectedDate: 'today',
+        total: 0,
+        results: []
+      },
+      total_transaction: {
+        payment_waiting: 0,
+        payment_verify: 0,
+        paid: 0,
+        onprogress: 0,
+        report: 0,
+        done: 0
+      },
+      allusers: {
+        vendor: {
+          total_vendor: 0,
+          registered: 0
+        },
+        customers: {
+          total_customer: 0,
+          registered: 0
+        }
+      }
+    };
+  },
+
+  methods: {
+    formatDate: function formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
+      return res;
+    },
+    getTotalTransaction: function getTotalTransaction() {
+      var _this = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/analytic/total_transaction'
+      }).then(function (res) {
+        var result = res.data;
+        _this.total_transaction = {
+          payment_waiting: result.results.payment_waiting,
+          payment_verify: result.results.payment_verify,
+          paid: result.results.paid,
+          onprogress: result.results.onprogress,
+          report: result.results.report,
+          done: result.results.done
+        };
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    getActivityTransaction: function getActivityTransaction(pages) {
+      var _this2 = this;
+
+      var param = '&keywords=' + this.forms.keywords + '&rows=' + this.forms.filter_rows + '&filter_day=' + this.forms.filter_day + '&status=' + this.forms.status + '&premium=' + this.forms.premium;
+      if (pages === undefined || pages === null || pages === '') {
+        pages = this.url + '/analytic/activity_transaction?page=' + this.pagination.current + param;
+      } else {
+        pages = pages + param;
+      }
+
+      axios({
+        method: 'get',
+        url: pages
+      }).then(function (res) {
+        var result = res.data;
+        _this2.activity_transaction.total = result.results.total;
+        _this2.activity_transaction.results = result.results.data;
+        console.log(result.results);
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    },
+    getAllUsers: function getAllUsers() {
+      var _this3 = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/analytic/allusers'
+      }).then(function (res) {
+        var result = res.data;
+        _this3.allusers.vendor = {
+          total_vendor: result.vendor.total_vendor,
+          registered: result.vendor.registered
+        };
+        _this3.allusers.customers = {
+          total_customer: result.customers.total_customer,
+          registered: result.customers.registered
+        };
+      }).catch(function (err) {
+        console.log(err.response.statusText);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getTotalTransaction();
+    this.getActivityTransaction();
+    this.getAllUsers();
+  }
+});
+
+/***/ }),
+/* 309 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-container uk-margin-large-bottom uk-margin-large-top" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "uk-grid-small uk-grid-match uk-margin-top",
+          attrs: { "uk-grid": "" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.payment_waiting))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Menunggu Pembayaran")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.payment_verify))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Verifikasi Pembayaran")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.paid))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Dibayar")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.onprogress))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Sedang Dikerjakan")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.report))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Laporan Pekerjaan")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "uk-card-title dash_statustransaction_value"
+                    },
+                    [_vm._v(_vm._s(_vm.total_transaction.done))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dash_statustransaction_title" }, [
+                    _vm._v("Pekerjaan Selesai")
+                  ])
+                ]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "uk-card uk-card-body uk-card-small uk-card-default uk-margin-top"
+        },
+        [
+          _c("h3", { staticClass: "dashboard_transaction_heading" }, [
+            _vm._v("Transaksi")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.filter_rows,
+                          expression: "forms.filter_rows"
+                        }
+                      ],
+                      staticClass: "uk-select dashboard_filter_action",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.forms,
+                              "filter_rows",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.getActivityTransaction(
+                              _vm.pagination.path +
+                                "?page=" +
+                                _vm.pagination.path
+                            )
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "10" } }, [
+                        _vm._v("10 ditampilkan")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "20" } }, [
+                        _vm._v("20 ditampilkan")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "30" } }, [
+                        _vm._v("30 ditampilkan")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "50" } }, [
+                        _vm._v("50 ditampilkan")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "100" } }, [
+                        _vm._v("100 ditampilkan")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.filter_day,
+                          expression: "forms.filter_day"
+                        }
+                      ],
+                      staticClass: "uk-select dashboard_filter_action",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.forms,
+                              "filter_day",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.getActivityTransaction(
+                              _vm.pagination.path +
+                                "?page=" +
+                                _vm.pagination.path
+                            )
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "today" } }, [
+                        _vm._v("Hari ini")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "7day" } }, [
+                        _vm._v("7 hari terakhir")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "14day" } }, [
+                        _vm._v("14 hari terakhir")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "28day" } }, [
+                        _vm._v("28 hari terakhir")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "last_month" } }, [
+                        _vm._v("1 bulan terakhir")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "this_month" } }, [
+                        _vm._v("Bulan ini")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-4@xl uk-width-1-4@l uk-width-1-3@s uk-width-1-3@s"
+                },
+                [
+                  _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
+                    _c("span", {
+                      staticClass: "uk-form-icon",
+                      attrs: { "uk-icon": "search" }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.keywords,
+                          expression: "forms.keywords"
+                        }
+                      ],
+                      staticClass:
+                        "uk-width-1-1 uk-input dashboard_filter_action",
+                      attrs: { type: "search", placeholder: "Cari..." },
+                      domProps: { value: _vm.forms.keywords },
+                      on: {
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          _vm.getActivityTransaction(
+                            _vm.pagination.path + "?page=" + _vm.pagination.path
+                          )
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.forms, "keywords", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.premium,
+                          expression: "forms.premium"
+                        }
+                      ],
+                      staticClass: "uk-select dashboard_filter_action",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.forms,
+                              "premium",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.getActivityTransaction(
+                              _vm.pagination.path +
+                                "?page=" +
+                                _vm.pagination.path
+                            )
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "all" } }, [
+                        _vm._v("Premium / Non Premium")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Y" } }, [
+                        _vm._v("Premium")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "N" } }, [
+                        _vm._v("Non Premium")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
+                },
+                [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.forms.status,
+                          expression: "forms.status"
+                        }
+                      ],
+                      staticClass: "uk-select dashboard_filter_action",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.forms,
+                              "status",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.getActivityTransaction(
+                              _vm.pagination.path +
+                                "?page=" +
+                                _vm.pagination.path
+                            )
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "all" } }, [
+                        _vm._v("-- Semua Status --")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.$root.statusTransaction, function(val, key) {
+                        return _c("option", { domProps: { value: key } }, [
+                          _vm._v(_vm._s(val))
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
+            _c(
+              "table",
+              {
+                staticClass:
+                  "uk-table uk-table-small uk-table-hover uk-table-divider uk-table-hover uk-table-middle"
+              },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.activity_transaction.results, function(tr) {
+                    return _c("tr", [
+                      _vm._m(2, true),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(tr.transaction_id))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(tr.vendor_name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(tr.customer_name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(tr.nama_kab))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm.$root.statusTransaction[
+                              tr.last_status_transaction
+                            ]
+                          )
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm.formatDate(tr.created_at, "MMM DD, YYYY HH:mm")
+                          )
+                        )
+                      ])
+                    ])
+                  })
+                )
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "uk-margin-bottom dashboard-welcome-screen" },
+      [
+        _c("div", { staticClass: "dashboard-hello" }, [
+          _vm._v("Selamat Datang, John Doe")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("No. Transaksi")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Vendor")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Pelanggan")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Kota")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tanggal Pesan")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("button", {
+        staticClass: "uk-button uk-button-text",
+        attrs: {
+          "uk-icon": "cog",
+          "uk-tooltip": "title: Lihat Rincian; pos: right"
+        }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-425bc22a", module.exports)
+  }
+}
+
+/***/ }),
+/* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(311)
+/* template */
+var __vue_template__ = __webpack_require__(312)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65939,7 +66977,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 306 */
+/* 311 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66058,7 +67096,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 307 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -66265,15 +67303,15 @@ if (false) {
 }
 
 /***/ }),
-/* 308 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(309)
+var __vue_script__ = __webpack_require__(314)
 /* template */
-var __vue_template__ = __webpack_require__(310)
+var __vue_template__ = __webpack_require__(315)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66312,7 +67350,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 309 */
+/* 314 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66634,7 +67672,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 310 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67185,15 +68223,15 @@ if (false) {
 }
 
 /***/ }),
-/* 311 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(312)
+var __vue_script__ = __webpack_require__(317)
 /* template */
-var __vue_template__ = __webpack_require__(313)
+var __vue_template__ = __webpack_require__(318)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67232,7 +68270,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 312 */
+/* 317 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67576,7 +68614,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 313 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67903,15 +68941,15 @@ if (false) {
 }
 
 /***/ }),
-/* 314 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(315)
+var __vue_script__ = __webpack_require__(320)
 /* template */
-var __vue_template__ = __webpack_require__(316)
+var __vue_template__ = __webpack_require__(321)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67950,7 +68988,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 315 */
+/* 320 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68294,7 +69332,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 316 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -68621,15 +69659,15 @@ if (false) {
 }
 
 /***/ }),
-/* 317 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(318)
+var __vue_script__ = __webpack_require__(323)
 /* template */
-var __vue_template__ = __webpack_require__(319)
+var __vue_template__ = __webpack_require__(324)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -68668,7 +69706,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 318 */
+/* 323 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68912,7 +69950,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 319 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -69213,15 +70251,15 @@ if (false) {
 }
 
 /***/ }),
-/* 320 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(321)
+var __vue_script__ = __webpack_require__(326)
 /* template */
-var __vue_template__ = __webpack_require__(322)
+var __vue_template__ = __webpack_require__(327)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69260,7 +70298,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 321 */
+/* 326 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69524,7 +70562,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 322 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -69889,15 +70927,15 @@ if (false) {
 }
 
 /***/ }),
-/* 323 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(324)
+var __vue_script__ = __webpack_require__(329)
 /* template */
-var __vue_template__ = __webpack_require__(325)
+var __vue_template__ = __webpack_require__(330)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69936,7 +70974,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 324 */
+/* 329 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70200,7 +71238,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 325 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70565,15 +71603,15 @@ if (false) {
 }
 
 /***/ }),
-/* 326 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(327)
+var __vue_script__ = __webpack_require__(332)
 /* template */
-var __vue_template__ = __webpack_require__(328)
+var __vue_template__ = __webpack_require__(333)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -70612,7 +71650,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 327 */
+/* 332 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70976,7 +72014,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 328 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71765,1047 +72803,6 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-757ae53a", module.exports)
-  }
-}
-
-/***/ }),
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(333)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(335)
-/* template */
-var __vue_template__ = __webpack_require__(336)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/administrator/Dashboard.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-425bc22a", Component.options)
-  } else {
-    hotAPI.reload("data-v-425bc22a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 333 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(334);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(5)("2d070bb8", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-425bc22a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Dashboard.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-425bc22a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Dashboard.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 334 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 335 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url'],
-  data: function data() {
-    return {
-      forms: {
-        filter_rows: 10,
-        filter_day: 'today',
-        keywords: '',
-        status: 'all',
-        premium: 'all'
-      },
-      pagination: {
-        current: 1,
-        next: null,
-        prev: null,
-        last: 1,
-        path: this.url + '/analytic/activity_transaction'
-      },
-      activity_transaction: {
-        selectedDate: 'today',
-        total: 0,
-        results: []
-      },
-      total_transaction: {
-        payment_waiting: 0,
-        payment_verify: 0,
-        paid: 0,
-        onprogress: 0,
-        report: 0,
-        done: 0
-      },
-      allusers: {
-        vendor: {
-          total_vendor: 0,
-          registered: 0
-        },
-        customers: {
-          total_customer: 0,
-          registered: 0
-        }
-      }
-    };
-  },
-
-  methods: {
-    formatDate: function formatDate(str, format) {
-      var res = moment(str).locale('id').format(format);
-      return res;
-    },
-    getTotalTransaction: function getTotalTransaction() {
-      var _this = this;
-
-      axios({
-        method: 'get',
-        url: this.url + '/analytic/total_transaction'
-      }).then(function (res) {
-        var result = res.data;
-        _this.total_transaction = {
-          payment_waiting: result.results.payment_waiting,
-          payment_verify: result.results.payment_verify,
-          paid: result.results.paid,
-          onprogress: result.results.onprogress,
-          report: result.results.report,
-          done: result.results.done
-        };
-      }).catch(function (err) {
-        console.log(err.response.statusText);
-      });
-    },
-    getActivityTransaction: function getActivityTransaction(pages) {
-      var _this2 = this;
-
-      var param = '&keywords=' + this.forms.keywords + '&rows=' + this.forms.filter_rows + '&filter_day=' + this.forms.filter_day + '&status=' + this.forms.status + '&premium=' + this.forms.premium;
-      if (pages === undefined || pages === null || pages === '') {
-        pages = this.url + '/analytic/activity_transaction?page=' + this.pagination.current + param;
-      } else {
-        pages = pages + param;
-      }
-
-      axios({
-        method: 'get',
-        url: pages
-      }).then(function (res) {
-        var result = res.data;
-        _this2.activity_transaction.total = result.results.total;
-        _this2.activity_transaction.results = result.results.data;
-        console.log(result.results);
-      }).catch(function (err) {
-        console.log(err.response.statusText);
-      });
-    },
-    getAllUsers: function getAllUsers() {
-      var _this3 = this;
-
-      axios({
-        method: 'get',
-        url: this.url + '/analytic/allusers'
-      }).then(function (res) {
-        var result = res.data;
-        _this3.allusers.vendor = {
-          total_vendor: result.vendor.total_vendor,
-          registered: result.vendor.registered
-        };
-        _this3.allusers.customers = {
-          total_customer: result.customers.total_customer,
-          registered: result.customers.registered
-        };
-      }).catch(function (err) {
-        console.log(err.response.statusText);
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.getTotalTransaction();
-    this.getActivityTransaction();
-    this.getAllUsers();
-  }
-});
-
-/***/ }),
-/* 336 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-container uk-margin-large-bottom uk-margin-large-top" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "uk-grid-small uk-grid-match uk-margin-top",
-          attrs: { "uk-grid": "" }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "uk-card-title dash_statustransaction_value"
-                    },
-                    [_vm._v(_vm._s(_vm.total_transaction.payment_waiting))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "dash_statustransaction_title" }, [
-                    _vm._v("Menunggu Pembayaran")
-                  ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "uk-card-title dash_statustransaction_value"
-                    },
-                    [_vm._v(_vm._s(_vm.total_transaction.payment_verify))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "dash_statustransaction_title" }, [
-                    _vm._v("Verifikasi Pembayaran")
-                  ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "uk-card-title dash_statustransaction_value"
-                    },
-                    [_vm._v(_vm._s(_vm.total_transaction.paid))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "dash_statustransaction_title" }, [
-                    _vm._v("Dibayar")
-                  ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "uk-card-title dash_statustransaction_value"
-                    },
-                    [_vm._v(_vm._s(_vm.total_transaction.onprogress))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "dash_statustransaction_title" }, [
-                    _vm._v("Sedang Dikerjakan")
-                  ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "uk-card-title dash_statustransaction_value"
-                    },
-                    [_vm._v(_vm._s(_vm.total_transaction.report))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "dash_statustransaction_title" }, [
-                    _vm._v("Laporan Pekerjaan")
-                  ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-card uk-card-body uk-card-default dashboard_grid_statustransaction"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "uk-card-title dash_statustransaction_value"
-                    },
-                    [_vm._v(_vm._s(_vm.total_transaction.done))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "dash_statustransaction_title" }, [
-                    _vm._v("Pekerjaan Selesai")
-                  ])
-                ]
-              )
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "uk-card uk-card-body uk-card-small uk-card-default uk-margin-top"
-        },
-        [
-          _c("h3", { staticClass: "dashboard_transaction_heading" }, [
-            _vm._v("Transaksi")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.filter_rows,
-                          expression: "forms.filter_rows"
-                        }
-                      ],
-                      staticClass: "uk-select dashboard_filter_action",
-                      on: {
-                        change: [
-                          function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.forms,
-                              "filter_rows",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                          function($event) {
-                            _vm.getActivityTransaction(
-                              _vm.pagination.path +
-                                "?page=" +
-                                _vm.pagination.path
-                            )
-                          }
-                        ]
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "10" } }, [
-                        _vm._v("10 ditampilkan")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "20" } }, [
-                        _vm._v("20 ditampilkan")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "30" } }, [
-                        _vm._v("30 ditampilkan")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "50" } }, [
-                        _vm._v("50 ditampilkan")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "100" } }, [
-                        _vm._v("100 ditampilkan")
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.filter_day,
-                          expression: "forms.filter_day"
-                        }
-                      ],
-                      staticClass: "uk-select dashboard_filter_action",
-                      on: {
-                        change: [
-                          function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.forms,
-                              "filter_day",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                          function($event) {
-                            _vm.getActivityTransaction(
-                              _vm.pagination.path +
-                                "?page=" +
-                                _vm.pagination.path
-                            )
-                          }
-                        ]
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "today" } }, [
-                        _vm._v("Hari ini")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "7day" } }, [
-                        _vm._v("7 hari terakhir")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "14day" } }, [
-                        _vm._v("14 hari terakhir")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "28day" } }, [
-                        _vm._v("28 hari terakhir")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "last_month" } }, [
-                        _vm._v("1 bulan terakhir")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "this_month" } }, [
-                        _vm._v("Bulan ini")
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-width-1-4@xl uk-width-1-4@l uk-width-1-3@s uk-width-1-3@s"
-                },
-                [
-                  _c("div", { staticClass: "uk-width-1-1 uk-inline" }, [
-                    _c("span", {
-                      staticClass: "uk-form-icon",
-                      attrs: { "uk-icon": "search" }
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.keywords,
-                          expression: "forms.keywords"
-                        }
-                      ],
-                      staticClass:
-                        "uk-width-1-1 uk-input dashboard_filter_action",
-                      attrs: { type: "search", placeholder: "Cari..." },
-                      domProps: { value: _vm.forms.keywords },
-                      on: {
-                        keyup: function($event) {
-                          if (
-                            !("button" in $event) &&
-                            _vm._k(
-                              $event.keyCode,
-                              "enter",
-                              13,
-                              $event.key,
-                              "Enter"
-                            )
-                          ) {
-                            return null
-                          }
-                          _vm.getActivityTransaction(
-                            _vm.pagination.path + "?page=" + _vm.pagination.path
-                          )
-                        },
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.forms, "keywords", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.premium,
-                          expression: "forms.premium"
-                        }
-                      ],
-                      staticClass: "uk-select dashboard_filter_action",
-                      on: {
-                        change: [
-                          function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.forms,
-                              "premium",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                          function($event) {
-                            _vm.getActivityTransaction(
-                              _vm.pagination.path +
-                                "?page=" +
-                                _vm.pagination.path
-                            )
-                          }
-                        ]
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "all" } }, [
-                        _vm._v("Premium / Non Premium")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Y" } }, [
-                        _vm._v("Premium")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "N" } }, [
-                        _vm._v("Non Premium")
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s"
-                },
-                [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.forms.status,
-                          expression: "forms.status"
-                        }
-                      ],
-                      staticClass: "uk-select dashboard_filter_action",
-                      on: {
-                        change: [
-                          function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.forms,
-                              "status",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                          function($event) {
-                            _vm.getActivityTransaction(
-                              _vm.pagination.path +
-                                "?page=" +
-                                _vm.pagination.path
-                            )
-                          }
-                        ]
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "all" } }, [
-                        _vm._v("-- Semua Status --")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.$root.statusTransaction, function(val, key) {
-                        return _c("option", { domProps: { value: key } }, [
-                          _vm._v(_vm._s(val))
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "uk-overflow-auto uk-margin-top" }, [
-            _c(
-              "table",
-              {
-                staticClass:
-                  "uk-table uk-table-small uk-table-hover uk-table-divider uk-table-hover uk-table-middle"
-              },
-              [
-                _vm._m(1),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.activity_transaction.results, function(tr) {
-                    return _c("tr", [
-                      _vm._m(2, true),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(tr.transaction_id))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(tr.vendor_name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(tr.customer_name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(tr.nama_kab))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(
-                            _vm.$root.statusTransaction[
-                              tr.last_status_transaction
-                            ]
-                          )
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(
-                            _vm.formatDate(tr.created_at, "MMM DD, YYYY HH:mm")
-                          )
-                        )
-                      ])
-                    ])
-                  })
-                )
-              ]
-            )
-          ])
-        ]
-      )
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "uk-margin-bottom dashboard-welcome-screen" },
-      [
-        _c("div", { staticClass: "dashboard-hello" }, [
-          _vm._v("Selamat Datang, John Doe")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("No. Transaksi")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Vendor")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Pelanggan")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Kota")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Status")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Tanggal Pesan")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", {
-        staticClass: "uk-button uk-button-text",
-        attrs: {
-          "uk-icon": "cog",
-          "uk-tooltip": "title: Lihat Rincian; pos: right"
-        }
-      })
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-425bc22a", module.exports)
   }
 }
 

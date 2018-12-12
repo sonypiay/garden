@@ -4,7 +4,7 @@
       <ul class="uk-navbar-nav navtopcustomer">
         <li>
           <a class="uk-navbar-item uk-logo logo" href="{{ url('/') }}">
-            <img src="{{ asset('images/logobrand/gplogo-primary.png') }}" alt="">
+            <img src="{{ asset('images/logobrand/gplogo-primary-new.png') }}" alt="">
           </a>
         </li>
       </ul>

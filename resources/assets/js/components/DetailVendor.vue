@@ -58,33 +58,31 @@
             <div v-if="portfolios.total === 0" class="uk-width-1-1">
               <div class="uk-width-1-1 uk-alert-warning" uk-alert>Belum ada portfolio</div>
             </div>
-            <div v-else>
-              <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s" v-for="portfolio in portfolios.results">
-                <div class="uk-card uk-card-default pv-thumbnail">
-                  <div class="uk-card-media-top pv-mediathumbnail">
-                    <div v-if="portfolio.portfolio_thumbnail">
-                      <div class="uk-inline uk-transition-toggle" tabindex="0">
-                        <img :src="url + '/images/vendor/portfolios/' + portfolio.portfolio_thumbnail" alt="">
-                        <a class="uk-overlay uk-overlay-primary uk-position-cover uk-light uk-transition-fade pv-iconoverlay">
-                          <div class="uk-position-center">
-                            <span uk-icon="icon: search; ratio: 2"></span>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div v-else>
-                      <div class="uk-tile uk-tile-default pv-nothumbnail">
+            <div v-else class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-2@m uk-width-1-2@s" v-for="portfolio in portfolios.results">
+              <div class="uk-card uk-card-default pv-thumbnail">
+                <div class="uk-card-media-top pv-mediathumbnail">
+                  <div v-if="portfolio.portfolio_thumbnail">
+                    <div class="uk-inline uk-transition-toggle" tabindex="0">
+                      <img :src="url + '/images/vendor/portfolios/' + portfolio.portfolio_thumbnail" alt="">
+                      <a class="uk-overlay uk-overlay-primary uk-position-cover uk-light uk-transition-fade pv-iconoverlay">
                         <div class="uk-position-center">
-                          <a uk-icon="icon: image; ratio: 4"></a>
+                          <span uk-icon="icon: search; ratio: 2"></span>
                         </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div v-else>
+                    <div class="uk-tile uk-tile-default pv-nothumbnail">
+                      <div class="uk-position-center">
+                        <a uk-icon="icon: image; ratio: 4"></a>
                       </div>
                     </div>
                   </div>
-                  <div class="uk-card-body uk-card-small pv-cardbody">
-                    <div class="uk-card-title pv-title">{{ portfolio.portfolio_name }}</div>
-                    <div class="pv-createdat">
-                      {{ formatDate( portfolio.created_at ) }}
-                    </div>
+                </div>
+                <div class="uk-card-body uk-card-small pv-cardbody">
+                  <div class="uk-card-title pv-title">{{ portfolio.portfolio_name }}</div>
+                  <div class="pv-createdat">
+                    {{ formatDate( portfolio.created_at, 'MMM DD, YYYY' ) }}
                   </div>
                 </div>
               </div>
@@ -117,8 +115,8 @@ export default {
     }
   },
   methods: {
-    formatDate(str) {
-      var res = moment(str).locale('id').format('YYYY/MM/DD');
+    formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
       return res;
     },
     showPortfolio(pages)
