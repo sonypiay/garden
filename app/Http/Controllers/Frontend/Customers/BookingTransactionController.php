@@ -208,7 +208,7 @@ class BookingTransactionController extends Controller
 
     $logstatus->transaction_id = $orderid;
     $logstatus->status_transaction = $status_transaction;
-    $logstatus->status_description = 'Menunggu verifikasi pembayaran oleh pihak tim Garden Buana.';
+    $logstatus->status_description = 'Menunggu verifikasi pembayaran oleh tim Garden Buana.';
     $logstatus->log_date = date('Y-m-d H:i:s');
     $logstatus->save();
 
@@ -219,7 +219,7 @@ class BookingTransactionController extends Controller
 
     $res = [
       'status' => 200,
-      'statusText' => 'Transaksi ' . $orderid . ' berhasil dilakukan.'
+      'statusText' => 'Transaksi berhasil dilakukan dengan no ' . $orderid . '.'
     ];
 
     return response()->json( $res, $res['status'] );
@@ -393,9 +393,9 @@ class BookingTransactionController extends Controller
     ->paginate( $rows );
 
     $total_transaction = $booking->where('customer_id', '=', Cookie::get('customer_id'))->count();
-    $approved_transaction = $booking->where([
+    $done_transaction = $booking->where([
       ['customer_id', '=', Cookie::get('customer_id')],
-      ['last_status_transaction', '=', 'approved']
+      ['last_status_transaction', '=', 'done']
     ])->count();
     $payment_waiting = $booking->where([
       ['customer_id', '=', Cookie::get('customer_id')],
@@ -410,7 +410,7 @@ class BookingTransactionController extends Controller
         'transaction' => $results,
         'total_transaction' => $total_transaction,
         'status_transaction' => [
-          'approved' => $approved_transaction,
+          'done' => $done_transaction,
           'payment_waiting' => $payment_waiting,
           'rejected' => $status_rejected
         ]
@@ -484,9 +484,10 @@ class BookingTransactionController extends Controller
     return response()->json( $results );
   }
 
-  public function confirmreport( BookingTransaction $booking, LogStatusTransaction $logstatus, $orderid )
+  public function confirmreport( BookingTransaction $booking, LogStatusTransaction $logstatus, Vendors $vendors, $orderid )
   {
     $booking = $booking->where('transaction_id', $orderid)->first();
+    $vendors = $vendors->where('vendor_id', $booking->vendor_id)->first();
     $logstatus = new $logstatus;
     $status = 'done';
 
@@ -495,9 +496,22 @@ class BookingTransactionController extends Controller
 
     $logstatus->transaction_id = $orderid;
     $logstatus->status_transaction = $status;
-    $logstatus->status_description = 'Pesanan sudah selesai dikerjakan.';
+    $logstatus->status_description = 'Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.';
     $logstatus->log_date = date('Y-m-d H:i:s');
     $logstatus->save();
+
+    if( empty( $vendors->credits_balance ) || $vendors->credits_balance === 0 || $vendors->credits_balance === '' )
+    {
+      $vendor_balance = 0;
+    }
+    else
+    {
+      $vendor_balance = $vendors->credits_balance;
+    }
+
+    $balance = $booking->price_deal + $vendor_balance;
+    $vendors->credits_balance = $balance;
+    $vendors->save();
 
     $res = [
       'status' => 200,

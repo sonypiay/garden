@@ -5,7 +5,7 @@
       <div class="dash_customerhistory">
         <span class="dash_historytransaction">{{ transaction.total }} Transaksi</span>
         <span class="dash_vendorpilihan">
-          {{ transaction.statusTransaction.approved }} Diterima &nbsp;
+          {{ transaction.statusTransaction.done }} Selesai &nbsp;
           {{ transaction.statusTransaction.payment_waiting }} Menunggu Pembayaran &nbsp;
           {{ transaction.statusTransaction.rejected }} Ditolak &nbsp;
         </span>
@@ -76,7 +76,7 @@ export default {
         total: 0,
         results: [],
         statusTransaction: {
-          approved: 0,
+          done: 0,
           payment_waiting: 0,
           rejected: 0
         }
@@ -109,7 +109,7 @@ export default {
         this.transaction.total = result.data.transaction.total;
         this.transaction.results = result.data.transaction.data;
         this.transaction.statusTransaction = {
-          approved: result.data.status_transaction.approved,
+          done: result.data.status_transaction.done,
           payment_waiting: result.data.status_transaction.payment_waiting,
           rejected: result.data.status_transaction.rejected
         };

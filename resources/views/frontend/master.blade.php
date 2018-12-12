@@ -16,7 +16,8 @@ $request->route()->getName() != 'lupapasswordcustomer_page' AND
 $request->route()->getName() != 'loginpage' AND
 $request->route()->getName() != 'signuppage' AND
 $request->route()->getName() != 'lupapasswordcustomer_page' AND
-$request->route()->getName() != 'lupapasswordvendor_page'
+$request->route()->getName() != 'lupapasswordvendor_page' AND
+$request->route()->getName() != 'process_checkout_page'
 )
 <footer class="footer">
   <div class="uk-card uk-card-body uk-card-default mainfooter">

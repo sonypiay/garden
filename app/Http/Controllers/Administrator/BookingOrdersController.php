@@ -182,7 +182,7 @@ class BookingOrdersController extends Controller
     )
     ->join('kabupaten', 'booking_transaction.district', '=', 'kabupaten.id_kab')
     ->join('provinsi', 'booking_transaction.region', '=', 'provinsi.id_provinsi')
-    ->join('kecamatan', 'booking_transaction.subdistrict', '=', 'kecamatan.id_kab')
+    ->join('kecamatan', 'booking_transaction.subdistrict', '=', 'kecamatan.id_kec')
     ->where('booking_transaction.transaction_id', '=', $orderid)->first();
 
     $logstatus = $logstatus->where('transaction_id', '=', $orderid)

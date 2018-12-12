@@ -28,6 +28,26 @@
           <hr>
           <div class="uk-grid-small" uk-grid>
             <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Nama Pemesan</div>
+              <div class="view-transaction-value">{{ orders.customer_name }}</div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="view-transaction-heading">Nomor Telepon</div>
+              <div class="view-transaction-value">{{ orders.mobile_number }}</div>
+            </div>
+          </div>
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
+              <div class="uk-margin">
+                <div class="view-transaction-heading">Harga Kesepakatan</div>
+                <div class="view-transaction-value">Rp. {{ formatCurrency( orders.price_deal ) }}</div>
+              </div>
+              <div class="uk-margin" v-if="orders.payment_amount">
+                <div class="view-transaction-heading">Total Pembayaran</div>
+                <div class="view-transaction-value">Rp. {{ formatCurrency( orders.payment_amount ) }}</div>
+              </div>
+            </div>
+            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
               <div class="uk-margin" v-if="orders.isPremium === 'Y'">
                 <div class="view-transaction-heading">Pemesan Premium</div>
                 <div class="view-transaction-value">+ Rp. 5.000</div>
@@ -37,21 +57,8 @@
                 <div class="view-transaction-value">+ Rp. 4.000</div>
               </div>
             </div>
-            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-              <div class="view-transaction-heading">Total Pembayaran</div>
-              <div class="view-transaction-value">Rp. {{ formatCurrency( orders.payment_amount ) }}</div>
-            </div>
           </div>
-          <div class="uk-grid-small" uk-grid>
-            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-              <div class="view-transaction-heading">Nama Pemesan</div>
-              <div class="view-transaction-value">{{ orders.customer_name }}</div>
-            </div>
-            <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-              <div class="view-transaction-heading">Nomor Telepon</div>
-              <div class="view-transaction-value">{{ orders.mobile_number }}</div>
-            </div>
-          </div>
+
           <hr>
           <div class="uk-grid-small" uk-grid>
             <div class="uk-width-1-1">
@@ -86,7 +93,7 @@
                   </div>
                   <div class="uk-width-expand">
                     <div class="view-transaction-heading">{{ $root.statusTransaction[log.status_transaction] }}</div>
-                    <div class="view-transaction-value">{{ log.status_description }}</div>
+                    <div class="view-transaction-value" v-html="log.status_description"></div>
                   </div>
                 </div>
                 <hr>

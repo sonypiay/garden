@@ -71831,6 +71831,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
@@ -72135,6 +72142,87 @@ var render = function() {
                       "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
                   },
                   [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Nama Pemesan")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.customer_name))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "view-transaction-heading" }, [
+                      _vm._v("Nomor Telepon")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "view-transaction-value" }, [
+                      _vm._v(_vm._s(_vm.orders.mobile_number))
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
+                    _c("div", { staticClass: "uk-margin" }, [
+                      _c("div", { staticClass: "view-transaction-heading" }, [
+                        _vm._v("Harga Kesepakatan")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "view-transaction-value" }, [
+                        _vm._v(
+                          "Rp. " +
+                            _vm._s(_vm.formatCurrency(_vm.orders.price_deal))
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.orders.payment_amount
+                      ? _c("div", { staticClass: "uk-margin" }, [
+                          _c(
+                            "div",
+                            { staticClass: "view-transaction-heading" },
+                            [_vm._v("Total Pembayaran")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "view-transaction-value" }, [
+                            _vm._v(
+                              "Rp. " +
+                                _vm._s(
+                                  _vm.formatCurrency(_vm.orders.payment_amount)
+                                )
+                            )
+                          ])
+                        ])
+                      : _vm._e()
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
+                  },
+                  [
                     _vm.orders.isPremium === "Y"
                       ? _c("div", { staticClass: "uk-margin" }, [
                           _c(
@@ -72162,66 +72250,6 @@ var render = function() {
                           ])
                         ])
                       : _vm._e()
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Total Pembayaran")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(
-                        "Rp. " +
-                          _vm._s(_vm.formatCurrency(_vm.orders.payment_amount))
-                      )
-                    ])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "uk-grid-small", attrs: { "uk-grid": "" } },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Nama Pemesan")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.orders.customer_name))
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s"
-                  },
-                  [
-                    _c("div", { staticClass: "view-transaction-heading" }, [
-                      _vm._v("Nomor Telepon")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "view-transaction-value" }, [
-                      _vm._v(_vm._s(_vm.orders.mobile_number))
-                    ])
                   ]
                 )
               ]
@@ -72374,9 +72402,12 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _c("div", { staticClass: "view-transaction-value" }, [
-                            _vm._v(_vm._s(log.status_description))
-                          ])
+                          _c("div", {
+                            staticClass: "view-transaction-value",
+                            domProps: {
+                              innerHTML: _vm._s(log.status_description)
+                            }
+                          })
                         ])
                       ]
                     ),

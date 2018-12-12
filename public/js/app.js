@@ -67341,7 +67341,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         total: 0,
         results: [],
         statusTransaction: {
-          approved: 0,
+          done: 0,
           payment_waiting: 0,
           rejected: 0
         }
@@ -67374,7 +67374,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.transaction.total = result.data.transaction.total;
         _this.transaction.results = result.data.transaction.data;
         _this.transaction.statusTransaction = {
-          approved: result.data.status_transaction.approved,
+          done: result.data.status_transaction.done,
           payment_waiting: result.data.status_transaction.payment_waiting,
           rejected: result.data.status_transaction.rejected
         };
@@ -67418,8 +67418,8 @@ var render = function() {
         _c("span", { staticClass: "dash_vendorpilihan" }, [
           _vm._v(
             "\n        " +
-              _vm._s(_vm.transaction.statusTransaction.approved) +
-              " Diterima  \n        " +
+              _vm._s(_vm.transaction.statusTransaction.done) +
+              " Selesai  \n        " +
               _vm._s(_vm.transaction.statusTransaction.payment_waiting) +
               " Menunggu Pembayaran  \n        " +
               _vm._s(_vm.transaction.statusTransaction.rejected) +
@@ -74227,8 +74227,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'orders'],
@@ -74303,8 +74301,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               icon: 'success',
               timer: 5000
             });
+            var redirect = _this2.url + '/customers/summary_order/' + _this2.orders.transaction_id;
             setTimeout(function () {
-              document.location = '';
+              document.location = redirect;
             }, 3000);
           }).catch(function (err) {
             swal({
@@ -74701,55 +74700,50 @@ var render = function() {
                                     ]
                                   ),
                                   _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "view-transaction-value" },
-                                    [
-                                      _vm._v(
-                                        "\n                        " +
-                                          _vm._s(log.status_description) +
-                                          "\n                        "
-                                      ),
-                                      log.status_transaction === "report"
-                                        ? _c("div", [
-                                            _c(
+                                  _c("div", {
+                                    staticClass: "view-transaction-value",
+                                    domProps: {
+                                      innerHTML: _vm._s(log.status_description)
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  log.status_transaction === "report"
+                                    ? _c("div", [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "uk-button uk-button-default summarydetail_download"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                          Unduh Report\n                        "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm.orders.last_status_transaction ===
+                                        "report"
+                                          ? _c(
                                               "a",
                                               {
                                                 staticClass:
-                                                  "uk-button uk-button-default summarydetail_download"
+                                                  "uk-button uk-button-default summarydetail_download",
+                                                on: {
+                                                  click: function($event) {
+                                                    _vm.onConfirmReport()
+                                                  }
+                                                }
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                            Unduh Report\n                          "
+                                                  "\n                          Konfirmasi\n                        "
                                                 )
                                               ]
-                                            ),
-                                            _vm._v(" "),
-                                            _vm.orders
-                                              .last_status_transaction ===
-                                            "report"
-                                              ? _c(
-                                                  "a",
-                                                  {
-                                                    staticClass:
-                                                      "uk-button uk-button-default summarydetail_download",
-                                                    on: {
-                                                      click: function($event) {
-                                                        _vm.onConfirmReport()
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                            Konfirmasi\n                          "
-                                                    )
-                                                  ]
-                                                )
-                                              : _vm._e()
-                                          ])
-                                        : _vm._e()
-                                    ]
-                                  )
+                                            )
+                                          : _vm._e()
+                                      ])
+                                    : _vm._e()
                                 ])
                               ]
                             ),
@@ -75038,7 +75032,7 @@ var staticRenderFns = [
       },
       [
         _c("span", { attrs: { "uk-icon": "cloud-download" } }),
-        _vm._v(" Unggah\n                    ")
+        _vm._v(" Unduh Layout\n                    ")
       ]
     )
   },
@@ -82790,7 +82784,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         if (_this.forms.isApprove === 'Y') {
           swal({
             title: 'Konfirmasi Approval',
-            text: 'Transaksi ' + _this.orders.transaction_id + ' diterima',
+            text: 'Nomor pesanan ' + _this.orders.transaction_id + ' diterima',
             icon: 'success',
             timer: 5000
           });
@@ -82798,14 +82792,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         } else {
           swal({
             title: 'Konfirmasi Approval',
-            text: 'Transaksi ' + _this.orders.transaction_id + ' ditolak',
+            text: 'Nomor pesanan ' + _this.orders.transaction_id + ' ditolak',
             icon: 'success',
             timer: 5000
           });
           _this.forms.rejected = 'Tolak';
         }
+        var redirect = _this.url + '/vendor/summary_order/' + _this.orders.transaction_id;
         setTimeout(function () {
-          document.location = '';
+          document.location = redirect;
         }, 3000);
       }).catch(function (err) {
         swal({
@@ -82835,7 +82830,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           icon: 'success',
           timer: 5000
         });
-        var redirect = _this2.url + '/vendor/order_list';
+        var redirect = _this2.url + '/vendor/summary_order/' + _this2.orders.transaction_id;
         setTimeout(function () {
           document.location = redirect;
         }, 2000);
@@ -82861,7 +82856,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           icon: 'success',
           timer: 5000
         });
-        var redirect = _this3.url + '/vendor/order_list';
+        var redirect = _this3.url + '/vendor/summary_order/' + _this3.orders.transaction_id;
         setTimeout(function () {
           document.location = redirect;
         }, 2000);
@@ -82878,6 +82873,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       UIkit.modal('#createModal').show();
     },
     onCreateReport: function onCreateReport() {
+      var _this4 = this;
+
       if (this.forms.filereport === '' || this.forms.filereport === null) {
         return false;
       }
@@ -82894,8 +82891,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           icon: 'success',
           timer: 5000
         });
+        var redirect = _this4.url + '/vendor/summary_order/' + _this4.orders.transaction_id;
         setTimeout(function () {
-          document.location = '';
+          document.location = redirect;
         }, 3000);
       }).catch(function (err) {
         swal({
