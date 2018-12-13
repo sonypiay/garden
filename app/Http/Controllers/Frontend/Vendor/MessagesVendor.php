@@ -34,4 +34,25 @@ class MessagesVendor extends Controller
       ]);
     }
   }
+
+  public function messagelist( Request $request, MessagesConversation $messages )
+  {
+    $rows = $request->rows;
+    $messages = $messages->select(
+      'messages.msg_id',
+      'messages.vendor_id',
+      'messages.customer_id',
+      'messages.created_at',
+      'messages.updated_at',
+      'messages_conversation.message'
+    )
+    ->join('messages', 'messages_conversation.msg_id', '=', 'messages.msg_id')
+    ->where([
+      ['messages.vendor_id', '=', Cookie::get('vendor_id')]
+    ])
+    ->orderBy('messages.updated_at', 'desc')
+    ->paginate( $rows );
+
+    return response()->json( $messages );
+  }
 }

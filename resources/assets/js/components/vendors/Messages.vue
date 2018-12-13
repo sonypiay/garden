@@ -9,7 +9,7 @@ import messagelist from './MessagesList.vue';
 
 export default {
   props: ['url', 'pages'],
-  component: {
+  components: {
     messagelist
   }
 }

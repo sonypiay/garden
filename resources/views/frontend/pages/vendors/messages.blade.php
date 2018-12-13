@@ -8,7 +8,6 @@
   </div>
   <div class="uk-width-expand">
     <div class="uk-container uk-margin-top">
-      @include('frontend.includes.vendors.navsettingaccount')
       <messagevendor url="{{ url('/') }}" pages="messagelist" />
     </div>
   </div>

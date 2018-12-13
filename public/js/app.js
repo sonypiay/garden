@@ -86693,7 +86693,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'pages'],
-  component: {
+  components: {
     messagelist: __WEBPACK_IMPORTED_MODULE_0__MessagesList_vue___default.a
   }
 });
@@ -86779,6 +86779,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
@@ -86798,11 +86809,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "uk-margin-large-top" }, [
-    _vm._v("\n  view message\n")
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin-top" }, [
+      _c("h3", { staticClass: "message_heading" }, [_vm._v("Pesan")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+        _c("div", { staticClass: "uk-overflow-auto" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                "uk-table uk-table-middle uk-table-hover uk-table-divider uk-table-small"
+            },
+            [_c("thead", [_c("tr", [_c("th", [_vm._v("Pelanggan")])])])]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -15,7 +15,7 @@ use App\Http\Controllers\Controller;
 class MessagesController extends Controller
 {
   use CustomFunction;
-  
+
   public function sendmessage( Request $request, Messages $messages, MessagesConversation $conversation )
   {
     $vendor = $request->vendor;
@@ -37,6 +37,9 @@ class MessagesController extends Controller
       $conversation->message_to = $to;
       $conversation->messages = $message;
       $conversation->save();
+
+      $msgid->updated_at = date('Y-m-d H:i:s');
+      $msgid->save();
     }
     else
     {
