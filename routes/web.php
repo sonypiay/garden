@@ -134,6 +134,10 @@ Route::group(['prefix' => 'vendor'], function() {
     Route::post('/update/image/{id}', 'Frontend\Vendor\PortfolioController@save_portfolio_image');
     Route::delete('/delete/{id}', 'Frontend\Vendor\PortfolioController@delete_portfolio');
   });
+
+  Route::group(['prefix' => 'message'], function() {
+    Route::get('/', 'Frontend\Vendor\MessagesVendor@index')->name('messagevendor_page');
+  });
 });
 // vendors
 

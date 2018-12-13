@@ -26,7 +26,7 @@
         <li><a href="#">GardenBuana Pay</a></li>
         <li class="uk-nav-divider"></li>
         <li><a href="{{ route('vendorportfolio_page') }}">Galeri Portfolio</a></li>
-        <li><a href="#">Kotak Pesan</a></li>
+        <li><a href="{{ route('messagevendor_page') }}">Pesan</a></li>
         <li><a href="{{ route('orderlistvendor_page') }}">Daftar Transaksi</a></li>
         <li class="uk-nav-divider"></li>
         <li><a href="{{ route('editaccountvendor_page') }}">Pengaturan Vendor</a></li>

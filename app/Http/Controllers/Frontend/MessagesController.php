@@ -14,6 +14,8 @@ use App\Http\Controllers\Controller;
 
 class MessagesController extends Controller
 {
+  use CustomFunction;
+  
   public function sendmessage( Request $request, Messages $messages, MessagesConversation $conversation )
   {
     $vendor = $request->vendor;
