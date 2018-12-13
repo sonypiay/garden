@@ -159,6 +159,11 @@ Route::group(['prefix' => 'cp'], function() {
   Route::post('/login', 'Administrator\LoginController@dologin');
   Route::get('/dashboard', 'Administrator\DashboardController@index')->name('dashboard_admin');
 
+  Route::group(['prefix' => 'vendor'], function() {
+    Route::get('/', 'Administrator\VendorsController@index')->name('admin_vendorpage');
+    Route::get('/list', 'Administrator\VendorsController@list');
+  });
+
   Route::group(['prefix' => '/analytic'], function() {
     Route::get('/allusers', 'Administrator\DashboardController@total_vendor_customer');
     Route::get('/total_transaction', 'Administrator\DashboardController@total_current_analytic_transaction');
@@ -171,6 +176,7 @@ Route::group(['prefix' => 'cp'], function() {
     Route::get('/data_orderlist', 'Administrator\BookingOrdersController@data_orderlist');
     Route::get('/view_transaction/{orderid}', 'Administrator\BookingOrdersController@view_transaction');
     Route::put('/update_order/{orderid}', 'Administrator\BookingOrdersController@update');
+    Route::get('/report', 'Administrator\ReportsController@order_transaction');
   });
 
   // users

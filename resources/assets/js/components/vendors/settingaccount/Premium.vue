@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="uk-margin-top">
-    <div id="modal" uk-modal>
+    <!--<div id="modal" uk-modal>
       <div class="uk-modal-dialog uk-modal-body">
         <div v-if="errorMessage" class="uk-alert-danger" uk-alert>{{ errorMessage }}</div>
         <form class="uk-form-action" @submit.prevent="onRenewalPremium">
@@ -19,7 +19,7 @@
           </div>
         </form>
       </div>
-    </div>
+    </div>-->
     <div class="uk-card uk-card-default uk-card-body container-settingaccount">
       <h3 class="content_headingsettingprofile">Status Premium</h3>
       <div class="content_statuspremium">

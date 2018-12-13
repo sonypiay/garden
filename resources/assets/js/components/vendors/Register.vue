@@ -1,7 +1,7 @@
 <template lang="html">
 <div>
   <section class="uk-cover-container cover-joinasvendor">
-    <img :src="url + '/images/banner/Banner10.jpg'" alt="" uk-cover>
+    <img :src="url + '/images/banner/Banner6.jpg'" alt="" uk-cover>
     <div class="uk-overlay uk-overlay-primary uk-position-cover uk-light cover-overlay-joinasvendor"></div>
   </section>
   <div class="uk-container">

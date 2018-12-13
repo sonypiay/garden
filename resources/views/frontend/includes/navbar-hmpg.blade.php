@@ -36,7 +36,7 @@
   @else
   <li><a href="{{ route('aboutus') }}">Tentang Kami</a></li>
   <li><a href="{{ route('discoveryvendor_page') }}">Cari Vendor</a></li>
-  <li><a class="joinascustomer" href="{{ route('signuppage') }}"><div>Daftar</div></a></li>
+  <li><a class="" href="{{ route('signuppage') }}"><div>Daftar</div></a></li>
   <li><a class="loginascustomer" href="{{ route('loginpage') }}"><div>Masuk</div></a></li>
   @endif
 </ul>

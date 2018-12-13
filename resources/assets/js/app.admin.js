@@ -24,6 +24,7 @@ Vue.component('kabupaten-section', require('./components/administrator/Kabupaten
 Vue.component('kecamatan-section', require('./components/administrator/Kecamatan.vue'));
 Vue.component('orderlist-section', require('./components/administrator/OrderList.vue'));
 Vue.component('withdraw-section', require('./components/administrator/Withdraw.vue'));
+Vue.component('cpvendor-section', require('./components/administrator/Vendors.vue'));
 
 const app = new Vue({
     el: '#app',

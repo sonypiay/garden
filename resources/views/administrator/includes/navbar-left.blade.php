@@ -3,12 +3,7 @@
   <li><a href="{{ route('dashboard_admin') }}">Dashboard</a></li>
   <li><a href="{{ route('orderlist_admin') }}">Transaksi</a></li>
   <li><a href="#">Pelanggan</a></li>
-  <li class="uk-parent"><a href="#">Vendor</a>
-    <ul class="uk-nav-sub">
-      <li><a href="#">Free</a></li>
-      <li><a href="#">Pro</a></li>
-    </ul>
-  </li>
+  <li><a href="{{ route('admin_vendorpage') }}">Vendor</a></li>
   <li><a href="{{ route('admin_withdraw') }}">Withdraw</a></li>
   <li class="uk-nav-header">Management</li>
   <li><a href="{{ route('admin_provinsipage') }}">Provinsi</a></li>

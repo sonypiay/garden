@@ -125,22 +125,33 @@
             <input @keyup.enter="getOrderList( pagination.path + '?page=' + pagination.current )" type="text" class="uk-input form-search uk-width-1-1" v-model="keywords" placeholder="Cari...">
           </div>
         </div>
-        <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s">
+        <div class="uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s">
           <select class="uk-select form-select" v-model="selectedRows" @change="getOrderList( pagination.path + '?page=' + pagination.current )">
             <option value="10">10 ditampilkan</option>
             <option value="20">20 ditampilkan</option>
             <option value="30">30 ditampilkan</option>
             <option value="50">50 ditampilkan</option>
+            <option value="100">100 ditampilkan</option>
           </select>
         </div>
-        <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s">
+        <div class="uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s">
+          <select class="uk-select form-select" v-model="filter_day" @change="getOrderList( pagination.path + '?page=' + pagination.current )">
+            <option value="today">Hari ini</option>
+            <option value="7day">7 hari terakhir</option>
+            <option value="14day">14 hari terakhir</option>
+            <option value="28day">28 hari terakhir</option>
+            <option value="last_month">1 bulan terakhir</option>
+            <option value="this_month">Bulan ini</option>
+          </select>
+        </div>
+        <div class="uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s">
           <select class="uk-select form-select" v-model="premium" @change="getOrderList( pagination.path + '?page=' + pagination.current )">
             <option value="all">-- Premium/Non Premium --</option>
             <option value="Y">Premium</option>
             <option value="N">Non Premium</option>
           </select>
         </div>
-        <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s">
+        <div class="uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s">
           <select class="uk-select form-select" v-model="status_transaction" @change="getOrderList( pagination.path + '?page=' + pagination.current )">
             <option value="all">-- Semua Status --</option>
             <option v-for="(val,key) in $root.statusTransaction" :value="key">{{ val }}</option>
@@ -150,6 +161,9 @@
 
       <div class="uk-margin-top">
         <div class="uk-label">{{ orderlist.total }} Transaksi</div>
+        <div class="uk-float-right">
+          <a :href="url + '/transaction/report?' + 'keywords=' + keywords + '&status=' + status_transaction + '&premium=' + premium + '&filter_day=' + filter_day" class="uk-button uk-button-default">Laporan</a>
+        </div>
         <div class="uk-overflow-auto uk-margin-top">
           <table class="uk-table uk-table-small uk-table-divider uk-table-middle uk-table-hover">
             <thead>
@@ -189,6 +203,7 @@ export default {
       keywords: '',
       status_transaction: 'all',
       selectedRows: 10,
+      filter_day: 'today',
       isLoading: {
         value: false,
         text: ''
@@ -227,25 +242,27 @@ export default {
     },
     getOrderList(pages)
     {
-      var param = '&keywords=' + this.keywords + '&rows=' + this.selectedRows + '&status=' + this.status_transaction + '&premium=' + this.premium;
+      var param = '&keywords=' + this.keywords + '&rows=' + this.selectedRows + '&status=' + this.status_transaction + '&premium=' + this.premium + '&filter_day=' + this.filter_day;
       if( pages === undefined || pages === null || pages === '' )
         pages = this.url + '/transaction/data_orderlist?page=1' + param;
       else
         pages = pages + param;
+
       axios({
         method: 'get',
         url: pages
       }).then( res => {
         let result = res.data;
-        this.orderlist.total = result.total;
-        this.orderlist.results = result.data;
+        this.orderlist.total = result.results.total;
+        this.orderlist.results = result.results.data;
         this.pagination = {
           current: result.current_page,
-          next: result.next_page_url,
-          prev: result.prev_page_url,
-          last: result.last_page,
-          path: result.path
+          next: result.results.next_page_url,
+          prev: result.results.prev_page_url,
+          last: result.results.last_page,
+          path: result.results.path
         };
+        console.log(result.results);
       }).catch( err => {
         console.log( err.response.statusText );
       });

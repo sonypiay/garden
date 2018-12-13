@@ -25,6 +25,10 @@ class LoginRegisterController extends Controller
     }
     else
     {
+      if( Cookie::get('hasLoginCustomers') )
+      {
+        return redirect()->route('homepage');
+      }
       return response()->view('frontend.pages.vendors.register', [
         'request' => $request,
         'getcookie' => $request->cookie(),
@@ -41,6 +45,11 @@ class LoginRegisterController extends Controller
     }
     else
     {
+      if( Cookie::get('hasLoginCustomers') )
+      {
+        return redirect()->route('homepage');
+      }
+      
       return response()->view('frontend.pages.vendors.login', [
         'request' => $request,
         'getcookie' => $request->cookie(),

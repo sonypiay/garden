@@ -98,7 +98,7 @@
       <h3 class="dashboard_transaction_heading">Transaksi</h3>
       <div class="uk-grid-small" uk-grid>
         <div class="uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s">
-          <select class="uk-select dashboard_filter_action" v-model="forms.filter_rows" @change="getActivityTransaction( pagination.path + '?page=' + pagination.path )">
+          <select class="uk-select dashboard_filter_action" v-model="forms.filter_rows" @change="getActivityTransaction( pagination.path + '?page=' + pagination.current )">
             <option value="10">10 ditampilkan</option>
             <option value="20">20 ditampilkan</option>
             <option value="30">30 ditampilkan</option>
@@ -107,7 +107,7 @@
           </select>
         </div>
         <div class="uk-width-1-6@xl uk-width-1-6@l uk-width-1-4@s uk-width-1-3@s">
-          <select class="uk-select dashboard_filter_action" v-model="forms.filter_day" @change="getActivityTransaction( pagination.path + '?page=' + pagination.path )">
+          <select class="uk-select dashboard_filter_action" v-model="forms.filter_day" @change="getActivityTransaction( pagination.path + '?page=' + pagination.current )">
             <option value="today">Hari ini</option>
             <option value="7day">7 hari terakhir</option>
             <option value="14day">14 hari terakhir</option>
@@ -119,18 +119,18 @@
         <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-3@s uk-width-1-3@s">
           <div class="uk-width-1-1 uk-inline">
             <span class="uk-form-icon" uk-icon="search"></span>
-            <input class="uk-width-1-1 uk-input dashboard_filter_action" type="search" placeholder="Cari..." v-model="forms.keywords" @keyup.enter="getActivityTransaction( pagination.path + '?page=' + pagination.path )">
+            <input class="uk-width-1-1 uk-input dashboard_filter_action" type="search" placeholder="Cari..." v-model="forms.keywords" @keyup.enter="getActivityTransaction( pagination.path + '?page=' + pagination.current )">
           </div>
         </div>
         <div class="uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s">
-          <select class="uk-select dashboard_filter_action" v-model="forms.premium" @change="getActivityTransaction( pagination.path + '?page=' + pagination.path )">
+          <select class="uk-select dashboard_filter_action" v-model="forms.premium" @change="getActivityTransaction( pagination.path + '?page=' + pagination.current )">
             <option value="all">Premium / Non Premium</option>
             <option value="Y">Premium</option>
             <option value="N">Non Premium</option>
           </select>
         </div>
         <div class="uk-width-1-5@xl uk-width-1-5@l uk-width-1-4@s uk-width-1-3@s">
-          <select class="uk-select dashboard_filter_action" v-model="forms.status" @change="getActivityTransaction( pagination.path + '?page=' + pagination.path )">
+          <select class="uk-select dashboard_filter_action" v-model="forms.status" @change="getActivityTransaction( pagination.path + '?page=' + pagination.current )">
             <option value="all">-- Semua Status --</option>
             <option v-for="(val, key) in $root.statusTransaction" :value="key">{{ val }}</option>
           </select>
