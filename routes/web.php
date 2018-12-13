@@ -15,12 +15,17 @@ Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
 Route::get('/tentang_kami', 'Frontend\HomepageController@aboutus')->name('aboutus');
 Route::get('/login', 'Frontend\HomepageController@loginpage')->name('loginpage');
 Route::get('/join', 'Frontend\HomepageController@signuppage')->name('signuppage');
+Route::post('/sendmessage', 'Frontend\MessagesController@sendmessage');
+Route::get('/premium', 'Frontend\HomepageController@premium')->name('premium');
+Route::get('/premium_checkout', 'Frontend\HomepageController@premium_checkout');
+Route::get('/complete_payment_premium/{orderid}', 'Frontend\HomepageController@complete_payment_premium');
 
 Route::group(['prefix' => 'discovery'], function() {
   Route::get('/', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');
   Route::get('/vendor/{id}', 'Frontend\DiscoveryVendor@selectvendor')->name('detailvendor_page');
   Route::get('/vendor/portfolio/{id}', 'Frontend\DiscoveryVendor@portfolio_vendor');
   Route::get('/vendors', 'Frontend\DiscoveryVendor@discovervendor');
+  Route::get('/vendor/portfolio_image/{id}', 'Frontend\DiscoveryVendor@view_portfolio_image');
 });
 Route::get('/booking/{name}', 'Frontend\Customers\BookingTransactionController@bookingpage');
 Route::post('/booking_process', 'Frontend\Customers\BookingTransactionController@bookingprocess');
@@ -119,6 +124,9 @@ Route::group(['prefix' => 'vendor'], function() {
 
     Route::get('/withdraw', 'Frontend\Vendor\WithdrawController@withdraw_page')->name('withdrawvendor_page');
     Route::post('/withdraw', 'Frontend\Vendor\WithdrawController@process_withdraw');
+
+    Route::get('/premium', 'Frontend\Vendor\AccountVendor@premium')->name('vendorpremium_page');
+    Route::get('/getpremium', 'Frontend\Vendor\AccountVendor@getpremium');
   });
 
   Route::group(['prefix' => 'portfolio'], function() {
@@ -131,6 +139,12 @@ Route::group(['prefix' => 'vendor'], function() {
     Route::put('/update/{id}', 'Frontend\Vendor\PortfolioController@save_portfolio');
     Route::post('/update/image/{id}', 'Frontend\Vendor\PortfolioController@save_portfolio_image');
     Route::delete('/delete/{id}', 'Frontend\Vendor\PortfolioController@delete_portfolio');
+  });
+
+  Route::group(['prefix' => 'message'], function() {
+    Route::get('/', 'Frontend\Vendor\MessagesVendor@index')->name('messagevendor_page');
+    Route::get('/message_list', 'Frontend\Vendor\MessagesVendor@messagelist');
+    Route::get('/readmessage/{msgid}', 'Frontend\Vendor\MessagesVendor@readmessage');
   });
 });
 // vendors
@@ -149,6 +163,7 @@ Route::group(['prefix' => 'cp'], function() {
     Route::get('/allusers', 'Administrator\DashboardController@total_vendor_customer');
     Route::get('/total_transaction', 'Administrator\DashboardController@total_current_analytic_transaction');
     Route::get('/activity_transaction', 'Administrator\DashboardController@analytic_activity_transaction');
+    Route::get('/withdraw', 'Administrator\DashboardController@analytic_withdraw');
   });
 
   Route::group(['prefix' => '/transaction'], function() {
@@ -166,6 +181,12 @@ Route::group(['prefix' => 'cp'], function() {
     Route::put('/update/{id}', 'Administrator\UsersController@update');
   });
   // users
+
+  Route::group(['prefix' => 'withdraw'], function() {
+    Route::get('/', 'Administrator\WithdrawTransactionController@index')->name('admin_withdraw');
+    Route::get('/list', 'Administrator\WithdrawTransactionController@data_withdraw');
+    Route::put('/approval/{ticket}', 'Administrator\WithdrawTransactionController@approval_withdraw');
+  });
 
   Route::group(['prefix' => 'management'], function() {
     Route::group(['prefix' => 'bankpayment'], function() {

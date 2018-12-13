@@ -8,7 +8,7 @@
 <header class="uk-navbar uk-box-shadow-medium header" uk-navbar>
   <div class="uk-navbar-left">
     <a class="uk-navbar-item uk-logo header-logo" href="{{ route('dashboard_admin') }}">
-      <img class="uk-border-circle" src="{{ asset('images/logobrand/gplogo-white.png') }}" />
+      <img class="uk-border-circle" src="{{ asset('images/logobrand/gplogo-white-new2.png') }}" />
     </a>
   </div>
   <div class="uk-navbar-right">

@@ -10,6 +10,7 @@ use App\Database\Provinsi;
 use App\Database\Kabupaten;
 use App\Database\Vendors;
 use App\Database\VendorPortfolio;
+use App\Database\VendorPortfolioImages;
 use App\Database\Customers;
 use App\Database\BookingTransaction;
 use App\Http\Controllers\Controller;
@@ -152,5 +153,15 @@ class DiscoveryVendor extends Controller
     ->orderBy('vendor_portfolio.portfolio_id')
     ->paginate( $rows );
     return response()->json( $getportfolio );
+  }
+
+  public function view_portfolio_image( VendorPortfolioImages $images, $id )
+  {
+    $images = $images->where('portfolio_id', $id);
+    $data = [
+      'total' => $images->count(),
+      'results' => $images->get()
+    ];
+    return response()->json( $data, 200 );
   }
 }

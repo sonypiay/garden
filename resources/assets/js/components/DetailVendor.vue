@@ -1,5 +1,48 @@
 <template lang="html">
   <div>
+    <div id="viewportfolio" class="uk-modal-full" uk-modal>
+      <div class="uk-modal-dialog">
+        <a class="uk-modal-close-default" uk-close></a>
+        <div class="uk-modal-body modal_view_portfolio uk-height-viewport">
+          <div class="uk-container">
+            <h3 class="modal_view_portfolio_heading">{{ portfolio_image.portfolio.name }}</h3>
+            <div v-if="portfolio_image.errorMessage" class="uk-alert-danger" uk-alert>{{ portfolio_image.errorMessage }}</div>
+            <div class="modal_view_portfolio_content uk-height-large uk-overflow-auto">
+              <div class="uk-grid-small" uk-grid="masonry: true" uk-lightbox="animation: slide">
+                <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s" v-for="images in portfolio_image.results">
+                  <a :href="url + '/images/vendor/portfolios/' + images.images_name">
+                    <img :src="url + '/images/vendor/portfolios/' + images.images_name" :alt="images.images_name">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modalchat" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body modal_chatcontainer">
+        <h3 class="modal_chatheading">Kirim Pesan</h3>
+        <form class="uk-form-stacked" @submit.prevent="onSendMessage">
+          <div class="uk-margin">
+            <label class="uk-form-label modal_chatlabel">Kepada</label>
+            <div class="uk-form-controls">
+              <input type="text" class="uk-input modal_chatform" :disabled="true" :value="vendors.vendor_name">
+            </div>
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label modal_chatlabel">Pesan</label>
+            <div class="uk-form-controls">
+              <textarea class="uk-textarea modal_chatform uk-height-small" v-model="message.type" placeholder="Ketik pesan Anda disini"></textarea>
+            </div>
+            <div v-if="message.errors.type" class="uk-text-small uk-text-danger">{{ message.errors.type }}</div>
+          </div>
+          <div class="uk-margin">
+            <button class="uk-button uk-button-default modal_chatbutton">Kirim Pesan</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="uk-grid-small uk-margin-large-top" uk-grid>
       <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-1@s">
         <div class="profile-badge-container">
@@ -17,9 +60,9 @@
               <div class="pb-badge-vendorlocation">{{ vendors.nama_kab }}</div>
             </div>
           </div>
-          <div class="uk-card uk-card-body uk-card-small uk-card-default pb-badge-action">
+          <div class="uk-card uk-card-body uk-card-small uk-card-default pb-badge-action" v-if="session.hasLoginCustomers">
             <div class="uk-margin-small">
-              <button class="uk-width-1-1 uk-button uk-button-default pb-btnaction"><span class="uk-margin-small-right"><i class="far fa-comment-alt"></i></span> Kirim Pesan</button>
+              <button uk-toggle="target: #modalchat" class="uk-width-1-1 uk-button uk-button-default pb-btnaction"><span class="uk-margin-small-right"><i class="far fa-comment-alt"></i></span> Kirim Pesan</button>
             </div>
             <div class="uk-margin-small">
               <a :href="url + '/booking/' + vendors.vendor_slug_name" class="uk-width-1-1 uk-button uk-button-default pb-btnaction"><span class="uk-margin-small-right"><i class="far fa-bell"></i></span> Pesan</a>
@@ -64,7 +107,7 @@
                   <div v-if="portfolio.portfolio_thumbnail">
                     <div class="uk-inline uk-transition-toggle" tabindex="0">
                       <img :src="url + '/images/vendor/portfolios/' + portfolio.portfolio_thumbnail" alt="">
-                      <a class="uk-overlay uk-overlay-primary uk-position-cover uk-light uk-transition-fade pv-iconoverlay">
+                      <a @click="viewPortfolioList(portfolio)" class="uk-overlay uk-overlay-primary uk-position-cover uk-light uk-transition-fade pv-iconoverlay">
                         <div class="uk-position-center">
                           <span uk-icon="icon: search; ratio: 2"></span>
                         </div>
@@ -96,13 +139,26 @@
 
 <script>
 export default {
-  props: ['url', 'vendors'],
+  props: ['url', 'vendors', 'session'],
   data() {
     return {
       selectedRows: 9,
       portfolios: {
         total: 0,
         results: []
+      },
+      portfolio_image: {
+        total: 0,
+        results: [],
+        errorMessage: '',
+        portfolio: {
+          name: '',
+          id: 0
+        }
+      },
+      message: {
+        type: '',
+        errors: {}
       },
       pagination: {
         prev: '',
@@ -118,6 +174,27 @@ export default {
     formatDate(str, format) {
       var res = moment(str).locale('id').format(format);
       return res;
+    },
+    viewPortfolioList(pf)
+    {
+      axios({
+        method: 'get',
+        url: this.url + '/discovery/vendor/portfolio_image/' + pf.portfolio_id
+      }).then( res => {
+        let result = res.data;
+        this.portfolio_image = {
+          total: result.total,
+          results: result.results,
+          portfolio: {
+            name: pf.portfolio_name,
+            id: pf.portfolio_id
+          }
+        };
+        console.log( this.portfolio_image );
+      }).catch( err => {
+        this.portfolio_image.errorMessage = err.response.statusText;
+      });
+      UIkit.modal('#viewportfolio').show();
     },
     showPortfolio(pages)
     {
@@ -145,6 +222,39 @@ export default {
         this.errorMessage = err.response.statusText;
         console.log(err.response.statusText);
       });
+    },
+    onSendMessage() {
+      if( this.message.type === null || this.message.type === '' )
+      {
+        this.message.errors.type = 'Pesan tidak boleh kosong';
+      }
+      else
+      {
+        axios({
+          method: 'post',
+          url: this.url + '/sendmessage',
+          params: {
+            vendor: this.vendors.vendor_id,
+            customer: this.session.customer_id,
+            message: this.message.type
+          }
+        }).then( res => {
+          swal({
+            title: 'Berhasil',
+            text: 'Pesan terkirim',
+            icon: 'success',
+            timer: 3000
+          });
+        }).catch( err => {
+          swal({
+            title: 'Terjadi Kesalahan',
+            text: err.response.statusText,
+            icon: 'error',
+            dangerMode: true,
+            timer: 3000
+          });
+        });
+      }
     }
   },
   mounted() {

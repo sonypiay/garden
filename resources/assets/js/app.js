@@ -18,6 +18,7 @@ window.Vue = require('vue');
 // other component
 Vue.component('loginas', require('./components/LoginAs.vue'));
 Vue.component('signupas', require('./components/SignUpAs.vue'));
+Vue.component('premiumpage', require('./components/PremiumPage.vue'));
 
 // customer
 Vue.component('logincustomer', require('./components/customers/Login.vue'));
@@ -44,6 +45,7 @@ Vue.component('vendorsummaryorder', require('./components/vendors/orders/Summary
 Vue.component('lupapasswordvendor', require('./components/vendors/LupaPassword.vue'));
 Vue.component('changepasswordvendor', require('./components/vendors/ChangePassword.vue'));
 Vue.component('withdrawvendor', require('./components/vendors/Withdraw.vue'));
+Vue.component('messagevendor', require('./components/vendors/Messages.vue'));
 // vendor
 
 Vue.component('discoveryvendor', require('./components/DiscoveryVendor.vue'));

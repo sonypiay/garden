@@ -14,7 +14,9 @@ use App\Database\Kabupaten;
 use App\Database\Kecamatan;
 use App\Database\VendorBankAccount;
 use App\Database\BankCustomer;
+use App\Database\BankPayment;
 use App\Database\Withdraw;
+use App\Database\VendorPremium;
 use App\Http\Controllers\Controller;
 
 class AccountVendor extends Controller
@@ -476,6 +478,54 @@ class AccountVendor extends Controller
         'statusText' => 'Logo berhasil diupload.'
       ];
     }
+    return response()->json( $res );
+  }
+
+  public function premium( Request $request, BankPayment $bankpayment )
+  {
+    if( Cookie::get('hasLoginVendor') )
+    {
+      $datavendor = $this->getvendors( new Vendors, Cookie::get('vendor_id') );
+      return response()->view('frontend.pages.vendors.premium', [
+        'request' => $request,
+        'sessiondata' => Cookie::get(),
+        'myaccount' => $datavendor,
+        'bankcustomer' => $bankpayment->orderBy('bank_name', 'asc')->get()
+      ]);
+    }
+    else
+    {
+      return response()->view('frontend.pages.vendors.login', [
+        'request' => $request
+      ]);
+    }
+  }
+  public function getpremium( VendorPremium $premium )
+  {
+    $getpremium = $premium->where('vendor_id', Cookie::get('vendor_id'));
+    if( $getpremium->count() === 0 )
+    {
+      $res = [
+        'result' => [
+          'is_expired' => false,
+          'date_expired' => '',
+          'statusPremium' => 'none',
+        ]
+      ];
+    }
+    else
+    {
+      $result = $getpremium->first();
+      $isExpired = $result->subs_expired > date('Y-m-d') ? true : false;
+      $res = [
+        'result' => [
+          'is_expired' => $isExpired,
+          'date_expired' => $result->subs_expired,
+          'statusPremium' => $result->is_verified
+        ]
+      ];
+    }
+
     return response()->json( $res );
   }
 }

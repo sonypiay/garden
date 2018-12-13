@@ -1088,6 +1088,27 @@ body {
   background: linear-gradient(97deg, #f6a192, #f6b092);
 }
 
+.container-settingaccount .subsnow {
+  border: 0;
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.container-settingaccount .subsnow:hover,
+.container-settingaccount .subsnow:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
 .cover-joinasvendor {
   background: linear-gradient(97deg, #f6a192, #f6b092);
   height: 350px;
@@ -2437,6 +2458,78 @@ body {
 
 .modal-withdraw .withdraw_submit_btn:hover,
 .modal-withdraw .withdraw_submit_btn:focus {
+  color: #ffffff;
+}
+
+.modal_chatcontainer {
+  border-radius: 4px;
+}
+
+.modal_chatcontainer .modal_chatheading {
+  font-size: 22px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal_chatcontainer .modal_chatlabel {
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal_chatcontainer .modal_chatform {
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+  border: 1px solid #eeeeee;
+}
+
+.modal_chatcontainer .modal_chatform::-webkit-input-placeholder {
+  color: #333333;
+}
+
+.modal_chatcontainer .modal_chatform::-ms-input-placeholder {
+  color: #333333;
+}
+
+.modal_chatcontainer .modal_chatform::placeholder {
+  color: #333333;
+}
+
+.modal_chatcontainer .modal_chatform:hover,
+.modal_chatcontainer .modal_chatform:focus {
+  border: 1px solid #f6a192;
+}
+
+.modal_chatcontainer .modal_chatbutton {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  border: 0;
+  background: #f6a192;
+}
+
+.modal_chatcontainer .modal_chatbutton:hover,
+.modal_chatcontainer .modal_chatbutton:focus {
   color: #ffffff;
 }
 

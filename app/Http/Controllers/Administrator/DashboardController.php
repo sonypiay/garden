@@ -11,6 +11,7 @@ use App\Database\Customers;
 use App\Database\Kabupaten;
 use App\Database\BookingTransaction;
 use App\Database\LogStatusTransaction;
+use App\Database\Withdraw;
 use App\Http\Controllers\Controller;
 use DateTime;
 use DateInterval;
@@ -375,6 +376,23 @@ class DashboardController extends Controller
       'customers' => [
         'total_customer' => $allcustomers,
         'registered' => $customers_registered_today
+      ]
+    ];
+
+    return response()->json( $data, 200 );
+  }
+
+  public function analytic_withdraw( Withdraw $withdraw )
+  {
+    $approved = $withdraw->where('status_withdraw', '=', 'approved')->count();
+    $pending = $withdraw->where('status_withdraw', '=', 'pending')->count();
+    $rejected = $withdraw->where('status_withdraw', '=', 'rejected')->count();
+
+    $data = [
+      'result' => [
+        'approved' => $approved,
+        'pending' => $pending,
+        'rejected' => $rejected
       ]
     ];
 

@@ -3,76 +3,93 @@
     <div class="uk-margin-bottom dashboard-welcome-screen">
       <div class="dashboard-hello">Selamat Datang, John Doe</div>
     </div>
-    <!--<div class="uk-grid-medium uk-grid-match" uk-grid>
-      <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-        <div class="uk-grid-small" uk-grid>
-          <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-            <div class="uk-card uk-card-body uk-card-default dashboard_alluser_grid">
-              <div class="uk-card-title dashboard_alluser_value">{{ allusers.customers.total_customer }}</div>
-              <div class="dashboard_alluser_title">Pelanggan</div>
-            </div>
+
+    <div class="uk-margin dashboard_content_alluser">
+      <h3>Users</h3>
+      <div class="uk-card uk-card-body uk-card-default dashboard_alluser_grid">
+        <div class="uk-grid-small uk-grid-match" uk-grid>
+          <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s">
+            <div class="uk-card-title dashboard_alluser_value">{{ allusers.customers.total_customer }}</div>
+            <div class="dashboard_alluser_title">Pelanggan</div>
           </div>
-          <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-            <div class="uk-card uk-card-body uk-card-default dashboard_alluser_grid">
-              <div class="uk-card-title dashboard_alluser_value">{{ allusers.customers.registered }}</div>
-              <div class="dashboard_alluser_title">Registrasi per Hari Ini</div>
-            </div>
+          <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s">
+            <div class="uk-card-title dashboard_alluser_value">{{ allusers.customers.registered }}</div>
+            <div class="dashboard_alluser_title">Registrasi per hari Ini</div>
           </div>
-        </div>
-      </div>
-      <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-        <div class="uk-grid-small" uk-grid>
-          <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-            <div class="uk-card uk-card-body uk-card-default dashboard_alluser_grid">
-              <div class="uk-card-title dashboard_alluser_value">{{ allusers.vendor.total_vendor }}</div>
-              <div class="dashboard_alluser_title">Vendor</div>
-            </div>
+          <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s">
+            <div class="uk-card-title dashboard_alluser_value">{{ allusers.vendor.total_vendor }}</div>
+            <div class="dashboard_alluser_title">Vendor</div>
           </div>
-          <div class="uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s">
-            <div class="uk-card uk-card-body uk-card-default dashboard_alluser_grid">
-              <div class="uk-card-title dashboard_alluser_value">{{ allusers.vendor.registered }}</div>
-              <div class="dashboard_alluser_title">Registrasi per Hari Ini</div>
-            </div>
+          <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-2@m uk-width-1-1@s">
+            <div class="uk-card-title dashboard_alluser_value">{{ allusers.vendor.registered }}</div>
+            <div class="dashboard_alluser_title">Registrasi per hari Ini</div>
           </div>
         </div>
       </div>
     </div>
-  -->
-    <div class="uk-grid-small uk-grid-match uk-margin-top" uk-grid>
-      <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
-        <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
-          <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.payment_waiting }}</div>
-          <div class="dash_statustransaction_title">Menunggu Pembayaran</div>
+
+    <div class="uk-margin dashboard_content_withdraw">
+      <h3>Withdrawal</h3>
+      <div class="uk-grid-small uk-grid-match" uk-grid>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
+          <div class="uk-card uk-card-body uk-card-default dashboard_grid_withdraw dash_withdraw_approved">
+            <div class="uk-card-title dash_withdraw_value">{{ total_withdraw.approved }}</div>
+            <div class="dash_withdraw_title">Approved</div>
+          </div>
+        </div>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
+          <div class="uk-card uk-card-body uk-card-default dashboard_grid_withdraw dash_withdraw_pending">
+            <div class="uk-card-title dash_withdraw_value">{{ total_withdraw.pending }}</div>
+            <div class="dash_withdraw_title">Pending</div>
+          </div>
+        </div>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
+          <div class="uk-card uk-card-body uk-card-default dashboard_grid_withdraw dash_withdraw_rejected">
+            <div class="uk-card-title dash_withdraw_value">{{ total_withdraw.rejected }}</div>
+            <div class="dash_withdraw_title">Rejected</div>
+          </div>
         </div>
       </div>
-      <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
-        <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
-          <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.payment_verify }}</div>
-          <div class="dash_statustransaction_title">Verifikasi Pembayaran</div>
+    </div>
+
+    <div class="uk-margin dashboard_content_statustransaction">
+      <h3>Transaksi Pesanan</h3>
+      <div class="uk-grid-small uk-grid-match uk-margin-top" uk-grid>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
+          <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
+            <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.payment_waiting }}</div>
+            <div class="dash_statustransaction_title">Menunggu Pembayaran</div>
+          </div>
         </div>
-      </div>
-      <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
-        <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
-          <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.paid }}</div>
-          <div class="dash_statustransaction_title">Dibayar</div>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
+          <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
+            <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.payment_verify }}</div>
+            <div class="dash_statustransaction_title">Verifikasi Pembayaran</div>
+          </div>
         </div>
-      </div>
-      <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
-        <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
-          <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.onprogress }}</div>
-          <div class="dash_statustransaction_title">Sedang Dikerjakan</div>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
+          <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
+            <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.paid }}</div>
+            <div class="dash_statustransaction_title">Dibayar</div>
+          </div>
         </div>
-      </div>
-      <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
-        <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
-          <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.report }}</div>
-          <div class="dash_statustransaction_title">Laporan Pekerjaan</div>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
+          <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
+            <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.onprogress }}</div>
+            <div class="dash_statustransaction_title">Sedang Dikerjakan</div>
+          </div>
         </div>
-      </div>
-      <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
-        <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
-          <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.done }}</div>
-          <div class="dash_statustransaction_title">Pekerjaan Selesai</div>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
+          <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
+            <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.report }}</div>
+            <div class="dash_statustransaction_title">Laporan Pekerjaan</div>
+          </div>
+        </div>
+        <div class="uk-width-1-3@xl uk-width-1-3@l uk-width-1-3@m uk-width-1-3@s">
+          <div class="uk-card uk-card-body uk-card-default dashboard_grid_statustransaction">
+            <div class="uk-card-title dash_statustransaction_value">{{ total_transaction.done }}</div>
+            <div class="dash_statustransaction_title">Pekerjaan Selesai</div>
+          </div>
         </div>
       </div>
     </div>
@@ -192,6 +209,11 @@ export default {
           total_customer: 0,
           registered: 0,
         }
+      },
+      total_withdraw: {
+        approved: 0,
+        pending: 0,
+        rejected: 0
       }
     }
   },
@@ -261,6 +283,22 @@ export default {
       }).catch( err => {
         console.log( err.response.statusText );
       });
+    },
+    getTotalWithdraw()
+    {
+      axios({
+        method: 'get',
+        url: this.url + '/analytic/withdraw'
+      }).then( res => {
+        let result = res.data;
+        this.total_withdraw = {
+          approved: result.result.approved,
+          pending: result.result.pending,
+          rejected: result.result.rejected
+        };
+      }).catch( err => {
+        console.log( err.response.statusText );
+      });
     }
   },
   mounted()
@@ -268,6 +306,7 @@ export default {
     this.getTotalTransaction();
     this.getActivityTransaction();
     this.getAllUsers();
+    this.getTotalWithdraw();
   }
 }
 </script>

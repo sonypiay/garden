@@ -60,6 +60,7 @@ class WithdrawController extends Controller
       $random = strtoupper( hash('crc32b', uniqid()) );
       $withdrawid = str_pad( $getid + 1, 4, '0', STR_PAD_LEFT );
       $ticketid = 'C' . date('Ymd') . substr( $random, 0, 3 ) . $withdrawid;
+      $balances = $vendors->credits_balance - $nominal;
 
       $withdraw->ticket_id = $ticketid;
       $withdraw->vendor_bankid = $rekening;
@@ -70,9 +71,13 @@ class WithdrawController extends Controller
       $history->history_type = 'withdraw';
       $history->history_transaction_id = $ticketid;
       $history->history_amount = $nominal;
+      $history->history_current_amount = $balances;
       $history->history_description = 'Penarikan dana no. tiket ' . $ticketid;
       $history->vendor_id = $vendors->vendor_id;
 
+      $vendors->credits_balance = $balances;
+
+      $vendors->save();
       $history->save();
       $withdraw->save();
 

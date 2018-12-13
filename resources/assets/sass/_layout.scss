@@ -549,6 +549,21 @@ html,body {
       background: linear-gradient(97deg, $logo-color-primary, $f6b092);
     }
   }
+  .subsnow {
+    border: 0;
+    border-radius: 4px;
+    font-family: $font-primary;
+    font-size: 13px;
+    color: #ffffff;
+    background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    text-transform: capitalize;
+    @include fontstyle(600, normal, normal, 0.6px);
+    &:hover, &:focus {
+      border: 0;
+      color: #ffffff;
+      background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+    }
+  }
 }
 // customers
 
@@ -1474,6 +1489,45 @@ html,body {
     @include fontstyle(400, normal, normal, 0.4px);
   }
   .withdraw_submit_btn {
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #ffffff;
+    border: 0;
+    background: $logo-color-primary;
+    &:hover, &:focus {
+      color: #ffffff;
+    }
+  }
+}
+
+.modal_chatcontainer {
+  border-radius: 4px;
+  .modal_chatheading {
+    font-size: 22px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #666666;
+  }
+  .modal_chatlabel {
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #666666;
+  }
+  .modal_chatform {
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #666666;
+    border: 1px solid #eeeeee;
+    &::placeholder { color: #333333; }
+    &:hover, &:focus { border: 1px solid $logo-color-primary; }
+  }
+  .modal_chatbutton {
     border-radius: 3px;
     text-transform: capitalize;
     font-size: 13px;
