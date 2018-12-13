@@ -8,7 +8,7 @@
   </div>
   <div class="uk-width-expand">
     <div class="uk-container uk-margin-top">
-      <messagevendor url="{{ url('/') }}" pages="messagelist" />
+      <messagevendor url="{{ url('/') }}" pages="readmessage" />
     </div>
   </div>
 </div>

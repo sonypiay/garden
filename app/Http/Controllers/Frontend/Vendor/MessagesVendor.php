@@ -35,7 +35,7 @@ class MessagesVendor extends Controller
     }
   }
 
-  public function messagelist( Request $request, MessagesConversation $messages )
+  public function messagelist( Request $request, Messages $messages, MessagesConversation $conversation )
   {
     $rows = $request->rows;
     $messages = $messages->select(
@@ -44,15 +44,51 @@ class MessagesVendor extends Controller
       'messages.customer_id',
       'messages.created_at',
       'messages.updated_at',
-      'messages_conversation.message'
+      'vendors.vendor_id',
+      'vendors.vendor_name',
+      'customers.customer_id',
+      'customers.customer_name'
     )
-    ->join('messages', 'messages_conversation.msg_id', '=', 'messages.msg_id')
-    ->where([
-      ['messages.vendor_id', '=', Cookie::get('vendor_id')]
-    ])
+    ->join('vendors', 'messages.vendor_id', '=', 'vendors.vendor_id')
+    ->join('customers', 'messages.customer_id', '=', 'customers.customer_id')
+    ->where('messages.vendor_id', '=', Cookie::get('vendor_id'))
     ->orderBy('messages.updated_at', 'desc')
-    ->paginate( $rows );
+    ->get();
+    $data = [];
+    foreach( $messages as $msg )
+    {
+      $lastmessage = $conversation
+      ->where('msg_id', '=', $msg->msg_id)
+      ->orderBy('updated_at', 'desc')
+      ->first();
+      $data[] = [
+        'results' => $msg,
+        'lastmessage' => $lastmessage->messages
+      ];
+    }
 
-    return response()->json( $messages );
+    return response()->json([
+      'total' => count( $data ),
+      'results' => $data
+    ]);
+  }
+
+  public function readmessage( Request $request, MessagesConversation $messages, $msgid )
+  {
+    if( Cookie::get('hasLoginVendor') )
+    {
+      $datavendor = $this->getvendors( new Vendors, Cookie::get('vendor_id') );
+      return response()->view('frontend.pages.vendors.messages', [
+        'request' => $request,
+        'sessiondata' => Cookie::get(),
+        'myaccount' => $datavendor
+      ]);
+    }
+    else
+    {
+      return response()->view('frontend.pages.vendors.login', [
+        'request' => $request
+      ]);
+    }    
   }
 }

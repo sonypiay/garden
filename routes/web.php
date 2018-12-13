@@ -137,6 +137,8 @@ Route::group(['prefix' => 'vendor'], function() {
 
   Route::group(['prefix' => 'message'], function() {
     Route::get('/', 'Frontend\Vendor\MessagesVendor@index')->name('messagevendor_page');
+    Route::get('/message_list', 'Frontend\Vendor\MessagesVendor@messagelist');
+    Route::get('/readmessage/{msgid}', 'Frontend\Vendor\MessagesVendor@readmessage');
   });
 });
 // vendors

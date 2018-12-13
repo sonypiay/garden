@@ -86682,12 +86682,18 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MessagesList_vue__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MessagesList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__MessagesList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ReadMessage_vue__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ReadMessage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ReadMessage_vue__);
 //
 //
 //
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -86708,7 +86714,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.pages === "messagelist"
     ? _c("div", [_c("messagelist", { attrs: { url: _vm.url } })], 1)
-    : _vm._e()
+    : _c("div", [_c("readmessage", { attrs: { url: _vm.url } })], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -86790,15 +86796,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
   data: function data() {
-    return {};
+    return {
+      messages: {
+        total: 0,
+        results: []
+      },
+      selectedRows: ''
+    };
   },
 
-  methods: {},
-  mounted: function mounted() {}
+  methods: {
+    formatDate: function formatDate(str, format) {
+      var res = moment(str).locale('id').format(format);
+      return res;
+    },
+    getMessagesList: function getMessagesList(pages) {
+      var _this = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/vendor/message/message_list'
+      }).then(function (res) {
+        var result = res.data;
+        _this.messages = {
+          total: result.total,
+          results: result.results
+        };
+        console.log(_this.messages.results);
+      }).catch(function (err) {
+        _this.getErrorMessage = err.response.status;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getMessagesList();
+  }
 });
 
 /***/ }),
@@ -86809,27 +86858,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "uk-margin-top" }, [
+    _c("h3", { staticClass: "message_heading" }, [_vm._v("Pesan")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
+      _c("div", { staticClass: "uk-overflow-auto uk-height-large" }, [
+        _c(
+          "table",
+          {
+            staticClass:
+              "uk-table uk-table-middle uk-table-hover uk-table-divider uk-table-small"
+          },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.messages.results, function(message) {
+                return _c("tr", [
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "uk-button uk-button-text",
+                        attrs: {
+                          "uk-tootlip": "Lihat",
+                          href:
+                            _vm.url +
+                            "/vendor/message/readmessage/" +
+                            message.results.msg_id
+                        }
+                      },
+                      [_c("span", { attrs: { "uk-icon": "forward" } })]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(message.results.customer_name))]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "uk-text-truncate" }, [
+                    _vm._v(_vm._s(message.lastmessage))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(_vm.formatDate(message.updated_at, "LLL")))
+                  ])
+                ])
+              })
+            )
+          ]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-margin-top" }, [
-      _c("h3", { staticClass: "message_heading" }, [_vm._v("Pesan")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "uk-card uk-card-body uk-card-default" }, [
-        _c("div", { staticClass: "uk-overflow-auto" }, [
-          _c(
-            "table",
-            {
-              staticClass:
-                "uk-table uk-table-middle uk-table-hover uk-table-divider uk-table-small"
-            },
-            [_c("thead", [_c("tr", [_c("th", [_vm._v("Pelanggan")])])])]
-          )
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dari")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Pesan Terakhir")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Waktu")])
       ])
     ])
   }
@@ -86840,6 +86935,96 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-7fea6725", module.exports)
+  }
+}
+
+/***/ }),
+/* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(350)
+/* template */
+var __vue_template__ = __webpack_require__(351)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/vendors/ReadMessage.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-265a05c6", Component.options)
+  } else {
+    hotAPI.reload("data-v-265a05c6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 350 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      message: {}
+    };
+  },
+
+  methods: {},
+  mounted: function mounted() {}
+});
+
+/***/ }),
+/* 351 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-265a05c6", module.exports)
   }
 }
 
