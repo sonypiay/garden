@@ -85805,6 +85805,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url', 'vendors'],
@@ -85814,6 +85833,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       portfolios: {
         total: 0,
         results: []
+      },
+      portfolio_image: {
+        total: 0,
+        results: [],
+        errorMessage: '',
+        portfolio: {
+          name: '',
+          id: 0
+        }
       },
       pagination: {
         prev: '',
@@ -85831,8 +85859,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var res = moment(str).locale('id').format(format);
       return res;
     },
-    showPortfolio: function showPortfolio(pages) {
+    viewPortfolioList: function viewPortfolioList(pf) {
       var _this = this;
+
+      axios({
+        method: 'get',
+        url: this.url + '/discovery/vendor/portfolio_image/' + pf.portfolio_id
+      }).then(function (res) {
+        var result = res.data;
+        _this.portfolio_image = {
+          total: result.total,
+          results: result.results,
+          portfolio: {
+            name: pf.portfolio_name,
+            id: pf.portfolio_id
+          }
+        };
+        console.log(_this.portfolio_image);
+      }).catch(function (err) {
+        _this.portfolio_image.errorMessage = err.response.statusText;
+      });
+      UIkit.modal('#viewportfolio').show();
+    },
+    showPortfolio: function showPortfolio(pages) {
+      var _this2 = this;
 
       var param = 'rows=' + this.selectedRows;
       if (pages === undefined) pages = this.url + '/discovery/vendor/portfolio/' + this.vendors.vendor_slug_name + '?page=' + this.pagination.current;else pages = pages + '&' + param;
@@ -85842,9 +85892,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         url: pages
       }).then(function (res) {
         var result = res.data;
-        _this.portfolios.total = result.total;
-        _this.portfolios.results = result.data;
-        _this.pagination = {
+        _this2.portfolios.total = result.total;
+        _this2.portfolios.results = result.data;
+        _this2.pagination = {
           prev: result.prev_page_url,
           next: result.next_page_url,
           last: result.last_page,
@@ -85852,7 +85902,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           path: result.path
         };
       }).catch(function (err) {
-        _this.errorMessage = err.response.statusText;
+        _this2.errorMessage = err.response.statusText;
         console.log(err.response.statusText);
       });
     }
@@ -85871,6 +85921,90 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "uk-modal-full",
+        attrs: { id: "viewportfolio", "uk-modal": "" }
+      },
+      [
+        _c("div", { staticClass: "uk-modal-dialog" }, [
+          _c("a", {
+            staticClass: "uk-modal-close-default",
+            attrs: { "uk-close": "" }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "uk-modal-body modal_view_portfolio uk-height-viewport"
+            },
+            [
+              _c("div", { staticClass: "uk-container" }, [
+                _c("h3", { staticClass: "modal_view_portfolio_heading" }, [
+                  _vm._v(_vm._s(_vm.portfolio_image.portfolio.name))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "modal_view_portfolio_content uk-height-large uk-overflow-auto"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "uk-grid-small",
+                        attrs: {
+                          "uk-grid": "masonry: true",
+                          "uk-lightbox": "animation: slide"
+                        }
+                      },
+                      _vm._l(_vm.portfolio_image.results, function(images) {
+                        return _c(
+                          "div",
+                          {
+                            staticClass:
+                              "uk-width-1-4@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s"
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href:
+                                    _vm.url +
+                                    "/images/vendor/portfolios/" +
+                                    images.images_name
+                                }
+                              },
+                              [
+                                _c("img", {
+                                  attrs: {
+                                    src:
+                                      _vm.url +
+                                      "/images/vendor/portfolios/" +
+                                      images.images_name,
+                                    alt: images.images_name
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      })
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
     _c(
       "div",
       {
@@ -86149,7 +86283,21 @@ var render = function() {
                                                 }
                                               }),
                                               _vm._v(" "),
-                                              _vm._m(2, true)
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass:
+                                                    "uk-overlay uk-overlay-primary uk-position-cover uk-light uk-transition-fade pv-iconoverlay",
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.viewPortfolioList(
+                                                        portfolio
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._m(2, true)]
+                                              )
                                             ]
                                           )
                                         ])
@@ -86231,18 +86379,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass:
-          "uk-overlay uk-overlay-primary uk-position-cover uk-light uk-transition-fade pv-iconoverlay"
-      },
-      [
-        _c("div", { staticClass: "uk-position-center" }, [
-          _c("span", { attrs: { "uk-icon": "icon: search; ratio: 2" } })
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "uk-position-center" }, [
+      _c("span", { attrs: { "uk-icon": "icon: search; ratio: 2" } })
+    ])
   },
   function() {
     var _vm = this

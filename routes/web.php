@@ -21,6 +21,7 @@ Route::group(['prefix' => 'discovery'], function() {
   Route::get('/vendor/{id}', 'Frontend\DiscoveryVendor@selectvendor')->name('detailvendor_page');
   Route::get('/vendor/portfolio/{id}', 'Frontend\DiscoveryVendor@portfolio_vendor');
   Route::get('/vendors', 'Frontend\DiscoveryVendor@discovervendor');
+  Route::get('/vendor/portfolio_image/{id}', 'Frontend\DiscoveryVendor@view_portfolio_image');
 });
 Route::get('/booking/{name}', 'Frontend\Customers\BookingTransactionController@bookingpage');
 Route::post('/booking_process', 'Frontend\Customers\BookingTransactionController@bookingprocess');

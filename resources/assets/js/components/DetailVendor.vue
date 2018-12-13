@@ -1,5 +1,24 @@
 <template lang="html">
   <div>
+    <div id="viewportfolio" class="uk-modal-full" uk-modal>
+      <div class="uk-modal-dialog">
+        <a class="uk-modal-close-default" uk-close></a>
+        <div class="uk-modal-body modal_view_portfolio uk-height-viewport">
+          <div class="uk-container">
+            <h3 class="modal_view_portfolio_heading">{{ portfolio_image.portfolio.name }}</h3>
+            <div class="modal_view_portfolio_content uk-height-large uk-overflow-auto">
+              <div class="uk-grid-small" uk-grid="masonry: true" uk-lightbox="animation: slide">
+                <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s" v-for="images in portfolio_image.results">
+                  <a :href="url + '/images/vendor/portfolios/' + images.images_name">
+                    <img :src="url + '/images/vendor/portfolios/' + images.images_name" :alt="images.images_name">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="uk-grid-small uk-margin-large-top" uk-grid>
       <div class="uk-width-1-4@xl uk-width-1-4@l uk-width-1-4@m uk-width-1-1@s">
         <div class="profile-badge-container">
@@ -64,7 +83,7 @@
                   <div v-if="portfolio.portfolio_thumbnail">
                     <div class="uk-inline uk-transition-toggle" tabindex="0">
                       <img :src="url + '/images/vendor/portfolios/' + portfolio.portfolio_thumbnail" alt="">
-                      <a class="uk-overlay uk-overlay-primary uk-position-cover uk-light uk-transition-fade pv-iconoverlay">
+                      <a @click="viewPortfolioList(portfolio)" class="uk-overlay uk-overlay-primary uk-position-cover uk-light uk-transition-fade pv-iconoverlay">
                         <div class="uk-position-center">
                           <span uk-icon="icon: search; ratio: 2"></span>
                         </div>
@@ -104,6 +123,15 @@ export default {
         total: 0,
         results: []
       },
+      portfolio_image: {
+        total: 0,
+        results: [],
+        errorMessage: '',
+        portfolio: {
+          name: '',
+          id: 0
+        }
+      },
       pagination: {
         prev: '',
         next: '',
@@ -118,6 +146,27 @@ export default {
     formatDate(str, format) {
       var res = moment(str).locale('id').format(format);
       return res;
+    },
+    viewPortfolioList(pf)
+    {
+      axios({
+        method: 'get',
+        url: this.url + '/discovery/vendor/portfolio_image/' + pf.portfolio_id
+      }).then( res => {
+        let result = res.data;
+        this.portfolio_image = {
+          total: result.total,
+          results: result.results,
+          portfolio: {
+            name: pf.portfolio_name,
+            id: pf.portfolio_id
+          }
+        };
+        console.log( this.portfolio_image );
+      }).catch( err => {
+        this.portfolio_image.errorMessage = err.response.statusText;
+      });
+      UIkit.modal('#viewportfolio').show();
     },
     showPortfolio(pages)
     {
