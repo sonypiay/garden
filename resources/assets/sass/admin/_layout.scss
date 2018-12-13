@@ -42,7 +42,7 @@ html, body {
   //background: #222222;
   background: linear-gradient(97deg, $f6c492, $f6a192);
   .header-logo {
-    img { width: 120px;}
+    img { width: 130px;}
   }
   .header-nav li {
     a {
@@ -51,7 +51,8 @@ html, body {
       font-family: $font-family-sans-serif;
       @include fontstyle(600, normal, normal, 0.4);
       &:hover, &:active, &:focus {
-        background: $f6a192;
+        //background: $f6a192;
+        background: linear-gradient(97deg, $f6c492, $f6a192);
         color: #ffffff;
       }
     }
@@ -171,6 +172,45 @@ html, body {
   }
 }
 
+.view_withdraw {
+  border-radius: 3px;
+  .view_withdraw_header {
+    font-size: 20px;
+    font-family: $font-family-sans-serif;
+    color: #333333;
+    @include fontstyle(600, normal, normal, 0.4px);
+    text-align: center;
+  }
+  .view_withdraw_body {
+    .view_withdraw_title {
+      font-size: 13px;
+      font-family: $font-family-sans-serif;
+      color: #333333;
+      @include fontstyle(400, normal, normal, 0.4px);
+    }
+    .view_withdraw_value {
+      font-size: 16px;
+      font-family: $font-family-sans-serif;
+      color: #333333;
+      @include fontstyle(400, normal, normal, 0.4px);
+    }
+  }
+  .view_withdraw_approved {
+    border-radius: 2px;
+    font-size: 14px;
+    font-family: $font-family-sans-serif;
+    color: #ffffff;
+    @include fontstyle(400, normal, normal, 0.4px);
+    background: linear-gradient(97deg, $f6c492, $f6a192);
+  }
+  .view_withdraw_rejected {
+    border-radius: 2px;
+    font-size: 14px;
+    font-family: $font-family-sans-serif;
+    @include fontstyle(400, normal, normal, 0.4px);
+  }
+}
+
 // dashboard
 .dashboard_filter_action {
   border-radius: 3px;
@@ -194,47 +234,94 @@ html, body {
   }
 }
 
-.dashboard_alluser_header {
-  font-size: 22px;
-  font-family: $font-family-sans-serif;
-  color: #444444;
-  @include fontstyle(400, normal, normal, 0.4px);
-}
-.dashboard_alluser_grid {
-  border-radius: 4px;
-  .dashboard_alluser_value {
-    font-size: 22px;
-    font-family: $font-family-sans-serif;
-    color: #444444;
-    @include fontstyle(400, normal, normal, 0.4px);
-    margin-bottom: 5px;
-  }
-  .dashboard_alluser_title {
-    font-size: 13px;
-    font-family: $font-family-sans-serif;
-    color: #999999;
-    @include fontstyle(400, normal, normal, 0.4px);
-    margin-top: 5px;
+.dashboard_content_alluser {
+  .dashboard_alluser_grid {
+    border-radius: 4px;
+    background: linear-gradient(97deg, $f6c492, $f6a192);
+    .dashboard_alluser_value {
+      font-size: 42px;
+      font-family: $font-family-sans-serif;
+      color: #ffffff;
+      text-align: center;
+      @include fontstyle(700, normal, normal, 0.4px);
+      margin-bottom: 5px;
+    }
+    .dashboard_alluser_title {
+      font-size: 14px;
+      font-family: $font-family-sans-serif;
+      color: #ffffff;
+      @include fontstyle(400, normal, normal, 0.4px);
+      margin-top: 5px;
+      text-align: center;
+    }
   }
 }
 
-.dashboard_grid_statustransaction {
-  border-radius: 4px;
-  .dash_statustransaction_title {
-    font-size: 13px;
-    font-family: $font-family-sans-serif;
-    color: #999999;
-    @include fontstyle(400, normal, normal, 0.4px);
-    margin-top: 5px;
+.dashboard_content_statustransaction {
+  .dashboard_grid_statustransaction {
+    border-radius: 4px;
+    background: linear-gradient(97deg, $f6c492, $f6a192);
+    .dash_statustransaction_title {
+      font-size: 16px;
+      font-family: $font-family-sans-serif;
+      color: #ffffff;
+      @include fontstyle(400, normal, normal, 0.4px);
+      margin-top: 5px;
+    }
+    .dash_statustransaction_value {
+      font-size: 28px;
+      font-family: $font-family-sans-serif;
+      color: #ffffff;
+      @include fontstyle(400, normal, normal, 0.4px);
+      margin-bottom: 5px;
+    }
   }
-  .dash_statustransaction_value {
+}
+
+.dashboard_content_withdraw {
+  h3 {
     font-size: 22px;
     font-family: $font-family-sans-serif;
     color: #444444;
     @include fontstyle(400, normal, normal, 0.4px);
-    margin-bottom: 5px;
+  }
+  .dashboard_grid_withdraw {
+    border-radius: 4px;
+    .dash_withdraw_title {
+      font-size: 16px;
+      font-family: $font-family-sans-serif;
+      color: #999999;
+      @include fontstyle(400, normal, normal, 0.4px);
+      margin-top: 5px;
+    }
+    .dash_withdraw_value {
+      font-size: 42px;
+      font-family: $font-family-sans-serif;
+      color: #444444;
+      @include fontstyle(400, normal, normal, 0.4px);
+      margin-bottom: 5px;
+    }
+  }
+  .dash_withdraw_approved {
+    background: linear-gradient(97deg, $f6c492, $f6a192);
+  }
+  .dash_withdraw_rejected {
+    background: linear-gradient(97deg, $f6c492, $f6a192);
+  }
+  .dash_withdraw_pending {
+    background: linear-gradient(97deg, $f6c492, $f6a192);
+  }
+
+  .dash_withdraw_pending,
+  .dash_withdraw_approved,
+  .dash_withdraw_rejected {
+    .dash_withdraw_title,
+    .dash_withdraw_value {
+      color: #ffffff !important;
+    }
   }
 }
+
 .dashboard_transaction_heading {
   font-size: 22px;
   font-family: $font-family-sans-serif;

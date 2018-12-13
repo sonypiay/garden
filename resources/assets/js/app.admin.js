@@ -23,6 +23,7 @@ Vue.component('provinsi-section', require('./components/administrator/Provinsi.v
 Vue.component('kabupaten-section', require('./components/administrator/Kabupaten.vue'));
 Vue.component('kecamatan-section', require('./components/administrator/Kecamatan.vue'));
 Vue.component('orderlist-section', require('./components/administrator/OrderList.vue'));
+Vue.component('withdraw-section', require('./components/administrator/Withdraw.vue'));
 
 const app = new Vue({
     el: '#app',

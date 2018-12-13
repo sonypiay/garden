@@ -9,6 +9,7 @@
       <li><a href="#">Pro</a></li>
     </ul>
   </li>
+  <li><a href="{{ route('admin_withdraw') }}">Withdraw</a></li>
   <li class="uk-nav-header">Management</li>
   <li><a href="{{ route('admin_provinsipage') }}">Provinsi</a></li>
   <li><a href="{{ route('admin_kabupatenpage') }}">Kabupaten</a></li>
@@ -16,5 +17,4 @@
   <li><a href="{{ route('admin_bankpayment') }}">Bank Pembayaran</a></li>
   <li><a href="{{ route('admin_bankcustomer') }}">Bank Customer</a></li>
   <li><a href="{{ route('userspage') }}">Users</a></li>
-  <li><a href="#">Pengaturan</a></li>
 </ul>

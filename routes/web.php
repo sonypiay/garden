@@ -149,6 +149,7 @@ Route::group(['prefix' => 'cp'], function() {
     Route::get('/allusers', 'Administrator\DashboardController@total_vendor_customer');
     Route::get('/total_transaction', 'Administrator\DashboardController@total_current_analytic_transaction');
     Route::get('/activity_transaction', 'Administrator\DashboardController@analytic_activity_transaction');
+    Route::get('/withdraw', 'Administrator\DashboardController@analytic_withdraw');
   });
 
   Route::group(['prefix' => '/transaction'], function() {
@@ -166,6 +167,12 @@ Route::group(['prefix' => 'cp'], function() {
     Route::put('/update/{id}', 'Administrator\UsersController@update');
   });
   // users
+
+  Route::group(['prefix' => 'withdraw'], function() {
+    Route::get('/', 'Administrator\WithdrawTransactionController@index')->name('admin_withdraw');
+    Route::get('/list', 'Administrator\WithdrawTransactionController@data_withdraw');
+    Route::put('/approval/{ticket}', 'Administrator\WithdrawTransactionController@approval_withdraw');
+  });
 
   Route::group(['prefix' => 'management'], function() {
     Route::group(['prefix' => 'bankpayment'], function() {

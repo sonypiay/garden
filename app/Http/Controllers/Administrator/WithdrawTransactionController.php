@@ -9,13 +9,14 @@ use App\FunctionApp\CustomFunction;
 use App\Database\Vendors;
 use App\Database\Customers;
 use App\Database\Withdraw;
+use App\Database\HistoryTransaction;
 use App\Http\Controllers\Controller;
 
 class WithdrawTransactionController extends Controller
 {
   use CustomFunction;
 
-  public function index( Request $request,  )
+  public function index( Request $request )
   {
     if( Cookie::get('hasLoginPanel') )
     {
@@ -48,12 +49,14 @@ class WithdrawTransactionController extends Controller
           'withdraw.created_at',
           'vendors.vendor_id',
           'vendors.vendor_name',
+          'vendors.credits_balance',
           'vendor_bankaccount.account_number',
-          'vendor_bankaccount.ownername'
+          'vendor_bankaccount.ownername',
+          'bankcustomer.bank_name'
         )
         ->join('vendors', 'withdraw.vendor_id', '=', 'vendors.vendor_id')
-        ->join('vendor_bankaccount', 'vendors.vendor_id', '=', 'withdraw.vendor_id')
-        ->join('bankcustomer', 'vendor_bankaccount.vendor_bankid', '=', 'bankcustomer.bank_id')
+        ->join('vendor_bankaccount', 'vendor_bankaccount.vendor_id', '=', 'withdraw.vendor_id')
+        ->join('bankcustomer', 'vendor_bankaccount.bank_id', '=', 'bankcustomer.bank_id');
       }
       else
       {
@@ -64,13 +67,15 @@ class WithdrawTransactionController extends Controller
           'withdraw.created_at',
           'vendors.vendor_id',
           'vendors.vendor_name',
+          'vendors.credits_balance',
           'vendor_bankaccount.account_number',
-          'vendor_bankaccount.ownername'
+          'vendor_bankaccount.ownername',
+          'bankcustomer.bank_name'
         )
         ->join('vendors', 'withdraw.vendor_id', '=', 'vendors.vendor_id')
-        ->join('vendor_bankaccount', 'vendors.vendor_id', '=', 'withdraw.vendor_id')
-        ->join('bankcustomer', 'vendor_bankaccount.vendor_bankid', '=', 'bankcustomer.bank_id')
-        ->where('withdraw.status_withdraw', $status)
+        ->join('vendor_bankaccount', 'vendor_bankaccount.vendor_id', '=', 'withdraw.vendor_id')
+        ->join('bankcustomer', 'vendor_bankaccount.bank_id', '=', 'bankcustomer.bank_id')
+        ->where('withdraw.status_withdraw', $status);
       }
     }
     else
@@ -84,15 +89,17 @@ class WithdrawTransactionController extends Controller
           'withdraw.created_at',
           'vendors.vendor_id',
           'vendors.vendor_name',
+          'vendors.credits_balance',
           'vendor_bankaccount.account_number',
-          'vendor_bankaccount.ownername'
+          'vendor_bankaccount.ownername',
+          'bankcustomer.bank_name'
         )
         ->join('vendors', 'withdraw.vendor_id', '=', 'vendors.vendor_id')
-        ->join('vendor_bankaccount', 'vendors.vendor_id', '=', 'withdraw.vendor_id')
-        ->join('bankcustomer', 'vendor_bankaccount.vendor_bankid', '=', 'bankcustomer.bank_id')
+        ->join('vendor_bankaccount', 'vendor_bankaccount.vendor_id', '=', 'withdraw.vendor_id')
+        ->join('bankcustomer', 'vendor_bankaccount.bank_id', '=', 'bankcustomer.bank_id')
         ->where('withdraw.ticket_id', 'like', '%' . $keywords . '%')
         ->orWhere('vendors.vendor_name', 'like', '%' . $keywords . '%')
-        ->orWhere('vendor_bankaccount.account_number', 'like', '%' . $keywords . '%')
+        ->orWhere('vendor_bankaccount.account_number', 'like', '%' . $keywords . '%');
       }
       else
       {
@@ -103,12 +110,14 @@ class WithdrawTransactionController extends Controller
           'withdraw.created_at',
           'vendors.vendor_id',
           'vendors.vendor_name',
+          'vendors.credits_balance',
           'vendor_bankaccount.account_number',
-          'vendor_bankaccount.ownername'
+          'vendor_bankaccount.ownername',
+          'bankcustomer.bank_name'
         )
         ->join('vendors', 'withdraw.vendor_id', '=', 'vendors.vendor_id')
-        ->join('vendor_bankaccount', 'vendors.vendor_id', '=', 'withdraw.vendor_id')
-        ->join('bankcustomer', 'vendor_bankaccount.vendor_bankid', '=', 'bankcustomer.bank_id')
+        ->join('vendor_bankaccount', 'vendor_bankaccount.vendor_id', '=', 'withdraw.vendor_id')
+        ->join('bankcustomer', 'vendor_bankaccount.bank_id', '=', 'bankcustomer.bank_id')
         ->where([
           ['withdraw.status_withdraw', $status],
           ['withdraw.ticket_id', 'like', '%' . $keywords . '%']
@@ -120,20 +129,60 @@ class WithdrawTransactionController extends Controller
         ->orWhere([
           ['withdraw.status_withdraw', $status],
           ['vendor_bankaccount.account_number', 'like', '%' . $keywords . '%']
-        ])
+        ]);
       }
     }
 
-    $result = $query->orderBy('vithdraw.created_at')
+    $result = $query->orderBy('withdraw.created_at', 'desc')
     ->paginate( $rows );
 
     $data = [
-      'result' => [
-        'total' => $result->.total()
-        'data' => $result
-      ]
+      'result' => $result
     ];
-    
+
     return response()->json( $data );
+  }
+
+  public function approval_withdraw( Request $request, Withdraw $withdraw, Vendors $vendors, HistoryTransaction $history, $ticket )
+  {
+    $approval = $request->approval;
+    $withdraw = $withdraw->where('ticket_id', $ticket)->first();
+    $vendors = $vendors->where('vendor_id', $withdraw->vendor_id)->first();
+    $history = $history->where([
+      ['vendor_id', '=', $withdraw->vendor_id],
+      ['history_transaction_id', '=', $ticket],
+      ['history_type', '=', 'withdraw']
+    ])->first();
+
+    if( $approval == 'approve' )
+    {
+      $withdraw->status_withdraw = 'approved';
+      $vendors->credits_balance = $vendors->credits_balance;
+
+      $withdraw->save();
+      $vendors->save();
+
+      $res = [
+        'status' => '200',
+        'statusText' => 'Penarikan dana dengan ticket ' . $ticket . ' diapproved.'
+      ];
+    }
+    else
+    {
+      $current_amount = $vendors->credits_balance + $withdraw->nominal;
+      $vendors->credits_balance = $current_amount;
+
+      $withdraw->status_withdraw = 'rejected';
+
+      $withdraw->save();
+      $vendors->save();
+
+      $res = [
+        'status' => '200',
+        'statusText' => 'Penarikan dana dengan ticket ' . $ticket . ' direject.'
+      ];
+    }
+
+    return response()->json( $res, $res['status'] );
   }
 }

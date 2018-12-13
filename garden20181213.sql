@@ -219,6 +219,38 @@ CREATE TABLE `log_status_transaction` (
 
 insert  into `log_status_transaction`(`id`,`transaction_id`,`status_transaction`,`status_description`,`log_date`) values (1,'GB20181212D000005','approval','Menunggu approval dari pihak Vendor','2018-12-12 06:38:32'),(2,'GB201812127600006','approval','Menunggu approval dari pihak Vendor','2018-12-12 06:40:56'),(3,'GB20181212D000005','payment_waiting','Menunggu konfirmasi pembayaran.','2018-12-12 08:26:06'),(4,'GB20181212D000005','payment_verify','Menunggu verifikasi pembayaran oleh pihak tim Garden Buana.','2018-12-12 08:29:09'),(5,'GB201812127600006','rejected','Transaksi ditolak','2018-12-12 08:41:19'),(6,'GB20181212D000005','paid','Pembayaran telah diterima Garden Buana dan pesanan Anda sudah diteruskan ke vendor.','2018-12-12 08:42:41'),(7,'GB20181212D000005','process','Pesanan sedang diproses oleh pihak Vendor','2018-12-12 08:48:57'),(8,'GB20181212D000005','onprogress','Pesanan sedang dikerjakan','2018-12-12 08:49:36'),(9,'GB20181212D000005','report','Laporan hasil pekerjaan terlampir.','2018-12-12 08:50:48'),(10,'GB20181212D000005','done','Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.','2018-12-12 08:57:39'),(11,'GB201812121F00003','approval','Menunggu approval dari pihak Vendor','2018-12-12 09:06:37'),(12,'GB201812121F00003','payment_waiting','Pesanan diterima oleh pihak Vendor. <br> Menunggu pembayaran dari sisi Pelanggan.','2018-12-12 09:16:42'),(13,'GB201812121F00003','payment_verify','Menunggu verifikasi pembayaran oleh tim Garden Buana.','2018-12-12 09:21:46'),(14,'GB201812121F00003','paid','Pembayaran telah diterima Garden Buana dan pesanan Anda sudah diteruskan ke vendor.','2018-12-12 09:27:38'),(15,'GB201812121F00003','process','Pesanan sedang diproses oleh pihak Vendor','2018-12-12 09:28:24'),(16,'GB201812121F00003','onprogress','Pesanan sedang dikerjakan','2018-12-12 09:28:43'),(17,'GB201812121F00003','report','Laporan hasil pekerjaan terlampir.','2018-12-12 09:31:56'),(18,'GB201812121F00003','done','Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.','2018-12-12 09:34:15'),(19,'GB2018121229B00004','approval','Menunggu approval dari pihak Vendor','2018-12-12 19:08:57'),(20,'GB2018121229B00004','payment_waiting','Pesanan diterima oleh pihak Vendor. <br> Menunggu pembayaran dari sisi Pelanggan.','2018-12-12 19:09:55'),(21,'GB2018121229B00004','payment_verify','Menunggu verifikasi pembayaran oleh tim Garden Buana.','2018-12-12 19:10:57'),(22,'GB2018121229B00004','paid','Pembayaran telah diterima Garden Buana dan pesanan Anda sudah diteruskan ke vendor.','2018-12-12 19:11:47'),(23,'GB2018121229B00004','process','Pesanan sedang diproses oleh pihak Vendor','2018-12-12 19:12:42'),(24,'GB2018121229B00004','onprogress','Pesanan sedang dikerjakan','2018-12-12 19:12:51'),(25,'GB2018121229B00004','report','Laporan hasil pekerjaan terlampir.','2018-12-12 19:13:37'),(26,'GB2018121229B00004','done','Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.','2018-12-12 19:21:51'),(27,'GB20181212D6200005','approval','Menunggu approval dari pihak Vendor','2018-12-12 19:22:52'),(28,'GB20181212D6200005','payment_waiting','Pesanan diterima oleh pihak Vendor. <br> Menunggu pembayaran dari sisi Pelanggan.','2018-12-12 19:23:37'),(29,'GB20181212D6200005','payment_verify','Menunggu verifikasi pembayaran oleh tim Garden Buana.','2018-12-12 19:24:42'),(30,'GB20181212D6200005','paid','Pembayaran telah diterima Garden Buana dan pesanan Anda sudah diteruskan ke vendor.','2018-12-12 19:26:16'),(31,'GB20181212D6200005','process','Pesanan sedang diproses oleh pihak Vendor','2018-12-12 19:28:02'),(32,'GB20181212D6200005','onprogress','Pesanan sedang dikerjakan','2018-12-12 19:28:13'),(33,'GB20181212D6200005','report','Laporan hasil pekerjaan terlampir.','2018-12-12 19:28:31'),(34,'GB20181212D6200005','done','Pesanan sudah selesai dikerjakan. Dana sudah diterukan ke vendor.','2018-12-12 19:29:26');
 
+/*Table structure for table `messages` */
+
+DROP TABLE IF EXISTS `messages`;
+
+CREATE TABLE `messages` (
+  `msg_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `vendor_id` bigint(20) unsigned NOT NULL,
+  `customer_id` bigint(20) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`msg_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `messages` */
+
+/*Table structure for table `messages_conversation` */
+
+DROP TABLE IF EXISTS `messages_conversation`;
+
+CREATE TABLE `messages_conversation` (
+  `conversation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `msg_id` int(10) unsigned NOT NULL,
+  `message_from` bigint(20) unsigned NOT NULL,
+  `message_to` bigint(20) unsigned NOT NULL,
+  `messages` text,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`conversation_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `messages_conversation` */
+
 /*Table structure for table `payment_order_verify` */
 
 DROP TABLE IF EXISTS `payment_order_verify`;
@@ -342,11 +374,11 @@ CREATE TABLE `vendor_history_transaction` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`history_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `vendor_history_transaction` */
 
-insert  into `vendor_history_transaction`(`history_id`,`history_type`,`history_transaction_id`,`history_amount`,`history_current_amount`,`history_description`,`vendor_id`,`created_at`,`updated_at`) values (1,'withdraw','C201812124F00001',9855000,0,'Penarikan dana no. tiket C201812124F00001',1,'2018-12-12 19:01:39','2018-12-12 19:01:39'),(2,'penerimaan','GB2018121229B00004',5000000,5000000,'Penerimaan dana dari no. transaksi GB2018121229B00004',2,'2018-12-12 19:21:51','2018-12-12 19:21:51'),(3,'penerimaan','GB20181212D6200005',15000000,20000000,'Penerimaan dana dari no. transaksi GB20181212D6200005',2,'2018-12-12 19:29:26','2018-12-12 19:29:26'),(4,'withdraw','C20181213E2D0002',5508000,0,'Penarikan dana no. tiket C20181213E2D0002',2,'2018-12-13 02:32:49','2018-12-13 02:32:49');
+insert  into `vendor_history_transaction`(`history_id`,`history_type`,`history_transaction_id`,`history_amount`,`history_current_amount`,`history_description`,`vendor_id`,`created_at`,`updated_at`) values (1,'withdraw','C201812124F00001',9855000,14595000,'Penarikan dana no. tiket C201812124F00001',1,'2018-12-12 19:01:39','2018-12-13 13:02:58'),(2,'penerimaan','GB2018121229B00004',5000000,5000000,'Penerimaan dana dari no. transaksi GB2018121229B00004',2,'2018-12-12 19:21:51','2018-12-12 19:21:51'),(3,'penerimaan','GB20181212D6200005',15000000,20000000,'Penerimaan dana dari no. transaksi GB20181212D6200005',2,'2018-12-12 19:29:26','2018-12-12 19:29:26'),(4,'withdraw','C20181213E2D0002',5508000,14492000,'Penarikan dana no. tiket C20181213E2D0002',2,'2018-12-13 02:32:49','2018-12-13 12:55:54'),(5,'withdraw','C201812137F60003',1000000,13595000,'Penarikan dana no. tiket C201812137F60003',1,'2018-12-13 13:14:35','2018-12-13 13:14:35'),(6,'withdraw','C201812131A30004',10000000,3595000,'Penarikan dana no. tiket C201812131A30004',1,'2018-12-13 13:15:06','2018-12-13 13:15:06'),(7,'withdraw','C20181213BF80005',50000,3545000,'Penarikan dana no. tiket C20181213BF80005',1,'2018-12-13 13:24:23','2018-12-13 13:24:23'),(8,'withdraw','C20181213D900006',100000,3495000,'Penarikan dana no. tiket C20181213D900006',1,'2018-12-13 13:25:51','2018-12-13 13:25:51'),(9,'withdraw','C201812130030007',50000,3445000,'Penarikan dana no. tiket C201812130030007',1,'2018-12-13 13:26:04','2018-12-13 13:26:04'),(10,'withdraw','C201812135820008',595000,3000000,'Penarikan dana no. tiket C201812135820008',1,'2018-12-13 13:27:23','2018-12-13 13:27:23'),(11,'withdraw','C201812131D90009',1500000,1500000,'Penarikan dana no. tiket C201812131D90009',1,'2018-12-13 13:27:44','2018-12-13 13:27:44'),(12,'withdraw','C2018121389D0010',500000,1595000,'Penarikan dana no. tiket C2018121389D0010',1,'2018-12-13 13:28:49','2018-12-13 13:28:49'),(13,'withdraw','C2018121314F0011',5000000,9492000,'Penarikan dana no. tiket C2018121314F0011',2,'2018-12-13 13:31:17','2018-12-13 13:31:17'),(14,'withdraw','C201812135CE0012',4925000,4567000,'Penarikan dana no. tiket C201812135CE0012',2,'2018-12-13 13:31:43','2018-12-13 13:31:43');
 
 /*Table structure for table `vendor_portfolio` */
 
@@ -441,7 +473,7 @@ CREATE TABLE `vendors` (
 
 /*Data for the table `vendors` */
 
-insert  into `vendors`(`vendor_id`,`vendor_name`,`vendor_slug_name`,`vendor_description`,`vendor_logo`,`vendor_email_business`,`vendor_mobile_private`,`vendor_mobile_business`,`vendor_region`,`vendor_district`,`vendor_subdistrict`,`vendor_address`,`vendor_zipcode`,`vendor_verified`,`vendor_ownername`,`vendor_username`,`vendor_password`,`credits_balance`,`vendor_registered`) values (1,'Tara Arts','tara-arts',NULL,'28de002cjpg','diwantara.anug@gmail.com','8561969053','8561969053',1,4,10,'Jawa Ipsum gelung kalung ayam manah jawah, luh bebed kancing. Sapu sima peksi susu piring tuwi enjing mucal dipun pendhet wos? Peksi cariyos, sakit suku epek-epek ngulemi pedhang, untu manah nyukani maesa. Bidal minggat supena ngulemi',10640,'N','Diwantara Anugrah Putra',NULL,'$2y$10$jlJ478uaUJE6yqYQCXaIsuKjStjHnVeNHKt6HTnFqigbnyPaHL0du',24450000,'2018-12-12 06:26:34'),(2,'Uchiha Gakure','uchiha-gakure',NULL,NULL,'itachi.uchiha@mail.com','825657876','825657876',1,7,5,'Menteng Dalam',12121,'N','Itachi Uchiha',NULL,'$2y$10$9V/B3s3bbTBaXXPMjZaqA.QttJ3YwaLusGEvkRGz36JAQjl1MJFOa',20000000,'2018-12-12 19:04:35');
+insert  into `vendors`(`vendor_id`,`vendor_name`,`vendor_slug_name`,`vendor_description`,`vendor_logo`,`vendor_email_business`,`vendor_mobile_private`,`vendor_mobile_business`,`vendor_region`,`vendor_district`,`vendor_subdistrict`,`vendor_address`,`vendor_zipcode`,`vendor_verified`,`vendor_ownername`,`vendor_username`,`vendor_password`,`credits_balance`,`vendor_registered`) values (1,'Tara Arts','tara-arts',NULL,'28de002cjpg','diwantara.anug@gmail.com','8561969053','8561969053',1,4,10,'Jawa Ipsum gelung kalung ayam manah jawah, luh bebed kancing. Sapu sima peksi susu piring tuwi enjing mucal dipun pendhet wos? Peksi cariyos, sakit suku epek-epek ngulemi pedhang, untu manah nyukani maesa. Bidal minggat supena ngulemi',10640,'N','Diwantara Anugrah Putra',NULL,'$2y$10$jlJ478uaUJE6yqYQCXaIsuKjStjHnVeNHKt6HTnFqigbnyPaHL0du',1595000,'2018-12-12 06:26:34'),(2,'Uchiha Gakure','uchiha-gakure',NULL,NULL,'itachi.uchiha@mail.com','825657876','825657876',1,7,5,'Menteng Dalam',12121,'N','Itachi Uchiha',NULL,'$2y$10$9V/B3s3bbTBaXXPMjZaqA.QttJ3YwaLusGEvkRGz36JAQjl1MJFOa',4567000,'2018-12-12 19:04:35');
 
 /*Table structure for table `withdraw` */
 
@@ -452,18 +484,18 @@ CREATE TABLE `withdraw` (
   `ticket_id` varchar(25) NOT NULL,
   `vendor_bankid` int(10) unsigned NOT NULL,
   `nominal` bigint(20) unsigned NOT NULL,
-  `status_withdraw` enum('pending','success') DEFAULT 'pending',
+  `status_withdraw` enum('pending','approved','rejected') NOT NULL DEFAULT 'pending',
   `vendor_id` bigint(20) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`withdraw_id`),
   KEY `fkwd_vendorbankid` (`vendor_bankid`),
   CONSTRAINT `fkwd_vendorbankid` FOREIGN KEY (`vendor_bankid`) REFERENCES `vendor_bankaccount` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 /*Data for the table `withdraw` */
 
-insert  into `withdraw`(`withdraw_id`,`ticket_id`,`vendor_bankid`,`nominal`,`status_withdraw`,`vendor_id`,`created_at`,`updated_at`) values (1,'C201812124F00001',1,9855000,'pending',1,'2018-12-12 19:01:39','2018-12-12 19:01:39'),(2,'C20181213E2D0002',2,5508000,'pending',2,'2018-12-13 02:32:49','2018-12-13 02:32:49');
+insert  into `withdraw`(`withdraw_id`,`ticket_id`,`vendor_bankid`,`nominal`,`status_withdraw`,`vendor_id`,`created_at`,`updated_at`) values (1,'C201812124F00001',1,9855000,'approved',1,'2018-12-12 19:01:39','2018-12-13 13:02:58'),(2,'C20181213E2D0002',2,5508000,'approved',2,'2018-12-13 02:32:49','2018-12-13 12:55:54'),(3,'C201812137F60003',1,1000000,'approved',1,'2018-12-13 13:14:35','2018-12-13 13:22:22'),(4,'C201812131A30004',1,10000000,'approved',1,'2018-12-13 13:15:06','2018-12-13 13:22:41'),(5,'C20181213BF80005',1,50000,'rejected',1,'2018-12-13 13:24:24','2018-12-13 13:25:21'),(6,'C20181213D900006',1,100000,'rejected',1,'2018-12-13 13:25:51','2018-12-13 13:27:08'),(7,'C201812130030007',1,50000,'rejected',1,'2018-12-13 13:26:04','2018-12-13 13:26:16'),(8,'C201812135820008',1,595000,'rejected',1,'2018-12-13 13:27:23','2018-12-13 13:28:12'),(9,'C201812131D90009',1,1500000,'approved',1,'2018-12-13 13:27:44','2018-12-13 13:28:00'),(10,'C2018121389D0010',1,500000,'pending',1,'2018-12-13 13:28:49','2018-12-13 13:28:49'),(11,'C2018121314F0011',2,5000000,'pending',2,'2018-12-13 13:31:17','2018-12-13 13:31:17'),(12,'C201812135CE0012',2,4925000,'pending',2,'2018-12-13 13:31:43','2018-12-13 13:31:43');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
