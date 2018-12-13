@@ -1487,3 +1487,42 @@ html,body {
     }
   }
 }
+
+.modal_chatcontainer {
+  border-radius: 4px;
+  .modal_chatheading {
+    font-size: 22px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #666666;
+  }
+  .modal_chatlabel {
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #666666;
+  }
+  .modal_chatform {
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #666666;
+    border: 1px solid #eeeeee;
+    &::placeholder { color: #333333; }
+    &:hover, &:focus { border: 1px solid $logo-color-primary; }
+  }
+  .modal_chatbutton {
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 13px;
+    font-family: $font-secondary;
+    @include fontstyle(400, normal, normal, 0.4px);
+    color: #ffffff;
+    border: 0;
+    background: $logo-color-primary;
+    &:hover, &:focus {
+      color: #ffffff;
+    }
+  }
+}

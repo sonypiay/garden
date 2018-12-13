@@ -15,6 +15,7 @@ Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
 Route::get('/tentang_kami', 'Frontend\HomepageController@aboutus')->name('aboutus');
 Route::get('/login', 'Frontend\HomepageController@loginpage')->name('loginpage');
 Route::get('/join', 'Frontend\HomepageController@signuppage')->name('signuppage');
+Route::post('/sendmessage', 'Frontend\MessagesController@sendmessage');
 
 Route::group(['prefix' => 'discovery'], function() {
   Route::get('/', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');

@@ -85824,9 +85824,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url', 'vendors'],
+  props: ['url', 'vendors', 'session'],
   data: function data() {
     return {
       selectedRows: 9,
@@ -85842,6 +85866,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           name: '',
           id: 0
         }
+      },
+      message: {
+        type: '',
+        errors: {}
       },
       pagination: {
         prev: '',
@@ -85905,6 +85933,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this2.errorMessage = err.response.statusText;
         console.log(err.response.statusText);
       });
+    },
+    onSendMessage: function onSendMessage() {
+      if (this.message.type === null || this.message.type === '') {
+        this.message.errors.type = 'Pesan tidak boleh kosong';
+      } else {
+        axios({
+          method: 'post',
+          url: this.url + '/sendmessage',
+          params: {
+            vendor: this.vendors.vendor_id,
+            customer: this.session.customer_id,
+            message: this.message.type
+          }
+        }).then(function (res) {
+          swal({
+            title: 'Berhasil',
+            text: 'Pesan terkirim',
+            icon: 'success',
+            timer: 3000
+          });
+        }).catch(function (err) {
+          swal({
+            title: 'Terjadi Kesalahan',
+            text: err.response.statusText,
+            icon: 'error',
+            dangerMode: true,
+            timer: 3000
+          });
+        });
+      }
     }
   },
   mounted: function mounted() {
@@ -85945,6 +86003,17 @@ var render = function() {
                 _c("h3", { staticClass: "modal_view_portfolio_heading" }, [
                   _vm._v(_vm._s(_vm.portfolio_image.portfolio.name))
                 ]),
+                _vm._v(" "),
+                _vm.portfolio_image.errorMessage
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "uk-alert-danger",
+                        attrs: { "uk-alert": "" }
+                      },
+                      [_vm._v(_vm._s(_vm.portfolio_image.errorMessage))]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -86004,6 +86073,84 @@ var render = function() {
         ])
       ]
     ),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "modalchat", "uk-modal": "" } }, [
+      _c(
+        "div",
+        { staticClass: "uk-modal-dialog uk-modal-body modal_chatcontainer" },
+        [
+          _c("h3", { staticClass: "modal_chatheading" }, [
+            _vm._v("Kirim Pesan")
+          ]),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass: "uk-form-stacked",
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.onSendMessage($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label modal_chatlabel" }, [
+                  _vm._v("Kepada")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("input", {
+                    staticClass: "uk-input modal_chatform",
+                    attrs: { type: "text", disabled: true },
+                    domProps: { value: _vm.vendors.vendor_name }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("label", { staticClass: "uk-form-label modal_chatlabel" }, [
+                  _vm._v("Pesan")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "uk-form-controls" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.message.type,
+                        expression: "message.type"
+                      }
+                    ],
+                    staticClass: "uk-textarea modal_chatform uk-height-small",
+                    attrs: { placeholder: "Ketik pesan Anda disini" },
+                    domProps: { value: _vm.message.type },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.message, "type", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm.message.errors.type
+                  ? _c("div", { staticClass: "uk-text-small uk-text-danger" }, [
+                      _vm._v(_vm._s(_vm.message.errors.type))
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ]
+          )
+        ]
+      )
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -86072,31 +86219,35 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "uk-card uk-card-body uk-card-small uk-card-default pb-badge-action"
-                },
-                [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "uk-margin-small" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "uk-width-1-1 uk-button uk-button-default pb-btnaction",
-                        attrs: {
-                          href:
-                            _vm.url + "/booking/" + _vm.vendors.vendor_slug_name
-                        }
-                      },
-                      [_vm._m(1), _vm._v(" Pesan")]
-                    )
-                  ])
-                ]
-              ),
+              _vm.session.hasLoginCustomers
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "uk-card uk-card-body uk-card-small uk-card-default pb-badge-action"
+                    },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "uk-margin-small" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "uk-width-1-1 uk-button uk-button-default pb-btnaction",
+                            attrs: {
+                              href:
+                                _vm.url +
+                                "/booking/" +
+                                _vm.vendors.vendor_slug_name
+                            }
+                          },
+                          [_vm._m(2), _vm._v(" Pesan")]
+                        )
+                      ])
+                    ]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "div",
@@ -86296,12 +86447,12 @@ var render = function() {
                                                     }
                                                   }
                                                 },
-                                                [_vm._m(2, true)]
+                                                [_vm._m(3, true)]
                                               )
                                             ]
                                           )
                                         ])
-                                      : _c("div", [_vm._m(3, true)])
+                                      : _c("div", [_vm._m(4, true)])
                                   ]
                                 ),
                                 _vm._v(" "),
@@ -86352,11 +86503,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-margin" }, [
+      _c(
+        "button",
+        { staticClass: "uk-button uk-button-default modal_chatbutton" },
+        [_vm._v("Kirim Pesan")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "uk-margin-small" }, [
       _c(
         "button",
         {
-          staticClass: "uk-width-1-1 uk-button uk-button-default pb-btnaction"
+          staticClass: "uk-width-1-1 uk-button uk-button-default pb-btnaction",
+          attrs: { "uk-toggle": "target: #modalchat" }
         },
         [
           _c("span", { staticClass: "uk-margin-small-right" }, [

@@ -2440,3 +2440,75 @@ body {
   color: #ffffff;
 }
 
+.modal_chatcontainer {
+  border-radius: 4px;
+}
+
+.modal_chatcontainer .modal_chatheading {
+  font-size: 22px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal_chatcontainer .modal_chatlabel {
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal_chatcontainer .modal_chatform {
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+  border: 1px solid #eeeeee;
+}
+
+.modal_chatcontainer .modal_chatform::-webkit-input-placeholder {
+  color: #333333;
+}
+
+.modal_chatcontainer .modal_chatform::-ms-input-placeholder {
+  color: #333333;
+}
+
+.modal_chatcontainer .modal_chatform::placeholder {
+  color: #333333;
+}
+
+.modal_chatcontainer .modal_chatform:hover,
+.modal_chatcontainer .modal_chatform:focus {
+  border: 1px solid #f6a192;
+}
+
+.modal_chatcontainer .modal_chatbutton {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  border: 0;
+  background: #f6a192;
+}
+
+.modal_chatcontainer .modal_chatbutton:hover,
+.modal_chatcontainer .modal_chatbutton:focus {
+  color: #ffffff;
+}
+
