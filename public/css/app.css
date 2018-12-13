@@ -1088,6 +1088,27 @@ body {
   background: linear-gradient(97deg, #f6a192, #f6b092);
 }
 
+.container-settingaccount .subsnow {
+  border: 0;
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.container-settingaccount .subsnow:hover,
+.container-settingaccount .subsnow:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
 .cover-joinasvendor {
   background: linear-gradient(97deg, #f6a192, #f6b092);
   height: 350px;

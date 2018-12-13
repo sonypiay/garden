@@ -17,6 +17,9 @@
 <div v-else-if="pages === 'brandinglogo'">
   <brandinglogo :url="url" :vendors="vendors" />
 </div>
+<div v-else-if="pages === 'premiumpage'">
+  <premiumpage :url="url" :vendors="vendors" :bankcustomer="bankcustomer" />
+</div>
 <div v-else>
   no components
 </div>
@@ -29,6 +32,7 @@ import editemail from '../vendors/settingaccount/EditEmail.vue';
 import edittelepon from '../vendors/settingaccount/EditTelepon.vue';
 import rekeningpencairan from '../vendors/settingaccount/RekeningPencairan.vue';
 import brandinglogo from '../vendors/settingaccount/BrandingLogo.vue';
+import premiumpage from '../vendors/settingaccount/Premium.vue';
 
 export default {
   props: ['url', 'pages', 'bankcustomer'],
@@ -38,7 +42,8 @@ export default {
     editemail,
     edittelepon,
     rekeningpencairan,
-    brandinglogo
+    brandinglogo,
+    premiumpage
   },
   data() {
     return {

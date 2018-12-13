@@ -16,6 +16,9 @@ Route::get('/tentang_kami', 'Frontend\HomepageController@aboutus')->name('aboutu
 Route::get('/login', 'Frontend\HomepageController@loginpage')->name('loginpage');
 Route::get('/join', 'Frontend\HomepageController@signuppage')->name('signuppage');
 Route::post('/sendmessage', 'Frontend\MessagesController@sendmessage');
+Route::get('/premium', 'Frontend\HomepageController@premium')->name('premium');
+Route::get('/premium_checkout', 'Frontend\HomepageController@premium_checkout');
+Route::get('/complete_payment_premium/{orderid}', 'Frontend\HomepageController@complete_payment_premium');
 
 Route::group(['prefix' => 'discovery'], function() {
   Route::get('/', 'Frontend\DiscoveryVendor@index')->name('discoveryvendor_page');
@@ -121,6 +124,9 @@ Route::group(['prefix' => 'vendor'], function() {
 
     Route::get('/withdraw', 'Frontend\Vendor\WithdrawController@withdraw_page')->name('withdrawvendor_page');
     Route::post('/withdraw', 'Frontend\Vendor\WithdrawController@process_withdraw');
+
+    Route::get('/premium', 'Frontend\Vendor\AccountVendor@premium')->name('vendorpremium_page');
+    Route::get('/getpremium', 'Frontend\Vendor\AccountVendor@getpremium');
   });
 
   Route::group(['prefix' => 'portfolio'], function() {

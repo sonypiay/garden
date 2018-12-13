@@ -78,7 +78,7 @@ class MessagesVendor extends Controller
     if( Cookie::get('hasLoginVendor') )
     {
       $datavendor = $this->getvendors( new Vendors, Cookie::get('vendor_id') );
-      return response()->view('frontend.pages.vendors.messages', [
+      return response()->view('frontend.pages.vendors.readmessage', [
         'request' => $request,
         'sessiondata' => Cookie::get(),
         'myaccount' => $datavendor
@@ -89,6 +89,6 @@ class MessagesVendor extends Controller
       return response()->view('frontend.pages.vendors.login', [
         'request' => $request
       ]);
-    }    
+    }
   }
 }

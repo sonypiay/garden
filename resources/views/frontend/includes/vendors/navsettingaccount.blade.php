@@ -6,5 +6,6 @@
     <li @if( $request->route()->getName() == 'editteleponvendor_page' ) class="active" @endif><a href="{{ route('editteleponvendor_page') }}">Nomor Telepon</a></li>
     <li @if( $request->route()->getName() == 'rekeningbankvendor_page' ) class="active" @endif><a href="{{ route('rekeningbankvendor_page') }}">Rekening Pencairan</a></li>
     <li @if( $request->route()->getName() == 'brandinglogovendor_page' ) class="active" @endif><a href="{{ route('brandinglogovendor_page') }}">Branding Logo</a></li>
+    <li @if( $request->route()->getName() == 'vendorpremium_page' ) class="active" @endif><a href="{{ route('vendorpremium_page') }}">Premium</a></li>
   </ul>
 </div>

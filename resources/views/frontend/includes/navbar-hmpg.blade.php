@@ -22,8 +22,7 @@
     <div class="uk-navbar-dropdown navbarhmpgdropdowncustomer">
       <ul class="uk-nav uk-navbar-dropdown-nav">
         <li><a href="{{ route('accountvendor_page') }}">Dashboard</a></li>
-        <li><a href="#">Upgrade Pro</a></li>
-        <li><a href="#">GardenBuana Pay</a></li>
+        <li><a href="{{ route('premium') }}">Berlangganan Premium</a></li>
         <li class="uk-nav-divider"></li>
         <li><a href="{{ route('vendorportfolio_page') }}">Galeri Portfolio</a></li>
         <li><a href="{{ route('messagevendor_page') }}">Pesan</a></li>

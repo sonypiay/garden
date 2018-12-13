@@ -18,6 +18,7 @@ window.Vue = require('vue');
 // other component
 Vue.component('loginas', require('./components/LoginAs.vue'));
 Vue.component('signupas', require('./components/SignUpAs.vue'));
+Vue.component('premiumpage', require('./components/PremiumPage.vue'));
 
 // customer
 Vue.component('logincustomer', require('./components/customers/Login.vue'));
