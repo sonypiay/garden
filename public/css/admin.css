@@ -1,1 +1,662 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700,900);@import url(https://fonts.googleapis.com/icon?family=Material+Icons);.material-icons{font-family:Material Icons;font-weight:400;font-style:normal;font-size:24px;display:inline-block;line-height:1;text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;direction:ltr;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale;-webkit-font-feature-settings:"liga";font-feature-settings:"liga"}.material-icons.md-18{font-size:18px}.material-icons.md-24{font-size:24px}.material-icons.md-36{font-size:36px}.material-icons.md-48{font-size:48px}.material-icons.md-dark{color:rgba(0,0,0,.54)}.material-icons.md-dark.md-inactive{color:rgba(0,0,0,.26)}.material-icons.md-light{color:#fff}.material-icons.md-light.md-inactive{color:hsla(0,0%,100%,.3)}body,html{background:#f9f9f9;font-family:Nunito Sans,sans-serif}.label-login{color:#555}.form-label-modal,.input-login,.label-login{font-family:Nunito Sans,sans-serif;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4}.input-login{border:0;border-bottom:2px solid #ddd;color:#666!important;background:none}.input-login:focus,.input-login:hover{border-bottom:2px solid #f6a192;background:none;color:#fff}.form-search{border:1px solid #ddd;border-radius:30px;color:#333!important;font-family:Nunito Sans,sans-serif;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4}.form-search:focus,.form-search:hover{border:1px solid #f6a192}.form-select{border:1px solid #ddd;color:#666!important;font-family:Nunito Sans,sans-serif;font-size:14px;border-radius:30px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4}.form-select:active,.form-select:focus,.form-select:hover{color:#333!important;border:1px solid #f6a192}.form-action-custom-modal,.form-action-select-modal{border-radius:4px;color:#333!important;font-family:Nunito Sans,sans-serif;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4}.form-action-custom-modal:focus,.form-action-custom-modal:hover,.form-action-select-modal:focus,.form-action-select-modal:hover{border:1px solid #f6a192}.button-login{border-radius:30px;font-family:Nunito Sans,sans-serif;font-size:14px;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4}.button-login,.button-login:focus,.button-login:hover{border:1px solid #f6a192;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.button-custom-action{border-radius:30px;background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff;font-family:Nunito Sans,sans-serif;font-size:14px;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4;border:0;text-transform:capitalize!important}.button-custom-action:focus,.button-custom-action:hover{color:#fff;background:#f6b092}.button-action-modal{border-radius:4px;background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff;font-family:Nunito Sans,sans-serif;font-size:14px;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4;border:0;text-transform:capitalize!important}.button-action-modal:focus,.button-action-modal:hover{color:#fff;background:#f6b092}.divider{border-top:1px solid #eee;margin-top:20px;margin-bottom:20px}.logo-container{background:linear-gradient(97deg,#f6a192,#f6b092);border-radius:8px 0 0 8px}.logo-container .logo-login{width:250px}.login-section{padding-left:50px;padding-right:50px}.login-container{background:#fff;color:#333;border-radius:0 8px 8px 0}.login-container h1,.login-container h2,.login-container h3,.login-container h4,.login-container h5{color:#555!important;font-family:Nunito Sans,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4}@media screen and (max-width:768px){.login-container{border-radius:8px}}.header{background:linear-gradient(97deg,#f6c492,#f6a192)}.header .header-logo img{width:130px}.header .header-nav li a{color:#fff;font-size:14px;font-family:Nunito Sans,sans-serif;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4}.header .header-nav li a:active,.header .header-nav li a:focus,.header .header-nav li a:hover{background:linear-gradient(97deg,#f6c492,#f6a192);color:#fff}.header .header-dropdown-container{background:#fff}.header .header-dropdown-container .header-dropdown-nav li a{color:#333;font-size:13px;font-family:Nunito Sans,sans-serif;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4}.header .header-dropdown-container .header-dropdown-nav li a:active,.header .header-dropdown-container .header-dropdown-nav li a:focus,.header .header-dropdown-container .header-dropdown-nav li a:hover{background:none;color:#f6a192}.main-navbar-container{background:#fff}.main-navbar-container:hover{overflow-y:scroll}.main-navbar-container .main-nav .uk-nav-header{color:#888!important;font-size:16px;font-weight:700}.main-navbar-container .main-nav .uk-nav-header,.main-navbar-container .main-nav li a{font-family:Nunito Sans,sans-serif;font-stretch:normal;font-style:normal;letter-spacing:.4}.main-navbar-container .main-nav li a{padding:8px 20px;font-size:14px;font-weight:400;color:#777!important}.main-navbar-container .main-nav li a:active,.main-navbar-container .main-nav li a:focus,.main-navbar-container .main-nav li a:hover{background:none;color:#f6a192!important}.table-rows{background:#fff;color:#666}.table-rows tr{border-bottom:1px solid #f6a192!important}.table-rows tr:last-child{border-bottom:0!important}.table-rows th{font-size:14px;font-family:Nunito Sans,sans-serif;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4;color:#666!important;border-bottom:1px solid #f6a192!important}.modal-dialog{border-radius:4px}.modal-dialog .modal-body{font-size:14px}.modal-dialog .modal-body,.modal-dialog .modal-body .modal-heading{font-family:Nunito Sans,sans-serif;color:#333;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4}.modal-dialog .modal-body .modal-heading{font-size:24px}.view-transaction{border-radius:3px}.view-transaction .view-transaction-header{font-size:20px;font-family:Nunito Sans,sans-serif;color:#333;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px;text-align:center}.view-transaction .view-transaction-heading{font-size:13px}.view-transaction .view-transaction-heading,.view-transaction .view-transaction-value{font-family:Nunito Sans,sans-serif;color:#333;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.view-transaction .view-transaction-value{font-size:16px}.view-transaction .view_transaction-accept{color:#fff;background:linear-gradient(97deg,#f6c492,#f6a192)}.view-transaction .view_transaction-accept,.view-transaction .view_transaction-reject{border-radius:2px;font-size:14px;font-family:Nunito Sans,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.view_withdraw{border-radius:3px}.view_withdraw .view_withdraw_header{font-size:20px;font-family:Nunito Sans,sans-serif;color:#333;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px;text-align:center}.view_withdraw .view_withdraw_body .view_withdraw_title{font-size:13px}.view_withdraw .view_withdraw_body .view_withdraw_title,.view_withdraw .view_withdraw_body .view_withdraw_value{font-family:Nunito Sans,sans-serif;color:#333;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.view_withdraw .view_withdraw_body .view_withdraw_value{font-size:16px}.view_withdraw .view_withdraw_approved{color:#fff;background:linear-gradient(97deg,#f6c492,#f6a192)}.view_withdraw .view_withdraw_approved,.view_withdraw .view_withdraw_rejected{border-radius:2px;font-size:14px}.dashboard_filter_action,.view_withdraw .view_withdraw_approved,.view_withdraw .view_withdraw_rejected{font-family:Nunito Sans,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.dashboard_filter_action{border-radius:3px;border:1px solid #eee;color:#777;font-size:12px}.dashboard_filter_action:focus,.dashboard_filter_action:hover{border:1px solid #f6c492;color:#555}.dashboard-welcome-screen .dashboard-hello{font-size:26px;font-family:Nunito Sans,sans-serif;color:#666;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.dashboard_content_alluser .dashboard_alluser_grid{border-radius:4px;background:linear-gradient(97deg,#f6c492,#f6a192)}.dashboard_content_alluser .dashboard_alluser_grid .dashboard_alluser_value{font-size:42px;font-family:Nunito Sans,sans-serif;color:#fff;text-align:center;font-weight:700;font-stretch:normal;font-style:normal;letter-spacing:.4px;margin-bottom:5px}.dashboard_content_alluser .dashboard_alluser_grid .dashboard_alluser_title{font-size:14px;font-family:Nunito Sans,sans-serif;color:#fff;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;margin-top:5px;text-align:center}.dashboard_content_statustransaction .dashboard_grid_statustransaction{border-radius:4px;background:linear-gradient(97deg,#f6c492,#f6a192)}.dashboard_content_statustransaction .dashboard_grid_statustransaction .dash_statustransaction_title{font-size:16px;font-family:Nunito Sans,sans-serif;color:#fff;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;margin-top:5px}.dashboard_content_statustransaction .dashboard_grid_statustransaction .dash_statustransaction_value{font-size:28px;font-family:Nunito Sans,sans-serif;color:#fff;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;margin-bottom:5px}.dashboard_content_withdraw h3{font-size:22px;font-family:Nunito Sans,sans-serif;color:#444;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.dashboard_content_withdraw .dashboard_grid_withdraw{border-radius:4px}.dashboard_content_withdraw .dashboard_grid_withdraw .dash_withdraw_title{font-size:16px;font-family:Nunito Sans,sans-serif;color:#999;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;margin-top:5px}.dashboard_content_withdraw .dashboard_grid_withdraw .dash_withdraw_value{font-size:42px;font-family:Nunito Sans,sans-serif;color:#444;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;margin-bottom:5px}.dashboard_content_withdraw .dash_withdraw_approved,.dashboard_content_withdraw .dash_withdraw_pending,.dashboard_content_withdraw .dash_withdraw_rejected{background:linear-gradient(97deg,#f6c492,#f6a192)}.dashboard_content_withdraw .dash_withdraw_approved .dash_withdraw_title,.dashboard_content_withdraw .dash_withdraw_approved .dash_withdraw_value,.dashboard_content_withdraw .dash_withdraw_pending .dash_withdraw_title,.dashboard_content_withdraw .dash_withdraw_pending .dash_withdraw_value,.dashboard_content_withdraw .dash_withdraw_rejected .dash_withdraw_title,.dashboard_content_withdraw .dash_withdraw_rejected .dash_withdraw_value{color:#fff!important}.dashboard_transaction_heading{font-size:22px;font-family:Nunito Sans,sans-serif;color:#444;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700,900);@import url(https://fonts.googleapis.com/icon?family=Material+Icons);.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  -webkit-font-feature-settings: 'liga';
+          font-feature-settings: 'liga';
+}
+
+/* Rules for sizing the icon. */
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+
+.material-icons.md-light {
+  color: white;
+}
+
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+html,
+body {
+  background: #f9f9f9;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.label-login {
+  color: #555555;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.form-label-modal {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.input-login {
+  border: 0;
+  border-bottom: 2px solid #dddddd;
+  color: #666666 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  background: none;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.input-login:hover,
+.input-login:focus {
+  border-bottom: 2px solid #f6a192;
+  background: none;
+  color: #ffffff;
+}
+
+.form-search {
+  border: 1px solid #dddddd;
+  border-radius: 30px;
+  color: #333333 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.form-search:hover,
+.form-search:focus {
+  border: 1px solid #f6a192;
+}
+
+.form-select {
+  border: 1px solid #dddddd;
+  color: #666666 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  border-radius: 30px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.form-select:hover,
+.form-select:focus,
+.form-select:active {
+  color: #333333 !important;
+  border: 1px solid #f6a192;
+}
+
+.form-action-custom-modal,
+.form-action-select-modal {
+  border-radius: 4px;
+  color: #333333 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.form-action-custom-modal:hover,
+.form-action-custom-modal:focus,
+.form-action-select-modal:hover,
+.form-action-select-modal:focus {
+  border: 1px solid #f6a192;
+}
+
+.button-login {
+  border-radius: 30px;
+  border: 1px solid #f6a192;
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.button-login:hover,
+.button-login:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  border: 1px solid #f6a192;
+}
+
+.button-custom-action {
+  border-radius: 30px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  border: 0;
+  text-transform: capitalize !important;
+}
+
+.button-custom-action:hover,
+.button-custom-action:focus {
+  color: #ffffff;
+  background: #f6b092;
+}
+
+.button-action-modal {
+  border-radius: 4px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  border: 0;
+  text-transform: capitalize !important;
+}
+
+.button-action-modal:hover,
+.button-action-modal:focus {
+  color: #ffffff;
+  background: #f6b092;
+}
+
+.divider {
+  border-top: 1px solid #eeeeee;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.logo-container {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  border-radius: 8px 0 0 8px;
+}
+
+.logo-container .logo-login {
+  width: 250px;
+}
+
+.login-section {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.login-container {
+  background: #ffffff;
+  color: #333333;
+  border-radius: 0 8px 8px 0;
+}
+
+.login-container h1,
+.login-container h2,
+.login-container h3,
+.login-container h4,
+.login-container h5 {
+  color: #555555 !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    border-radius: 8px;
+  }
+}
+
+.header {
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.header .header-logo img {
+  width: 130px;
+}
+
+.header .header-nav li a {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.header .header-nav li a:hover,
+.header .header-nav li a:active,
+.header .header-nav li a:focus {
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+  color: #ffffff;
+}
+
+.header .header-dropdown-container {
+  background: #ffffff;
+}
+
+.header .header-dropdown-container .header-dropdown-nav li a {
+  color: #333333;
+  font-size: 13px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.header .header-dropdown-container .header-dropdown-nav li a:hover,
+.header .header-dropdown-container .header-dropdown-nav li a:active,
+.header .header-dropdown-container .header-dropdown-nav li a:focus {
+  background: none;
+  color: #f6a192;
+}
+
+.main-navbar-container {
+  background: #ffffff;
+}
+
+.main-navbar-container:hover {
+  overflow-y: scroll;
+}
+
+.main-navbar-container .main-nav .uk-nav-header {
+  color: #888888 !important;
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.main-navbar-container .main-nav li a {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  color: #777777 !important;
+}
+
+.main-navbar-container .main-nav li a:hover,
+.main-navbar-container .main-nav li a:active,
+.main-navbar-container .main-nav li a:focus {
+  background: none;
+  color: #f6a192 !important;
+}
+
+.table-rows {
+  background: #ffffff;
+  color: #666666;
+}
+
+.table-rows tr {
+  border-bottom: 1px solid #f6a192 !important;
+}
+
+.table-rows tr:last-child {
+  border-bottom: 0 !important;
+}
+
+.table-rows th {
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  color: #666666 !important;
+  border-bottom: 1px solid #f6a192 !important;
+}
+
+.modal-dialog {
+  border-radius: 4px;
+}
+
+.modal-dialog .modal-body {
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #333333;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+}
+
+.modal-dialog .modal-body .modal-heading {
+  font-size: 24px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4;
+  color: #333333;
+}
+
+.view-transaction {
+  border-radius: 3px;
+}
+
+.view-transaction .view-transaction-header {
+  font-size: 20px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #333333;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: center;
+}
+
+.view-transaction .view-transaction-heading {
+  font-size: 13px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #333333;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.view-transaction .view-transaction-value {
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #333333;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.view-transaction .view_transaction-accept {
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.view-transaction .view_transaction-reject {
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.view_withdraw {
+  border-radius: 3px;
+}
+
+.view_withdraw .view_withdraw_header {
+  font-size: 20px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #333333;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: center;
+}
+
+.view_withdraw .view_withdraw_body .view_withdraw_title {
+  font-size: 13px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #333333;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.view_withdraw .view_withdraw_body .view_withdraw_value {
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #333333;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.view_withdraw .view_withdraw_approved {
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.view_withdraw .view_withdraw_rejected {
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashboard_filter_action {
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+  color: #777777;
+  font-size: 12px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashboard_filter_action:hover,
+.dashboard_filter_action:focus {
+  border: 1px solid #f6c492;
+  color: #555555;
+}
+
+.dashboard-welcome-screen .dashboard-hello {
+  font-size: 26px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #666666;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashboard_content_alluser .dashboard_alluser_grid {
+  border-radius: 4px;
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.dashboard_content_alluser .dashboard_alluser_grid .dashboard_alluser_value {
+  font-size: 42px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+
+.dashboard_content_alluser .dashboard_alluser_grid .dashboard_alluser_title {
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.dashboard_content_statustransaction .dashboard_grid_statustransaction {
+  border-radius: 4px;
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.dashboard_content_statustransaction .dashboard_grid_statustransaction .dash_statustransaction_title {
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-top: 5px;
+}
+
+.dashboard_content_statustransaction .dashboard_grid_statustransaction .dash_statustransaction_value {
+  font-size: 28px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+
+.dashboard_content_withdraw h3 {
+  font-size: 22px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #444444;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashboard_content_withdraw .dashboard_grid_withdraw {
+  border-radius: 4px;
+}
+
+.dashboard_content_withdraw .dashboard_grid_withdraw .dash_withdraw_title {
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #999999;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-top: 5px;
+}
+
+.dashboard_content_withdraw .dashboard_grid_withdraw .dash_withdraw_value {
+  font-size: 42px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #444444;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+
+.dashboard_content_withdraw .dash_withdraw_approved {
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.dashboard_content_withdraw .dash_withdraw_rejected {
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.dashboard_content_withdraw .dash_withdraw_pending {
+  background: linear-gradient(97deg, #f6c492, #f6a192);
+}
+
+.dashboard_content_withdraw .dash_withdraw_pending .dash_withdraw_title,
+.dashboard_content_withdraw .dash_withdraw_pending .dash_withdraw_value,
+.dashboard_content_withdraw .dash_withdraw_approved .dash_withdraw_title,
+.dashboard_content_withdraw .dash_withdraw_approved .dash_withdraw_value,
+.dashboard_content_withdraw .dash_withdraw_rejected .dash_withdraw_title,
+.dashboard_content_withdraw .dash_withdraw_rejected .dash_withdraw_value {
+  color: #ffffff !important;
+}
+
+.dashboard_transaction_heading {
+  font-size: 22px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #444444;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
