@@ -1492,6 +1492,10 @@ body {
   background: linear-gradient(97deg, #f6a192, #f6b092);
 }
 
+.portfolio-vendor .pv-thumbnail .pv-mediathumbnail .pv-nothumbnail:hover {
+  color: #ffffff;
+}
+
 .portfoliogrid_box .portfoliogrid_action .portfoliogrid_btnaction {
   border: 0;
   font-family: "Nunito", sans-serif;

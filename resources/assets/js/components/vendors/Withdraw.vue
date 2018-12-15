@@ -43,8 +43,8 @@
           </form>
           <div class="withdraw_fyi">
             *) Penarikan dana akan diproses dalam 2x24 jam.<br>
-            *) Minimum penarikan dana yang bisa dilakukan maksimal Rp. 50.000
-            *) Maksimal penarikan dana yang bisa dilakukan maksimal Rp. 10.000.000
+            *) Minimum penarikan dana yang bisa dilakukan adalah Rp. 50.000<br>
+            *) Maksimal penarikan dana yang bisa dilakukan adalah Rp. 10.000.000
           </div>
         </div>
       </div>
