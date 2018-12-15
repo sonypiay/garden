@@ -117,7 +117,7 @@
                   <div v-else>
                     <div class="uk-tile uk-tile-default pv-nothumbnail">
                       <div class="uk-position-center">
-                        <a uk-icon="icon: image; ratio: 4"></a>
+                        <a @click="viewPortfolioList(portfolio)" uk-icon="icon: image; ratio: 4"></a>
                       </div>
                     </div>
                   </div>

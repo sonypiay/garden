@@ -833,6 +833,9 @@ html,body {
       .pv-nothumbnail {
         color: #ffffff;
         background: linear-gradient(97deg, $logo-color-primary, $f6b092);
+        &:hover {
+          color: #ffffff;
+        }
       }
     }
   }

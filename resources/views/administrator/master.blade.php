@@ -13,7 +13,6 @@
   </div>
   <div class="uk-navbar-right">
     <ul class="uk-navbar-nav header-nav">
-      <li><a href="#"><i class="material-icons">notifications_none</i></a></li>
       <li><a href="#">John Doe <span class="uk-margin-small-left"><i class="fas fa-chevron-down"></i></span></a>
         <div class="uk-navbar-dropdown uk-box-shadow-medium header-dropdown-container">
           <ul class="uk-nav uk-navbar-dropdown-nav header-dropdown-nav">

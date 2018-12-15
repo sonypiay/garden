@@ -85973,7 +85973,11 @@ var staticRenderFns = [
       _vm._v("\n          *) Penarikan dana akan diproses dalam 2x24 jam."),
       _c("br"),
       _vm._v(
-        "\n          *) Minimum penarikan dana yang bisa dilakukan maksimal Rp. 50.000\n          *) Maksimal penarikan dana yang bisa dilakukan maksimal Rp. 10.000.000\n        "
+        "\n          *) Minimum penarikan dana yang bisa dilakukan adalah Rp. 50.000"
+      ),
+      _c("br"),
+      _vm._v(
+        "\n          *) Maksimal penarikan dana yang bisa dilakukan adalah Rp. 10.000.000\n        "
       )
     ])
   },
@@ -87680,7 +87684,39 @@ var render = function() {
                                             ]
                                           )
                                         ])
-                                      : _c("div", [_vm._m(4, true)])
+                                      : _c("div", [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "uk-tile uk-tile-default pv-nothumbnail"
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "uk-position-center"
+                                                },
+                                                [
+                                                  _c("a", {
+                                                    attrs: {
+                                                      "uk-icon":
+                                                        "icon: image; ratio: 4"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.viewPortfolioList(
+                                                          portfolio
+                                                        )
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ])
                                   ]
                                 ),
                                 _vm._v(" "),
@@ -87774,20 +87810,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "uk-position-center" }, [
       _c("span", { attrs: { "uk-icon": "icon: search; ratio: 2" } })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "uk-tile uk-tile-default pv-nothumbnail" },
-      [
-        _c("div", { staticClass: "uk-position-center" }, [
-          _c("a", { attrs: { "uk-icon": "icon: image; ratio: 4" } })
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
