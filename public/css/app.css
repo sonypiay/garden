@@ -1,1 +1,2535 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,700,900);@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);.hmpg-findvendor-box .findvendor-formicon{color:#fff}.hmpg-findvendor-box .findvendor-form{border:0;border-radius:4px;color:#333;font-family:Nunito,sans-serif;font-size:14px;background:hsla(0,0%,100%,.2);height:50px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.hmpg-findvendor-box .findvendor-form::-webkit-input-placeholder{color:#fff}.hmpg-findvendor-box .findvendor-form::-ms-input-placeholder{color:#fff}.hmpg-findvendor-box .findvendor-form::placeholder{color:#fff}.hmpg-findvendor-box .findvendor-form:focus,.hmpg-findvendor-box .findvendor-form:hover{color:#666;background:#fff!important}.hmpg-findvendor-box .findvendor-form:focus .findvendor-formicon,.hmpg-findvendor-box .findvendor-form:hover .findvendor-formicon{color:#666}.hmpg-findvendor-box .findvendor-form:focus::-webkit-input-placeholder,.hmpg-findvendor-box .findvendor-form:hover::-webkit-input-placeholder{color:#666}.hmpg-findvendor-box .findvendor-form:focus::-ms-input-placeholder,.hmpg-findvendor-box .findvendor-form:hover::-ms-input-placeholder{color:#666}.hmpg-findvendor-box .findvendor-form:focus::placeholder,.hmpg-findvendor-box .findvendor-form:hover::placeholder{color:#666}.hmpg-findvendor-box .findcity-hmpg{border-radius:4px;font-size:16px;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092);border:1px solid #f6a192;text-transform:capitalize;height:45px;font-weight:700}.hmpg-findvendor-box .findcity-hmpg,.sectioncontainer-joinasvendor .label-joinasvendor{font-family:Nunito,sans-serif;font-stretch:normal;font-style:normal;letter-spacing:.6px}.sectioncontainer-joinasvendor .label-joinasvendor{font-size:14px;color:#666;font-weight:600;margin-bottom:5px}.sectioncontainer-joinasvendor .sublabel-joinasvendor{font-family:Nunito,sans-serif;font-size:13px;color:#888;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px;margin-bottom:10px}.sectioncontainer-joinasvendor .form-joinasvendor{border-radius:2px;color:#333;font-family:Nunito,sans-serif;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.sectioncontainer-joinasvendor .form-joinasvendor:focus,.sectioncontainer-joinasvendor .form-joinasvendor:hover{border:1px solid #f6b092;color:#555}.sectioncontainer-joinasvendor .button-joinasvendor{border-radius:2px;font-family:Nunito,sans-serif;font-size:14px;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092);border:1px solid #f6a192;text-transform:capitalize;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.form-settingaction,.form-settinglabel{color:#777;font-family:Nunito,sans-serif;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.form-settingaction{border-radius:4px}.form-settingaction::-webkit-input-placeholder{color:#777}.form-settingaction::-ms-input-placeholder{color:#777}.form-settingaction::placeholder{color:#777}.form-settingaction:focus,.form-settingaction:hover{color:#444;border:1px solid #f6b092}.form-settingaction:focus::-webkit-input-placeholder,.form-settingaction:hover::-webkit-input-placeholder{color:#444}.form-settingaction:focus::-ms-input-placeholder,.form-settingaction:hover::-ms-input-placeholder{color:#444}.form-settingaction:focus::placeholder,.form-settingaction:hover::placeholder{color:#444}.btn_settingaction,.btn_uploadphoto{border:0;border-radius:4px;font-family:Nunito,sans-serif;font-size:13px;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092);text-transform:capitalize;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.6px}.btn_settingaction:focus,.btn_settingaction:hover,.btn_uploadphoto:focus,.btn_uploadphoto:hover{border:0;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.searchform{border:1px solid #ddd;border-radius:2px;color:#333!important;font-family:Nunito,sans-serif;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.searchform:focus,.searchform:hover{border:1px solid #f6a192}.buttonaction{border-radius:2px;font-family:Nunito,sans-serif;font-size:14px;background:linear-gradient(97deg,#f6a192,#f6b092);text-transform:capitalize;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.buttonaction,.buttonaction:focus,.buttonaction:hover{color:#fff;border:1px solid #f6a192}body,html{background:#f9f9f9;font-family:Lato,sans-serif}.modal-body .form-settingaction,.modal-body .form-settinglabel{color:#777;font-family:Nunito,sans-serif;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.modal-body .form-settingaction{border-radius:4px}.modal-body .form-settingaction::-webkit-input-placeholder{color:#777}.modal-body .form-settingaction::-ms-input-placeholder{color:#777}.modal-body .form-settingaction::placeholder{color:#777}.modal-body .form-settingaction:focus,.modal-body .form-settingaction:hover{color:#444;border:1px solid #f6b092}.modal-body .form-settingaction:focus::-webkit-input-placeholder,.modal-body .form-settingaction:hover::-webkit-input-placeholder{color:#444}.modal-body .form-settingaction:focus::-ms-input-placeholder,.modal-body .form-settingaction:hover::-ms-input-placeholder{color:#444}.modal-body .form-settingaction:focus::placeholder,.modal-body .form-settingaction:hover::placeholder{color:#444}.modal-body .btn_settingaction,.modal-body .btn_uploadphoto{border:0;border-radius:4px;font-family:Nunito,sans-serif;font-size:13px;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092);text-transform:capitalize;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.6px}.modal-body .btn_settingaction:focus,.modal-body .btn_settingaction:hover,.modal-body .btn_uploadphoto:focus,.modal-body .btn_uploadphoto:hover{border:0;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.modal-body .modal_heading{font-family:Nunito,sans-serif}.modal-body .modal_heading .modal_textheading{color:#666;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px}.modal-body .modal_heading .modal_subtextheading{color:#888;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.footer{margin-top:5em}.footer .mainfooter{background:linear-gradient(97deg,#f6a192,#f6b092)}.footer .aboutus .footer-aboutus_heading{font-size:20px;letter-spacing:.4px;margin-bottom:10px}.footer .aboutus .footer-aboutus_heading,.footer .aboutus .footer-aboutus_text{font-family:Nunito,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;color:#fff}.footer .aboutus .footer-aboutus_text{font-size:14px;letter-spacing:.8px}.footer .contactus .footer-contact_heading{font-family:Nunito,sans-serif;font-size:20px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;color:#fff;margin-bottom:10px}.footer .contactus .footer-contact_text{letter-spacing:.8px}.footer .contactus .footer-contact_text,.footer .contactus .footer-contact_text a{font-family:Nunito,sans-serif;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;color:#fff}.footer .contactus .footer-contact_text a{letter-spacing:.4px}.footer .contactus .footer-contact_text a:hover{color:#fff;text-decoration:none}.footer .copyright,.footer .footer_links li a{font-family:Nunito,sans-serif;font-size:14px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.footer .footer_links li a{color:#fff;text-transform:capitalize}.footer .footer_links li a:hover{color:#fff;text-decoration:none}.cover-homepage .cover-overlay-homepage{padding:0!important;background:linear-gradient(108deg,hsla(9,85%,77%,.1),hsla(37,85%,77%,.5),hsla(18,85%,77%,.3))!important}.cover-homepage .navbar-homepage .logo-homepage-white{margin-left:-20px}.cover-homepage .navbar-homepage .logo-homepage-white img{width:160px}.cover-homepage .navbar-homepage .nav-hmpg{margin-right:2em}.cover-homepage .navbar-homepage .nav-hmpg li a{color:#fff;font-family:Nunito,sans-serif;font-size:13px;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px;text-transform:capitalize!important}.cover-homepage .navbar-homepage .nav-hmpg li .joinascustomer div{border-radius:3px;background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff;padding:10px 20px}.cover-homepage .navbar-homepage .nav-hmpg .navbarhmpgdropdowncustomer{padding:0;-webkit-box-shadow:none;box-shadow:none;margin:0}.cover-homepage .navbar-homepage .nav-hmpg .navbarhmpgdropdowncustomer ul li a{color:#777;font-size:12px;font-family:Nunito,sans-serif;padding-left:15px;padding-top:10px;padding-bottom:10px;text-transform:capitalize!important;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.cover-homepage .navbar-homepage .nav-hmpg .navbarhmpgdropdowncustomer ul li a:hover{background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff}.cover-homepage .findvendor-hmpg-content{margin-left:5em}.cover-homepage .findvendor-hmpg-content .temukan-vendor-hmpg{color:#fff;font-family:Lato,sans-serif;font-size:42px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.cover-homepage .findvendor-hmpg-content .hmpg-button{margin-top:25px}.cover-homepage .findvendor-hmpg-content .hmpg-button .joinasvendor{font-family:Nunito,sans-serif;font-size:14px;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-decoration:none;border-radius:4px;text-transform:capitalize}.cover-homepage .findvendor-hmpg-content .hmpg-button .joinasvendor,.cover-homepage .findvendor-hmpg-content .hmpg-button .joinasvendor:focus,.cover-homepage .findvendor-hmpg-content .hmpg-button .joinasvendor:hover{color:#fff;border:0;background:linear-gradient(97deg,#f6a192,#f6b092)}.cover-homepage .findvendor-hmpg-content .hmpg-button .findvendor{color:#666;font-family:Nunito,sans-serif;font-size:14px;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-decoration:none;text-transform:capitalize;border-radius:4px;border:0;background:#fff}.cover-homepage .findvendor-hmpg-content .hmpg-button .findvendor:focus,.cover-homepage .findvendor-hmpg-content .hmpg-button .findvendor:hover{border:0;background:#fff;color:#666}.customers-loginlogo{width:150px}.customers-logincontainer{border-radius:4px;font-weight:300}.customers-logincontainer,.customers-logincontainer .customers-formlogin{font-family:Nunito,sans-serif;font-stretch:normal;font-style:normal;letter-spacing:.4px}.customers-logincontainer .customers-formlogin{border:0;border-bottom:1px solid #e9e9e9;color:#333;font-size:13px;height:50px;font-weight:400}.customers-logincontainer .customers-formlogin::-webkit-input-placeholder{font-size:13px}.customers-logincontainer .customers-formlogin::-ms-input-placeholder{font-size:13px}.customers-logincontainer .customers-formlogin::placeholder{font-size:13px}.customers-logincontainer .customers-formlogin:focus,.customers-logincontainer .customers-formlogin:hover{border-bottom:1px solid #f6b092}.customers-logincontainer .customers-btnlogin{border:0;border-radius:4px;color:#fff;font-family:Nunito,sans-serif;font-size:14px;background:linear-gradient(97deg,#f6a192,#f6b092);font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.customers-logincontainer .customers-loginheading,.customers-logincontainer .customers-loginlead{color:#666;font-family:Nunito,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.customers-logincontainer .customers-loginlead{font-size:12px;margin-bottom:15px}.customers-logincontainer .customers-loginlead a,.customers-logincontainer .customers-loginlead a:hover{color:#f6a192}.customers-logincontainer .ingatkansaya{margin-right:5px}.customers-logincontainer .ingatkansaya,.customers-logincontainer .lupapassword{font-size:12px;font-family:Nunito,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.customers-logincontainer .lupapassword{color:#f6b092}.forgotpassword-container{border-radius:4px;font-family:Nunito,sans-serif;font-weight:300;font-stretch:normal;font-style:normal;letter-spacing:.4px;margin-top:8em}.forgotpassword-container h2{color:#555;font-size:28px}.forgotpassword-container .homepage,.forgotpassword-container h2{font-family:Nunito,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.forgotpassword-container .homepage{color:#666;font-size:12px;margin-bottom:15px}.forgotpassword-container .homepage a,.forgotpassword-container .homepage a:hover{color:#f6a192}.forgotpassword-container .forgotpassword_label{color:#444;font-size:14px;font-family:Nunito,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.forgotpassword-container .forgotpassword_form{border:0;border-bottom:1px solid #e9e9e9;color:#333;font-family:Nunito,sans-serif;font-size:13px;height:50px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.forgotpassword-container .forgotpassword_form::-webkit-input-placeholder{font-size:13px}.forgotpassword-container .forgotpassword_form::-ms-input-placeholder{font-size:13px}.forgotpassword-container .forgotpassword_form::placeholder{font-size:13px}.forgotpassword-container .forgotpassword_form:focus,.forgotpassword-container .forgotpassword_form:hover{border-bottom:1px solid #f6b092}.forgotpassword-container .forgotpassword_btn{border:0;border-radius:4px;color:#fff;font-family:Nunito,sans-serif;font-size:16px;background:linear-gradient(97deg,#f6a192,#f6b092);text-transform:capitalize;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.navbarcustomer{background:#fff;border-bottom:1px solid #e9e9e9;-webkit-box-shadow:none;box-shadow:none}.navbarcustomer .navtopcustomer li .logo{width:120px}.navbarcustomer .navtopcustomer li .navcusticon{font-size:16px!important}.navbarcustomer .navtopcustomer li a{color:#777;font-size:14px;font-family:Nunito,sans-serif;text-transform:capitalize!important;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px}.navbarcustomer .navtopcustomer li a:hover{color:#f6b092}.navbarcustomer .navtopcustomer li .joinascustomer div{border-radius:3px;background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff;padding:10px 20px}.navbarcustomer .navtopcustomer .navbardropdowncustomer{padding:0;-webkit-box-shadow:none;box-shadow:none;border:1px solid #e9e9e9;margin:0}.navbarcustomer .navtopcustomer .navbardropdowncustomer ul li a{color:#777;font-size:12px;font-family:Nunito,sans-serif;padding-left:15px;padding-top:10px;padding-bottom:10px;text-transform:capitalize!important;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.navbarcustomer .navtopcustomer .navbardropdowncustomer ul li a:hover{background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff}.dashb_customer{padding-top:35px}.dashb_customer .dash_customername{color:#777;font-size:28px;font-family:Nunito,sans-serif;text-transform:capitalize!important;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px}.dashb_customer .dash_customerhistory .dash_historytransaction{color:#aaa;margin-right:5px}.dashb_customer .dash_customerhistory .dash_historytransaction,.dashb_customer .dash_customerhistory .dash_vendorpilihan{font-size:13px;font-family:Nunito,sans-serif;text-transform:capitalize!important;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.dashb_customer .dash_customerhistory .dash_vendorpilihan{color:#f6b092}.dashb_customer .dash_customercredit{text-align:right}.dashb_customer .dash_customercredit .dash_customercredit_text{color:#aaa;font-size:15px;font-family:Nunito,sans-serif;text-transform:capitalize!important;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.dashb_customer .dash_customercredit .dash_customercredit_balance{color:#777;font-size:28px;font-family:Nunito,sans-serif;text-transform:capitalize!important;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px}.dashb_customer .board_bookingvendor{margin-top:40px}.dashb_customer .board_bookingvendor .board_listbookingvendor{-webkit-box-shadow:none;box-shadow:none;border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9}.dashb_customer .board_bookingvendor .board_listbookingvendor .board_neverbooking_icon{font-size:72px;text-align:center}.dashb_customer .board_bookingvendor .board_listbookingvendor .board_neverbooking_icon span{color:#f6b092}.dashb_customer .board_bookingvendor .board_listbookingvendor .board_neverbooking_text{font-size:16px;text-align:center;color:#999;margin-top:20px;font-family:Nunito,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.dashb_customer .board_bookingvendor .board_listbookingvendor .board_bookbutton{margin-top:20px;border:1px solid #f6b092;background:none;color:#f6b092;font-size:16px;font-family:Nunito,sans-serif;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px;border-radius:4px}.dashb_customer .board_bookingvendor .board_listbookingvendor .board_bookbutton:focus,.dashb_customer .board_bookingvendor .board_listbookingvendor .board_bookbutton:hover{background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff}.navsidebar{-webkit-box-shadow:none;box-shadow:none;border:1px solid #e9e9e9;border-top:0}.navsidebar ul .heading,.navsidebar ul .membersince{color:#555;font-size:14px;font-weight:600;text-align:left}.navsidebar ul .heading,.navsidebar ul .membersince,.navsidebar ul li a{font-family:Nunito,sans-serif;text-transform:capitalize!important;font-stretch:normal;font-style:normal;letter-spacing:.4px}.navsidebar ul li a{color:#777;font-size:12px;padding-left:15px;padding-top:10px;padding-bottom:10px;font-weight:400}.navsidebar ul li a:hover{background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff}.container-settingaccount{-webkit-box-shadow:none;box-shadow:none;border:1px solid #e9e9e9}.container-settingaccount .logobrand-container{background:#f9f9f9;color:#666;font-family:Nunito,sans-serif;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px;border:2px dashed #ddd}.container-settingaccount .content_headingsettingprofile{color:#777;font-family:Nunito,sans-serif;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px}.container-settingaccount .form-settingaction,.container-settingaccount .form-settinglabel{color:#777;font-family:Nunito,sans-serif;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.container-settingaccount .form-settingaction{border-radius:4px}.container-settingaccount .form-settingaction::-webkit-input-placeholder{color:#777}.container-settingaccount .form-settingaction::-ms-input-placeholder{color:#777}.container-settingaccount .form-settingaction::placeholder{color:#777}.container-settingaccount .form-settingaction:focus,.container-settingaccount .form-settingaction:hover{color:#444;border:1px solid #f6b092}.container-settingaccount .form-settingaction:focus::-webkit-input-placeholder,.container-settingaccount .form-settingaction:hover::-webkit-input-placeholder{color:#444}.container-settingaccount .form-settingaction:focus::-ms-input-placeholder,.container-settingaccount .form-settingaction:hover::-ms-input-placeholder{color:#444}.container-settingaccount .form-settingaction:focus::placeholder,.container-settingaccount .form-settingaction:hover::placeholder{color:#444}.container-settingaccount .btn_settingaction,.container-settingaccount .btn_uploadphoto{border:0;border-radius:4px;font-family:Nunito,sans-serif;font-size:13px;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092);text-transform:capitalize;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.6px}.container-settingaccount .btn_settingaction:focus,.container-settingaccount .btn_settingaction:hover,.container-settingaccount .btn_uploadphoto:focus,.container-settingaccount .btn_uploadphoto:hover,.container-settingaccount .subsnow{border:0;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.container-settingaccount .subsnow{border-radius:4px;font-family:Nunito,sans-serif;font-size:13px;text-transform:capitalize;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.6px}.container-settingaccount .subsnow:focus,.container-settingaccount .subsnow:hover{border:0;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.cover-joinasvendor{background:linear-gradient(97deg,#f6a192,#f6b092);height:350px}.cover-joinasvendor .cover-overlay-joinasvendor{background:linear-gradient(108deg,hsla(9,85%,77%,.1),hsla(37,85%,77%,.5),hsla(18,85%,77%,.3))!important}.container-joinasvendor{margin-top:-15em}.container-joinasvendor .slugtext-joinasvendor{text-align:center;color:#fff;font-weight:300;font-stretch:normal;font-style:normal;letter-spacing:.4px;font-family:Nunito,sans-serif;font-size:24px}.container-joinasvendor .sectioncontainer-joinasvendor{border-radius:2px}.container-joinasvendor .sectioncontainer-joinasvendor .sectionheading-joinasvendor{text-align:center;color:#777;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.6px;font-family:Nunito,sans-serif}.container-joinasvendor .sectioncontainer-joinasvendor .sectionbox-joinasvendor{border:1px solid #e9e9e9}.container-joinasvendor .sectioncontainer-joinasvendor .sectionbox-joinasvendor div{font-size:16px;text-align:center;color:#555;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.6px;font-family:Nunito,sans-serif;text-transform:uppercase}.container-joinasvendor .sectioncontainer-joinasvendor .sectionbox-joinasvendor span{text-align:center;color:#888;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px;font-family:Nunito,sans-serif;font-size:14px}.navsetvendor{border-bottom:1px solid #e9e9e9}.navsetvendor ul li a{color:#777;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px;font-family:Nunito,sans-serif;font-size:12px;text-transform:capitalize}.navsetvendor ul .active a,.navsetvendor ul li a:focus,.navsetvendor ul li a:hover{color:#f6a192;border-bottom:1px solid #f6a192}.coverbg{height:300px}.coverbg .coverbg-overlay{background:linear-gradient(30deg,#000,rgba(0,0,0,.1))}.coverbg .coverbg-overlay .coverbg-heading{font-family:Lato,sans-serif;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px;font-size:64px;margin-bottom:1em;margin-left:1.1em;background-image:-webkit-gradient(97deg,#f6a192,#f6d992);background-image:linear-gradient(97deg,#f6a192,#f6d992);color:transparent;-webkit-background-clip:text;background-clip:text}.discovery-container .discovery_heading{font-weight:600}.discovery-container .discovery_heading,.discovery-container .discoverysearch .searchdiscovery{font-family:Nunito,sans-serif;color:#666;font-stretch:normal;font-style:normal;letter-spacing:.8px}.discovery-container .discoverysearch .searchdiscovery{border:0;border-radius:4px;font-size:12px;font-weight:400}.discovery-container .discoverysearch .searchdiscovery::-webkit-input-placeholder{color:#999}.discovery-container .discoverysearch .searchdiscovery::-ms-input-placeholder{color:#999}.discovery-container .discoverysearch .searchdiscovery::placeholder{color:#999}.discovery-container .discoverysearch .searchdiscovery:focus,.discovery-container .discoverysearch .searchdiscovery:hover{color:#666}.discovery-container .discoverysearch .searchdiscovery:focus::-webkit-input-placeholder,.discovery-container .discoverysearch .searchdiscovery:hover::-webkit-input-placeholder{color:#666}.discovery-container .discoverysearch .searchdiscovery:focus::-ms-input-placeholder,.discovery-container .discoverysearch .searchdiscovery:hover::-ms-input-placeholder{color:#666}.discovery-container .discoverysearch .searchdiscovery:focus::placeholder,.discovery-container .discoverysearch .searchdiscovery:hover::placeholder{color:#666}.discovery-container .searchkota{border:0;border-radius:4px;color:#666;font-family:Nunito,sans-serif;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px}.discovery-container .searchkota::-webkit-input-placeholder{color:#999}.discovery-container .searchkota::-ms-input-placeholder{color:#999}.discovery-container .searchkota::placeholder{color:#999}.discovery-container .searchkota:focus,.discovery-container .searchkota:hover{color:#666}.discovery-container .searchkota:focus::-webkit-input-placeholder,.discovery-container .searchkota:hover::-webkit-input-placeholder{color:#666}.discovery-container .searchkota:focus::-ms-input-placeholder,.discovery-container .searchkota:hover::-ms-input-placeholder{color:#666}.discovery-container .searchkota:focus::placeholder,.discovery-container .searchkota:hover::placeholder{color:#666}.discovery-container .discoverygrid_box .discoverygrid_logo{overflow:hidden;height:150px}.discovery-container .discoverygrid_box .discoverygrid_logo img{width:100%}.discovery-container .discoverygrid_box .discoverygrid_logo .discoverygrid_nologo{background:linear-gradient(97deg,#f6a192,#f6b092)}.discovery-container .discoverygrid_box .discoverygrid_logo .discoverygrid_nologo a,.discovery-container .discoverygrid_box .discoverygrid_logo .discoverygrid_nologo a:hover{color:#fff}.discovery-container .discoverygrid_box .discoverygrid_heading{color:#666;font-family:Nunito,sans-serif;font-size:21px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-decoration:none}.discovery-container .discoveryfilter ul li a,.discovery-container .discoverygrid_box .discoverygrid_subtext{color:#888;font-family:Nunito,sans-serif;font-size:13px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px}.discovery-container .discoveryfilter ul li a{padding:10px 15px}.discovery-container .discoveryfilter ul li a:hover{background:#f6b092;color:#fff}.profile-badge-container .pb-badge-header{border:1px solid #eee;-webkit-box-shadow:none;box-shadow:none}.profile-badge-container .pb-badge-header .pb-badge-vendorname a{color:#f6a192;font-family:Nunito,sans-serif;font-size:14px;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-decoration:none}.profile-badge-container .pb-badge-header .pb-badge-vendorname a:hover{color:#f6a192}.profile-badge-container .pb-badge-header .pb-badge-vendorlocation{color:#888;font-family:Nunito,sans-serif;font-size:11px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px}.profile-badge-container .pb-badge-action{border:1px solid #eee;border-top:0;-webkit-box-shadow:none;box-shadow:none}.profile-badge-container .pb-badge-action .pb-btnaction{border:1px solid #eee;color:#888;font-family:Nunito,sans-serif;font-size:13px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-transform:capitalize;border-radius:2px}.profile-badge-container .pb-badge-action .pb-btnaction:hover{background:#f6a192;color:#fff;border:1px solid #f6a192}.profile-badge-container .pb-badge-info{border:1px solid #eee;border-top:0;-webkit-box-shadow:none;box-shadow:none}.profile-badge-container .pb-badge-info .pb-listinfo li{color:#888;letter-spacing:.8px}.portfolio-vendor,.profile-badge-container .pb-badge-info .pb-listinfo li{font-family:Nunito,sans-serif;font-size:13px;font-weight:400;font-stretch:normal;font-style:normal}.portfolio-vendor{border:1px solid #eee;-webkit-box-shadow:none;box-shadow:none;letter-spacing:.4px}.portfolio-vendor .pv-formperrow{border-radius:2px;border:1px solid #f6b092;color:#777;font-family:Nunito,sans-serif;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.portfolio-vendor .pv-formperrow:focus,.portfolio-vendor .pv-formperrow:hover{color:#666}.portfolio-vendor .pv-thumbnail .pv-mediathumbnail .pv-iconoverlay{background:rgba(0,0,0,.7);color:#fff}.portfolio-vendor .pv-thumbnail .pv-mediathumbnail .pv-nothumbnail{color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.portfoliogrid_box .portfoliogrid_action .portfoliogrid_btnaction{border:0;font-family:Nunito,sans-serif;font-size:12px;color:#777;text-transform:capitalize}.portfoliogrid_box .portfoliogrid_heading{color:#666;font-family:Nunito,sans-serif;font-size:21px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-decoration:none}.plbox .plbox_action .plgrid_btnaction{border:0;font-family:Nunito,sans-serif;font-size:12px;color:#777;text-transform:capitalize}.booking_container .booking_header{background:#f9f9f9;margin-bottom:4em}.booking_container .booking_header .booking_heading{font-family:Nunito,sans-serif;font-size:21px;color:#666;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.8px}.booking_container .booking_header .booking_subheading{font-family:Nunito,sans-serif;font-size:13px;color:#888;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px}.booking_container .booking_formcontent{-webkit-box-shadow:none;box-shadow:none}.booking_container .booking_formcontent .booking_bodyform{margin-top:-6.5em;background:#fff}.booking_container .booking_formcontent .booking_bodyform .booking_btnaction{border:0;border-radius:2px;font-family:Nunito,sans-serif;font-size:13px;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092);text-transform:capitalize;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.6px}.booking_container .booking_formcontent .booking_bodyform .booking_btnaction:focus,.booking_container .booking_formcontent .booking_bodyform .booking_btnaction:hover{border:0;color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.booking_container .booking_formcontent .booking_gridbox{-webkit-box-shadow:none;box-shadow:none}.booking_container .booking_formcontent .booking_gridbox .booking_formaction{border-radius:2px;border:1px solid #eee;color:#777;font-family:Nunito,sans-serif;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.booking_container .booking_formcontent .booking_gridbox .booking_formaction:focus,.booking_container .booking_formcontent .booking_gridbox .booking_formaction:hover{color:#666;border:1px solid #f6b092}.booking_container .booking_formcontent .booking_gridbox .booking_gridbox_heading{font-family:Nunito,sans-serif;font-size:16px;color:#666;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.8px;margin-bottom:5px}.content_mainorders_header{background:#f9f9f9}.content_mainorders_header .content_mainorders_heading{font-family:Nunito,sans-serif;margin-bottom:5em}.content_mainorders_header .content_mainorders_heading .summary_headertitle{font-size:28px;color:#666;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorders_header .content_mainorders_heading .summary_subtitle{font-size:14px;color:#888;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body{background:#fff}.content_mainorder_body .content_summaryorder{margin-top:-7em;font-family:Nunito,sans-serif}.content_mainorder_body .content_summaryorder .content_summaryorder_header{background:linear-gradient(97deg,#f6a192,#f6b092)}.content_mainorder_body .content_summaryorder .content_summaryorder_header .summaryorder_title{font-size:28px;color:#fff;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body .content_summaryorder .content_summaryorder_header .summaryorder_subtitle{font-size:16px;color:#fff;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body .content_summaryorder .content_summaryorder_detail{border:1px solid #e9e9e9;border-top:0}.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-address-title,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-title,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-mobilenumber-title,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-note-title,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-orderdate-title,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-title{font-size:12px;color:#888;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;margin-bottom:5px}.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-address-value,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-value,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-mobilenumber-value,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-note-value,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-orderdate-value,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-value{font-size:16px;color:#666;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-value .view-transaction-heading,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-value .view-transaction-value{font-size:14px;font-family:Nunito,sans-serif;color:#333;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-editorder{border-radius:2px;font-family:Nunito,sans-serif;font-size:13px;color:#f6a192;border:1px solid #f6a192;text-transform:capitalize;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-editorder:focus,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-editorder:hover{color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail_download{border-radius:2px;font-family:Nunito,sans-serif;font-size:13px;color:#f6a192;border:1px solid #f6a192;text-transform:capitalize;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail_download:focus,.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail_download:hover{color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.content_mainorder_body .sidebar_summaryorder_header{background:linear-gradient(97deg,#f6a192,#f6b092);font-family:Nunito,sans-serif}.content_mainorder_body .sidebar_summaryorder_header .sidebar_summaryorder_title{font-size:18px;color:#fff;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body .sidebar_summaryorder_header .sidebar_summaryorder_subtitle{font-size:14px;color:#fff;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body .sidebar_summaryorder_detail{font-family:Nunito,sans-serif;border:1px solid #e9e9e9;border-top:0}.content_mainorder_body .sidebar_summaryorder_detail .summarydetail-formselect{border-radius:2px;color:#777;font-family:Nunito,sans-serif;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.content_mainorder_body .sidebar_summaryorder_detail .summarydetail-formselect:focus,.content_mainorder_body .sidebar_summaryorder_detail .summarydetail-formselect:hover{color:#444;border:1px solid #f6b092}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-title,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-title,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-layananpremium-title,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-title,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-title,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-totaltransaction-title{font-size:14px;color:#777;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;margin-bottom:10px}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-layananpremium-value,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-value,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-value{font-size:14px;color:#555;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-totaltransaction-value{font-size:12px;color:#555;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .side_summarydetail-dropdownbank{border-radius:2px;font-family:Nunito,sans-serif;font-size:13px;color:#666;border:1px solid #e9e9e9;text-transform:capitalize;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .side_summarydetail-dropdownbank:focus,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .side_summarydetail-dropdownbank:hover{color:#444;border:1px solid #f6a192}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container{height:100px;border-radius:3px;overflow-y:scroll;padding:0}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container ul li a{padding:10px 16px;color:#666;font-family:Nunito,sans-serif;font-weight:300;font-stretch:normal;font-style:normal;letter-spacing:.4px}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container ul li a:focus,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container ul li a:hover{background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value i{font-size:11px;color:#888;font-style:italic!important}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-subvalue{font-size:11px;color:#888;margin-top:10px}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout{border-radius:2px;font-family:Nunito,sans-serif;font-size:13px;color:#fff;border:0;background:linear-gradient(97deg,#f6a192,#f6b092);text-transform:capitalize;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout:focus,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout:hover{color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-approved,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-reject{border-radius:2px;font-family:Nunito,sans-serif;font-size:13px;color:#f6b092;border:1px solid #f6b092;background:none;text-transform:capitalize;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-approved:focus,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-approved:hover,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-reject:focus,.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-reject:hover{color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.summary-transaction-content{font-family:Nunito,sans-serif}.summary-transaction-content .summary-transaction-title{font-size:22px;color:#666;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px;border-bottom:1px solid #e9e9e9;padding-bottom:10px}.summary-transaction-content .summary-transaction-amount{margin-top:2.5em}.summary-transaction-content .summary-transaction-amount .summary-transaction-paymentcode{font-size:13px;color:#666;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.summary-transaction-content .summary-transaction-amount .summary-transaction-totalamount{font-size:26px;color:#666;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.4px}.summary-transaction-content .summary-transaction-contentleft,.summary-transaction-content .summary-transaction-contentright{margin-top:15px}.summary-transaction-content .summary-transaction-detail .summary-transaction-detail-thankyou{font-size:12px;color:#666;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.summary-transaction-content .summary-transaction-detail .summary-transaction-detail-verification{font-size:14px;color:#666;font-weight:300;font-stretch:normal;font-style:normal;letter-spacing:.4px}.summary-transaction-content .summary-transaction-viewdetail{border-radius:2px;font-family:Nunito,sans-serif;font-size:13px;color:#fff;border:0;background:linear-gradient(97deg,#f6a192,#f6b092);text-transform:capitalize;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.6px}.summary-transaction-content .summary-transaction-viewdetail:focus,.summary-transaction-content .summary-transaction-viewdetail:hover{color:#fff;background:linear-gradient(97deg,#f6a192,#f6b092)}.dashboard_summary-transaction .dash_sum-transaction-banner{text-align:center;background:#f9f9f9;color:#888}.dashboard_summary-transaction .dash_sum-transaction-banner:hover{background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff}.dashboard_summary-transaction .dash_sum-transaction-status{border:1px solid #f6b092!important;color:#f6a192;font-family:Nunito,sans-serif;font-size:12px;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.8px;background:none!important}.dashboard_summary-transaction .dash_sum-transaction-title{font-family:Nunito,sans-serif;font-size:18px;color:#555;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.8px;margin-top:10px}.dashboard_summary-transaction .dash_sum-transaction-labelpremium{background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff;font-size:12px;font-weight:600;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-transform:capitalize}.dashboard_summary-transaction .dash_sum-transaction-orderdate{font-family:Nunito,sans-serif;font-size:11px;color:#888;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px}.dashboard_summary-transaction .dash_sum-transaction-view{color:#888;font-family:Nunito,sans-serif;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-decoration:none;text-align:center;padding:10px;border-radius:25px}.dashboard_summary-transaction .dash_sum-transaction-view:focus,.dashboard_summary-transaction .dash_sum-transaction-view:hover{background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff}.filter-statustransaction-label{font-family:Nunito,sans-serif;font-size:13px;color:#888;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px}.filter-statustransaction-list{overflow-x:hidden;padding-bottom:10px;white-space:nowrap}.filter-statustransaction-list:hover{overflow-x:scroll}.filter-statustransaction-list a{color:#888;font-family:Nunito,sans-serif;font-size:12px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-decoration:none;border-radius:25px;border:1px solid #e9e9e9;text-transform:capitalize;margin-left:5px;margin-right:5px}.filter-statustransaction-list a:focus,.filter-statustransaction-list a:hover{border:1px solid #f6b092;background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff}.orderlist_content{border:1px solid #eee;-webkit-box-shadow:none;box-shadow:none}.signup_login{background:none}.signup_login .signup_login_container{border-radius:4px;background:none}.signup_login .signup_login_container .signup_login_heading{color:#666;font-family:Nunito,sans-serif;font-size:28px;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.8px;text-align:center}.signup_login .signup_login_container .signup_login_icon{text-align:center;font-size:90px;color:#fff}.signup_login .signup_login_container .signup_login_text{font-size:24px;color:#fff;font-family:Nunito,sans-serif;font-weight:300;font-stretch:normal;font-style:normal;letter-spacing:.4px;text-align:center;margin-top:30px}.signup_login .signup_login_container:focus,.signup_login .signup_login_container:hover{text-decoration:none;background:#fff;transition:all .2s ease 0s;-moz-transition:all .2s ease 0s;-webkit-transition:all .2s ease 0s}.signup_login .signup_login_container:focus .signup_login_icon,.signup_login .signup_login_container:focus .signup_login_text,.signup_login .signup_login_container:hover .signup_login_icon,.signup_login .signup_login_container:hover .signup_login_text{color:#f6a192}.signup_login .signup_login_backtohome{border:0;background:none;color:#fff;font-size:14px;font-family:Nunito,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;border-radius:3px;text-transform:capitalize;margin-top:30px}.signup_login .signup_login_backtohome:focus,.signup_login .signup_login_backtohome:hover{border:0;background:#fff;color:#f6a192}.withdraw_balance_box{border-radius:3px}.withdraw_balance_box .balance_title{margin-bottom:3px;font-size:16px;color:#888}.withdraw_balance_box .balance_title,.withdraw_balance_box .balance_value{font-family:Lato,sans-serif;font-weight:300;font-stretch:normal;font-style:normal;letter-spacing:.4px}.withdraw_balance_box .balance_value{margin-bottom:15px;font-size:24px;color:#666}.withdraw_balance_box .balance_withdraw_button{border-radius:3px;text-transform:capitalize;font-size:16px;font-family:Lato,sans-serif;font-weight:300;font-stretch:normal;font-style:normal;letter-spacing:.4px;color:#fff;border:0;background:linear-gradient(97deg,#f6a192,#f6b092)}.withdraw_history_transaction{border-radius:3px}.withdraw_history_transaction .withdraw_history_form{border-radius:3px;border:1px solid #eee;color:#444;font-size:16px;font-family:Lato,sans-serif;font-weight:300;font-stretch:normal;font-style:normal;letter-spacing:.4px}.withdraw_history_transaction .withdraw_history_form::-webkit-input-placeholder{color:#999}.withdraw_history_transaction .withdraw_history_form::-ms-input-placeholder{color:#999}.withdraw_history_transaction .withdraw_history_form::placeholder{color:#999}.withdraw_history_transaction .withdraw_history_form:focus,.withdraw_history_transaction .withdraw_history_form:hover{border:1px solid #f6b092}.withdraw_history_transaction .withdraw_history_form:focus::-webkit-input-placeholder,.withdraw_history_transaction .withdraw_history_form:hover::-webkit-input-placeholder{color:#444}.withdraw_history_transaction .withdraw_history_form:focus::-ms-input-placeholder,.withdraw_history_transaction .withdraw_history_form:hover::-ms-input-placeholder{color:#444}.withdraw_history_transaction .withdraw_history_form:focus::placeholder,.withdraw_history_transaction .withdraw_history_form:hover::placeholder{color:#444}.withdraw_history_transaction .withdraw_selectdropdown{border-radius:3px;text-transform:capitalize;font-size:13px;font-family:Lato,sans-serif;font-weight:300;font-stretch:normal;font-style:normal;letter-spacing:.4px;color:#666;border:1px solid #eee;background:#fff}.withdraw_history_transaction .withdraw_selectdropdown:focus,.withdraw_history_transaction .withdraw_selectdropdown:hover{background:linear-gradient(97deg,#f6a192,#f6b092);color:#fff;border:#f6a192}.modal-withdraw .withdraw_formlabel{font-weight:400}.modal-withdraw .withdraw_formlabel,.modal-withdraw .withdraw_selectdropdown{font-size:13px;font-family:Lato,sans-serif;font-stretch:normal;font-style:normal;letter-spacing:.4px;color:#666}.modal-withdraw .withdraw_selectdropdown{border-radius:3px;text-transform:capitalize;font-weight:300;border:1px solid #eee}.modal-withdraw .withdraw_selectdropdown:focus,.modal-withdraw .withdraw_selectdropdown:hover{color:#555;border:1px solid #ddd}.modal-withdraw .withdraw_fyi{font-size:12px;color:#666}.modal-withdraw .withdraw_formtext,.modal-withdraw .withdraw_fyi{font-family:Lato,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.modal-withdraw .withdraw_formtext{border-radius:3px;border:1px solid #eee;color:#444;font-size:16px}.modal-withdraw .withdraw_formtext::-webkit-input-placeholder{color:#999}.modal-withdraw .withdraw_formtext::-ms-input-placeholder{color:#999}.modal-withdraw .withdraw_formtext::placeholder{color:#999}.modal-withdraw .withdraw_formtext:focus,.modal-withdraw .withdraw_formtext:hover{border:1px solid #f6b092}.modal-withdraw .withdraw_formtext:focus::-webkit-input-placeholder,.modal-withdraw .withdraw_formtext:hover::-webkit-input-placeholder{color:#444}.modal-withdraw .withdraw_formtext:focus::-ms-input-placeholder,.modal-withdraw .withdraw_formtext:hover::-ms-input-placeholder{color:#444}.modal-withdraw .withdraw_formtext:focus::placeholder,.modal-withdraw .withdraw_formtext:hover::placeholder{color:#444}.modal-withdraw .withdraw_dropdown_content{border-radius:3px}.modal-withdraw .withdraw_dropdown_content ul li a{font-size:12px;font-family:Lato,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;color:#666}.modal-withdraw .withdraw_dropdown_content ul li a:hover{color:#f6a192}.modal-withdraw .wihtdraw_cancel_btn{border-radius:3px;border:1px solid #e9e9e9;color:#666}.modal-withdraw .wihtdraw_cancel_btn,.modal-withdraw .withdraw_submit_btn{text-transform:capitalize;font-size:13px;font-family:Lato,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px}.modal-withdraw .withdraw_submit_btn{border-radius:3px;color:#fff;border:0;background:#f6a192}.modal-withdraw .withdraw_submit_btn:focus,.modal-withdraw .withdraw_submit_btn:hover{color:#fff}.modal_chatcontainer{border-radius:4px}.modal_chatcontainer .modal_chatheading{font-size:22px;font-family:Lato,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;color:#666}.modal_chatcontainer .modal_chatform,.modal_chatcontainer .modal_chatlabel{font-size:13px;font-family:Lato,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;color:#666}.modal_chatcontainer .modal_chatform{border-radius:3px;border:1px solid #eee}.modal_chatcontainer .modal_chatform::-webkit-input-placeholder{color:#333}.modal_chatcontainer .modal_chatform::-ms-input-placeholder{color:#333}.modal_chatcontainer .modal_chatform::placeholder{color:#333}.modal_chatcontainer .modal_chatform:focus,.modal_chatcontainer .modal_chatform:hover{border:1px solid #f6a192}.modal_chatcontainer .modal_chatbutton{border-radius:3px;text-transform:capitalize;font-size:13px;font-family:Lato,sans-serif;font-weight:400;font-stretch:normal;font-style:normal;letter-spacing:.4px;color:#fff;border:0;background:#f6a192}.modal_chatcontainer .modal_chatbutton:focus,.modal_chatcontainer .modal_chatbutton:hover{color:#fff}
+@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,700,900);@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);.hmpg-findvendor-box .findvendor-formicon {
+  color: #ffffff;
+}
+
+.hmpg-findvendor-box .findvendor-form {
+  border: 0;
+  border-radius: 4px;
+  color: #333333;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  height: 50px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.hmpg-findvendor-box .findvendor-form::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.hmpg-findvendor-box .findvendor-form::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.hmpg-findvendor-box .findvendor-form::placeholder {
+  color: #ffffff;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover,
+.hmpg-findvendor-box .findvendor-form:focus {
+  color: #666666;
+  background: #ffffff !important;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover .findvendor-formicon,
+.hmpg-findvendor-box .findvendor-form:focus .findvendor-formicon {
+  color: #666666;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover::-webkit-input-placeholder,
+.hmpg-findvendor-box .findvendor-form:focus::-webkit-input-placeholder {
+  color: #666666;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover::-ms-input-placeholder,
+.hmpg-findvendor-box .findvendor-form:focus::-ms-input-placeholder {
+  color: #666666;
+}
+
+.hmpg-findvendor-box .findvendor-form:hover::placeholder,
+.hmpg-findvendor-box .findvendor-form:focus::placeholder {
+  color: #666666;
+}
+
+.hmpg-findvendor-box .findcity-hmpg {
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  border: 1px solid #f6a192;
+  text-transform: capitalize;
+  height: 45px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.sectioncontainer-joinasvendor .label-joinasvendor {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 5px;
+}
+
+.sectioncontainer-joinasvendor .sublabel-joinasvendor {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 10px;
+}
+
+.sectioncontainer-joinasvendor .form-joinasvendor {
+  border-radius: 2px;
+  color: #333333;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.sectioncontainer-joinasvendor .form-joinasvendor:hover,
+.sectioncontainer-joinasvendor .form-joinasvendor:focus {
+  border: 1px solid #f6b092;
+  color: #555555;
+}
+
+.sectioncontainer-joinasvendor .button-joinasvendor {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  border: 1px solid #f6a192;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.form-settinglabel {
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.form-settingaction {
+  border-radius: 4px;
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.form-settingaction::-webkit-input-placeholder {
+  color: #777777;
+}
+
+.form-settingaction::-ms-input-placeholder {
+  color: #777777;
+}
+
+.form-settingaction::placeholder {
+  color: #777777;
+}
+
+.form-settingaction:hover,
+.form-settingaction:focus {
+  color: #444444;
+  border: 1px solid #f6b092;
+}
+
+.form-settingaction:hover::-webkit-input-placeholder,
+.form-settingaction:focus::-webkit-input-placeholder {
+  color: #444444;
+}
+
+.form-settingaction:hover::-ms-input-placeholder,
+.form-settingaction:focus::-ms-input-placeholder {
+  color: #444444;
+}
+
+.form-settingaction:hover::placeholder,
+.form-settingaction:focus::placeholder {
+  color: #444444;
+}
+
+.btn_settingaction,
+.btn_uploadphoto {
+  border: 0;
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.btn_settingaction:hover,
+.btn_settingaction:focus,
+.btn_uploadphoto:hover,
+.btn_uploadphoto:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.searchform {
+  border: 1px solid #dddddd;
+  border-radius: 2px;
+  color: #333333 !important;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.searchform:hover,
+.searchform:focus {
+  border: 1px solid #f6a192;
+}
+
+.buttonaction {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  border: 1px solid #f6a192;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.buttonaction:hover,
+.buttonaction:focus {
+  color: #ffffff;
+  border: 1px solid #f6a192;
+}
+
+html,
+body {
+  background: #f9f9f9;
+  font-family: "Lato", sans-serif;
+}
+
+.modal-body .form-settinglabel {
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.modal-body .form-settingaction {
+  border-radius: 4px;
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.modal-body .form-settingaction::-webkit-input-placeholder {
+  color: #777777;
+}
+
+.modal-body .form-settingaction::-ms-input-placeholder {
+  color: #777777;
+}
+
+.modal-body .form-settingaction::placeholder {
+  color: #777777;
+}
+
+.modal-body .form-settingaction:hover,
+.modal-body .form-settingaction:focus {
+  color: #444444;
+  border: 1px solid #f6b092;
+}
+
+.modal-body .form-settingaction:hover::-webkit-input-placeholder,
+.modal-body .form-settingaction:focus::-webkit-input-placeholder {
+  color: #444444;
+}
+
+.modal-body .form-settingaction:hover::-ms-input-placeholder,
+.modal-body .form-settingaction:focus::-ms-input-placeholder {
+  color: #444444;
+}
+
+.modal-body .form-settingaction:hover::placeholder,
+.modal-body .form-settingaction:focus::placeholder {
+  color: #444444;
+}
+
+.modal-body .btn_settingaction,
+.modal-body .btn_uploadphoto {
+  border: 0;
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.modal-body .btn_settingaction:hover,
+.modal-body .btn_settingaction:focus,
+.modal-body .btn_uploadphoto:hover,
+.modal-body .btn_uploadphoto:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.modal-body .modal_heading {
+  font-family: "Nunito", sans-serif;
+}
+
+.modal-body .modal_heading .modal_textheading {
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.modal-body .modal_heading .modal_subtextheading {
+  color: #888888;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.footer {
+  margin-top: 5em;
+}
+
+.footer .mainfooter {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.footer .aboutus .footer-aboutus_heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer .aboutus .footer-aboutus_text {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+}
+
+.footer .contactus .footer-contact_heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer .contactus .footer-contact_text {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+}
+
+.footer .contactus .footer-contact_text a {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+}
+
+.footer .contactus .footer-contact_text a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer .copyright {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.footer .footer_links li a {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+.footer .footer_links li a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.cover-homepage .cover-overlay-homepage {
+  padding: 0 !important;
+  background: linear-gradient(108deg, rgba(246, 161, 146, 0.1), rgba(246, 207, 146, 0.5), rgba(246, 176, 146, 0.3)) !important;
+}
+
+.cover-homepage .navbar-homepage .logo-homepage-white {
+  margin-left: -20px;
+}
+
+.cover-homepage .navbar-homepage .logo-homepage-white img {
+  width: 160px;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg {
+  margin-right: 2em;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg li a {
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-transform: capitalize !important;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg li .joinascustomer div {
+  border-radius: 3px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  padding: 10px 20px;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg .navbarhmpgdropdowncustomer {
+  padding: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin: 0;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg .navbarhmpgdropdowncustomer ul li a {
+  color: #777777;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.cover-homepage .navbar-homepage .nav-hmpg .navbarhmpgdropdowncustomer ul li a:hover {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.cover-homepage .findvendor-hmpg-content {
+  margin-left: 5em;
+}
+
+.cover-homepage .findvendor-hmpg-content .temukan-vendor-hmpg {
+  color: #ffffff;
+  font-family: "Lato", sans-serif;
+  font-size: 42px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.cover-homepage .findvendor-hmpg-content .hmpg-button {
+  margin-top: 25px;
+}
+
+.cover-homepage .findvendor-hmpg-content .hmpg-button .joinasvendor {
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 0;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+}
+
+.cover-homepage .findvendor-hmpg-content .hmpg-button .joinasvendor:hover,
+.cover-homepage .findvendor-hmpg-content .hmpg-button .joinasvendor:focus {
+  border: 0;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.cover-homepage .findvendor-hmpg-content .hmpg-button .findvendor {
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  text-transform: capitalize;
+  border-radius: 4px;
+  border: 0;
+  background: #ffffff;
+}
+
+.cover-homepage .findvendor-hmpg-content .hmpg-button .findvendor:hover,
+.cover-homepage .findvendor-hmpg-content .hmpg-button .findvendor:focus {
+  border: 0;
+  background: #ffffff;
+  color: #666666;
+}
+
+.customers-loginlogo {
+  width: 150px;
+}
+
+.customers-logincontainer {
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.customers-logincontainer .customers-formlogin {
+  border: 0;
+  border-bottom: 1px solid #e9e9e9;
+  color: #333333;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  height: 50px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.customers-logincontainer .customers-formlogin::-webkit-input-placeholder {
+  font-size: 13px;
+}
+
+.customers-logincontainer .customers-formlogin::-ms-input-placeholder {
+  font-size: 13px;
+}
+
+.customers-logincontainer .customers-formlogin::placeholder {
+  font-size: 13px;
+}
+
+.customers-logincontainer .customers-formlogin:hover,
+.customers-logincontainer .customers-formlogin:focus {
+  border-bottom: 1px solid #f6b092;
+}
+
+.customers-logincontainer .customers-btnlogin {
+  border: 0;
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.customers-logincontainer .customers-loginheading {
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.customers-logincontainer .customers-loginlead {
+  color: #666666;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 15px;
+}
+
+.customers-logincontainer .customers-loginlead a {
+  color: #f6a192;
+}
+
+.customers-logincontainer .customers-loginlead a:hover {
+  color: #f6a192;
+}
+
+.customers-logincontainer .ingatkansaya {
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  margin-right: 5px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.customers-logincontainer .lupapassword {
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  color: #f6b092;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.forgotpassword-container {
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-top: 8em;
+}
+
+.forgotpassword-container h2 {
+  color: #555555;
+  font-size: 28px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.forgotpassword-container .homepage {
+  color: #666666;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  margin-bottom: 15px;
+}
+
+.forgotpassword-container .homepage a {
+  color: #f6a192;
+}
+
+.forgotpassword-container .homepage a:hover {
+  color: #f6a192;
+}
+
+.forgotpassword-container .forgotpassword_label {
+  color: #444444;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.forgotpassword-container .forgotpassword_form {
+  border: 0;
+  border-bottom: 1px solid #e9e9e9;
+  color: #333333;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  height: 50px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.forgotpassword-container .forgotpassword_form::-webkit-input-placeholder {
+  font-size: 13px;
+}
+
+.forgotpassword-container .forgotpassword_form::-ms-input-placeholder {
+  font-size: 13px;
+}
+
+.forgotpassword-container .forgotpassword_form::placeholder {
+  font-size: 13px;
+}
+
+.forgotpassword-container .forgotpassword_form:hover,
+.forgotpassword-container .forgotpassword_form:focus {
+  border-bottom: 1px solid #f6b092;
+}
+
+.forgotpassword-container .forgotpassword_btn {
+  border: 0;
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.navbarcustomer {
+  background: #ffffff;
+  border-bottom: 1px solid #e9e9e9;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.navbarcustomer .navtopcustomer li .logo {
+  width: 120px;
+}
+
+.navbarcustomer .navtopcustomer li .navcusticon {
+  font-size: 16px !important;
+}
+
+.navbarcustomer .navtopcustomer li a {
+  color: #777777;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.navbarcustomer .navtopcustomer li a:hover {
+  color: #f6b092;
+}
+
+.navbarcustomer .navtopcustomer li .joinascustomer div {
+  border-radius: 3px;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  padding: 10px 20px;
+}
+
+.navbarcustomer .navtopcustomer .navbardropdowncustomer {
+  padding: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #e9e9e9;
+  margin: 0;
+}
+
+.navbarcustomer .navtopcustomer .navbardropdowncustomer ul li a {
+  color: #777777;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.navbarcustomer .navtopcustomer .navbardropdowncustomer ul li a:hover {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.dashb_customer {
+  padding-top: 35px;
+}
+
+.dashb_customer .dash_customername {
+  color: #777777;
+  font-size: 28px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .dash_customerhistory .dash_historytransaction {
+  color: #aaaaaa;
+  font-size: 13px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-right: 5px;
+}
+
+.dashb_customer .dash_customerhistory .dash_vendorpilihan {
+  color: #f6b092;
+  font-size: 13px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .dash_customercredit {
+  text-align: right;
+}
+
+.dashb_customer .dash_customercredit .dash_customercredit_text {
+  color: #aaaaaa;
+  font-size: 15px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .dash_customercredit .dash_customercredit_balance {
+  color: #777777;
+  font-size: 28px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .board_bookingvendor {
+  margin-top: 40px;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_neverbooking_icon {
+  font-size: 72px;
+  text-align: center;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_neverbooking_icon span {
+  color: #f6b092;
+  /*padding: 45px 45px;
+          border-radius: 100%;*/
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_neverbooking_text {
+  font-size: 16px;
+  text-align: center;
+  color: #999999;
+  margin-top: 20px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_bookbutton {
+  margin-top: 20px;
+  border: 1px solid #f6b092;
+  background: none;
+  color: #f6b092;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  border-radius: 4px;
+}
+
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_bookbutton:hover,
+.dashb_customer .board_bookingvendor .board_listbookingvendor .board_bookbutton:focus {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.navsidebar {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #e9e9e9;
+  border-top: 0;
+}
+
+.navsidebar ul .heading {
+  color: #555555;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: left;
+}
+
+.navsidebar ul .membersince {
+  color: #555555;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize !important;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: left;
+}
+
+.navsidebar ul li a {
+  color: #777777;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-transform: capitalize !important;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.navsidebar ul li a:hover {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.container-settingaccount {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #e9e9e9;
+}
+
+.container-settingaccount .logobrand-container {
+  background: #f9f9f9;
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  border: 2px dashed #dddddd;
+}
+
+.container-settingaccount .content_headingsettingprofile {
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.container-settingaccount .form-settinglabel {
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.container-settingaccount .form-settingaction {
+  border-radius: 4px;
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.container-settingaccount .form-settingaction::-webkit-input-placeholder {
+  color: #777777;
+}
+
+.container-settingaccount .form-settingaction::-ms-input-placeholder {
+  color: #777777;
+}
+
+.container-settingaccount .form-settingaction::placeholder {
+  color: #777777;
+}
+
+.container-settingaccount .form-settingaction:hover,
+.container-settingaccount .form-settingaction:focus {
+  color: #444444;
+  border: 1px solid #f6b092;
+}
+
+.container-settingaccount .form-settingaction:hover::-webkit-input-placeholder,
+.container-settingaccount .form-settingaction:focus::-webkit-input-placeholder {
+  color: #444444;
+}
+
+.container-settingaccount .form-settingaction:hover::-ms-input-placeholder,
+.container-settingaccount .form-settingaction:focus::-ms-input-placeholder {
+  color: #444444;
+}
+
+.container-settingaccount .form-settingaction:hover::placeholder,
+.container-settingaccount .form-settingaction:focus::placeholder {
+  color: #444444;
+}
+
+.container-settingaccount .btn_settingaction,
+.container-settingaccount .btn_uploadphoto {
+  border: 0;
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.container-settingaccount .btn_settingaction:hover,
+.container-settingaccount .btn_settingaction:focus,
+.container-settingaccount .btn_uploadphoto:hover,
+.container-settingaccount .btn_uploadphoto:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.container-settingaccount .subsnow {
+  border: 0;
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.container-settingaccount .subsnow:hover,
+.container-settingaccount .subsnow:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.cover-joinasvendor {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  height: 350px;
+}
+
+.cover-joinasvendor .cover-overlay-joinasvendor {
+  background: linear-gradient(108deg, rgba(246, 161, 146, 0.1), rgba(246, 207, 146, 0.5), rgba(246, 176, 146, 0.3)) !important;
+}
+
+.container-joinasvendor {
+  margin-top: -15em;
+}
+
+.container-joinasvendor .slugtext-joinasvendor {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  font-family: "Nunito", sans-serif;
+  font-size: 24px;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor {
+  border-radius: 2px;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor .sectionheading-joinasvendor {
+  text-align: center;
+  color: #777777;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  font-family: "Nunito", sans-serif;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor .sectionbox-joinasvendor {
+  border: 1px solid #e9e9e9;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor .sectionbox-joinasvendor div {
+  font-size: 16px;
+  text-align: center;
+  color: #555555;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  font-family: "Nunito", sans-serif;
+  text-transform: uppercase;
+}
+
+.container-joinasvendor .sectioncontainer-joinasvendor .sectionbox-joinasvendor span {
+  text-align: center;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+}
+
+.navsetvendor {
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.navsetvendor ul li a {
+  color: #777777;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.navsetvendor ul li a:hover,
+.navsetvendor ul li a:focus {
+  color: #f6a192;
+  border-bottom: 1px solid #f6a192;
+}
+
+.navsetvendor ul .active a {
+  color: #f6a192;
+  border-bottom: 1px solid #f6a192;
+}
+
+.coverbg {
+  height: 300px;
+}
+
+.coverbg .coverbg-overlay {
+  background: linear-gradient(30deg, black, rgba(0, 0, 0, 0.1));
+}
+
+.coverbg .coverbg-overlay .coverbg-heading {
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  font-size: 64px;
+  margin-bottom: 1em;
+  margin-left: 1.1em;
+  background-image: -webkit-gradient(97deg, #f6a192, #f6d992);
+  background-image: linear-gradient(97deg, #f6a192, #f6d992);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.discovery-container .discovery_heading {
+  font-family: "Nunito", sans-serif;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.discovery-container .discoverysearch .searchdiscovery {
+  border: 0;
+  border-radius: 4px;
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.discovery-container .discoverysearch .searchdiscovery::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.discovery-container .discoverysearch .searchdiscovery::-ms-input-placeholder {
+  color: #999999;
+}
+
+.discovery-container .discoverysearch .searchdiscovery::placeholder {
+  color: #999999;
+}
+
+.discovery-container .discoverysearch .searchdiscovery:hover,
+.discovery-container .discoverysearch .searchdiscovery:focus {
+  color: #666666;
+}
+
+.discovery-container .discoverysearch .searchdiscovery:hover::-webkit-input-placeholder,
+.discovery-container .discoverysearch .searchdiscovery:focus::-webkit-input-placeholder {
+  color: #666666;
+}
+
+.discovery-container .discoverysearch .searchdiscovery:hover::-ms-input-placeholder,
+.discovery-container .discoverysearch .searchdiscovery:focus::-ms-input-placeholder {
+  color: #666666;
+}
+
+.discovery-container .discoverysearch .searchdiscovery:hover::placeholder,
+.discovery-container .discoverysearch .searchdiscovery:focus::placeholder {
+  color: #666666;
+}
+
+.discovery-container .searchkota {
+  border: 0;
+  border-radius: 4px;
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.discovery-container .searchkota::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.discovery-container .searchkota::-ms-input-placeholder {
+  color: #999999;
+}
+
+.discovery-container .searchkota::placeholder {
+  color: #999999;
+}
+
+.discovery-container .searchkota:hover,
+.discovery-container .searchkota:focus {
+  color: #666666;
+}
+
+.discovery-container .searchkota:hover::-webkit-input-placeholder,
+.discovery-container .searchkota:focus::-webkit-input-placeholder {
+  color: #666666;
+}
+
+.discovery-container .searchkota:hover::-ms-input-placeholder,
+.discovery-container .searchkota:focus::-ms-input-placeholder {
+  color: #666666;
+}
+
+.discovery-container .searchkota:hover::placeholder,
+.discovery-container .searchkota:focus::placeholder {
+  color: #666666;
+}
+
+.discovery-container .discoverygrid_box .discoverygrid_logo {
+  overflow: hidden;
+  height: 150px;
+}
+
+.discovery-container .discoverygrid_box .discoverygrid_logo img {
+  width: 100%;
+}
+
+.discovery-container .discoverygrid_box .discoverygrid_logo .discoverygrid_nologo {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.discovery-container .discoverygrid_box .discoverygrid_logo .discoverygrid_nologo a {
+  color: #ffffff;
+}
+
+.discovery-container .discoverygrid_box .discoverygrid_logo .discoverygrid_nologo a:hover {
+  color: #ffffff;
+}
+
+.discovery-container .discoverygrid_box .discoverygrid_heading {
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+}
+
+.discovery-container .discoverygrid_box .discoverygrid_subtext {
+  color: #888888;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.discovery-container .discoveryfilter ul li a {
+  color: #888888;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  padding: 10px 15px;
+}
+
+.discovery-container .discoveryfilter ul li a:hover {
+  background: #f6b092;
+  color: #ffffff;
+}
+
+.profile-badge-container .pb-badge-header {
+  border: 1px solid #eeeeee;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.profile-badge-container .pb-badge-header .pb-badge-vendorname a {
+  color: #f6a192;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+}
+
+.profile-badge-container .pb-badge-header .pb-badge-vendorname a:hover {
+  color: #f6a192;
+}
+
+.profile-badge-container .pb-badge-header .pb-badge-vendorlocation {
+  color: #888888;
+  font-family: "Nunito", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.profile-badge-container .pb-badge-action {
+  border: 1px solid #eeeeee;
+  border-top: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.profile-badge-container .pb-badge-action .pb-btnaction {
+  border: 1px solid #eeeeee;
+  color: #888888;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-transform: capitalize;
+  border-radius: 2px;
+}
+
+.profile-badge-container .pb-badge-action .pb-btnaction:hover {
+  background: #f6a192;
+  color: #ffffff;
+  border: 1px solid #f6a192;
+}
+
+.profile-badge-container .pb-badge-info {
+  border: 1px solid #eeeeee;
+  border-top: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.profile-badge-container .pb-badge-info .pb-listinfo li {
+  color: #888888;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.portfolio-vendor {
+  border: 1px solid #eeeeee;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  font-size: 13px;
+}
+
+.portfolio-vendor .pv-formperrow {
+  border-radius: 2px;
+  border: 1px solid #f6b092;
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.portfolio-vendor .pv-formperrow:hover,
+.portfolio-vendor .pv-formperrow:focus {
+  color: #666666;
+}
+
+.portfolio-vendor .pv-thumbnail .pv-mediathumbnail .pv-iconoverlay {
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+}
+
+.portfolio-vendor .pv-thumbnail .pv-mediathumbnail .pv-nothumbnail {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.portfoliogrid_box .portfoliogrid_action .portfoliogrid_btnaction {
+  border: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  color: #777777;
+  text-transform: capitalize;
+}
+
+.portfoliogrid_box .portfoliogrid_heading {
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+}
+
+.plbox .plbox_action .plgrid_btnaction {
+  border: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  color: #777777;
+  text-transform: capitalize;
+}
+
+.booking_container .booking_header {
+  background: #f9f9f9;
+  margin-bottom: 4em;
+}
+
+.booking_container .booking_header .booking_heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 21px;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.booking_container .booking_header .booking_subheading {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.booking_container .booking_formcontent {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.booking_container .booking_formcontent .booking_bodyform {
+  margin-top: -6.5em;
+  background: #ffffff;
+}
+
+.booking_container .booking_formcontent .booking_bodyform .booking_btnaction {
+  border: 0;
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.booking_container .booking_formcontent .booking_bodyform .booking_btnaction:hover,
+.booking_container .booking_formcontent .booking_bodyform .booking_btnaction:focus {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.booking_container .booking_formcontent .booking_gridbox {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.booking_container .booking_formcontent .booking_gridbox .booking_formaction {
+  border-radius: 2px;
+  border: 1px solid #eeeeee;
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.booking_container .booking_formcontent .booking_gridbox .booking_formaction:hover,
+.booking_container .booking_formcontent .booking_gridbox .booking_formaction:focus {
+  color: #666666;
+  border: 1px solid #f6b092;
+}
+
+.booking_container .booking_formcontent .booking_gridbox .booking_gridbox_heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  margin-bottom: 5px;
+}
+
+.content_mainorders_header {
+  background: #f9f9f9;
+}
+
+.content_mainorders_header .content_mainorders_heading {
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 5em;
+}
+
+.content_mainorders_header .content_mainorders_heading .summary_headertitle {
+  font-size: 28px;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorders_header .content_mainorders_heading .summary_subtitle {
+  font-size: 14px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body {
+  background: #ffffff;
+}
+
+.content_mainorder_body .content_summaryorder {
+  margin-top: -7em;
+  font-family: "Nunito", sans-serif;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_header {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_header .summaryorder_title {
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_header .summaryorder_subtitle {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail {
+  border: 1px solid #e9e9e9;
+  border-top: 0;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-orderdate-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-address-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-mobilenumber-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-note-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-title,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-title {
+  font-size: 12px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-orderdate-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-address-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-mobilenumber-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-note-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-layoutdesign-value,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-value {
+  font-size: 16px;
+  color: #666666;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-value .view-transaction-heading {
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  color: #333333;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-report-value .view-transaction-value {
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  color: #333333;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-editorder {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #f6a192;
+  border: 1px solid #f6a192;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-editorder:hover,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail-editorder:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail_download {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #f6a192;
+  border: 1px solid #f6a192;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail_download:hover,
+.content_mainorder_body .content_summaryorder .content_summaryorder_detail .summarydetail_download:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.content_mainorder_body .sidebar_summaryorder_header {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  font-family: "Nunito", sans-serif;
+}
+
+.content_mainorder_body .sidebar_summaryorder_header .sidebar_summaryorder_title {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_header .sidebar_summaryorder_subtitle {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail {
+  font-family: "Nunito", sans-serif;
+  border: 1px solid #e9e9e9;
+  border-top: 0;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .summarydetail-formselect {
+  border-radius: 2px;
+  color: #777777;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .summarydetail-formselect:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .summarydetail-formselect:focus {
+  color: #444444;
+  border: 1px solid #f6b092;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-title,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-title,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-title,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-title,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-layananpremium-title,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-totaltransaction-title {
+  font-size: 14px;
+  color: #777777;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 10px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-metodepembayaran-value,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-statustransaction-value,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-layananpremium-value {
+  font-size: 14px;
+  color: #555555;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-totaltransaction-value {
+  font-size: 12px;
+  color: #555555;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .side_summarydetail-dropdownbank {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #666666;
+  border: 1px solid #e9e9e9;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .side_summarydetail-dropdownbank:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .side_summarydetail-dropdownbank:focus {
+  color: #444444;
+  border: 1px solid #f6a192;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container {
+  height: 100px;
+  border-radius: 3px;
+  overflow-y: scroll;
+  padding: 0;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container ul li a {
+  padding: 10px 16px;
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container ul li a:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-bankpembayaran-value .summarydetail_dropdownbank-container ul li a:focus {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-kodepembayaran-value i {
+  font-size: 11px;
+  color: #888888;
+  font-style: italic !important;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-subvalue {
+  font-size: 11px;
+  color: #888888;
+  margin-top: 10px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  border: 0;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-checkout:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-approved,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-reject {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #f6b092;
+  border: 1px solid #f6b092;
+  background: none;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-approved:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-approved:focus,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-reject:hover,
+.content_mainorder_body .sidebar_summaryorder_detail .side_summarydetail-reject:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.summary-transaction-content {
+  font-family: "Nunito", sans-serif;
+}
+
+.summary-transaction-content .summary-transaction-title {
+  font-size: 22px;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid #e9e9e9;
+  padding-bottom: 10px;
+}
+
+.summary-transaction-content .summary-transaction-amount {
+  margin-top: 2.5em;
+}
+
+.summary-transaction-content .summary-transaction-amount .summary-transaction-paymentcode {
+  font-size: 13px;
+  color: #666666;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.summary-transaction-content .summary-transaction-amount .summary-transaction-totalamount {
+  font-size: 26px;
+  color: #666666;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.summary-transaction-content .summary-transaction-contentleft,
+.summary-transaction-content .summary-transaction-contentright {
+  margin-top: 15px;
+}
+
+.summary-transaction-content .summary-transaction-detail .summary-transaction-detail-thankyou {
+  font-size: 12px;
+  color: #666666;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.summary-transaction-content .summary-transaction-detail .summary-transaction-detail-verification {
+  font-size: 14px;
+  color: #666666;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.summary-transaction-content .summary-transaction-viewdetail {
+  border-radius: 2px;
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  border: 0;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  text-transform: capitalize;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.6px;
+}
+
+.summary-transaction-content .summary-transaction-viewdetail:hover,
+.summary-transaction-content .summary-transaction-viewdetail:focus {
+  color: #ffffff;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-banner {
+  text-align: center;
+  background: #f9f9f9;
+  color: #888888;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-banner:hover {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-status {
+  border: 1px solid #f6b092 !important;
+  color: #f6a192;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  background: none !important;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  color: #555555;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  margin-top: 10px;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-labelpremium {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-transform: capitalize;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-orderdate {
+  font-family: "Nunito", sans-serif;
+  font-size: 11px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-view {
+  color: #888888;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.dashboard_summary-transaction .dash_sum-transaction-view:hover,
+.dashboard_summary-transaction .dash_sum-transaction-view:focus {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.filter-statustransaction-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  color: #888888;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+}
+
+.filter-statustransaction-list {
+  overflow-x: hidden;
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+.filter-statustransaction-list:hover {
+  overflow-x: scroll;
+}
+
+.filter-statustransaction-list a {
+  color: #888888;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  border-radius: 25px;
+  border: 1px solid #e9e9e9;
+  text-transform: capitalize;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.filter-statustransaction-list a:hover,
+.filter-statustransaction-list a:focus {
+  border: 1px solid #f6b092;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+}
+
+.orderlist_content {
+  border: 1px solid #eeeeee;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.signup_login {
+  background: none;
+}
+
+.signup_login .signup_login_container {
+  border-radius: 4px;
+  background: none;
+}
+
+.signup_login .signup_login_container .signup_login_heading {
+  color: #666666;
+  font-family: "Nunito", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.8px;
+  text-align: center;
+}
+
+.signup_login .signup_login_container .signup_login_icon {
+  text-align: center;
+  font-size: 90px;
+  color: #ffffff;
+}
+
+.signup_login .signup_login_container .signup_login_text {
+  font-size: 24px;
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.signup_login .signup_login_container:hover,
+.signup_login .signup_login_container:focus {
+  text-decoration: none;
+  background: #ffffff;
+  transition: all 0.20s ease 0s;
+  -moz-transition: all 0.20s ease 0s;
+  -webkit-transition: all 0.20s ease 0s;
+}
+
+.signup_login .signup_login_container:hover .signup_login_icon,
+.signup_login .signup_login_container:hover .signup_login_text,
+.signup_login .signup_login_container:focus .signup_login_icon,
+.signup_login .signup_login_container:focus .signup_login_text {
+  color: #f6a192;
+}
+
+.signup_login .signup_login_backtohome {
+  border: 0;
+  background: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  border-radius: 3px;
+  text-transform: capitalize;
+  margin-top: 30px;
+}
+
+.signup_login .signup_login_backtohome:hover,
+.signup_login .signup_login_backtohome:focus {
+  border: 0;
+  background: #ffffff;
+  color: #f6a192;
+}
+
+.withdraw_balance_box {
+  border-radius: 3px;
+}
+
+.withdraw_balance_box .balance_title {
+  margin-bottom: 3px;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #888888;
+}
+
+.withdraw_balance_box .balance_value {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.withdraw_balance_box .balance_withdraw_button {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  border: 0;
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+}
+
+.withdraw_history_transaction {
+  border-radius: 3px;
+}
+
+.withdraw_history_transaction .withdraw_history_form {
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+  color: #444444;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.withdraw_history_transaction .withdraw_history_form::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.withdraw_history_transaction .withdraw_history_form::-ms-input-placeholder {
+  color: #999999;
+}
+
+.withdraw_history_transaction .withdraw_history_form::placeholder {
+  color: #999999;
+}
+
+.withdraw_history_transaction .withdraw_history_form:hover,
+.withdraw_history_transaction .withdraw_history_form:focus {
+  border: 1px solid #f6b092;
+}
+
+.withdraw_history_transaction .withdraw_history_form:hover::-webkit-input-placeholder,
+.withdraw_history_transaction .withdraw_history_form:focus::-webkit-input-placeholder {
+  color: #444444;
+}
+
+.withdraw_history_transaction .withdraw_history_form:hover::-ms-input-placeholder,
+.withdraw_history_transaction .withdraw_history_form:focus::-ms-input-placeholder {
+  color: #444444;
+}
+
+.withdraw_history_transaction .withdraw_history_form:hover::placeholder,
+.withdraw_history_transaction .withdraw_history_form:focus::placeholder {
+  color: #444444;
+}
+
+.withdraw_history_transaction .withdraw_selectdropdown {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+  border: 1px solid #eeeeee;
+  background: #ffffff;
+}
+
+.withdraw_history_transaction .withdraw_selectdropdown:hover,
+.withdraw_history_transaction .withdraw_selectdropdown:focus {
+  background: linear-gradient(97deg, #f6a192, #f6b092);
+  color: #ffffff;
+  border: #f6a192;
+}
+
+.modal-withdraw .withdraw_formlabel {
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal-withdraw .withdraw_selectdropdown {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+  border: 1px solid #eeeeee;
+}
+
+.modal-withdraw .withdraw_selectdropdown:hover,
+.modal-withdraw .withdraw_selectdropdown:focus {
+  color: #555555;
+  border: 1px solid #dddddd;
+}
+
+.modal-withdraw .withdraw_fyi {
+  font-size: 12px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal-withdraw .withdraw_formtext {
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+  color: #444444;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.modal-withdraw .withdraw_formtext::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.modal-withdraw .withdraw_formtext::-ms-input-placeholder {
+  color: #999999;
+}
+
+.modal-withdraw .withdraw_formtext::placeholder {
+  color: #999999;
+}
+
+.modal-withdraw .withdraw_formtext:hover,
+.modal-withdraw .withdraw_formtext:focus {
+  border: 1px solid #f6b092;
+}
+
+.modal-withdraw .withdraw_formtext:hover::-webkit-input-placeholder,
+.modal-withdraw .withdraw_formtext:focus::-webkit-input-placeholder {
+  color: #444444;
+}
+
+.modal-withdraw .withdraw_formtext:hover::-ms-input-placeholder,
+.modal-withdraw .withdraw_formtext:focus::-ms-input-placeholder {
+  color: #444444;
+}
+
+.modal-withdraw .withdraw_formtext:hover::placeholder,
+.modal-withdraw .withdraw_formtext:focus::placeholder {
+  color: #444444;
+}
+
+.modal-withdraw .withdraw_dropdown_content {
+  border-radius: 3px;
+}
+
+.modal-withdraw .withdraw_dropdown_content ul li a {
+  font-size: 12px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal-withdraw .withdraw_dropdown_content ul li a:hover {
+  color: #f6a192;
+}
+
+.modal-withdraw .wihtdraw_cancel_btn {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  border: 1px solid #e9e9e9;
+  color: #666666;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+}
+
+.modal-withdraw .withdraw_submit_btn {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  border: 0;
+  background: #f6a192;
+}
+
+.modal-withdraw .withdraw_submit_btn:hover,
+.modal-withdraw .withdraw_submit_btn:focus {
+  color: #ffffff;
+}
+
+.modal_chatcontainer {
+  border-radius: 4px;
+}
+
+.modal_chatcontainer .modal_chatheading {
+  font-size: 22px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal_chatcontainer .modal_chatlabel {
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+}
+
+.modal_chatcontainer .modal_chatform {
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #666666;
+  border: 1px solid #eeeeee;
+}
+
+.modal_chatcontainer .modal_chatform::-webkit-input-placeholder {
+  color: #333333;
+}
+
+.modal_chatcontainer .modal_chatform::-ms-input-placeholder {
+  color: #333333;
+}
+
+.modal_chatcontainer .modal_chatform::placeholder {
+  color: #333333;
+}
+
+.modal_chatcontainer .modal_chatform:hover,
+.modal_chatcontainer .modal_chatform:focus {
+  border: 1px solid #f6a192;
+}
+
+.modal_chatcontainer .modal_chatbutton {
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  border: 0;
+  background: #f6a192;
+}
+
+.modal_chatcontainer .modal_chatbutton:hover,
+.modal_chatcontainer .modal_chatbutton:focus {
+  color: #ffffff;
+}
+
